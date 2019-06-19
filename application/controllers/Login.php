@@ -76,7 +76,7 @@ class Login extends CI_Controller {
 			foreach ($result as $row){
 				$sess_array = array(
 				'id_user'=>$row->id_user,
-				'section'=>$row->section,
+				'id_section'=>$row->id_section,
 				'username'=>$row->username,
 				'password'=>$row->password,
 				'hak_akses' =>$row->hak_akses
