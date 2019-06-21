@@ -31,7 +31,7 @@
                                                      <label class="control-label " for="namaSupplier">Nama Supplier :</label>
                                                  </div>
                                             <div class="col-sm-4">
-                                                <input type="text" class="form-control" name="namaSupplier" style="margin-bottom: 25px">
+                                                <input type="text" class="form-control" name="nama_supplier" style="margin-bottom: 25px">
                                             </div>
                                                 <div class="col-md-2">
                                                      <label class="control-label " for="nama">Alamat :</label>
