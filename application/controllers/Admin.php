@@ -34,7 +34,7 @@ class Admin extends CI_Controller {
 	public function tambahSupplier(){
 		$this->load->helper('url', 'form');
 		$this->load->library('form_validation');
-		$this->form_validation->set_rules('namaSupplier', 'namaSupplier', 'trim|required');
+		$this->form_validation->set_rules('nama_supplier', 'nama_supplier', 'trim|required');
 		if ($this->form_validation->run()==FALSE) {
 			$this->load->view('admin/header');
 			$this->load->view('admin/tambahSupplier');
