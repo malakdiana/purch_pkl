@@ -127,7 +127,7 @@ class Admin extends CI_Controller {
                     $status = $SheetDataKey['Status'];
                     $perjanjian = $SheetDataKey['Perjanjian'];
                     $remarks = $SheetDataKey['Remarks'];
-                    'No','Nama_Supplier', 'Alamat','Kota','No_Telp','No_Fax','Attention','No_Hp','Tgl_Input','Terms','PPN','Supply','Status','Perjanjian','Remarks'
+                  
                     
                     $no = filter_var(trim($allDataInSheet[$i][$no]), FILTER_SANITIZE_STRING);
                     $nama_supplier = filter_var(trim($allDataInSheet[$i][$nama_supplier]), FILTER_SANITIZE_STRING);
