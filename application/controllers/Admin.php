@@ -171,6 +171,6 @@ class Admin extends CI_Controller {
 	
 
 	public function downloadSup(){
-		force_download('assets/format/fFormatDataSupplier.xlsx',null);
+		force_download('assets/format/FormatDataSupplier.xlsx',null);
 	}
 }
