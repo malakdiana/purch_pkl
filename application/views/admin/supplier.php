@@ -2,27 +2,18 @@
  <div class="page-title-area">
                 <div class="row align-items-center">
                     <div class="col-sm-6">
-                        <div class="breadcrumbs-area clearfix">
+                        <div class="breadcrumbs-area clearfix" style="padding-top: 15px;padding-bottom: 15px">
                             <h4 class="page-title pull-left">Master Data</h4>
                             <ul class="breadcrumbs pull-left">
-                                <li><a href="index.html">Home</a></li>
-                                <li><span>Supplier</span></li>
+                                <li><a href="index.html">Supplier</a></li>
+                                <li><span>Data Supplier</span></li>
                             </ul>
-                        </div>
+
                     </div>
-                    <div class="col-sm-6 clearfix">
-                        <div class="user-profile pull-right">
-                            <img class="avatar user-thumb" src="<?php echo base_url()?>assets/images/author/avatar.png" alt="avatar">
-                            <h4 class="user-name dropdown-toggle" data-toggle="dropdown"><?php echo $this->session->userdata('logged_in')['username'] ?> <i class="fa fa-angle-down"></i></h4>
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" href="#">Message</a>
-                                <a class="dropdown-item" href="#">Settings</a>
-                                <a class="dropdown-item" href="#">Log Out</a>
-                            </div>
-                        </div>
-                    </div>
+                
                 </div>
             </div>
+        </div>
 
             <!-- page title area end -->
             <div class="main-content-inner">
@@ -30,8 +21,13 @@
                     <!-- data table start -->
                     <div class="col-12 mt-5">
                         <div class="card">
+                            <div  style="padding-top: 15px;padding-left: 15px">
+                                <a class="btn btn-flat btn-primary mb-3" href="<?php echo site_url()?>/Admin/tambahSupplier" role="button">Tambah Data</a>
+                                <a class="btn btn-flat btn-success mb-3" href="<?php echo site_url()?>/Admin/importSupplier" role="button">Import Data</a></div>
                             <div class="card-body">
-                                <h4 class="header-title">Data Table Default</h4>
+                        <?=$this->session->flashdata('editSupplier')?>
+                         <?=$this->session->flashdata('deleteSupplier')?>
+                         <?=$this->session->flashdata('tamba')?>
                                 <div>
                                 <table cellpadding="0" cellspacing="0" border="0" class="table table-striped" id="dataTablesss">
                                         <thead class="bg-light text-capitalize">
@@ -40,19 +36,12 @@
                                                 <th>NAMA SUPPLIER</th>
                                              <th>ALAMAT</th>
                                                 <th>KOTA</th>
-                                                <th>TELEPON</th>
+                                                <th style="">TELEPON</th>
                                               
-                                                <th>NO HP</th>
-                                                <th></th>
-                                                   <th></th>
-                                                      <th></th>
-                                               <!--  <th>TANGGAL INPUT</th>
-                                                <th>TERMS</th>
-                                                <th>PPN</th>
-                                                <th>SUPPLY</th>
-                                                <th>STATUS</th>
-                                                <th>PERJANJIAN</th>
-                                                <th>REMARKS</th> -->
+                                           
+                                                <th >Detail</th>
+                                                <th >Edit</th>
+                                                <th >Hapus</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -62,12 +51,17 @@
                                                 <td><?php echo $key->nama_supplier;?></td>
                                                 <td><?php echo $key->alamat;?></td>
                                                 <td><?php echo $key->kota;?></td>
-                                                <td><?php echo $key->no_telp;?></td>
+                                                <td style="padding-right: 0px"><?php echo $key->no_telp;?></td>
                                                 
-                                                <td><?php echo $key->no_hp;?></td>
-                                                <td><button><a href="javascript:void(0);" onclick="modalDetail2('<?php echo $key->id_supplier?>','<?php echo $key->nama_supplier?>','<?php echo $key->alamat ?>','<?php echo $key->kota ?>', '<?php echo $key->no_telp ?>','<?php echo $key->no_fax ?>','<?php echo $key->attention ?>','<?php echo $key->no_hp ?>','<?php echo $key->tgl_input ?>','<?php echo $key->terms ?>','<?php echo $key->ppn ?>','<?php echo $key->supply?>','<?php echo $key->status ?>','<?php echo $key->perjanjian?>','<?php echo $key->remarks ?>')" data-toggle="modal" data-target="#myModalDetil">detail</button></a></td>
-                                                <td><button><a href="javascript:void(0);" onclick="modalDetail('<?php echo $key->id_supplier?>','<?php echo $key->nama_supplier?>','<?php echo $key->alamat ?>','<?php echo $key->kota ?>', '<?php echo $key->no_telp ?>','<?php echo $key->no_fax ?>','<?php echo $key->attention ?>','<?php echo $key->no_hp ?>','<?php echo $key->tgl_input ?>','<?php echo $key->terms ?>','<?php echo $key->ppn ?>','<?php echo $key->supply?>','<?php echo $key->status ?>','<?php echo $key->perjanjian?>','<?php echo $key->remarks ?>')"  data-toggle="modal" data-target="#myModalEdit">edit</button></a></td>
-                                                <td><button>delete</button>
+                                           
+                                                <td>
+                                                    <a href="javascript:void(0);" onclick="modalDetail2('<?php echo $key->id_supplier?>','<?php echo $key->nama_supplier?>','<?php echo $key->alamat ?>','<?php echo $key->kota ?>', '<?php echo $key->no_telp ?>','<?php echo $key->no_fax ?>','<?php echo $key->attention ?>','<?php echo $key->no_hp ?>','<?php echo $key->tgl_input ?>','<?php echo $key->terms ?>','<?php echo $key->ppn ?>','<?php echo $key->supply?>','<?php echo $key->status ?>','<?php echo $key->perjanjian?>','<?php echo $key->remarks ?>')" data-toggle="modal" data-target="#myModalDetil">
+                                                    <i class="fw-icons fa fa-clone" title="detail"></i>
+                                                </a></td><td>
+                                                    
+                                                <a href="javascript:void(0);" onclick="modalDetail('<?php echo $key->id_supplier?>','<?php echo $key->nama_supplier?>','<?php echo $key->alamat ?>','<?php echo $key->kota ?>', '<?php echo $key->no_telp ?>','<?php echo $key->no_fax ?>','<?php echo $key->attention ?>','<?php echo $key->no_hp ?>','<?php echo $key->tgl_input ?>','<?php echo $key->terms ?>','<?php echo $key->ppn ?>','<?php echo $key->supply?>','<?php echo $key->status ?>','<?php echo $key->perjanjian?>','<?php echo $key->remarks ?>')"  data-toggle="modal" data-target="#myModalEdit">          <i class="fa fa-edit"></i></a></td><td>
+                                                
+                                                <a href="<?php echo site_url()?>/Admin/deleteSupplier/<?php echo $key->id_supplier?> " onclick="return confirm('Apakah Yakin Untuk Menghapus?')"><i class="fa fa-trash-o"></i></a></td>
                                              
                                             </tr>
                                             <?php }?>
@@ -294,6 +288,7 @@
       
     }
   </script>
+
      <script type="text/javascript">
     /* Formating function for row details */
     
