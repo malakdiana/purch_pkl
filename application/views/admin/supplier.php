@@ -32,7 +32,7 @@
                                 <table cellpadding="0" cellspacing="0" border="0" class="table table-striped" id="dataTablesss">
                                         <thead class="bg-light text-capitalize">
                                             <tr>
-                                                <th>
+                                                <th></th>
                                                 <th>NO</th>
                                                 <th>NAMA SUPPLIER</th>
                                              <th>ALAMAT</th>
