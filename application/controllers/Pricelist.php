@@ -17,7 +17,7 @@ class Pricelist extends CI_Controller {
 	public function index()
 	
 	{
-		$data['supp']= $this->PricelistModel->getPricelist();
+		$data['price']= $this->PricelistModel->getPricelist();
 		$this->load->view('admin/header');
 		$this->load->view('admin/pricelist',$data);
 	}
