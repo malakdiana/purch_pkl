@@ -74,6 +74,9 @@
                                     <li><a href="<?php echo site_url()?>/Admin">Supplier</a></li>
                                     <li><a href="<?php echo site_url()?>/Pricelist">Price List</a></li>
                                     <li><a href="<?php echo site_url()?>/Barang">Barang</a></li>
+                                    <li><a href="<?php echo site_url()?>/Pricelist">Departement</a></li>
+                                    <li><a href="<?php echo site_url()?>/Barang">Section</a></li>
+
                                 </ul>
                             </li>
                             <li>
