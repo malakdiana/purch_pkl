@@ -88,7 +88,7 @@
                                              <label class="control-label" for="tgl_input">Tanggal Input :</label>
                                          </div>
                                          <div class="col-sm-4">
-                                            <input type="text" class="form-control" id="tgl_input" name="tgl_input">
+                                            <input type="text" value="<?php echo date('Y-m-d')?>" readonly="" class="form-control" id="tgl_input" name="tgl_input">
                                         </div>
 
                                         </div>
