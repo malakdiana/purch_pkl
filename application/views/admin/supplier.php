@@ -23,7 +23,9 @@
                         <div class="card">
                             <div  style="padding-top: 15px;padding-left: 15px">
                                 <a class="btn btn-flat btn-primary mb-3" href="<?php echo site_url()?>/Admin/tambahSupplier" role="button">Tambah Data</a>
-                                <a class="btn btn-flat btn-success mb-3" href="<?php echo site_url()?>/Admin/importSupplier" role="button">Import Data</a></div>
+                                <a class="btn btn-flat btn-success mb-3" href="<?php echo site_url()?>/Admin/importSupplier" role="button">Import Data</a>
+                                 <a class="btn btn-flat btn-warning mb-3" href="<?php echo site_url()?>/Admin/importSupplier" role="button">Download Data</a>
+                            </div>
                             <div class="card-body">
                         <?=$this->session->flashdata('editSupplier')?>
                          <?=$this->session->flashdata('deleteSupplier')?>
