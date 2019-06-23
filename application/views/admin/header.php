@@ -94,7 +94,7 @@
                             <li>
                                 <a href="javascript:void(0)" aria-expanded="true"><i class="ti-slice"></i><span>Other</span></a>
                                 <ul class="collapse">
-                                    <li><a href="<?php echo site_url()?>/User">Management User</a></li>
+                                    <li><a href="<?php echo site_url()?>/Login/ManajemenUser">Management User</a></li>
                                 </ul>
                             </li>
                             
