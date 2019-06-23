@@ -71,7 +71,7 @@
                             <li>
                                 <a href="javascript:void(0)" aria-expanded="true"><i class="ti-pie-chart"></i><span>Master Data</span></a>
                                 <ul class="collapse">
-                                    <li><a href="barchart.html">Supplier</a></li>
+                                    <li><a href="<?php echo site_url()?>/Admin">Supplier</a></li>
                                     <li><a href="<?php echo site_url()?>/Pricelist">Price List</a></li>
                                     <li><a href="<?php echo site_url()?>/Barang">Barang</a></li>
                                 </ul>
