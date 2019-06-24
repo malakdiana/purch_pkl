@@ -57,6 +57,18 @@ class Purch_reqModel extends CI_Model {
 
     }
 
+        public function getItem_barang($id)
+    {
+
+            $this->db->select('*');
+            $this->db->from('purch_req');
+            $this->db->where('id',$id);
+            $query = $this->db->get();
+            if($query->num_rows() > 0){
+            return $query->result();
+        }
+    }
+
      public function tambahItem_barang(){
         $data = array(
         'item_barang' => $this->input->post('item_barang'),

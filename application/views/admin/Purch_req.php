@@ -59,8 +59,10 @@
                                                 <td><?php echo $key->pr_no;?></td>
                                                 <td><?php echo $key->status_pr;?></td>
                                                 <td><?php echo $key->status;?></td>
-                                                <td> <a href="<?php echo site_url()?>/Purch_req/tambahItem/"><i class="fw-icons fa fa-clone"></i></a></td>
 
+
+
+                                                <td> <a href="<?php echo site_url()?>/Purch_req/GetItem_barang/<?php echo $key->id?>"><i class="fw-icons fa fa-clone"></i></a></td>
 
                                                 <td>
                                                 <a href="<?php echo site_url()?>/Purch_req/tambahItem/"><i class="fa fa-edit"></i></a></td>

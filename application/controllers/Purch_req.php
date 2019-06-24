@@ -39,5 +39,16 @@ public function index()
 
     }
 
+
+    public function GetItem_barang($id){
+
+            $data['Purch_req']= $this->Purch_reqModel->GetItem_barang($id);
+
+            $this->load->view('Admin/header');
+            $this->load->view('Admin/GetItem_barang');
+            $this->load->view('Admin/footer');       
+
+    }
+
 	
 }
