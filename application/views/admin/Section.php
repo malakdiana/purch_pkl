@@ -94,7 +94,7 @@
                             <select name="dept" class="form-control">
 
                             <?php foreach ($listDep as $key) {?>
-                            <option class="form-control" value="<?php echo $key->no?>" id="<?php echo $key->no?>"><?php echo $key->group_name?> </option> <?php }?>
+                            <option class="form-control" value="<?php echo $key->no?>"><?php echo $key->group_name?> </option> <?php }?>
                             </select>
                                               
                     </div>
@@ -124,10 +124,7 @@
     function modalDetail(id_section,nama_section,dept){
         document.getElementById('id_section').value = id_section;
         document.getElementById('nama_section').value = nama_section;
-        document.getElementById('dept').value = dept;
-
-        if(dept=)
-      
+         document.getElementById("dept").value = dept;
     }
   </script>
 
