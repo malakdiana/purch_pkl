@@ -32,12 +32,14 @@ class Pricelist extends CI_Controller {
 			redirect('Pricelist', 'refresh');
 	}
 	public function tambahPricelist(){
+        $this->load->model('Unit_barangModel');
 		$this->load->helper('url', 'form');
 		$this->load->library('form_validation');
 		$this->form_validation->set_rules('nama_supplier', 'nama_supplier', 'trim|required');
 		if ($this->form_validation->run()==FALSE) {
+             $data['listUnit']=$this->Unit_barangModel->getUnit_barang();
 			$this->load->view('admin/header');
-			$this->load->view('admin/tambahPricelist');
+			$this->load->view('admin/tambahPricelist', $data);
 			$this->load->view('admin/footer');
 		}else{
 			$this->PricelistModel->tambahPricelist();

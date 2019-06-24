@@ -86,7 +86,7 @@
                             <li>
                                 <a href="javascript:void(0)" aria-expanded="true"><i class="ti-palette"></i><span>Input Data</span></a>
                                 <ul class="collapse">
-                                    <li><a href="accordion.html">Purchase Request</a></li>
+                                    <li><a href="<?php echo site_url()?>/Purch_req/tambahPR">Purchase Request</a></li>
                                     <li><a href="alert.html">Purchase Order</a></li>
                                     <li><a href="badge.html">Quotation Request</a></li>
                                 </ul>

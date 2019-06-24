@@ -44,10 +44,13 @@
                                                 <input type="text" class="form-control" name="nama_barang" style="margin-bottom: 25px">
                                             </div>
 
-                                            <div class="form-group">
-                                                     <label class="control-label " for="unit">Unit :</label>
-                                           
-                                                <input type="text" class="form-control" name="unit" style="margin-bottom: 25px">
+                                             <div class="form-group">
+                                                     <label class="control-label " for="unit">UNIT</label>
+                                           <select name="unit" class="form-control">
+                                            <?php foreach ($listUnit as $key) {?>
+                                           <option class="form-control" value="<?php echo $key->unit_barang?>"><?php echo $key->unit_barang?> </option> <?php }?>
+                                           </select>
+                                              
                                             </div>
 
                                             <div class="form-group">
