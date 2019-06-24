@@ -7,6 +7,7 @@ class Section extends CI_Controller {
     {
         parent::__construct();
         $this->load->model('SectionModel');
+         $this->load->model('DepartemenModel');
          $this->load->helper('url','form','download');
         // $this->load->library(array('PHPExcel','PHPExcel/IOFactory'));
           $this->load->library('excel','upload');
@@ -18,11 +19,14 @@ class Section extends CI_Controller {
     
     {
         $data['dpt']= $this->SectionModel->getSection();
+        $data['listDep']=$this->DepartemenModel->getDepartemen();
         $this->load->view('Admin/header');
         $this->load->view('Admin/Section',$data);
     }
+
+
     public function updateSection(){
-        $this->SectionModel->updateSection();
+        $data['listDep']=$this->SectionModel->updateSection();
                 $this->session->set_flashdata('editSection','<div class="alert alert-success" role="alert">SUKSES UPDATE DATA <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
             redirect('Section', 'refresh');
     }
