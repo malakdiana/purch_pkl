@@ -32,12 +32,14 @@ class Barang extends CI_Controller {
 			redirect('Barang', 'refresh');
 	}
 	public function tambahBarang(){
+        $this->load->model('Unit_barangModel');
 		$this->load->helper('url', 'form');
 		$this->load->library('form_validation');
 		$this->form_validation->set_rules('no_barang', 'no_barang', 'trim|required');
 		if ($this->form_validation->run()==FALSE) {
+            $data['listUnit']=$this->Unit_barangModel->getUnit_barang();
 			$this->load->view('Admin/header');
-			$this->load->view('Admin/tambahBarang');
+			$this->load->view('Admin/tambahBarang',$data);
 			$this->load->view('Admin/footer');
 		}else{
 			$this->BarangModel->tambahBarang();

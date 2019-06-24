@@ -102,10 +102,19 @@
                         <label for="">NAMA BARANG</label>
                         <input type="text" class="form-control" name="nama_barang" id="nama_barang" value="" >
                     </div>
+
+
                     <div class="form-group">
-                        <label for="">UNIT</label>
-                        <input type="text" class="form-control" name="unit" id="unit" value="" >
+                        <label class="control-label " for="unit">UNIT</label>
+                            <select name="unit" class="form-control">
+
+                            <?php foreach ($listUnit as $key) {?>
+                            <option class="form-control" value="<?php echo $key->unit_barang?>"</option> <?php }?>
+                            </select>
+                                              
                     </div>
+
+
                     <div class="form-group">
                         <label for="">REMARKS</label>
                         <input type="text" class="form-control" name="remarks" id="remarks" value="" >
