@@ -44,13 +44,14 @@ class Purch_reqModel extends CI_Model {
         $this->db->delete('purch_req');
 
     }
-    public function tambahPurch_req(){
+    public function tambahPR(){
         $data = array(
-        'id_user' => $this->input->post('id_user'),
-        'id_section' => $this->input->post('id_section'),
-        'username' => $this->input->post('username'),
-        'password' => $this->input->post('password'),
-        'hak_akses' => $this->input->post('hak_akses'),
+        'tgl' => $this->input->post('tgl'),
+        'jam' => $this->input->post('jam'),
+        'nik' => $this->input->post('nik'),
+        'pic_request' => $this->input->post('pic_request'),
+        'section' => $this->input->post('section'),
+        'pr_no' => $this->input->post('pr_no'),
       
         );
          $this->db->insert('purch_req', $data);
