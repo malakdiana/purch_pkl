@@ -34,10 +34,12 @@ class Section extends CI_Controller {
     public function tambahSection(){
         $this->load->helper('url', 'form');
         $this->load->library('form_validation');
+         $this->load->model('DepartemenModel');
         $this->form_validation->set_rules('nama_section', 'nama_section', 'trim|required');
         if ($this->form_validation->run()==FALSE) {
+            $data['listDep']=$this->DepartemenModel->getDepartemen();
             $this->load->view('Admin/header');
-            $this->load->view('Admin/tambahSection');
+            $this->load->view('Admin/tambahSection', $data);
             $this->load->view('Admin/footer');
         }else{
             $this->SectionModel->tambahSection();
@@ -143,4 +145,88 @@ class Section extends CI_Controller {
     public function downloadSup(){
         force_download('assets/format/FormatDataSection.xlsx',null);
     }
+
+         public function export(){
+    // Load plugin PHPExcel nya
+    //include APPPATH.'third_party/PHPExcel/PHPExcel.php';
+    
+    // Panggil class PHPExcel nya
+    $excel = new PHPExcel();
+    // Settingan awal fil excel
+    $excel->getProperties()->setCreator('My Notes Code')
+                 ->setLastModifiedBy('My Notes Code')
+                 ->setTitle("Data Section")
+                 ->setSubject("Section")
+                 ->setDescription("Laporan Semua Data Section")
+                 ->setKeywords("Data Section");
+    // Buat sebuah variabel untuk menampung pengaturan style dari header tabel
+    $style_col = array(
+      'font' => array('bold' => true), // Set font nya jadi bold
+      'alignment' => array(
+        'horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_CENTER, // Set text jadi ditengah secara horizontal (center)
+        'vertical' => PHPExcel_Style_Alignment::VERTICAL_CENTER // Set text jadi di tengah secara vertical (middle)
+      ),
+      'borders' => array(
+        'top' => array('style'  => PHPExcel_Style_Border::BORDER_THIN), // Set border top dengan garis tipis
+        'right' => array('style'  => PHPExcel_Style_Border::BORDER_THIN),  // Set border right dengan garis tipis
+        'bottom' => array('style'  => PHPExcel_Style_Border::BORDER_THIN), // Set border bottom dengan garis tipis
+        'left' => array('style'  => PHPExcel_Style_Border::BORDER_THIN) // Set border left dengan garis tipis
+      )
+    );
+    // Buat sebuah variabel untuk menampung pengaturan style dari isi tabel
+    $style_row = array(
+      'alignment' => array(
+        'vertical' => PHPExcel_Style_Alignment::VERTICAL_CENTER // Set text jadi di tengah secara vertical (middle)
+      ),
+      'borders' => array(
+        'top' => array('style'  => PHPExcel_Style_Border::BORDER_THIN), // Set border top dengan garis tipis
+        'right' => array('style'  => PHPExcel_Style_Border::BORDER_THIN),  // Set border right dengan garis tipis
+        'bottom' => array('style'  => PHPExcel_Style_Border::BORDER_THIN), // Set border bottom dengan garis tipis
+        'left' => array('style'  => PHPExcel_Style_Border::BORDER_THIN) // Set border left dengan garis tipis
+      )
+    );
+   
+    // Buat header tabel nya pada baris ke 3
+    $excel->setActiveSheetIndex(0)->setCellValue('A1', "Id_Section"); // Set kolom A3 dengan tulisan "NO"
+    $excel->setActiveSheetIndex(0)->setCellValue('B1', "Nama_Section"); // Set kolom B3 dengan tulisan "NIS"
+    $excel->setActiveSheetIndex(0)->setCellValue('C1', "Departemen"); // Set kolom C3 dengan tulisan "NAMA"
+    
+    $excel->getActiveSheet()->getStyle('A1')->applyFromArray($style_col);
+    $excel->getActiveSheet()->getStyle('B1')->applyFromArray($style_col);
+    $excel->getActiveSheet()->getStyle('C1')->applyFromArray($style_col);
+   
+
+    // Panggil function view yang ada di SiswaModel untuk menampilkan semua data siswanya
+    $siswa = $this->SectionModel->getSection();
+    $no = 1; // Untuk penomoran tabel, di awal set dengan 1
+    $numrow = 2; // Set baris pertama untuk isi tabel adalah baris ke 4
+    foreach($siswa as $data){ // Lakukan looping pada variabel siswa
+      $excel->setActiveSheetIndex(0)->setCellValue('A'.$numrow, $data->id_section);
+      $excel->setActiveSheetIndex(0)->setCellValue('B'.$numrow, $data->nama_section);
+      $excel->setActiveSheetIndex(0)->setCellValue('C'.$numrow, $data->dept);
+      
+     
+      
+      $no++; // Tambah 1 setiap kali looping
+      $numrow++; // Tambah 1 setiap kali looping
+    }
+    // Set width kolom
+    //$excel->getActiveSheet()->getColumnDimension('A')->setWidth(5); // Set width kolom A
+    $excel->getActiveSheet()->getColumnDimension('B')->setWidth(30); // Set width kolom B
+    $excel->getActiveSheet()->getColumnDimension('C')->setWidth(30); // Set width kolom C
+   
+   
+    $excel->getActiveSheet()->getDefaultRowDimension()->setRowHeight(-1);
+    // Set orientasi kertas jadi LANDSCAPE
+    $excel->getActiveSheet()->getPageSetup()->setOrientation(PHPExcel_Worksheet_PageSetup::ORIENTATION_LANDSCAPE);
+    // Set judul file excel nya
+    $excel->getActiveSheet(0)->setTitle("Laporan Data Section");
+    $excel->setActiveSheetIndex(0);
+   
+    $write = PHPExcel_IOFactory::createWriter($excel, 'Excel2007');
+    ob_end_clean();
+header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+header('Content-Disposition: attachment;filename="Data Section.xlsx"');
+    $write->save('php://output');
+  }
 }

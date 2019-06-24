@@ -131,7 +131,6 @@ class Supplier extends CI_Controller {
                     $status = $SheetDataKey['Status'];
                     $perjanjian = $SheetDataKey['Perjanjian'];
                     $remarks = $SheetDataKey['Remarks'];
-                  
                     
                     $no = filter_var(trim($allDataInSheet[$i][$no]), FILTER_SANITIZE_STRING);
                     $nama_supplier = filter_var(trim($allDataInSheet[$i][$nama_supplier]), FILTER_SANITIZE_STRING);
@@ -218,11 +217,7 @@ class Supplier extends CI_Controller {
         'left' => array('style'  => PHPExcel_Style_Border::BORDER_THIN) // Set border left dengan garis tipis
       )
     );
-    //$excel->setActiveSheetIndex(0)->setCellValue('A1', "DATA SISWA"); // Set kolom A1 dengan tulisan "DATA SISWA"
-    //$excel->getActiveSheet()->mergeCells('A1:E1'); // Set Merge Cell pada kolom A1 sampai E1
-    //$excel->getActiveSheet()->getStyle('A1')->getFont()->setBold(TRUE); // Set bold kolom A1
-    //$excel->getActiveSheet()->getStyle('A1')->getFont()->setSize(15); // Set font size 15 untuk kolom A1
-    //$excel->getActiveSheet()->getStyle('A1')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER); // Set text center untuk kolom A1
+   
     // Buat header tabel nya pada baris ke 3
     $excel->setActiveSheetIndex(0)->setCellValue('A1', "No"); // Set kolom A3 dengan tulisan "NO"
     $excel->setActiveSheetIndex(0)->setCellValue('B1', "Nama_Supplier"); // Set kolom B3 dengan tulisan "NIS"
@@ -275,39 +270,39 @@ class Supplier extends CI_Controller {
       $excel->setActiveSheetIndex(0)->setCellValue('M'.$numrow, $data->status);
       $excel->setActiveSheetIndex(0)->setCellValue('N'.$numrow, $data->perjanjian);
       $excel->setActiveSheetIndex(0)->setCellValue('O'.$numrow, $data->remarks);
-      // Apply style row yang telah kita buat tadi ke masing-masing baris (isi tabel)
-      // $excel->getActiveSheet()->getStyle('A'.$numrow)->applyFromArray($style_row);
-      // $excel->getActiveSheet()->getStyle('B'.$numrow)->applyFromArray($style_row);
-      // $excel->getActiveSheet()->getStyle('C'.$numrow)->applyFromArray($style_row);
-      // $excel->getActiveSheet()->getStyle('D'.$numrow)->applyFromArray($style_row);
-      // $excel->getActiveSheet()->getStyle('E'.$numrow)->applyFromArray($style_row);
       
       $no++; // Tambah 1 setiap kali looping
       $numrow++; // Tambah 1 setiap kali looping
     }
     // Set width kolom
     //$excel->getActiveSheet()->getColumnDimension('A')->setWidth(5); // Set width kolom A
-    $excel->getActiveSheet()->getColumnDimension('B')->setWidth(25); // Set width kolom B
-    $excel->getActiveSheet()->getColumnDimension('C')->setWidth(25); // Set width kolom C
-    //$excel->getActiveSheet()->getColumnDimension('D')->setWidth(20); // Set width kolom D
-    //$excel->getActiveSheet()->getColumnDimension('E')->setWidth(30); // Set width kolom E
-    
-    // Set height semua kolom menjadi auto (mengikuti height isi dari kolommnya, jadi otomatis)
+    $excel->getActiveSheet()->getColumnDimension('B')->setWidth(30); // Set width kolom B
+    $excel->getActiveSheet()->getColumnDimension('C')->setWidth(30); // Set width kolom C
+   
+    $excel->getActiveSheet()->getColumnDimension('D')->setWidth(25);
+    $excel->getActiveSheet()->getColumnDimension('E')->setWidth(25);
+    $excel->getActiveSheet()->getColumnDimension('F')->setWidth(25);
+    $excel->getActiveSheet()->getColumnDimension('G')->setWidth(25);
+    $excel->getActiveSheet()->getColumnDimension('H')->setWidth(25);
+    $excel->getActiveSheet()->getColumnDimension('I')->setWidth(25);
+    $excel->getActiveSheet()->getColumnDimension('J')->setWidth(25);
+    $excel->getActiveSheet()->getColumnDimension('K')->setWidth(25);
+    $excel->getActiveSheet()->getColumnDimension('L')->setWidth(25);
+    $excel->getActiveSheet()->getColumnDimension('M')->setWidth(25);
+    $excel->getActiveSheet()->getColumnDimension('N')->setWidth(25);
+    $excel->getActiveSheet()->getColumnDimension('O')->setWidth(25);
     $excel->getActiveSheet()->getDefaultRowDimension()->setRowHeight(-1);
     // Set orientasi kertas jadi LANDSCAPE
     $excel->getActiveSheet()->getPageSetup()->setOrientation(PHPExcel_Worksheet_PageSetup::ORIENTATION_LANDSCAPE);
     // Set judul file excel nya
     $excel->getActiveSheet(0)->setTitle("Laporan Data Supplier");
     $excel->setActiveSheetIndex(0);
-    // Proses file excel
-  // header('Content-Type: application/vnd.ms-excel'); //mime type
-    header('Content-Disposition: attachment; filename="Data Supplier.xlsx"'); // Set nama file excel nya
-    //header('Cache-Control: max-age=0');
+   
     $write = PHPExcel_IOFactory::createWriter($excel, 'Excel2007');
+    ob_end_clean();
+header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+header('Content-Disposition: attachment;filename="Data Supplier.xlsx"');
     $write->save('php://output');
-
-
-
   }
  
 }

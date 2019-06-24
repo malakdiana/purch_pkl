@@ -5,7 +5,7 @@
                         <div class="breadcrumbs-area clearfix" style="padding-top: 15px;padding-bottom: 15px">
                             <h4 class="page-title pull-left">Master Data</h4>
                             <ul class="breadcrumbs pull-left">
-                                <li><a href="<?php echo site_url()?>/Admin">Supplier</a></li>
+                                <li><a href="<?php echo site_url()?>/Supplier">Supplier</a></li>
                                 <li><span>Tambah Supplier</span></li>
                             </ul>
 
@@ -22,7 +22,7 @@
                     <div class="col-12 mt-5">
                         <div class="card">
                                 <div class="card-body">
-                                     <?php echo form_open('Admin/tambahSupplier') ?>
+                                     <?php echo form_open('Supplier/tambahSupplier') ?>
                                      <h3 align="center">Form Tambah Supplier</h3><br>
                                        <div class="col-md-12">
                                             <div class="row">

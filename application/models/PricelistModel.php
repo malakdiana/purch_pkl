@@ -57,6 +57,8 @@ class PricelistModel extends CI_Model {
 
     }
     public function tambahPricelist(){
+        $lb= $this->input->post('lbdate');
+        $tanggal = date('Y-m-d', strtotime($lb));
         $data = array(
         'group_name' => $this->input->post('group_name'),
         'no_barang' => $this->input->post('no_barang'),
@@ -69,7 +71,7 @@ class PricelistModel extends CI_Model {
         'nama_supplier' => $this->input->post('nama_supplier'),
         'quotation_no' => $this->input->post('quotation_no'),
         'tgl_input' => $this->input->post('tgl_input'),  
-        'lbdate' => $this->input->post('lbdate'),
+        'lbdate' => $tanggal,
         'remarks' => $this->input->post('remarks'),
       
         );

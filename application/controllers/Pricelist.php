@@ -40,7 +40,7 @@ class Pricelist extends CI_Controller {
 			$this->load->view('admin/tambahPricelist');
 			$this->load->view('admin/footer');
 		}else{
-			$this->PricelistModel->tambahSupplier();
+			$this->PricelistModel->tambahPricelist();
 				$this->session->set_flashdata('tambahPricelist','<div class="alert alert-success" role="alert">SUKSES TAMBAH DATA <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
 			redirect('Pricelist', 'refresh');
 		}
@@ -172,4 +172,124 @@ class Pricelist extends CI_Controller {
 	public function downloadSup(){
 		force_download('assets/format/FormatDataPricelist.xlsx',null);
 	}
+
+         public function export(){
+    // Load plugin PHPExcel nya
+    //include APPPATH.'third_party/PHPExcel/PHPExcel.php';
+    
+    // Panggil class PHPExcel nya
+    $excel = new PHPExcel();
+    // Settingan awal fil excel
+    $excel->getProperties()->setCreator('My Notes Code')
+                 ->setLastModifiedBy('My Notes Code')
+                 ->setTitle("Data Pricelist")
+                 ->setSubject("Pricelist")
+                 ->setDescription("Laporan Semua Data Pricelist")
+                 ->setKeywords("Data Pricelist");
+    // Buat sebuah variabel untuk menampung pengaturan style dari header tabel
+    $style_col = array(
+      'font' => array('bold' => true), // Set font nya jadi bold
+      'alignment' => array(
+        'horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_CENTER, // Set text jadi ditengah secara horizontal (center)
+        'vertical' => PHPExcel_Style_Alignment::VERTICAL_CENTER // Set text jadi di tengah secara vertical (middle)
+      ),
+      'borders' => array(
+        'top' => array('style'  => PHPExcel_Style_Border::BORDER_THIN), // Set border top dengan garis tipis
+        'right' => array('style'  => PHPExcel_Style_Border::BORDER_THIN),  // Set border right dengan garis tipis
+        'bottom' => array('style'  => PHPExcel_Style_Border::BORDER_THIN), // Set border bottom dengan garis tipis
+        'left' => array('style'  => PHPExcel_Style_Border::BORDER_THIN) // Set border left dengan garis tipis
+      )
+    );
+    // Buat sebuah variabel untuk menampung pengaturan style dari isi tabel
+    $style_row = array(
+      'alignment' => array(
+        'vertical' => PHPExcel_Style_Alignment::VERTICAL_CENTER // Set text jadi di tengah secara vertical (middle)
+      ),
+      'borders' => array(
+        'top' => array('style'  => PHPExcel_Style_Border::BORDER_THIN), // Set border top dengan garis tipis
+        'right' => array('style'  => PHPExcel_Style_Border::BORDER_THIN),  // Set border right dengan garis tipis
+        'bottom' => array('style'  => PHPExcel_Style_Border::BORDER_THIN), // Set border bottom dengan garis tipis
+        'left' => array('style'  => PHPExcel_Style_Border::BORDER_THIN) // Set border left dengan garis tipis
+      )
+    );
+   
+    // Buat header tabel nya pada baris ke 3
+    $excel->setActiveSheetIndex(0)->setCellValue('A1', "No"); // Set kolom A3 dengan tulisan "NO"
+    $excel->setActiveSheetIndex(0)->setCellValue('B1', "Group_Name"); // Set kolom B3 dengan tulisan "NIS"
+    $excel->setActiveSheetIndex(0)->setCellValue('C1', "No_Barang"); // Set kolom C3 dengan tulisan "NAMA"
+    $excel->setActiveSheetIndex(0)->setCellValue('D1', "Nama_Barang"); // Set kolom D3 dengan tulisan "JENIS KELAMIN"
+    $excel->setActiveSheetIndex(0)->setCellValue('E1', "Spec_Barang"); // Set kolom E3 dengan tulisan "ALAMAT"
+    $excel->setActiveSheetIndex(0)->setCellValue('F1', "Unit"); // Set kolom E3 dengan tulisan "ALAMAT"
+    $excel->setActiveSheetIndex(0)->setCellValue('G1', "Mata_Uang"); // Set kolom E3 dengan tulisan "ALAMAT"
+    $excel->setActiveSheetIndex(0)->setCellValue('H1', "Price"); 
+    $excel->setActiveSheetIndex(0)->setCellValue('I1', "Nama_Supplier");// Set kolom E3 dengan tulisan "ALAMAT"
+    $excel->setActiveSheetIndex(0)->setCellValue('J1', "Quotation_No"); // Set kolom E3 dengan tulisan "ALAMAT"
+    $excel->setActiveSheetIndex(0)->setCellValue('K1', "Tgl_Input");
+    $excel->setActiveSheetIndex(0)->setCellValue('L1', "Lb_Date");  // Set kolom E3 dengan tulisan "ALAMAT"
+    $excel->setActiveSheetIndex(0)->setCellValue('M1', "Remarks"); // Set kolom E3 dengan tulisan "ALAMAT"
+    $excel->getActiveSheet()->getStyle('A1')->applyFromArray($style_col);
+    $excel->getActiveSheet()->getStyle('B1')->applyFromArray($style_col);
+    $excel->getActiveSheet()->getStyle('C1')->applyFromArray($style_col);
+    $excel->getActiveSheet()->getStyle('D1')->applyFromArray($style_col);
+    $excel->getActiveSheet()->getStyle('E1')->applyFromArray($style_col);
+    $excel->getActiveSheet()->getStyle('F1')->applyFromArray($style_col);
+    $excel->getActiveSheet()->getStyle('G1')->applyFromArray($style_col);
+    $excel->getActiveSheet()->getStyle('H1')->applyFromArray($style_col);
+    $excel->getActiveSheet()->getStyle('I1')->applyFromArray($style_col);
+    $excel->getActiveSheet()->getStyle('J1')->applyFromArray($style_col);
+    $excel->getActiveSheet()->getStyle('K1')->applyFromArray($style_col);
+    $excel->getActiveSheet()->getStyle('L1')->applyFromArray($style_col);
+    $excel->getActiveSheet()->getStyle('M1')->applyFromArray($style_col);
+
+    // Panggil function view yang ada di SiswaModel untuk menampilkan semua data siswanya
+    $siswa = $this->PricelistModel->getPricelist();
+    $no = 1; // Untuk penomoran tabel, di awal set dengan 1
+    $numrow = 2; // Set baris pertama untuk isi tabel adalah baris ke 4
+    foreach($siswa as $data){ // Lakukan looping pada variabel siswa
+      $excel->setActiveSheetIndex(0)->setCellValue('A'.$numrow, $data->no);
+      $excel->setActiveSheetIndex(0)->setCellValue('B'.$numrow, $data->group_name);
+      $excel->setActiveSheetIndex(0)->setCellValue('C'.$numrow, $data->no_barang);
+      $excel->setActiveSheetIndex(0)->setCellValue('D'.$numrow, $data->nama_barang);
+      $excel->setActiveSheetIndex(0)->setCellValue('E'.$numrow, $data->spec_barang);
+      $excel->setActiveSheetIndex(0)->setCellValue('F'.$numrow, $data->unit);
+      $excel->setActiveSheetIndex(0)->setCellValue('G'.$numrow, $data->mata_uang);
+      $excel->setActiveSheetIndex(0)->setCellValue('H'.$numrow, $data->price);
+      $excel->setActiveSheetIndex(0)->setCellValue('I'.$numrow, $data->nama_supplier);
+      $excel->setActiveSheetIndex(0)->setCellValue('J'.$numrow, $data->quotation_no);
+      $excel->setActiveSheetIndex(0)->setCellValue('K'.$numrow, $data->tgl_input);
+      $excel->setActiveSheetIndex(0)->setCellValue('L'.$numrow, $data->lbdate);
+      $excel->setActiveSheetIndex(0)->setCellValue('M'.$numrow, $data->remarks);
+     
+      
+      $no++; // Tambah 1 setiap kali looping
+      $numrow++; // Tambah 1 setiap kali looping
+    }
+    // Set width kolom
+    //$excel->getActiveSheet()->getColumnDimension('A')->setWidth(5); // Set width kolom A
+    $excel->getActiveSheet()->getColumnDimension('B')->setWidth(30); // Set width kolom B
+    $excel->getActiveSheet()->getColumnDimension('C')->setWidth(30); // Set width kolom C
+    $excel->getActiveSheet()->getColumnDimension('D')->setWidth(25);
+    $excel->getActiveSheet()->getColumnDimension('E')->setWidth(25);
+    $excel->getActiveSheet()->getColumnDimension('F')->setWidth(25);
+    $excel->getActiveSheet()->getColumnDimension('G')->setWidth(25);
+    $excel->getActiveSheet()->getColumnDimension('H')->setWidth(25);
+    $excel->getActiveSheet()->getColumnDimension('I')->setWidth(25);
+    $excel->getActiveSheet()->getColumnDimension('J')->setWidth(25);
+    $excel->getActiveSheet()->getColumnDimension('K')->setWidth(25);
+    $excel->getActiveSheet()->getColumnDimension('L')->setWidth(25);
+    $excel->getActiveSheet()->getColumnDimension('M')->setWidth(25);
+   
+    $excel->getActiveSheet()->getDefaultRowDimension()->setRowHeight(-1);
+    // Set orientasi kertas jadi LANDSCAPE
+    $excel->getActiveSheet()->getPageSetup()->setOrientation(PHPExcel_Worksheet_PageSetup::ORIENTATION_LANDSCAPE);
+    // Set judul file excel nya
+    $excel->getActiveSheet(0)->setTitle("Laporan Data Pricelist");
+    $excel->setActiveSheetIndex(0);
+   
+    $write = PHPExcel_IOFactory::createWriter($excel, 'Excel2007');
+    ob_end_clean();
+header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+header('Content-Disposition: attachment;filename="Data Pricelist.xlsx"');
+    $write->save('php://output');
+  }
 }

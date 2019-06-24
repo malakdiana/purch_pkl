@@ -29,7 +29,7 @@
                             <div class="card-body">
                         <?=$this->session->flashdata('editSupplier')?>
                          <?=$this->session->flashdata('deleteSupplier')?>
-                         <?=$this->session->flashdata('tamba')?>
+                         <?=$this->session->flashdata('tambahSupplier')?>
                                 <div>
                                 <table cellpadding="0" cellspacing="0" border="0" class="table table-striped" id="dataTablesss">
                                         <thead class="bg-light text-capitalize">

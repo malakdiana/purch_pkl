@@ -34,8 +34,11 @@
 
                                             <div class="form-group">
                                                      <label class="control-label " for="dept">Kode Dept :</label>
-                                           
-                                                <input type="text" class="form-control" name="dept" style="margin-bottom: 25px">
+                                           <select name="dept" class="form-control">
+                                            <?php foreach ($listDep as $key) {?>
+                                           <option class="form-control" value="<?php echo $key->no?>"><?php echo $key->group_name?> </option> <?php }?>
+                                           </select>
+                                              
                                             </div>
    
    

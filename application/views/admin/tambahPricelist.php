@@ -105,7 +105,7 @@
                                              <label class="control-label" for="ppn">Tgl Input:</label>
                                          </div>
                                          <div class="col-sm-4">
-                                            <input type="text" class="form-control" id="tgl_input" name="tgl_input">
+                                            <input type="text" class="form-control" id="tgl_input" name="tgl_input" value="<?php  echo date('Y-m-d')?>" readonly="">
                                         </div>
 
                                         </div>
@@ -116,7 +116,7 @@
                                                 <label class="control-label" for="supply">LB date :</label>
                                             </div>
                                             <div class="col-sm-4">
-                                                <input type="text" class="form-control" id="lbdate" name="lbdate" style="margin-bottom: 25px">
+                                                <input type="date" class="form-control" id="lbdate" name="lbdate" style="margin-bottom: 25px">
                                             </div>
                                             <div class="col-md-2">
                                              <label class="control-label" for="start">Remarks :</label>
