@@ -27,7 +27,7 @@
                          <?=$this->session->flashdata('deletePurch_req')?>
                          <?=$this->session->flashdata('tambahItem')?>
                              
-                                <table cellpadding="0" cellspacing="0" border="0" class="table table-striped" id="dataTablesss">
+                                <table cellpadding="0" cellspacing="0" border="0" class="table table-responsive table-striped" id="dataTablesss">
                                         <thead class="bg-light text-capitalize">
                                             <tr>
                                             <th></th>
@@ -40,6 +40,7 @@
                                                 <th>NO PR</th>
                                                 <th>VERIFIED FA</th>
                                                 <th>STATUS</th>
+                                                <th>Detail</th>
                                                 <th >TAMBAH</th>
                                                 <th >HAPUS</th>
                                               
@@ -58,10 +59,11 @@
                                                 <td><?php echo $key->pr_no;?></td>
                                                 <td><?php echo $key->status_pr;?></td>
                                                 <td><?php echo $key->status;?></td>
+                                                <td> <a href="<?php echo site_url()?>/Purch_req/tambahItem/"><i class="fw-icons fa fa-clone"></i></a></td>
 
 
                                                 <td>
-                                                <a href="<?php echo site_url()?>/Purch_req/tambahItem/><i class="fa fa-trash-o"></i></a></td>
+                                                <a href="<?php echo site_url()?>/Purch_req/tambahItem/"><i class="fa fa-edit"></i></a></td>
                                                 <td>                                          
                                                 <a href="<?php echo site_url()?>/Purch_req/deletePurch_req/<?php echo $key->id?> " onclick="return confirm('Apakah Yakin Untuk Menghapus?')"><i class="fa fa-trash-o"></i></a></td>
                                              
