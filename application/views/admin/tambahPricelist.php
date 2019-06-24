@@ -61,12 +61,17 @@
                                     </div> 
                                      <div class="col-md-12">
                                         <div class="row">
+
                                             <div class="col-md-2">
                                                 <label class="control-label" for="alamat">Unit :</label>
                                             </div>
                                             <div class="col-sm-4">
-                                                <input type="text" class="form-control" id="unit" name="unit" style="margin-bottom: 25px">
+                                                <select name="unit" class="form-control">
+                                                    <?php foreach ($listUnit as $key) {?>
+                                                   <option class="form-control" value="<?php echo $key->unit_barang?>"><?php echo $key->unit_barang?> </option> <?php }?>
+                                                </select>
                                             </div>
+
                                             <div class="col-md-2">
                                              <label class="control-label" for="attention">Mata Uang :</label>
                                          </div>
