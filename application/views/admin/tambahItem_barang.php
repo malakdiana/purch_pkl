@@ -40,16 +40,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                        <?php   foreach ($Purch_req as $key) {?>
-                                            <tr>
-
-                                                <td><?php echo $key->item_barang;?></td>
-                                                <td><?php echo $key->qty;?></td>
-                                    
-                                               
-                                             
-                                            </tr>
-                                            <?php }?>
+                                        
                                        </tbody>
                                     </table>
                                 </div>
