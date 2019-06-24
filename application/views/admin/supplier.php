@@ -22,9 +22,9 @@
                     <div class="col-12 mt-5">
                         <div class="card">
                             <div  style="padding-top: 15px;padding-left: 15px">
-                                <a class="btn btn-flat btn-primary mb-3" href="<?php echo site_url()?>/Admin/tambahSupplier" role="button">Tambah Data</a>
-                                <a class="btn btn-flat btn-success mb-3" href="<?php echo site_url()?>/Admin/importSupplier" role="button">Import Data</a>
-                                 <a class="btn btn-flat btn-warning mb-3" href="<?php echo site_url()?>/Admin/importSupplier" role="button">Download Data</a>
+                                <a class="btn btn-flat btn-primary mb-3" href="<?php echo site_url()?>/Supplier/tambahSupplier" role="button">Tambah Data</a>
+                                <a class="btn btn-flat btn-success mb-3" href="<?php echo site_url()?>/Supplier/importSupplier" role="button">Import Data</a>
+                                 <a class="btn btn-flat btn-warning mb-3" href="<?php echo site_url()?>/Supplier/export" role="button">Download Data</a>
                             </div>
                             <div class="card-body">
                         <?=$this->session->flashdata('editSupplier')?>
@@ -65,7 +65,7 @@
                                                     
                                                 <a href="javascript:void(0);" onclick="modalDetail('<?php echo $key->id_supplier?>','<?php echo $key->nama_supplier?>','<?php echo $key->alamat ?>','<?php echo $key->kota ?>', '<?php echo $key->no_telp ?>','<?php echo $key->no_fax ?>','<?php echo $key->attention ?>','<?php echo $key->no_hp ?>','<?php echo $key->tgl_input ?>','<?php echo $key->terms ?>','<?php echo $key->ppn ?>','<?php echo $key->supply?>','<?php echo $key->status ?>','<?php echo $key->perjanjian?>','<?php echo $key->remarks ?>')"  data-toggle="modal" data-target="#myModalEdit">          <i class="fa fa-edit"></i></a></td><td>
                                                 
-                                                <a href="<?php echo site_url()?>/Admin/deleteSupplier/<?php echo $key->id_supplier?> " onclick="return confirm('Apakah Yakin Untuk Menghapus?')"><i class="fa fa-trash-o"></i></a></td>
+                                                <a href="<?php echo site_url()?>/Supplier/deleteSupplier/<?php echo $key->id_supplier?> " onclick="return confirm('Apakah Yakin Untuk Menghapus?')"><i class="fa fa-trash-o"></i></a></td>
                                              
                                             </tr>
                                             <?php }?>
@@ -163,7 +163,7 @@
                 <div class="modal-header">
                     <h4 class="modal-title">Info Supplier</h4>
                 </div>
-          <?php echo form_open_multipart('Admin/updateSupplier'); ?>
+          <?php echo form_open_multipart('Supplier/updateSupplier'); ?>
                 <?php echo validation_errors(); ?>
                      <div class="form-group">
                         <label for="">NO</label>
