@@ -60,9 +60,11 @@ class Purch_reqModel extends CI_Model {
         public function getItem_barang($id)
     {
 
-            $this->db->select('*');
-            $this->db->from('purch_req');
-            $this->db->where('id',$id);
+            $this->db->select('item.id_po ,item.id_item, item.id_purch, item.item_barang,item.qty, po.id_po,po.no_po,bayangan.id_po, bayangan.id_bayangan, bayangan.qty as qtybay');
+            $this->db->from('item');
+            $this->db->join('bayangan', 'item.id_item= bayangan.id_item', 'left');
+             $this->db->join('po', 'po.id_po= bayangan.id_po','left');
+            $this->db->where('item.id_purch',$id);
             $query = $this->db->get();
             if($query->num_rows() > 0){
             return $query->result();

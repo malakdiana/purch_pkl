@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="<?php echo base_url()?>assets/css/metisMenu.css">
     <link rel="stylesheet" href="<?php echo base_url()?>assets/css/owl.carousel.min.css">
     <link rel="stylesheet" href="<?php echo base_url()?>assets/css/slicknav.min.css">
+     
     <!-- amchart css -->
     
     <!-- others css -->
