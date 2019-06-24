@@ -61,7 +61,7 @@
                                     </span></a>
                                 <ul class="collapse">
                                     <li><a href="index3-horizontalmenu.html">Data Purchase Order</a></li>
-                                    <li><a href="index3-horizontalmenu.html">Data Purchase Request</a></li>
+                                    <li><a href="<?php echo site_url()?>/Purch_req">Data Purchase Request</a></li>
                                     <li><a href="index3-horizontalmenu.html">Data Quotation Request</a></li>
                                     <li><a href="index3-horizontalmenu.html">Tracking Order</a></li>
                                     <li><a href="index3-horizontalmenu.html">Tracking Quotation</a></li>
