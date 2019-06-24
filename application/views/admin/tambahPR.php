@@ -29,13 +29,13 @@
                                                 <div class="form-group">
                                                      <label class="control-label" for="tgl">Tanggal:</label>
                                            
-                                               <input type="text" value="<?php echo date('Y-m-d')?>" readonly="" class="form-control" id="tgl" name="tgl" style="margin-bottom: 25px">
+                                               <input type="text" value="<?php echo date_default_timezone_set('Asia/Jakarta'); date('Y-m-d')?>" readonly="" class="form-control" id="tgl" name="tgl" style="margin-bottom: 25px">
                                             </div>
 
                                             <div class="form-group">
                                                      <label class="control-label " for="jam">Jam :</label>
                                            
-                                               <input type="text" value="<?php echo date('h:i:sa')?>" readonly="" class="form-control" id="jam" name="jam" style="margin-bottom: 25px">
+                                               <input type="text" value="<?php echo date('H:i:s')?>" readonly="" class="form-control" id="jam" name="jam" style="margin-bottom: 25px">
                                             </div>
 
                                             <div class="form-group">
