@@ -25,6 +25,8 @@
                         <div class="card">
                  
                             <div class="card-body">
+                                 <?=$this->session->flashdata('editItem')?>
+                                   <?=$this->session->flashdata('hapusItem')?>
          
                                 <div>
                                 <table cellpadding="0" cellspacing="0" border="0" class="table table-striped" id="dataTablesss">
@@ -55,7 +57,7 @@
                                                 <td>
                                                 <a href="javascript:void(0);" onclick="modalDetail('<?php echo $key->id_item?>', '<?php echo $key->item_barang?>', '<?php echo $key->qty?>')"  data-toggle="modal" data-target="#myModalEdit"><i class="fa fa-edit"></i></a></td><td>
                                                 
-                                                <a href="<?php echo site_url()?>/Barang/deleteBarang/<?php echo $key->id_item?> " onclick="return confirm('Apakah Yakin Untuk Menghapus?')"><i class="fa fa-trash-o"></i></a></td>
+                                                <a href="<?php echo site_url()?>/Purch_req/deleteItem/<?php echo $id?>/<?php echo $key->id_item?> " onclick="return confirm('Apakah Yakin Untuk Menghapus?')"><i class="fa fa-trash-o"></i></a></td>
                                              
                                             </tr>
                                             <?php $no++;}?>
@@ -79,10 +81,11 @@
                 <div class="modal-header">
                     <h4 class="modal-title">Info Barang</h4>
                 </div>
-          <?php echo form_open_multipart('Barang/updateBarang'); ?>
+          <?php echo form_open_multipart('Purch_req/updateItem'); ?>
                 <?php echo validation_errors(); ?>
                      <div class="form-group">
-                        <input type="text" name="id_item" hidden="" id="id_item">
+                        <input type="text" name="id_item"  id="id_item">
+                        <input type="text" name="id" id="id" value="<?php echo $id?>">
                         <label for="">Item Barang</label>
                         <select name="item_barang" id="item_barang" class="form-control choosen">
                             <?php foreach ($barang as $key) {?>

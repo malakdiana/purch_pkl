@@ -18,9 +18,12 @@ class Purch_reqModel extends CI_Model {
             $this->db->select('*');
             $this->db->from('purch_req');
             $query = $this->db->get();
+           $results=array();
             if($query->num_rows() > 0){
             return $query->result();
-        }
+            }else{
+            return $results;
+            }
     }
     public function updatePurch_req(){
 
@@ -45,13 +48,16 @@ class Purch_reqModel extends CI_Model {
 
     }
     public function tambahPR(){
+        $pr_no = $this->input->post('pr_no')."/".$this->input->post('section_kode')."/".$this->input->post('bulan')."/".$this->input->post('tahun');
+
         $data = array(
         'tgl' => $this->input->post('tgl'),
         'jam' => $this->input->post('jam'),
         'nik' => $this->input->post('nik'),
         'pic_request' => $this->input->post('pic_request'),
         'section' => $this->input->post('section'),
-        'pr_no' => $this->input->post('pr_no'),
+        'pr_no' => $pr_no,
+        'status' => "OPEN"
       
         );
          $this->db->insert('purch_req', $data);
@@ -67,20 +73,45 @@ class Purch_reqModel extends CI_Model {
              $this->db->join('po', 'po.id_po= bayangan.id_po','left');
             $this->db->where('item.id_purch',$id);
             $query = $this->db->get();
+            $results=array();
             if($query->num_rows() > 0){
             return $query->result();
-        }
+            }else{
+            return $results;
+            }
+    }
+
+    public function updateItem(){
+         $data = array(
+        'item_barang' => $this->input->post('item_barang'),
+        'qty' => $this->input->post('qty'),
+      
+        );
+            $this->db->where('id_item', $this->input->post('id_item'));
+         $this->db->update('item', $data);
     }
 
      public function tambahItem_barang(){
+        $id=array();$item_barang=array();$qty=array();
+        $id= $this->input->post('id');
+        $item_barang= $this->input->post('item');
+        $qty= $this->input->post('qty');
+        for ($i=0; $i < count($id) ; $i++) { 
         $data = array(
-        'item_barang' => $this->input->post('item_barang'),
-        'qty' => $this->input->post('qty'),
-       
-      
+        'id_purch' => $id[$i],
+        'item_barang' => $item_barang[$i],
+        'qty' => $qty[$i],
         );
          $this->db->insert('item', $data);
+        }
+       
+     
 
+    }
+
+    public function hapusItem($id_item){
+         $this->db->where('id_item', $id_item);
+         $this->db->delete('item');
     }
 
  

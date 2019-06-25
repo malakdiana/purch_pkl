@@ -65,7 +65,7 @@
                                                 <td> <a href="<?php echo site_url()?>/Purch_req/GetItem_barang/<?php echo $key->id?>"><i class="fw-icons fa fa-clone"></i></a></td>
 
                                                 <td>
-                                                <a href="<?php echo site_url()?>/Purch_req/tambahItem/"><i class="fa fa-edit"></i></a></td>
+                                                <a href="<?php echo site_url()?>/Purch_req/tambahItem/<?php echo $key->id?>"><i class="fa fa-edit"></i></a></td>
                                                 <td>                                          
                                                 <a href="<?php echo site_url()?>/Purch_req/deletePurch_req/<?php echo $key->id?> " onclick="return confirm('Apakah Yakin Untuk Menghapus?')"><i class="fa fa-trash-o"></i></a></td>
                                              
