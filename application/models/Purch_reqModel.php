@@ -16,7 +16,6 @@ class Purch_reqModel extends CI_Model {
     {
 
             $this->db->select('*');
-           
             $this->db->from('purch_req');
             $query = $this->db->get();
            $results=array();
