@@ -27,7 +27,7 @@ public function index()
         $this->load->model('SectionModel');
         $this->load->helper('url', 'form');
         $this->load->library('form_validation');
-        $this->form_validation->set_rules('nik', 'nik', 'trim|required');
+        $this->form_validation->set_rules('tgl', 'tgl', 'trim|required');
         if ($this->form_validation->run()==FALSE) {
              $data['section']=$this->SectionModel->getSection();
             $this->load->view('Admin/header');
@@ -41,20 +41,29 @@ public function index()
 
     }
 
-     public function tambahItem(){
+     public function tambahItem($id){
         $this->load->helper('url', 'form');
         $this->load->library('form_validation');
-        $this->form_validation->set_rules('item_barang', 'item_barang', 'trim|required');
-        if ($this->form_validation->run()==FALSE) {
+        // $this->form_validation->set_rules('item', 'item', 'trim|required');
+        // if ($this->form_validation->run()==FALSE) {
+        $this->load->model('BarangModel');
+            $data['barang']= $this->BarangModel->getBarang();
+            $data['id']=$id;
             $this->load->view('Admin/header');
-            $this->load->view('Admin/tambahItem_barang');
-            $this->load->view('Admin/footer');
-        }else{
-            $this->Purch_reqModel->tambahItem_barang();
+            $this->load->view('Admin/tambahItem_barang',$data);
+            //$this->load->view('Admin/footer');
+        // }else{
+        //     $this->Purch_reqModel->tambahItem_barang();
+        //         $this->session->set_flashdata('tambahUnit_barang','<div class="alert alert-success" role="alert">SUKSES TAMBAH DATA <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+        //     redirect('Purch_req', 'refresh');
+        // }
+
+    }
+
+    public function tambah($id){
+         $this->Purch_reqModel->tambahItem_barang();
                 $this->session->set_flashdata('tambahUnit_barang','<div class="alert alert-success" role="alert">SUKSES TAMBAH DATA <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
             redirect('Purch_req', 'refresh');
-        }
-
     }
 
 
