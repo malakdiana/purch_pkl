@@ -18,9 +18,12 @@ class Purch_reqModel extends CI_Model {
             $this->db->select('*');
             $this->db->from('purch_req');
             $query = $this->db->get();
+           $results=array();
             if($query->num_rows() > 0){
             return $query->result();
-        }
+            }else{
+            return $results;
+            }
     }
     public function updatePurch_req(){
 
@@ -67,9 +70,22 @@ class Purch_reqModel extends CI_Model {
              $this->db->join('po', 'po.id_po= bayangan.id_po','left');
             $this->db->where('item.id_purch',$id);
             $query = $this->db->get();
+            $results=array();
             if($query->num_rows() > 0){
             return $query->result();
-        }
+            }else{
+            return $results;
+            }
+    }
+
+    public function updateItem(){
+         $data = array(
+        'item_barang' => $this->input->post('item_barang'),
+        'qty' => $this->input->post('qty'),
+      
+        );
+            $this->db->where('id_item', $this->input->post('id_item'));
+         $this->db->update('item', $data);
     }
 
      public function tambahItem_barang(){
@@ -81,6 +97,11 @@ class Purch_reqModel extends CI_Model {
         );
          $this->db->insert('item', $data);
 
+    }
+
+    public function hapusItem($id_item){
+         $this->db->where('id_item', $id_item);
+         $this->db->delete('item');
     }
 
  

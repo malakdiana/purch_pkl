@@ -61,8 +61,13 @@
 
                                             <div class="form-group">
                                                      <label class="control-label " for="pr_no">NOMER PR:</label>
-                                           
-                                                <input type="text" class="form-control" name="pr_no" style="margin-bottom: 25px">
+                                           <div class="row">    
+                                                <input type="number" class="form-control" min="3" max="3" name="pr_no" style="margin-bottom: 25px;width: 100px" placeholder="000">
+                                                 <input type="number" class="form-control" min="3" max="3" name="pr_no" style="margin-bottom: 25px;width: 100px" placeholder="000">
+                                                  <input type="number" class="form-control" min="3" max="3" name="pr_no" style="margin-bottom: 25px;width: 100px" placeholder="000">
+                                              </div>
+
+
                                             </div>
    
    

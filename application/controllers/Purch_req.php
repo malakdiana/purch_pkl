@@ -63,12 +63,26 @@ public function index()
             $data['Purch_req']= $this->Purch_reqModel->GetItem_barang($id);
             $this->load->model('BarangModel');
             $data['barang']= $this->BarangModel->getBarang();
-
+            $data['id']=$id;
             $this->load->view('Admin/header');
             $this->load->view('Admin/GetItem_barang',$data);
             $this->load->view('Admin/footer');       
 
     }
+
+    public function updateItem(){
+        $this->Purch_reqModel->updateItem();
+                $this->session->set_flashdata('editItem','<div class="alert alert-success" role="alert">SUKSES UPDATE DATA <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+                $id = $this->input->post('id');
+            redirect("Purch_req/GetItem_barang/$id", 'refresh');
+    }
+
+    public function hapusItem($id,$id_item){
+         $this->Purch_reqModel->deleteItem($id_item);
+                $this->session->set_flashdata('editItem','<div class="alert alert-success" role="alert">SUKSES UPDATE DATA <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+            redirect("Purch_req/GetItem_barang/$id", 'refresh');
+    }
+
 
 	
 }
