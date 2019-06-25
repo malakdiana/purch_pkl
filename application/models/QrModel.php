@@ -46,17 +46,17 @@ class QrModel extends CI_Model {
     }
     public function tambahQR(){
         $data = array(
-        'tanggal' => $this->input->post('tanggal'),
+        'tanggal' => $this->input->post('tgl'),
         'item' => $this->input->post('item'),
         'tanggal_butuh' => $this->input->post('tanggal_butuh'),
         'section' => $this->input->post('section'),
         'pic' => $this->input->post('pic'),
         'bahan' => $this->input->post('bahan'),
         'detail' => $this->input->post('detail'),
-        'gambar' => $this->upload->data('gambar'),
+        'gambar' => $this->upload->data('file_name'),
       
         );
-         $this->db->insert('Qr', $data);
+         $this->db->insert('penawaran', $data);
 
     }
 

@@ -22,7 +22,7 @@
                     <div class="col-12 mt-5">
                         <div class="card">
                                 <div class="card-body">
-                                     <?php echo form_open('Qr/tambahQR') ?>
+                                     <?php echo form_open_multipart('Qr/addQr') ?>
                                      <h3 align="center">Insert Quotation Request</h3><br>
                                        
                                                
@@ -75,7 +75,7 @@
                                             <div class="form-group">
                                                      <label class="control-label " for="gambar">ATTACHMENT:</label>
                                                      <i class="fa fa-paperclip"></i>
-                                                <input type="file" name="fupload" class="form-control" name="gambar" style="margin-bottom: 25px">
+                                                <input type="file" name="fupload" class="form-control"
                                             </div>
 
                                         
