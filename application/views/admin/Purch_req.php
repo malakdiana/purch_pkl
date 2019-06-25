@@ -57,7 +57,17 @@
                                                 <td><?php echo $key->pic_request;?></td>
                                                 <td><?php echo $key->section;?></td>
                                                 <td><?php echo $key->pr_no;?></td>
-                                                <td><?php echo $key->status_pr;?></td>
+
+                                                <td><?php echo $key->status_fa;
+                                                if($key->status_fa == 1){?>
+                                                     <img src="<?php echo base_url()?>assets/images/icon/success.png">
+                                                     <?php}else{?>  
+                                                        <img src="<?php echo base_url()?>assets/images/icon/not.png">
+                                                        <?php }?>
+
+                                                </td>
+                                         
+
                                                 <td><?php echo $key->status;?></td>
 
 
