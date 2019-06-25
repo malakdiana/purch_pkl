@@ -47,10 +47,8 @@ public function ManajemenUser()
 			
 			if($session_data['hak_akses']=='1'){
 				
-					redirect('admin','refresh');
+					redirect('Admin','refresh');
 			}else if($session_data['hak_akses']=='2'){
-				$data['idPuskesmas']=$session_data['idPuskesmas'];
-			
 				redirect('User','refresh');
 			}
 			else if($session_data['hak_akses']=='3'){
@@ -126,4 +124,11 @@ public function ManajemenUser()
         }
 
     }
+		public function logout()
+			{
+				$this->session->unset_userdata('logged_in');
+				 $this->session->sess_destroy();
+				redirect('Login','refresh');
+			}
+
 }

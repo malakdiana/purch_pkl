@@ -61,42 +61,21 @@
                                 <a href="javascript:void(0)" aria-expanded="true"><i class="ti-layout-sidebar-left"></i><span>Data
                                     </span></a>
                                 <ul class="collapse">
-                                    <li><a href="index3-horizontalmenu.html">Data Purchase Order</a></li>
                                     <li><a href="<?php echo site_url()?>/Purch_req">Data Purchase Request</a></li>
                                     <li><a href="index3-horizontalmenu.html">Data Quotation Request</a></li>
                                     <li><a href="index3-horizontalmenu.html">Tracking Order</a></li>
                                     <li><a href="index3-horizontalmenu.html">Tracking Quotation</a></li>
-                                    <li><a href="index3-horizontalmenu.html">PO Record</a></li>
-                                    <li><a href="index3-horizontalmenu.html">ETA</a></li>
                                 </ul>
                             </li>
-                            <li>
-                                <a href="javascript:void(0)" aria-expanded="true"><i class="ti-pie-chart"></i><span>Master Data</span></a>
-                                <ul class="collapse">
-                                    <li><a href="<?php echo site_url()?>/Supplier">Supplier</a></li>
-                                    <li><a href="<?php echo site_url()?>/Pricelist">Price List</a></li>
-                                    <li><a href="<?php echo site_url()?>/Barang">Barang</a></li>
-                                    <li><a href="<?php echo site_url()?>/Unit_barang">Unit Barang</a></li>
-                                    <li><a href="<?php echo site_url()?>/Departemen">Departement</a></li>
-                                    <li><a href="<?php echo site_url()?>/Section">Section</a></li>
-                                    <li><a href="<?php echo site_url()?>/Approval">Approval</a></li>
-
-                                </ul>
-                            </li>
+                           
                             <li>
                                 <a href="javascript:void(0)" aria-expanded="true"><i class="ti-palette"></i><span>Input Data</span></a>
                                 <ul class="collapse">
                                     <li><a href="<?php echo site_url()?>/Purch_req/tambahPR">Purchase Request</a></li>
-                                    <li><a href="alert.html">Purchase Order</a></li>
                                     <li><a href="badge.html">Quotation Request</a></li>
                                 </ul>
                             </li>
-                            <li>
-                                <a href="javascript:void(0)" aria-expanded="true"><i class="ti-slice"></i><span>Other</span></a>
-                                <ul class="collapse">
-                                    <li><a href="<?php echo site_url()?>/Login/ManajemenUser">Management User</a></li>
-                                </ul>
-                            </li>
+                           
                             
                         </ul>
                     </nav>
