@@ -88,7 +88,7 @@
                                 <ul class="collapse">
                                     <li><a href="<?php echo site_url()?>/Purch_req/tambahPR">Purchase Request</a></li>
                                     <li><a href="alert.html">Purchase Order</a></li>
-                                    <li><a href="badge.html">Quotation Request</a></li>
+                                 
                                 </ul>
                             </li>
                             <li>
