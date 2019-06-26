@@ -20,12 +20,7 @@ public function index()
    
 	}
 
-	public function Userindex()
-	{
-		$this->load->view('User/header');
-        $this->load->view('User/dashboard');
-   
-	}
+	
 
 	public function setting(){
 		$data['user']= $this->AddModel->getUser();

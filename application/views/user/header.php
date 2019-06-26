@@ -54,14 +54,14 @@
                             <li>
                                 <a href="javascript:void(0)" aria-expanded="true"><i class="ti-dashboard"></i><span>dashboard</span></a>
                                 <ul class="collapse">
-                                    <li><a href="<?php echo site_url()?>/Dashboard/Userindex">dashboard</a></li>
+                                    <li><a href="<?php echo site_url()?>/Dashboard/">dashboard</a></li>
                                 </ul>
                             </li>
                             <li>
                                 <a href="javascript:void(0)" aria-expanded="true"><i class="ti-layout-sidebar-left"></i><span>Data
                                     </span></a>
                                 <ul class="collapse">
-                                    <li><a href="<?php echo site_url()?>/Purch_req/Userindex">Data Purchase Request</a></li>
+                                    <li><a href="<?php echo site_url()?>/Purch_req/">Data Purchase Request</a></li>
                                     <li><a href="<?php echo site_url()?>/Qr/">List All Quotation</a></li>
                                     <li><a href="index3-horizontalmenu.html">Tracking Order</a></li>
                                     <li><a href="index3-horizontalmenu.html">Tracking Quotation</a></li>
