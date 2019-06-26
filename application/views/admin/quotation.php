@@ -59,7 +59,7 @@
                                                 <td><?php echo $key->kode_qr;?></td>
                                                 <td><?php echo $key->tanggal_butuh;?></td>
                                                 <td><?php echo $key->section;?></td>
-                                                <td><?php echo $key->section;?></td>
+                                                <td><?php echo $key->pic;?></td>
                                                
                                                 <td><?php echo $key->status;?></td>
 
