@@ -39,16 +39,15 @@
                                                
                                                 <td><a class="btn btn-flat btn-primary mb-4" href="<?php echo site_url()?>/Purch_req/" role="button" style="width:200px">Data Purchase Request</a><br>
                                                 <a class="btn btn-flat btn-secondary mb-4" href="<?php echo site_url()?>/Po/" role="button" style="width:200px">Data Purchase Order</a><br>
-                                                <a class="btn btn-flat btn-secondary mb-4" href="<?php echo site_url()?>/Po/" role="button" style="width:200px">List All Quotation</a><br>
-                                                <a class="btn btn-flat btn-secondary mb-4" href="<?php echo site_url()?>/Po/" role="button" style="width:200px">Tracking Order</a><br>
-                                                <a class="btn btn-flat btn-secondary mb-4" href="<?php echo site_url()?>/Po/" role="button" style="width:200px">Tracking Quotation</a><br>
-                                                <a class="btn btn-flat btn-secondary mb-4" href="<?php echo site_url()?>/Po/" role="button" style="width:200px">PO Record</a><br>
-                                                <a class="btn btn-flat btn-secondary mb-4" href="<?php echo site_url()?>/Po/" role="button" style="width:200px">ETA</a><br>
+                                                <a class="btn btn-flat btn-primary mb-4" href="<?php echo site_url()?>/Qr/" role="button" style="width:200px">List All Quotation</a><br>
+                                                <a class="btn btn-flat btn-secondary mb-4" href="<?php echo site_url()?>/belum/" role="button" style="width:200px">Tracking Order</a><br>
+                                                <a class="btn btn-flat btn-secondary mb-4" href="<?php echo site_url()?>/belum/" role="button" style="width:200px">PO Record</a><br>
+                                                <a class="btn btn-flat btn-secondary mb-4" href="<?php echo site_url()?>/belum/" role="button" style="width:200px">ETA</a><br>
                                                 </td>
 
 
                                                 <td> <a class="btn btn-flat btn-success mb-4" href="<?php echo site_url()?>/Purch_req/tambahPR" role="button" style="width:200px">Input Purchase Request </a><br>
-                                                    <a class="btn btn-flat btn-secondary mb-4" href="<?php echo site_url()?>/Po/" role="button" style="width:200px">Input Purchase Order </a>
+                                                    <a class="btn btn-flat btn-secondary mb-4" href="<?php echo site_url()?>/Po/tambahPO" role="button" style="width:200px">Input Purchase Order </a>
                                                 </td>
 
                                                  <td> <a class="btn btn-flat btn-info mb-4" href="<?php echo site_url()?>/Supplier" role="button" style="width:150px" >Supplier </a><br>
@@ -58,6 +57,7 @@
                                                      <a class="btn btn-flat btn-info mb-4" href="<?php echo site_url()?>/Departemen/" role="button" style="width:150px">Departement</a><br>
                                                       <a class="btn btn-flat btn-info mb-4" href="<?php echo site_url()?>/Section/" role="button" style="width:150px">Section</a><br>
                                                        <a class="btn btn-flat btn-info mb-4" href="<?php echo site_url()?>/Approval/" role="button" style="width:150px">Approval</a><br>
+                                                       <a class="btn btn-flat btn-warning mb-4" href="<?php echo site_url()?>/Login/ManajemenUser" role="button" style="width:150px">Manajemen User</a><br>
                                                 </td>
                                             
 

@@ -16,9 +16,9 @@ class Read_only extends CI_Controller {
 
 public function index()
 	{
-		$data['Read_only']= $this->Read_onlyModel->getPurch_req();
+		// $data['Read_only']= $this->Read_onlyModel->getPurch_req();
 		$this->load->view('Read_only/header');
-        $this->load->view('Read_only/Purch_req',$data);
+        $this->load->view('Read_only/dashboard');
    
 	}
 
