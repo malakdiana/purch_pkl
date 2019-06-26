@@ -17,7 +17,7 @@ public function index()
 	{  if($this->session->userdata('logged_in')['hak_akses']==1){
 		$this->load->view('Admin/header');
         $this->load->view('Admin/dashboard');
-        else if($this->session->userdata('logged_in')['hak_akses']==2){
+        }else if($this->session->userdata('logged_in')['hak_akses']==2){
 		$this->load->view('User/header');
         $this->load->view('User/dashboard');  
     }else{

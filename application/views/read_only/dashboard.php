@@ -22,10 +22,10 @@
                     <div class="col-12 mt-5">
                         <div class="card" align="center">
                             <div  style="padding-top: 15px;padding-left: 15px">
-                                <a class="btn btn-flat btn-primary mb-3" href="<?php echo site_url()?>/Purch_req/" role="button">Data Purchase Request</a><br>
-                                <a class="btn btn-flat btn-secondary mb-3" href="<?php echo site_url()?>/Belum" role="button">Data Purchase Order</a><br>
-                                <a class="btn btn-flat btn-secondary mb-3" href="<?php echo site_url()?>/Belum" role="button">Tracking Order</a><br>
-                                 <a class="btn btn-flat btn-primary mb-3" href="<?php echo site_url()?>/Qr" role="button">List all Quotation</a></div>
+                                <a class="btn btn-flat btn-primary mb-4" href="<?php echo site_url()?>/Purch_req/" role="button" style="width:200px">Data Purchase Request</a><br>
+                                <a class="btn btn-flat btn-secondary mb-4" href="<?php echo site_url()?>/Belum" role="button" style="width:200px">Data Purchase Order</a><br>
+                                <a class="btn btn-flat btn-secondary mb-4" href="<?php echo site_url()?>/Belum" role="button" style="width:200px">Tracking Order</a><br>
+                                 <a class="btn btn-flat btn-primary mb-4" href="<?php echo site_url()?>/Qr" role="button" style="width:200px">List all Quotation</a></div>
                             
                                
                                 </div>

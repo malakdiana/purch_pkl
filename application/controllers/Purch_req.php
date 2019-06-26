@@ -22,7 +22,7 @@ public function index()
 		$this->load->view('Admin/header');
         $this->load->view('Admin/Purch_req',$data);
 
-        }if($this->session->userdata('logged_in')['hak_akses']==2){
+        }else if($this->session->userdata('logged_in')['hak_akses']==2){
         $this->load->view('User/header');
         $this->load->view('Admin/Purch_req',$data);
 

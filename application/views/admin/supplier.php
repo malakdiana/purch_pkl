@@ -42,7 +42,7 @@
                                                 <th style="">TELEPON</th>
                                               
                                            
-                                                <th >Action</th>
+                                                <th >ACTION/th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -59,9 +59,9 @@
                                                 <td>
 
                                                       <div class="btn-group mb-xl-3" role="group" aria-label="Basic example">
-                                    <button type="button" class="btn btn-info">  <a href="javascript:void(0);" onclick="modalDetail2('<?php echo $key->id_supplier?>','<?php echo $key->nama_supplier?>','<?php echo $key->alamat ?>','<?php echo $key->kota ?>', '<?php echo $key->no_telp ?>','<?php echo $key->no_fax ?>','<?php echo $key->attention ?>','<?php echo $key->no_hp ?>','<?php echo $key->tgl_input ?>','<?php echo $key->terms ?>','<?php echo $key->ppn ?>','<?php echo $key->supply?>','<?php echo $key->status ?>','<?php echo $key->perjanjian?>','<?php echo $key->remarks ?>')" data-toggle="modal" data-target="#myModalDetil"><font color="white">Detil</font></a></button>
-                                    <button type="button" class="btn btn-primary">   <a href="javascript:void(0);" onclick="modalDetail('<?php echo $key->id_supplier?>','<?php echo $key->nama_supplier?>','<?php echo $key->alamat ?>','<?php echo $key->kota ?>', '<?php echo $key->no_telp ?>','<?php echo $key->no_fax ?>','<?php echo $key->attention ?>','<?php echo $key->no_hp ?>','<?php echo $key->tgl_input ?>','<?php echo $key->terms ?>','<?php echo $key->ppn ?>','<?php echo $key->supply?>','<?php echo $key->status ?>','<?php echo $key->perjanjian?>','<?php echo $key->remarks ?>')"  data-toggle="modal" data-target="#myModalEdit"><font color="white">Edit</font></a></button>
-                                    <button type="button" class="btn btn-danger">   <a href="<?php echo site_url()?>/Supplier/deleteSupplier/<?php echo $key->id_supplier?> " onclick="return confirm('Apakah Yakin Untuk Menghapus?')"><font color="white">Hapus</font></a></button>
+                                    <button type="button" class="btn btn-info"  style="width:80px; height:50px;">  <a href="javascript:void(0);" onclick="modalDetail2('<?php echo $key->id_supplier?>','<?php echo $key->nama_supplier?>','<?php echo $key->alamat ?>','<?php echo $key->kota ?>', '<?php echo $key->no_telp ?>','<?php echo $key->no_fax ?>','<?php echo $key->attention ?>','<?php echo $key->no_hp ?>','<?php echo $key->tgl_input ?>','<?php echo $key->terms ?>','<?php echo $key->ppn ?>','<?php echo $key->supply?>','<?php echo $key->status ?>','<?php echo $key->perjanjian?>','<?php echo $key->remarks ?>')" data-toggle="modal" data-target="#myModalDetil"><font color="white"><i class="fa fa-th-list"></i> Detail</font></a></button>
+                                    <button type="button" class="btn btn-primary"  style="width:80px; height:50px;">   <a href="javascript:void(0);" onclick="modalDetail('<?php echo $key->id_supplier?>','<?php echo $key->nama_supplier?>','<?php echo $key->alamat ?>','<?php echo $key->kota ?>', '<?php echo $key->no_telp ?>','<?php echo $key->no_fax ?>','<?php echo $key->attention ?>','<?php echo $key->no_hp ?>','<?php echo $key->tgl_input ?>','<?php echo $key->terms ?>','<?php echo $key->ppn ?>','<?php echo $key->supply?>','<?php echo $key->status ?>','<?php echo $key->perjanjian?>','<?php echo $key->remarks ?>')"  data-toggle="modal" data-target="#myModalEdit"><font color="white"><i class="fa fa-pencil"></i> Edit</font></a></button>
+                                    <button type="button" class="btn btn-danger"  style="width:80px; height:50px;">   <a href="<?php echo site_url()?>/Supplier/deleteSupplier/<?php echo $key->id_supplier?> " onclick="return confirm('Apakah Yakin Untuk Menghapus?')"><font color="white"><i class="fa fa-trash-o"></i> Hapus</font></a></button>
                                   
                                 </div>
                                         </td>

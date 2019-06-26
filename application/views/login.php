@@ -63,7 +63,7 @@
                         </div>
                         <?php echo form_close();?>
                         <div class="form-footer text-center mt-5">
-                            <a class="btn btn-primary" href="<?php echo site_url()?>/Read_only/">READ-ONLY DATA</a>
+                            <a class="btn btn-primary" href="<?php echo site_url()?>/Read_only/">READ ONLY DATA</a>
                         </div>
                     </div>
                

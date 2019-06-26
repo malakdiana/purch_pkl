@@ -39,7 +39,7 @@
                                                 <th>REMARKS</th>
                                            
                                                
-                                                <th >Action</th>
+                                                <th >ACTION</th>
                                               
                                             </tr>
                                         </thead>
@@ -54,8 +54,8 @@
                                                 <td>
                                                     <div class="btn-group mb-xl-3" role="group" aria-label="Basic example">
                                     
-                                    <button type="button" class="btn btn-primary">  <a href="javascript:void(0);" onclick="modalDetail('<?php echo $key->no?>','<?php echo $key->unit_barang ?>','<?php echo $key->remarks ?>')"  data-toggle="modal" data-target="#myModalEdit"><font color="white">Edit</font></a></button>
-                                    <button type="button" class="btn btn-danger"> <a href="<?php echo site_url()?>/Unit_barang/deleteUnit_barang/<?php echo $key->no?> " onclick="return confirm('Apakah Yakin Untuk Menghapus?')"><font color="white">Hapus</font></a></button>
+                                    <button type="button" class="btn btn-primary" style="width:80px; height:50px;">  <a href="javascript:void(0);" onclick="modalDetail('<?php echo $key->no?>','<?php echo $key->unit_barang ?>','<?php echo $key->remarks ?>')"  data-toggle="modal" data-target="#myModalEdit"><font color="white"><i class="fa fa-pencil"></i> Edit</font></a></button>
+                                    <button type="button" class="btn btn-danger" style="width:80px; height:50px;"> <a href="<?php echo site_url()?>/Unit_barang/deleteUnit_barang/<?php echo $key->no?> " onclick="return confirm('Apakah Yakin Untuk Menghapus?')"><font color="white"><i class="fa fa-trash-o"></i> Hapus</font></a></button>
                                   
                                 </div></td>
                                              
