@@ -2405,7 +2405,7 @@ table.dataTable thead td {
     letter-spacing: 0;
     font-weight: 600;
     font-size: 12px;
-    box-shadow: 0 0 22px rgba(0, 0, 0, 0.07);
+    box-shadow: 0 0 22px rgba(0, 0, 0, 0.5);
     -webkit-transition: all 0.3s ease 0s;
     transition: all 0.3s ease 0s;
 }

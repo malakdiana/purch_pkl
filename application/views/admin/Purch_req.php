@@ -27,22 +27,21 @@
                          <?=$this->session->flashdata('deletePurch_req')?>
                          <?=$this->session->flashdata('tambahItem')?>
                              
-                                <table cellpadding="0" cellspacing="0" border="0" class="table table-responsive table-striped" id="dataTablesss">
+                                <table cellpadding="0" cellspacing="0" border="0" class="table table-responsive table-striped" id="dataTablesss" align="center">
                                         <thead class="bg-light text-capitalize">
                                             <tr>
                                             <th></th>
                                                 <th>NO</th>
                                                 <th>TANGGAL</th>
                                                 <th>JAM</th>
-                                                <th>NIK</th>
+                                         
                                                 <th>PIC REQUEST</th>
                                                 <th>SECTION</th>
                                                 <th>NO PR</th>
                                                 <th>VERIFIED FA</th>
                                                 <th>STATUS</th>
-                                                <th>Detail</th>
-                                                <th >TAMBAH</th>
-                                                <th >HAPUS</th>
+                                                <th>Action</th>
+                                               
                                               
                                             </tr>
                                         </thead>
@@ -53,7 +52,7 @@
                                                 <td><?php echo $key->id;?></td>
                                                 <td><?php echo $key->tgl;?></td>
                                                 <td><?php echo $key->jam;?></td>
-                                                <td><?php echo $key->nik;?></td>
+                                              
                                                 <td><?php echo $key->pic_request;?></td>
                                                 <td><?php echo $key->section;?></td>
                                                 <td><?php echo $key->pr_no;?></td>
@@ -73,12 +72,18 @@
 
 
 
-                                                <td> <a href="<?php echo site_url()?>/Purch_req/GetItem_barang/<?php echo $key->id?>"><i class="fw-icons fa fa-clone"></i></a></td>
-
                                                 <td>
-                                                <a href="<?php echo site_url()?>/Purch_req/tambahItem/<?php echo $key->id?>"><i class="fa fa-edit"></i></a></td>
-                                                <td>                                          
-                                                <a href="<?php echo site_url()?>/Purch_req/deletePurch_req/<?php echo $key->id?> " onclick="return confirm('Apakah Yakin Untuk Menghapus?')"><i class="fa fa-trash-o"></i></a></td>
+                                                <div class="row">
+                                                <div>
+                                                 <a class ="btn btn-info" href="<?php echo site_url()?>/Purch_req/GetItem_barang/<?php echo $key->id?>"><i class="fw-icons fa fa-clone "></i></a>
+                                                 </div>
+                                                 <div>
+                                                <a class="btn btn-primary" href="<?php echo site_url()?>/Purch_req/tambahItem/<?php echo $key->id?>"><i class="fa fa-edit"></i></a>
+                                                         </div>
+                                                         <div>                       
+                                                <a class ="btn btn-danger" href="<?php echo site_url()?>/Purch_req/deletePurch_req/<?php echo $key->id?> " onclick="return confirm('Apakah Yakin Untuk Menghapus?')"><i class="fa fa-trash-o"></i></a></div></div>
+
+                                                </td>
                                              
                                             </tr>
                                             <?php }?>
