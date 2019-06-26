@@ -20,10 +20,18 @@ public function index()
 		$data['Qr']=$this->QrModel->getQr();
         if($this->session->userdata('logged_in')['hak_akses']==1){
              $this->load->view('Admin/header');
+<<<<<<< HEAD
         $this->load->view('admin/quotation',$data);
+=======
+        $this->load->view('User/Qr',$data);
+
+    }else if($this->session->userdata('logged_in')['hak_akses']==2){
+             $this->load->view('User/header');
+        $this->load->view('User/Qr',$data);
+>>>>>>> dfd9f532c6f68a42009ed2e7eee8a56b5f4cb9f3
 		
     }else{
-        $this->load->view('User/header');
+        $this->load->view('Read_only/header');
         $this->load->view('User/Qr',$data);
     }
    
