@@ -41,7 +41,6 @@
                                                 <a class="btn btn-flat btn-secondary mb-4" href="<?php echo site_url()?>/Po/" role="button" style="width:200px">Data Purchase Order</a><br>
                                                 <a class="btn btn-flat btn-primary mb-4" href="<?php echo site_url()?>/Qr/" role="button" style="width:200px">List All Quotation</a><br>
                                                 <a class="btn btn-flat btn-secondary mb-4" href="<?php echo site_url()?>/belum/" role="button" style="width:200px">Tracking Order</a><br>
-                                                <a class="btn btn-flat btn-secondary mb-4" href="<?php echo site_url()?>/belum/" role="button" style="width:200px">Tracking Quotation</a><br>
                                                 <a class="btn btn-flat btn-secondary mb-4" href="<?php echo site_url()?>/belum/" role="button" style="width:200px">PO Record</a><br>
                                                 <a class="btn btn-flat btn-secondary mb-4" href="<?php echo site_url()?>/belum/" role="button" style="width:200px">ETA</a><br>
                                                 </td>
@@ -58,6 +57,7 @@
                                                      <a class="btn btn-flat btn-info mb-4" href="<?php echo site_url()?>/Departemen/" role="button" style="width:150px">Departement</a><br>
                                                       <a class="btn btn-flat btn-info mb-4" href="<?php echo site_url()?>/Section/" role="button" style="width:150px">Section</a><br>
                                                        <a class="btn btn-flat btn-info mb-4" href="<?php echo site_url()?>/Approval/" role="button" style="width:150px">Approval</a><br>
+                                                       <a class="btn btn-flat btn-warning mb-4" href="<?php echo site_url()?>/Login/ManajemenUser" role="button" style="width:150px">Manajemen User</a><br>
                                                 </td>
                                             
 
