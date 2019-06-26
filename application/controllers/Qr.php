@@ -18,8 +18,14 @@ class Qr extends CI_Controller {
 public function index()
 	{
 		$data['Qr']=$this->QrModel->getQr();
-		$this->load->view('Admin/header');
+        if($this->session->userdata('logged_in')['hak_akses']==1){
+             $this->load->view('Admin/header');
+        $this->load->view('User/Qr',$data)
+		
+    }else{
+        $this->load->view('User/header');
         $this->load->view('User/Qr',$data);
+    }
    
 	}
 
