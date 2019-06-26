@@ -41,7 +41,7 @@
                                                 <th>QUOTATION NO</th>
                                               
                                            
-                                                <th >Action</th>
+                                                <th >ACTION</th>
                                            
                                             </tr>
                                         </thead>
@@ -59,9 +59,9 @@
                                                 <td>
 
                                                       <div class="btn-group mb-xl-3" role="group" aria-label="Basic example">
-                                    <button type="button" class="btn btn-info">    <a href="javascript:void(0);" onclick="modalDetail('<?php echo $key->no_pricelist?>','<?php echo $key->group_name?>','<?php echo $key->no_barang ?>','<?php echo $key->nama_barang ?>', '<?php echo $key->spec_barang ?>','<?php echo $key->unit ?>','<?php echo $key->mata_uang ?>','<?php echo $key->price ?>','<?php echo $key->nama_supplier ?>','<?php echo $key->quotation_no?>','<?php echo $key->tgl_input ?>','<?php echo $key->lbdate?>','<?php echo $key->remarks ?>')" data-toggle="modal" data-target="#myModalDetil"><font color="white">Detil</font></a></button>
-                                    <button type="button" class="btn btn-primary">    <a href="javascript:void(0);" onclick="modalEdit('<?php echo $key->no_pricelist?>','<?php echo $key->group_name?>','<?php echo $key->no_barang ?>','<?php echo $key->nama_barang ?>', '<?php echo $key->spec_barang ?>','<?php echo $key->unit ?>','<?php echo $key->mata_uang ?>','<?php echo $key->price ?>','<?php echo $key->nama_supplier ?>','<?php echo $key->quotation_no?>','<?php echo $key->tgl_input ?>','<?php echo $key->lbdate?>','<?php echo $key->remarks ?>' )"  data-toggle="modal" data-target="#myModalEdit"><font color="white">Edit</font></a></button>
-                                    <button type="button" class="btn btn-danger">       <a href="<?php echo site_url()?>/Pricelist/deletePricelist/<?php echo $key->no_pricelist?> " onclick="return confirm('Apakah Yakin Untuk Menghapus?')"><font color="white">Hapus</font></a></button>
+                                    <button type="button" class="btn btn-info" style="width:80px; height:50px;">    <a href="javascript:void(0);" onclick="modalDetail('<?php echo $key->no_pricelist?>','<?php echo $key->group_name?>','<?php echo $key->no_barang ?>','<?php echo $key->nama_barang ?>', '<?php echo $key->spec_barang ?>','<?php echo $key->unit ?>','<?php echo $key->mata_uang ?>','<?php echo $key->price ?>','<?php echo $key->nama_supplier ?>','<?php echo $key->quotation_no?>','<?php echo $key->tgl_input ?>','<?php echo $key->lbdate?>','<?php echo $key->remarks ?>')" data-toggle="modal" data-target="#myModalDetil"><font color="white"><i class="fa fa-th-list"></i> Detail</font></a></button>
+                                    <button type="button" class="btn btn-primary" style="width:80px; height:50px;">    <a href="javascript:void(0);" onclick="modalEdit('<?php echo $key->no_pricelist?>','<?php echo $key->group_name?>','<?php echo $key->no_barang ?>','<?php echo $key->nama_barang ?>', '<?php echo $key->spec_barang ?>','<?php echo $key->unit ?>','<?php echo $key->mata_uang ?>','<?php echo $key->price ?>','<?php echo $key->nama_supplier ?>','<?php echo $key->quotation_no?>','<?php echo $key->tgl_input ?>','<?php echo $key->lbdate?>','<?php echo $key->remarks ?>' )"  data-toggle="modal" data-target="#myModalEdit"><font color="white"><i class="fa fa-pencil"></i> Edit</font></a></button>
+                                    <button type="button" class="btn btn-danger"style="width:80px; height:50px;">       <a href="<?php echo site_url()?>/Pricelist/deletePricelist/<?php echo $key->no_pricelist?> " onclick="return confirm('Apakah Yakin Untuk Menghapus?')"><font color="white"><i class="fa fa-trash-o"></i> Hapus</font></a></button>
                                   
                                 </div>
                                                   
