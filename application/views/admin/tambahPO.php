@@ -72,7 +72,7 @@
                                      
         
           
-              <div align="right"> <button type="submit" class="btn btn-POimary" style="align-self: right">Simpan</button></div>
+              <div align="right"> <button type="submit" class="btn btn-primary" style="align-self: right">Simpan</button></div>
               <?php echo form_close() ?>
            
 

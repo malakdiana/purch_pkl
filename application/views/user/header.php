@@ -52,10 +52,8 @@
                     <nav>
                         <ul class="metismenu" id="menu">
                             <li>
-                                <a href="javascript:void(0)" aria-expanded="true"><i class="ti-dashboard"></i><span>dashboard</span></a>
-                                <ul class="collapse">
-                                    <li><a href="<?php echo site_url()?>/Dashboard/">dashboard</a></li>
-                                </ul>
+                                <a href="<?php echo site_url()?>/Dashboard/" aria-expanded="true"><i class="ti-dashboard"></i><span>dashboard</span></a>
+                                
                             </li>
                             <li>
                                 <a href="javascript:void(0)" aria-expanded="true"><i class="ti-layout-sidebar-left"></i><span>Data
@@ -71,7 +69,7 @@
                             <li>
                                 <a href="javascript:void(0)" aria-expanded="true"><i class="ti-palette"></i><span>Input Data</span></a>
                                 <ul class="collapse">
-                                    <li><a href="<?php echo site_url()?>/Purch_req/tambahPR_user">Purchase Request</a></li>
+                                    <li><a href="<?php echo site_url()?>/Purch_req/tambahPR">Purchase Request</a></li>
                                     <li><a href="<?php echo site_url()?>/Qr/tambahQR">Quotation Request</a></li>
                                 </ul>
                             </li>
