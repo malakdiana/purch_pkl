@@ -18,7 +18,7 @@ public function index()
 	{
 		$data['Purch_req']= $this->Purch_reqModel->getPurch_req();
 		$this->load->view('User/header');
-        $this->load->view('Admin/Purch_req',$data);
+        $this->load->view('User/Dashboard',$data);
    
 	}
 

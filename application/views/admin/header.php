@@ -54,7 +54,7 @@
                             <li>
                                 <a href="javascript:void(0)" aria-expanded="true"><i class="ti-dashboard"></i><span>dashboard</span></a>
                                 <ul class="collapse">
-                                    <li><a href="index.html">dashboard</a></li>
+                                    <li><a href="<?php echo site_url()?>/Dashboard">Dashboard</a></li>
                                 </ul>
                             </li>
                             <li>

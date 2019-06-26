@@ -1,12 +1,11 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Admin extends CI_Controller {
+class Dashboard extends CI_Controller {
 
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->model('Purch_reqModel');
 		 $this->load->helper('url','form','download');
 		  $this->load->library('excel','upload');
 
@@ -16,9 +15,15 @@ class Admin extends CI_Controller {
 
 public function index()
 	{
-		$data['Purch_req']= $this->Purch_reqModel->getPurch_req();
 		$this->load->view('Admin/header');
-        $this->load->view('Admin/Dashboard',$data);
+        $this->load->view('Admin/dashboard');
+   
+	}
+
+	public function Userindex()
+	{
+		$this->load->view('User/header');
+        $this->load->view('User/dashboard');
    
 	}
 
