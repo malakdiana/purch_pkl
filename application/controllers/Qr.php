@@ -102,7 +102,7 @@ public function index()
               $_FILES['userfile']['tmp_name']= $files['tmp_name'][$i];
                $_FILES['userfile']['error']= $files['error'][$i];
                 $_FILES['userfile']['size']= $files['size'][$i];
-                  $this->load->library('upload', $config);
+                $this->upload->initialize($config);
 
             if($this->upload->do_upload('userfile')){
                 $data = array(
@@ -116,11 +116,12 @@ public function index()
          $this->db->insert('detail_penawaran', $data);
             }else{
                $error = array('error' => $this->upload->display_errors());
-                echo $error['error'];
+               
             }
+            
         }
 
-        
+         redirect('Qr/', 'refresh');
 
     }
 
