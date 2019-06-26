@@ -21,8 +21,14 @@ public function index()
         if($this->session->userdata('logged_in')['hak_akses']==1){
 		$this->load->view('Admin/header');
         $this->load->view('Admin/Purch_req',$data);
-    }else{
+
+        }if($this->session->userdata('logged_in')['hak_akses']==2){
         $this->load->view('User/header');
+        $this->load->view('Admin/Purch_req',$data);
+
+
+    }else{
+        $this->load->view('Read_only/header');
         $this->load->view('Admin/Purch_req',$data);
     }
    
