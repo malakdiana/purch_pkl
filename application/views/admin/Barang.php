@@ -33,7 +33,7 @@
                                 <table cellpadding="0" cellspacing="0" border="0" class="table table-striped" id="dataTablesss">
                                         <thead class="bg-light text-capitalize">
                                             <tr>
-                                                <th>
+                                              
                                                 <th>NO</th>
                                                 <th>NO BARANG</th>
                                              <th>GROUP NAME</th>
@@ -42,14 +42,14 @@
                                                 <th>REMARKS</th>
                                            
                                                
-                                                <th >Edit</th>
-                                                <th >Hapus</th>
+                                                <th >Action</th>
+                                          
                                             </tr>
                                         </thead>
                                         <tbody>
                                         <?php   foreach ($brg as $key) {?>
                                             <tr>
-                                                <td>
+                                        
                                                 <td><?php echo $key->no;?></td>
                                                 <td><?php echo $key->no_barang;?></td>
                                                 <td><?php echo $key->group_name;?></td>
@@ -58,9 +58,13 @@
                                                 <td><?php echo $key->remarks;?></td>
                                     
                                                 <td>
-                                                <a href="javascript:void(0);" onclick="modalDetail('<?php echo $key->no?>','<?php echo $key->no_barang?>','<?php echo $key->group_name ?>','<?php echo $key->nama_barang ?>', '<?php echo $key->unit ?>','<?php echo $key->remarks ?>')"  data-toggle="modal" data-target="#myModalEdit"><i class="fa fa-edit"></i></a></td><td>
-                                                
-                                                <a href="<?php echo site_url()?>/Barang/deleteBarang/<?php echo $key->no?> " onclick="return confirm('Apakah Yakin Untuk Menghapus?')"><i class="fa fa-trash-o"></i></a></td>
+                                                      <div class="btn-group mb-xl-3" role="group" aria-label="Basic example">
+                                    
+                                    <button type="button" class="btn btn-primary">      <a href="javascript:void(0);" onclick="modalDetail('<?php echo $key->no?>','<?php echo $key->no_barang?>','<?php echo $key->group_name ?>','<?php echo $key->nama_barang ?>', '<?php echo $key->unit ?>','<?php echo $key->remarks ?>')"  data-toggle="modal" data-target="#myModalEdit"><font color="white">Edit</font></a></button>
+                                    <button type="button" class="btn btn-danger"> <a href="<?php echo site_url()?>/Barang/deleteBarang/<?php echo $key->no?> " onclick="return confirm('Apakah Yakin Untuk Menghapus?')"><font color="white">Hapus</font></a></button>
+                                  
+                                </div>
+                                           </td>
                                              
                                             </tr>
                                             <?php }?>
@@ -161,13 +165,13 @@
       /*
        * Initialse DataTables, with no sorting on the 'details' column
        */
-      var oTable = $('#dataTablesss').dataTable({
+       var oTable = $('#dataTablesss').dataTable({
         "aoColumnDefs": [{
-          "bSortable": false,
+          "bSortable": true,
           "aTargets": [0]
         }],
         "aaSorting": [
-          [1, 'asc']
+          [0, 'desc']
         ]
       });
 

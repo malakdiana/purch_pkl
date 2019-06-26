@@ -18,7 +18,7 @@ class Qr extends CI_Controller {
 public function index()
 	{
 		$data['Qr']=$this->QrModel->getQr();
-		$this->load->view('User/header');
+		$this->load->view('Admin/header');
         $this->load->view('User/Qr',$data);
    
 	}

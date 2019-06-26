@@ -32,7 +32,7 @@
                                 <table cellpadding="0" cellspacing="0" border="0" class="table table-striped" id="dataTablesss">
                                         <thead class="bg-light text-capitalize">
                                             <tr>
-                                                <th>
+                                        
                                                 <th>NO</th>
                                                 <th>ITEM BARANG</th>
                                                 <th>QTY</th>
@@ -46,7 +46,7 @@
                                         <?php   
                                         $no =1; foreach ($Purch_req as $key) {?>
                                             <tr>
-                                                <td>
+                                            
                                                 <td><?php echo $no;?></td>
                                                 <td><?php echo $key->item_barang;?></td>
                                                 <td><?php echo $key->qty?></td>
@@ -135,13 +135,13 @@
       /*
        * Initialse DataTables, with no sorting on the 'details' column
        */
-      var oTable = $('#dataTablesss').dataTable({
+       var oTable = $('#dataTablesss').dataTable({
         "aoColumnDefs": [{
-          "bSortable": false,
+          "bSortable": true,
           "aTargets": [0]
         }],
         "aaSorting": [
-          [1, 'asc']
+          [0, 'desc']
         ]
       });
 

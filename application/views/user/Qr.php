@@ -27,10 +27,12 @@
                          <?=$this->session->flashdata('deleteQr')?>
                          <?=$this->session->flashdata('tambahItem')?>
                              
-                                <table cellpadding="0" cellspacing="0" border="0" class="table table-responsive table-striped" id="dataTablesss">
-                                        <thead class="bg-light text-capitalize">
+                               <div class="single-table">
+                                    <div class="table-responsive">
+                                        <table class="table text-center" id="dataTablesss">
+                                   <thead class="text-uppercase">
                                             <tr>
-                                            <th></th>
+                                         
                                                 <th>NO</th>
                                                 <th>TANGGAL</th>
                                                 <th>ITEM</th>
@@ -38,7 +40,7 @@
                                                 <th>QUOTATION DUEDATE</th>
                                                 <th>SECTION</th>
                                                 <th>PIC</th>
-                                                <th>BAHAN</th>
+                                               
                                                 <th>STATUS</th>
                                                 <th>DETAIL</th>
                                   
@@ -48,7 +50,7 @@
                                         <tbody>
                                         <?php   foreach ($Qr as $key) {?>
                                             <tr>
-                                            <td></td>
+                                    
                                                 <td><?php echo $key->id_penawaran;?></td>
                                                 <td><?php echo $key->tanggal;?></td>
                                                 <td><?php echo $key->item;?></td>
@@ -56,18 +58,24 @@
                                                 <td><?php echo $key->tanggal_butuh;?></td>
                                                 <td><?php echo $key->section;?></td>
                                                 <td><?php echo $key->section;?></td>
-                                                <td><?php echo $key->bahan;?></td>
+                                               
                                                 <td><?php echo $key->status;?></td>
 
 
 
-                                                <td> <a href="javascript:void(0);" onclick="modalDetail('<?php echo $key->id_penawaran?>','<?php echo $key->tanggal ?>','<?php echo $key->item ?>','<?php echo $key->kode_qr ?>','<?php echo $key->tanggal_butuh ?>','<?php echo $key->section ?>','<?php echo $key->pic ?>','<?php echo $key->bahan ?>','<?php echo $key->detail ?>','<?php echo $key->status ?>','<?php echo $key->gambar ?>')"  data-toggle="modal" data-target="#myModalDetail"><i class="fw-icons fa fa-clone fa-lg" title="datail"></i></a> &nbsp; &nbsp;<a href=""><i class="fa fa-list fa-lg" title="list vendor"></i></a></td>
+                                                <td>
+                                                <div class="btn-group mb-xl-3" role="group" aria-label="Basic example">
+                                    <button type="button" class="btn btn-info">  <a href="javascript:void(0);" onclick="modalDetail('<?php echo $key->id_penawaran?>','<?php echo $key->tanggal ?>','<?php echo $key->item ?>','<?php echo $key->kode_qr ?>','<?php echo $key->tanggal_butuh ?>','<?php echo $key->section ?>','<?php echo $key->pic ?>','<?php echo $key->bahan ?>','<?php echo $key->detail ?>','<?php echo $key->status ?>','<?php echo $key->gambar ?>')"  data-toggle="modal" data-target="#myModalDetail"><font color="white">Detil</font></a></button>
+                                    <button type="button" class="btn btn-primary"> <a href=""><font color="white">Vendor</font></a></button>
+                                  
+                                </div>
+                                               </td>
 
                                                
                                             </tr>
                                             <?php }?>
                                        </tbody>
-                                    </table>
+                                    </table> 
                                 </div>
                             </div>
                         </div>
@@ -75,6 +83,7 @@
                 </div>
             </div>
         </div>
+
           <!-- main content area end -->
         <!-- footer area start-->
  
@@ -84,8 +93,11 @@ id_penawaran,tanggal, item, kode_qr,tanggal_butuh,section,pic,bahan,detail,statu
         <div class="modal-dialog">
             <div class="modal-content" style="width: 800px; margin-left: -100px;padding: 20px" >
                 <div class="modal-header">
+                   
                     <h4 class="modal-title">Info Supplier</h4>
+                     <button align="right" type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
+                <div class="modal-body">
                 <table width="600px">
                     <tr>
                         <td>ID Penawaran</td>
@@ -121,7 +133,7 @@ id_penawaran,tanggal, item, kode_qr,tanggal_butuh,section,pic,bahan,detail,statu
                     </tr>
                     <tr>
                         <td>Detail</td>
-                        <td><textarea class="form-control" rows="4" id="detail" name="detail">
+                        <td><textarea readonly="" class="form-control" rows="4" id="detail" name="detail">
                             
                         </textarea>
                          </td>
@@ -138,6 +150,7 @@ id_penawaran,tanggal, item, kode_qr,tanggal_butuh,section,pic,bahan,detail,statu
                      
 
                 </table>
+            </div>
                
                
             <a href=""><button class="btn-warning" data-dismiss="modal">Batal</button></a>
@@ -182,13 +195,13 @@ id_penawaran,tanggal, item, kode_qr,tanggal_butuh,section,pic,bahan,detail,statu
       /*
        * Initialse DataTables, with no sorting on the 'details' column
        */
-      var oTable = $('#dataTablesss').dataTable({
+       var oTable = $('#dataTablesss').dataTable({
         "aoColumnDefs": [{
-          "bSortable": false,
+          "bSortable": true,
           "aTargets": [0]
         }],
         "aaSorting": [
-          [1, 'asc']
+          [0, 'desc']
         ]
       });
 

@@ -33,7 +33,7 @@
                                 <table cellpadding="0" cellspacing="0" border="0" class="table table-striped" id="dataTablesss">
                                         <thead class="bg-light text-capitalize">
                                             <tr>
-                                                <th>
+                                                
                                                 <th>NO</th>
                                                 <th>NAMA</th>
                                                 <th>KODE NAMA</th>
@@ -42,14 +42,13 @@
                                                 
                                            
                                                
-                                                <th >Edit</th>
-                                                <th >Hapus</th>
+                                             <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                         <?php   foreach ($app as $key) {?>
                                             <tr>
-                                                <td>
+                                           
                                                 <td><?php echo $key->no;?></td>
                                                 <td><?php echo $key->nama;?></td>
                                                 <td><?php echo $key->kode_nama;?></td>
@@ -58,9 +57,13 @@
                                                 
                                     
                                                 <td>
-                                                <a href="javascript:void(0);" onclick="modalDetail('<?php echo $key->no?>','<?php echo $key->nama?>','<?php echo $key->kode_nama ?>','<?php echo $key->min ?>','<?php echo $key->max ?>')"  data-toggle="modal" data-target="#myModalEdit"><i class="fa fa-edit"></i></a></td><td>
-                                                
-                                                <a href="<?php echo site_url()?>/Approval/deleteApproval/<?php echo $key->no?> " onclick="return confirm('Apakah Yakin Untuk Menghapus?')"><i class="fa fa-trash-o"></i></a></td>
+
+                                                  <div class="btn-group mb-xl-3" role="group" aria-label="Basic example">
+                                    
+                                    <button type="button" class="btn btn-primary"> <a href="javascript:void(0);" onclick="modalDetail('<?php echo $key->no?>','<?php echo $key->nama?>','<?php echo $key->kode_nama ?>','<?php echo $key->min ?>','<?php echo $key->max ?>')"  data-toggle="modal" data-target="#myModalEdit"><font color="white">Edit</font></a></button>
+                                    <button type="button" class="btn btn-danger"><a href="<?php echo site_url()?>/Approval/deleteApproval/<?php echo $key->no?> " onclick="return confirm('Apakah Yakin Untuk Menghapus?')"><font color="white">Hapus</font></a></button>
+                                  
+                                </div></td>
                                              
                                             </tr>
                                             <?php }?>
@@ -148,13 +151,13 @@
       /*
        * Initialse DataTables, with no sorting on the 'details' column
        */
-      var oTable = $('#dataTablesss').dataTable({
+       var oTable = $('#dataTablesss').dataTable({
         "aoColumnDefs": [{
-          "bSortable": false,
+          "bSortable": true,
           "aTargets": [0]
         }],
         "aaSorting": [
-          [1, 'asc']
+          [0, 'desc']
         ]
       });
 

@@ -34,7 +34,7 @@
                                 <table cellpadding="0" cellspacing="0" border="0" class="table table-striped" id="dataTablesss">
                                         <thead class="bg-light text-capitalize">
                                             <tr>
-                                                <th></th>
+                                            
                                                 <th>NO</th>
                                                 <th>NAMA SUPPLIER</th>
                                              <th>ALAMAT</th>
@@ -42,15 +42,13 @@
                                                 <th style="">TELEPON</th>
                                               
                                            
-                                                <th >Detail</th>
-                                                <th >Edit</th>
-                                                <th >Hapus</th>
+                                                <th >Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                         <?php   foreach ($supp as $key) {?>
                                             <tr>
-                                                <td>
+                                            
                                                 <td><?php echo $key->id_supplier;?></td>
                                                 <td><?php echo $key->nama_supplier;?></td>
                                                 <td><?php echo $key->alamat;?></td>
@@ -59,13 +57,14 @@
                                                 
                                            
                                                 <td>
-                                                    <a href="javascript:void(0);" onclick="modalDetail2('<?php echo $key->id_supplier?>','<?php echo $key->nama_supplier?>','<?php echo $key->alamat ?>','<?php echo $key->kota ?>', '<?php echo $key->no_telp ?>','<?php echo $key->no_fax ?>','<?php echo $key->attention ?>','<?php echo $key->no_hp ?>','<?php echo $key->tgl_input ?>','<?php echo $key->terms ?>','<?php echo $key->ppn ?>','<?php echo $key->supply?>','<?php echo $key->status ?>','<?php echo $key->perjanjian?>','<?php echo $key->remarks ?>')" data-toggle="modal" data-target="#myModalDetil">
-                                                    <i class="fw-icons fa fa-clone" title="detail"></i>
-                                                </a></td><td>
-                                                    
-                                                <a href="javascript:void(0);" onclick="modalDetail('<?php echo $key->id_supplier?>','<?php echo $key->nama_supplier?>','<?php echo $key->alamat ?>','<?php echo $key->kota ?>', '<?php echo $key->no_telp ?>','<?php echo $key->no_fax ?>','<?php echo $key->attention ?>','<?php echo $key->no_hp ?>','<?php echo $key->tgl_input ?>','<?php echo $key->terms ?>','<?php echo $key->ppn ?>','<?php echo $key->supply?>','<?php echo $key->status ?>','<?php echo $key->perjanjian?>','<?php echo $key->remarks ?>')"  data-toggle="modal" data-target="#myModalEdit">          <i class="fa fa-edit"></i></a></td><td>
-                                                
-                                                <a href="<?php echo site_url()?>/Supplier/deleteSupplier/<?php echo $key->id_supplier?> " onclick="return confirm('Apakah Yakin Untuk Menghapus?')"><i class="fa fa-trash-o"></i></a></td>
+
+                                                      <div class="btn-group mb-xl-3" role="group" aria-label="Basic example">
+                                    <button type="button" class="btn btn-info">  <a href="javascript:void(0);" onclick="modalDetail2('<?php echo $key->id_supplier?>','<?php echo $key->nama_supplier?>','<?php echo $key->alamat ?>','<?php echo $key->kota ?>', '<?php echo $key->no_telp ?>','<?php echo $key->no_fax ?>','<?php echo $key->attention ?>','<?php echo $key->no_hp ?>','<?php echo $key->tgl_input ?>','<?php echo $key->terms ?>','<?php echo $key->ppn ?>','<?php echo $key->supply?>','<?php echo $key->status ?>','<?php echo $key->perjanjian?>','<?php echo $key->remarks ?>')" data-toggle="modal" data-target="#myModalDetil"><font color="white">Detil</font></a></button>
+                                    <button type="button" class="btn btn-primary">   <a href="javascript:void(0);" onclick="modalDetail('<?php echo $key->id_supplier?>','<?php echo $key->nama_supplier?>','<?php echo $key->alamat ?>','<?php echo $key->kota ?>', '<?php echo $key->no_telp ?>','<?php echo $key->no_fax ?>','<?php echo $key->attention ?>','<?php echo $key->no_hp ?>','<?php echo $key->tgl_input ?>','<?php echo $key->terms ?>','<?php echo $key->ppn ?>','<?php echo $key->supply?>','<?php echo $key->status ?>','<?php echo $key->perjanjian?>','<?php echo $key->remarks ?>')"  data-toggle="modal" data-target="#myModalEdit"><font color="white">Edit</font></a></button>
+                                    <button type="button" class="btn btn-danger">   <a href="<?php echo site_url()?>/Supplier/deleteSupplier/<?php echo $key->id_supplier?> " onclick="return confirm('Apakah Yakin Untuk Menghapus?')"><font color="white">Hapus</font></a></button>
+                                  
+                                </div>
+                                        </td>
                                              
                                             </tr>
                                             <?php }?>
@@ -85,7 +84,9 @@
             <div class="modal-content" style="width: 800px; margin-left: -100px;padding: 20px" >
                 <div class="modal-header">
                     <h4 class="modal-title">Info Supplier</h4>
+                     <button align="right" type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
+                  <div class="modal-body">
                 <table width="600px">
                     <tr>
                         <td>NO</td>
@@ -149,9 +150,9 @@
                     </tr>
 
                 </table>
+               </div>
                
-               
-            <a href=""><button class="btn-warning" data-dismiss="modal">Batal</button></a>
+          
         </div>
     </div>
 </div>
@@ -302,11 +303,11 @@
        */
       var oTable = $('#dataTablesss').dataTable({
         "aoColumnDefs": [{
-          "bSortable": false,
+          "bSortable": true,
           "aTargets": [0]
         }],
         "aaSorting": [
-          [1, 'asc']
+          [0, 'desc']
         ]
       });
 

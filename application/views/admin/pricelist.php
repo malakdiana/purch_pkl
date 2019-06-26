@@ -33,7 +33,7 @@
                                 <table cellpadding="0" cellspacing="0" border="0" class="table table-striped" id="dataTablesss">
                                         <thead class="bg-light text-capitalize">
                                             <tr>
-                                                <th></th>
+                                         
                                                 <th>NO</th>
                                                 <th>GROUP NAME</th>
                                              <th>NAMA BARANG</th>
@@ -41,15 +41,14 @@
                                                 <th>QUOTATION NO</th>
                                               
                                            
-                                                <th >Detail</th>
-                                                <th >Edit</th>
-                                                <th >Hapus</th>
+                                                <th >Action</th>
+                                           
                                             </tr>
                                         </thead>
                                         <tbody>
                                         <?php   foreach ($price as $key) {?>
                                             <tr>
-                                                <td>
+                                                
                                                 <td><?php echo $key->no_pricelist;?></td>
                                                 <td><?php echo $key->group_name;?></td>
                                                 <td><?php echo $key->nama_barang;?></td>
@@ -58,13 +57,15 @@
                                                 
                                            
                                                 <td>
-                                                    <a href="javascript:void(0);" onclick="modalDetail('<?php echo $key->no_pricelist?>','<?php echo $key->group_name?>','<?php echo $key->no_barang ?>','<?php echo $key->nama_barang ?>', '<?php echo $key->spec_barang ?>','<?php echo $key->unit ?>','<?php echo $key->mata_uang ?>','<?php echo $key->price ?>','<?php echo $key->nama_supplier ?>','<?php echo $key->quotation_no?>','<?php echo $key->tgl_input ?>','<?php echo $key->lbdate?>','<?php echo $key->remarks ?>')" data-toggle="modal" data-target="#myModalDetil">
-                                                    <i class="fw-icons fa fa-clone" title="detail"></i>
-                                                </a></td><td>
-                                                    
-                                                <a href="javascript:void(0);" onclick="modalEdit('<?php echo $key->no_pricelist?>','<?php echo $key->group_name?>','<?php echo $key->no_barang ?>','<?php echo $key->nama_barang ?>', '<?php echo $key->spec_barang ?>','<?php echo $key->unit ?>','<?php echo $key->mata_uang ?>','<?php echo $key->price ?>','<?php echo $key->nama_supplier ?>','<?php echo $key->quotation_no?>','<?php echo $key->tgl_input ?>','<?php echo $key->lbdate?>','<?php echo $key->remarks ?>' )"  data-toggle="modal" data-target="#myModalEdit">          <i class="fa fa-edit"></i></a></td><td>
-                                                
-                                                <a href="<?php echo site_url()?>/Pricelist/deletePricelist/<?php echo $key->no_pricelist?> " onclick="return confirm('Apakah Yakin Untuk Menghapus?')"><i class="fa fa-trash-o"></i></a></td>
+
+                                                      <div class="btn-group mb-xl-3" role="group" aria-label="Basic example">
+                                    <button type="button" class="btn btn-info">    <a href="javascript:void(0);" onclick="modalDetail('<?php echo $key->no_pricelist?>','<?php echo $key->group_name?>','<?php echo $key->no_barang ?>','<?php echo $key->nama_barang ?>', '<?php echo $key->spec_barang ?>','<?php echo $key->unit ?>','<?php echo $key->mata_uang ?>','<?php echo $key->price ?>','<?php echo $key->nama_supplier ?>','<?php echo $key->quotation_no?>','<?php echo $key->tgl_input ?>','<?php echo $key->lbdate?>','<?php echo $key->remarks ?>')" data-toggle="modal" data-target="#myModalDetil"><font color="white">Detil</font></a></button>
+                                    <button type="button" class="btn btn-primary">    <a href="javascript:void(0);" onclick="modalEdit('<?php echo $key->no_pricelist?>','<?php echo $key->group_name?>','<?php echo $key->no_barang ?>','<?php echo $key->nama_barang ?>', '<?php echo $key->spec_barang ?>','<?php echo $key->unit ?>','<?php echo $key->mata_uang ?>','<?php echo $key->price ?>','<?php echo $key->nama_supplier ?>','<?php echo $key->quotation_no?>','<?php echo $key->tgl_input ?>','<?php echo $key->lbdate?>','<?php echo $key->remarks ?>' )"  data-toggle="modal" data-target="#myModalEdit"><font color="white">Edit</font></a></button>
+                                    <button type="button" class="btn btn-danger">       <a href="<?php echo site_url()?>/Pricelist/deletePricelist/<?php echo $key->no_pricelist?> " onclick="return confirm('Apakah Yakin Untuk Menghapus?')"><font color="white">Hapus</font></a></button>
+                                  
+                                </div>
+                                                  
+                                                  </td>
                                              
                                             </tr>
                                             <?php }?>
@@ -84,7 +85,9 @@
             <div class="modal-content" style="width: 800px; margin-left: -100px;padding: 20px" >
                 <div class="modal-header">
                     <h4 class="modal-title">Info Pricelist</h4>
+                        <button align="right" type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
+                <div class="modal-body">   
                 <table width="600px">
                     <tr>
                         <td>NO</td>
@@ -139,7 +142,7 @@
                         <td> <input type="text" class="form-control" name="remarks2" id="remarks2" value="" readonly=""></td>
                     </tr>
 
-                </table>
+                </table></div>
                
                
             <a href=""><button class="btn-warning" data-dismiss="modal">Batal</button></a>
@@ -273,13 +276,13 @@
       /*
        * Initialse DataTables, with no sorting on the 'details' column
        */
-      var oTable = $('#dataTablesss').dataTable({
+        var oTable = $('#dataTablesss').dataTable({
         "aoColumnDefs": [{
-          "bSortable": false,
+          "bSortable": true,
           "aTargets": [0]
         }],
         "aaSorting": [
-          [1, 'asc']
+          [0, 'desc']
         ]
       });
 

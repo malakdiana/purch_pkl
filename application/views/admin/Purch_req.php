@@ -3,10 +3,10 @@
                 <div class="row align-items-center">
                     <div class="col-sm-6">
                         <div class="breadcrumbs-area clearfix" style="padding-top: 15px;padding-bottom: 15px">
-                            <h4 class="page-title pull-left">Master Data</h4>
+                            <h4 class="page-title pull-left">Data</h4>
                             <ul class="breadcrumbs pull-left">
-                                <li><a href="index.html">Purch_req</a></li>
-                                <li><span>Data Purch_req</span></li>
+                                <li><a href="index.html">Purchase Request</a></li>
+                                <li><span>List Purchase Request</span></li>
                             </ul>
 
                     </div>
@@ -26,11 +26,12 @@
                        
                          <?=$this->session->flashdata('deletePurch_req')?>
                          <?=$this->session->flashdata('tambahItem')?>
-                             
-                                <table cellpadding="0" cellspacing="0" border="0" class="table table-responsive table-striped" id="dataTablesss" align="center">
-                                        <thead class="bg-light text-capitalize">
+                             <div class="single-table">
+                                    <div class="table-responsive">
+                                        <table class="table text-center" id="dataTablesss">
+                                   <thead class="text-uppercase">
                                             <tr>
-                                            <th></th>
+                                       
                                                 <th>NO</th>
                                                 <th>TANGGAL</th>
                                                 <th>JAM</th>
@@ -48,7 +49,7 @@
                                         <tbody>
                                         <?php   foreach ($Purch_req as $key) {?>
                                             <tr>
-                                            <td></td>
+                                       
                                                 <td><?php echo $key->id;?></td>
                                                 <td><?php echo $key->tgl;?></td>
                                                 <td><?php echo $key->jam;?></td>
@@ -59,10 +60,10 @@
 
                                                 <td><?php 
                                                 if($key->status_fa == 1){?>
-                                                     <img src="<?php echo base_url()?>assets/images/icon/success.png">
+                                                     <img style="width: 40px;height: 50px" src="<?php echo base_url()?>assets/images/icon/success.png">
                                                      <?php }
                                                      else { ?>  
-                                                        <img src="<?php echo base_url()?>assets/images/icon/not.png">
+                                                        <img style="width: 40px;height: 50px" src="<?php echo base_url()?>assets/images/icon/not.png">
                                                         <?php }?>
 
                                                 </td>
@@ -73,29 +74,26 @@
 
 
                                                 <td>
-                                                <div class="row">
-                                                <div>
-                                                 <a class ="btn btn-info" href="<?php echo site_url()?>/Purch_req/GetItem_barang/<?php echo $key->id?>"><i class="fw-icons fa fa-clone "></i></a>
-                                                 </div>
-                                                 <div>
-                                                <a class="btn btn-primary" href="<?php echo site_url()?>/Purch_req/tambahItem/<?php echo $key->id?>"><i class="fa fa-edit"></i></a>
-                                                         </div>
-                                                         <div>                       
-                                                <a class ="btn btn-danger" href="<?php echo site_url()?>/Purch_req/deletePurch_req/<?php echo $key->id?> " onclick="return confirm('Apakah Yakin Untuk Menghapus?')"><i class="fa fa-trash-o"></i></a></div></div>
-
+                                                  <div class="btn-group mb-xl-3" role="group" aria-label="Basic example">
+                                    <button type="button" class="btn btn-info"> <a href="<?php echo site_url()?>/Purch_req/GetItem_barang/<?php echo $key->id?>"><font color="white">Detil</font></a></button>
+                                    <button type="button" class="btn btn-primary"> <a href="<?php echo site_url()?>/Purch_req/tambahItem/<?php echo $key->id?>"><font color="white">Edit</font></a></button>
+                                    <button type="button" class="btn btn-danger"><a href="<?php echo site_url()?>/Purch_req/deletePurch_req/<?php echo $key->id?> " onclick="return confirm('Apakah Yakin Untuk Menghapus?')"><font color="white">Hapus</font></a></button>
+                                </div>
+                                                
                                                 </td>
                                              
                                             </tr>
                                             <?php }?>
                                        </tbody>
                                     </table>
+                                  </div>
                                 </div>
+                              </div>
                             </div>
+                          </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+                      </div>
+                    
           <!-- main content area end -->
         <!-- footer area start-->
  
@@ -158,13 +156,13 @@
       /*
        * Initialse DataTables, with no sorting on the 'details' column
        */
-      var oTable = $('#dataTablesss').dataTable({
+        var oTable = $('#dataTablesss').dataTable({
         "aoColumnDefs": [{
-          "bSortable": false,
+          "bSortable": true,
           "aTargets": [0]
         }],
         "aaSorting": [
-          [1, 'asc']
+          [0, 'desc']
         ]
       });
 
