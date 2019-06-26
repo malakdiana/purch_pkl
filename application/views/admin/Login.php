@@ -32,7 +32,7 @@
                                 <table cellpadding="0" cellspacing="0" border="0" class="table table-striped" id="dataTablesss">
                                         <thead class="bg-light text-capitalize">
                                             <tr>
-                                                <th>
+                                           
                                                 <th>ID USER</th>
                                                 <th>ID SECTION</th>
                                                 <th>USERNAME</th>
@@ -40,14 +40,14 @@
                                                 <th>HAK AKSES</th>
                                            
                                                
-                                                <th >Edit</th>
-                                                <th >Hapus</th>
+                                                <th >Action</th>
+                                          
                                             </tr>
                                         </thead>
                                         <tbody>
                                         <?php   foreach ($login as $key) {?>
                                             <tr>
-                                                <td>
+                                        
                                                 <td><?php echo $key->id_user;?></td>
                                                 <td><?php echo $key->id_section;?></td>
                                                 <td><?php echo $key->username;?></td>
@@ -55,9 +55,18 @@
                                                 <td><?php echo $key->hak_akses;?></td>
                                     
                                                 <td>
-                                                <a href="javascript:void(0);" onclick="modalDetail('<?php echo $key->id_user?>','<?php echo $key->id_section?>','<?php echo $key->username ?>','<?php echo $key->password ?>','<?php echo $key->hak_akses ?>')"  data-toggle="modal" data-target="#myModalEdit"><i class="fa fa-edit"></i></a></td><td>
+                                                     <div class="btn-group mb-xl-3" role="group" aria-label="Basic example">
+                                  
+                                    <button type="button" class="btn btn-primary">     <a href="javascript:void(0);" onclick="modalDetail('<?php echo $key->id_user?>','<?php echo $key->id_section?>','<?php echo $key->username ?>','<?php echo $key->password ?>','<?php echo $key->hak_akses ?>')"  data-toggle="modal" data-target="#myModalEdit"><font color="white">Edit</font></a></button>
+                                    <button type="button" class="btn btn-danger">    <a href="<?php echo site_url()?>/Login/deleteLogin/<?php echo $key->id_user?> " onclick="return confirm('Apakah Yakin Untuk Menghapus?')"><font color="white">Hapus</font></a></button>
+                                  
+                                </div>
+
+
+
+                                              <i class="fa fa-edit"></i></a></td><td>
                                                 
-                                                <a href="<?php echo site_url()?>/Login/deleteLogin/<?php echo $key->id_user?> " onclick="return confirm('Apakah Yakin Untuk Menghapus?')"><i class="fa fa-trash-o"></i></a></td>
+                                               <i class="fa fa-trash-o"></i></a></td>
                                              
                                             </tr>
                                             <?php }?>
@@ -148,11 +157,11 @@
        */
       var oTable = $('#dataTablesss').dataTable({
         "aoColumnDefs": [{
-          "bSortable": false,
+          "bSortable": true,
           "aTargets": [0]
         }],
         "aaSorting": [
-          [1, 'asc']
+          [0, 'desc']
         ]
       });
 
