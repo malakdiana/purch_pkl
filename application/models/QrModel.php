@@ -85,6 +85,11 @@ class QrModel extends CI_Model {
 
     }
 
+    
+       
+     
+
+
  
 private $_batchImport;
  
