@@ -5,8 +5,8 @@
                         <div class="breadcrumbs-area clearfix" style="padding-top: 15px;padding-bottom: 15px">
                             <h4 class="page-title pull-left">Dashboard</h4>
                             <ul class="breadcrumbs pull-left">
-                                <li><a href="index.html">Read Only</a></li>
-                               
+                                <li><a href="index.html">READ ONLY</a></li>
+                               <li><a href="index.html">DATA</a></li>
                             </ul>
 
                     </div>
@@ -25,7 +25,7 @@
                                 <a class="btn btn-flat btn-primary mb-3" href="<?php echo site_url()?>/Purch_req/" role="button">Data Purchase Request</a><br>
                                 <a class="btn btn-flat btn-secondary mb-3" href="<?php echo site_url()?>/Belum" role="button">Data Purchase Order</a><br>
                                 <a class="btn btn-flat btn-secondary mb-3" href="<?php echo site_url()?>/Belum" role="button">Tracking Order</a><br>
-                                 <a class="btn btn-flat btn-secondary mb-3" href="<?php echo site_url()?>/Belum" role="button">Tracking Quotation</a></div>
+                                 <a class="btn btn-flat btn-primary mb-3" href="<?php echo site_url()?>/Qr" role="button">List all Quotation</a></div>
                             
                                
                                 </div>

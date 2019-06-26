@@ -21,9 +21,13 @@ public function index()
         if($this->session->userdata('logged_in')['hak_akses']==1){
              $this->load->view('Admin/header');
         $this->load->view('User/Qr',$data);
+
+    }else if($this->session->userdata('logged_in')['hak_akses']==2){
+             $this->load->view('User/header');
+        $this->load->view('User/Qr',$data);
 		
     }else{
-        $this->load->view('User/header');
+        $this->load->view('Read_only/header');
         $this->load->view('User/Qr',$data);
     }
    
