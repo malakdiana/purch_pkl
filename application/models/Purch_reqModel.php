@@ -43,7 +43,7 @@ class Purch_reqModel extends CI_Model {
         $this->db->update('purch_req', $data);
     }
     public function deletePurch_req($id){
-         $this->db->where('id_user', $id);
+         $this->db->where('id', $id);
         $this->db->delete('purch_req');
 
     }
