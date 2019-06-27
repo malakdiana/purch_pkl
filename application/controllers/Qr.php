@@ -20,8 +20,8 @@ public function index()
 		$data['Qr']=$this->QrModel->getQr();
         if($this->session->userdata('logged_in')['hak_akses']==1){
              $this->load->view('Admin/header');
-
         $this->load->view('admin/quotation',$data);
+        
     }else if($this->session->userdata('logged_in')['hak_akses']==2){
              $this->load->view('User/header');
         $this->load->view('User/Qr',$data);
