@@ -118,6 +118,14 @@ public function index()
             redirect("Purch_req/GetItem_barang/$id", 'refresh');
     }
 
+   
+
+    public function deletePurch_req($id){
+        $this->Purch_reqModel->deletePurch_req($id);
+                $this->session->set_flashdata('deletePurch_req','<div class="alert alert-success" role="alert">SUKSES DELETE DATA <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+            redirect('Purch_req', 'refresh');
+    }
+
 
 	
 }

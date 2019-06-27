@@ -74,7 +74,7 @@ public function ManajemenUser()
 		$this->load->library('form_validation');
 		$this->load->model('LoginModel');
 		$username = $this->input->post('username');
-		$password2=md5($this->input->post('password'));
+		$password2=sha1($this->input->post('password'));
 		$result = $this->LoginModel->login($username, $password2);
 
 		if($result){
