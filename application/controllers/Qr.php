@@ -71,6 +71,7 @@ public function index()
 
     public function tambahVendor($id){
         $data['id']=$id;
+        $data['vendor']=$this->QrModel->getListVendor($id);
         $this->load->view('Admin/header');
             $this->load->view('Admin/tambahVendor',$data);
 

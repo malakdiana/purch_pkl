@@ -22,6 +22,22 @@ class QrModel extends CI_Model {
             return $query->result();
         }
     }
+
+    public function getListVendor($id){
+        $this->db->select('*');
+            $this->db->from('detail_penawaran');
+            $this->db->where('id_penawaran',$id);
+
+      
+             $query = $this->db->get();
+             $results=array();
+            if($query->num_rows() > 0){
+            return $query->result();
+            }else{
+            return $results;
+            }
+
+    }
     public function updateQr(){
 
         $id_user = $this->input->post('id_user');
