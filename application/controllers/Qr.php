@@ -77,6 +77,22 @@ public function index()
 
     }
 
+    public function editVendor(){
+        $config['upload_path'] = './assets/file_qr/';
+            $config['allowed_types'] = 'pdf|jpg|png|jpeg|doc|docx';
+            $config['max_size']= 1000000000;
+            $config['max_width']= 10240;
+            $config['max_height']=7680;
+
+          $this->load->library('upload', $config);
+
+            if(!$this->upload->do_upload('detail')){
+                  $this->QrModel->editVendor();
+            }else{
+                $this->QrModel->editVendorDetail();
+            }
+    }
+
     public function tambahVen($id){
 
         $id=array();

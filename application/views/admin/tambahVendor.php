@@ -25,15 +25,15 @@
         
 
                                     <div class="w3-bar w3-indigo">
-  <button class="w3-bar-item w3-button" onclick="openCity('London')">Tambah Vendor</button>
-  <button class="w3-bar-item w3-button" onclick="openCity('Paris')">List Vendor</button>
+  <button class="w3-bar-item w3-button actives" onclick="openCity('London')"><i class="fa fa-plus"></i> Tambah Vendor</button>
+  <button class="w3-bar-item w3-button" onclick="openCity('Paris')"><i class="fa fa-book"></i> List Vendor</button>
 </div>
   <div class="card">
                                 <div class="card-body">
 <div id="London" class="w3-container w3-display-container city">
- <button type="button" class="btn btn-success" id="btn-tambah-form">Tambah Data Form</button> <button type="button" id="btn-reset-form" class="btn btn-primary">Reset Form</button><br><br>
+ <br>
                    <?php echo form_open_multipart('Qr/tambahVen/'.$id) ?>
-                        <h3 align="center">Form Tambah Vendor</h3><br>
+                        <h3 align="center">Form Tambah Vendor</h3><br><button type="button" class="btn btn-success" id="btn-tambah-form">Tambah Data Form</button> <button type="button" id="btn-reset-form" class="btn btn-primary">Reset Form</button>
                                         <div style="margin-bottom: 10px"> 
                                                    <hr>Data Vendor 1
                                                </div>
@@ -82,8 +82,8 @@
                                                 <td><?php echo $key->tanggal;?></td>
                                                 <td><?php echo $key->nama_vendor;?></td>
                                                 <td><?php echo $key->harga;?></td>
-                                                <td><?php echo $key->detail;?></td>
-                                                <td><button>edit</button></td></tr>
+                                                <td><a href="<?php echo base_url()?>assets/file_qr/<?php echo $key->detail;?>" target="_blank"><?php echo $key->detail;?></a></td>
+                                                <td><a class="btn btn-primary" href="javascript:void(0);" onclick="modalEdit('<?php echo $key->id_detail?>','<?php echo $key->tanggal?>','<?php echo $key->nama_vendor ?>','<?php echo $key->harga ?>', '<?php echo $key->detail ?>')" data-toggle="modal" data-target="#myModalEdit"><font color="white"><i class="fa fa-pencil"></i> Edit</font></a></td></tr>
                                                 <?php $no++;} ?>
                                        
                                         </tbody>
@@ -98,6 +98,48 @@
 </div>
 </div>
 </div>
+
+
+ <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModalEdit" class="modal fade-in" >
+        <div class="modal-dialog">
+            <div class="modal-content" style="width: 800px; margin-left: -100px;padding: 20px" >
+                <div class="modal-header">
+                    <h4 class="modal-title">Edit Vendor</h4>
+                     <button align="right" type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                  <div class="modal-body">
+              <?php echo form_open_multipart('Qr/editVendor'); ?>
+                <?php echo validation_errors(); ?>
+                     <div class="form-group">
+                        <label for="">Tanggal</label>
+                          <input type="text" class="form-control" name="id_detail" id="id_detail" value="" hidden="" readonly="" >
+                        <input type="text" class="form-control" name="tanggal" id="tanggal" value="<?php echo date('Y-m-d');?>" readonly="" >
+                    </div>
+                    <div class="form-group">
+                        <label for="">Nama Vendor</label>
+                        <input type="text" class="form-control" name="nama_vendor" id="nama_vendor" value="" required="" >
+                    </div>
+                    <div class="form-group">
+                        <label for="">Harga</label>
+                        <input required="" type="text" class="form-control" name="harga" id="harga" value="" >
+                    </div>
+                    <div class="form-group">
+                        <label for="">Attachment</label>
+                        <input type="file" class="form-control" name="detail" id="detail" value="" >
+                    </div>
+                    <div style="border:1px solid #000;width: 250px; margin: 10px;padding: 5px" id="tampildata">
+                            
+                    </div>
+                     <div align="right" style="margin-bottom: 20px; margin-right: 30px">
+          <button class="btn-info" type="submit">Update</button>
+            <a href=""><button class="btn-warning" data-dismiss="modal">Batal</button></a>
+        </div>
+        <?php echo form_close();?>
+    </div>
+</div>
+</div>
+</div>
+
 
 
  <?php $this->load->view('admin/footer'); ?>
@@ -130,6 +172,22 @@ function openCity(cityName) {
   for (i = 0; i < x.length; i++) {
     x[i].style.display = "none";  
   }
-  document.getElementById(cityName).style.display = "block";  
+  document.getElementById(cityName).style.display = "block";
+   $('button').click(function(){
+            $('button').removeClass("actives");
+            $(this).addClass("actives"); 
+           }); 
 }
 </script>
+ <script type="text/javascript">
+    function modalEdit(id_detail,tanggal,nama_vendor,harga,detail){
+       
+        document.getElementById('nama_vendor').value = nama_vendor;
+        document.getElementById('harga').value = harga;
+          document.getElementById('id_detail').value = id_detail;
+          $("#tampildata").html('<p><a href="<?php echo base_url()?>assets/file_qr/'+detail+'" target="_blank">'+detail+'</a></p>');
+                      
+        
+      
+    }
+  </script>

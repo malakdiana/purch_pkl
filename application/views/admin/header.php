@@ -21,7 +21,7 @@
     <!-- amchart css -->
     
     <!-- others css -->
-      <link rel="stylesheet" href="<?php echo base_url()?>assets/css/nav.css">
+     
     <link rel="stylesheet" href="<?php echo base_url()?>assets/css/typography.css">
     <link rel="stylesheet" href="<?php echo base_url()?>assets/css/default-css.css">
     <link rel="stylesheet" href="<?php echo base_url()?>assets/css/styles.css">
