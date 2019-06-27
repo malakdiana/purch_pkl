@@ -57,7 +57,7 @@
                                                      <a class="btn btn-flat btn-info mb-4" href="<?php echo site_url()?>/Departemen/" role="button" style="width:150px">Departement</a><br>
                                                       <a class="btn btn-flat btn-info mb-4" href="<?php echo site_url()?>/Section/" role="button" style="width:150px">Section</a><br>
                                                        <a class="btn btn-flat btn-info mb-4" href="<?php echo site_url()?>/Approval/" role="button" style="width:150px">Approval</a><br>
-                                                       <a class="btn btn-flat btn-warning mb-4" href="<?php echo site_url()?>/Login/ManajemenUser" role="button" style="width:150px">Manajemen User</a><br>
+                                                       <a class="btn btn-flat btn-info mb-4" href="<?php echo site_url()?>/Login/ManajemenUser" role="button" style="width:150px">Manajemen User</a><br>
                                                 </td>
                                             
 
