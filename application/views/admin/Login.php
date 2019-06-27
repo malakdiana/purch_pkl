@@ -58,7 +58,7 @@
                                                      <div class="btn-group mb-xl-3" role="group" aria-label="Basic example">
                                   
                                     <button type="button" class="btn btn-primary">     <a href="javascript:void(0);" onclick="modalDetail('<?php echo $key->id_user?>','<?php echo $key->id_section?>','<?php echo $key->username ?>','<?php echo $key->password ?>','<?php echo $key->hak_akses ?>')"  data-toggle="modal" data-target="#myModalEdit"><font color="white"><i class="fa fa-edit"></i> Edit</font></a></button>
-                                    <button type="button" class="btn btn-danger">    <a href="<?php echo site_url()?>/Login/deleteLogin/<?php echo $key->id_user?> " onclick="return confirm('Apakah Yakin Untuk Menghapus?')"><i class="fa fa-trash-o"></i> Hapus</font></a></button>
+                                    <button type="button" class="btn btn-danger">    <a href="<?php echo site_url()?>/Login/deleteLogin/<?php echo $key->id_user?> " onclick="return confirm('Apakah Yakin Untuk Menghapus?')"><font color="white"><i class="fa fa-trash-o"></i> Hapus</font></a></button>
                                   
                                 </div>
  
