@@ -59,14 +59,28 @@
                                                 <td><?php echo $key->section;?></td>
                                                 <td><?php echo $key->pic;?></td>
                                                
-                                                <td><?php echo $key->status;?></td>
+                                                <td><?php 
+                                                if($key->status == 0){?>
+                                                    <input type="text" class="form-control" align="center" value="OPEN" name="status" style="margin-bottom: 25px;width: 100px; background-color: #DC143C; color:#FFF" readonly="">
+                                                     <?php }
+                                                     else if ($key->status == 1){ ?>  
+                                                         <input type="text" class="form-control" align="center" value="CLOSED" name="status" style="margin-bottom: 25px;width: 100px; background-color: #FFA500; color:#FFF" readonly="">
+                                                        <?php }
+                                                     else { ?>  
+                                                         <input type="text" class="form-control" align="center" value="CANCEL" name="status" style="margin-bottom: 25px;width: 100px; background-color: #BC8F8F; color:#FFF" readonly="">
+                                                        <?php }
 
+                                                        ?>
+
+
+
+                                                </td>
 
 
                                                 <td>
                                                 <div class="btn-group mb-xl-3" role="group" aria-label="Basic example">
-                                    <button type="button" class="btn btn-info">  <a href="javascript:void(0);" onclick="modalDetail('<?php echo $key->id_penawaran?>','<?php echo $key->tanggal ?>','<?php echo $key->item ?>','<?php echo $key->kode_qr ?>','<?php echo $key->tanggal_butuh ?>','<?php echo $key->section ?>','<?php echo $key->pic ?>','<?php echo $key->bahan ?>','<?php echo $key->detail ?>','<?php echo $key->status ?>','<?php echo $key->gambar ?>')"  data-toggle="modal" data-target="#myModalDetail"><font color="white">Detil</font></a></button>
-                                    <button type="button" class="btn btn-primary"> <a href=""><font color="white">Vendor</font></a></button>
+                                    <button type="button" class="btn btn-info" style="width:80px; height:45px;>  <a href="javascript:void(0);" onclick="modalDetail('<?php echo $key->id_penawaran?>','<?php echo $key->tanggal ?>','<?php echo $key->item ?>','<?php echo $key->kode_qr ?>','<?php echo $key->tanggal_butuh ?>','<?php echo $key->section ?>','<?php echo $key->pic ?>','<?php echo $key->bahan ?>','<?php echo $key->detail ?>','<?php echo $key->status ?>','<?php echo $key->gambar ?>')"  data-toggle="modal" data-target="#myModalDetail"<font color="white"><i class="fa fa-th-list"></i> Detail</font></a></button>
+                                    <button type="button" class="btn btn-primary" style="width:80px; height:45px;> <a href=""><font color="white"><i class="fa fa-book"></i> Vendor</font></a></button>
                                   
                                 </div>
                                                </td>
