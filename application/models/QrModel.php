@@ -38,22 +38,28 @@ class QrModel extends CI_Model {
             }
 
     }
-    public function updateQr(){
+    public function editVendor(){
 
-        $id_user = $this->input->post('id_user');
-        
+      $data = array(
+                    'tanggal' => $this->input->post('tanggal'),
+                    'nama_vendor' => $this->input->post('nama_vendor'),
+                    'harga' => $this->input->post('harga'),
+            );
 
-        $data = array(
-        'id_section' => $this->input->post('id_section'),
-        'username' => $this->input->post('username'),
-        'password' => $this->input->post('password'),
-        'hak_akses' => $this->input->post('hak_akses'),
-      
-        );
+        $this->db->where('id_detail', $this->input->post('id_detil'));
+        $this->db->update('detail_penawaran', $data);
+    }
+    public function editVendorDetail(){
 
-        
-        $this->db->where('id_user', $id_user);
-        $this->db->update('Qr', $data);
+      $data = array(
+                    'tanggal' => $this->input->post('tanggal'),
+                    'nama_vendor' => $this->input->post('nama_vendor'),
+                    'harga' => $this->input->post('harga'),
+                    'detail'=>$this->upload->data('file_name'),
+            );
+
+        $this->db->where('id_detail', $this->input->post('id_detil'));
+        $this->db->update('detail_penawaran', $data);
     }
     public function deleteQr($id){
          $this->db->where('id_user', $id);
