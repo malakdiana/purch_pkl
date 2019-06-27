@@ -87,4 +87,19 @@ private $_batchImport;
 
 
 
+    public function edit_profile(){
+        $id_user = $this->input->post('id_user');
+        $data = array(
+        'username' => $this->input->post('username'),
+        'password' => $this->input->post('password'),
+      
+        );
+
+        
+        $this->db->where('id_user', $id_user);
+        $this->db->update('login', $data);
+    }
+
+
+
 }

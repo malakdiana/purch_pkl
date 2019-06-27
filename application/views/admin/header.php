@@ -3,10 +3,13 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>PT SAI - Local Purchase</title>
+    <title>Admin-Local Purch</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/png" href="<?php echo base_url()?>assets/images/icon/favicon.ico">
     <link rel="stylesheet" href="<?php echo base_url()?>assets/css/bootstrap.min.css">
+
+   <link href="<?php echo base_url()?>/assets/images/icon/logosai.png" rel="icon">
+  <link href="<?php echo base_url()?>/assets/images/icon/logosai.png" rel="apple-touch-icon">
    
   
     <link rel="stylesheet" href="<?php echo base_url()?>assets/css/font-awesome.min.css">
@@ -123,9 +126,9 @@
                             <img class="avatar user-thumb" src="<?php echo base_url()?>assets/images/author/avatar.png" alt="avatar">
                             <h4 class="user-name dropdown-toggle" data-toggle="dropdown"><?php echo $this->session->userdata('logged_in')['username'] ?> <i class="fa fa-angle-down"></i></h4>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="#">Message</a>
-                                <a class="dropdown-item" href="#">Settings</a>
-                                <a href="<?php echo site_url()?>/Login/Logout">Log Out</a>
+                                <a class="dropdown-item" href="#"><i class="fa fa-envelope"></i> Message</a>
+                                <a class="dropdown-item" href="<?php echo site_url()?>/Dashboard/Myprofil"><i class="fa fa-user"></i> My Profile</a>
+                                <a href="<?php echo site_url()?>/Login/Logout"><i class="fa fa-sign-out"></i>Log Out</a>
                             </div>
                         </div>
                     </div>
