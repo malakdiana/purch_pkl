@@ -3,10 +3,10 @@
                 <div class="row align-items-center">
                     <div class="col-sm-6">
                         <div class="breadcrumbs-area clearfix" style="padding-top: 15px;padding-bottom: 15px">
-                            <h4 class="page-title pull-left">Master Data</h4>
+                            <h4 class="page-title pull-left">Data</h4>
                             <ul class="breadcrumbs pull-left">
-                                <li><a href="index.html">Purch_req</a></li>
-                                <li><span>Data Purch_req</span></li>
+                                <li><a href="index.html">Purchase Request</a></li>
+                                <li><span>List Purchase Request</span></li>
                             </ul>
 
                     </div>
@@ -26,43 +26,44 @@
                        
                          <?=$this->session->flashdata('deletePurch_req')?>
                          <?=$this->session->flashdata('tambahItem')?>
-                             
-                                <table cellpadding="0" cellspacing="0" border="0" class="table table-responsive table-striped" id="dataTablesss">
-                                        <thead class="bg-light text-capitalize">
+                             <div class="single-table">
+                                    <div class="table-responsive">
+                                        <table class="table text-center" id="dataTablesss">
+                                   <thead class="text-uppercase">
                                             <tr>
-                                            <th></th>
+                                       
                                                 <th>NO</th>
                                                 <th>TANGGAL</th>
                                                 <th>JAM</th>
-                                                <th>NIK</th>
+                                         
                                                 <th>PIC REQUEST</th>
                                                 <th>SECTION</th>
                                                 <th>NO PR</th>
                                                 <th>VERIFIED FA</th>
                                                 <th>STATUS</th>
-                                                <th>Detail</th>
+                                                <th>Action</th>
                                                
                                               
                                             </tr>
                                         </thead>
                                         <tbody>
-                                        <?php   foreach ($Read_only as $key) {?>
+                                        <?php   foreach ($Purch_req as $key) {?>
                                             <tr>
-                                            <td></td>
+                                       
                                                 <td><?php echo $key->id;?></td>
                                                 <td><?php echo $key->tgl;?></td>
                                                 <td><?php echo $key->jam;?></td>
-                                                <td><?php echo $key->nik;?></td>
+                                              
                                                 <td><?php echo $key->pic_request;?></td>
                                                 <td><?php echo $key->section;?></td>
                                                 <td><?php echo $key->pr_no;?></td>
 
                                                 <td><?php 
                                                 if($key->status_fa == 1){?>
-                                                     <img src="<?php echo base_url()?>assets/images/icon/success.png"> 
+                                                     <img style="width: 40px;height: 50px" src="<?php echo base_url()?>assets/images/icon/success.png">
                                                      <?php }
                                                      else { ?>  
-                                                        <img src="<?php echo base_url()?>assets/images/icon/not.png">
+                                                        <img style="width: 40px;height: 50px" src="<?php echo base_url()?>assets/images/icon/not.png">
                                                         <?php }?>
 
                                                 </td>
@@ -72,22 +73,28 @@
 
 
 
-                                                <td> <a href="<?php echo site_url()?>/Read_only/GetItem_barang/<?php echo $key->id?>"><i class="fw-icons fa fa-clone"></i></a></td>
+                                                <td>
+                                                  <div class="btn-group mb-xl-3" role="group" aria-label="Basic example">
+                                    <button type="button" class="btn btn-info" style="width:80px; height:50px;"><a href="<?php echo site_url()?>/Purch_req/GetItem_barang/<?php echo $key->id?>"><font color="white"><i class="fa fa-th-list"></i> Detail</font></a></button>
 
-                                             
-                                               
+                                   
+
+                                    
+                                                
+                                                </td>
                                              
                                             </tr>
                                             <?php }?>
                                        </tbody>
                                     </table>
+                                  </div>
                                 </div>
+                              </div>
                             </div>
+                          </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+                      </div>
+                    
           <!-- main content area end -->
         <!-- footer area start-->
  
@@ -132,7 +139,14 @@
     <script type="text/javascript" src="<?php echo base_url()?>assets/dataTables/js/jquery.dataTables.js"></script>
  
     <!-- others plugins -->
-
+<script type="text/javascript">
+    function modalDetail(id_user,id_section,username,password,hak_akses){
+        document.getElementById('item_barang').value = item_barang;
+        document.getElementById('qty').value = qty;
+       
+       
+      
+    }
   </script>
  
 
@@ -143,13 +157,13 @@
       /*
        * Initialse DataTables, with no sorting on the 'details' column
        */
-      var oTable = $('#dataTablesss').dataTable({
+        var oTable = $('#dataTablesss').dataTable({
         "aoColumnDefs": [{
-          "bSortable": false,
+          "bSortable": true,
           "aTargets": [0]
         }],
         "aaSorting": [
-          [1, 'asc']
+          [0, 'desc']
         ]
       });
 
