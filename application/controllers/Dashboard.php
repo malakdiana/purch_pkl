@@ -6,6 +6,7 @@ class Dashboard extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
+		 $this->load->model('LoginModel');
 		 $this->load->helper('url','form','download');
 		  $this->load->library('excel','upload');
 
@@ -29,15 +30,22 @@ public function index()
 
 	
 
-	public function setting(){
-		$data['user']= $this->AddModel->getUser();
+	public function Myprofil(){
+		// $data['profil']=$this->LoginModel->edit_profile();
 		 if($this->session->userdata('logged_in')['hak_akses']==1){
 		$this->load->view('admin/header');
-		$this->load->view('admin/setting',$data);
+		$this->load->view('admin/Myprofil');
 		 }else{
 		 	$this->load->view('User/header');
-        $this->load->view('User/setting');
+        $this->load->view('User/Myprofil');
+		}
+
 	}
-	
-}
+
+	public function edit_profile(){
+		$this->LoginModel->edit_profile();
+				$this->session->set_flashdata('edit_profile','<div class="alert alert-success" role="alert">SUKSES UPDATE DATA <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+			redirect('Dashboard', 'refresh');
+	}
+
 }
