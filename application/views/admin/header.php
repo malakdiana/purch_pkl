@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>PT SAI - Local Purchase</title>
+    <title>Admin-Local Purch</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/png" href="<?php echo base_url()?>assets/images/icon/favicon.ico">
     <link rel="stylesheet" href="<?php echo base_url()?>assets/css/bootstrap.min.css">
