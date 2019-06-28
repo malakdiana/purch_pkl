@@ -51,20 +51,7 @@ public function ManajemenUser()
 			}else if($session_data['hak_akses']=='2'){
 				redirect('User','refresh');
 			}
-			else if($session_data['hak_akses']=='3'){
-				$data['idPuskesmas']=$session_data['idPuskesmas'];
 			
-				redirect('User','refresh');
-			}
-			else if($session_data['hak_akses']=='4'){
-				$data['idPuskesmas']=$session_data['idPuskesmas'];
-			
-				redirect('User','refresh');
-			}else if($session_data['hak_akses']=='5'){
-				$data['idPuskesmas']=$session_data['idPuskesmas'];
-			
-				redirect('User','refresh');
-			}
 		}
 	}
 
