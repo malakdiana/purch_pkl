@@ -77,6 +77,14 @@ public function index()
 
     }
 
+     public function listvendor($id){
+        $data['id']=$id;
+        $data['vendor']=$this->QrModel->getListVendor($id);
+        $this->load->view('Admin/header');
+            $this->load->view('User/list_Vendor',$data);
+
+    }
+
     public function editVendor(){
           $files=$_FILES['fupload'];
         $config['upload_path'] = './assets/file_qr/';
