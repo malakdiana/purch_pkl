@@ -39,9 +39,9 @@
                                                 <th>PIC REQUEST</th>
                                                 <th>SECTION</th>
                                                 <th>NO PR</th>
-                                                <th>VERIFIED FA</th>
+                                                <th>PR MASUK</th>
                                                 <th>STATUS</th>
-                                                <th>Action</th>
+                                                <th>ACTION</th>
                                                
                                               
                                             </tr>
