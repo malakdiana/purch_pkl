@@ -38,7 +38,7 @@
                                                 <td><a class="btn btn-flat btn-primary mb-4" href="<?php echo site_url()?>/Purch_req/" role="button" style="width:200px">Data Purchase Request</a><br>
                                                 <a class="btn btn-flat btn-primary mb-4" href="<?php echo site_url()?>/Qr/" role="button" style="width:200px">List All Quotation</a><br>
                                                 <a class="btn btn-flat btn-secondary mb-4" href="<?php echo site_url()?>/belum/" role="button" style="width:200px">Tracking Order</a><br>
-                                                <a class="btn btn-flat btn-secondary mb-4" href="<?php echo site_url()?>/Qr/tracking" role="button" style="width:200px">Tracking Quotation</a><br>
+                                                <a class="btn btn-flat btn-primary mb-4" href="<?php echo site_url()?>/Qr/tracking" role="button" style="width:200px">Tracking Quotation</a><br>
                                                 
                                                 </td>
 
