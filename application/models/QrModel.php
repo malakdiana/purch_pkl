@@ -17,6 +17,21 @@ class QrModel extends CI_Model {
 
             $this->db->select('*');
             $this->db->from('Penawaran');
+
+            $query = $this->db->get();
+            if($query->num_rows() > 0){
+            return $query->result();
+        }
+    }
+
+     public function getQr_tracking()
+    {
+           
+            $section = $this->session->userdata('logged_in')['username'];
+            $this->db->select('*');
+            $this->db->from('Penawaran');
+            $this->db->where('section', $section);
+         
             $query = $this->db->get();
             if($query->num_rows() > 0){
             return $query->result();

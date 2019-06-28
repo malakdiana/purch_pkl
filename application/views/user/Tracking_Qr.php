@@ -81,6 +81,8 @@
                                                 <div class="btn-group mb-xl-3" role="group" aria-label="Basic example">
                                     <button type="button" class="btn btn-info" style="width:80px; height:45px;>  <a href="javascript:void(0);" onclick="modalDetail('<?php echo $key->id_penawaran?>','<?php echo $key->tanggal ?>','<?php echo $key->item ?>','<?php echo $key->kode_qr ?>','<?php echo $key->tanggal_butuh ?>','<?php echo $key->section ?>','<?php echo $key->pic ?>','<?php echo $key->bahan ?>','<?php echo $key->detail ?>','<?php echo $key->status ?>','<?php echo $key->gambar ?>')"  data-toggle="modal" data-target="#myModalDetail"<font color="white"><i class="fa fa-th-list"></i> Detail</font></a></button>
                                     <button type="button" class="btn btn-primary" style="width:80px; height:45px;> <a href=""><font color="white"><i class="fa fa-book"></i> Vendor</font></a></button>
+                                      <button type="button" class="btn btn-success" style="width:90px; height:45px;"> <a href="javascript:void(0);" onclick="modalEdit('<?php echo $key->id_penawaran?>','<?php echo $key->tanggal ?>','<?php echo $key->item ?>','<?php echo $key->kode_qr ?>','<?php echo $key->tanggal_butuh ?>','<?php echo $key->section ?>','<?php echo $key->pic ?>','<?php echo $key->bahan ?>','<?php echo $key->detail ?>','<?php echo $key->status ?>','<?php echo $key->gambar ?>')"  data-toggle="modal" data-target="#myModalDetail">
+                                      <font color="white"><i class="fa fa-pencil"></i> Edit QR </font></a></button>
                                     
                                   
                                 </div>
@@ -103,7 +105,7 @@
         <!-- footer area start-->
  
 
-id_penawaran,tanggal, item, kode_qr,tanggal_butuh,section,pic,bahan,detail,status,gamba
+
        <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModalDetail" class="modal fade-in" >
         <div class="modal-dialog">
             <div class="modal-content" style="width: 800px; margin-left: -100px;padding: 20px" >
@@ -155,7 +157,7 @@ id_penawaran,tanggal, item, kode_qr,tanggal_butuh,section,pic,bahan,detail,statu
                     </tr>
                     <tr>
                         <td>Status</td>
-                        <td> <input type="text" class="form-control" name="status" id="status" value="" readonly=""></td>
+                        <td> <input type="text" class="form-control" name="status" id="status" readonly="" value=""></td>
                     </tr>
                     <tr>
                         <td>Gambar</td>
