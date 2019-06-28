@@ -78,19 +78,37 @@ public function index()
     }
 
     public function editVendor(){
+          $files=$_FILES['fupload'];
         $config['upload_path'] = './assets/file_qr/';
+                   $config['upload_path'] = './assets/file_qr/';
             $config['allowed_types'] = 'pdf|jpg|png|jpeg|doc|docx';
             $config['max_size']= 1000000000;
             $config['max_width']= 10240;
             $config['max_height']=7680;
+        
+             $_FILES['userfile']['name']= $files['name'];
+             $_FILES['userfile']['type']= $files['type'];
+       
+              $_FILES['userfile']['tmp_name']= $files['tmp_name'];
+               $_FILES['userfile']['error']= $files['error'];
+                $_FILES['userfile']['size']= $files['size'];
+                $this->load->library('upload', $config);
+$this->upload->initialize($config);
 
-          $this->load->library('upload', $config);
+          if($this->upload->do_upload('userfile')){
+  $this->QrModel->editVendorDetail();
+               redirect('Qr/', 'refresh');
+                 
 
-            if(!$this->upload->do_upload('detail')){
-                  $this->QrModel->editVendor();
             }else{
-                $this->QrModel->editVendorDetail();
+              echo ( $this->upload->display_errors());
             }
+    }
+
+    public function editQr($id){
+        $this->load->view('Admin/header');
+        $this->load->view('Admin/editQuotation');
+        $this->load->view('Admin/footer');
     }
 
     public function tambahVen($id){
