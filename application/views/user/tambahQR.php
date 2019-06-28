@@ -3,9 +3,9 @@
                 <div class="row align-items-center">
                     <div class="col-sm-6">
                         <div class="breadcrumbs-area clearfix" style="padding-top: 15px;padding-bottom: 15px">
-                            <h4 class="page-title pull-left">Form Quotation Request</h4>
+                            <h4 class="page-title pull-left">Data</h4>
                             <ul class="breadcrumbs pull-left">
-                                <li><a href="<?php echo site_url()?>/Purch_req">Quotation Request</a></li>
+                                <li><a href="<?php echo site_url()?>/Qr">Quotation Request</a></li>
                                 <li><span>Insert Quotation Request</span></li>
                             </ul>
 
@@ -75,7 +75,7 @@
                                             <div class="form-group">
                                                      <label class="control-label " for="gambar">ATTACHMENT:</label>
                                                      <i class="fa fa-paperclip"></i>
-                                                <input type="file" name="fupload" class="form-control"
+                                                <input type="file" name="fupload" class="form-control">
                                             </div>
 
                                         

@@ -108,7 +108,7 @@
                      <button align="right" type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                   <div class="modal-body">
-              <?php echo form_open_multipart('Qr/editVendor'); ?>
+                 <?php echo form_open_multipart('Qr/editVendor'); ?>
                 <?php echo validation_errors(); ?>
                      <div class="form-group">
                         <label for="">Tanggal</label>
@@ -125,16 +125,17 @@
                     </div>
                     <div class="form-group">
                         <label for="">Attachment</label>
-                        <input type="file" class="form-control" name="detail" id="detail" value="" >
+                         <input type="file" name="fupload" class="form-control">
                     </div>
                     <div style="border:1px solid #000;width: 250px; margin: 10px;padding: 5px" id="tampildata">
                             
                     </div>
                      <div align="right" style="margin-bottom: 20px; margin-right: 30px">
           <button class="btn-info" type="submit">Update</button>
-            <a href=""><button class="btn-warning" data-dismiss="modal">Batal</button></a>
+            
         </div>
         <?php echo form_close();?>
+
     </div>
 </div>
 </div>

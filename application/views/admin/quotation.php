@@ -3,9 +3,9 @@
                 <div class="row align-items-center">
                     <div class="col-sm-6">
                         <div class="breadcrumbs-area clearfix" style="padding-top: 15px;padding-bottom: 15px">
-                            <h4 class="page-title pull-left">Master Data</h4>
+                            <h4 class="page-title pull-left">Data</h4>
                             <ul class="breadcrumbs pull-left">
-                                <li><a href="index.html">Qr</a></li>
+                                <li><a href="index.html">Quotation Request</a></li>
                                 <li><span>Data Quotation Request</span></li>
                             </ul>
 
@@ -83,9 +83,13 @@
 
                                                 <td>
                                                 <div class="btn-group mb-xl-3" role="group" aria-label="Basic example">
-                                    <button type="button" class="btn btn-info" style="width:80px; height:45px;">  <a href="javascript:void(0);" onclick="modalDetail('<?php echo $key->id_penawaran?>','<?php echo $key->tanggal ?>','<?php echo $key->item ?>','<?php echo $key->kode_qr ?>','<?php echo $key->tanggal_butuh ?>','<?php echo $key->section ?>','<?php echo $key->pic ?>','<?php echo $key->bahan ?>','<?php echo $key->detail ?>','<?php echo $key->status ?>','<?php echo $key->gambar ?>')"  data-toggle="modal" data-target="#myModalDetail"><font color="white"><i class="fa fa-th-list"></i> Detail</font></a></button>
+                                    <button type="button" class="btn btn-info" style="width:80px; height:45px;">  
+<a href="#" 
+onclick="modalDetail('<?php echo $key->id_penawaran?>','<?php echo $key->tanggal ?>','<?php echo $key->item ?>',
+'<?php echo $key->kode_qr ?>','<?php echo $key->tanggal_butuh ?>','<?php echo $key->section ?>','<?php echo $key->pic ?>',
+'<?php echo $key->bahan ?>','<?php echo $key->detail ?>','<?php echo $key->status ?>','<?php echo $key->gambar ?>')"  data-toggle="modal" data-target="#myModalDetail"><font color="white"><i class="fa fa-th-list"></i> Detail</font></a></button>
                                     <button type="button" class="btn btn-primary" style="width:85px; height:45px;"> <a href="<?php echo site_url()?>/Qr/tambahVendor/<?php echo $key->id_penawaran?>"><font color="white"><i class="fa fa-book"></i> Vendor </font></a></button>
-                                    <button type="button" class="btn btn-success" style="width:90px; height:45px;"> <a href="javascript:void(0);" onclick="modalEdit('<?php echo $key->id_penawaran?>','<?php echo $key->tanggal ?>','<?php echo $key->item ?>','<?php echo $key->kode_qr ?>','<?php echo $key->tanggal_butuh ?>','<?php echo $key->section ?>','<?php echo $key->pic ?>','<?php echo $key->bahan ?>','<?php echo $key->detail ?>','<?php echo $key->status ?>','<?php echo $key->gambar ?>')"  data-toggle="modal" data-target="#myModalDetail">
+                                    <button type="button" class="btn btn-success" style="width:90px; height:45px;"> <a href="<?php echo site_url()?>/Qr/editQr/<?php echo $key->id_penawaran?>">
                                       <font color="white"><i class="fa fa-pencil"></i> Edit QR </font></a></button>
                                   
                                 </div>
@@ -153,9 +157,8 @@
                     </tr>
                     <tr>
                         <td>Detail</td>
-                        <td><textarea readonly="" class="form-control" rows="4" id="detail" name="detail">
-                            
-                        </textarea>
+                        <td><input class="form-control" rows="4" id="detail" name="detail">
+                      
                          </td>
                     </tr>
                     <tr>
@@ -163,8 +166,8 @@
                         <td> <input type="text" class="form-control" name="status" id="status" value="" readonly=""></td>
                     </tr>
                     <tr>
-                        <td>Gambar</td>
-                        <td>  <input type="text" class="form-control" name="gambar" id="gambar" value="" readonly=""></td>
+                        <td>Attechment</td>
+                        <td>  <a href="" ><p class="gambar"> </p></a></td>
                     </tr>
                    
                      
@@ -190,6 +193,31 @@
 <script type="text/javascript">
    
     function modalDetail(id_penawaran,tanggal, item, kode_qr,tanggal_butuh,section,pic,bahan,detail,status,gambar ){
+      if(id_penawaran === null){
+        id_penawaran="";
+      }
+      if(tanggal === null){
+        tanggal="";
+      }if(item === null){
+        item="";
+      }if(kode_qr=== null){
+        kode_qr="";
+      }
+      if(tanggal_butuh === null){
+        tanggal_butuh="";
+      }if(section=== null){
+        section="";
+      }if(pic=== null){
+        pic="";
+      }if(bahan=== null){
+        bahan="";
+      }if(detail=== null){
+        detail="-";
+      }if(status== null){
+        status="-";
+      }if(gambar === null){
+        gambar="-";
+      }
         document.getElementById('id_penawaran').value = id_penawaran;
         document.getElementById('tanggal').value = tanggal;
           document.getElementById('item').value = item;
@@ -200,8 +228,7 @@
           document.getElementById('bahan').value = bahan;
           document.getElementById('detail').value = detail;
         document.getElementById('status').value = status;
-          document.getElementById('gambar').value = gambar;
-       
+          
        
       
     }
