@@ -147,7 +147,7 @@ public function index()
 
         if($this->session->userdata('logged_in')['hak_akses']==2){
         $this->load->view('User/header');
-        $this->load->view('User/Qr',$data);
+        $this->load->view('User/Tracking_Qr',$data);
         }
     }
 

@@ -67,7 +67,7 @@
                                     <li><a href="<?php echo site_url()?>/Purch_req/">Data Purchase Request</a></li>
                                     <li><a href="<?php echo site_url()?>/Qr/">List All Quotation</a></li>
                                     <li><a href="index3-horizontalmenu.html">Tracking Order</a></li>
-                                    <li><a href="<?php echo site_url()?>/Qr/tracking">Tracking Quotation</a></li>
+                                    <li><a href="<?php echo site_url()?>/Qr/tracking">Tracking My Quotation</a></li>
                                 </ul>
                             </li>
                            
