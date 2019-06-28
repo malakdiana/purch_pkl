@@ -29,7 +29,7 @@ public function index()
 		
     }else{
         $this->load->view('Read_only/header');
-        $this->load->view('User/Qr',$data);
+        $this->load->view('read_only/Qr',$data);
     }
    
 	}
@@ -142,8 +142,16 @@ public function index()
 
     }
 
+    public function tracking()
+    {  $data['Qr']=$this->QrModel->getQr_tracking();
+
+        if($this->session->userdata('logged_in')['hak_akses']==2){
+        $this->load->view('User/header');
+        $this->load->view('User/Qr',$data);
+        }
+    }
+
 
      
-
 	
 }
