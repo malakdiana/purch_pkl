@@ -143,7 +143,7 @@ private $_batchImport;
         $this->db->insert_batch('purch_req', $data);
     }
 
-<<<<<<< HEAD
+
     public function getBarang($id){
         $this->db->select('no as id,nama_barang as text');
          $this->db->where('no',$id);
@@ -156,8 +156,6 @@ private $_batchImport;
             return $results;
             }
     }
-
-=======
        public function Verify($id){
          $data = array(
         'status_fa' => 1,
@@ -166,7 +164,7 @@ private $_batchImport;
         $this->db->where('id',$id);
          $this->db->update('purch_req', $data);
     }
->>>>>>> c62cf74e31faa12752da0288c26596fcb2e99c26
+
 
 
 }

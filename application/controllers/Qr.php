@@ -120,6 +120,13 @@ $this->upload->initialize($config);
         $this->load->view('Admin/footer');
     }
 
+    public function detailQuotation($id){
+       $data['list'] = $this->QrModel->getQrById($id);
+        $this->load->view('Admin/header');
+        $this->load->view('Admin/detailQuotation', $data);
+        $this->load->view('Admin/footer');
+    }
+
     public function editQuotation($id){
         $files=$_FILES['fupload'];
         $config['upload_path'] = './assets/file_qr/';
