@@ -27,6 +27,19 @@ class PoModel extends CI_Model {
             }
     }
 
+    public function getItemPo($id){
+        $this->db->select('*');
+        $this->db->from('bayangan');
+        $this->db->where('id_po', $id);
+         $query = $this->db->get();
+           $results=array();
+            if($query->num_rows() > 0){
+            return $query->result();
+            }else{
+            return $results;
+            }
+    }
+
     
     public function updatePo(){
 
@@ -109,9 +122,23 @@ class PoModel extends CI_Model {
 
     }
 
-    public function hapusItem($id_item){
-         $this->db->where('id_item', $id_item);
-         $this->db->delete('item');
+    public function deleteItem($id_item){
+         $this->db->where('id_bayangan', $id_item);
+         $this->db->delete('bayangan');
+    }
+
+    public function getPoById($id){
+         $this->db->select('*');
+            $this->db->from('po');
+            $this->db->where('id_po',$id);
+            $query = $this->db->get();
+
+           $results=array();
+            if($query->num_rows() > 0){
+            return $query->result();
+            }else{
+            return $results;
+            }
     }
 
 

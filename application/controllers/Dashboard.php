@@ -44,6 +44,17 @@ public function index()
 
 	public function edit_profile(){
 		$this->LoginModel->edit_profile();
+		 $sess_array = array(
+		 		'id_user'=> $this->session->userdata('logged_in')['id_user'],
+		 		'id_section'=> $this->session->userdata('logged_in')['id_section'],
+		 		'username'=> $this->session->userdata('logged_in')['username'],
+		 		'password'=> $this->input->post('password'),
+		 		'hak_akses' => $this->session->userdata('logged_in')['hak_akses']
+		 		);
+		$hak_akses = $this->session->userdata('logged_in')['hak_akses'];
+		$this->session->unset_userdata('logged_in');
+		
+		$this->session->set_userdata('logged_in',$sess_array);
 				$this->session->set_flashdata('edit_profile','<div class="alert alert-success" role="alert">SUKSES UPDATE DATA <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
 			redirect('Dashboard', 'refresh');
 	}

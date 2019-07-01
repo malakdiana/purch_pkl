@@ -54,7 +54,7 @@
                                                   <div class="btn-group mb-xl-3" role="group" aria-label="Basic example">
 
                                    
-                                    <button type="button" class="btn btn-info" style="width:80px; height:50px;"><a href="<?php echo site_url()?>/Po/GetItem_barang/<?php echo $key->id_po?>"><font color="white"><i class="fa fa-th-list"></i> Detail</font></a></button>
+                                    <button type="button" class="btn btn-info" style="width:80px; height:50px;"><a href="<?php echo site_url()?>/Po/detail_itemPo/<?php echo $key->id_po?>"><font color="white"><i class="fa fa-th-list"></i> Detail</font></a></button>
 
                                      <button type="button" class="btn btn-success" style="width:95px; height:50px;"> <a href="<?php echo site_url()?>/Po/tambahItem/<?php echo $key->id_po?>"><font color="white"><i class="fa fa-plus"></i> Insert PR</font></a></button>
 
