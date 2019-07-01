@@ -101,14 +101,44 @@ $this->upload->initialize($config);
                  
 
             }else{
-              echo ( $this->upload->display_errors());
+               $this->QrModel->editVendor();
             }
     }
 
     public function editQr($id){
+        $data['list'] = $this->QrModel->getQrById($id);
         $this->load->view('Admin/header');
-        $this->load->view('Admin/editQuotation');
+        $this->load->view('Admin/editQuotation', $data);
         $this->load->view('Admin/footer');
+    }
+
+    public function editQuotation($id){
+        $files=$_FILES['fupload'];
+        $config['upload_path'] = './assets/file_qr/';
+            $config['upload_path'] = './assets/file_qr/';
+            $config['allowed_types'] = 'pdf|jpg|png|jpeg|doc|docx';
+            $config['max_size']= 1000000000;
+            $config['max_width']= 10240;
+            $config['max_height']=7680;
+        
+             $_FILES['userfile']['name']= $files['name'];
+             $_FILES['userfile']['type']= $files['type'];
+       
+              $_FILES['userfile']['tmp_name']= $files['tmp_name'];
+               $_FILES['userfile']['error']= $files['error'];
+                $_FILES['userfile']['size']= $files['size'];
+                $this->load->library('upload', $config);
+$this->upload->initialize($config);
+
+          if($this->upload->do_upload('userfile')){
+  $this->QrModel->editQuotationGambar();
+               redirect('Qr/', 'refresh');
+                 
+
+            }else{
+               $this->QrModel->editQuotation();
+               redirect('Qr/', 'refresh');
+            } 
     }
 
     public function tambahVen($id){

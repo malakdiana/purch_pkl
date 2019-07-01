@@ -34,6 +34,23 @@ public function index()
    
 	}
 
+    public function search(){
+        $json = [];
+        $this->load->database();
+
+        
+        if(!empty($this->input->get("q"))){
+            $this->db->like('nama_barang', $this->input->get("q"));
+            $query = $this->db->select('no as id,nama_barang as text')
+                        ->limit(10)
+                        ->get("barang");
+            $json = $query->result();
+        }
+
+        
+        echo json_encode($json);
+    }
+
        public function tambahPR(){
         $this->load->model('SectionModel');
         $this->load->helper('url', 'form');

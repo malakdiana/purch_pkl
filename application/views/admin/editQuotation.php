@@ -3,10 +3,10 @@
                 <div class="row align-items-center">
                     <div class="col-sm-6">
                         <div class="breadcrumbs-area clearfix" style="padding-top: 15px;padding-bottom: 15px">
-                            <h4 class="page-title pull-left">Master Data</h4>
+                            <h4 class="page-title pull-left">Data</h4>
                             <ul class="breadcrumbs pull-left">
-                                <li><a href="<?php echo site_url()?>/Pricelist">Pricelist</a></li>
-                                <li><span>Tambah Pricelist</span></li>
+                                <li><a href="<?php echo site_url()?>/Pricelist">Quotation Request</a></li>
+                                <li><span>Edit Quotation</span></li>
                             </ul>
 
                     </div>
@@ -22,22 +22,22 @@
                     <div class="col-12 mt-5">
                         <div class="card">
                                 <div class="card-body">
-                                     <?php echo form_open('Pricelist/tambahPricelist') ?>
-                                     <h3 align="center">Form Tambah Pricelist</h3><br>
+                                     <?php echo form_open('Qr/editQuotation/'.$list[0]->id_penawaran) ?>
+                                     <h3 align="center">Form Edit Quotation</h3><br>
                                        <div class="col-md-12">
                                             <div class="row">
                                                
                                                 <div class="col-md-2">
-                                                     <label class="control-label " for="group_name">Group Name :</label>
+                                                     <label class="control-label " for="group_name">Id Penawaran :</label>
                                                  </div>
                                             <div class="col-sm-4">
-                                                <input type="text" class="form-control" name="group_name" style="margin-bottom: 25px">
+                                                <input type="text" class="form-control" value="<?php echo $list[0]->id_penawaran?>" name="id_penawaran" readonly="" style="margin-bottom: 25px">
                                             </div>
                                                 <div class="col-md-2">
-                                                     <label class="control-label " for="no_barang">No Barang :</label>
+                                                     <label class="control-label " for="no_barang" >Tanggal :</label>
                                                  </div>
                                             <div class="col-sm-4">
-                                                <input type="text" class="form-control" name="no_barang" style="margin-bottom: 25px">
+                                                <input readonly="" type="text" class="form-control" name="tanggal" style="margin-bottom: 25px" value="<?php date_default_timezone_set('Asia/Jakarta');echo date('l, d-m-Y H:i:s')?>">
                                             </div>
                                         </div>
                                     
@@ -45,16 +45,16 @@
                                     <div class="col-md-12">
                                         <div class="row">
                                             <div class="col-md-2">
-                                                <label class="control-label" for="alamat">Nama Barang :</label>
+                                                <label class="control-label" for="alamat">Kode Quotation :</label>
                                             </div>
                                             <div class="col-sm-4">
-                                                <input type="text" class="form-control" id="nama_barang" name="nama_barang" style="margin-bottom: 25px">
+                                                <input type="text" class="form-control" id="kode_qr" name="nama_barang" style="margin-bottom: 25px" value="<?php echo $list[0]->kode_qr?>">
                                             </div>
                                             <div class="col-md-2">
-                                             <label class="control-label" for="alamat">Spec Barang :</label>
+                                             <label class="control-label" for="alamat">Item :</label>
                                          </div>
                                          <div class="col-sm-4">
-                                            <input type="text" class="form-control" id="spec_barang" name="spec_barang">
+                                            <input type="text" value="<?php echo $list[0]->item?>" class="form-control" id="item" name="item">
                                         </div>
 
                                         </div>
@@ -63,20 +63,21 @@
                                         <div class="row">
 
                                             <div class="col-md-2">
-                                                <label class="control-label" for="alamat">Unit :</label>
+                                                <label class="control-label" for="alamat">Tanggal Butuh :</label>
                                             </div>
                                             <div class="col-sm-4">
-                                                <select name="unit" class="form-control">
-                                                    <?php foreach ($listUnit as $key) {?>
-                                                   <option class="form-control" value="<?php echo $key->unit_barang?>"><?php echo $key->unit_barang?> </option> <?php }?>
-                                                </select>
+                                                <?php $tanggal = $list[0]->tanggal_butuh;
+                                                  $pecah = explode("-", $tanggal);
+                                                 ?>
+                                              <input type="date" class="form-control" id="tanggal_butuh" 
+                                              value="<?php echo ($pecah[2]."-".$pecah[1]."-".$pecah[0]) ?>" name="tanggal_butuh" style="margin-bottom: 25px">
                                             </div>
 
                                             <div class="col-md-2">
-                                             <label class="control-label" for="attention">Mata Uang :</label>
+                                             <label class="control-label" for="attention">Section :</label>
                                          </div>
                                          <div class="col-sm-4">
-                                            <input type="text" class="form-control" id="mata_uang" name="mata_uang">
+                                            <input type="text" class="form-control" id="section" name="section" value="<?php echo $list[0]->section?>">
                                         </div>
 
                                         </div>
@@ -84,16 +85,16 @@
                                      <div class="col-md-12">
                                         <div class="row">
                                             <div class="col-md-2">
-                                                <label class="control-label" for="no_hp">Price :</label>
+                                                <label class="control-label" for="no_hp">PIC :</label>
                                             </div>
                                             <div class="col-sm-4">
-                                                <input type="text" class="form-control" id="price" name="price" style="margin-bottom: 25px">
+                                                <input type="text" class="form-control" id="pic" name="pic" style="margin-bottom: 25px" value="<?php echo $list[0]->pic?>">
                                             </div>
                                             <div class="col-md-2">
-                                             <label class="control-label" for="tgl_input">Nama Supplier :</label>
+                                             <label class="control-label" for="tgl_input">Bahan :</label>
                                          </div>
                                          <div class="col-sm-4">
-                                            <input type="text" class="form-control" id="nama_supplier" name="nama_supplier">
+                                            <input type="text" class="form-control" id="bahan" name="bahan" value="<?php echo $list[0]->bahan?>">
                                         </div>
 
                                         </div>
@@ -101,37 +102,32 @@
                                      <div class="col-md-12">
                                         <div class="row">
                                             <div class="col-md-2">
-                                                <label class="control-label" for="terms">Quotation No :</label>
-                                            </div>
-                                            <div class="col-sm-4">
-                                                <input type="text" class="form-control" id="quotation_no" name="quotation_no" style="margin-bottom: 25px">
-                                            </div>
-                                            <div class="col-md-2">
-                                             <label class="control-label" for="ppn">Tgl Input:</label>
+                                             <label class="control-label" for="ppn">Attachment :</label>
                                          </div>
                                          <div class="col-sm-4">
-                                            <input type="text" class="form-control" id="tgl_input" name="tgl_input" value="<?php  echo date('Y-m-d')?>" readonly="">
+                                            <input type="file" class="form-control" id="fupload" name="fupload" value="" >
+                                            <?php if(empty($list[0]->gambar)){ ?>
+                                                <p><i class="fa fa-paperclip"> Tidak ada file</i> </p><?php }else{?> 
+                                            <p><i class="fa fa-paperclip"> <?php echo $list[0]->gambar;?></p>
+                                            <?php } ?>
                                         </div>
+                                            <div class="col-md-2">
+                                                <label class="control-label" for="terms">Detail :</label>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <textarea name="detail" class="form-control" placeholder="DESCRIPTION ITEM" rows="10"><?php echo $list[0]->detail?>
+                                                    
+                                                </textarea>
+                                              
+                                            </div>
+                                            
 
                                         </div>
+                                     
                                     </div>
-                                     <div class="col-md-12">
-                                        <div class="row">
-                                            <div class="col-md-2">
-                                                <label class="control-label" for="supply">LB date :</label>
-                                            </div>
-                                            <div class="col-sm-4">
-                                                <input type="date" class="form-control" id="lbdate" name="lbdate" style="margin-bottom: 25px">
-                                            </div>
-                                            <div class="col-md-2">
-                                             <label class="control-label" for="start">Remarks :</label>
-                                         </div>
-                                         <div class="col-sm-4">
-                                            <input type="text" class="form-control" id="remarks" name="remarks">
-                                        </div>
+                                  
 
-                                        </div>
-                                    </div>  
+                                 
                                      
           
               <div align="right"> <button type="submit" class="btn btn-primary" style="align-self: right">Simpan</button></div>
