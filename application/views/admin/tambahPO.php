@@ -27,18 +27,18 @@
                                        
                                                
                                                 <div class="form-group">
-                                                     <label class="control-label" for="tgl">Tanggal:</label>
+                                                     <label class="control-label" for="tgl_po">Tanggal:</label>
                                            
-                                               <input type="text" value="<?php date_default_timezone_set('Asia/Jakarta');echo date('d-m-Y H:i:s')?>" readonly="" class="form-control" id="tgl" name="tgl" style="margin-bottom: 25px">
+                                               <input type="text" value="<?php date_default_timezone_set('Asia/Jakarta');echo date('d-m-Y H:i:s')?>" readonly="" class="form-control" id="tgl_po" name="tgl_po" style="margin-bottom: 25px">
                                             </div>
 
                                             
 
                                             <div class="form-group">
-                                                     <label class="control-label " for="PO_no">NOMER PO:</label>
+                                                     <label class="control-label " for="no_po">NOMER PO:</label>
                                            <div class="row"style="margin-left: 4px">
-                                               <input type="text" class="form-control" value="PO" name="PO_no" style="margin-bottom: 25px;width: 100px" readonly="">
-                                                <input type="text" class="form-control" minlength="3" maxlength="3" name="PO_no" style="margin-bottom: 25px;width: 100px" placeholder="000">
+                                               <input type="text" class="form-control" value="PO" name="no_po" style="margin-bottom: 25px;width: 100px" readonly="">
+                                                <input type="text" class="form-control" minlength="3" maxlength="3" name="no_po" style="margin-bottom: 25px;width: 100px" placeholder="000">
                                                   
                                                 <select name="bulan" class="form-control" style="margin-bottom: 25px;width: 100px; height: 50px">
                                            

@@ -27,7 +27,7 @@ public function index()
         // $this->load->model('SectionModel');
         $this->load->helper('url', 'form');
         $this->load->library('form_validation');
-        $this->form_validation->set_rules('tgl', 'tgl', 'trim|required');
+        $this->form_validation->set_rules('tgl_po', 'tgl_po', 'trim|required');
         if ($this->form_validation->run()==FALSE) {
              // $data['section']=$this->SectionModel->getSection();
             $this->load->view('Admin/header');
@@ -102,9 +102,9 @@ public function index()
 
    
 
-    public function deletePurch_req($id){
-        $this->Purch_reqModel->deletePurch_req($id_po);
-                $this->session->set_flashdata('deletePurch_req','<div class="alert alert-success" role="alert">SUKSES DELETE DATA <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+    public function deletePo($id_po){
+        $this->PoModel->deletePo($id_po);
+                $this->session->set_flashdata('deletePo','<div class="alert alert-success" role="alert">SUKSES DELETE DATA <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
             redirect('Po', 'refresh');
     }
 

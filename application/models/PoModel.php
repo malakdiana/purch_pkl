@@ -44,15 +44,15 @@ class PoModel extends CI_Model {
         $this->db->where('tgl_po', $tgl_po);
         $this->db->update('Po', $data);
     }
-    public function deletePo($id){
-         $this->db->where('id', $id);
+    public function deletePo($id_po){
+         $this->db->where('id_po', $id_po);
         $this->db->delete('Po');
 
     }
     public function tambahPO(){
 
         $tgl_po = $this->input->post('tgl_po');
-        $pr_no = "PO"."-".$this->input->post('no_po')."/".$this->input->post('bulan')."/".$this->input->post('tahun');
+        $no_po = "PO"."-".$this->input->post('no_po')."/"."PUR"."-"."SAI"."/".$this->input->post('bulan')."/".$this->input->post('tahun');
 
         $data = array(
         'tgl_po' => $tgl_po,
