@@ -27,7 +27,7 @@ class PoModel extends CI_Model {
             }
     }
 
-<<<<<<< HEAD
+
       public function getPoById($id){
         $this->db->select('*');
             $this->db->from('po');
@@ -40,7 +40,7 @@ class PoModel extends CI_Model {
     }
 
 
-=======
+
     public function getItemPo($id){
         $this->db->select('*');
         $this->db->from('bayangan');
@@ -54,7 +54,7 @@ class PoModel extends CI_Model {
             }
     }
 
->>>>>>> 8f0113e921a961c7808ff3ff77f3791ebb32e1c3
+
     
     public function updatePo(){
 
@@ -142,19 +142,7 @@ class PoModel extends CI_Model {
          $this->db->delete('bayangan');
     }
 
-    public function getPoById($id){
-         $this->db->select('*');
-            $this->db->from('po');
-            $this->db->where('id_po',$id);
-            $query = $this->db->get();
-
-           $results=array();
-            if($query->num_rows() > 0){
-            return $query->result();
-            }else{
-            return $results;
-            }
-    }
+  
 
 
         
