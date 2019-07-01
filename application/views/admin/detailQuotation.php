@@ -6,7 +6,7 @@
                             <h4 class="page-title pull-left">Data</h4>
                             <ul class="breadcrumbs pull-left">
                                 <li><a href="<?php echo site_url()?>/Pricelist">Quotation Request</a></li>
-                                <li><span>Edit Quotation</span></li>
+                                <li><span>Detail Quotation</span></li>
                             </ul>
 
                     </div>
@@ -22,8 +22,8 @@
                     <div class="col-12 mt-5">
                         <div class="card">
                                 <div class="card-body">
-                                     <?php echo form_open('Qr/editQuotation/'.$list[0]->id_penawaran) ?>
-                                     <h3 align="center">Form Edit Quotation</h3><br>
+                                    
+                                     <h3 align="center">Detail Quotation</h3><br>
                                        <div class="col-md-12">
                                             <div class="row">
                                                
@@ -37,7 +37,7 @@
                                                      <label class="control-label " for="no_barang" >Tanggal :</label>
                                                  </div>
                                             <div class="col-sm-4">
-                                                <input readonly="" type="text" class="form-control" name="tanggal" style="margin-bottom: 25px" value="<?php date_default_timezone_set('Asia/Jakarta');echo date('l, d-m-Y H:i:s')?>">
+                                                <input type="text" class="form-control" name="tanggal" style="margin-bottom: 25px" value="<?php echo $list[0]->tanggal ?>">
                                             </div>
                                         </div>
                                     
@@ -105,7 +105,7 @@
                                              <label class="control-label" for="ppn">Attachment :</label>
                                          </div>
                                          <div class="col-sm-4">
-                                            <input type="file" class="form-control" id="fupload" name="fupload" value="" >
+                                          
                                             <?php if(empty($list[0]->gambar)){ ?>
                                                 <p><i class="fa fa-paperclip"> Tidak ada file</i> </p><?php }else{?> 
                                             <p><i class="fa fa-paperclip"> <?php echo $list[0]->gambar;?></p>
@@ -130,8 +130,7 @@
                                  
                                      
           
-              <div align="right"> <button type="submit" class="btn btn-primary" style="align-self: right">Simpan</button></div>
-              <?php echo form_close() ?>
+            
            
 
     </div>

@@ -23,6 +23,16 @@ class QrModel extends CI_Model {
             return $query->result();
         }
     }
+    public function getQrById($id){
+        $this->db->select('*');
+            $this->db->from('Penawaran');
+            $this->db->where('id_penawaran', $id);
+
+            $query = $this->db->get();
+            if($query->num_rows() > 0){
+            return $query->result();
+        }
+    }
 
      public function getQr_tracking()
     {
@@ -78,6 +88,42 @@ class QrModel extends CI_Model {
         
     }
 
+    public function editQuotation(){
+         $id = $this->input->post('id_penawaran');
+     $data = array(
+                    'tanggal' => $this->input->post('tanggal'),
+                    'item' => $this->input->post('item'),
+                    'kode_qr' => $this->input->post('kode_qr'),
+                     'section'=>$this->input->post('section'),
+                      'pic'=>$this->input->post('pic'),
+                       'bahan'=>$this->input->post('bahan'),
+                        'detail'=>$this->input->post('detail'),
+                        
+
+            );
+
+        $this->db->where('id_penawaran', $id);
+        $this->db->update('penawaran', $data);
+    }
+    public function editQuotationGambar(){
+         $id = $this->input->post('id_penawaran');
+     $data = array(
+                    'tanggal' => $this->input->post('tanggal'),
+                    'item' => $this->input->post('item'),
+                    'kode_qr' => $this->input->post('kode_qr'),
+                     'section'=>$this->input->post('section'),
+                      'pic'=>$this->input->post('pic'),
+                       'bahan'=>$this->input->post('bahan'),
+                        'detail'=>$this->input->post('detail'),
+                        'gambar'=>$this->upload->data('gambar'),
+                        
+
+            );
+
+        $this->db->where('id_penawaran', $id);
+        $this->db->update('penawaran', $data);
+    }
+
     public function deleteQr($id){
          $this->db->where('id_user', $id);
         $this->db->delete('Qr');
@@ -93,6 +139,7 @@ class QrModel extends CI_Model {
         'bahan' => $this->input->post('bahan'),
         'detail' => $this->input->post('detail'),
         'gambar' => $this->upload->data('file_name'),
+        'status' => 1,
       
         );
          $this->db->insert('penawaran', $data);

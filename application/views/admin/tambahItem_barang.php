@@ -33,13 +33,9 @@
                                                <input type="hidden" class="form-control" name="id[]" id="id" value="<?php echo $id; ?>" >
                                                 <div class="form-group">
                                                      <label class="control-label " for="item_barang">ITEM BARANG:</label>
-                                           
+                                            <input type="text" class="form-control" name="item[]" style="margin-bottom: 25px">
                                                
-                                                  <select name="item[]" class="form-control choosen">
-                            <?php foreach ($barang as $key) {?>
-                                <option value="<?php echo $key->nama_barang?>"><?php echo $key->nama_barang?></option>
-                            <?php }?>
-                        </select>
+                                                  
                                             </div>
 
                                             <div class="form-group">
@@ -75,8 +71,7 @@
             // pada sebuah tag div yg kita beri id insert-form
             $("#insert-form").append("<div style='margin-bottom: 10px'><hr>Data Barang " + nextform + "</div>" +
                 " <input type='hidden' class='form-control' name='id[]' id='id' value='<?php echo $id; ?>' >" +
-                "<div class='form-group'> <label class='control-label' for='item'>ITEM BARANG:</label><select name='item[]' class='form-control choosen'><?php foreach ($barang as $key) {?><option value='<?php echo $key->nama_barang?>'><?php echo $key->nama_barang?></option><?php }?>
-                        </select></div><div class='form-group'> <label class='control-label' for='qty'>QTY :</label><input type='text' class='form-control' name='qty[]' style='margin-bottom: 25px'></div>");
+                "<div class='form-group'> <label class='control-label' for='item'>ITEM BARANG:</label> <input type='text' class='form-control' name='item[]'' style='margin-bottom: 25px'></div><div class='form-group'> <label class='control-label' for='qty'>QTY :</label><input type='text' class='form-control' name='qty[]' style='margin-bottom: 25px'></div>");
             
             $("#jumlah-form").val(nextform); // Ubah value textbox jumlah-form dengan variabel nextform
         });

@@ -143,6 +143,19 @@ private $_batchImport;
         $this->db->insert_batch('purch_req', $data);
     }
 
+
+    public function getBarang($id){
+        $this->db->select('no as id,nama_barang as text');
+         $this->db->where('no',$id);
+         $this->db->from('barang');
+         $query = $this->db->get();
+         $results=array();
+            if($query->num_rows() > 0){
+            return $query->result();
+            }else{
+            return $results;
+            }
+    }
        public function Verify($id){
          $data = array(
         'status_fa' => 1,
@@ -151,6 +164,7 @@ private $_batchImport;
         $this->db->where('id',$id);
          $this->db->update('purch_req', $data);
     }
+
 
 
 }
