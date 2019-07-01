@@ -113,6 +113,13 @@ public function index()
             redirect('Po', 'refresh');
     }
 
+     public function EditPo($id){
+        $data['list'] = $this->PoModel->getPoById($id_po);
+        $this->load->view('Admin/header');
+        $this->load->view('Admin/editPo', $data);
+        $this->load->view('Admin/footer');
+    }
+
 
    
 }
