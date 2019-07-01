@@ -27,6 +27,18 @@ public function index()
     }
    
 	}
+    public function detail_itemPo($id){
+        $data['brg']= $this->PoModel->getItemPo($id);
+        $data['id']= $id;
+        if($this->session->userdata('logged_in')['hak_akses']==1){
+        $this->load->view('Admin/header');
+        $this->load->view('Admin/detail_itemPo',$data);
+        }else{
+        $this->load->view('Read_only/header');
+        $this->load->view('Read_only/detail_itemPo',$data);
+    }
+
+    }
 
        public function tambahPO(){
         // $this->load->model('SectionModel');
@@ -50,17 +62,11 @@ public function index()
         $this->load->helper('url', 'form');
         $this->load->library('form_validation');
        
-        $this->load->model('BarangModel');
-            $data['barang']= $this->BarangModel->getBarang();
+            $data['list'] = $this->PoModel->getPoById($id);
             $data['id']=$id;
-               if($this->session->userdata('logged_in')['hak_akses']==1){
+  
             $this->load->view('Admin/header');
-            $this->load->view('Admin/tambahItem_barang',$data);
-        }else{
-              $this->load->view('User/header');
-            $this->load->view('Admin/tambahItem_barang',$data);
-        }
-           
+            $this->load->view('Admin/insert_itemPo',$data);
 
     }
 
@@ -99,10 +105,10 @@ public function index()
             redirect("Po/GetItem_barang/$id", 'refresh');
     }
 
-    public function hapusItem($id,$id_item){
-         $this->Purch_reqModel->deleteItem($id_item);
+    public function deleteItemPo($id,$id_item){
+         $this->PoModel->deleteItem($id_item);
                 $this->session->set_flashdata('editItem','<div class="alert alert-success" role="alert">SUKSES UPDATE DATA <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-            redirect("Po/GetItem_barang/$id", 'refresh');
+            redirect("Po/detail_itemPo/$id", 'refresh');
     }
 
    
