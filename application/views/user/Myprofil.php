@@ -25,7 +25,7 @@
                                             <div class="form-group">
                                                      <label class="control-label " for="username" >ID USER:</label>
 
-                                                    <input type="text" class="form-control" style="margin-bottom: 25px" name="username" readonly="" value="<?php echo $this->session->userdata('logged_in')['id_user']?>">
+                                                    <input type="text" class="form-control" style="margin-bottom: 25px" name="username" value="<?php echo $this->session->userdata('logged_in')['id_user']?>">
                                             </div>
                                        
                                                
@@ -33,7 +33,7 @@
                                                      <label class="control-label " for="username">USERNAME:</label>
 
                                                 
-                                                    <input type="text" class="form-control" style="margin-bottom: 25px" name="username" value="<?php echo $this->session->userdata('logged_in')['username']?>">
+                                                    <input type="text" class="form-control" style="margin-bottom: 25px" name="username" readonly=""> value="<?php echo $this->session->userdata('logged_in')['username']?>">
     
                                             </div>
 

@@ -23,9 +23,9 @@ public function index()
         $this->load->view('Admin/Purch_req',$data);
 
         }else if($this->session->userdata('logged_in')['hak_akses']==2){
+        $data['Purch_req']= $this->Purch_reqModel->getPurch_req_section();
         $this->load->view('User/header');
-        $this->load->view('Admin/Purch_req',$data);
-
+        $this->load->view('User/Purch_req',$data);
 
     }else{
         $this->load->view('Read_only/header');
@@ -143,6 +143,11 @@ public function index()
             redirect('Purch_req', 'refresh');
     }
 
+      public function Verify($id){
+        $this->Purch_reqModel->Verify($id);
+            
+            redirect("Purch_req/", 'refresh');
+    }
 
 	
 }

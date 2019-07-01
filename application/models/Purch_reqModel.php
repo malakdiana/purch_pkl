@@ -25,6 +25,22 @@ class Purch_reqModel extends CI_Model {
             return $results;
             }
     }
+
+    public function getPurch_req_section()
+    {
+            $section = $this->session->userdata('logged_in')['username'];
+            $this->db->select('*');
+            $this->db->from('purch_req');
+            $this->db->where('section', $section);
+
+            $query = $this->db->get();
+           $results=array();
+            if($query->num_rows() > 0){
+            return $query->result();
+            }else{
+            return $results;
+            }
+    }
     public function updatePurch_req(){
 
         $id_user = $this->input->post('id_user');
@@ -127,6 +143,7 @@ private $_batchImport;
         $this->db->insert_batch('purch_req', $data);
     }
 
+<<<<<<< HEAD
     public function getBarang($id){
         $this->db->select('no as id,nama_barang as text');
          $this->db->where('no',$id);
@@ -140,6 +157,16 @@ private $_batchImport;
             }
     }
 
+=======
+       public function Verify($id){
+         $data = array(
+        'status_fa' => 1,
+      
+        );
+        $this->db->where('id',$id);
+         $this->db->update('purch_req', $data);
+    }
+>>>>>>> c62cf74e31faa12752da0288c26596fcb2e99c26
 
 
 }

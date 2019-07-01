@@ -23,9 +23,9 @@
                                      <h3 align="center">Edit My Profile</h3><br>
 
                                             <div class="form-group">
-                                                     <label class="control-label " for="username" >ID USER:</label>
+                                                     <label class="control-label " for="id_user" >ID USER:</label>
 
-                                                    <input type="text" class="form-control" style="margin-bottom: 25px" name="username" readonly="" value="<?php echo $this->session->userdata('logged_in')['id_user']?>">
+                                                    <input type="text" class="form-control" style="margin-bottom: 25px" name="id_user" readonly="" value="<?php echo $this->session->userdata('logged_in')['id_user']?>">
                                             </div>
                                        
                                                
@@ -33,15 +33,15 @@
                                                      <label class="control-label " for="username">USERNAME:</label>
 
                                                 
-                                                    <input type="text" class="form-control" style="margin-bottom: 25px" name="username" value="<?php echo $this->session->userdata('logged_in')['username']?>">
+                                                    <input type="text" class="form-control" style="margin-bottom: 25px" name="username" value="<?php echo $this->session->userdata('logged_in')['username']?>" readonly="">
     
                                             </div>
 
                                             
                                                 <div class="form-group">
-                                                     <label class="control-label " for="username">PASSWORD:</label>
+                                                     <label class="control-label " for="password">PASSWORD:</label>
 
-                                                    <input type="text" class="form-control" style="margin-bottom: 25px" name="username" value="<?php echo $this->session->userdata('logged_in')['password']?>">
+                                                    <input type="text" class="form-control" style="margin-bottom: 25px" name="password" value="<?php echo $this->session->userdata('logged_in')['password']?>">
     
                                             </div>
 

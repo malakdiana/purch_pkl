@@ -51,20 +51,7 @@ public function ManajemenUser()
 			}else if($session_data['hak_akses']=='2'){
 				redirect('User','refresh');
 			}
-			else if($session_data['hak_akses']=='3'){
-				$data['idPuskesmas']=$session_data['idPuskesmas'];
 			
-				redirect('User','refresh');
-			}
-			else if($session_data['hak_akses']=='4'){
-				$data['idPuskesmas']=$session_data['idPuskesmas'];
-			
-				redirect('User','refresh');
-			}else if($session_data['hak_akses']=='5'){
-				$data['idPuskesmas']=$session_data['idPuskesmas'];
-			
-				redirect('User','refresh');
-			}
 		}
 	}
 
@@ -74,7 +61,7 @@ public function ManajemenUser()
 		$this->load->library('form_validation');
 		$this->load->model('LoginModel');
 		$username = $this->input->post('username');
-		$password2=sha1($this->input->post('password'));
+		$password2=($this->input->post('password'));
 		$result = $this->LoginModel->login($username, $password2);
 
 		if($result){

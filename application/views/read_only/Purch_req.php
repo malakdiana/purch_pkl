@@ -41,7 +41,7 @@
                                                 <th>NO PR</th>
                                                 <th>VERIFIED FA</th>
                                                 <th>STATUS</th>
-                                                <th>Action</th>
+                                                <th>ACTION</th>
                                                
                                               
                                             </tr>
@@ -69,7 +69,21 @@
                                                 </td>
                                          
 
-                                                <td><?php echo $key->status;?></td>
+                                                <td><?php 
+                                                if($key->status == "OPEN"){?>
+                                                    <div class="form-control" align="center" value="OPEN" name="status" style="margin-bottom: 25px;width: 100px; background-color: #DC143C; color:#FFF" > OPEN </div>
+                                                     <?php }
+                                                     else if ($key->status == "CLOSED"){ ?>  
+                                                        <div class="form-control" align="center" value="OPEN" name="status" style="margin-bottom: 25px;width: 100px; background-color: #FFA500; color:#FFF" > CLOSED </div>
+                                                        <?php }
+                                                     else { ?>  
+                                                           <div class="form-control" align="center" value="OPEN" name="status" style="margin-bottom: 25px;width: 100px; background-color: #BC8F8F; color:#FFF" > CANCEL </div>
+                                                        <?php }
+
+                                                        ?>
+
+
+                                                </td>
 
 
 
