@@ -22,7 +22,7 @@
                     <div class="col-12 mt-5">
                         <div class="card">
                                 <div class="card-body">
-                                     <?php echo form_open('Purch_req/tambahPO') ?>
+                                     <?php echo form_open('Po/tambahPO') ?>
                                      <h3 align="center">Insert Purchase Order</h3><br>
                                        
                                                
