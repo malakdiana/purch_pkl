@@ -18,8 +18,13 @@ class Po extends CI_Controller {
 public function index()
 	{
 		$data['Po']= $this->PoModel->getPo();
+        if($this->session->userdata('logged_in')['hak_akses']==1){
 		$this->load->view('Admin/header');
         $this->load->view('Admin/Po',$data);
+        }else{
+        $this->load->view('Read_only/header');
+        $this->load->view('Read_only/Po',$data);
+    }
    
 	}
 
