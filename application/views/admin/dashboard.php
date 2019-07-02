@@ -54,7 +54,7 @@
                                                 </td>
 
                                                  <td> <a class="btn btn-flat btn-info mb-4" href="<?php echo site_url()?>/Supplier" role="button" style="width:150px" >Supplier </a><br>
-                                                    <a class="btn btn-flat btn-info mb-4" href="<?php echo site_url()?>/Pricelist/" role="button" style="width:150px">Price List</a><br>
+                                                  
                                                     <a class="btn btn-flat btn-info mb-4" href="<?php echo site_url()?>/Barang/" role="button" style="width:150px">Barang</a><br>
                                                     <a class="btn btn-flat btn-info mb-4" href="<?php echo site_url()?>/Unit_barang/" role="button" style="width:150px">Unit Barang</a><br>
                                                      <a class="btn btn-flat btn-info mb-4" href="<?php echo site_url()?>/Departemen/" role="button" style="width:150px">Departement</a><br>
