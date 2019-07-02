@@ -38,8 +38,8 @@
                                                 <th>QTY</th>
                                                 <th>NO PO</th>
                                                 <th>QTY TO PO</th>
-                                                <th >Edit</th>
-                                                <th >Hapus</th>
+                                                <th >ACTION</th>
+                                               
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -55,9 +55,11 @@
                                                 <td><?php echo $key->qtybay;?></td>
                                     
                                                 <td>
-                                                <a href="javascript:void(0);" onclick="modalDetail('<?php echo $key->id_item?>', '<?php echo $key->item_barang?>', '<?php echo $key->qty?>')"  data-toggle="modal" data-target="#myModalEdit"><i class="fa fa-edit"></i></a></td><td>
                                                 
-                                                <a href="<?php echo site_url()?>/Purch_req/deleteItem/<?php echo $id?>/<?php echo $key->id_item?> " onclick="return confirm('Apakah Yakin Untuk Menghapus?')"><i class="fa fa-trash-o"></i></a></td>
+
+                                                   <button type="button" class="btn btn-primary" style="width:80px; height:50px;"><a href="javascript:void(0);" onclick="modalDetail('<?php echo $key->id_item?>', '<?php echo $key->item_barang?>', '<?php echo $key->qty?>')"  data-toggle="modal" data-target="#myModalEdit"><font color="white"><i class="fa fa-pencil"></i> Edit</font></a></button>
+                                                
+                                                <button type="button" class="btn btn-danger" style="width:80px; height:50px;"><a href="<?php echo site_url()?>/Purch_req/deleteItem/<?php echo $id?>/<?php echo $key->id_item?> " onclick="return confirm('Apakah Yakin Untuk Menghapus?')"><font color="white"><i class="fa fa-trash-o"></i> Hapus</font></a></button></td>
                                              
                                             </tr>
                                             <?php $no++;}?>

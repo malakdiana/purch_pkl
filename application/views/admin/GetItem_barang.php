@@ -90,8 +90,8 @@
           <?php echo form_open_multipart('Purch_req/updateItem'); ?>
                 <?php echo validation_errors(); ?>
                      <div class="form-group">
-                        <input type="text" name="id_item"  id="id_item">
-                        <input type="text" name="id" id="id" value="<?php echo $id?>">
+                        <input type="text" name="id_item"  id="id_item" hidden="">
+                        <input type="text" name="id" id="id" value="<?php echo $id?>" hidden="">
                         <label for="">Item Barang</label>
                         <select name="item_barang" id="item_barang" class="form-control choosen">
                             <?php foreach ($barang as $key) {?>
