@@ -40,7 +40,7 @@ class BarangModel extends CI_Model {
         $this->db->update('Barang', $data);
     }
     public function deleteBarang($id){
-         $this->db->where('no', $id);
+         $this->db->where('no_barang', $id);
         $this->db->delete('barang');
 
     }

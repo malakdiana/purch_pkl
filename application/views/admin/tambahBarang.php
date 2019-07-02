@@ -26,12 +26,7 @@
                                      <h3 align="center">Form Tambah Barang</h3><br>
                                        
                                                
-                                                <div class="form-group">
-                                                     <label class="control-label " for="no_barang">Nomer Barang :</label>
-                                           
-                                                <input type="text" class="form-control" name="no_barang" style="margin-bottom: 25px">
-                                            </div>
-
+                                          
                                          
 
                                             <div class="form-group">

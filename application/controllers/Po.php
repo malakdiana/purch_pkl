@@ -126,6 +126,12 @@ public function index()
         $this->load->view('Admin/footer');
     }
 
+   public function InsertPo(){
+        
+        $this->load->view('Admin/header');
+        $this->load->view('Admin/InsertPo');
+        $this->load->view('Admin/footer');
+    }
 
    
 }

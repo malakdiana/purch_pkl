@@ -113,7 +113,7 @@ public function index()
 
         }else if($this->session->userdata('logged_in')['hak_akses']==2){
             $this->load->view('User/header');
-            $this->load->view('Admin/GetItem_barang',$data);
+            $this->load->view('User/GetItem_barang',$data);
          
             }else{
                       $this->load->view('Read_only/header');
