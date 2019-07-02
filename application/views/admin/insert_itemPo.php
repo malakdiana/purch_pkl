@@ -28,7 +28,7 @@
                                               
                                                 <div class="form-group">
                                                      <label class="control-label " for="item_barang">Nomor PO:</label>
-                                            <input type="text" class="form-control" name="no_po" value="<?php $list[0]->no_po?>" style="margin-bottom: 25px">
+                                            <input type="text" class="form-control" name="no_po" value="<?php echo $list[0]->no_po?>" style="margin-bottom: 25px" readonly="">
                                                
                                                   
                                             </div>
@@ -36,10 +36,9 @@
                                             <div class="form-group">
                                                      <label class="control-label " for="qty">Tanggal</label>
                                            
-                                                <input type="text" class="form-control" name="tanggal" value="<?php $list[0]->tgl_po?>" style="margin-bottom: 25px">
+                                                <input type="text" class="form-control" name="tanggal" value="<?php echo $list[0]->tgl_po?>" style="margin-bottom: 25px" readonly="">
                                             </div>
-    <div id="insert-form"></div>
-                                           
+         
    
    
                                      

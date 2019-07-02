@@ -31,7 +31,7 @@ class PoModel extends CI_Model {
       public function getPoById($id){
         $this->db->select('*');
             $this->db->from('po');
-            $this->db->where('id_po', $id_po);
+            $this->db->where('id_po', $id);
 
             $query = $this->db->get();
             if($query->num_rows() > 0){

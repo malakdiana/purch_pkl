@@ -120,7 +120,7 @@ public function index()
     }
 
      public function EditPo($id){
-        $data['list'] = $this->PoModel->getPoById($id_po);
+        $data['list'] = $this->PoModel->getPoById($id);
         $this->load->view('Admin/header');
         $this->load->view('Admin/editPo', $data);
         $this->load->view('Admin/footer');
