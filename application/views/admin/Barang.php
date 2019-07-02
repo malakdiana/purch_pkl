@@ -34,12 +34,10 @@
                                         <thead class="bg-light text-capitalize">
                                             <tr>
                                               
-                                                <th>NO</th>
+                                              
                                                 <th>NO BARANG</th>
-                                             <th>GROUP NAME</th>
+                                            
                                                 <th>NAMA BARANG</th>
-                                                <th>UNIT</th>
-                                                <th>REMARKS</th>
                                            
                                                
                                                 <th >ACTION</th>
@@ -50,18 +48,17 @@
                                         <?php   foreach ($brg as $key) {?>
                                             <tr>
                                         
-                                                <td><?php echo $key->no;?></td>
+                                           
                                                 <td><?php echo $key->no_barang;?></td>
-                                                <td><?php echo $key->group_name;?></td>
+                                         
                                                 <td><?php echo $key->nama_barang;?></td>
-                                                <td><?php echo $key->unit;?></td>
-                                                <td><?php echo $key->remarks;?></td>
+                                            
                                     
                                                 <td>
                                                       <div class="btn-group mb-xl-3" role="group" aria-label="Basic example">
                                     
-                                    <button type="button" class="btn btn-primary" style="width:80px; height:50px;"><a href="javascript:void(0);" onclick="modalDetail('<?php echo $key->no?>','<?php echo $key->no_barang?>','<?php echo $key->group_name ?>','<?php echo $key->nama_barang ?>', '<?php echo $key->unit ?>','<?php echo $key->remarks ?>')"  data-toggle="modal" data-target="#myModalEdit"><font color="white"><i class="fa fa-pencil"></i> Edit</font></a></button>
-                                    <button type="button" class="btn btn-danger" style="width:80px; height:50px;"> <a href="<?php echo site_url()?>/Barang/deleteBarang/<?php echo $key->no?> " onclick="return confirm('Apakah Yakin Untuk Menghapus?')"><font color="white"><i class="fa fa-trash-o"></i> Hapus</font></a></button>
+                                    <button type="button" class="btn btn-primary" style="width:80px; height:50px;"><a href="javascript:void(0);" onclick="modalDetail('<?php echo $key->no_barang?>','<?php echo $key->nama_barang ?>')"  data-toggle="modal" data-target="#myModalEdit"><font color="white"><i class="fa fa-pencil"></i> Edit</font></a></button>
+                                    <button type="button" class="btn btn-danger" style="width:80px; height:50px;"> <a href="<?php echo site_url()?>/Barang/deleteBarang/<?php echo $key->no_barang?> " onclick="return confirm('Apakah Yakin Untuk Menghapus?')"><font color="white"><i class="fa fa-trash-o"></i> Hapus</font></a></button>
                                   
                                 </div>
                                            </td>
@@ -90,39 +87,19 @@
                 </div>
           <?php echo form_open_multipart('Barang/updateBarang'); ?>
                 <?php echo validation_errors(); ?>
-                     <div class="form-group">
-                        <label for="">NO</label>
-                        <input type="text" class="form-control" name="no" id="no" value="" readonly="" >
-                    </div>
+                 
                     <div class="form-group">
                         <label for="">NO BARANG</label>
-                        <input type="text" class="form-control" name="no_barang" id="no_barang" value="" >
+                        <input type="text" class="form-control" name="no_barang" id="no_barang" value="" readonly="" >
                     </div>
-                    <div class="form-group">
-                        <label for="">GROUP NAME</label>
-                        <input type="text" class="form-control" name="group_name" id="group_name" value="" >
-                    </div>
+                  
                     <div class="form-group">
                         <label for="">NAMA BARANG</label>
                         <input type="text" class="form-control" name="nama_barang" id="nama_barang" value="" >
                     </div>
 
 
-                    <div class="form-group">
-                        <label class="control-label " for="unit">UNIT</label>
-                            <select name="unit" class="form-control">
-
-                            <?php foreach ($listUnit as $key) {?>
-                            <option class="form-control" value="<?php echo $key->unit_barang?>"</option> <?php }?>
-                            </select>
-                                              
-                    </div>
-
-
-                    <div class="form-group">
-                        <label for="">REMARKS</label>
-                        <input type="text" class="form-control" name="remarks" id="remarks" value="" >
-                    </div>
+                   
 
                 
                
@@ -146,13 +123,12 @@
  
     <!-- others plugins -->
 <script type="text/javascript">
-    function modalDetail(no,no_barang,group_name,nama_barang,unit,remarks){
-        document.getElementById('no').value = no;
+    function modalDetail(no_barang,nama_barang){
+    
         document.getElementById('no_barang').value = no_barang;
-        document.getElementById('group_name').value = group_name;
+   
         document.getElementById('nama_barang').value = nama_barang;
-        document.getElementById('unit').value = unit;
-        document.getElementById('remarks').value = remarks;
+  
       
     }
   </script>

@@ -89,8 +89,8 @@ class Barang extends CI_Controller {
             $arrayCount = count($allDataInSheet);
 
             $flag = 0;
-            $createArray = array('NO','NO_BARANG', 'GROUP_NAME','NAMA_BARANG','UNIT','REMARKS');
-            $makeArray = array('NO' => 'NO','NO_BARANG'=>'NO_BARANG', 'GROUP_NAME' => 'GROUP_NAME','NAMA_BARANG'=> 'NAMA_BARANG','UNIT' => 'UNIT','REMARKS' => 'REMARKS');
+            $createArray = array('NO_BARANG','NAMA_BARANG');
+            $makeArray = array('NO_BARANG'=>'NO_BARANG','NAMA_BARANG'=> 'NAMA_BARANG');
             $SheetDataKey = array();
             foreach ($allDataInSheet as $dataInSheet) {
                 foreach ($dataInSheet as $key => $value) {
@@ -114,24 +114,21 @@ class Barang extends CI_Controller {
                 for ($i = 2; $i <= $arrayCount; $i++) {
                     $addresses = array();
                     
-                    $no=$SheetDataKey['NO'];
+                   
                     $no_barang = $SheetDataKey['NO_BARANG'];
-                    $group_name = $SheetDataKey['GROUP_NAME'];
+                 
                     $nama_barang = $SheetDataKey['NAMA_BARANG'];
-                    $unit = $SheetDataKey['UNIT'];
-                    $remarks = $SheetDataKey['REMARKS'];
+                 
                    
                   
                     
-                    $no = filter_var(trim($allDataInSheet[$i][$no]), FILTER_SANITIZE_STRING);
-                    $no_barang = filter_var(trim($allDataInSheet[$i][$no_barang]), FILTER_SANITIZE_STRING);
-                    $group_name = filter_var(trim($allDataInSheet[$i][$group_name]), FILTER_SANITIZE_STRING);
-                    $nama_barang = filter_var(trim($allDataInSheet[$i][$nama_barang]), FILTER_SANITIZE_STRING);
-                    $unit = filter_var(trim($allDataInSheet[$i][$unit]), FILTER_SANITIZE_STRING);
-                    $remarks = filter_var(trim($allDataInSheet[$i][$remarks]), FILTER_SANITIZE_STRING);
                    
-                    $fetchData[] = array('no_barang' => $no_barang,'group_name' => $group_name,'nama_barang' => $nama_barang,'unit' => $unit,
-                          'remarks' => $remarks,);
+                    $no_barang = filter_var(trim($allDataInSheet[$i][$no_barang]), FILTER_SANITIZE_STRING);
+                 
+                    $nama_barang = filter_var(trim($allDataInSheet[$i][$nama_barang]), FILTER_SANITIZE_STRING);
+                 
+                   
+                    $fetchData[] = array('no_barang' => $no_barang,'nama_barang' => $nama_barang,);
                 }              
                 $data['employeeInfo'] = $fetchData;
                 $this->BarangModel->setBatchImport($fetchData);

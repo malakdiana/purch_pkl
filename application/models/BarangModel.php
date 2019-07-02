@@ -24,20 +24,19 @@ class BarangModel extends CI_Model {
     }
     public function updateBarang(){
 
-    	$no = $this->input->post('no');
+    	$no = $this->input->post('no_barang');
     	
 
         $data = array(
-        	'no_barang' => $this->input->post('no_barang'),
-        'group_name' => $this->input->post('group_name'),
+       
+       
         'nama_barang' => $this->input->post('nama_barang'),
-        'unit' => $this->input->post('unit'),
-        'remarks' => $this->input->post('remarks'),
+       
       
         );
 
         
-        $this->db->where('no', $no);
+        $this->db->where('no_barang', $no);
         $this->db->update('Barang', $data);
     }
     public function deleteBarang($id){
@@ -48,10 +47,9 @@ class BarangModel extends CI_Model {
     public function tambahBarang(){
         $data = array(
             'no_barang' => $this->input->post('no_barang'),
-        'group_name' => $this->input->post('group_name'),
+      
         'nama_barang' => $this->input->post('nama_barang'),
-        'unit' => $this->input->post('unit'),
-        'remarks' => $this->input->post('remarks'),
+     
       
         );
          $this->db->insert('barang', $data);

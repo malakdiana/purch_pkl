@@ -32,11 +32,7 @@
                                                 <input type="text" class="form-control" name="no_barang" style="margin-bottom: 25px">
                                             </div>
 
-                                            <div class="form-group">
-                                                     <label class="control-label " for="group_name">Group Name :</label>
-                                           
-                                                <input type="text" class="form-control" name="group_name" style="margin-bottom: 25px">
-                                            </div>
+                                         
 
                                             <div class="form-group">
                                                      <label class="control-label " for="nama_barang">Nama Barang :</label>
@@ -44,21 +40,8 @@
                                                 <input type="text" class="form-control" name="nama_barang" style="margin-bottom: 25px">
                                             </div>
 
-                                             <div class="form-group">
-                                                     <label class="control-label " for="unit">UNIT</label>
-                                           <select name="unit" class="form-control">
-                                            <?php foreach ($listUnit as $key) {?>
-                                           <option class="form-control" value="<?php echo $key->unit_barang?>"><?php echo $key->unit_barang?> </option> <?php }?>
-                                           </select>
-                                              
-                                            </div>
-
-                                            <div class="form-group">
-                                                     <label class="control-label " for="remarks">Remarks :</label>
                                            
-                                                <input type="text" class="form-control" name="remarks" style="margin-bottom: 25px">
-                                            </div>
-   
+                                          
    
                                      
         
