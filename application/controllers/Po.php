@@ -25,8 +25,68 @@ public function index()
         $this->load->view('Read_only/header');
         $this->load->view('Read_only/Po',$data);
     }
+}
+    public function getBarang($id)
+    {
+        $json = [];
+
+
+        $this->load->database();
+
+        
+        if(!empty($this->input->get("q"))){
+            $this->db->like('item_barang', $this->input->get("q"));
+            $query = $this->db->select('id_item as id,item_barang as text')->where('id_purch',$id)
+                        ->limit(10)
+                        ->get("item");
+            $json = $query->result();
+        }
+
+        
+        echo json_encode($json);
+    }
+
+    public function getQtyBarang(){
+
+        $this->load->database();
+
+         if(!empty($this->input->post("ids"))){
+             $id=$this->input->post("ids");
+             $hsl=$this->db->query("SELECT * FROM item WHERE id_item=".$id);
+        if($hsl->num_rows()>0){
+            foreach ($hsl->result() as $data) {
+                $data=array(
+                    'id_item' => $data->id_item,
+                    'qty' => $data->qty,
+                    );
+
+
+            }
+
+        }
+         
+        echo json_encode($data);
+    }
+}
    
-	}
+	public function getPr(){
+
+
+        $this->load->database();
+
+        
+        if(!empty($this->input->get("q"))){
+            $this->db->like('pr_no', $this->input->get("q"));
+            $query = $this->db->select('id,pr_no as text')->where('status','OPEN')
+                        ->limit(10)
+                        ->get("purch_req");
+            $json = $query->result();
+        }
+
+        
+        echo json_encode($json);
+
+    }
     public function detail_itemPo($id){
         $data['brg']= $this->PoModel->getItemPo($id);
         $data['id']= $id;
