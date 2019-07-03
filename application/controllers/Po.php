@@ -126,13 +126,7 @@ public function index()
         $this->load->view('Admin/footer');
     }
 
-   public function InsertPo(){
-        
-        $data['list'] = $this->PoModel->getPoById($id);
-        $this->load->view('Admin/header');
-        $this->load->view('Admin/InsertPo');
-        $this->load->view('Admin/footer');
-    }
+ 
 
    
 }

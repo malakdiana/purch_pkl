@@ -22,38 +22,43 @@
                     <div class="col-12 mt-5">
                         <div class="card">
                                 <div class="card-body">
-                                   <?php echo form_open('Po/editPo/'.$list[0]->id_po) ?>
+                                   <?php echo form_open('Po/editPo/') ?>
                                      <h3 align="center">Form Tambah Section</h3><br>
 
 
                                             <div class="form-group">
-                                            <label class="control-label " for="no_po">Nomer Pr :</label>
-                                            <input readonly="" type="text" class="form-control" name="pr_no" style="margin-bottom: 25px" value="<?php echo $list[0]->no_po?>">
+                                            <label class="control-label " for="pr_no">Nomer Pr :</label>
+                                            <input readonly="" type="text" class="form-control" name="pr_no" style="margin-bottom: 25px" value="<?php echo $list[0]->pr_no?>">
                                             </div>
 
                                             
-                                              
+                                        
                                             <div class="form-group">
                                             <label class="control-label " for="no_po">Item Barang :</label>
-                                            <input readonly="" type="text" class="form-control" name="no_po" style="margin-bottom: 25px" value="<?php echo $list[0]->no_po?>">
+                                            <input readonly="" type="text" class="form-control" name="item_barang" style="margin-bottom: 25px" value="<?php echo $list[0]->item_barang?>">
                                             </div>
 
 
                                             <div class="form-group">
                                             <label class="control-label " for="no_po">Qty :</label>
-                                            <input readonly="" type="text" class="form-control" name="no_po" style="margin-bottom: 25px" value="<?php echo $list[0]->no_po?>">
+                                            <input readonly="" type="text" class="form-control" name="qty" style="margin-bottom: 25px" value="<?php echo $list[0]->qty?>">
                                             </div>
 
 
                                             <div class="form-group">
                                             <label class="control-label " for="no_po">To Nomer Purchase Order :</label>
-                                            <input readonly="" type="text" class="form-control" name="no_po" style="margin-bottom: 25px" value="<?php echo $list[0]->no_po?>">
-                                            </div>
 
+                                             <select name="" id="" class="form-control choosen">
+                                              
+                                                    <option value="--"></option>
+                                               
+                                            </select>
+                                             
+                                        
 
                                             <div class="form-group">
                                             <label class="control-label " for="no_po">Qty To Po :</label>
-                                            <input readonly="" type="text" class="form-control" name="no_po" style="margin-bottom: 25px" value="<?php echo $list[0]->no_po?>">
+                                            <input type="text" class="form-control" name="no_po" style="margin-bottom: 25px" >
                                             </div>
    
                                      

@@ -130,8 +130,8 @@ public function index()
     }
 
     public function hapusItem($id,$id_item){
-         $this->Purch_reqModel->deleteItem($id_item);
-                $this->session->set_flashdata('editItem','<div class="alert alert-success" role="alert">SUKSES UPDATE DATA <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+         $this->Purch_reqModel->hapusItem($id_item);
+                $this->session->set_flashdata('editItem','<div class="alert alert-success" role="alert">SUKSES HAPUS ITEM <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
             redirect("Purch_req/GetItem_barang/$id", 'refresh');
     }
 
@@ -147,6 +147,14 @@ public function index()
         $this->Purch_reqModel->Verify($id);
             
             redirect("Purch_req/", 'refresh');
+    }
+
+      public function InsertPo($id){
+       
+        $data['list'] = $this->Purch_reqModel->getItemById($id);
+        $this->load->view('Admin/header');
+        $this->load->view('Admin/InsertPo', $data);
+        $this->load->view('Admin/footer');
     }
 
 	

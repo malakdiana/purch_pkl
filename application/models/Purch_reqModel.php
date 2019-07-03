@@ -26,6 +26,20 @@ class Purch_reqModel extends CI_Model {
             }
     }
 
+   public function getItemById($id){
+ $this->db->select('*');
+            $this->db->from('item');
+            $this->db->join('purch_req', 'item.id_purch= purch_req.id', 'left');
+            $this->db->where('id_item', $id);
+            $query = $this->db->get();
+           $results=array();
+            if($query->num_rows() > 0){
+            return $query->result();
+            }else{
+            return $results;
+            }
+   }
+
     public function getPurch_req_section()
     {
             $section = $this->session->userdata('logged_in')['username'];
