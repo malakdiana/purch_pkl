@@ -47,7 +47,7 @@
          <div class="card-body">
              <button type="button" class="btn btn-success" id="btn-tambah-form">Tambah Data Form</button>
         <button type="button" id="btn-reset-form" class="btn btn-primary">Reset Form</button><br><br>
-<?php echo form_open('Po/insert/'.$list[0]->id_po)?>
+<?php echo form_open('Po/insertPr/'.$list[0]->id_po)?>
        <hr> <h6>Data Purchase Request 1 </h6><hr>
          <div class="form-group col-md-6">
                  <label class="control-label " for="nama">No Purchase Request :</label>
@@ -119,6 +119,7 @@
        $(".itemName").change(function () {
          document.getElementById('namaBarang').value ="";
         var val = $(this).val(); //get the value
+        
          $('.namaBarang').select2({
         placeholder: '--- Select Item ---',
         ajax: {

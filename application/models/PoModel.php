@@ -8,6 +8,7 @@ class PoModel extends CI_Model {
     {
         parent::__construct();
         $this->load->database();
+    
 
     }
 
@@ -143,16 +144,44 @@ class PoModel extends CI_Model {
     }
 
     public function insertPr($id){
-          $jumlah=$this->input->post['jumlah'];$itemName=array();$namaBarang=array();$qty=array();
+          $jumlah=$this->input->post('jumlah');
+          $itemName=array();$namaBarang=array();$qty=array();$harga= array();
+              $itemName=$this->input->post('itemName');
+                  $namaBarang=$this->input->post('namaBarang');
+                      $qty=$this->input->post('qty');
+                      $harga=$this->input->post('harga');
+        
 
         for ($i=0; $i < $jumlah ; $i++) { 
-            $item = $this->PoModel->getItem($namaBarang[$i]);
+            $this->db->select('*');
+            $this->db->from('item');
+              $this->db->where('id_item', $namaBarang[$i]);
+               $query = $this->db->get();
+               foreach ($query->result() as $key) {
+                   $nama = $key->item_barang;
+               }
+             $this->db->select('*');
+            $this->db->from('purch_req');
+              $this->db->where('id', $itemName[$i]);
+               $query = $this->db->get();
+               foreach ($query->result() as $key) {
+                   $nomor = $key->pr_no;
+               }
+
+
+
         $data = array(
         'id_po' => $id,
-        'item_barang' => $item_barang[$i],
+        'id_pr' => $itemName[$i],
+        'id_item' => $namaBarang[$i],
+        'no_pr' => $nomor,
+        'item' => $nama,
         'qty' => $qty[$i],
+        'harga' => $harga[$i]
         );
-         $this->db->insert('item', $data);
+
+         $this->db->insert('bayangan', $data);
+
         }
 
 

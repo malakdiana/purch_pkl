@@ -52,18 +52,35 @@ public function index()
 
          if(!empty($this->input->post("ids"))){
              $id=$this->input->post("ids");
+             $quantity=0;
+             $hasil=$this->db->query("SELECT sum(qty) as jumlah FROM bayangan WHERE id_item=".$id);
+         if($hasil->num_rows()>0){
+            foreach ($hasil->result() as $data) {
+                $quantity=$data->jumlah;
+            }
+
+        }
+
+        $quantity2=0;
              $hsl=$this->db->query("SELECT * FROM item WHERE id_item=".$id);
         if($hsl->num_rows()>0){
             foreach ($hsl->result() as $data) {
+                $quantity2 = $data->qty;
+            }
+
+        }
+        $qty=$quantity2-$quantity;
+        foreach ($hsl->result() as $data) {
+               
                 $data=array(
-                    'id_item' => $data->id_item,
-                    'qty' => $data->qty,
+                   'id_item' => $data->id_item,
+                    'qty' => $qty,
                     );
 
 
             }
+        
 
-        }
          
         echo json_encode($data);
     }
@@ -190,6 +207,7 @@ public function index()
 
     public function insertPr($id){
         $this->PoModel->insertPr($id);
+          redirect('Po', 'refresh');
     }
 
    
