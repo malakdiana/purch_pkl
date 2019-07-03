@@ -188,5 +188,9 @@ public function index()
 
  
 
+    public function insertPr($id){
+        $this->PoModel->insertPr($id);
+    }
+
    
 }

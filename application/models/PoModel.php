@@ -142,6 +142,24 @@ class PoModel extends CI_Model {
          $this->db->delete('bayangan');
     }
 
+    public function insertPr($id){
+          $jumlah=$this->input->post['jumlah'];$itemName=array();$namaBarang=array();$qty=array();
+
+        for ($i=0; $i < $jumlah ; $i++) { 
+            $item = $this->PoModel->getItem($namaBarang[$i]);
+        $data = array(
+        'id_po' => $id,
+        'item_barang' => $item_barang[$i],
+        'qty' => $qty[$i],
+        );
+         $this->db->insert('item', $data);
+        }
+
+
+
+
+    }
+
   
 
 
