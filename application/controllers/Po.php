@@ -194,5 +194,9 @@ public function index()
         $this->load->view('Admin/footer');
     }
 
+    public function insertPr($id){
+        $this->PoModel->insertPr($id);
+    }
+
    
 }
