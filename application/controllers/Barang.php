@@ -35,7 +35,7 @@ class Barang extends CI_Controller {
         $this->load->model('Unit_barangModel');
 		$this->load->helper('url', 'form');
 		$this->load->library('form_validation');
-		$this->form_validation->set_rules('no_barang', 'no_barang', 'trim|required');
+		$this->form_validation->set_rules('nama_barang', 'nama_barang', 'trim|required');
 		if ($this->form_validation->run()==FALSE) {
             $data['listUnit']=$this->Unit_barangModel->getUnit_barang();
 			$this->load->view('Admin/header');
@@ -128,7 +128,7 @@ class Barang extends CI_Controller {
                     $nama_barang = filter_var(trim($allDataInSheet[$i][$nama_barang]), FILTER_SANITIZE_STRING);
                  
                    
-                    $fetchData[] = array('no_barang' => $no_barang,'nama_barang' => $nama_barang,);
+                    $fetchData[] = array('nama_barang' => $nama_barang,);
                 }              
                 $data['employeeInfo'] = $fetchData;
                 $this->BarangModel->setBatchImport($fetchData);
@@ -189,44 +189,28 @@ class Barang extends CI_Controller {
     );
    
     // Buat header tabel nya pada baris ke 3
-    $excel->setActiveSheetIndex(0)->setCellValue('A1', "NO"); // Set kolom A3 dengan tulisan "NO"
-    $excel->setActiveSheetIndex(0)->setCellValue('B1', "NO_BARANG"); // Set kolom B3 dengan tulisan "NIS"
-    $excel->setActiveSheetIndex(0)->setCellValue('C1', "GROUP_NAME"); // Set kolom C3 dengan tulisan "NAMA"
-    $excel->setActiveSheetIndex(0)->setCellValue('D1', "NAMA_BARANG"); // Set kolom D3 dengan tulisan "JENIS KELAMIN"
-    $excel->setActiveSheetIndex(0)->setCellValue('E1', "UNIT"); // Set kolom E3 dengan tulisan "ALAMAT"
-    $excel->setActiveSheetIndex(0)->setCellValue('F1', "REMARKS"); // Set kolom E3 dengan tulisan "ALAMAT"
-    
+    $excel->setActiveSheetIndex(0)->setCellValue('A1', "NO_BARANG"); // Set kolom A3 dengan tulisan "NO"
+    $excel->setActiveSheetIndex(0)->setCellValue('B1', "NAMA_BARANG"); // Set kolom B3 dengan tulisan "NIS"
+   
     $excel->getActiveSheet()->getStyle('A1')->applyFromArray($style_col);
     $excel->getActiveSheet()->getStyle('B1')->applyFromArray($style_col);
-    $excel->getActiveSheet()->getStyle('C1')->applyFromArray($style_col);
-    $excel->getActiveSheet()->getStyle('D1')->applyFromArray($style_col);
-    $excel->getActiveSheet()->getStyle('E1')->applyFromArray($style_col);
-    $excel->getActiveSheet()->getStyle('F1')->applyFromArray($style_col);
-   
+  
 
     // Panggil function view yang ada di SiswaModel untuk menampilkan semua data siswanya
     $siswa = $this->BarangModel->getBarang();
     $no = 1; // Untuk penomoran tabel, di awal set dengan 1
     $numrow = 2; // Set baris pertama untuk isi tabel adalah baris ke 4
     foreach($siswa as $data){ // Lakukan looping pada variabel siswa
-      $excel->setActiveSheetIndex(0)->setCellValue('A'.$numrow, $data->no);
-      $excel->setActiveSheetIndex(0)->setCellValue('B'.$numrow, $data->no_barang);
-      $excel->setActiveSheetIndex(0)->setCellValue('C'.$numrow, $data->group_name);
-      $excel->setActiveSheetIndex(0)->setCellValue('D'.$numrow, $data->nama_barang);
-      $excel->setActiveSheetIndex(0)->setCellValue('E'.$numrow, $data->unit);
-      $excel->setActiveSheetIndex(0)->setCellValue('F'.$numrow, $data->remarks);
-      
+      $excel->setActiveSheetIndex(0)->setCellValue('A'.$numrow, $data->no_barang);
+      $excel->setActiveSheetIndex(0)->setCellValue('B'.$numrow, $data->nama_barang);
+    
       $no++; // Tambah 1 setiap kali looping
       $numrow++; // Tambah 1 setiap kali looping
     }
     // Set width kolom
     //$excel->getActiveSheet()->getColumnDimension('A')->setWidth(5); // Set width kolom A
     $excel->getActiveSheet()->getColumnDimension('B')->setWidth(30); // Set width kolom B
-    $excel->getActiveSheet()->getColumnDimension('C')->setWidth(30); // Set width kolom C
-    $excel->getActiveSheet()->getColumnDimension('C')->setWidth(25);
-    $excel->getActiveSheet()->getColumnDimension('D')->setWidth(25);
-    $excel->getActiveSheet()->getColumnDimension('E')->setWidth(25);
-    $excel->getActiveSheet()->getColumnDimension('F')->setWidth(25);
+   
  
     $excel->getActiveSheet()->getDefaultRowDimension()->setRowHeight(-1);
     // Set orientasi kertas jadi LANDSCAPE
