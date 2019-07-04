@@ -42,7 +42,7 @@
                                                 <th style="">TELEPON</th>
                                               
                                            
-                                                <th >ACTION/th>
+                                                <th >ACTION</th>
                                             </tr>
                                         </thead>
                                         <tbody>

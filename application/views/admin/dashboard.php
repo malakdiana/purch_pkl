@@ -23,46 +23,117 @@
                          <?=$this->session->flashdata('tambahDepartemen')?>
                                 <div>
 
-                                 <table cellpadding="0" cellspacing="0" border="0" class="table table-striped" id="dataTablesss">
-                                        <thead class="bg-light text-capitalize" align="center">
-                                            <tr>
-                                                
-                                                <th>DATA</th>
-                                                <th>INPUT DATA</th>
-                                                <th>MASTER DATA</th>
+                                 <table cellpadding="0" cellspacing="0" border="0" class="table table-striped">
+                                        <thead class="bg-light text-capitalize" align="center" >
 
-                                            </tr>
+                                         <tr>
+                                       
+                                                <th colspan="5"><h4>DATA</h4></th>
+                                        </tr>
+                                           
                                         </thead>
                                         <tbody>
 
                                         <tr align="center">
                                                
                                                 <td>
-                                                <a class="btn btn-flat btn-primary mb-4" href="<?php echo site_url()?>/Po/" role="button" style="width:200px">Data Purchase Order</a><br>
+                                                <a href="<?php echo site_url()?>/Po/"><button class="btn btn-flat btn-info mb-4" role="button" style="width:160px""><img style="width: 100px;height: 100px" src="<?php echo base_url()?>assets/images/icon/datapo.png"><br>DATA PO</button></a><br></td>
 
-                                                <a class="btn btn-flat btn-primary mb-4" href="<?php echo site_url()?>/Purch_req/" role="button" style="width:200px">Data Purchase Request</a><br>
+                                                <td>
+                                                 <a href="<?php echo site_url()?>/Purch_req/"><button class="btn btn-flat btn-info mb-4" role="button" style="width:160px""><img style="width: 100px;height: 100px" src="<?php echo base_url()?>assets/images/icon/datapr.png"><br>DATA PR</button></a><br></td>
+
+                                                <td>
+                                                 <a href="<?php echo site_url()?>/Qr/"><button class="btn btn-flat btn-info mb-4" role="button" style="width:160px""><img style="width: 100px;height: 100px" src="<?php echo base_url()?>assets/images/icon/listallquo.png"><br>LIST ALL QUOTATION</button>
+                                                 </a><br></td>
+
+                                                <td>
+                                                 <a href="<?php echo site_url()?>/belum/"><button class="btn btn-flat btn-secondary mb-4" role="button" style="width:160px""><img style="width: 100px;height: 100px" src="<?php echo base_url()?>assets/images/icon/eta.png"><br>ETA BESOK</button></a><br>
+                                                 </td>
+
+                                                 <td>
+                                                 <a href="<?php echo site_url()?>/belum/"><button class="btn btn-flat btn-secondary mb-4" role="button" style="width:175px""><img style="width: 100px;height: 100px" src="<?php echo base_url()?>assets/images/icon/histori.png"><br>RIWAYAT KEDATANGAN</button></a><br>
+                                                 </td>
+
+                                               
+
                                                 
-                                                <a class="btn btn-flat btn-primary mb-4" href="<?php echo site_url()?>/Qr/" role="button" style="width:200px">List All Quotation</a><br>
-                                                
-                                                <a class="btn btn-flat btn-secondary mb-4" href="<?php echo site_url()?>/belum/" role="button" style="width:200px">PO Record</a><br>
-                                                <a class="btn btn-flat btn-secondary mb-4" href="<?php echo site_url()?>/belum/" role="button" style="width:200px">ETA</a><br>
-                                                </td>
-
-
-                                                <td> <a class="btn btn-flat btn-success mb-4" href="<?php echo site_url()?>/Purch_req/tambahPR" role="button" style="width:200px">Input Purchase Request </a><br>
-                                                    <a class="btn btn-flat btn-success mb-4" href="<?php echo site_url()?>/Po/tambahPO" role="button" style="width:200px">Input Purchase Order </a>
-                                                </td>
-
-                                                 <td> <a class="btn btn-flat btn-info mb-4" href="<?php echo site_url()?>/Supplier" role="button" style="width:150px" >Supplier </a><br>
-                                                  
-                                                    <a class="btn btn-flat btn-info mb-4" href="<?php echo site_url()?>/Barang/" role="button" style="width:150px">Barang</a><br>
-                                                    <a class="btn btn-flat btn-info mb-4" href="<?php echo site_url()?>/Unit_barang/" role="button" style="width:150px">Unit Barang</a><br>
-                                                     <a class="btn btn-flat btn-info mb-4" href="<?php echo site_url()?>/Departemen/" role="button" style="width:150px">Departement</a><br>
-                                                      <a class="btn btn-flat btn-info mb-4" href="<?php echo site_url()?>/Section/" role="button" style="width:150px">Section</a><br>
-                                                       <a class="btn btn-flat btn-info mb-4" href="<?php echo site_url()?>/Approval/" role="button" style="width:150px">Approval</a><br>
-                                                       <a class="btn btn-flat btn-info mb-4" href="<?php echo site_url()?>/Login/ManajemenUser" role="button" style="width:150px">Manajemen User</a><br>
-                                                </td>
                                             
+
+                                         </tr>
+                                       </tbody>
+                                    </table>
+
+
+
+                                    <table cellpadding="0" cellspacing="0" border="0" class="table table-striped">
+                                        <thead class="bg-light text-capitalize" align="center">
+
+                                         <tr>
+                                       
+                                                <th colspan="5"><h4>INPUT DATA</h4></th>
+                                        </tr>
+                                           
+                                        </thead>
+                                        <tbody>
+
+                                          <tr style="width: 300px">
+
+
+                                            <td >
+                                                 <a href="<?php echo site_url()?>//Po/tambahPO"><button class="btn btn-flat btn-success mb-4" role="button" style="width:480px""><img style="width: 100px;height: 100px" src="<?php echo base_url()?>assets/images/icon/inputpo.png"><br>INPUT PO</button></a><br></td>
+
+
+                                            <td>
+                                                 <a href="<?php echo site_url()?>/Purch_req/tambahPR"><button class="btn btn-flat btn-success mb-4" role="button" style="width:480px""><img style="width: 100px;height: 100px" src="<?php echo base_url()?>assets/images/icon/inputpr.png"><br>INPUT PR</button></a><br></td>
+
+
+                                        
+                                         </tr>
+                                       </tbody>
+                                    </table>
+
+
+
+                                    <table cellpadding="0" cellspacing="0" border="0" class="table table-striped" >
+                                        <thead class="bg-light text-capitalize" align="center">
+
+                                         <tr>
+                                       
+                                                <th colspan="5"><h4>MASTER DATA</h4></th>
+                                        </tr>
+                                           
+                                        </thead>
+                                        <tbody>
+
+                                          <tr align="center">
+
+
+                                           <td >
+                                                 <a href="<?php echo site_url()?>/Supplier/"><button class="btn btn-flat btn-warning mb-4" role="button" style="width:160px""><img style="width: 100px;height: 100px" src="<?php echo base_url()?>assets/images/icon/supp.png"><br>SUPPLIER</button></a><br></td>
+
+
+                                            <td >
+                                                 <a href="<?php echo site_url()?>/Barang"><button class="btn btn-flat btn-warning mb-4" role="button" style="width:160px""><img style="width: 100px;height: 100px" src="<?php echo base_url()?>assets/images/icon/brg.png"><br>BARANG</button></a><br></td>
+
+
+                                                <td >
+                                                 <a href="<?php echo site_url()?>/Unit_barang"><button class="btn btn-flat btn-warning mb-4" role="button" style="width:160px""><img style="width: 100px;height: 100px" src="<?php echo base_url()?>assets/images/icon/unitbrg.png"><br>UNIT BARANG</button></a><br></td>
+
+                                                <td >
+                                                 <a href="<?php echo site_url()?>/Departemen"><button class="btn btn-flat btn-warning mb-4" role="button" style="width:160px""><img style="width: 100px;height: 100px" src="<?php echo base_url()?>assets/images/icon/dpt.png"><br>DEPARTEMEN</button></a><br></td>
+
+                                                <td >
+                                                 <a href="<?php echo site_url()?>/Section"><button class="btn btn-flat btn-warning mb-4" role="button" style="width:160px""><img style="width: 100px;height: 100px" src="<?php echo base_url()?>assets/images/icon/section.png"><br>SECTION</button></a><br></td>
+                                             
+
+                                                      <tr style="background:#e9e9e9">
+                                                       <td colspan="3">
+                                                       <a href="<?php echo site_url()?>/Approval"><button class="btn btn-flat btn-warning mb-4" role="button" style="width:450px""><img style="width: 100px;height: 100px" src="<?php echo base_url()?>assets/images/icon/approve.png"><br>APPROVAl</button></a><br></td>
+
+                                                       <td colspan="2">
+                                                      <a href="<?php echo site_url()?>/Login/ManajemenUser"><button class="btn btn-flat btn-warning mb-4" role="button" style="width:450px""><img style="width: 100px;height: 100px" src="<?php echo base_url()?>assets/images/icon/user.png"><br>KELOLA USER</button></a><br></td></tr>
+                                                </td>
+
 
                                          </tr>
                                        </tbody>
