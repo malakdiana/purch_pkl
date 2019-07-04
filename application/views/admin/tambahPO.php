@@ -37,8 +37,8 @@
                                             <div class="form-group">
                                                      <label class="control-label " for="no_po">NOMER PO:</label>
                                            <div class="row"style="margin-left: 4px">
-                                               <input type="text" class="form-control" value="PO" name="no_po" style="margin-bottom: 25px;width: 100px" readonly="">
-                                                <input type="text" class="form-control" minlength="3" maxlength="3" name="no_po" style="margin-bottom: 25px;width: 100px" placeholder="000">
+                                               <input type="text" class="form-control" value="PO" name="no_po" style="margin-bottom: 25px;width: 100px" readonly="" >
+                                                <input type="text" class="form-control" required="" minlength="3" maxlength="3" name="no_po" style="margin-bottom: 25px;width: 100px" placeholder="000">
                                                   
                                                 <select name="bulan" class="form-control" style="margin-bottom: 25px;width: 100px; height: 50px">
                                            
@@ -67,6 +67,12 @@
 
 
                                             </div>
+                                            <div class="form-group">
+                                                     <label class="control-label" for="tgl_po">Supplier :</label>
+                                           
+                                               <input type="text" value="" required="" class="form-control" id="supplier" name="supplier" style="margin-bottom: 25px">
+                                            </div>
+
    
    
                                      

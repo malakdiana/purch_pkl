@@ -22,9 +22,11 @@
                     <div class="col-12 mt-5">
                         <div class="card">
                                 <div class="card-body">
-                                   <?php echo form_open('Po/editPo/') ?>
+                                   <?php echo form_open('Purch_req/insertPrtoPo/') ?>
                                      <h3 align="center">Form Tambah Section</h3><br>
+                                       <input readonly="" type="text" class="form-control" name="id_item" style="margin-bottom: 25px" value="<?php echo $list[0]->id_item?>" hidden="">
 
+                                        <input readonly="" type="text" class="form-control" name="id_pr" style="margin-bottom: 25px" value="<?php echo $list[0]->id_purch?>" hidden="">
 
                                             <div class="form-group">
                                             <label class="control-label " for="pr_no">Nomer Pr :</label>
@@ -41,24 +43,26 @@
 
                                             <div class="form-group">
                                             <label class="control-label " for="no_po">Qty :</label>
-                                            <input readonly="" type="text" class="form-control" name="qty" style="margin-bottom: 25px" value="<?php echo $list[0]->qty?>">
+                                            <input type="text" class="form-control" name="qty" style="margin-bottom: 25px" value="<?php echo $qtysisa?>" readonly="">
                                             </div>
 
 
                                             <div class="form-group">
                                             <label class="control-label " for="no_po">To Nomer Purchase Order :</label>
 
-                                             <select name="" id="" class="form-control choosen">
-                                              
-                                                    <option value="--"></option>
+                                             <select name="no_po" id="no_po" class="no_po form-control choosen">
                                                
-                                            </select>
+                                            </select> <br><br>
                                              
                                         
 
                                             <div class="form-group">
                                             <label class="control-label " for="no_po">Qty To Po :</label>
-                                            <input type="text" class="form-control" name="no_po" style="margin-bottom: 25px" >
+                                            <input type="text" class="form-control" name="qty_po" style="margin-bottom: 25px" >
+                                            </div>
+                                            <div class="form-group">
+                                            <label class="control-label " for="no_po">Harga :</label>
+                                            <input type="text" class="form-control" name="harga" style="margin-bottom: 25px" >
                                             </div>
    
                                      
@@ -74,3 +78,22 @@
 </div>
 </div>
 </div>
+ <?php $this->load->view('admin/footer'); ?>
+ <link href="<?php echo base_url()?>assets/css/select2.min.css" rel="stylesheet" />
+  <script src="<?php echo base_url()?>assets/js/select2.min.js"></script>
+<script type="text/javascript">
+      $('.no_po').select2({
+        placeholder: '--- Select Item ---',
+        ajax: {
+          url: '<?php echo site_url()?>/Purch_req/getPo',
+          dataType: 'json',
+          delay: 250,
+          processResults: function (data) {
+            return {
+              results: data
+            };
+          },
+          cache: true
+        }
+      });
+</script>

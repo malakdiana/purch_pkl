@@ -32,8 +32,8 @@
                                                </div>
                                                <input type="hidden" class="form-control" name="id[]" id="id" value="<?php echo $id; ?>" >
                                                 <div class="form-group">
-                                                     <label class="control-label " for="item_barang">ITEM BARANG:</label>
-                                            <input type="text" class="form-control" name="item[]" style="margin-bottom: 25px">
+                                                     <label class="control-label " for="item_barang">ITEM BARANG:</label><br>
+                                            <select class="itemName form-control" style="width:500px" name="item[]"></select>
                                                
                                                   
                                             </div>
@@ -43,16 +43,28 @@
                                            
                                                 <input type="text" class="form-control" name="qty[]" style="margin-bottom: 25px">
                                             </div>
+
+                                            <div class="form-group">
+                                                     <label class="control-label " for="unit">SATUAN :</label>
+                                           <select name="unit[]" class="form-control" required="">
+                                            <?php foreach ($unit as $key) {?>
+                                                
+                                            <option value="<?php echo $key->unit_barang?>"><?php echo $key->unit_barang?></option>
+                                        <?php } ?>
+                                               
+                                           </select>
+                                               
+                                            </div>
     <div id="insert-form"></div>
                                            
    
    
-                                     
+              <input type="hidden" id="jumlah-form" value="1" name="jumlah">                        
         
           
               <div align="right"> <button type="submit" class="btn btn-primary" style="align-self: right">Simpan</button></div>
               <?php echo form_close() ?>
-                <input type="hidden" id="jumlah-form" value="1">
+               
            
 
     </div>
@@ -61,19 +73,22 @@
 </div>
 </div>
  <?php $this->load->view('admin/footer'); ?>
+  <link href="<?php echo base_url()?>assets/css/select2.min.css" rel="stylesheet" />
+  <script src="<?php echo base_url()?>assets/js/select2.min.js"></script>
  <script>
     $(document).ready(function(){ // Ketika halaman sudah diload dan siap
         $("#btn-tambah-form").click(function(){ // Ketika tombol Tambah Data Form di klik
             var jumlah = parseInt($("#jumlah-form").val()); // Ambil jumlah data form pada textbox jumlah-form
-            var nextform = jumlah + 1; // Tambah 1 untuk jumlah form nya
+            var x = jumlah + 1; // Tambah 1 untuk jumlah form nya
             
             // Kita akan menambahkan form dengan menggunakan append
             // pada sebuah tag div yg kita beri id insert-form
-            $("#insert-form").append("<div style='margin-bottom: 10px'><hr>Data Barang " + nextform + "</div>" +
+            $("#insert-form").append("<div style='margin-bottom: 10px'><hr>Data Barang " + x + "</div>" +
                 " <input type='hidden' class='form-control' name='id[]' id='id' value='<?php echo $id; ?>' >" +
-                "<div class='form-group'> <label class='control-label' for='item'>ITEM BARANG:</label> <input type='text' class='form-control' name='item[]'' style='margin-bottom: 25px'></div><div class='form-group'> <label class='control-label' for='qty'>QTY :</label><input type='text' class='form-control' name='qty[]' style='margin-bottom: 25px'></div>");
+                "<div class='form-group'> <label class='control-label' for='item'>ITEM BARANG:</label> <br><select class='itemName"+x+" form-control' style='width:500px' name='item[]'></select></div><div class='form-group'> <label class='control-label' for='qty'>QTY :</label><input type='text' class='form-control' name='qty[]' style='margin-bottom: 25px'></div> <div class='form-group'><label class='control-label' for='unit'>SATUAN :</label><select name='unit[]' class='form-control' required=''><?php foreach ($unit as $key) {?><option value='<?php echo $key->unit_barang?>''><?php echo $key->unit_barang?></option><?php } ?> </select></div>");
+             $("#scriptt").append("<script type='text/javascript'>$('.itemName"+x+"').select2({placeholder: '--- Select Item ---',ajax: {url: '<?php echo site_url()?>/Purch_req/getBarang',dataType: 'json',delay: 250,processResults: function (data) {return {results: data };},cache: true}});");
             
-            $("#jumlah-form").val(nextform); // Ubah value textbox jumlah-form dengan variabel nextform
+            $("#jumlah-form").val(x); // Ubah value textbox jumlah-form dengan variabel nextform
         });
         
         // Buat fungsi untuk mereset form ke semula
@@ -82,4 +97,22 @@
             $("#jumlah-form").val("1"); // Ubah kembali value jumlah form menjadi 1
         });
     });
+
+
     </script>
+    <div id="scriptt"></script></div>
+     <script type="text/javascript">
+      $('.itemName').select2({
+        placeholder: '--- Select Item ---',
+        ajax: {
+          url: '<?php echo site_url()?>/Purch_req/getBarang',
+          dataType: 'json',
+          delay: 250,
+          processResults: function (data) {
+            return {
+              results: data
+            };
+          },
+          cache: true
+        }
+      });</script>

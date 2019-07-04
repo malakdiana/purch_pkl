@@ -8,6 +8,7 @@ class Po extends CI_Controller {
     {
         parent::__construct();
          $this->load->model('PoModel');
+         $this->load->model('Purch_reqModel');
          $this->load->helper('url','form');
         // $this->load->library(array('PHPExcel','PHPExcel/IOFactory'));
          // $this->load->library('excel','upload');

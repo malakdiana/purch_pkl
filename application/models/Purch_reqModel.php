@@ -17,6 +17,7 @@ class Purch_reqModel extends CI_Model {
 
             $this->db->select('*');
             $this->db->from('purch_req');
+            $this->db->limit(200);
             $query = $this->db->get();
            $results=array();
             if($query->num_rows() > 0){
@@ -95,9 +96,8 @@ class Purch_reqModel extends CI_Model {
     }
 
         public function getItem_barang($id)
-    {
-
-            $this->db->select('item.id_po ,item.id_item, item.id_purch, item.item_barang,item.qty, po.id_po,po.no_po,bayangan.id_po, bayangan.id_bayangan, bayangan.qty as qtybay');
+     {
+            $this->db->select('item.id_po ,item.id_item, item.id_purch, item.item_barang,item.qty, po.id_po,po.no_po,bayangan.id_po, bayangan.id_bayangan, bayangan.qty as qtybay, bayangan.harga');
             $this->db->from('item');
             $this->db->join('bayangan', 'item.id_item= bayangan.id_item', 'left');
              $this->db->join('po', 'po.id_po= bayangan.id_po','left');
@@ -111,6 +111,51 @@ class Purch_reqModel extends CI_Model {
             }
     }
 
+    public function jumlahQty($id){
+        $this->db->select('bayangan.id_item, bayangan.qty as qtybay, sum(bayangan.qty) as jumlah');
+        $this->db->from('bayangan');
+        $this->db->where('id_pr',$id);
+        $this->db->group_by('id_item');
+          $query = $this->db->get();
+            $results=array();
+            if($query->num_rows() > 0){
+            return $query->result();
+            }else{
+            return $results;
+            }
+    }
+
+    // public function getItem_barang($id){
+    //     $this->db->select('*');
+    //     $this->db->from('item');
+    //     $this->db->where('item.id_purch',$id);
+    //     $query = $this->db->get();
+    //     $results=array();
+    //     if($query->num_rows() > 0){
+    //     return $query->result();
+    //     }else{
+    //     return $results;
+    //     }
+
+
+    // }
+
+    public function detail_item($id){
+        $this->db->select('*, count(*) as jumlah');
+        $this ->db->from('bayangan');
+        $this->db->join('po', 'bayangan.id_po = po.id_po');
+        $this->db->where('id_pr',$id);
+        $this->db->group_by('id_item');
+           $query = $this->db->get();
+            $results=array();
+            if($query->num_rows() > 0){
+            return $query->result();
+            }else{
+            return $results;
+            }
+
+    }
+
     public function updateItem(){
          $data = array(
         'item_barang' => $this->input->post('item_barang'),
@@ -122,15 +167,25 @@ class Purch_reqModel extends CI_Model {
     }
 
      public function tambahItem_barang(){
-        $id=array();$item_barang=array();$qty=array();
+        $id=array();$item_barang=array();$qty=array();$unit=array();
         $id= $this->input->post('id');
         $item_barang= $this->input->post('item');
         $qty= $this->input->post('qty');
+        $unit= $this->input->post('unit');
+
         for ($i=0; $i < count($id) ; $i++) { 
+              $this->db->select('*');
+        $this ->db->from('barang');
+        $this->db->where('no_barang',$item_barang[$i] );
+         $query = $this->db->get();
+         foreach ($query->result() as $key) {
+             $nama_barang =$key->nama_barang;
+         }
         $data = array(
         'id_purch' => $id[$i],
-        'item_barang' => $item_barang[$i],
+        'item_barang' => $nama_barang,
         'qty' => $qty[$i],
+        'unit_name' => $unit[$i]
         );
          $this->db->insert('item', $data);
         }
@@ -177,6 +232,43 @@ private $_batchImport;
         );
         $this->db->where('id',$id);
          $this->db->update('purch_req', $data);
+    }
+
+    public function getQtySisa($id){
+             $quantity=0;
+             $hasil=$this->db->query("SELECT sum(qty) as jumlah FROM bayangan WHERE id_item=".$id);
+         if($hasil->num_rows()>0){
+            foreach ($hasil->result() as $data) {
+                $quantity=$data->jumlah;
+            }
+
+        }
+
+        $quantity2=0;
+             $hsl=$this->db->query("SELECT * FROM item WHERE id_item=".$id);
+        if($hsl->num_rows()>0){
+            foreach ($hsl->result() as $data) {
+                $quantity2 = $data->qty;
+            }
+
+        }
+        $qty = $quantity2-$quantity;
+        return $qty;
+
+    }
+
+    public function insertPrtoPo(){
+          $data = array(
+        'id_po' => $this->input->post('no_po'),
+        'id_pr' => $this->input->post('id_pr'),
+        'id_item' => $this->input->post('id_item'),
+        'no_pr' => $this->input->post('pr_no'),
+        'item' => $this->input->post('item_barang'),
+        'qty' => $this->input->post('qty_po'),
+        'harga' => $this->input->post('harga'),
+        );
+          $this->db->insert('bayangan', $data);
+
     }
 
 

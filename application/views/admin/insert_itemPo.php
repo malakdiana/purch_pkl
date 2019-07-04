@@ -57,10 +57,20 @@
                  <label class="control-label " for="nama">Nama Barang :</label><br>
                 <select class="namaBarang form-control" style="width:500px" name="namaBarang[]" id="namaBarang"><option></option></select>
         </div>
+       <div class="row">
+        <div class="col-md-6">
          <div class="form-group col-md-6">
                  <label class="control-label " for="nama">Qty :</label>
                 <input type="text" class="form-control" name="qty[]" id="qty1" required="">
         </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group col-md-6">
+                 <label class="control-label " for="nama">Qty yang dibutuhkan :</label>
+                <input type="text" class="form-control" name="qtysisa[]" id="qtysisa" readonly="">
+        </div>
+      </div>
+    </div>
          <div class="form-group col-md-6">
                  <label class="control-label " for="nama">Harga :</label>
                 <input type="text" class="form-control" name="harga[]" required="">
@@ -143,7 +153,8 @@
           data : {ids: val},
           dataType: 'json',  
       }).done(function(data){
-                    document.getElementById('qty1').value = data.qty;   
+                    document.getElementById('qtysisa').value = data.qty;  
+                    
       })
       });
       

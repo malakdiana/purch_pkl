@@ -80,8 +80,9 @@ public function index()
         $this->load->helper('url', 'form');
         $this->load->library('form_validation');
        
-        $this->load->model('BarangModel');
-            $data['barang']= $this->BarangModel->getBarang();
+        $this->load->model('Unit_barangModel');
+
+            $data['unit']= $this->Unit_barangModel->getUnit_barang();
             $data['id']=$id;
                if($this->session->userdata('logged_in')['hak_akses']==1){
             $this->load->view('Admin/header');
@@ -104,9 +105,9 @@ public function index()
     public function GetItem_barang($id){
 
             $data['Purch_req']= $this->Purch_reqModel->GetItem_barang($id);
+            $data['detail']= $this->Purch_reqModel->jumlahQty($id);
             $this->load->model('BarangModel');
-            $data['barang']= $this->BarangModel->getBarang();
-            $data['id']=$id;
+            $data['barang']= $this->BarangModel->getBarang(); $data['id']=$id;
                 if($this->session->userdata('logged_in')['hak_akses']==1){
             $this->load->view('Admin/header');
             $this->load->view('Admin/GetItem_barang',$data);
@@ -152,9 +153,48 @@ public function index()
       public function InsertPo($id){
        
         $data['list'] = $this->Purch_reqModel->getItemById($id);
+        $data['qtysisa'] = $this->Purch_reqModel->getQtySisa($id);
         $this->load->view('Admin/header');
         $this->load->view('Admin/InsertPo', $data);
-        $this->load->view('Admin/footer');
+
+    }
+    public function getPo(){
+          $this->load->database();
+
+        
+        if(!empty($this->input->get("q"))){
+            $this->db->like('no_po', $this->input->get("q"));
+            $query = $this->db->select('id_po as id,no_po as text')->where('status',0)->get("po");
+            $json = $query->result();
+        }
+
+        
+        echo json_encode($json);
+    }
+     public function getBarang(){
+          $this->load->database();
+
+        
+        if(!empty($this->input->get("q"))){
+            $this->db->like('nama_barang', $this->input->get("q"));
+            $query = $this->db->select('no_barang as id,nama_barang as text')->get("barang");
+            $json = $query->result();
+        }
+
+        
+        echo json_encode($json);
+    }
+
+    public function insertPrtoPo(){
+        if($this->input->post('qty_po') > $this->input->post('qty') ){
+            echo "<script>alert('Gagal di tambahkan, quantity terlalu banyak')</script>";
+           redirect('Purch_req/', 'refresh');
+        }else{
+              $this->Purch_reqModel->insertPrtoPo();  
+              echo "<script>alert('Berhasil di tambahkan')</script>";
+           redirect('Purch_req/', 'refresh');
+        }
+     
     }
 
 	
