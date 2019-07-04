@@ -191,7 +191,7 @@ $this->upload->initialize($config);
                     'nama_vendor' => $vendor[$i],
                     'harga' => $harga[$i],
                     'detail' => $this->upload->data('file_name'),
-                      'status' => 0,
+                      'status' => 1,
             );
          $this->db->insert('detail_penawaran', $data);
             }else{

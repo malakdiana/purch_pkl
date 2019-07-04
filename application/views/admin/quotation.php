@@ -78,10 +78,10 @@
                                                 </td>
 
                                                 
+   <td>
 
-
-
-                                                <td>
+<?php if($key->status ==  0){?>
+                                             
                                                 <div class="btn-group mb-xl-3" role="group" aria-label="Basic example">
                                     <button type="button" class="btn btn-info" style="width:80px; height:45px;">  
                                       <a href="<?php echo site_url()?>/Qr/detailQuotation/<?php echo $key->id_penawaran?>" 
@@ -93,6 +93,14 @@
                                       <font color="white"><i class="fa fa-pencil"></i> Edit QR </font></a></button>
                                   
                                 </div>
+                                <?php } else{?>
+                                  <div class="btn-group mb-xl-3" role="group" aria-label="Basic example">
+                                    <button type="button" class="btn btn-info" style="width:80px; height:45px;">  
+                                      <a href="<?php echo site_url()?>/Qr/detailQuotation/<?php echo $key->id_penawaran?>" 
+                                        ><font color="white"><i class="fa fa-th-list"></i> Detail</font></a></button>
+
+                                    <button type="button" class="btn btn-primary" style="width:85px; height:45px;"> <a href="<?php echo site_url()?>/Qr/tambahVendor/<?php echo $key->id_penawaran?>"><font color="white"><i class="fa fa-book"></i> Vendor </font></a></button><?php } ?>
+
                                                </td>
 
                                                

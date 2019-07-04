@@ -79,13 +79,16 @@ class PoModel extends CI_Model {
 
     }
     public function tambahPO(){
+      
 
         $tgl_po = $this->input->post('tgl_po');
+        $supplier = $this->input->post('supplier');
         $no_po = "PO"."-".$this->input->post('no_po')."/"."PUR"."-"."SAI"."/".$this->input->post('bulan')."/".$this->input->post('tahun');
 
         $data = array(
         'tgl_po' => $tgl_po,
         'no_po' => $no_po,
+        'supplier' => $supplier,
         'status' => "OPEN"
       
         );
