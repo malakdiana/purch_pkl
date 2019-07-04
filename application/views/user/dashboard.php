@@ -27,30 +27,54 @@
                                         <thead class="bg-light text-capitalize" align="center">
                                             <tr>
                                                 
-                                                <th>DATA</th>
-                                                <th>INPUT DATA</th>
+                                                <th colspan="3"><h4>DATA</h4></th>
+                                                
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+
+                                        <tr align="center">
+
+                                                 <td>
+                                                 <a href="<?php echo site_url()?>/Purch_req/"><button class="btn btn-flat btn-info mb-4" role="button" style="width:250px""><img style="width: 100px;height: 100px" src="<?php echo base_url()?>assets/images/icon/trackpo.png"><br>TRACKING MY ORDER</button>
+                                                 </a><br></td>
+                                           
+                                                <td>
+                                                 <a href="<?php echo site_url()?>/Qr/tracking"><button class="btn btn-flat btn-info mb-4" role="button" style="width:250px""><img style="width: 100px;height: 100px" src="<?php echo base_url()?>assets/images/icon/trackingQuo.png"><br>TRACKING MY QUOTATION</button>
+                                                 </a><br></td>
+
+
+
+                                                <td>
+                                                 <a href="<?php echo site_url()?>/Qr/"><button class="btn btn-flat btn-info mb-4" role="button" style="width:250px""><img style="width: 100px;height: 100px" src="<?php echo base_url()?>assets/images/icon/listallquo.png"><br>LIST ALL QUOTATION</button>
+                                                 </a><br></td>
+
+                                                </td>
+                                            
+
+                                         </tr>
+                                       </tbody>
+                                    </table>
+
+
+                                     <table cellpadding="0" cellspacing="0" border="0" class="table table-striped" id="dataTablesss">
+                                        <thead class="bg-light text-capitalize" align="center">
+                                            <tr>
+                                               
+                                                <th colspan="2"><h4>INPUT DATA</h4></th>
                                             </tr>
                                         </thead>
                                         <tbody>
 
                                         <tr align="center">
                                                
-                                                <td><a class="btn btn-flat btn-primary mb-4" href="<?php echo site_url()?>/Purch_req/" role="button" style="width:200px">Tracking Order</a><br>
-                                               
-                                                
-                                                <a class="btn btn-flat btn-primary mb-4" href="<?php echo site_url()?>/Qr/tracking" role="button" style="width:200px">Tracking Quotation</a><br>
 
-                                                 <a class="btn btn-flat btn-primary mb-4" href="<?php echo site_url()?>/Qr/" role="button" style="width:200px">List All Quotation</a><br>
-                                                
-                                                </td>
+                                                 <td>
+                                                 <a href="<?php echo site_url()?>/Purch_req/tambahPR"><button class="btn btn-flat btn-success mb-4" role="button" style="width:480px""><img style="width: 100px;height: 100px" src="<?php echo base_url()?>assets/images/icon/inputpr.png"><br>INPUT PR</button></a><br></td>
 
+                                                  <td>
+                                                 <a href="<?php echo site_url()?>/Qr/tambahQR"><button class="btn btn-flat btn-success mb-4" role="button" style="width:480px""><img style="width: 100px;height: 100px" src="<?php echo base_url()?>assets/images/icon/inputqr.png"><br>INPUT QR</button></a><br></td>
 
-                                                <td> <a class="btn btn-flat btn-success mb-4" href="<?php echo site_url()?>/Purch_req/tambahPR" role="button" style="width:200px">Input Purchase Request </a><br>
-                                                    <a class="btn btn-flat btn-success mb-4" href="<?php echo site_url()?>/Qr/tambahQR" role="button" style="width:200px">Input Quotation Request</a>
-                                                </td>
-
-                                                
-                                            
 
                                          </tr>
                                        </tbody>

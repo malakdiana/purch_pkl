@@ -17,17 +17,34 @@
 
             <!-- page title area end -->
             <div class="main-content-inner">
-                <div class="row">
+                <div class="row" align="center">
                     <!-- data table start -->
                     <div class="col-12 mt-5">
-                        <div class="card" align="center">
-                            <div  style="padding-top: 15px;padding-left: 15px">
-                                <a class="btn btn-flat btn-primary mb-4" href="<?php echo site_url()?>/Purch_req/" role="button" style="width:200px">Data Purchase Request</a><br>
-                                <a class="btn btn-flat btn-primary mb-4" href="<?php echo site_url()?>/Po" role="button" style="width:200px">Data Purchase Order</a><br>
-                                 <a class="btn btn-flat btn-primary mb-4" href="<?php echo site_url()?>/Qr" role="button" style="width:200px">List all Quotation</a></div>
-                            
-                               
-                                </div>
+                        
+
+                              <table cellpadding="0" cellspacing="0" border="0" class="table table-striped" id="dataTablesss">
+                                       
+                                        <tbody>
+
+                            <tr align="center">
+
+                                            <td>
+                                                <a href="<?php echo site_url()?>/Po/"><button class="btn btn-flat btn-info mb-4" role="button" style="width:240px""><img style="width: 200px;height: 200px" src="<?php echo base_url()?>assets/images/icon/datapo.png"><br>DATA PO</button></a><br></td>
+
+                                                <td>
+                                                 <a href="<?php echo site_url()?>/Purch_req/"><button class="btn btn-flat btn-info mb-4" role="button" style="width:240px""><img style="width: 200px;height: 200px" src="<?php echo base_url()?>assets/images/icon/datapr.png"><br>DATA PR</button></a><br></td>
+
+                                                <td>
+                                                 <a href="<?php echo site_url()?>/Qr/"><button class="btn btn-flat btn-info mb-4" role="button" style="width:240px""><img style="width: 200px;height: 200px" src="<?php echo base_url()?>assets/images/icon/listallquo.png"><br>LIST ALL QUOTATION</button>
+                                                 </a><br></td>
+
+
+
+                                                 </tr>
+                                                 </tbody>
+                                    </table>
+
+
                             </div>
                         </div>
                     </div>
