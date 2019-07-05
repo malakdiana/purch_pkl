@@ -26,7 +26,7 @@
                                        
                                         <tbody>
 
-                            <tr align="center">
+                            <tr align="center" >
 
                                             <td>
                                                 <a href="<?php echo site_url()?>/Po/"><button class="btn btn-flat btn-info mb-4" role="button" style="width:240px""><img style="width: 200px;height: 200px" src="<?php echo base_url()?>assets/images/icon/datapo.png"><br>DATA PO</button></a><br></td>
@@ -43,6 +43,27 @@
                                                  </tr>
                                                  </tbody>
                                     </table>
+
+                                    <br>
+                                    <br>
+                                    <br>
+
+
+                             <!--  <table cellpadding="0" cellspacing="0" border="0" class="table table-striped" id="dataTablesss">
+                                       
+                                        <tbody>
+
+                            <tr align="center" style="background:#fff">
+
+                                            <td>
+                                                <a href="<?php echo site_url()?>/Login/Logout"><button class="btn btn-flat btn-warning mb-4" role="button" style="width:160px""><img style="width: 50px;height: 50px" src="<?php echo base_url()?>assets/images/icon/masuk.png">SIGN IN NOW</button></a><br></td>
+
+
+
+                                                 </tr>
+                                                 </tbody>
+                                    </table> -->
+
 
 
                             </div>
