@@ -268,8 +268,26 @@ private $_batchImport;
         'harga' => $this->input->post('harga'),
         );
           $this->db->insert('bayangan', $data);
+$idpr=$this->input->post('id_pr');
 
-    }
+         $query= $this->db->select('id_purch, sum(qty) as jumlah')->where('id_purch', $idpr)->get('item');
+         foreach ($query->result() as $key) {
+           $jumlahitem = $key->jumlah;
+         }
+          $query= $this->db->select('sum(qty) as jumlah')->where('id_pr', $idpr)->get('bayangan');
+         foreach ($query->result() as $key) {
+           $jumlahbay = $key->jumlah;
+         }
+         if($jumlahitem==$jumlahbay){
+          $dat=array(
+            'status' => 'CLOSED'
+          );
+          $this->db->where('id', $idpr);
+          $this->db->update('purch_req',$dat);
+         }
+       }
+
+    
 
 
 

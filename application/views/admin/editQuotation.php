@@ -37,7 +37,7 @@
                                                      <label class="control-label " for="no_barang" >Tanggal :</label>
                                                  </div>
                                             <div class="col-sm-4">
-                                                <input readonly="" type="text" class="form-control" name="tanggal" style="margin-bottom: 25px" value="<?php date_default_timezone_set('Asia/Jakarta');echo date('l, d-m-Y H:i:s')?>">
+                                                <input readonly="" type="text" class="form-control" name="tanggal" style="margin-bottom: 25px" value="<?php echo $list[0]->tanggal?>">
                                             </div>
                                         </div>
                                     
@@ -48,7 +48,7 @@
                                                 <label class="control-label" for="alamat">Kode Quotation :</label>
                                             </div>
                                             <div class="col-sm-4">
-                                                <input type="text" class="form-control" id="kode_qr" name="nama_barang" style="margin-bottom: 25px" value="<?php echo $list[0]->kode_qr?>">
+                                                <input type="text" class="form-control" id="kode_qr" name="kode_qr" style="margin-bottom: 25px" value="<?php echo $list[0]->kode_qr?>">
                                             </div>
                                             <div class="col-md-2">
                                              <label class="control-label" for="alamat">Item :</label>
@@ -107,8 +107,9 @@
                                          <div class="col-sm-4">
                                             <input type="file" class="form-control" id="fupload" name="fupload" value="" >
                                             <?php if(empty($list[0]->gambar)){ ?>
-                                                <p><i class="fa fa-paperclip"> Tidak ada file</i> </p><?php }else{?> 
-                                            <p><i class="fa fa-paperclip"> <?php echo $list[0]->gambar;?></p>
+                                                <p><i class="fa fa-paperclip"> </i> Tidak ada file </p><?php }
+                                                else{?> 
+                                            <p><i class="fa fa-paperclip"> </i> <?php echo $list[0]->gambar;?></p>
                                             <?php } ?>
                                         </div>
                                             <div class="col-md-2">

@@ -26,6 +26,7 @@
                        
                          <?=$this->session->flashdata('deleteQr')?>
                          <?=$this->session->flashdata('tambahItem')?>
+                          <?=$this->session->flashdata('editQr')?>
                              <?=$this->session->flashdata('gagalQr')?>
                          <?=$this->session->flashdata('berhasilQr')?>
                              

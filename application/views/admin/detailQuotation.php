@@ -107,8 +107,8 @@
                                          <div class="col-sm-4">
                                           
                                             <?php if(empty($list[0]->gambar)){ ?>
-                                                <p><i class="fa fa-paperclip"> Tidak ada file</i> </p><?php }else{?> 
-                                            <p><i class="fa fa-paperclip"> <?php echo $list[0]->gambar;?></p>
+                                                <p><i class="fa fa-paperclip"></i> Tidak ada file </p><?php }else{?> 
+                                            <p><i class="fa fa-paperclip"></i> <?php echo $list[0]->gambar;?></p>
                                             <?php } ?>
                                         </div>
                                             <div class="col-md-2">

@@ -87,20 +87,14 @@
                                                   <button type="button" class="btn btn-success" style="width:115px; height:50px;"><a href="<?php echo site_url()?>/Purch_req/InsertPo/<?php echo $key->id_item ?>"><font color="white"><i class="fa fa-arrow-right"></i> Insert Po</font></a></button>
                                                 </div></td>
 
-                                                <?php }
+                                                <?php ;}
 
                                                 else{?>
                                                   <td>
                                                      <button type="button" class="btn btn-success"><a href=""><font color="white"><i class="fa fa-check"></i> Done</font></a></button></td>
-                                                   <?php }}else{?>
-                                                      <td>
-                                                 <button type="button" class="btn btn-primary" style="width:80px; height:50px;"><a href="javascript:void(0);" onclick="modalDetail('<?php echo $key->id_item?>', '<?php echo $key->item_barang?>', '<?php echo $key->qty?>')"  data-toggle="modal" data-target="#myModalEdit"><font color="white"><i class="fa fa-pencil"></i> Edit</font></a></button>
-                                                
-                                                <button type="button" class="btn btn-danger" style="width:80px; height:50px;"><a href="<?php echo site_url()?>/Purch_req/hapusItem/<?php echo $id?>/<?php echo $key->id_item?> " onclick="return confirm('Apakah Yakin Untuk Menghapus?')"><font color="white"><i class="fa fa-trash-o"></i> Hapus</font></a></button>
+                                                   <?php }} ?>
 
-                                                  <button type="button" class="btn btn-success" style="width:115px; height:50px;"><a href="<?php echo site_url()?>/Purch_req/InsertPo/<?php echo $key->id_item ?>"><font color="white"><i class="fa fa-arrow-right"></i> Insert to Po</font></a></button></td>
-
-                                               <?php }  }}$no++;?> </tr><?php }
+                                               <?php  }}$no++;?> </tr><?php }
                                                  ?>
 
 

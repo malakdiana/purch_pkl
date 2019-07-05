@@ -37,9 +37,7 @@ public function index()
         
         if(!empty($this->input->get("q"))){
             $this->db->like('item_barang', $this->input->get("q"));
-            $query = $this->db->select('id_item as id,item_barang as text')->where('id_purch',$id)
-                        ->limit(10)
-                        ->get("item");
+            $query = $this->db->select('id_item as id,item_barang as text')->where('id_purch',$id)->get("item");
             $json = $query->result();
         }
 
@@ -52,14 +50,11 @@ public function index()
         $this->load->database();
 
          if(!empty($this->input->post("ids"))){
-             $id=$this->input->post("ids");
-             $quantity=0;
-             $hasil=$this->db->query("SELECT sum(qty) as jumlah FROM bayangan WHERE id_item=".$id);
-         if($hasil->num_rows()>0){
+             $id=$this->input->post("ids"); $quantity=0;
+             $hasil=$this->db->query("SELECT sum(qty) as jumlah FROM bayangan WHERE id_item=".$id); if($hasil->num_rows()>0){
             foreach ($hasil->result() as $data) {
                 $quantity=$data->jumlah;
             }
-
         }
 
         $quantity2=0;
@@ -95,9 +90,7 @@ public function index()
         
         if(!empty($this->input->get("q"))){
             $this->db->like('pr_no', $this->input->get("q"));
-            $query = $this->db->select('id,pr_no as text')->where('status','OPEN')
-                        ->limit(10)
-                        ->get("purch_req");
+            $query = $this->db->select('id,pr_no as text')->where('status','OPEN')->get("purch_req");
             $json = $query->result();
         }
 
@@ -130,6 +123,8 @@ public function index()
           
         }else{
             $this->PoModel->tambahPO();
+
+           // $this->PoModel->insertPr()
                 $this->session->set_flashdata('tambahPO','<div class="alert alert-success" role="alert">SUKSES TAMBAH DATA <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
             redirect('Po/', 'refresh');
         }

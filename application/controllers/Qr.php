@@ -128,6 +128,7 @@ $this->upload->initialize($config);
     }
 
     public function editQuotation($id){
+      if(!empty($_FILES['fupload'])){
         $files=$_FILES['fupload'];
         $config['upload_path'] = './assets/file_qr/';
             $config['upload_path'] = './assets/file_qr/';
@@ -144,14 +145,16 @@ $this->upload->initialize($config);
                 $_FILES['userfile']['size']= $files['size'];
                 $this->load->library('upload', $config);
 $this->upload->initialize($config);
-
+}
           if($this->upload->do_upload('userfile')){
   $this->QrModel->editQuotationGambar();
+   $this->session->set_flashdata('editQr','<div class="alert alert-success" role="alert">SUKSES EDIT QUOTATION <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
                redirect('Qr/', 'refresh');
                  
 
             }else{
                $this->QrModel->editQuotation();
+                  $this->session->set_flashdata('editQr','<div class="alert alert-success" role="alert">SUKSES EDIT QUOTATION <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
                redirect('Qr/', 'refresh');
             } 
     }
@@ -194,14 +197,21 @@ $this->upload->initialize($config);
                       'status' => 1,
             );
          $this->db->insert('detail_penawaran', $data);
+         $this->session->set_flashdata('tambahVendor','<div class="alert alert-success" role="alert">SUKSES TAMBAH DATA VENDOR <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+         $ids = $id[$i];
+        
             }else{
                $error = array('error' => $this->upload->display_errors());
                
             }
             
         }
+          $data2 = array(
+            'status' =>1);
+         $this->db->where('id_penawaran',$ids );
+         $this->db->update('penawaran',$data2);
 
-         redirect('Qr/', 'refresh');
+         redirect("Qr/tambahVendor/$ids", 'refresh');
 
     }
 

@@ -5,7 +5,7 @@
                         <div class="breadcrumbs-area clearfix" style="padding-top: 15px;padding-bottom: 15px">
                             <h4 class="page-title pull-left">Data</h4>
                             <ul class="breadcrumbs pull-left">
-                                <li><a href="<?php echo site_url()?>/Barang">Quotation Request</a></li>
+                                <li><a href="<?php echo site_url()?>/Qr">Quotation Request</a></li>
                                 <li><span>Tambah Vendor</span></li>
                             </ul>
 
@@ -30,6 +30,7 @@
 </div>
   <div class="card">
                                 <div class="card-body">
+                                   <?=$this->session->flashdata('tambahVendor')?>
 <div id="London" class="w3-container w3-display-container city">
  <br>
                    <?php echo form_open_multipart('Qr/tambahVen/'.$id) ?>

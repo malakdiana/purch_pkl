@@ -139,10 +139,12 @@ class QrModel extends CI_Model {
         'bahan' => $this->input->post('bahan'),
         'detail' => $this->input->post('detail'),
         'gambar' => $this->upload->data('file_name'),
-        'status' => 1,
+        'status' => 0,
       
         );
          $this->db->insert('penawaran', $data);
+
+        
 
     }
 

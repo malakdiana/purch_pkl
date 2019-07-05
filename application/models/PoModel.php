@@ -83,16 +83,41 @@ class PoModel extends CI_Model {
 
         $tgl_po = $this->input->post('tgl_po');
         $supplier = $this->input->post('supplier');
+         $eta = $this->input->post('eta');
+         $eta = date('Y-m-d', strtotime($eta));
         $no_po = "PO"."-".$this->input->post('no_po')."/"."PUR"."-"."SAI"."/".$this->input->post('bulan')."/".$this->input->post('tahun');
+        $this->db->select('*');
+        $this->db->from('po');
+        $this->db->where('no_po',$no_po);
+        $query = $this->db->get();
+        if($query->num_rows() > 0){
+              echo "<script>alert('Gagal di tambahkan, Nomor PO tidak boleh sama')</script>";
+             $this->load->view('Admin/header');
+            $this->load->view('Admin/tambahPO');
+            die();
+        }else{
+
 
         $data = array(
         'tgl_po' => $tgl_po,
         'no_po' => $no_po,
         'supplier' => $supplier,
-        'status' => "OPEN"
+        'status' => "OPEN",
+        'eta' => $eta
       
         );
          $this->db->insert('Po', $data);
+
+         $this->db->select('*');
+        $this->db->from('po');
+        $this->db->where('no_po',$no_po);
+        $query = $this->db->get();
+      
+       foreach ($query->result() as $key) {
+         $id_po = $key->id_po;
+       }
+        $this->insertPr($id_po);
+       }
 
     }
 
@@ -185,12 +210,30 @@ class PoModel extends CI_Model {
 
          $this->db->insert('bayangan', $data);
 
+         $query= $this->db->select('id_purch, sum(qty) as jumlah')->where('id_purch', $itemName[$i])->get('item');
+         foreach ($query->result() as $key) {
+           $jumlahitem = $key->jumlah;
+         }
+          $query= $this->db->select('sum(qty) as jumlah')->where('id_pr', $itemName[$i])->get('bayangan');
+         foreach ($query->result() as $key) {
+           $jumlahbay = $key->jumlah;
+         }
+         if($jumlahitem==$jumlahbay){
+          $dat=array(
+            'status' => 'CLOSED'
+          );
+          $this->db->where('id',  $itemName[$i]);
+          $this->db->update('purch_req',$dat);
+         }
+       }
+
+
         }
 
 
 
 
-    }
+    
 
   
 
