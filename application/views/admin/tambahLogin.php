@@ -25,20 +25,25 @@
                                      <?php echo form_open('Login/tambahLogin') ?>
                                      <h3 align="center">Form Tambah Login</h3><br>
                                        
-                                               
-                                                
-
-                                            <div class="form-group">
-                                                     <label class="control-label " for="id_section">ID SECTION :</label>
-                                           
-                                                <input type="text" class="form-control" name="id_section" style="margin-bottom: 25px">
-                                            </div>
-
-                                            <div class="form-group">
+                                     <div class="form-group">
                                                      <label class="control-label " for="username">Username:</label>
                                            
                                                 <input type="text" class="form-control" name="username" style="margin-bottom: 25px">
+                                            </div>  
+                                                
+
+                                        <div class="form-group">
+                                        <label class="control-label " for="section">Nama Section :</label>
+                                           <select name="id_section" class="form-control">
+                                           <option class="form-control" value="">--</option>
+
+                                            <?php foreach ($listSec as $key) {?>
+                                           <option class="form-control" value="<?php echo $key->id_section?>"><?php echo $key->nama_section?> </option> <?php }?>
+                                           </select>
+                                              
                                             </div>
+
+                                           
 
                                             <div class="form-group">
                                                      <label class="control-label " for="password">Password :</label>
@@ -49,8 +54,19 @@
                                             <div class="form-group">
                                                      <label class="control-label " for="hak_akses">Hak Akses :</label>
                                            
-                                                <input type="text" class="form-control" name="hak_akses" style="margin-bottom: 25px">
+                                                <select class="form-control" name="hak_akses" style="margin-bottom: 25px">
+
+                                                    <option class="form-control" value="">Pilih: </option>
+                                                     <option class="form-control" value="1">Admin</option>
+                                                     <option class="form-control" value="2">User Section</option>
+                                                     <option class="form-control" value="3">Invoice</option>
+
+                                                </select>
                                             </div>
+
+                                           
+                                          
+
    
    
                                      

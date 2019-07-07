@@ -36,7 +36,7 @@ public function index()
 		$this->load->view('admin/header');
 		$this->load->view('admin/Myprofil');
 		 }else{
-		 	$this->load->view('User/header');
+		 $this->load->view('User/header');
         $this->load->view('User/Myprofil');
 		}
 

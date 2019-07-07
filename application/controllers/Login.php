@@ -8,6 +8,7 @@ class Login extends CI_Controller {
     {
         parent::__construct();
         $this->load->model('LoginModel');
+        $this->load->model('SectionModel');
          $this->load->helper('url','form');
         // $this->load->library(array('PHPExcel','PHPExcel/IOFactory'));
          // $this->load->library('excel','upload');
@@ -50,6 +51,8 @@ public function ManajemenUser()
 					redirect('Admin','refresh');
 			}else if($session_data['hak_akses']=='2'){
 				redirect('User','refresh');
+			}else if($session_data['hak_akses']=='3'){
+				redirect('Invoice','refresh');
 			}
 			
 		}
@@ -99,10 +102,11 @@ public function ManajemenUser()
     public function tambahLogin(){
         $this->load->helper('url', 'form');
         $this->load->library('form_validation');
-        $this->form_validation->set_rules('id_section', 'id_section', 'trim|required');
+        $this->form_validation->set_rules('username', 'username', 'trim|required');
         if ($this->form_validation->run()==FALSE) {
+        	$data['listSec']=$this->SectionModel->getSection();
             $this->load->view('Admin/header');
-            $this->load->view('Admin/tambahLogin');
+            $this->load->view('Admin/tambahLogin',$data);
             $this->load->view('Admin/footer');
         }else{
             $this->LoginModel->tambahLogin();
