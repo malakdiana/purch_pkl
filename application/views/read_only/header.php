@@ -38,7 +38,7 @@
     <!-- main wrapper start -->
     <div class="horizontal-main-wrapper">
         <!-- main header area start -->
-        <div class="mainheader-area">
+        <div class="mainheader-area" style="background:#B0E0E6">
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-md-2">
@@ -79,7 +79,7 @@
                     <!-- profile info & task notification -->
                     <div class="col-md-3 clearfix text-right">
                         <div class="clearfix d-md-inline-block d-block">
-                            <div class="user-profile m-0">
+                            <div class="user-profile m-0" style="background:#17a2b8">
                                  <img class="avatar user-thumb" src="<?php echo base_url()?>assets/images/author/avatar.png" alt="avatar">
                           <h4 class="user-name dropdown-toggle" data-toggle="dropdown">READ ONLY <i class="fa fa-angle-down"></i></h4>
                             <div class="dropdown-menu">

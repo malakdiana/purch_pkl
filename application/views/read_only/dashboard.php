@@ -3,7 +3,7 @@
         width: 160px;
     }
 </style>
- <div class="page-title-area">
+<!--  <div class="page-title-area">
                 <div class="row align-items-center">
                     <div class="col-sm-6">
                         <div class="breadcrumbs-area clearfix" style="padding-top: 15px;padding-bottom: 15px">
@@ -15,7 +15,7 @@
                 </div>
             </div>
         </div>
-
+ -->
             <!-- page title area end -->
             <div class="main-content-inner">
                 <div class="row" align="center">

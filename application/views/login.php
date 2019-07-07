@@ -38,13 +38,13 @@
     </div>
     <!-- preloader area end -->
     <!-- login area start -->
-    <div class="login-area login-bg">
+    <div class="login-area login-bg" >
         <div class="container">
-            <div class="login-box ptb--100">
+            <div class="login-box ptb--100" >
         <?php echo form_open('Login/cekLogin');?>
        
          <?=$this->session->flashdata('gglLogin')?>
-                    <div class="login-form-head">
+                    <div class="login-form-head" style="background:#17a2b8">
                         <!-- <h4> <img src="<?php //echo base_url()?>assets/images/icon/yazaki.png"></h4> -->
                         <h2><b><font color="white">LOCAL PURCHASE</font></b></h2>
                         <h5><font color="white">New Yazaki System</font></h5>
@@ -66,8 +66,8 @@
                             <button id="form_submit" type="submit">Sign In <i class="ti-arrow-right"></i></button>
                         </div>
                         <?php echo form_close();?>
-                        <div class="form-footer text-center mt-5">
-                            <a class="btn btn-primary" href="<?php echo site_url()?>/Read_only/">READ ONLY DATA</a>
+                        <div class="form-footer text-center mt-5" >
+                            <a class="btn btn-primary" style="background:#17a2b8" href="<?php echo site_url()?>/Read_only/">READ ONLY DATA</a>
                         </div>
                     </div>
                
