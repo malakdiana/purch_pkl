@@ -77,7 +77,8 @@
                                                 <label class="control-label" for="alamat">Supplier :</label>
                                             </div>
                                             <div class="col-sm-3">
-                                                <input type="text" value="" required="" class="form-control" id="supplier" name="supplier" style="margin-bottom: 25px">
+                                              <select class="supplier form-control" name="supplier" required=""></select>
+                                             
                                             </div>
 
                                             <div class="col-md-1">
@@ -156,6 +157,20 @@
     </script>
     <div id="scriptt"></script></div>
     <script type="text/javascript">
+    $('.supplier').select2({
+        placeholder: '--- Select Item ---',
+        ajax: {
+          url: '<?php echo site_url()?>/Po/getSup',
+          dataType: 'json',
+          delay: 250,
+          processResults: function (data) {
+            return {
+              results: data
+            };
+          },
+          cache: true
+        }
+      });
       $('.itemName').select2({
         placeholder: '--- Select Item ---',
         ajax: {

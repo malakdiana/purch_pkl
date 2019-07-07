@@ -8,6 +8,7 @@ class Qr extends CI_Controller {
     {
         parent::__construct();
         $this->load->model('QrModel');
+        $this->load->model('SectionModel');
          $this->load->helper('url','form');
         // $this->load->library(array('PHPExcel','PHPExcel/IOFactory'));
          $this->load->library('upload');
@@ -50,18 +51,21 @@ public function index()
 
     public function addQr(){
             $config['upload_path'] = './assets/file_qr/';
-            $config['allowed_types'] = 'pdf|jpg|png|jpeg';
+            $config['allowed_types'] = 'pdf|jpg|png|jpeg|docx';
             $config['max_size']= 1000000000;
             $config['max_width']= 10240;
             $config['max_height']=7680;
             $this->load->library('upload', $config);
 
             if(!$this->upload->do_upload('fupload')){
-                $data['section']=$this->SectionModel->getSection();
-                $error= array('error'=>$this->upload->display_errors());
-                $this->load->view('User/header');
-                $this->load->view('User/tambahQR',$data, $error);
-                $this->load->view('Admin/footer');
+               $this->QrModel->tambahQRnoGambar();
+               $this->session->set_flashdata('tambahQR','<div class="alert alert-success" role="alert">SUKSES TAMBAH DATA <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+            redirect('Qr/', 'refresh');
+                // $data['section']=$this->SectionModel->getSection();
+                // $error= array('error'=>$this->upload->display_errors());
+                // $this->load->view('User/header');
+                // $this->load->view('User/tambahQR',$data, $error);
+                // $this->load->view('Admin/footer');
             }else{
                 $this->QrModel->tambahQR();
                $this->session->set_flashdata('tambahQR','<div class="alert alert-success" role="alert">SUKSES TAMBAH DATA <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
@@ -80,8 +84,17 @@ public function index()
      public function listvendor($id){
         $data['id']=$id;
         $data['vendor']=$this->QrModel->getListVendor($id);
+         if($this->session->userdata('logged_in')['hak_akses']==1){
         $this->load->view('Admin/header');
             $this->load->view('User/list_Vendor',$data);
+          }
+          else if($this->session->userdata('logged_in')['hak_akses']==2){
+        $this->load->view('User/header');
+            $this->load->view('User/list_Vendor',$data);
+          } else{
+        $this->load->view('Read_only/header');
+            $this->load->view('User/list_Vendor',$data);
+          }
 
     }
 
@@ -129,9 +142,10 @@ $this->upload->initialize($config);
 
     public function editQuotation($id){
       if(!empty($_FILES['fupload'])){
+        var_dump($_FILES['fupload']);die();
         $files=$_FILES['fupload'];
         $config['upload_path'] = './assets/file_qr/';
-            $config['upload_path'] = './assets/file_qr/';
+       
             $config['allowed_types'] = 'pdf|jpg|png|jpeg|doc|docx';
             $config['max_size']= 1000000000;
             $config['max_width']= 10240;
@@ -147,12 +161,14 @@ $this->upload->initialize($config);
 $this->upload->initialize($config);
 }
           if($this->upload->do_upload('userfile')){
+
   $this->QrModel->editQuotationGambar();
    $this->session->set_flashdata('editQr','<div class="alert alert-success" role="alert">SUKSES EDIT QUOTATION <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
                redirect('Qr/', 'refresh');
                  
 
             }else{
+             
                $this->QrModel->editQuotation();
                   $this->session->set_flashdata('editQr','<div class="alert alert-success" role="alert">SUKSES EDIT QUOTATION <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
                redirect('Qr/', 'refresh');
@@ -199,9 +215,10 @@ $this->upload->initialize($config);
          $this->db->insert('detail_penawaran', $data);
          $this->session->set_flashdata('tambahVendor','<div class="alert alert-success" role="alert">SUKSES TAMBAH DATA VENDOR <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
          $ids = $id[$i];
-        
+       
             }else{
                $error = array('error' => $this->upload->display_errors());
+               $ids = $id[$i];
                
             }
             

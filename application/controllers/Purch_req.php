@@ -63,7 +63,7 @@ public function index()
             $this->load->view('Admin/tambahPR', $data);
         }else{
               $this->load->view('User/header');
-            $this->load->view('Admin/tambahPR', $data);
+            $this->load->view('User/tambahPR', $data);
         }
           
         }else{

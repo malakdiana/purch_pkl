@@ -36,28 +36,25 @@
                                             <div class="form-group">
                                                      <label class="control-label " for="item">ITEM :</label>
                                            
-                                                <input type="text" class="form-control" name="item" style="margin-bottom: 25px">
+                                                <input type="text" class="form-control" name="item" style="margin-bottom: 25px" required="">
                                             </div>
 
                                             <div class="form-group">
                                                      <label class="control-label " for="tanggal_butuh">DUEDATE PENAWARAN :</label>
                                            
-                                                <input type="date" class="form-control" name="tanggal_butuh" style="margin-bottom: 25px">
+                                                <input type="date" class="form-control" name="tanggal_butuh" style="margin-bottom: 25px" required="">
                                             </div>
 
                                              <div class="form-group">
                                                      <label class="control-label " for="section">SECTION</label>
-                                           <select name="section" class="form-control">
-                                            <?php foreach ($section as $key) {?>
-                                           <option class="form-control" value="<?php echo $key->nama_section?>"><?php echo $key->nama_section?> </option> <?php }?>
-                                           </select>
+                                           <input type="text" class="form-control" readonly="" name="section" value="<?php echo $this->session->userdata('logged_in')['username'] ?>"> 
                                               
                                             </div>
 
                                             <div class="form-group">
                                                      <label class="control-label " for="pic">PIC:</label>
                                            
-                                                <input type="text" class="form-control" name="pic" style="margin-bottom: 25px">
+                                                <input type="text" class="form-control" name="pic" style="margin-bottom: 25px" required="">
                                             </div>
                                             
                                              <div class="form-group">

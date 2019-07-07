@@ -105,7 +105,7 @@
                                              <label class="control-label" for="ppn">Attachment :</label>
                                          </div>
                                          <div class="col-sm-4">
-                                            <input type="file" class="form-control" id="fupload" name="fupload" value="" >
+                                            <input type="file" class="form-control" name="fupload" value="" >
                                             <?php if(empty($list[0]->gambar)){ ?>
                                                 <p><i class="fa fa-paperclip"> </i> Tidak ada file </p><?php }
                                                 else{?> 

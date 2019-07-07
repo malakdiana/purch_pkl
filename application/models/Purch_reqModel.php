@@ -17,6 +17,7 @@ class Purch_reqModel extends CI_Model {
 
             $this->db->select('*');
             $this->db->from('purch_req');
+            $this->db->order_by('id','DESC');
             $this->db->limit(200);
             $query = $this->db->get();
            $results=array();

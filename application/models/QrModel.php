@@ -115,7 +115,7 @@ class QrModel extends CI_Model {
                       'pic'=>$this->input->post('pic'),
                        'bahan'=>$this->input->post('bahan'),
                         'detail'=>$this->input->post('detail'),
-                        'gambar'=>$this->upload->data('gambar'),
+                        'gambar'=>$this->upload->data('file_name'),
                         
 
             );
@@ -130,15 +130,92 @@ class QrModel extends CI_Model {
 
     }
     public function tambahQR(){
+        $tglkode=date('ymd');
+
+$kodeno=1;
+$buat_id   = str_pad($kodeno, 2, "0", STR_PAD_LEFT);
+$kodeasli="QR".$tglkode.".".$buat_id;
+$kodeqr1="QR".$tglkode;
+  $query = $this->db->select('kode_qr')->order_by('id_penawaran', 'DESC')->limit('1')->get('penawaran');
+        foreach ($query->result() as $key) {
+            $carikode = $key->kode_qr;
+        }
+
+
+
+
+
+$pecah=explode(".", $carikode);
+
+
+if ($kodeqr1==$pecah[0]) {
+    $baru=$pecah[1]+1;
+    $buat_kode   = str_pad($baru, 2, "0", STR_PAD_LEFT);
+    $kodeasli=$kodeqr1.".".$buat_kode;
+    }
+
+      $tgl= date('d-m-Y',strtotime($this->input->post('tanggal_butuh')));
+
+
+
         $data = array(
         'tanggal' => $this->input->post('tgl'),
         'item' => $this->input->post('item'),
-        'tanggal_butuh' => $this->input->post('tanggal_butuh'),
+        'kode_qr' => $kodeasli,
+        'tanggal_butuh' => $tgl,
         'section' => $this->input->post('section'),
         'pic' => $this->input->post('pic'),
         'bahan' => $this->input->post('bahan'),
         'detail' => $this->input->post('detail'),
         'gambar' => $this->upload->data('file_name'),
+        'status' => 0,
+      
+        );
+         $this->db->insert('penawaran', $data);
+
+        
+
+    }
+     public function tambahQRnoGambar(){
+         $tglkode=date('ymd');
+
+$kodeno=1;
+$buat_id   = str_pad($kodeno, 2, "0", STR_PAD_LEFT);
+$kodeasli="QR".$tglkode.".".$buat_id;
+$kodeqr1="QR".$tglkode;
+  $query = $this->db->select('kode_qr')->order_by('id_penawaran', 'DESC')->limit('1')->get('penawaran');
+        foreach ($query->result() as $key) {
+            $carikode = $key->kode_qr;
+        }
+
+
+
+
+
+$pecah=explode(".", $carikode);
+
+
+if ($kodeqr1==$pecah[0]) {
+    $baru=$pecah[1]+1;
+    $buat_kode   = str_pad($baru, 2, "0", STR_PAD_LEFT);
+    $kodeasli=$kodeqr1.".".$buat_kode;
+    }
+
+      
+
+
+$tgl= date('d-m-Y',strtotime($this->input->post('tanggal_butuh')));
+
+        $data = array(
+        'tanggal' => $this->input->post('tgl'),
+        'item' => $this->input->post('item'),
+        'kode_qr' => $kodeasli,
+        'tanggal_butuh' => $tgl,
+        'section' => $this->input->post('section'),
+        'pic' => $this->input->post('pic'),
+        'bahan' => $this->input->post('bahan'),
+        'detail' => $this->input->post('detail'),
+      
         'status' => 0,
       
         );

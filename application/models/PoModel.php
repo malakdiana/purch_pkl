@@ -83,6 +83,11 @@ class PoModel extends CI_Model {
 
         $tgl_po = $this->input->post('tgl_po');
         $supplier = $this->input->post('supplier');
+
+        $query = $this->db->select('nama_supplier')->where('id_supplier',$supplier)->get("supplier");
+        foreach ($query->result() as $key ) {
+            $supplier = $key->nama_supplier;
+        }
          $eta = $this->input->post('eta');
          $eta = date('Y-m-d', strtotime($eta));
         $no_po = "PO"."-".$this->input->post('no_po')."/"."PUR"."-"."SAI"."/".$this->input->post('bulan')."/".$this->input->post('tahun');

@@ -98,6 +98,22 @@ public function index()
         echo json_encode($json);
 
     }
+    public function getSup(){
+
+
+        $this->load->database();
+
+        
+        if(!empty($this->input->get("q"))){
+            $this->db->like('nama_supplier', $this->input->get("q"));
+            $query = $this->db->select('id_supplier as id,nama_supplier as text')->get("supplier");
+            $json = $query->result();
+        }
+
+        
+        echo json_encode($json);
+
+    }
     public function detail_itemPo($id){
         $data['brg']= $this->PoModel->getItemPo($id);
         $data['id']= $id;
