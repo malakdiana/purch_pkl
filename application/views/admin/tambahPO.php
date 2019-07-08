@@ -1,5 +1,4 @@
-
- <div class="page-title-area">
+<div class="page-title-area">
                 <div class="row align-items-center">
                     <div class="col-sm-6">
                         <div class="breadcrumbs-area clearfix" style="padding-top: 15px;padding-bottom: 15px">
@@ -90,44 +89,40 @@
 
                                         </div>
                                     </div> 
-                                              
- <button type="button" class="btn btn-success" id="btn-tambah-form">Tambah Data Form</button>
-        <button type="button" id="btn-reset-form" class="btn btn-primary">Reset Form</button><br><br>
-       <hr> <h6>Data Purchase Request 1 </h6><hr>
-         <div class="form-group col-md-6">
-                 <label class="control-label " for="nama">No Purchase Request :</label>
-                  <select class="itemName form-control" style="width:500px" name="itemName[]"></select>
-        </div>
-         <div class="form-group col-md-6">
-                 <label class="control-label " for="nama">Nama Barang :</label><br>
-                <select class="namaBarang form-control" style="width:500px" name="namaBarang[]" id="namaBarang"><option></option></select>
-        </div>
-       <div class="row">
-        <div class="col-md-6">
-         <div class="form-group col-md-6">
-                 <label class="control-label " for="nama">Qty :</label>
-                <input type="text" class="form-control" name="qty[]" id="qty1" required="">
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="form-group col-md-6">
-                 <label class="control-label " for="nama">Qty yang dibutuhkan :</label>
-                <input type="text" class="form-control" name="qtysisa[]" id="qtysisa" readonly="">
-        </div>
-      </div>
-    </div>
-         <div class="form-group col-md-6">
-                 <label class="control-label " for="nama">Harga :</label>
-                <input type="text" class="form-control" name="harga[]" required="">
-        </div>
-        <div name="insert-form" id="insert-form">
-        </div>
-<input type="hidden" id="jumlah-form" name="jumlah" value="1">
-        <button class="btn btn-success" type="submit">Simpan</button>
 
-<?php echo form_close() ?>    
+<br><br>
 
-    </div>
+
+        <table class="table" >
+          <thead >
+          <th> Nomor PR </th>
+          <th> Barang </th>
+          <th> Qty Butuh </th>
+          <th> Qty PO </th>
+          <th> Harga (Rp)</th>
+        </thead>
+        <tbody id="insert-form">
+        <tr>
+          <td> <select class="itemName form-control" style="width:200px" name="itemName[]"></select></td>
+          <td>  <select class="namaBarang form-control" style="width:300px" name="namaBarang[]" id="namaBarang"><option></option></select></td>
+          <td> <input type="text" class="form-control" style="width:100px"name="qtysisa[]" id="qtysisa" readonly=""></td>
+          <td><input type="text" class="form-control" style="width:100px" name="qty[]" id="qty1" required=""></td>
+          <td><input type="text" class="form-control" name="harga[]" required="" id="rupiah"></td>
+        </tr>
+   
+
+      </tbody>
+        </table>
+        <div align="right">
+                   <button class="btn btn-warning" type="submit">Simpan</button>
+        <button type="button" class="btn btn-success" id="btn-tambah-form">Tambah Data Form</button>
+        <button type="button" id="btn-reset-form" class="btn btn-primary">Reset Form</button>
+        <input type="hidden" id="jumlah-form" name="jumlah" value="1">
+
+       </div>
+
+<?php echo form_close() ?>   
+</div>
 </div>
 </div>
 </div>
@@ -142,15 +137,19 @@
             var x = jumlah + 1; // Tambah 1 untuk jumlah form nya       
             // Kita akan menambahkan form dengan menggunakan append
             // pada sebuah tag div yg kita beri id insert-form
-             $("#insert-form").append("<hr><h6>Data Purchase Request "+x+" </h6><hr><div class='form-group col-md-6'><label class='control-label' for='nama'>No Purchase Request :</label><select class='itemName"+x+" form-control' style='width:500px' name='itemName[]'></select></div><div class='form-group col-md-6'><label class='control-label' for='nama'>Nama Barang :</label><br><select class='namaBarang"+x+" form-control' style='width:500px' name='namaBarang[]' id='namaBarang"+x+"'><option></option></select></div><div class='row'><div class='col-md-6'><div class='form-group col-md-6'><label class='control-label'>Qty :</label><input type='text' class='form-control' name='qty[]' id='qty"+x+"' ></div></div><div class='col-md-6'><div class='form-group col-md-6'><label class='control-label'>Qty yang dibutuhkan :</label><input type='text' class='form-control' name='qtysisa[]' id='qtysisa"+x+"' readonly=''></div> </div>     </div><div class='form-group col-md-6'><label class='control-label' for='nama'>Harga :</label><input type='text' class='form-control' name='harga[]' ></div>");
-            $("#scriptt").append("<script type='text/javascript'>$('.itemName"+x+"').select2({placeholder: '--- Select Item ---',ajax: {url: '<?php echo site_url()?>/Po/getPr',dataType: 'json',delay: 250,processResults: function (data) {return {results: data };},cache: true}});$('.itemName"+x+"').change(function () {document.getElementById('namaBarang"+x+"').value ='';var val = $(this).val(); $('.namaBarang"+x+"').select2({placeholder: '--- Select Item ---',ajax: {url: '<?php echo site_url()?>/Po/getBarang/'+val,dataType: 'json',delay: 250,processResults: function (data) { return {results: data};},cache: true}}); }); $('.namaBarang"+x+"').change(function () { var val = $(this).val(); $.ajax({type : 'POST',url: '<?php echo site_url('Po/getQtyBarang')?>',data : {ids: val},dataType: 'json',}).done(function(data){document.getElementById('qtysisa"+x+"').value = data.qty;})});");
+           
+
+              $("#insert-form").append("<tr><td> <select class='itemName"+x+" form-control' style='width:200px' name='itemName[]'></select></td><td> <select class='namaBarang"+x+" form-control'  style='width:300px' name='namaBarang[]' id='namaBarang"+x+"'><option></option></select></td><td> <input type='text' class='form-control' style='width:100px' name='qtysisa[]'' id='qtysisa"+x+"' readonly=''></td><td><input type='text' class='form-control' style='width:100px' name='qty[]' id='qty"+x+"' required=''></td><td><input type='text' class='form-control' name='harga[]' required='' id='rupiah"+x+"'></td>    </tr>");
+
+
+            $("#scriptt").append("<script type='text/javascript'>$('.itemName"+x+"').select2({placeholder: '--- Select Item ---',ajax: {url: '<?php echo site_url()?>/Po/getPr',dataType: 'json',delay: 250,processResults: function (data) {return {results: data };},cache: true}});$('.itemName"+x+"').change(function () {document.getElementById('namaBarang"+x+"').value ='';var val = $(this).val(); $('.namaBarang"+x+"').select2({placeholder: '--- Select Item ---',ajax: {url: '<?php echo site_url()?>/Po/getBarang/'+val,dataType: 'json',delay: 250,processResults: function (data) { return {results: data};},cache: true}}); }); $('.namaBarang"+x+"').change(function () { var val = $(this).val(); $.ajax({type : 'POST',url: '<?php echo site_url('Po/getQtyBarang')?>',data : {ids: val},dataType: 'json',}).done(function(data){document.getElementById('qtysisa"+x+"').value = data.qty;})});  var rupiah"+x+" = document.getElementById('rupiah"+x+"');rupiah"+x+".addEventListener('keyup', function(e) { rupiah"+x+".value = formatRupiah(this.value, 'Rp. ');});");
             
             
             $("#jumlah-form").val(x); // Ubah value textbox jumlah-form dengan variabel nextform
         });   
         // Buat fungsi untuk mereset form ke semula
         $("#btn-reset-form").click(function(){
-            $("#insert-form").html(""); // Kita kosongkan isi dari div insert-form
+             $("#insert-form").html("");
             $("#jumlah-form").val("1"); // Ubah kembali value jumlah form menjadi 1
         });
     });
@@ -218,4 +217,29 @@
       })
       });
       
+</script>
+<script type="text/javascript">
+  var rupiah = document.getElementById("rupiah");
+rupiah.addEventListener("keyup", function(e) {
+  rupiah.value = formatRupiah(this.value, "Rp. ");
+});
+
+/* Fungsi formatRupiah */
+function formatRupiah(angka, prefix) {
+  var number_string = angka.replace(/[^,\d]/g, "").toString(),
+    split = number_string.split(","),
+    sisa = split[0].length % 3,
+    rupiah = split[0].substr(0, sisa),
+    ribuan = split[0].substr(sisa).match(/\d{3}/gi);
+
+  // tambahkan titik jika yang di input sudah menjadi angka ribuan
+  if (ribuan) {
+    separator = sisa ? "." : "";
+    rupiah += separator + ribuan.join(".");
+  }
+
+  rupiah = split[1] != undefined ? rupiah + "," + split[1] : rupiah;
+  return prefix == undefined ? rupiah : rupiah ? "Rp. " + rupiah : "";
+}
+
 </script>

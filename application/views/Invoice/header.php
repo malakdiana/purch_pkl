@@ -79,7 +79,7 @@
                     <!-- profile info & task notification -->
                     <div class="col-md-3 clearfix text-right">
                         <div class="clearfix d-md-inline-block d-block">
-                            <div class="user-profile m-0" style="background:#17a2b8">
+                            <div class="user-profile m-0" style="background:#17a2b8" >
                                  <img class="avatar user-thumb" src="<?php echo base_url()?>assets/images/author/avatar.png" alt="avatar">
                             <h4 class="user-name dropdown-toggle" data-toggle="dropdown"><?php echo $this->session->userdata('logged_in')['username'] ?> <i class="fa fa-angle-down"></i></h4>
                             <div class="dropdown-menu">

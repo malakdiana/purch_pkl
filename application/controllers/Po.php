@@ -138,6 +138,7 @@ public function index()
             $this->load->view('Admin/tambahPO');
           
         }else{
+           
             $this->PoModel->tambahPO();
 
            // $this->PoModel->insertPr()

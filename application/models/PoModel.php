@@ -200,7 +200,11 @@ class PoModel extends CI_Model {
                foreach ($query->result() as $key) {
                    $nomor = $key->pr_no;
                }
-
+             $d = $harga[$i];
+             $d = str_replace('Rp', '', $d);
+              $d = str_replace('.', '', $d);
+               $d = str_replace(' ', '', $d);
+        
 
 
         $data = array(
@@ -210,7 +214,7 @@ class PoModel extends CI_Model {
         'no_pr' => $nomor,
         'item' => $nama,
         'qty' => $qty[$i],
-        'harga' => $harga[$i]
+        'harga' => $d
         );
 
          $this->db->insert('bayangan', $data);
