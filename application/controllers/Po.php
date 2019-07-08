@@ -70,6 +70,7 @@ public function index()
                
                 $data=array(
                    'id_item' => $data->id_item,
+                   'unit' => $data->unit_name,
                     'qty' => $qty,
                     );
 

@@ -34,20 +34,24 @@
                                                 <th>NO</th>
                                                 <th>NO PR</th>
                                              <th>ITEM BARANG</th>
-                                                <th>QTY TO PO</th>                                           
+                                                <th>QTY TO PO</th>  
+                                                <th>HARGA</th>                                         
                                                
                                                 <th >ACTION</th>
                                           
                                             </tr>
                                         </thead>
                                         <tbody>
-                                        <?php $no=1;   foreach ($brg as $key) {?>
+                                        <?php $no=1;  $jumlah=0; foreach ($brg as $key) {?>
                                             <tr>
                                         
                                                 <td><?php echo $no; ?></td>
                                                 <td><?php echo $key->no_pr;?></td>
                                                 <td><?php echo $key->item;?></td>
                                                 <td><?php echo $key->qty;?></td>
+                                                <td><?php echo "Rp " . number_format($key->harga,2,',','.');?> </td>
+                                                <?php $jumlah+= ($key->qty * $key->harga); 
+                                                  $hasil_rupiah = "Rp " . number_format($jumlah,2,',','.');?>
                                                 <td>
                                                       
                                     <button type="button" class="btn btn-danger" style="width:80px; height:50px;"> <a href="<?php echo site_url()?>/Po/deleteItemPo/<?php echo $id?>/<?php echo $key->id_bayangan?> " onclick="return confirm('Apakah Yakin Untuk Menghapus?')"><font color="white"><i class="fa fa-trash-o"></i> Hapus</font></a></button>
@@ -56,6 +60,10 @@
                                              
                                             </tr>
                                             <?php $no++;}?>
+                                            <tr>
+                                              <td colspan="4" align="right">Jumlah Total</td>
+                                              <td colspan="2"><?php echo $hasil_rupiah; ?></td>
+                                            </tr>
                                        </tbody>
                                     </table>
                                 </div>
