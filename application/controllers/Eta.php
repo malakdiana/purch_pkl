@@ -6,19 +6,18 @@ class Eta extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->model('Purch_reqModel');
-		 $this->load->helper('url','form','download');
-		  $this->load->library('excel','upload');
-
-
+		$this->load->model('EtaModel');
 	
 	}
 
 public function index()
 	{
-		$data['Purch_req']= $this->Purch_reqModel->getPurch_req();
+		$tgl = mktime(0, 0, 0, date("m"), date("d")+1, date("Y"));
+		//$date->modify('+24 hours');
+		$tgl =  date("Y-m-d", $tgl);
+		$data['eta']= $this->EtaModel->getPo($tgl);
 		$this->load->view('Admin/header');
-        $this->load->view('Admin/Dashboard',$data);
+        $this->load->view('Admin/eta',$data);
    
 	}
 
