@@ -92,6 +92,32 @@
                                         </div>
 
                                         </div>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                        <div class="row">
+                                            <div class="col-md-2">
+                                                <label class="control-label" for="nomer_rek">No Rek:</label>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <input type="text" class="form-control" id="nomer_rek" name="nomer_rek" style="margin-bottom: 25px">
+                                            </div>
+                                            <div class="col-md-2">
+                                             <label class="control-label" for="bank">Bank:</label>
+                                         </div>
+                                         <div class="col-sm-4">
+                                           <input type="text" class="form-control" id="bank" name="bank" style="margin-bottom: 25px;">
+                                        </div>
+
+                                        <div class="col-md-2">
+                                             <label class="control-label" for="atas_nama">Atas nama:</label>
+                                         </div>
+                                         <div class="col-sm-4">
+                                           <input type="text" class="form-control" id="atas_nama" name="atas_nama" style="margin-bottom: 25px">
+                                        </div>
+
+                                        </div>
+
                                     </div> 
                                      <div class="col-md-12">
                                         <div class="row">
