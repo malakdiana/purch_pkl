@@ -223,13 +223,39 @@ $this->upload->initialize($config);
             }
             
         }
-          $data2 = array(
+
+        if ($this->cekVendor($ids) ==1){
+           $data2 = array(
+            'status' =>3);
+         }else if($this->cekVendor($ids) >=1){
+           $data2 = array(
             'status' =>1);
+         }
+         
          $this->db->where('id_penawaran',$ids );
          $this->db->update('penawaran',$data2);
 
          redirect("Qr/tambahVendor/$ids", 'refresh');
 
+    }
+
+    public function cekVendor($no){
+      $query=$this->db->select('count(*) as jumlah')->from('detail_penawaran')->where('id_penawaran',$no)->get();
+        //$results=array();
+      $jumlah=0;
+            if($query->num_rows() > 0){
+               foreach ($query->result() as $key ) {
+                $jumlah = $key->jumlah;
+                return $jumlah;
+        
+      }
+
+
+            }else{
+            return $jumlah;
+            }
+
+  
     }
 
     public function tracking()

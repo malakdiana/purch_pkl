@@ -102,7 +102,8 @@
                                      <div class="col-md-12">
                                         <div class="row">
                                             <div class="col-md-2">
-                                             <label class="control-label" for="ppn">Attachment :</label>
+                                             <label class="control-label" for="ppn">Attachment :</label><br><br><br><br>
+                                              <label class="control-label" for="status">Status: </label>
                                          </div>
                                          <div class="col-sm-4">
                                             <input type="file" class="form-control" name="fupload" value="" >
@@ -111,6 +112,12 @@
                                                 else{?> 
                                             <p><i class="fa fa-paperclip"> </i> <?php echo $list[0]->gambar;?></p>
                                             <?php } ?>
+                                            <br>
+                                            <select name="status" class="form-control" id="status">
+                                              <option class="form-control" value="0">OPEN</option>
+                                              <option class="form-control" value="2">CANCEL</option>
+                                           </select>
+
                                         </div>
                                             <div class="col-md-2">
                                                 <label class="control-label" for="terms">Detail :</label>
@@ -124,6 +131,8 @@
                                             
 
                                         </div>
+
+                                       
                                      
                                     </div>
                                   

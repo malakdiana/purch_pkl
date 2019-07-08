@@ -61,17 +61,19 @@
                                                
                                                 <td><?php 
                                                 if($key->status == 0){?>
-                                                    <input type="text" class="form-control" align="center" value="OPEN" name="status" style="margin-bottom: 25px;width: 100px; background-color: #DC143C; color:#FFF" readonly="">
+                                                   <div class="form-control" align="center" value="OPEN" name="status" style="margin-bottom: 25px;width: 100px; background-color: #FFA500; color:#FFF" > OPEN </div>
                                                      <?php }
                                                      else if ($key->status == 1){ ?>  
-                                                         <input type="text" class="form-control" align="center" value="CLOSED" name="status" style="margin-bottom: 25px;width: 100px; background-color: #FFA500; color:#FFF" readonly="">
+                                                        <div class="form-control" align="center" value="CLOSED" name="status" style="margin-bottom: 25px;width: 100px; background-color: #CD853F; color:#FFF" > CLOSED </div>
+                                                        <?php }
+                                                        else if ($key->status == 3){ ?>  
+                                                        <div class="form-control" align="center" value="WAITING" name="status" style="margin-bottom: 25px;width: 100px; background-color: #FF4500; color:#FFF" > WAITING </div>
                                                         <?php }
                                                      else { ?>  
-                                                         <input type="text" class="form-control" align="center" value="CANCEL" name="status" style="margin-bottom: 25px;width: 100px; background-color: #BC8F8F; color:#FFF" readonly="">
+                                                           <div class="form-control" align="center" value="CANCEL" name="status" style="margin-bottom: 25px;width: 100px; background-color: #BC8F8F; color:#FFF" > CANCEL </div>
                                                         <?php }
 
                                                         ?>
-
 
 
                                                 </td>
