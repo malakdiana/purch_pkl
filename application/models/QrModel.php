@@ -56,6 +56,7 @@ class QrModel extends CI_Model {
       
              $query = $this->db->get();
              $results=array();
+
             if($query->num_rows() > 0){
             return $query->result();
             }else{
@@ -98,6 +99,7 @@ class QrModel extends CI_Model {
                       'pic'=>$this->input->post('pic'),
                        'bahan'=>$this->input->post('bahan'),
                         'detail'=>$this->input->post('detail'),
+                        'status'=>$this->input->post('status')
                         
 
             );
