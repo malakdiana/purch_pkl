@@ -51,7 +51,7 @@
                                                  </td>
 
                                                  <td>
-                                                 <a href="<?php echo site_url()?>/belum/"><button class="btn btn-flat btn-secondary mb-4" role="button" style="width:175px""><img style="width: 100px;height: 100px" src="<?php echo base_url()?>assets/images/icon/histori.png"><br>RIWAYAT KEDATANGAN</button></a><br>
+                                                 <a href="<?php echo site_url()?>/Riwayatdatang/"><button class="btn btn-flat btn-secondary mb-4" role="button" style="width:175px""><img style="width: 100px;height: 100px" src="<?php echo base_url()?>assets/images/icon/histori.png"><br>RIWAYAT KEDATANGAN</button></a><br>
                                                  </td>
 
                                                
