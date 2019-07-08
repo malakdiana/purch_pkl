@@ -178,10 +178,12 @@ class PoModel extends CI_Model {
 
     public function insertPr($id){
           $jumlah=$this->input->post('jumlah');
-          $itemName=array();$namaBarang=array();$qty=array();$harga= array();
+          $itemName=array();$namaBarang=array();$qty=array();$harga= array();$unit= array();$qtysisa=array();
               $itemName=$this->input->post('itemName');
                   $namaBarang=$this->input->post('namaBarang');
                       $qty=$this->input->post('qty');
+                       $qtysisa=$this->input->post('qtysisa');
+                      $unit=$this->input->post('unit');
                       $harga=$this->input->post('harga');
         
 
@@ -214,6 +216,7 @@ class PoModel extends CI_Model {
         'no_pr' => $nomor,
         'item' => $nama,
         'qty' => $qty[$i],
+        'unit' => $unit[$i],
         'harga' => $d
         );
 
