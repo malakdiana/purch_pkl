@@ -64,8 +64,8 @@
                                     <li><a href="<?php echo site_url()?>/Purch_req">Data Purchase Request</a></li>
                                     <li><a href="<?php echo site_url()?>/Qr/">List All Quotation</a></li>
                                    
-                                    <li><a href="index3-horizontalmenu.html">PO Record</a></li>
                                     <li><a href="index3-horizontalmenu.html">ETA</a></li>
+                                    <li><a href="index3-horizontalmenu.html">Riwayat Kedatangan</a></li>
                                 </ul>
                                     </li>
                                     <li>
