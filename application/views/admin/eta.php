@@ -44,6 +44,8 @@
                                                 <th >QTY</th>
                                                 <th>Konfirm</th>
                                                 <th>invoice</th>
+                                                <th>Remarks</th>
+                                                <th>Action</th>
 
 
 
@@ -65,8 +67,11 @@
                                                 <td><?php echo $key->item;?></td>
                                                 <td><?php echo $key->unit_name;?></td>
                                                 <td><?php echo $key->qty;?></td>
-                                                <td></td>
-                                                <td></td>
+                                                <td><?php echo $key->konfirmasi;?></td>
+                                                <td><?php echo $key->invoice;?></td>
+                                                <td><?php echo $key->remarks;?></td>
+                                                <td><button class="btn btn-success">Konfirm</button><button class="btn btn-info">Invoice</button><button class="btn btn-warning">Add Remarks</button></td>
+
                                            
                                                
                                              
