@@ -136,7 +136,7 @@
       </tbody>
         </table>
         <div align="right">
-                   <button class="btn btn-warning" type="submit">Simpan</button>
+        <button class="btn btn-warning" type="submit">Simpan</button>
         <button type="button" class="btn btn-success" id="btn-tambah-form">Tambah Data Form</button>
         <button type="button" id="btn-reset-form" class="btn btn-primary">Reset Form</button>
         <input type="hidden" id="jumlah-form" name="jumlah" value="1">
