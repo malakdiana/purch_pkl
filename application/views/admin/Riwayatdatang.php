@@ -52,8 +52,10 @@
                                                 <td><?php echo $key->id_po;?></td>
                                                 <td><?php echo $key->tgl_po;?></td>
                                                 <td><?php echo $key->no_po;?></td>
+                                                 <td><?php echo $key->eta;?></td>
 
-                                                <td></td>
+
+                                               
                                                 <td></td>
                                                 <td></td>
                                                 <td></td>
@@ -73,7 +75,7 @@
                                      <button type="button" class="btn btn-primary" style="width:80px; height:50px;"> <a href="<?php echo site_url()?>/Po/EditPo/<?php echo $key->id_po?>"><font color="white"><i class="fa fa-pencil-square-o"></i> Edit</font></a></button>
 
                                    
-                                    <button type="button" class="btn btn-danger" style="width:80px; height:50px;"><a href="<?php echo site_url()?>/Po/deletePo/<?php echo $key->id_po?> " onclick="return confirm('Apakah Yakin Untuk Menghapus?')"><font color="white"><i class="fa fa-trash-o"></i> Hapus</font></a></button>
+                                    <button type="button" class="btn btn-danger" style="width:110px; height:50px;"><a href="<?php echo site_url()?>/Po/deletePo/<?php echo $key->id_po?> " onclick="return confirm('Apakah Yakin Untuk Menghapus?')"><font color="white"><i class="fa fa-trash-o"></i> Kosongkan</font></a></button>
                                 </div>
                                                 
                                                 </td>
