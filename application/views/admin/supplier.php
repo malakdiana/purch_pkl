@@ -39,7 +39,7 @@
                                                 <th>NAMA SUPPLIER</th>
                                              <th>ALAMAT</th>
                                                 <th>KOTA</th>
-                                                <th style="">TELEPON</th>
+                                                <th>TELEPON</th>
                                               
                                            
                                                 <th >ACTION</th>
@@ -59,8 +59,8 @@
                                                 <td>
 
                                                       <div class="btn-group mb-xl-3" role="group" aria-label="Basic example">
-                                    <button type="button" class="btn btn-info"  style="width:80px; height:50px;">  <a href="javascript:void(0);" onclick="modalDetail2('<?php echo $key->id_supplier?>','<?php echo $key->nama_supplier?>','<?php echo $key->alamat ?>','<?php echo $key->kota ?>', '<?php echo $key->no_telp ?>','<?php echo $key->no_fax ?>','<?php echo $key->attention ?>','<?php echo $key->no_hp ?>','<?php echo $key->tgl_input ?>','<?php echo $key->terms ?>','<?php echo $key->ppn ?>','<?php echo $key->supply?>','<?php echo $key->status ?>','<?php echo $key->perjanjian?>','<?php echo $key->remarks ?>')" data-toggle="modal" data-target="#myModalDetil"><font color="white"><i class="fa fa-th-list"></i> Detail</font></a></button>
-                                    <button type="button" class="btn btn-primary"  style="width:80px; height:50px;">   <a href="javascript:void(0);" onclick="modalDetail('<?php echo $key->id_supplier?>','<?php echo $key->nama_supplier?>','<?php echo $key->alamat ?>','<?php echo $key->kota ?>', '<?php echo $key->no_telp ?>','<?php echo $key->no_fax ?>','<?php echo $key->attention ?>','<?php echo $key->no_hp ?>','<?php echo $key->tgl_input ?>','<?php echo $key->terms ?>','<?php echo $key->ppn ?>','<?php echo $key->supply?>','<?php echo $key->status ?>','<?php echo $key->perjanjian?>','<?php echo $key->remarks ?>')"  data-toggle="modal" data-target="#myModalEdit"><font color="white"><i class="fa fa-pencil"></i> Edit</font></a></button>
+                                    <button type="button" class="btn btn-info"  style="width:80px; height:50px;">  <a href="javascript:void(0);" onclick="modalDetail2('<?php echo $key->id_supplier?>','<?php echo $key->nama_supplier?>','<?php echo $key->alamat ?>','<?php echo $key->kota ?>', '<?php echo $key->no_telp ?>','<?php echo $key->no_fax ?>','<?php echo $key->attention ?>','<?php echo $key->no_hp ?>','<?php echo $key->nomer_rek ?>','<?php echo $key->bank ?>','<?php echo $key->atas_nama ?>','<?php echo $key->tgl_input ?>','<?php echo $key->terms ?>','<?php echo $key->ppn ?>','<?php echo $key->supply?>','<?php echo $key->status ?>','<?php echo $key->perjanjian?>','<?php echo $key->remarks ?>')" data-toggle="modal" data-target="#myModalDetil"><font color="white"><i class="fa fa-th-list"></i> Detail</font></a></button>
+                                    <button type="button" class="btn btn-primary"  style="width:80px; height:50px;">   <a href="javascript:void(0);" onclick="modalDetail('<?php echo $key->id_supplier?>','<?php echo $key->nama_supplier?>','<?php echo $key->alamat ?>','<?php echo $key->kota ?>', '<?php echo $key->no_telp ?>','<?php echo $key->no_fax ?>','<?php echo $key->attention ?>','<?php echo $key->no_hp ?>','<?php echo $key->nomer_rek ?>','<?php echo $key->bank?>','<?php echo $key->atas_nama ?>','<?php echo $key->tgl_input ?>','<?php echo $key->terms ?>','<?php echo $key->ppn ?>','<?php echo $key->supply?>','<?php echo $key->status ?>','<?php echo $key->perjanjian?>','<?php echo $key->remarks ?>')"  data-toggle="modal" data-target="#myModalEdit"><font color="white"><i class="fa fa-pencil"></i> Edit</font></a></button>
                                     <button type="button" class="btn btn-danger"  style="width:80px; height:50px;">   <a href="<?php echo site_url()?>/Supplier/deleteSupplier/<?php echo $key->id_supplier?> " onclick="return confirm('Apakah Yakin Untuk Menghapus?')"><font color="white"><i class="fa fa-trash-o"></i> Hapus</font></a></button>
                                   
                                 </div>
@@ -119,6 +119,21 @@
                     <tr>
                         <td>NO HP</td>
                         <td>   <input type="text" class="form-control" name="no_hp2" id="no_hp2" value="" readonly=""></td>
+                    </tr>
+                    <tr>
+                     <tr>
+                        <td>NO REK</td>
+                        <td>   <input type="text" class="form-control" name="nomer_rek2" id="nomer_rek2" value="" readonly=""></td>
+                    </tr>
+                    <tr>
+                     <tr>
+                        <td>BANK</td>
+                        <td>   <input type="text" class="form-control" name="bank2" id="bank2" value="" readonly=""></td>
+                    </tr>
+                    <tr>
+                     <tr>
+                        <td>ATAS NAMA</td>
+                        <td>   <input type="text" class="form-control" name="atas_nama2" id="atas_nama2" value="" readonly=""></td>
                     </tr>
                     <tr>
                         <td>TANGGAL INPUT</td>
@@ -199,6 +214,18 @@
                         <input type="text" class="form-control" name="no_hp" id="no_hp" value="" >
                     </div>
                     <div class="form-group">
+                        <label for="">NOMER REK</label>
+                        <input type="text" class="form-control" name="nomer_rek" id="nomer_rek" value="" >
+                    </div>
+                    <div class="form-group">
+                        <label for="">BANK</label>
+                        <input type="text" class="form-control" name="bank" id="bank" value="" >
+                    </div>
+                    <div class="form-group">
+                        <label for="">ATAS NAMA</label>
+                        <input type="text" class="form-control" name="atas_nama" id="atas_nama" value="" >
+                    </div>
+                    <div class="form-group">
                         <label for="">TANGGAL INPUT</label>
                         <input type="text" class="form-control" name="tgl_input" id="tgl_input" value="" >
                     </div>
@@ -250,7 +277,7 @@
  
     <!-- others plugins -->
 <script type="text/javascript">
-    function modalDetail(id_supplier,nama_supplier,alamat,kota,no_telp,no_fax,attention,no_hp,tgl_input,terms,ppn,supply,status,perjanjian,remarks){
+    function modalDetail(id_supplier,nama_supplier,alamat,kota,no_telp,no_fax,attention,no_hp,nomer_rek,bank,atas_nama,tgl_input,terms,ppn,supply,status,perjanjian,remarks){
         document.getElementById('id_supplier').value = id_supplier;
         document.getElementById('nama_supplier').value = nama_supplier;
         document.getElementById('alamat').value = alamat;
@@ -259,6 +286,9 @@
         document.getElementById('no_fax').value = no_fax;
         document.getElementById('attention').value = attention;
         document.getElementById('no_hp').value = no_hp;
+         document.getElementById('nomer_rek').value = nomer_rek;
+          document.getElementById('bank').value = bank;
+           document.getElementById('bank').value = atas_nama;
         document.getElementById('tgl_input').value = tgl_input;
         document.getElementById('terms').value = terms;
         document.getElementById('ppn').value = ppn;
@@ -274,7 +304,7 @@
     }
   </script>
   <script type="text/javascript">
-    function modalDetail2(id_supplier,nama_supplier,alamat,kota,no_telp,no_fax,attention,no_hp,tgl_input,terms,ppn,supply,status,perjanjian,remarks){
+    function modalDetail2(id_supplier,nama_supplier,alamat,kota,no_telp,no_fax,attention,no_hp,nomer_rek,bank,atas_nama,tgl_input,terms,ppn,supply,status,perjanjian,remarks){
         document.getElementById('id_supplier2').value = id_supplier;
         document.getElementById('nama_supplier2').value = nama_supplier;
         document.getElementById('alamat2').value = alamat;
@@ -283,6 +313,9 @@
         document.getElementById('no_fax2').value = no_fax;
         document.getElementById('attention2').value = attention;
         document.getElementById('no_hp2').value = no_hp;
+         document.getElementById('nomer_rek2').value = nomer_rek;
+          document.getElementById('bank2').value = bank;
+           document.getElementById('atas_nama2').value = atas_nama;
         document.getElementById('tgl_input2').value = tgl_input;
         document.getElementById('terms2').value = terms;
         document.getElementById('ppn2').value = ppn;

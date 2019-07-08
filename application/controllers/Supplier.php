@@ -69,6 +69,7 @@ class Supplier extends CI_Controller {
             if (!$this->upload->do_upload('file')) {
                 $error = array('error' => $this->upload->display_errors());
             } else {
+
                 $data = array('upload_data' => $this->upload->data());
             }
             
@@ -91,8 +92,8 @@ class Supplier extends CI_Controller {
             $arrayCount = count($allDataInSheet);
 
             $flag = 0;
-            $createArray = array('No','Nama_Supplier', 'Alamat','Kota','No_Telp','No_Fax','Attention','No_Hp','Tgl_Input','Terms','PPN','Supply','Status','Perjanjian','Remarks');
-            $makeArray = array('No' => 'No','Nama_Supplier'=>'Nama_Supplier', 'Alamat' => 'Alamat','Kota'=> 'Kota','No_Telp' => 'No_Telp','No_Fax' => 'No_Fax','Attention' => 'Attention','No_Hp' => 'No_Hp','Tgl_Input' => 'Tgl_Input','Terms' => 'Terms','PPN' => 'PPN','Supply' => 'Supply','Status'=>'Status','Perjanjian' => 'Perjanjian','Remarks' => 'Remarks');
+            $createArray = array('No','Nama_Supplier', 'Alamat','Kota','No_Telp','No_Fax','Attention','No_Hp','nomer_rek','bank','atas_nama','Tgl_Input','Terms','PPN','Supply','Status','Perjanjian','Remarks');
+            $makeArray = array('No' => 'No','Nama_Supplier'=>'Nama_Supplier', 'Alamat' => 'Alamat','Kota'=> 'Kota','No_Telp' => 'No_Telp','No_Fax' => 'No_Fax','Attention' => 'Attention','No_Hp' => 'No_Hp','nomer_rek' => 'nomer_rek','bank' => 'bank','atas_nama' => 'atas_nama','Tgl_Input' => 'Tgl_Input','Terms' => 'Terms','PPN' => 'PPN','Supply' => 'Supply','Status'=>'Status','Perjanjian' => 'Perjanjian','Remarks' => 'Remarks');
             $SheetDataKey = array();
             foreach ($allDataInSheet as $dataInSheet) {
                 foreach ($dataInSheet as $key => $value) {
@@ -124,6 +125,9 @@ class Supplier extends CI_Controller {
                     $no_fax = $SheetDataKey['No_Fax'];
                     $attention = $SheetDataKey['Attention'];
                     $no_hp = $SheetDataKey['No_Hp'];
+                    $nomer_rek = $SheetDataKey['nomer_rek'];
+                    $bank = $SheetDataKey['bank'];
+                    $atas_nama = $SheetDataKey['atas_nama'];
                     $tgl_input = $SheetDataKey['Tgl_Input'];
                     $terms = $SheetDataKey['Terms'];
                     $ppn = $SheetDataKey['PPN'];
@@ -140,6 +144,9 @@ class Supplier extends CI_Controller {
                     $no_fax = filter_var(trim($allDataInSheet[$i][$no_fax]), FILTER_SANITIZE_STRING);
                     $attention = filter_var(trim($allDataInSheet[$i][$attention]), FILTER_SANITIZE_STRING);
                     $no_hp = filter_var(trim($allDataInSheet[$i][$no_hp]), FILTER_SANITIZE_STRING);
+                    $nomer_rek = filter_var(trim($allDataInSheet[$i][$nomer_rek]), FILTER_SANITIZE_STRING);
+                    $bank = filter_var(trim($allDataInSheet[$i][$bank]), FILTER_SANITIZE_STRING);
+                    $atas_nama = filter_var(trim($allDataInSheet[$i][$atas_nama]), FILTER_SANITIZE_STRING);
                     $tgl_input = filter_var(trim($allDataInSheet[$i][$tgl_input]), FILTER_SANITIZE_STRING);
                     $terms = filter_var(trim($allDataInSheet[$i][$terms]), FILTER_SANITIZE_STRING);
                     $ppn = filter_var(trim($allDataInSheet[$i][$ppn]), FILTER_SANITIZE_STRING);
@@ -151,6 +158,9 @@ class Supplier extends CI_Controller {
                     $fetchData[] = array('nama_supplier' => $nama_supplier,'alamat' => $alamat,'kota' => $kota,'no_telp' => $no_telp,'no_fax' => $no_fax,
                           'attention' => $attention,
                           'no_hp' => $no_hp,
+                          'nomer_rek' => $nomer_rek,
+                          'bank' => $bank,
+                          'atas_nama' => $atas_nama,
                           'tgl_input' => $tgl_input,
                           'terms' => $terms,
                           'ppn' => $ppn,
@@ -162,7 +172,8 @@ class Supplier extends CI_Controller {
                 $data['employeeInfo'] = $fetchData;
                 $this->SupplierModel->setBatchImport($fetchData);
                 $this->SupplierModel->importData();
-               unlink('./assets/'.$data['upload_data']['file_name']);
+               //unlink('./assets/'.$data['upload_data']['file_name']);
+
                redirect('Supplier','refresh');
             } else {
                $this->session->set_flashdata('gagalImport','<div class="alert alert-success" role="alert">SUKSES DELETE DATA <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
@@ -226,14 +237,18 @@ class Supplier extends CI_Controller {
     $excel->setActiveSheetIndex(0)->setCellValue('E1', "No_Telp"); // Set kolom E3 dengan tulisan "ALAMAT"
     $excel->setActiveSheetIndex(0)->setCellValue('F1', "No_Fax"); // Set kolom E3 dengan tulisan "ALAMAT"
     $excel->setActiveSheetIndex(0)->setCellValue('G1', "Attention"); // Set kolom E3 dengan tulisan "ALAMAT"
-    $excel->setActiveSheetIndex(0)->setCellValue('H1', "No_Hp"); 
-    $excel->setActiveSheetIndex(0)->setCellValue('I1', "Tgl_Input"); // Set kolom E3 dengan tulisan "ALAMAT"// Set kolom E3 dengan tulisan "ALAMAT"
-    $excel->setActiveSheetIndex(0)->setCellValue('J1', "Terms"); // Set kolom E3 dengan tulisan "ALAMAT"
-    $excel->setActiveSheetIndex(0)->setCellValue('K1', "PPN");
-    $excel->setActiveSheetIndex(0)->setCellValue('L1', "Supply");  // Set kolom E3 dengan tulisan "ALAMAT"
-    $excel->setActiveSheetIndex(0)->setCellValue('M1', "Status"); // Set kolom E3 dengan tulisan "ALAMAT"
-    $excel->setActiveSheetIndex(0)->setCellValue('N1', "Perjanjian"); // Set kolom E3 dengan tulisan "ALAMAT"
-    $excel->setActiveSheetIndex(0)->setCellValue('O1', "Remarks"); // Set kolom E3 dengan tulisan "ALAMAT"
+    $excel->setActiveSheetIndex(0)->setCellValue('H1', "No_Hp");
+    $excel->setActiveSheetIndex(0)->setCellValue('I1', "nomer_rek"); // Set kolom E3 dengan tulisan "ALAMAT"// Set kolom E3 
+    $excel->setActiveSheetIndex(0)->setCellValue('J1', "bank"); // Set kolom E3 dengan tulisan "ALAMAT"
+    $excel->setActiveSheetIndex(0)->setCellValue('K1', "atas_nama"); 
+
+    $excel->setActiveSheetIndex(0)->setCellValue('L1', "Tgl_Input"); // Set kolom E3 dengan tulisan "ALAMAT"// Set kolom E3 
+    $excel->setActiveSheetIndex(0)->setCellValue('M1', "Terms"); // Set kolom E3 dengan tulisan "ALAMAT"
+    $excel->setActiveSheetIndex(0)->setCellValue('N1', "PPN");
+    $excel->setActiveSheetIndex(0)->setCellValue('O1', "Supply");  // Set kolom E3 dengan tulisan "ALAMAT"
+    $excel->setActiveSheetIndex(0)->setCellValue('P1', "Status"); // Set kolom E3 dengan tulisan "ALAMAT"
+    $excel->setActiveSheetIndex(0)->setCellValue('Q1', "Perjanjian"); // Set kolom E3 dengan tulisan "ALAMAT"
+    $excel->setActiveSheetIndex(0)->setCellValue('R1', "Remarks"); // Set kolom E3 dengan tulisan "ALAMAT"
     $excel->getActiveSheet()->getStyle('A1')->applyFromArray($style_col);
     $excel->getActiveSheet()->getStyle('B1')->applyFromArray($style_col);
     $excel->getActiveSheet()->getStyle('C1')->applyFromArray($style_col);
@@ -249,6 +264,9 @@ class Supplier extends CI_Controller {
     $excel->getActiveSheet()->getStyle('M1')->applyFromArray($style_col);
     $excel->getActiveSheet()->getStyle('N1')->applyFromArray($style_col);
     $excel->getActiveSheet()->getStyle('O1')->applyFromArray($style_col);
+    $excel->getActiveSheet()->getStyle('P1')->applyFromArray($style_col);
+    $excel->getActiveSheet()->getStyle('Q1')->applyFromArray($style_col);
+    $excel->getActiveSheet()->getStyle('R1')->applyFromArray($style_col);
 
     // Panggil function view yang ada di SiswaModel untuk menampilkan semua data siswanya
     $siswa = $this->SupplierModel->getSupplier();
@@ -263,13 +281,17 @@ class Supplier extends CI_Controller {
       $excel->setActiveSheetIndex(0)->setCellValue('F'.$numrow, $data->no_fax);
       $excel->setActiveSheetIndex(0)->setCellValue('G'.$numrow, $data->attention);
       $excel->setActiveSheetIndex(0)->setCellValue('H'.$numrow, $data->no_hp);
-      $excel->setActiveSheetIndex(0)->setCellValue('I'.$numrow, $data->tgl_input);
-      $excel->setActiveSheetIndex(0)->setCellValue('J'.$numrow, $data->terms);
-      $excel->setActiveSheetIndex(0)->setCellValue('K'.$numrow, $data->ppn);
-      $excel->setActiveSheetIndex(0)->setCellValue('L'.$numrow, $data->supply);
-      $excel->setActiveSheetIndex(0)->setCellValue('M'.$numrow, $data->status);
-      $excel->setActiveSheetIndex(0)->setCellValue('N'.$numrow, $data->perjanjian);
-      $excel->setActiveSheetIndex(0)->setCellValue('O'.$numrow, $data->remarks);
+      $excel->setActiveSheetIndex(0)->setCellValue('I'.$numrow, $data->nomer_rek);
+      $excel->setActiveSheetIndex(0)->setCellValue('J'.$numrow, $data->bank);
+      $excel->setActiveSheetIndex(0)->setCellValue('K'.$numrow, $data->atas_nama);
+
+      $excel->setActiveSheetIndex(0)->setCellValue('L'.$numrow, $data->tgl_input);
+      $excel->setActiveSheetIndex(0)->setCellValue('M'.$numrow, $data->terms);
+      $excel->setActiveSheetIndex(0)->setCellValue('N'.$numrow, $data->ppn);
+      $excel->setActiveSheetIndex(0)->setCellValue('O'.$numrow, $data->supply);
+      $excel->setActiveSheetIndex(0)->setCellValue('P'.$numrow, $data->status);
+      $excel->setActiveSheetIndex(0)->setCellValue('Q'.$numrow, $data->perjanjian);
+      $excel->setActiveSheetIndex(0)->setCellValue('R'.$numrow, $data->remarks);
       
       $no++; // Tambah 1 setiap kali looping
       $numrow++; // Tambah 1 setiap kali looping
@@ -291,6 +313,9 @@ class Supplier extends CI_Controller {
     $excel->getActiveSheet()->getColumnDimension('M')->setWidth(25);
     $excel->getActiveSheet()->getColumnDimension('N')->setWidth(25);
     $excel->getActiveSheet()->getColumnDimension('O')->setWidth(25);
+    $excel->getActiveSheet()->getColumnDimension('P')->setWidth(25);
+    $excel->getActiveSheet()->getColumnDimension('Q')->setWidth(25);
+    $excel->getActiveSheet()->getColumnDimension('R')->setWidth(25);
     $excel->getActiveSheet()->getDefaultRowDimension()->setRowHeight(-1);
     // Set orientasi kertas jadi LANDSCAPE
     $excel->getActiveSheet()->getPageSetup()->setOrientation(PHPExcel_Worksheet_PageSetup::ORIENTATION_LANDSCAPE);
