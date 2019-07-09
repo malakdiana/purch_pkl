@@ -28,7 +28,7 @@
 
                                          <tr>
                                        
-                                                <th align="left"><h4 style="align:left">DATA</h4></th>
+                                                <h5><th align="left"><img style="width: 40px;height: 50px;margin-left: 5px" src="<?php echo base_url()?>assets/images/icon/icondata.png"> DATA</h5></th>
                                         </tr>
                                            
                                         </thead>
@@ -69,8 +69,8 @@
                                         <thead class="bg-light text-capitalize" align="center">
 
                                          <tr>
-                                       
-                                                <th><h4>INPUT DATA</h4></th>
+                                                &nbsp;&nbsp;
+                                                <h5><th><img style="width: 40px;height: 50px" src="<?php echo base_url()?>assets/images/icon/inputblue.png"> INPUT DATA</h5></th>
                                         </tr>
                                            
                                         </thead>
@@ -100,7 +100,7 @@
 
                                          <tr>
                                        
-                                                <th align="left"><h4>MASTER DATA</h4></th>
+                                                <h5><th align="left"><img style="width: 40px;height: 50px" src="<?php echo base_url()?>assets/images/icon/masterblue.png"> MASTER DATA</h5></th>
                                         </tr>
                                            
                                         </thead>
