@@ -3,9 +3,9 @@
                 <div class="row align-items-center">
                     <div class="col-sm-6">
                         <div class="breadcrumbs-area clearfix" style="padding-top: 15px;padding-bottom: 15px">
-                            <h4 class="page-title pull-left">Form Purchase Request</h4>
+                            <h4 class="page-title pull-left">Input Data</h4>
                             <ul class="breadcrumbs pull-left">
-                                <li><a href="<?php echo site_url()?>/Purch_req">Purchase Request</a></li>
+                                <li><a href="#">Purchase Request</a></li>
                                 <li><span>Insert Purchase Request</span></li>
                             </ul>
 

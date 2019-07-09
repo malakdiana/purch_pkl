@@ -5,8 +5,8 @@
                         <div class="breadcrumbs-area clearfix" style="padding-top: 15px;padding-bottom: 15px">
                             <h4 class="page-title pull-left">Data</h4>
                             <ul class="breadcrumbs pull-left">
-                                <li><a href="index.html">Qr</a></li>
-                                <li><span>Data Quotation Request</span></li>
+                                <li><a href="#">Qr</a></li>
+                                <li><span>List Quotation Request</span></li>
                             </ul>
 
                     </div>
@@ -79,7 +79,9 @@
 
                                                 <td>
                                                 <div class="btn-group mb-xl-3" role="group" aria-label="Basic example">
-                                    <button type="button" class="btn btn-info" style="width:80px; height:45px;>  <a href="javascript:void(0);" onclick="modalDetail('<?php echo $key->id_penawaran?>','<?php echo $key->tanggal ?>','<?php echo $key->item ?>','<?php echo $key->kode_qr ?>','<?php echo $key->tanggal_butuh ?>','<?php echo $key->section ?>','<?php echo $key->pic ?>','<?php echo $key->bahan ?>','<?php echo $key->detail ?>','<?php echo $key->status ?>','<?php echo $key->gambar ?>')"  data-toggle="modal" data-target="#myModalDetail"<font color="white"><i class="fa fa-th-list"></i> Detail</font></a></button>
+                                    <button type="button" class="btn btn-info" style="width:80px; height:45px;">  
+                                      <a href="<?php echo site_url()?>/Qr/detailQuotation/<?php echo $key->id_penawaran?>" 
+                                        ><font color="white"><i class="fa fa-th-list"></i> Detail</font></a></button>
                                    
                                   
                                 </div>
@@ -102,13 +104,13 @@
         <!-- footer area start-->
  
 
-id_penawaran,tanggal, item, kode_qr,tanggal_butuh,section,pic,bahan,detail,status,gamba
+
        <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModalDetail" class="modal fade-in" >
         <div class="modal-dialog">
             <div class="modal-content" style="width: 800px; margin-left: -100px;padding: 20px" >
                 <div class="modal-header">
                    
-                    <h4 class="modal-title">Info Supplier</h4>
+                    <h4 class="modal-title">Detail QR</h4>
                      <button align="right" type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body">

@@ -20,7 +20,7 @@
                         <div class="card">
                                 <div class="card-body">
                                      <?php echo form_open('Dashboard/edit_profile') ?>
-                                     <h3 align="center">Edit My Profile</h3><br>
+                                     
 
                                             <div class="form-group">
                                                      <label class="control-label " for="id_user" >ID USER:</label>

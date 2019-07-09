@@ -3,10 +3,11 @@
                 <div class="row align-items-center">
                     <div class="col-sm-6">
                         <div class="breadcrumbs-area clearfix" style="padding-top: 15px;padding-bottom: 15px">
-                            <h4 class="page-title pull-left">Master Data</h4>
+                            <h4 class="page-title pull-left">Data</h4>
                             <ul class="breadcrumbs pull-left">
-                                <li><a href="<?php echo site_url()?>/Barang">Barang</a></li>
-                                <li><span>Tambah Barang</span></li>
+                                <li><a href="#">Purchase Order</a></li>
+                                <li><span>list purchase order /</span></li>
+                                <li><span>Kelola PR</span></li>
                             </ul>
 
                     </div>

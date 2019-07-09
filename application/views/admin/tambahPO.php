@@ -2,9 +2,9 @@
                 <div class="row align-items-center">
                     <div class="col-sm-6">
                         <div class="breadcrumbs-area clearfix" style="padding-top: 15px;padding-bottom: 15px">
-                            <h4 class="page-title pull-left">Form Purchase Order</h4>
+                            <h4 class="page-title pull-left">Input Data</h4>
                             <ul class="breadcrumbs pull-left">
-                                <li><a href="<?php echo site_url()?>/Purch_req">Purchase Order</a></li>
+                                <li><a href="#">Purchase Order</a></li>
                                 <li><span>Insert Purchase Order</span></li>
                             </ul>
 
@@ -22,7 +22,7 @@
                         <div class="card">
                                 <div class="card-body">
                                      <?php echo form_open('Po/tambahPO') ?>
-                                     <h3 align="center">Insert Purchase Order</h3><br>
+                                  
                                      <div class="col-md-12">
                                         <div class="row">
 

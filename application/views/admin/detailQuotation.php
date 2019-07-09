@@ -5,7 +5,8 @@
                         <div class="breadcrumbs-area clearfix" style="padding-top: 15px;padding-bottom: 15px">
                             <h4 class="page-title pull-left">Data</h4>
                             <ul class="breadcrumbs pull-left">
-                                <li><a href="<?php echo site_url()?>/Pricelist">Quotation Request</a></li>
+                                <li><a href="#">Quotation Request</a></li>
+                                <li><span>List Quotation Request /</span></li>
                                 <li><span>Detail Quotation</span></li>
                             </ul>
 

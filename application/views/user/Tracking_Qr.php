@@ -5,8 +5,8 @@
                         <div class="breadcrumbs-area clearfix" style="padding-top: 15px;padding-bottom: 15px">
                             <h4 class="page-title pull-left">Data</h4>
                             <ul class="breadcrumbs pull-left">
-                                <li><a href="index.html">Qr</a></li>
-                                <li><span>Data Quotation Request</span></li>
+                                <li><a href="#">Qr</a></li>
+                                <li><span>List My Quotation</span></li>
                             </ul>
 
                     </div>

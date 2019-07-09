@@ -93,8 +93,9 @@
                                     <li >
                                        <a href="javascript:void(0)" aria-expanded="true"><h6><i class="ti-slice"></i><span>Input Data</h6></span></a>
                                 <ul class="submenu">
+                                     <li><a href="<?php echo site_url()?>/Po/tambahPO">Purchase Order</a></li>
                                     <li><a href="<?php echo site_url()?>/Purch_req/tambahPR">Purchase Request</a></li>
-                                    <li><a href="<?php echo site_url()?>/Po/tambahPO">Purchase Order</a></li>
+                                   
                                  
                                 </ul>
                                     </li>

@@ -3,10 +3,11 @@
                 <div class="row align-items-center">
                     <div class="col-sm-6">
                         <div class="breadcrumbs-area clearfix" style="padding-top: 15px;padding-bottom: 15px">
-                            <h4 class="page-title pull-left">Master Data</h4>
+                            <h4 class="page-title pull-left">Data</h4>
                             <ul class="breadcrumbs pull-left">
-                                <li><a href="<?php echo site_url()?>/Barang">Barang</a></li>
-                                <li><span>Tambah Barang</span></li>
+                                <li><a href="#">Purchase Request</a></li>
+                                <li><span>List purchase request /</span></li>
+                                <li><span>Tambah Item Barang</span></li>
                             </ul>
 
                     </div>
@@ -25,7 +26,7 @@
                                             <button type="button" class="btn btn-success" id="btn-tambah-form">Tambah Data Form</button>
         <button type="button" id="btn-reset-form" class="btn btn-primary">Reset Form</button><br><br>
                                      <?php echo form_open('Purch_req/tambah/'.$id) ?>
-                                     <h3 align="center">Form Tambah Barang</h3><br>
+                                    
                                        
                                                <div style="margin-bottom: 10px"> 
                                                    <hr>Data Barang 1

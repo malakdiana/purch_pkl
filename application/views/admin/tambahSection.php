@@ -5,7 +5,7 @@
                         <div class="breadcrumbs-area clearfix" style="padding-top: 15px;padding-bottom: 15px">
                             <h4 class="page-title pull-left">Master Data</h4>
                             <ul class="breadcrumbs pull-left">
-                                <li><a href="<?php echo site_url()?>/Section">Section</a></li>
+                                <li><a href="#">Section</a></li>
                                 <li><span>Tambah Section</span></li>
                             </ul>
 
