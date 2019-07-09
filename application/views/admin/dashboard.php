@@ -100,7 +100,7 @@
 
                                          <tr>
                                        
-                                                <h5><th align="left"><img style="width: 40px;height: 50px" src="<?php echo base_url()?>assets/images/icon/masterblue.png"> MASTER DATA</h5></th>
+                                                <h5><th align="left"><img style="width: 40px;height: 50px" src="<?php echo base_url()?>assets/images/icon/masterblue.png">   MASTER DATA</h5></th>
                                         </tr>
                                            
                                         </thead>
