@@ -63,6 +63,7 @@
                                       <li><a href="<?php echo site_url()?>/Purch_req/">Tracking My Order</a></li>
                                     <li><a href="<?php echo site_url()?>/Qr/tracking">Tracking My Quotation</a></li>
                                     <li><a href="<?php echo site_url()?>/Qr/">List All Quotation</a></li>
+                                    <li><a href="<?php echo site_url()?>/Barang/">Cek Data Barang</a></li>
                                    
                                   
                                 </ul>

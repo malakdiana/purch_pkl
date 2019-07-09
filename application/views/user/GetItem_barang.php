@@ -39,13 +39,16 @@
                                                 <th>QTY</th>
                                                 <th>NO PO</th>
                                                 <th>QTY TO PO</th>
+                                                <th>HARGA</th>
                                                 <th >ACTION</th>
                                                 
                                             </tr>
                                         </thead>
                                         <tbody>
-                                        <?php   
-                                        $no =1; foreach ($Purch_req as $key) {?>
+                                        <?php $status=0;  
+                                        $no =1; foreach ($Purch_req as $key) {
+                                         
+                                            ?>
                                             <tr>
                                             
                                                 <td><?php echo $no;?></td>
@@ -54,14 +57,53 @@
                                            
                                                 <td><?php echo $key->no_po;?></td>
                                                 <td><?php echo $key->qtybay;?></td>
+                                                <td><?php echo $key->harga;?></td>
+                                           
+                                               
                                     
-                                                <td>
-                                                 <button type="button" class="btn btn-primary" style="width:80px; height:50px;"><a href="javascript:void(0);" onclick="modalDetail('<?php echo $key->id_item?>', '<?php echo $key->item_barang?>', '<?php echo $key->qty?>')"  data-toggle="modal" data-target="#myModalEdit"><font color="white"><i class="fa fa-pencil"></i> Edit</font></a></button>
                                                 
-                                                <button type="button" class="btn btn-danger" style="width:80px; height:50px;"><a href="<?php echo site_url()?>/Purch_req/hapusItem/<?php echo $id?>/<?php echo $key->id_item?> " onclick="return confirm('Apakah Yakin Untuk Menghapus?')"><font color="white"><i class="fa fa-trash-o"></i> Hapus</font></a></button></td>
-                                             
-                                            </tr>
-                                            <?php $no++;}?>
+
+                                                   <?php 
+                                                   if(empty($detail)){ 
+                                                    $status = 0;
+                                                   } else{
+
+                                                    foreach($detail as $data){
+                                            if($key->id_item == $data->id_item){
+                                              if($key->qty != $data->jumlah){
+                                                if($status== 0){
+                                                    $status= 0;
+                                                  }else{
+                                                     $status= 1;
+                                                  }
+                                                }else{
+                                                  $status=1;
+
+                                                 }
+                                               }else{
+                                                if($status== 0){
+                                                    $status= 0;
+                                                  }else{
+                                                     $status= 1;
+                                                  }
+                                               }}$no++;}
+                                                 ?>
+
+                                                 <?php if($status==0){?>
+                                                  <td>
+                                                  <div class="btn-group mb-xl-3" role="group" >
+                                                       <button type="button" class="btn btn-primary" style="width:80px; height:50px;"><a href="javascript:void(0);" onclick="modalDetail('<?php echo $key->id_item?>', '<?php echo $key->item_barang?>', '<?php echo $key->qty?>')"  data-toggle="modal" data-target="#myModalEdit"><font color="white"><i class="fa fa-pencil"></i> Edit</font></a></button>
+                                                
+                                                <button type="button" class="btn btn-danger" style="width:80px; height:50px;"><a href="<?php echo site_url()?>/Purch_req/hapusItem/<?php echo $id?>/<?php echo $key->id_item?> " onclick="return confirm('Apakah Yakin Untuk Menghapus?')"><font color="white"><i class="fa fa-trash-o"></i> Hapus</font></a></button>
+
+                                                 <?php } 
+
+                                                  else{?>
+                                                     <td><button type="button" class="btn btn-success"><a href=""><font color="white"><i class="fa fa-check"></i> Done</font></a></button></td>
+
+                                                     </tr><?php }} ?>
+                
+                                         
                                        </tbody>
                                     </table>
                                 </div>
@@ -85,8 +127,8 @@
           <?php echo form_open_multipart('Purch_req/updateItem'); ?>
                 <?php echo validation_errors(); ?>
                      <div class="form-group">
-                        <input type="text" name="id_item" hidden=""  id="id_item">
-                        <input type="text" name="id" id="id" hidden="" value="<?php echo $id?>">
+                        <input type="text" name="id_item"  id="id_item" hidden="">
+                        <input type="text" name="id" id="id" value="<?php echo $id?>" hidden="">
                         <label for="">Item Barang</label>
                         <select name="item_barang" id="item_barang" class="form-control choosen">
                             <?php foreach ($barang as $key) {?>
@@ -142,7 +184,7 @@
           "aTargets": [0]
         }],
         "aaSorting": [
-          [0, 'desc']
+          [0, 'asc']
         ]
       });
 

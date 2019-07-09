@@ -28,7 +28,7 @@
 
                                          <tr>
                                        
-                                                <h5><th align="left"><img style="width: 40px;height: 50px;margin-left: 5px" src="<?php echo base_url()?>assets/images/icon/icondata.png"> DATA</h5></th>
+                                                <h5><th align="left" style="margin-right: 35px;"><img style="width: 40px;height: 50px;" src="<?php echo base_url()?>assets/images/icon/icondata.png"> DATA</h5></th>
                                         </tr>
                                            
                                         </thead>
@@ -70,7 +70,7 @@
 
                                          <tr>
                                                 &nbsp;&nbsp;
-                                                <h5><th><img style="width: 40px;height: 50px" src="<?php echo base_url()?>assets/images/icon/inputblue.png"> INPUT DATA</h5></th>
+                                                <h5><th><img style="width: 40px;height: 50px;" src="<?php echo base_url()?>assets/images/icon/inputblue.png"> INPUT DATA</h5></th>
                                         </tr>
                                            
                                         </thead>

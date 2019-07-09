@@ -91,15 +91,19 @@
                                                   <div class="btn-group mb-xl-3" role="group" aria-label="Basic example">
 
                                  
-
+                          <?php if($key->status == "OPEN"){?>                        
                                     <button type="button" class="btn btn-info" style="width:80px; height:50px;"><a href="<?php echo site_url()?>/Purch_req/GetItem_barang/<?php echo $key->id?>"><font color="white"><i class="fa fa-th-list"></i> Detail</font></a></button>
 
                                     <button type="button" class="btn btn-primary" style="width:80px; height:50px;"> <a href="<?php echo site_url()?>/Purch_req/tambahItem/<?php echo $key->id?>"><font color="white"><i class="fa fa-pencil"></i> Insert</font></a></button>
 
                                     <button type="button" class="btn btn-danger" style="width:80px; height:50px;"><a href="<?php echo site_url()?>/Purch_req/deletePurch_req/<?php echo $key->id?> " onclick="return confirm('Apakah Yakin Untuk Menghapus?')"><font color="white"><i class="fa fa-trash-o"></i> Hapus</font></a></button>
                                 </div>
-                                                
-                                                </td>
+
+                                </td><?php } else{?>
+
+                                      <button type="button" class="btn btn-info" style="width:80px; height:50px;"><a href="<?php echo site_url()?>/Purch_req/GetItem_barang/<?php echo $key->id?>"><font color="white"><i class="fa fa-th-list"></i> Detail</font></a></button>
+  
+                                                </td>  </td><?php } ?>
                                              
                                             </tr>
                                             <?php }?>
