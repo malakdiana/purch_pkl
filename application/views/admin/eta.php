@@ -67,14 +67,34 @@
                                                 <td><?php echo $key->item;?></td>
                                                 <td><?php echo $key->unit_name;?></td>
                                                 <td><?php echo $key->qty;?></td>
-                                                <td><?php echo $key->konfirmasi;?></td>
-                                                <td><?php echo $key->invoice;?></td>
-                                                <td><?php echo $key->remarks;?></td>
-                                                <td><button class="btn btn-success">Konfirm</button><button class="btn btn-info">Invoice</button><button class="btn btn-warning">Add Remarks</button></td>
 
-                                           
-                                               
-                                             
+                                                 <td><?php 
+                                                if($key->konfirmasi == 1){?>
+                                                     <img style="width: 40px;height: 50px" src="<?php echo base_url()?>assets/images/icon/checkblue.png">
+                                                     <?php }
+                                                     else { ?>  
+                                                        <img style="width: 40px;height: 50px" src="<?php echo base_url()?>assets/images/icon/minusblue.png">
+                                                        <?php }?>
+                                                </td>
+
+                                                <td><?php 
+                                                if($key->invoice == 1){?>
+                                                     <img style="width: 40px;height: 50px" src="<?php echo base_url()?>assets/images/icon/checkblue.png">
+                                                     <?php }
+                                                     else { ?>  
+                                                        <img style="width: 40px;height: 50px" src="<?php echo base_url()?>assets/images/icon/minusblue.png">
+                                                        <?php }?>
+                                                </td>
+
+                                                <td><?php echo $key->remarks;?></td>
+
+
+                                                <td>
+                                                <button class="btn btn-success" style="width:115px; height:40px;"><i class="fa fa-check"></i> Konfirm</button><br>
+                                                <button class="btn btn-info" style="width:115px; height:40px;"><i class="fa fa-check"></i> Invoice</button><br>
+                                                <button class="btn btn-warning" style="width:115px; height:40px;"><i class="fa fa-plus"></i> Add Remarks</button>
+                                                </td>
+  
                                             </tr>
 
                                             <?php $no++;}?>

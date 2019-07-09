@@ -80,14 +80,24 @@
 
 
                                                 <td>
-                                                <div class="btn-group mb-xl-3" role="group" aria-label="Basic example">
-                                    <button type="button" class="btn btn-info" style="width:80px; height:45px;>  <a href="javascript:void(0);" onclick="modalDetail('<?php echo $key->id_penawaran?>','<?php echo $key->tanggal ?>','<?php echo $key->item ?>','<?php echo $key->kode_qr ?>','<?php echo $key->tanggal_butuh ?>','<?php echo $key->section ?>','<?php echo $key->pic ?>','<?php echo $key->bahan ?>','<?php echo $key->detail ?>','<?php echo $key->status ?>','<?php echo $key->gambar ?>')"  data-toggle="modal" data-target="#myModalDetail"<font color="white"><i class="fa fa-th-list"></i> Detail</font></a></button>
 
-                                    <button type="button" class="btn btn-primary" style="width:85px; height:45px;"> <a href="<?php echo site_url()?>/Qr/listvendor/<?php echo $key->id_penawaran?>"><font color="white"><i class="fa fa-book"></i> Vendor </font></a></button>
+                                                <?php if($key->status ==  0){?>
+
+
+                                                    <div class="btn-group mb-xl-3" role="group" aria-label="Basic example">
+                                                   <button type="button" class="btn btn-info" style="width:80px; height:45px;"> <a href="<?php echo site_url()?>/Qr/detailQuotationUser/<?php echo $key->id_penawaran?>" 
+                                                    ><font color="white"><i class="fa fa-th-list"></i> Detail</font></a></button>
+
+                                                    <button type="button" class="btn btn-primary" style="width:85px; height:45px;"> <a href="<?php echo site_url()?>/Qr/listvendor/<?php echo $key->id_penawaran?>"><font color="white"><i class="fa fa-book"></i> Vendor </font></a></button>
                                     
-                                      <button type="button" class="btn btn-success" style="width:90px; height:45px;"> <a href="javascript:void(0);" onclick="modalEdit('<?php echo $key->id_penawaran?>','<?php echo $key->tanggal ?>','<?php echo $key->item ?>','<?php echo $key->kode_qr ?>','<?php echo $key->tanggal_butuh ?>','<?php echo $key->section ?>','<?php echo $key->pic ?>','<?php echo $key->bahan ?>','<?php echo $key->detail ?>','<?php echo $key->status ?>','<?php echo $key->gambar ?>')"  data-toggle="modal" data-target="#myModalDetail">
-                                      <font color="white"><i class="fa fa-pencil"></i> Edit QR </font></a></button>
-                                    
+                                                   <button type="button" class="btn btn-success" style="width:90px; height:45px;"> <a href="<?php echo site_url()?>/Qr/editQrUser/<?php echo $key->id_penawaran?>"><font color="white"><i class="fa fa-pencil"></i> Edit QR </font></a></button>
+                                   
+                                                 <?php } else{?>
+
+                                                  <div class="btn-group mb-xl-3" role="group" aria-label="Basic example">
+                                                   <button type="button" class="btn btn-info" style="width:80px; height:45px;"> <a href="<?php echo site_url()?>/Qr/detailQuotationUser/<?php echo $key->id_penawaran?>"><font color="white"><i class="fa fa-th-list"></i> Detail</font></a></button>
+
+                                                    <button type="button" class="btn btn-primary" style="width:85px; height:45px;"> <a href="<?php echo site_url()?>/Qr/listvendor/<?php echo $key->id_penawaran?>"><font color="white"><i class="fa fa-book"></i> Vendor </font></a></button><?php } ?>
                                   
                                 </div>
                                                </td>
@@ -115,7 +125,7 @@
             <div class="modal-content" style="width: 800px; margin-left: -100px;padding: 20px" >
                 <div class="modal-header">
                    
-                    <h4 class="modal-title">Info Supplier</h4>
+                    <h4 class="modal-title">EDIT QR</h4>
                      <button align="right" type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body">
