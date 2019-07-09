@@ -22,9 +22,9 @@
                     <div class="col-12 mt-5">
                         <div class="card">
                             <div  style="padding-top: 15px;padding-left: 15px">
-                                <a class="btn btn-flat btn-primary mb-3" href="<?php echo site_url()?>/Departemen/tambahDepartemen" role="button">Tambah Data</a>
-                                <a class="btn btn-flat btn-success mb-3" href="<?php echo site_url()?>/Departemen/importDepartemen" role="button">Import Data</a>
-                                <a class="btn btn-flat btn-warning mb-3" href="<?php echo site_url()?>/Departemen/export" role="button">Download Data</a></div>
+                                <a class="btn btn-flat btn-primary mb-3" href="<?php echo site_url()?>/Departemen/tambahDepartemen" role="button"><i class="fa fa-plus"></i> Tambah Data</a>
+                                <a class="btn btn-flat btn-success mb-3" href="<?php echo site_url()?>/Departemen/importDepartemen" role="button"><i class="ti-import"> </i>Import Data</a>
+                                <a class="btn btn-flat btn-warning mb-3" href="<?php echo site_url()?>/Departemen/export" role="button"><i class="ti-download"></i> Download Data</a></div>
                             <div class="card-body">
                         <?=$this->session->flashdata('editDepartemen')?>
                          <?=$this->session->flashdata('deleteDepartemen')?>

@@ -23,9 +23,7 @@
                         <div class="card">
                                 <div class="card-body">
                                      <?php echo form_open('Purch_req/tambahPR') ?>
-                                     <h3 align="center">Insert Purchase Request</h3><br>
-                                       
-                                               
+   
                                                 <div class="form-group">
                                                      <label class="control-label" for="tgl">Tanggal:</label>
                                            
@@ -53,7 +51,7 @@
                                              <div class="form-group">
                                                      <label class="control-label " for="section">SECTION</label>
                                            <select name="section" class="form-control" id="section">
-                                            <option></option>
+                                            <option>PILIH :</option>
                                             <?php foreach ($section as $key) {?>
 
                                            <option class="form-control" value="<?php echo $key->nama_section?>"><?php echo $key->nama_section?> </option> <?php }?>
@@ -98,7 +96,7 @@
                                      
         
           
-              <div align="right"> <button type="submit" class="btn btn-primary" style="align-self: right">Simpan</button></div>
+              <div align="right"> <button type="submit" class="btn btn-primary" style="width:100px;align-self: right;">Simpan</button></div>
               <?php echo form_close() ?>
            
 

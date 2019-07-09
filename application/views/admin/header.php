@@ -99,7 +99,7 @@
                                 </ul>
                                     </li>
                                     <li >
-                                        <a href="javascript:void(0)" aria-expanded="true"><h6><i class="ti-palette"></i><span>Other</span></h6></span></a>
+                                        <a href="javascript:void(0)" aria-expanded="true"><h6><i class="ti-folder"></i><span>Other</span></h6></span></a>
                                 <ul class="submenu">
                                     <li><a href="<?php echo site_url()?>/Login/ManajemenUser">Management User</a></li>
                                 </ul>
@@ -114,7 +114,7 @@
                     </div>
                     <!-- profile info & task notification -->
                     <div class="col-md-3 clearfix text-right" >
-                        <div class="clearfix d-md-inline-block d-block" >
+                        <div class="clearfix d-md-inline-block d-block" style="margin-right: -14px" >
                             <div class="user-profile m-0" style="background:#17a2b8">
                                  <img class="avatar user-thumb" src="<?php echo base_url()?>assets/images/author/avatar.png" alt="avatar">
                             <h4 class="user-name dropdown-toggle" data-toggle="dropdown"><?php echo $this->session->userdata('logged_in')['username'] ?> <i class="fa fa-angle-down"></i></h4>
