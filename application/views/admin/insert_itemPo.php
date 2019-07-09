@@ -91,7 +91,7 @@
                                             
                                               <div id="edit">
                                      
-                                             <button id="btn-edit" class="btn btn-success" onclick="edit()" style="align-items: right" > Edit</button>
+                                             <button id="btn-edit" class="btn btn-info" onclick="edit()" style="align-items: right" > Edit</button>
                                            </div>
 
                                            
@@ -158,9 +158,9 @@
       </tbody>
         </table>
         <div align="right">
-        <button class="btn btn-warning" type="submit">Simpan</button>
-        <button type="button" class="btn btn-success" id="btn-tambah-form">Tambah Data Form</button>
-        <button type="button" id="btn-reset-form" class="btn btn-primary">Reset Form</button>
+        <button class="btn btn-success" type="submit">Simpan</button>
+        <button type="button" class="btn btn-info" id="btn-tambah-form">Tambah Data Form</button>
+        <button type="button" id="btn-reset-form" class="btn btn-warning">Reset Form</button>
         <input type="hidden" id="jumlah-form" name="jumlah" value="1">
 
        </div>
@@ -354,7 +354,7 @@ function formatRupiah(angka, prefix) {
            document.getElementById("eta").disabled = false;
            document.getElementById("franco").disabled = false;
         $("#edit").html("");
-               $("#tombol").append("  <button id='btn-simpan'  onclick='simpan()' class='btn btn-info'> Simpan</button>");
+               $("#tombol").append("  <button id='btn-simpan'  onclick='simpan()' class='btn btn-success'> Simpan</button>");
          }
 
          function simpan(){
@@ -372,7 +372,7 @@ function formatRupiah(angka, prefix) {
                 data : {id_po:id_po, eta:eta, franco:franco, supplier: supplier },
                 success: function(data){
                    $("#tombol").html("");
-               $("#edit").append(" <button id='btn-edit' class='btn btn-success' onclick='edit()' style='align-items: right' > Edit</button>");
+               $("#edit").append(" <button id='btn-edit' class='btn btn-info' onclick='edit()' style='align-items: right' > Edit</button>");
                     
                    
                 }
