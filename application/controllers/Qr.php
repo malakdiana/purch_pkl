@@ -151,9 +151,16 @@ $this->upload->initialize($config);
 
     public function detailQuotationUser($id){
        $data['list'] = $this->QrModel->getQrById($id);
+       if($this->session->userdata('logged_in')['hak_akses']==2){
         $this->load->view('User/header');
         $this->load->view('User/detailQuotation', $data);
         $this->load->view('Admin/footer');
+         }else{
+         $this->load->view('Read_only/header');
+        $this->load->view('Read_only/detailQuotation', $data);
+        $this->load->view('Admin/footer');
+    }
+
     }
 
     public function editQuotation($id){

@@ -80,7 +80,7 @@
                                                 <td>
                                                 <div class="btn-group mb-xl-3" role="group" aria-label="Basic example">
                                     <button type="button" class="btn btn-info" style="width:80px; height:45px;">  
-                                      <a href="<?php echo site_url()?>/Qr/detailQuotation/<?php echo $key->id_penawaran?>" 
+                                      <a href="<?php echo site_url()?>/Qr/detailQuotationUser/<?php echo $key->id_penawaran?>" 
                                         ><font color="white"><i class="fa fa-th-list"></i> Detail</font></a></button>
                                    
                                   
