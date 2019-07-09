@@ -21,10 +21,10 @@ public function index()
    
 	}
 
-	public function setting(){
-		$data['user']= $this->AddModel->getUser();
-		$this->load->view('admin/header');
-		$this->load->view('admin/setting',$data);
+	public function invoice($id){
+	  $this->EtaModel->invoice($id);
+            
+            redirect("Eta/", 'refresh');
 	}
 
 	public function konfirmasi($id){

@@ -249,6 +249,21 @@ class PoModel extends CI_Model {
 
          $this->db->insert('bayangan', $data);
 
+         $query9 = $this->db->select('*')->from('bayangan')->join('po','bayangan.id_po = po.id_po')->order_by('id_bayangan','desc')->limit(1)->get();
+         foreach ($query9->result() as $key) {
+           $idbay = $key->id_bayangan;
+           $eta = $key->eta;
+         }
+         $object = array(
+          'id_bayangan' => $idbay,
+          'tanggal' =>$eta,
+          'konfirmasi' => 0,
+          'invoice' =>0
+
+         );
+          $this->db->insert('eta', $object);
+
+
          $query= $this->db->select('id_purch, sum(qty) as jumlah')->where('id_purch', $itemName[$i])->get('item');
          foreach ($query->result() as $key) {
            $jumlahitem = $key->jumlah;
