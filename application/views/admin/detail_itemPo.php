@@ -3,10 +3,10 @@
                 <div class="row align-items-center">
                     <div class="col-sm-6">
                         <div class="breadcrumbs-area clearfix" style="padding-top: 15px;padding-bottom: 15px">
-                            <h4 class="page-title pull-left">Master Data</h4>
+                            <h4 class="page-title pull-left">Data</h4>
                             <ul class="breadcrumbs pull-left">
-                                <li><a href="index.html">Barang</a></li>
-                                <li><span>Data Barang</span></li>
+                                <li><a href="index.html">Purchase Order</a></li>
+                                <li><span>Detail PO</span></li>
                             </ul>
 
                     </div>
@@ -23,9 +23,7 @@
                         <div class="card">
                             <div  style="padding-top: 15px;padding-left: 15px">
                             <div class="card-body">
-                        <?=$this->session->flashdata('editBarang')?>
-                         <?=$this->session->flashdata('deleteBarang')?>
-                         <?=$this->session->flashdata('tambahBarang')?>
+                     
                                 <div>
                                 <table cellpadding="0" cellspacing="0" border="0" class="table table-striped" id="dataTablesss">
                                         <thead class="bg-light text-capitalize">

@@ -58,20 +58,26 @@ class PoModel extends CI_Model {
 
     
     public function updatePo(){
+        $id_po =  $this->input->post('id_po');
 
-        $tgl_po = $this->input->post('tgl_po');
+        $eta = $this->input->post('eta');
+         $franco = $this->input->post('franco');
+         $supplier = $this->input->post('supplier');
         
 
         $data = array(
-        'no_po' => $this->input->post('no_po'),
-        'status' => $this->input->post('status'),
+      
+        'eta' => $eta,
+        'franco' => $franco,
+        'supplier' => $supplier
        
       
         );
 
         
-        $this->db->where('tgl_po', $tgl_po);
-        $this->db->update('Po', $data);
+        $this->db->where('id_po', $id_po);
+        $result = $this->db->update('Po', $data);
+          return $result;
     }
     public function deletePo($id_po){
          $this->db->where('id_po', $id_po);
@@ -195,6 +201,7 @@ class PoModel extends CI_Model {
     }
 
     public function insertPr($id){
+        $status=0;
           $jumlah=$this->input->post('jumlah');
           $itemName=array();$namaBarang=array();$qty=array();$harga= array();$unit= array();$qtysisa=array();
               $itemName=$this->input->post('itemName');
@@ -224,7 +231,9 @@ class PoModel extends CI_Model {
              $d = str_replace('Rp', '', $d);
               $d = str_replace('.', '', $d);
                $d = str_replace(' ', '', $d);
-        
+        if ($qtysisa[$i] < $qty[$i]) {
+            $status=1;
+        }else{
 
 
         $data = array(
@@ -256,6 +265,8 @@ class PoModel extends CI_Model {
           $this->db->update('purch_req',$dat);
          }
        }
+   }
+   return $status;
 
 
         }

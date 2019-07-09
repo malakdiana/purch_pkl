@@ -227,8 +227,19 @@ public function index()
  
 
     public function insertPr($id){
-        $this->PoModel->insertPr($id);
-          redirect('Po', 'refresh');
+        $xx= $this->PoModel->insertPr($id);
+        if($xx == 1){
+            echo "<script>alert('Gagal di tambahkan, quantity terlalu banyak')</script>";
+          redirect('Po/tambahItem/'.$id, 'refresh');
+        }else{
+               echo "<script>alert('Berhasil ditambahkan')</script>";
+          redirect('Po/tambahItem/'.$id, 'refresh');
+        }
+    }
+
+    public function update(){
+        $data=$this->PoModel->updatePo();
+        echo json_encode($data);
     }
 
    

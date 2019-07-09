@@ -21,21 +21,23 @@
                     <!-- data table start -->
                     <div class="col-12 mt-5">
                         <div class="card">
+      
                                 <div class="card-body">                                           
                          <div class="col-md-12">
                                             <div class="row">
-                                               
+                                                 
                                                 <div class="col-md-2">
                                                      <label class="control-label " for="group_name">Nomor PO :</label>
                                                  </div>
                                             <div class="col-sm-4">
+                                              <input type="text" name="id_po" id="id_po" hidden="" value="<?php echo $list[0]->id_po?>">
                                                 <input type="text" class="form-control" name="no_po" style="margin-bottom: 25px" value="<?php echo $list[0]->no_po?>" disabled="true">
                                             </div>
                                                 <div class="col-md-2">
                                                      <label class="control-label " for="no_barang">Tanggal :</label>
                                                  </div>
                                             <div class="col-sm-4">
-                                                <input type="text" class="form-control" name="tanggal" value="<?php echo $list[0]->tgl_po?>" style="margin-bottom: 25px" disabled="true">
+                                                <input type="text" class="form-control" id="tgl_po" name="tgl_po" value="<?php echo $list[0]->tgl_po?>" style="margin-bottom: 25px" disabled="true">
                                             </div>
                                         </div>
                                 </div>
@@ -50,7 +52,7 @@
                                                 <?php foreach ($supplier as $key) {
                                                   
                                                 ?>
-                                                <option value="<?php echo $key->nama_supplier?>"> <?php echo $key->nama_supplier?></option>
+                                                <option value="<?php echo $key->nama_supplier?>" class="form-control"> <?php echo $key->nama_supplier?></option>
                                             
                                                <?php } ?>
                                                  </select>
@@ -61,7 +63,7 @@
                                              <label class="control-label" for="attention">ETA :</label>
                                          </div>
                                          <div class="col-sm-4">
-                                             <input type="text" class="form-control" name="tanggal" value="<?php echo $list[0]->eta?>" style="margin-bottom: 25px" disabled="true">
+                                             <input type="date" class="form-control" id="eta" name="eta" value="<?php echo $list[0]->eta?>" style="margin-bottom: 25px" disabled="true">
                                         </div>
 
                                         </div>
@@ -69,13 +71,28 @@
                                      <div class="col-md-12">
                                         <div class="row">
 
-                                            <div class="col-md-2">
+                                            <div class="col-md-2 ">
                                                 <label class="control-label" for="alamat">Franco :</label>
                                             </div>
-                                            <div class="col-sm-4">
-                                              <input type="text" class="form-control" name="tanggal" value="<?php echo $list[0]->franco?>" style="margin-bottom: 25px" disabled="true">
+                                            <div class="col-sm-4 fran">
+                                             <select name="franco" id="franco" class="form-control" style="height: 45px" disabled="true">
+                                              <option class="form-control" value="SAI-T">SAI-T</option>
+                                              <option class="form-control" value="SAI-B">SAI-B</option>
+
+                                              </select>
+                                            
                                              
                                             </div>
+                                              <div class="col-sm-5" >
+                                              </div>
+                                            <div id="tombol"></div>
+
+                                   
+                                            
+                                              <div id="edit">
+                                     
+                                             <button id="btn-edit" class="btn btn-success" onclick="edit()" style="align-items: right" > Edit</button>
+                                           </div>
 
                                            
 
@@ -107,7 +124,7 @@
          <tr>
           <td> <?php echo $key->no_pr; ?></td>
            <td><?php echo $key->item;?></td>
-          <td> <input type="text" class="form-control" style="width:100px" readonly=""></td>
+          <td> </td>
           <td><?php echo $key->unit; ?></td>
           <td><?php echo $key->qty;?></td>
        
@@ -173,8 +190,8 @@
                        <strong>Are you sure to delete this record?</strong>
                   </div>
                   <div class="modal-footer">
-                    <input name="id_bayangan_delete" id="id_bayangan_delete" class="form-control">
-                       <input name="id" id="id" class="form-control">
+                    <input hidden="" name="id_bayangan_delete" id="id_bayangan_delete" class="form-control">
+                       <input hidden="" name="id" id="id" class="form-control">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
                     <button type="button" type="submit" id="btn_delete" class="btn btn-primary">Yes</button>
                   </div>
@@ -186,7 +203,9 @@
     $(document).ready(function(){ 
 
       var val2 = <?php echo json_encode($list[0]->supplier);?> ;
+      var val3 = <?php echo json_encode($list[0]->franco);?> ;
       $("div.siap select").val(val2);
+      $("div.fran select").val(val3);
 
         $("#btn-tambah-form").click(function(){ // Ketika tombol Tambah Data Form di klik
             var jumlah = parseInt($("#jumlah-form").val()); // Ambil jumlah data form pada textbox jumlah-form
@@ -329,5 +348,35 @@ function formatRupiah(angka, prefix) {
             });
             return false;
         });
+
+         function edit(){
+           document.getElementById("supplier").disabled = false;
+           document.getElementById("eta").disabled = false;
+           document.getElementById("franco").disabled = false;
+        $("#edit").html("");
+               $("#tombol").append("  <button id='btn-simpan'  onclick='simpan()' class='btn btn-info'> Simpan</button>");
+         }
+
+         function simpan(){
+           document.getElementById("supplier").disabled = true;
+           document.getElementById("eta").disabled = true;
+           document.getElementById("franco").disabled = true;
+                  var id_po = $('#id_po').val();
+                  var eta = $('#eta').val();
+                  var franco = $('#franco').val();
+                                       var supplier = $('#supplier').val();
+             $.ajax({
+                type : "POST",
+                url  : "<?php echo site_url('Po/update')?>",
+                dataType : "JSON",
+                data : {id_po:id_po, eta:eta, franco:franco, supplier: supplier },
+                success: function(data){
+                   $("#tombol").html("");
+               $("#edit").append(" <button id='btn-edit' class='btn btn-success' onclick='edit()' style='align-items: right' > Edit</button>");
+                    
+                   
+                }
+            });
+         }
 
 </script>
