@@ -31,4 +31,13 @@ class EtaModel extends CI_Model {
             return $results;
             }
      }
+
+      public function konfirmasi($id){
+         $data = array(
+        'konfirmasi' => 1,
+      
+        );
+        $this->db->where('id',$id);
+         $this->db->update('Eta', $data);
+    }
 }
