@@ -151,11 +151,26 @@ public function index()
     }
 
       public function InsertPo($id){
-       
+       $query = $this->db->select('*')->from('item')->join('purch_req', 'item.id_purch = purch_req.id')->where('item.id_item',$id)->get();
+       $status=0;
+       $idp=0;
+       foreach ($query->result() as $key ) {
+           if($key->status_fa == 1){
+            $status=1;
+          
+           }
+             $idp= $key->id_purch;
+       }
+       if($status == 1){
         $data['list'] = $this->Purch_reqModel->getItemById($id);
         $data['qtysisa'] = $this->Purch_reqModel->getQtySisa($id);
         $this->load->view('Admin/header');
         $this->load->view('Admin/InsertPo', $data);
+    }else{
+          echo "<script>alert('Belum di verifikasi')</script>";
+           redirect('Purch_req/GetItem_barang/'.$idp, 'refresh');
+
+    }
 
     }
     public function getPo(){

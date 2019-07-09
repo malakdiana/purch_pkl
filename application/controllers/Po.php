@@ -91,7 +91,7 @@ public function index()
         
         if(!empty($this->input->get("q"))){
             $this->db->like('pr_no', $this->input->get("q"));
-            $query = $this->db->select('id,pr_no as text')->where('status','OPEN')->get("purch_req");
+            $query = $this->db->select('id,pr_no as text')->where('status','OPEN')->where('status_fa','1')->get("purch_req");
             $json = $query->result();
         }
 
@@ -127,6 +127,10 @@ public function index()
     }
 
     }
+     function deleteBayangan(){
+        $data=$this->PoModel->delete_bayangan();
+        echo json_encode($data);
+    }
 
        public function tambahPO(){
         // $this->load->model('SectionModel');
@@ -152,7 +156,10 @@ public function index()
     public function tambahItem($id){
         $this->load->helper('url', 'form');
         $this->load->library('form_validation');
-       
+            $this->load->model('SupplierModel');
+
+             $data['supplier'] = $this->SupplierModel->getSupplier();
+            $data['detail'] = $this->PoModel->getItemPo($id);
             $data['list'] = $this->PoModel->getPoById($id);
             $data['id']=$id;
   

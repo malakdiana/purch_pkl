@@ -37,12 +37,14 @@
                                                 <th>QTY TO PO</th>  
                                                 <th>HARGA</th>                                         
                                                
-                                                <th >ACTION</th>
+                                             
                                           
                                             </tr>
                                         </thead>
                                         <tbody>
-                                        <?php $no=1;  $jumlah=0; foreach ($brg as $key) {?>
+                                        <?php $no=1; $hasil_rupiah="Rp 0" ;$jumlah=0; foreach ($brg as $key) {
+
+                                          ?>
                                             <tr>
                                         
                                                 <td><?php echo $no; ?></td>
@@ -52,11 +54,7 @@
                                                 <td><?php echo "Rp " . number_format($key->harga,2,',','.');?> </td>
                                                 <?php $jumlah+= ($key->qty * $key->harga); 
                                                   $hasil_rupiah = "Rp " . number_format($jumlah,2,',','.');?>
-                                                <td>
-                                                      
-                                    <button type="button" class="btn btn-danger" style="width:80px; height:50px;"> <a href="<?php echo site_url()?>/Po/deleteItemPo/<?php echo $id?>/<?php echo $key->id_bayangan?> " onclick="return confirm('Apakah Yakin Untuk Menghapus?')"><font color="white"><i class="fa fa-trash-o"></i> Hapus</font></a></button>
-                          
-                                           </td>
+                                              
                                              
                                             </tr>
                                             <?php $no++;}?>

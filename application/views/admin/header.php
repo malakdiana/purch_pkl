@@ -24,6 +24,15 @@
     <script src="<?php echo base_url()?>assets/js/vendor/modernizr-2.8.3.min.js"></script>
       <link rel="stylesheet" type="text/css" href="<?php echo base_url()?>assets/dataTables/css/jquery.dataTables.css">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url()?>assets/dataTables/css/dataTables.bootstrap.css">
+    <style>
+      /* script menghilangkan Horizontal Scroll */
+      html, body {
+      max-width: 100%;
+      overflow-x: hidden;
+      }
+
+    
+</style>
 </head>
 
 <body class="body-bg">
@@ -105,7 +114,7 @@
                     </div>
                     <!-- profile info & task notification -->
                     <div class="col-md-3 clearfix text-right" >
-                        <div class="clearfix d-md-inline-block d-block" style="margin-right: -14px">
+                        <div class="clearfix d-md-inline-block d-block" >
                             <div class="user-profile m-0" style="background:#17a2b8">
                                  <img class="avatar user-thumb" src="<?php echo base_url()?>assets/images/author/avatar.png" alt="avatar">
                             <h4 class="user-name dropdown-toggle" data-toggle="dropdown"><?php echo $this->session->userdata('logged_in')['username'] ?> <i class="fa fa-angle-down"></i></h4>
