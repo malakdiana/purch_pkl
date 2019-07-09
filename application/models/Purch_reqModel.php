@@ -259,6 +259,11 @@ private $_batchImport;
     }
 
     public function insertPrtoPo(){
+       $harga = $this->input->post('harga');
+        $d = $harga;
+             $d = str_replace('Rp', '', $d);
+              $d = str_replace('.', '', $d);
+               $d = str_replace(' ', '', $d);
           $data = array(
         'id_po' => $this->input->post('no_po'),
         'id_pr' => $this->input->post('id_pr'),
@@ -266,7 +271,7 @@ private $_batchImport;
         'no_pr' => $this->input->post('pr_no'),
         'item' => $this->input->post('item_barang'),
         'qty' => $this->input->post('qty_po'),
-        'harga' => $this->input->post('harga'),
+        'harga' => $d,
         );
           $this->db->insert('bayangan', $data);
 $idpr=$this->input->post('id_pr');

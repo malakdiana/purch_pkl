@@ -166,7 +166,7 @@ class PoModel extends CI_Model {
         );
          $this->db->insert('item', $data);
         }
-       
+    
      
 
     }
@@ -174,6 +174,24 @@ class PoModel extends CI_Model {
     public function deleteItem($id_item){
          $this->db->where('id_bayangan', $id_item);
          $this->db->delete('bayangan');
+    }
+      function delete_bayangan(){
+        $id_bayangan=$this->input->post('id_bayangan');
+          $query= $this->db->select('*')->from('bayangan')->where('id_bayangan', $id_bayangan)->get();
+          foreach ($query->result() as $key) {
+              $xx = $key->id_pr;
+          }
+          $data= array(
+            'status' => 'OPEN'
+          );
+           $this->db->where('id', $xx);
+            $this->db->update('purch_req',$data);
+
+          $this->db->where('id_bayangan', $id_bayangan);
+       $result = $this->db->delete('bayangan');
+
+
+        return $result;
     }
 
     public function insertPr($id){
