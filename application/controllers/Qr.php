@@ -60,7 +60,7 @@ public function index()
             if(!$this->upload->do_upload('fupload')){
                $this->QrModel->tambahQRnoGambar();
                $this->session->set_flashdata('tambahQR','<div class="alert alert-success" role="alert">SUKSES TAMBAH DATA <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-            redirect('Qr/', 'refresh');
+            redirect('Qr/tracking', 'refresh');
                 // $data['section']=$this->SectionModel->getSection();
                 // $error= array('error'=>$this->upload->display_errors());
                 // $this->load->view('User/header');
@@ -69,7 +69,7 @@ public function index()
             }else{
                 $this->QrModel->tambahQR();
                $this->session->set_flashdata('tambahQR','<div class="alert alert-success" role="alert">SUKSES TAMBAH DATA <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-            redirect('Qr/', 'refresh');
+            redirect('Qr/tracking', 'refresh');
             }
     }
 
@@ -133,10 +133,26 @@ $this->upload->initialize($config);
         $this->load->view('Admin/footer');
     }
 
+        public function editQrUser($id){
+        $data['list'] = $this->QrModel->getQrById($id);
+        $this->load->view('User/header');
+        $this->load->view('User/editQR', $data);
+        $this->load->view('Admin/footer');
+    }
+
+
+
     public function detailQuotation($id){
        $data['list'] = $this->QrModel->getQrById($id);
         $this->load->view('Admin/header');
         $this->load->view('Admin/detailQuotation', $data);
+        $this->load->view('Admin/footer');
+    }
+
+    public function detailQuotationUser($id){
+       $data['list'] = $this->QrModel->getQrById($id);
+        $this->load->view('User/header');
+        $this->load->view('User/detailQuotation', $data);
         $this->load->view('Admin/footer');
     }
 
@@ -172,6 +188,42 @@ $this->upload->initialize($config);
                $this->QrModel->editQuotation();
                   $this->session->set_flashdata('editQr','<div class="alert alert-success" role="alert">SUKSES EDIT QUOTATION <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
                redirect('Qr/', 'refresh');
+            } 
+    }
+
+
+    public function editQuotationUser($id){
+      if(!empty($_FILES['fupload'])){
+        var_dump($_FILES['fupload']);die();
+        $files=$_FILES['fupload'];
+        $config['upload_path'] = './assets/file_qr/';
+       
+            $config['allowed_types'] = 'pdf|jpg|png|jpeg|doc|docx';
+            $config['max_size']= 1000000000;
+            $config['max_width']= 10240;
+            $config['max_height']=7680;
+        
+             $_FILES['userfile']['name']= $files['name'];
+             $_FILES['userfile']['type']= $files['type'];
+       
+              $_FILES['userfile']['tmp_name']= $files['tmp_name'];
+               $_FILES['userfile']['error']= $files['error'];
+                $_FILES['userfile']['size']= $files['size'];
+                $this->load->library('upload', $config);
+$this->upload->initialize($config);
+}
+          if($this->upload->do_upload('userfile')){
+
+  $this->QrModel->editQuotationGambar();
+   $this->session->set_flashdata('editQr','<div class="alert alert-success" role="alert">SUKSES EDIT QUOTATION <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+               redirect('Qr/tracking', 'refresh');
+                 
+
+            }else{
+             
+               $this->QrModel->editQuotation();
+                  $this->session->set_flashdata('editQr','<div class="alert alert-success" role="alert">SUKSES EDIT QUOTATION <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+               redirect('Qr/tracking', 'refresh');
             } 
     }
 

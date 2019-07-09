@@ -78,12 +78,17 @@
                                                 </td>
 
                                                 <td>
+
+                                                
+
                                                 <div class="btn-group mb-xl-3" role="group" aria-label="Basic example">
-                                    <button type="button" class="btn btn-info" style="width:80px; height:45px;>  <a href="javascript:void(0);" onclick="modalDetail('<?php echo $key->id_penawaran?>','<?php echo $key->tanggal ?>','<?php echo $key->item ?>','<?php echo $key->kode_qr ?>','<?php echo $key->tanggal_butuh ?>','<?php echo $key->section ?>','<?php echo $key->pic ?>','<?php echo $key->bahan ?>','<?php echo $key->detail ?>','<?php echo $key->status ?>','<?php echo $key->gambar ?>')"  data-toggle="modal" data-target="#myModalDetail"<font color="white"><i class="fa fa-th-list"></i> Detail</font></a></button>
-                                    <button type="button" class="btn btn-primary" style="width:85px; height:45px;"> <a href="<?php echo site_url()?>/Qr/listvendor/<?php echo $key->id_penawaran?>"><font color="white"><i class="fa fa-book"></i> Vendor </font></a></button>
+
+                                                      <button type="button" class="btn btn-info" style="width:80px; height:45px;>  <a href="javascript:void(0);" onclick="modalDetail('<?php echo $key->id_penawaran?>','<?php echo $key->tanggal ?>','<?php echo $key->item ?>','<?php echo $key->kode_qr ?>','<?php echo $key->tanggal_butuh ?>','<?php echo $key->section ?>','<?php echo $key->pic ?>','<?php echo $key->bahan ?>','<?php echo $key->detail ?>','<?php echo $key->status ?>','<?php echo $key->gambar ?>')"  data-toggle="modal" data-target="#myModalDetail"<font color="white"><i class="fa fa-th-list"></i> Detail</font></a></button>
+
+                                                    <button type="button" class="btn btn-primary" style="width:85px; height:45px;"> <a href="<?php echo site_url()?>/Qr/listvendor/<?php echo $key->id_penawaran?>"><font color="white"><i class="fa fa-book"></i> Vendor </font></a></button>
                                     
                                   
-                                </div>
+                                                </div>
                                                </td>
 
                                                
