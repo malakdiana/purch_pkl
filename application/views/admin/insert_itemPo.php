@@ -3,10 +3,11 @@
                 <div class="row align-items-center">
                     <div class="col-sm-6">
                         <div class="breadcrumbs-area clearfix" style="padding-top: 15px;padding-bottom: 15px">
-                            <h4 class="page-title pull-left">Master Data</h4>
+                            <h4 class="page-title pull-left">Data</h4>
                             <ul class="breadcrumbs pull-left">
-                                <li><a href="<?php echo site_url()?>/Barang">Barang</a></li>
-                                <li><span>Tambah Barang</span></li>
+                                <li><a href="#">Purchase Order</a></li>
+                                <li><span>list purchase order /</span></li>
+                                <li><span>Kelola PR</span></li>
                             </ul>
 
                     </div>
@@ -91,7 +92,7 @@
                                             
                                               <div id="edit">
                                      
-                                             <button id="btn-edit" class="btn btn-success" onclick="edit()" style="align-items: right" > Edit</button>
+                                             <button id="btn-edit" class="btn btn-info" onclick="edit()" style="align-items: right" > Edit</button>
                                            </div>
 
                                            
@@ -158,9 +159,9 @@
       </tbody>
         </table>
         <div align="right">
-        <button class="btn btn-warning" type="submit">Simpan</button>
-        <button type="button" class="btn btn-success" id="btn-tambah-form">Tambah Data Form</button>
-        <button type="button" id="btn-reset-form" class="btn btn-primary">Reset Form</button>
+        <button class="btn btn-success" type="submit">Simpan</button>
+        <button type="button" class="btn btn-info" id="btn-tambah-form">Tambah Data Form</button>
+        <button type="button" id="btn-reset-form" class="btn btn-warning">Reset Form</button>
         <input type="hidden" id="jumlah-form" name="jumlah" value="1">
 
        </div>
@@ -354,7 +355,7 @@ function formatRupiah(angka, prefix) {
            document.getElementById("eta").disabled = false;
            document.getElementById("franco").disabled = false;
         $("#edit").html("");
-               $("#tombol").append("  <button id='btn-simpan'  onclick='simpan()' class='btn btn-info'> Simpan</button>");
+               $("#tombol").append("  <button id='btn-simpan'  onclick='simpan()' class='btn btn-success'> Simpan</button>");
          }
 
          function simpan(){
@@ -372,7 +373,7 @@ function formatRupiah(angka, prefix) {
                 data : {id_po:id_po, eta:eta, franco:franco, supplier: supplier },
                 success: function(data){
                    $("#tombol").html("");
-               $("#edit").append(" <button id='btn-edit' class='btn btn-success' onclick='edit()' style='align-items: right' > Edit</button>");
+               $("#edit").append(" <button id='btn-edit' class='btn btn-info' onclick='edit()' style='align-items: right' > Edit</button>");
                     
                    
                 }

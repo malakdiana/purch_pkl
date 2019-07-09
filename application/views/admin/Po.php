@@ -5,7 +5,7 @@
                         <div class="breadcrumbs-area clearfix" style="padding-top: 15px;padding-bottom: 15px">
                             <h4 class="page-title pull-left">Data</h4>
                             <ul class="breadcrumbs pull-left">
-                                <li><a href="<?php echo site_url()?>/Purch_req">Purchase Order</a></li>
+                                <li><a href="#">Purchase Order</a></li>
                                 <li><span>List Purchase Order</span></li>
                             </ul>
 
@@ -56,10 +56,7 @@
                                    
                                     <button type="button" class="btn btn-info" style="width:80px; height:50px;"><a href="<?php echo site_url()?>/Po/detail_itemPo/<?php echo $key->id_po?>"><font color="white"><i class="fa fa-th-list"></i> Detail</font></a></button>
 
-                                     <button type="button" class="btn btn-success" style="width:95px; height:50px;"> <a href="<?php echo site_url()?>/Po/tambahItem/<?php echo $key->id_po?>"><font color="white"><i class="fa fa-plus"></i> Insert PR</font></a></button>
-
-
-                                     <button type="button" class="btn btn-primary" style="width:80px; height:50px;"> <a href="<?php echo site_url()?>/Po/EditPo/<?php echo $key->id_po?>"><font color="white"><i class="fa fa-pencil-square-o"></i> Edit</font></a></button>
+                                     <button type="button" class="btn btn-success" style="width:105px; height:50px;"> <a href="<?php echo site_url()?>/Po/tambahItem/<?php echo $key->id_po?>"><font color="white"><i class="fa fa-pencil-square-o"></i> Kelola PR</font></a></button>
 
                                    
                                     <button type="button" class="btn btn-danger" style="width:80px; height:50px;"><a href="<?php echo site_url()?>/Po/deletePo/<?php echo $key->id_po?> " onclick="return confirm('Apakah Yakin Untuk Menghapus?')"><font color="white"><i class="fa fa-trash-o"></i> Hapus</font></a></button>

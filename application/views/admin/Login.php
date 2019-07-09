@@ -5,8 +5,8 @@
                         <div class="breadcrumbs-area clearfix" style="padding-top: 15px;padding-bottom: 15px">
                             <h4 class="page-title pull-left">Master Data</h4>
                             <ul class="breadcrumbs pull-left">
-                                <li><a href="index.html">Login</a></li>
-                                <li><span>Data Login</span></li>
+                                <li><a href="#">Management User</a></li>
+                                <li><span>Data User</span></li>
                             </ul>
 
                     </div>
