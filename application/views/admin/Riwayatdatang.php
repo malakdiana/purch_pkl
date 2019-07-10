@@ -36,9 +36,10 @@
                                                 <th>TANGGAL PO</th>
                                                 <th>NOMER PO</th>
                                                 <th>ETA</th>
+                                                <th>NOMER PR</th>
+                                                <th>NAMA ITEM</th>
                                                 <th>QTY PO</th>
-                                                <th>TANGGAL KEDATANGAN</th>
-                                                <th>QTY DATANG</th>
+                                                <th>STATUS DATANG</th>
                                                 <th>ACTION</th>
                                                
                                                
@@ -52,33 +53,40 @@
                                                 <td><?php echo $key->id_po;?></td>
                                                 <td><?php echo $key->tgl_po;?></td>
                                                 <td><?php echo $key->no_po;?></td>
-                                                 <td><?php echo $key->eta;?></td>
-
-
+                                                <td><?php echo $key->eta;?></td>
+                                                <td><?php echo $key->no_pr;?></td>
+                                                <td><?php echo $key->item;?></td>
+                                                <td><?php echo $key->qty;?></td>
                                                
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
+                                                <td><?php 
+                                                if($key->status_datang == 1){?>
+                                                     <font color ="red">COMPLETE</font>
+                                                     <?php }
+                                                   else if ($key->status_datang == 2){ ?>  
+                                                        <font color ="purple">ON PROGRESS</font>
+                                                        <?php }
+                                                     else { ?>  
+                                                        <font color ="blue">WAITING</font>
+                                                        <?php }?>
 
-  
-
-
-                                                <td>
+                                                </td>
+                                                
+                                                 <td>
                                                   <div class="btn-group mb-xl-3" role="group" aria-label="Basic example">
 
-                                   
-                                    <button type="button" class="btn btn-info" style="width:80px; height:50px;"><a href="<?php echo site_url()?>/Po/detail_itemPo/<?php echo $key->id_po?>"><font color="white"><i class="fa fa-th-list"></i> Detail</font></a></button>
-
-                                     <button type="button" class="btn btn-success" style="width:130px; height:50px;"> <a href="<?php echo site_url()?>/Po/tambahItem/<?php echo $key->id_po?>"><font color="white"><i class="fa fa-plus"></i> Insert Tanggal</font></a></button>
+                                   <?php if($key->status_datang == 0|| $key->status_datang == 2){?>
+                                    <button type="button" class="btn btn-info" style="width:80px; height:60px;"><a href="<?php echo site_url()?>/Riwayatdatang/detaildatang/<?php echo $key->id_bayangan ?>"><font color="white"><i class="fa fa-th-list"></i> Detail</font></a></button>
 
 
-                                     <button type="button" class="btn btn-primary" style="width:80px; height:50px;"> <a href="<?php echo site_url()?>/Po/EditPo/<?php echo $key->id_po?>"><font color="white"><i class="fa fa-pencil-square-o"></i> Edit</font></a></button>
+                                     <button type="button" class="btn btn-success" style="width:140px; height:60px;"><a href="javascript:void(0);" onclick="modalDetail('<?php echo $key->id_bayangan ?>','<?php echo $key->item ?>')"  data-toggle="modal" data-target="#myModalEdit"><font color="white"><center><i class="ti-calendar"></i> Insert<br> Data Kedatangan</center></font></a></button>
 
-                                   
-                                    <button type="button" class="btn btn-danger" style="width:110px; height:50px;"><a href="<?php echo site_url()?>/Po/deletePo/<?php echo $key->id_po?> " onclick="return confirm('Apakah Yakin Untuk Menghapus?')"><font color="white"><i class="fa fa-trash-o"></i> Kosongkan</font></a></button>
+                                     <?php } else{?>
+                                      <button type="button" class="btn btn-info" style="width:80px; height:60px;"><a href="<?php echo site_url()?>/Riwayatdatang/detaildatang/<?php echo $key->id_bayangan ?>"><font color="white"><i class="fa fa-th-list"></i> Detail</font></a></button>
+
+  
                                 </div>
                                                 
-                                                </td>
+                                                </td><?php } ?>
                                              
                                             </tr>
                                             <?php }?>
@@ -97,30 +105,42 @@
  
 
 
-      <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModalEdit" class="modal fade-in" >
+        <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModalEdit" class="modal fade-in" >
         <div class="modal-dialog">
             <div class="modal-content" style="width: 800px; margin-left: -100px;padding: 20px" >
                 <div class="modal-header">
-                    <h4 class="modal-title">Info Purch_req</h4>
+                    <h4 class="modal-title" style="margin-left:250px">DATA KEDATANGAN</h4>
                 </div>
-          <?php echo form_open_multipart('Po/tambahItem'); ?>
+          <?php echo form_open_multipart('Riwayatdatang/inserttanggal'); ?>
                 <?php echo validation_errors(); ?>
-                     <div class="form-group">
-                        <label for="">ITEM BARANG </label>
-                        <input type="text" class="form-control" name="id" id="id" value="" readonly="" >
-                    </div>
-                    <div class="form-group">
-                        <label for="">QTY</label>
-                        <input type="text" class="form-control" name="tgl" id="tgl" value="" >
+
+                <div class="form-group">
+                        
+                        <input type="text" class="form-control"  name="id_bayangan" id="id_bayangan" value="" readonly="" hidden="">
                     </div>
                     
+                    <div class="form-group">
+                        <label for="">NAMA ITEM</label>
+                        <input type="text" class="form-control" name="item" id="item" value="" readonly="">
+                    </div>
+
+                   <div class="form-group">
+                        <label class="control-label " for="tgl_dtg">TANGGAL DATANG :</label>
+                             <input type="date" class="form-control" name="tgl_dtg" id="tgl_dtg" value="" required="" >
+                                              
+                    </div>
+                    <div class="form-group">
+                        <label for="">QTY DATANG</label>
+                        <input type="text" class="form-control" name="qty_dtg" id="qty_dtg" value="" required="">
+                    </div>
+
 
                 
                
                
             <div align="right" style="margin-bottom: 20px; margin-right: 30px">
-          <button class="btn-info" type="submit">Simpan</button>
-            <a href=""><button class="btn-warning" data-dismiss="modal">Batal</button></a>
+          <button class="btn btn-info" type="submit">Simpan</button>
+            <a href=""><button class="btn btn-warning" data-dismiss="modal">Batal</button></a>
         </div>
     
         <?php echo form_close(); ?>
@@ -137,11 +157,11 @@
  
     <!-- others plugins -->
 <script type="text/javascript">
-    function modalDetail(id_user,id_section,username,password,hak_akses){
-        document.getElementById('item_barang').value = item_barang;
-        document.getElementById('qty').value = qty;
-       
-       
+    function modalDetail(id_bayangan,item){
+
+        document.getElementById('id_bayangan').value = id_bayangan;
+        document.getElementById('item').value = item;
+        
       
     }
   </script>
