@@ -121,17 +121,17 @@
                                                  <a href="<?php echo site_url()?>/Unit_barang"><button class="btn btn-flat btn-info mb-4" role="button" style="width:160px""><img style="width: 100px;height: 100px" src="<?php echo base_url()?>assets/images/icon/unitbrg.png"><br>UNIT BARANG</button></a><br></td>
 
                                                 <td >
-                                                 <a href="<?php echo site_url()?>/Departemen"><button class="btn btn-flat btn-info mb-4" role="button" style="width:160px""><img style="width: 100px;height: 100px" src="<?php echo base_url()?>assets/images/icon/dpt.png"><br>DEPARTEMEN</button></a><br></td>
+                                                 <a href="<?php echo site_url()?>/Approval"><button class="btn btn-flat btn-info mb-4" role="button" style="width:160px""><img style="width: 100px;height: 100px" src="<?php echo base_url()?>assets/images/icon/approve.png"><br>APPROVAL</button></a><br></td>
 
                                                 <td >
-                                                 <a href="<?php echo site_url()?>/Section"><button class="btn btn-flat btn-info mb-4" role="button" style="width:160px""><img style="width: 100px;height: 100px" src="<?php echo base_url()?>assets/images/icon/section.png"><br>SECTION</button></a><br></td>
+                                                 <a href="<?php echo site_url()?>/Login/Manajemenuser"><button class="btn btn-flat btn-info mb-4" role="button" style="width:160px""><img style="width: 100px;height: 100px" src="<?php echo base_url()?>assets/images/icon/user.png"><br>MANAGEMENT USER</button></a><br></td>
                                              
 
                                                     </tr>
                                        </tbody>
                                     </table>
                                    
-                                    <table align="left" style="margin-top:-20px;" >
+                                   <!--  <table align="left" style="margin-top:-20px;" >
                                           <tr style="">
                                                        <td >
                                                        <a href="<?php echo site_url()?>/Approval"><button class="btn btn-flat btn-info mb-4" role="button" style="width:160px; margin-left:55px"><img style="width: 100px;height: 100px" src="<?php echo base_url()?>assets/images/icon/approve.png"><br>APPROVAl</button></a><br></td>
@@ -142,7 +142,7 @@
 
 
                                          </tr>
-                                         </table>
+                                         </table> -->
                         
                                
                                 </div>
