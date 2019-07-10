@@ -90,16 +90,12 @@
                     </div>
                     <div class="form-group">
                         <label for="">NAMA SECTION</label>
-                        <input type="text" class="form-control" name="nama_section" id="nama_section" value="" >
+                        <input type="text" class="form-control" name="nama_section" id="nama_section" value="" readonly="">
                     </div>
 
                    <div class="form-group">
-                        <label class="control-label " for="dept">Kode Dept :</label>
-                            <select name="dept" class="form-control">
-
-                            <?php foreach ($listDep as $key) {?>
-                            <option class="form-control" value="<?php echo $key->no?>"><?php echo $key->group_name?> </option> <?php }?>
-                            </select>
+                        <label class="control-label " for="dept">Tanggal Kedatangan :</label>
+                            <input type="date" class="form-control" name="nama_section" id="nama_section" value="" >
                                               
                     </div>
 
