@@ -41,7 +41,7 @@
                                                 <div class="form-group">
                                                      <label class="control-label " for="username">PASSWORD:</label>
 
-                                                    <input type="text" class="form-control" style="margin-bottom: 25px" name="username" value="<?php echo $this->session->userdata('logged_in')['password']?>">
+                                                    <input type="text" class="form-control" style="margin-bottom: 25px" name="username" value="">
     
                                             </div>
 

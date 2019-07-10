@@ -44,13 +44,13 @@
                                                      <label class="control-label " for="vendor">Vendor :</label>
                                            
                                                
-                                                  <input type="text" class="form-control" name="vendor[]" style="margin-bottom: 25px">
+                                                  <input type="text" class="form-control" name="vendor[]" style="margin-bottom: 25px" autocomplete="off">
                                             </div>
 
                                             <div class="form-group">
                                                      <label class="control-label " for="vendor">Harga :</label>
                                            
-                                                <input type="text" class="form-control" name="harga[]" style="margin-bottom: 25px">
+                                                <input type="text" class="form-control" name="harga[]" style="margin-bottom: 25px" autocomplete="off" id="rupiah">
                                             </div>
                                             <div class="form-group">
                                                       <label class="control-label " for="file">Attechment :</label>
@@ -156,8 +156,8 @@
             // pada sebuah tag div yg kita beri id insert-form
             $("#insert-form").append("<div style='margin-bottom: 10px'><hr>Data Vendor " + nextform + "</div>" +
                 " <input type='hidden' class='form-control' name='id[]' id='id' value='<?php echo $id; ?>' >" +
-                "  <div class='form-group'><label class='control-label' for='vendor'>Vendor :</label><input type='text' class='form-control' name='vendor[]' style='margin-bottom: 25px'></div><div class='form-group'><label class='control-label' for='vendor'>Harga :</label><input type='text' class='form-control' name='harga[]' style='margin-bottom: 25px'></div><div class='form-group'><label class='control-label' for='file'>Attechment :</label><input type='file' class='form-control' name='userfiles[]' style='margin-bottom: 25px'></div>");
-            
+                "  <div class='form-group'><label class='control-label' for='vendor'>Vendor :</label><input type='text' class='form-control' name='vendor[]' style='margin-bottom: 25px'></div><div class='form-group'><label class='control-label' for='vendor'>Harga :</label><input type='text' class='form-control' name='harga[]' id='rupiah"+nextform+"' style='margin-bottom: 25px'></div><div class='form-group'><label class='control-label' for='file'>Attechment :</label><input type='file' class='form-control' name='userfiles[]' style='margin-bottom: 25px'></div>");
+              $("#scriptt").append("<script type='text/javascript'> var rupiah"+nextform+" = document.getElementById('rupiah"+nextform+"');rupiah"+nextform+".addEventListener('keyup', function(e) { rupiah"+nextform+".value = formatRupiah(this.value, 'Rp. ');});");
             $("#jumlah-form").val(nextform); // Ubah value textbox jumlah-form dengan variabel nextform
         });
         
@@ -194,3 +194,33 @@ function openCity(cityName) {
       
     }
   </script>
+    <div id="scriptt"></script></div>
+  <script type="text/javascript">
+  var rupiah = document.getElementById("rupiah");
+rupiah.addEventListener("keyup", function(e) {
+  rupiah.value = formatRupiah(this.value, "Rp. ");
+});
+
+/* Fungsi formatRupiah */
+function formatRupiah(angka, prefix) {
+  var number_string = angka.replace(/[^,\d]/g, "").toString(),
+    split = number_string.split(","),
+    sisa = split[0].length % 3,
+    rupiah = split[0].substr(0, sisa),
+    ribuan = split[0].substr(sisa).match(/\d{3}/gi);
+
+  // tambahkan titik jika yang di input sudah menjadi angka ribuan
+  if (ribuan) {
+    separator = sisa ? "." : "";
+    rupiah += separator + ribuan.join(".");
+  }
+
+  rupiah = split[1] != undefined ? rupiah + "," + split[1] : rupiah;
+  return prefix == undefined ? rupiah : rupiah ? "Rp. " + rupiah : "";
+}
+
+  $("body").on("click", ".btn-delete", function(){
+        $(this).parents("tr").remove();
+    });
+
+</script>

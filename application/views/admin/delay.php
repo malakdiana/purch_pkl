@@ -46,14 +46,17 @@
                                 <div class="col-md-12">
                                     <div class="row">
                                  
-                                        <div class="col-md-9">
+                                        <div class="col-md-7">
 
-                                           <?php echo form_open('eta'); ?>   
+                                           <?php echo form_open('eta/delay'); ?>   
                                         </div>
-                                      
-                                        <div class="col-md-2">
+                                       <div class="col-md-2">
                                           
                                            <input type="date" name="search"  style="width: 200px" class="form-control" value="<?php echo $tgl ?>">
+                                       </div>
+                                        <div class="col-md-2">
+                                          
+                                           <input type="date" name="search2"  style="width: 200px" class="form-control" value="<?php echo $tgl2 ?>">
                                        </div>
                                        <div class="col-md-1">
                                 <button class="btn btn-default"><i class="fa fa-search"></i></button>
@@ -92,13 +95,13 @@
                                             </tr>
                                         </thead>
                                         <tbody id="show_data">
-                                        <?php $no=1;$id_po=0;  foreach ($eta as $key) { $id_po = $key->id_po;?>
+                                        <?php $no=1;$id_po=0;  foreach ($delay as $key) { $id_po = $key->id_po;?>
                                             <tr>
                                                 <td><?php echo $no; ?></td>
                                                 <td><?php echo $key->supplier;?></td>
                                                 <td><?php echo $key->tgl_po;?></td>
                                                 <td><?php echo $key->no_po;?></td>
-                                                <td><?php echo $key->eta;?></td>
+                                                <td><?php echo $key->tanggal;?></td>
                                                 <td><?php echo $key->franco;?></td>
                                                 <td><?php echo $key->section;?></td>
                                                 <td><?php echo $key->pr_no;?></td>
@@ -128,9 +131,9 @@
 
 
                                                 <td>
-                                                <a href="<?php echo site_url()?>/Eta/konfirmasi/<?php echo $key->id_po?>" class="btn btn-success" style="width:80px; height:40px;padding-left: 2px"><i class="fa fa-check fa-xs"></i> Konfirm</a><br>
-                                                <a href="<?php echo site_url()?>/Eta/invoice/<?php echo $key->id_po ?>" class="btn btn-info" style="width:80px; height:40px;padding-left: 2px"><i class="fa fa-check fa-xs"></i> Invoice</a><br>
-                                                <a class="btn btn-warning" onclick="modalRemarks('<?php echo $key->id_po?>','<?php echo $key->id_bayangan ?>')" style="width:80px; height:50px;padding-left: 2px" data-toggle="modal" data-target="#myModalEdit"><i class="fa fa-plus fa-xs"></i> Add <br>Remarks</a>
+                                                <a href="<?php echo site_url()?>/Eta/konfirmasiDelay/<?php echo $key->id?>" class="btn btn-success" style="width:80px; height:40px;padding-left: 2px"><i class="fa fa-check fa-xs"></i> Konfirm</a><br>
+                                                <a href="<?php echo site_url()?>/Eta/invoiceDelay/<?php echo $key->id ?>" class="btn btn-info" style="width:80px; height:40px;padding-left: 2px"><i class="fa fa-check fa-xs"></i> Invoice</a><br>
+                                                <a class="btn btn-warning" onclick="modalRemarks('<?php echo $key->id?>','<?php echo $key->id_bayangan ?>')" style="width:80px; height:50px;padding-left: 2px" data-toggle="modal" data-target="#myModalEdit"><i class="fa fa-plus fa-xs"></i> Add <br>Remarks</a>
                                                 </td>
   
                                             </tr>
@@ -155,10 +158,10 @@
                     <h4 class="modal-title">Remarks</h4>
                  <button align="right" type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
-                <?php echo form_open('eta/addRemarks'); ?>
+                <?php echo form_open('eta/addRemarksDelay'); ?>
                   <div class="modal-body">
                      <div class="form-group">
-                        <input type="text" name="id_po" id="id_po" hidden="">
+                        <input type="text" name="id" id="id" hidden="">
                         <input type="text" name="id_bayangan" id="id_bayangan" hidden="">
                         <label for="">Note</label>
                        <textarea name="remarks" rows="5" cols="40" class="form-control"></textarea>
@@ -188,8 +191,8 @@
     <script type="text/javascript" src="<?php echo base_url()?>assets/dataTables/js/jquery.dataTables.js"></script>
   
     <script type="text/javascript">
-    function modalRemarks(id_po,id_bayangan){
-        document.getElementById('id_po').value = id_po;
+    function modalRemarks(id,id_bayangan){
+        document.getElementById('id').value = id;
         document.getElementById('id_bayangan').value = id_bayangan;      
     }
   </script>

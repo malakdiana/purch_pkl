@@ -184,7 +184,8 @@
           "bSortable": true,
           "aTargets": [0]
         }],
-        "aaSorting": [
+       "aaSorting": [
+          [7, 'desc'],
           [0, 'desc']
         ]
       });
