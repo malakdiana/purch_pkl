@@ -24,16 +24,15 @@
     <script src="<?php echo base_url()?>assets/js/vendor/modernizr-2.8.3.min.js"></script>
       <link rel="stylesheet" type="text/css" href="<?php echo base_url()?>assets/dataTables/css/jquery.dataTables.css">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url()?>assets/dataTables/css/dataTables.bootstrap.css">
-    <style>
+   
+</head>
+<style>
       /* script menghilangkan Horizontal Scroll */
       html, body {
       max-width: 100%;
       overflow-x: hidden;
       }
-
-    
-</style>
-</head>
+      </style>
 
 <body class="body-bg">
     <!--[if lt IE 8]>
@@ -103,6 +102,13 @@
                                         <a href="javascript:void(0)" aria-expanded="true"><h6><i class="ti-folder"></i><span>Other</span></h6></span></a>
                                 <ul class="submenu">
                                     <li><a href="<?php echo site_url()?>/Login/ManajemenUser">Management User</a></li>
+                                </ul>
+                                    </li>
+                                    <li >
+                                        <a href="javascript:void(0)" aria-expanded="true"><h6><i class="ti-folder"></i><span>ETA</span></h6></span></a>
+                                <ul class="submenu">
+                                    <li><a href="<?php echo site_url()?>/Eta">ETA</a></li>
+                                       <li><a href="<?php echo site_url()?>/Eta/delay">Delay</a></li>
                                 </ul>
                                     </li>
                                     

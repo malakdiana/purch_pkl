@@ -261,13 +261,16 @@ $this->upload->initialize($config);
                $_FILES['userfile']['error']= $files['error'][$i];
                 $_FILES['userfile']['size']= $files['size'][$i];
                 $this->upload->initialize($config);
-
+   $d = $harga[$i];
+             $d = str_replace('Rp', '', $d);
+              $d = str_replace('.', '', $d);
+               $d = str_replace(' ', '', $d);
             if($this->upload->do_upload('userfile')){
                 $data = array(
                     'id_penawaran' => $id[$i],
                     'tanggal' => $tgl,
                     'nama_vendor' => $vendor[$i],
-                    'harga' => $harga[$i],
+                    'harga' => $d,
                     'detail' => $this->upload->data('file_name'),
                       'status' => 1,
             );

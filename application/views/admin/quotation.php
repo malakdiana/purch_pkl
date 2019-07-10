@@ -201,73 +201,20 @@
      <script type="text/javascript" src="<?php echo base_url()?>assets/advanced-datatable/js/jquery.js"></script>
     <script type="text/javascript" src="<?php echo base_url()?>assets/dataTables/js/jquery.dataTables.js"></script>
  
-    <!-- others plugins -->
-<script type="text/javascript">
-   
-    function modalDetail(id_penawaran,tanggal, item, kode_qr,tanggal_butuh,section,pic,bahan,detail,status,gambar ){
-      if(id_penawaran === null){
-        id_penawaran="";
-      }
-      if(tanggal === null){
-        tanggal="";
-      }if(item === null){
-        item="";
-      }if(kode_qr=== null){
-        kode_qr="";
-      }
-      if(tanggal_butuh === null){
-        tanggal_butuh="";
-      }if(section=== null){
-        section="";
-      }if(pic=== null){
-        pic="";
-      }if(bahan=== null){
-        bahan="";
-      }if(detail=== null){
-        detail="-";
-      }if(status== null){
-        status="-";
-      }if(gambar === null){
-        gambar="-";
-      }
-        document.getElementById('id_penawaran').value = id_penawaran;
-        document.getElementById('tanggal').value = tanggal;
-          document.getElementById('item').value = item;
-          document.getElementById('kode_qr').value = kode_qr;
-          document.getElementById('tanggal_butuh').value = tanggal_butuh;
-          document.getElementById('section').value = section;
-          document.getElementById('pic').value = pic;
-          document.getElementById('bahan').value = bahan;
-          document.getElementById('detail').value = detail;
-        document.getElementById('status').value = status;
-          
-       
-      
-    }
-  </script>
- 
 
      <script type="text/javascript">
-    /* Formating function for row details */
-    
-
-      /*
-       * Initialse DataTables, with no sorting on the 'details' column
-       */
+ 
        var oTable = $('#dataTablesss').dataTable({
         "aoColumnDefs": [{
           "bSortable": true,
           "aTargets": [0]
         }],
         "aaSorting": [
+          [7,'desc'],
           [0, 'desc']
         ]
       });
 
-      /* Add event listener for opening and closing details
-       * Note that the indicator for showing which row is open is not controlled by DataTables,
-       * rather it is done here
-       */
     
   </script>
 </body>

@@ -232,7 +232,9 @@
           "aTargets": [0]
         }],
         "aaSorting": [
-          [0, 'desc']
+      
+          [7,'desc'],
+          [0,'desc']
         ]
       });
 

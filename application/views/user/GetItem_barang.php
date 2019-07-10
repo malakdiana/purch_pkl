@@ -86,7 +86,7 @@
                                                   }else{
                                                      $status= 1;
                                                   }
-                                               }}$no++;}
+                                               }}}
                                                  ?>
 
                                                  <?php if($status==0){?>
@@ -101,7 +101,7 @@
                                                   else{?>
                                                      <td><button type="button" class="btn btn-success"><a href=""><font color="white"><i class="fa fa-check"></i> Done</font></a></button></td>
 
-                                                     </tr><?php }} ?>
+                                                     </tr><?php }$no++;} ?>
                 
                                          
                                        </tbody>

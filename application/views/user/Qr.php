@@ -221,7 +221,8 @@ id_penawaran,tanggal, item, kode_qr,tanggal_butuh,section,pic,bahan,detail,statu
           "aTargets": [0]
         }],
         "aaSorting": [
-          [0, 'desc']
+          [0, 'desc'],
+          [7,'desc']
         ]
       });
 
