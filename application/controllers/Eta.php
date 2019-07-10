@@ -27,6 +27,13 @@ public function index()
    
 	}
 
+	public function get($tgl){
+		$data['tgl']=$tgl;
+		$data['eta']= $this->EtaModel->getPo($tgl);
+		$this->load->view('Admin/header');
+        $this->load->view('Admin/eta',$data);
+	}
+
 	public function delay()
 	{
 		
@@ -41,7 +48,7 @@ public function index()
 		$tgl = $this->input->post('search');
 		$tgl2 = $this->input->post('search2');
 	}
-		$data['tgl']=$tgl;
+		$data['tgl1']=$tgl;
 		$data['tgl2']=$tgl2;
 		$data['delay']= $this->EtaModel->getDelay($tgl,$tgl2);
 		$this->load->view('Admin/header');
@@ -49,47 +56,57 @@ public function index()
    
 	}
 
+	public function getDelay($tgl1,$tgl2){
+		$data['tgl1']=$tgl1;
+		$data['tgl2']=$tgl2;
+		$data['delay']= $this->EtaModel->getDelay($tgl1,$tgl2);
+		$this->load->view('Admin/header');
+        $this->load->view('Admin/delay',$data);
 
-
-
-	public function invoice($id){
-	  $this->EtaModel->invoice($id);
-            
-            redirect("Eta/", 'refresh');
 	}
 
-	public function konfirmasi($id){
+
+
+
+	public function invoice($id,$tgl){
+	  $this->EtaModel->invoice($id);
+            
+            redirect("Eta/get/".$tgl, 'refresh');
+	}
+
+	public function konfirmasi($id,$tgl){
         $this->EtaModel->konfirmasi($id);
             
-            redirect("Eta/", 'refresh');
+            redirect("Eta/get/".$tgl, 'refresh');
     }
-    public function invoiceDelay($id){
-	  $this->EtaModel->invoice($id);
+    public function invoiceDelay($id,$tgl1,$tgl2){
+	  $this->EtaModel->invoiceDelay($id);
             
-            redirect("Eta/delay", 'refresh');
+            redirect("Eta/getDelay/".$tgl1."/".$tgl2, 'refresh');
 	}
 
-	public function konfirmasiDelay($id){
-        $this->EtaModel->konfirmasi($id);
+	public function konfirmasiDelay($id,$tgl1,$tgl2){
+        $this->EtaModel->konfirmasiDelay($id);
             
-            redirect("Eta/delay", 'refresh');
+             redirect("Eta/getDelay/".$tgl1."/".$tgl2, 'refresh');
     }
 
     public function addRemarks(){
+    	$tgl = $this->input->post('tgl');
     	  $this->EtaModel->addRemarks();
     	  if(!empty($this->input->post('tanggal'))){
     	   $this->EtaModel->delay();
     	  }
-
-    	   redirect("Eta/", 'refresh');
+    	   redirect("Eta/get/".$tgl, 'refresh');
     }
     public function addRemarksDelay(){
+    	$tgl1 = $this->input->post('tgl1');
+    	$tgl2 = $this->input->post('tgl2');
     	  $this->EtaModel->addRemarksDelay();
     	  if(!empty($this->input->post('tanggal'))){
     	   $this->EtaModel->delay();
     	  }
-
-    	   redirect("Eta/delay", 'refresh');
+    	 redirect("Eta/getDelay/".$tgl1."/".$tgl2, 'refresh');
     }
 	
 }

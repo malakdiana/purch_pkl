@@ -24,6 +24,15 @@
     <script src="<?php echo base_url()?>assets/js/vendor/modernizr-2.8.3.min.js"></script>
       <link rel="stylesheet" type="text/css" href="<?php echo base_url()?>assets/dataTables/css/jquery.dataTables.css">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url()?>assets/dataTables/css/dataTables.bootstrap.css">
+    <style>
+      /* script menghilangkan Horizontal Scroll */
+      html, body {
+      max-width: 100%;
+      overflow-x: hidden;
+      }
+      </style>
+
+<body class="body-bg">
 </head>
 
 <body class="body-bg">

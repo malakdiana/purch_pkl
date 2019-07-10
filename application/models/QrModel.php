@@ -118,6 +118,7 @@ class QrModel extends CI_Model {
                        'bahan'=>$this->input->post('bahan'),
                         'detail'=>$this->input->post('detail'),
                         'gambar'=>$this->upload->data('file_name'),
+                        'status'=>$this->input->post('status'),
                         
 
             );
@@ -142,8 +143,6 @@ $kodeqr1="QR".$tglkode;
         foreach ($query->result() as $key) {
             $carikode = $key->kode_qr;
         }
-
-
 
 
 

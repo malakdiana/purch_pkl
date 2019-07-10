@@ -51,21 +51,14 @@ public function index()
 
     public function addQr(){
             $config['upload_path'] = './assets/file_qr/';
-            $config['allowed_types'] = 'pdf|jpg|png|jpeg|docx';
-            $config['max_size']= 1000000000;
-            $config['max_width']= 10240;
-            $config['max_height']=7680;
+            $config['allowed_types'] = 'pdf|jpg|png|jpeg|docx|xlsx';
             $this->load->library('upload', $config);
+            $this->upload->initialize($config);
 
             if(!$this->upload->do_upload('fupload')){
                $this->QrModel->tambahQRnoGambar();
                $this->session->set_flashdata('tambahQR','<div class="alert alert-success" role="alert">SUKSES TAMBAH DATA <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
             redirect('Qr/tracking', 'refresh');
-                // $data['section']=$this->SectionModel->getSection();
-                // $error= array('error'=>$this->upload->display_errors());
-                // $this->load->view('User/header');
-                // $this->load->view('User/tambahQR',$data, $error);
-                // $this->load->view('Admin/footer');
             }else{
                 $this->QrModel->tambahQR();
                $this->session->set_flashdata('tambahQR','<div class="alert alert-success" role="alert">SUKSES TAMBAH DATA <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
@@ -164,26 +157,14 @@ $this->upload->initialize($config);
     }
 
     public function editQuotation($id){
-      if(!empty($_FILES['fupload'])){
-        var_dump($_FILES['fupload']);die();
-        $files=$_FILES['fupload'];
-        $config['upload_path'] = './assets/file_qr/';
-       
-            $config['allowed_types'] = 'pdf|jpg|png|jpeg|doc|docx';
-            $config['max_size']= 1000000000;
-            $config['max_width']= 10240;
-            $config['max_height']=7680;
-        
-             $_FILES['userfile']['name']= $files['name'];
-             $_FILES['userfile']['type']= $files['type'];
-       
-              $_FILES['userfile']['tmp_name']= $files['tmp_name'];
-               $_FILES['userfile']['error']= $files['error'];
-                $_FILES['userfile']['size']= $files['size'];
+      $config['upload_path'] = './assets/file_qr/';
+            $config['allowed_types'] = 'pdf|jpg|png|jpeg|docx|xlsx';
+            $this->load->library('upload', $config);
+            $this->upload->initialize($config);
                 $this->load->library('upload', $config);
 $this->upload->initialize($config);
-}
-          if($this->upload->do_upload('userfile')){
+
+          if($this->upload->do_upload('fupload')){
 
   $this->QrModel->editQuotationGambar();
    $this->session->set_flashdata('editQr','<div class="alert alert-success" role="alert">SUKSES EDIT QUOTATION <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
@@ -200,26 +181,13 @@ $this->upload->initialize($config);
 
 
     public function editQuotationUser($id){
-      if(!empty($_FILES['fupload'])){
-        var_dump($_FILES['fupload']);die();
-        $files=$_FILES['fupload'];
-        $config['upload_path'] = './assets/file_qr/';
-       
-            $config['allowed_types'] = 'pdf|jpg|png|jpeg|doc|docx';
-            $config['max_size']= 1000000000;
-            $config['max_width']= 10240;
-            $config['max_height']=7680;
-        
-             $_FILES['userfile']['name']= $files['name'];
-             $_FILES['userfile']['type']= $files['type'];
-       
-              $_FILES['userfile']['tmp_name']= $files['tmp_name'];
-               $_FILES['userfile']['error']= $files['error'];
-                $_FILES['userfile']['size']= $files['size'];
+     $config['upload_path'] = './assets/file_qr/';
+            $config['allowed_types'] = 'pdf|jpg|png|jpeg|docx|xlsx';
+            $this->load->library('upload', $config);
+            $this->upload->initialize($config);
                 $this->load->library('upload', $config);
 $this->upload->initialize($config);
-}
-          if($this->upload->do_upload('userfile')){
+          if($this->upload->do_upload('fupload')){
 
   $this->QrModel->editQuotationGambar();
    $this->session->set_flashdata('editQr','<div class="alert alert-success" role="alert">SUKSES EDIT QUOTATION <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
@@ -261,7 +229,7 @@ $this->upload->initialize($config);
                $_FILES['userfile']['error']= $files['error'][$i];
                 $_FILES['userfile']['size']= $files['size'][$i];
                 $this->upload->initialize($config);
-   $d = $harga[$i];
+                $d = $harga[$i];
              $d = str_replace('Rp', '', $d);
               $d = str_replace('.', '', $d);
                $d = str_replace(' ', '', $d);
@@ -279,8 +247,16 @@ $this->upload->initialize($config);
          $ids = $id[$i];
        
             }else{
-               $error = array('error' => $this->upload->display_errors());
-               $ids = $id[$i];
+               $data = array(
+                    'id_penawaran' => $id[$i],
+                    'tanggal' => $tgl,
+                    'nama_vendor' => $vendor[$i],
+                    'harga' => $d,
+                      'status' => 1,
+            );
+         $this->db->insert('detail_penawaran', $data);
+         $this->session->set_flashdata('tambahVendor','<div class="alert alert-success" role="alert">SUKSES TAMBAH DATA VENDOR <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+         $ids = $id[$i];
                
             }
             

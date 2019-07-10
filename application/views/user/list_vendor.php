@@ -21,7 +21,7 @@
                     <!-- data table start -->
                     <div class="col-12 mt-5">
                         <div class="card">
-                            
+                             <div class="card-body">
                        
                                 <table cellpadding="0" cellspacing="0" border="0" class="table table-striped" id="dataTablesss">
                                         <thead class="bg-light text-capitalize">
@@ -43,7 +43,7 @@
                                                 <td><?php echo $no;?></td>
                                                 <td><?php echo $key->tanggal;?></td>
                                                 <td><?php echo $key->nama_vendor;?></td>
-                                                <td><?php echo $key->harga;?></td>
+                                                <td><?php echo "Rp " . number_format($key->harga,2,',','.');?></td>
                                                 <td><a href="<?php echo base_url()?>assets/file_qr/<?php echo $key->detail;?>" target="_blank"><?php echo $key->detail;?></a></td>
                                                </tr>
                                                 <?php $no++;} ?>

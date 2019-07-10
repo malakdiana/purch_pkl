@@ -60,16 +60,16 @@ class EtaModel extends CI_Model {
         'konfirmasi' => 1,
       
         );
-        $this->db->where('id_po',$id);
-         $this->db->update('po', $data);
+        $this->db->where('id_bayangan',$id);
+         $this->db->update('bayangan', $data);
     }
      public function invoice($id){
          $data = array(
         'invoice' => 1,
       
         );
-        $this->db->where('id_po',$id);
-         $this->db->update('po', $data);
+        $this->db->where('id_bayangan',$id);
+         $this->db->update('bayangan', $data);
     }
        public function konfirmasiDelay($id){
          $data = array(
@@ -89,7 +89,7 @@ class EtaModel extends CI_Model {
     }
 
     public function addRemarks(){
-        $id= $this->input->post('id_po');
+        $id= $this->input->post('id_bayangan');
         $remarks = $this->input->post('remarks');
         if(!empty($this->input->post('tanggal'))){
             $remarks= $remarks.' , Delay tanggal :'.$this->input->post('tanggal');
@@ -98,8 +98,8 @@ class EtaModel extends CI_Model {
         'remarks' => $remarks,
       
         );
-        $this->db->where('id_po',$id);
-         $this->db->update('po', $data);  
+        $this->db->where('id_bayangan',$id);
+         $this->db->update('bayangan', $data);  
     }
  public function addRemarksDelay(){
         $id= $this->input->post('id');

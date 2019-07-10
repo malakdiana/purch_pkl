@@ -128,9 +128,9 @@
 
 
                                                 <td>
-                                                <a href="<?php echo site_url()?>/Eta/konfirmasi/<?php echo $key->id_po?>" class="btn btn-success" style="width:80px; height:40px;padding-left: 2px"><i class="fa fa-check fa-xs"></i> Konfirm</a><br>
-                                                <a href="<?php echo site_url()?>/Eta/invoice/<?php echo $key->id_po ?>" class="btn btn-info" style="width:80px; height:40px;padding-left: 2px"><i class="fa fa-check fa-xs"></i> Invoice</a><br>
-                                                <a class="btn btn-warning" onclick="modalRemarks('<?php echo $key->id_po?>','<?php echo $key->id_bayangan ?>')" style="width:80px; height:50px;padding-left: 2px" data-toggle="modal" data-target="#myModalEdit"><i class="fa fa-plus fa-xs"></i> Add <br>Remarks</a>
+                                                <a href="<?php echo site_url()?>/Eta/konfirmasi/<?php echo $key->id_bayangan?>/<?php echo $tgl?>" class="btn btn-success" style="width:80px; height:40px;padding-left: 2px"><i class="fa fa-check fa-xs"></i> Konfirm</a><br>
+                                                <a href="<?php echo site_url()?>/Eta/invoice/<?php echo $key->id_bayangan ?>/<?php echo $tgl?>" class="btn btn-info" style="width:80px; height:40px;padding-left: 2px"><i class="fa fa-check fa-xs"></i> Invoice</a><br>
+                                                <a class="btn btn-warning" onclick="modalRemarks('<?php echo $key->id_bayangan ?>')" style="width:80px; height:50px;padding-left: 2px" data-toggle="modal" data-target="#myModalEdit"><i class="fa fa-plus fa-xs"></i> Add <br>Remarks</a>
                                                 </td>
   
                                             </tr>
@@ -158,7 +158,7 @@
                 <?php echo form_open('eta/addRemarks'); ?>
                   <div class="modal-body">
                      <div class="form-group">
-                        <input type="text" name="id_po" id="id_po" hidden="">
+                       <input type="" name="tgl" value="<?php echo $tgl?>" hidden="">
                         <input type="text" name="id_bayangan" id="id_bayangan" hidden="">
                         <label for="">Note</label>
                        <textarea name="remarks" rows="5" cols="40" class="form-control"></textarea>
@@ -188,8 +188,8 @@
     <script type="text/javascript" src="<?php echo base_url()?>assets/dataTables/js/jquery.dataTables.js"></script>
   
     <script type="text/javascript">
-    function modalRemarks(id_po,id_bayangan){
-        document.getElementById('id_po').value = id_po;
+    function modalRemarks(id_bayangan){
+       
         document.getElementById('id_bayangan').value = id_bayangan;      
     }
   </script>

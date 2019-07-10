@@ -36,13 +36,13 @@
                                             <div class="form-group">
                                                      <label class="control-label " for="item">ITEM :</label>
                                            
-                                                <input type="text" class="form-control" name="item" style="margin-bottom: 25px" required="">
+                                                <input type="text" class="form-control" name="item" style="margin-bottom: 25px" required="" autocomplete="off">
                                             </div>
 
                                             <div class="form-group">
                                                      <label class="control-label " for="tanggal_butuh">DUEDATE PENAWARAN :</label>
                                            
-                                                <input type="date" class="form-control" name="tanggal_butuh" style="margin-bottom: 25px" required="">
+                                                <input type="date" class="form-control" name="tanggal_butuh" style="margin-bottom: 25px" required="" autocomplete="off">
                                             </div>
 
                                              <div class="form-group">
@@ -54,25 +54,26 @@
                                             <div class="form-group">
                                                      <label class="control-label " for="pic">PIC:</label>
                                            
-                                                <input type="text" class="form-control" name="pic" style="margin-bottom: 25px" required="">
+                                                <input type="text" class="form-control" name="pic" style="margin-bottom: 25px" required="" autocomplete="off">
                                             </div>
                                             
                                              <div class="form-group">
                                                      <label class="control-label " for="bahan">MATERIAL/BAHAN:</label>
                                            
-                                                <input type="text" class="form-control" name="bahan" style="margin-bottom: 25px">
+                                                <input type="text" class="form-control" name="bahan" style="margin-bottom: 25px" autocomplete="off">
                                             </div>
 
                                              <div class="form-group">
                                                      <label class="control-label " for="detail">DESKRIPSI:</label>
                                            
-                                                <input type="text" class="form-control" name="detail" style="margin-bottom: 25px">
+                                                <input type="text" class="form-control" name="detail" style="margin-bottom: 25px" autocomplete="off">
                                             </div>
 
                                             <div class="form-group">
                                                      <label class="control-label " for="gambar">ATTACHMENT:</label>
                                                      <i class="fa fa-paperclip"></i>
                                                 <input type="file" name="fupload" class="form-control">
+                                                <p>format file : PNG/JPG/JPEG/PDF/DOCX/XLSX</p>
                                             </div>
 
                                         

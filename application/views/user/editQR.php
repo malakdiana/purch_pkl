@@ -23,7 +23,7 @@
                     <div class="col-12 mt-5">
                         <div class="card">
                                 <div class="card-body">
-                                     <?php echo form_open('Qr/editQuotationUser/'.$list[0]->id_penawaran) ?>
+                                     <?php echo form_open_multipart('Qr/editQuotationUser/'.$list[0]->id_penawaran) ?>
                                      <h3 align="center">Form Edit Quotation</h3><br>
                                        <div class="col-md-12">
                                             <div class="row">
@@ -49,7 +49,7 @@
                                                 <label class="control-label" for="alamat">Kode Quotation :</label>
                                             </div>
                                             <div class="col-sm-4">
-                                                <input type="text" class="form-control" id="kode_qr" name="kode_qr" style="margin-bottom: 25px" value="<?php echo $list[0]->kode_qr?>">
+                                                <input type="text" class="form-control" id="kode_qr" name="kode_qr" style="margin-bottom: 25px" value="<?php echo $list[0]->kode_qr?>" readonly="">
                                             </div>
                                             <div class="col-md-2">
                                              <label class="control-label" for="alamat">Item :</label>

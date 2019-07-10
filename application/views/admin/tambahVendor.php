@@ -56,6 +56,7 @@
                                                       <label class="control-label " for="file">Attechment :</label>
                                            
                                                 <input type="file" class="form-control" name="userfiles[]" style="margin-bottom: 25px">
+                                                <p>format file : jpeg/jpg/png/pdf/docx/xlsx</p>
                                             </div>
                                             <div id="insert-form"></div>          
               <div align="right"> <button type="submit" class="btn btn-primary" style="align-self: right">Simpan</button></div>
@@ -119,11 +120,11 @@
                     </div>
                     <div class="form-group">
                         <label for="">Nama Vendor</label>
-                        <input type="text" class="form-control" name="nama_vendor" id="nama_vendor" value="" required="" >
+                        <input type="text" class="form-control" name="nama_vendor" id="nama_vendor" value="" required="" autocomplete="off">
                     </div>
                     <div class="form-group">
                         <label for="">Harga</label>
-                        <input required="" type="text" class="form-control" name="harga" id="harga" value="" >
+                        <input required="" type="text" class="form-control" name="harga" id="harga" value="" autocomplete="off">
                     </div>
                     <div class="form-group">
                         <label for="">Attachment</label>
@@ -156,7 +157,7 @@
             // pada sebuah tag div yg kita beri id insert-form
             $("#insert-form").append("<div style='margin-bottom: 10px'><hr>Data Vendor " + nextform + "</div>" +
                 " <input type='hidden' class='form-control' name='id[]' id='id' value='<?php echo $id; ?>' >" +
-                "  <div class='form-group'><label class='control-label' for='vendor'>Vendor :</label><input type='text' class='form-control' name='vendor[]' style='margin-bottom: 25px'></div><div class='form-group'><label class='control-label' for='vendor'>Harga :</label><input type='text' class='form-control' name='harga[]' id='rupiah"+nextform+"' style='margin-bottom: 25px'></div><div class='form-group'><label class='control-label' for='file'>Attechment :</label><input type='file' class='form-control' name='userfiles[]' style='margin-bottom: 25px'></div>");
+                "  <div class='form-group'><label class='control-label' for='vendor'>Vendor :</label><input type='text' class='form-control' name='vendor[]' style='margin-bottom: 25px' autocomplete='off'></div><div class='form-group'><label class='control-label' for='vendor'>Harga :</label><input type='text' class='form-control' name='harga[]' id='rupiah"+nextform+"' style='margin-bottom: 25px' autocomplete='off'></div><div class='form-group'><label class='control-label' for='file'>Attechment :</label><input type='file' class='form-control' name='userfiles[]' style='margin-bottom: 25px'></div>");
               $("#scriptt").append("<script type='text/javascript'> var rupiah"+nextform+" = document.getElementById('rupiah"+nextform+"');rupiah"+nextform+".addEventListener('keyup', function(e) { rupiah"+nextform+".value = formatRupiah(this.value, 'Rp. ');});");
             $("#jumlah-form").val(nextform); // Ubah value textbox jumlah-form dengan variabel nextform
         });
