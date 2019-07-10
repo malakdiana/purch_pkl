@@ -33,10 +33,10 @@
                                         <thead class="bg-light text-capitalize">
                                             <tr>
                                            
-                                                <th>ID USER</th>
-                                                <th>ID SECTION</th>
+                                               
+                                                
                                                 <th>USERNAME</th>
-                                                <th>PASSWORD</th>
+                                                
                                                 <th>HAK AKSES</th>
                                            
                                                
@@ -48,16 +48,27 @@
                                         <?php   foreach ($login as $key) {?>
                                             <tr>
                                         
-                                                <td><?php echo $key->id_user;?></td>
-                                                <td><?php echo $key->id_section;?></td>
+                                                
+                                                
                                                 <td><?php echo $key->username;?></td>
-                                                <td><?php echo $key->password;?></td>
-                                                <td><?php echo $key->hak_akses;?></td>
+                                               
+                                                <td><?php 
+                                                if($key->hak_akses == 1){?>
+                                                     ADMINISTRATOR
+                                                     <?php }
+                                                 else if($key->hak_akses == 2){?>
+                                                     SECTION
+                                                     <?php }    
+                                                     else { ?>  
+                                                        INVOICE
+                                                        <?php }?>
+
+                                                </td>
                                     
                                                 <td>
                                                      <div class="btn-group mb-xl-3" role="group" aria-label="Basic example">
                                   
-                                    <button type="button" class="btn btn-primary">     <a href="javascript:void(0);" onclick="modalDetail('<?php echo $key->id_user?>','<?php echo $key->id_section?>','<?php echo $key->username ?>','<?php echo $key->password ?>','<?php echo $key->hak_akses ?>')"  data-toggle="modal" data-target="#myModalEdit"><font color="white"><i class="fa fa-edit"></i> Edit</font></a></button>
+                                    <button type="button" class="btn btn-primary"><a href="javascript:void(0);" onclick="modalDetail('<?php echo $key->id_user?>','<?php echo $key->username ?>','<?php echo $key->password ?>','<?php echo $key->hak_akses ?>')"  data-toggle="modal" data-target="#myModalEdit"><font color="white"><i class="fa fa-edit"></i> Edit</font></a></button>
                                     <button type="button" class="btn btn-danger">    <a href="<?php echo site_url()?>/Login/deleteLogin/<?php echo $key->id_user?> " onclick="return confirm('Apakah Yakin Untuk Menghapus?')"><font color="white"><i class="fa fa-trash-o"></i> Hapus</font></a></button>
                                   
                                 </div>
@@ -87,24 +98,26 @@
           <?php echo form_open_multipart('Login/updateLogin'); ?>
                 <?php echo validation_errors(); ?>
                      <div class="form-group">
-                        <label for="">ID USER</label>
-                        <input type="text" class="form-control" name="id_user" id="id_user" value="" readonly="" >
+                        
+                        <input type="text" class="form-control" name="id_user" id="id_user" value="" readonly="" hidden="" >
                     </div>
-                    <div class="form-group">
-                        <label for="">ID SECTION</label>
-                        <input type="text" class="form-control" name="id_section" id="id_section" value="" >
-                    </div>
+                  
                     <div class="form-group">
                         <label for="">USERNAME</label>
-                        <input type="text" class="form-control" name="username" id="username" value="" >
+                        <input type="text" class="form-control" name="username" id="username" value="" readonly="" >
                     </div>
                     <div class="form-group">
                         <label for="">PASSWORD</label>
+
                         <input type="text" class="form-control" name="password" id="password" value="" >
                     </div>
                     <div class="form-group">
                         <label for="">HAK AKSES</label>
-                        <input type="text" class="form-control" name="hak_akses" id="hak_akses" value="" >
+                        <select class="form-control" name="hak_akses" id="hak_akses">
+                        <option value="1">ADMINISTRATOR</option>
+                        <option value="2">SECTION</option>
+                        <option value="3">INVOICE</option>
+                        </select>
                     </div>
                     
 
@@ -112,8 +125,8 @@
                
                
             <div align="right" style="margin-bottom: 20px; margin-right: 30px">
-          <button class="btn-info" type="submit">Update</button>
-            <a href=""><button class="btn-warning" data-dismiss="modal">Batal</button></a>
+          <button class="btn btn-info" type="submit">Update</button>
+            <a href=""><button class="btn btn-warning" data-dismiss="modal">Batal</button></a>
         </div>
     
         <?php echo form_close(); ?>
@@ -130,11 +143,11 @@
  
     <!-- others plugins -->
 <script type="text/javascript">
-    function modalDetail(id_user,id_section,username,password,hak_akses){
-        document.getElementById('id_user').value = id_user;
-        document.getElementById('id_section').value = id_section;
+    function modalDetail(id_user,username,password,hak_akses){
+        
+         document.getElementById('id_user').value = id_user;
         document.getElementById('username').value = username;
-        document.getElementById('password').value = password;
+      
         document.getElementById('hak_akses').value = hak_akses;
        
       

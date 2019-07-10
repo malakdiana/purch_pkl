@@ -84,8 +84,8 @@
                                    
                                     <li><a href="<?php echo site_url()?>/Barang">Barang</a></li>
                                     <li><a href="<?php echo site_url()?>/Unit_barang">Unit Barang</a></li>
-                                    <li><a href="<?php echo site_url()?>/Departemen">Departement</a></li>
-                                    <li><a href="<?php echo site_url()?>/Section">Section</a></li>
+                                    <!-- <li><a href="<?php echo site_url()?>/Departemen">Departement</a></li>
+                                    <li><a href="<?php echo site_url()?>/Section">Section</a></li> -->
                                     <li><a href="<?php echo site_url()?>/Approval">Approval</a></li>
 
                                 </ul>

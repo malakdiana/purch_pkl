@@ -39,11 +39,11 @@ class LoginModel extends CI_Model {
     }
     public function updateLogin(){
 
-        $id_user = $this->input->post('id_user');
+         $id_user = $this->input->post('id_user');
         
 
         $data = array(
-        'id_section' => $this->input->post('id_section'),
+        
         'username' => $this->input->post('username'),
         'password' => $this->input->post('password'),
         'hak_akses' => $this->input->post('hak_akses'),
@@ -51,7 +51,7 @@ class LoginModel extends CI_Model {
         );
 
         
-        $this->db->where('id_user', $id_user);
+         $this->db->where('id_user', $id_user);
         $this->db->update('Login', $data);
     }
     public function deleteLogin($id){
@@ -62,7 +62,7 @@ class LoginModel extends CI_Model {
     public function tambahLogin(){
         $data = array(
         'id_user' => $this->input->post('id_user'),
-        'id_section' => $this->input->post('id_section'),
+        
         'username' => $this->input->post('username'),
         'password' => $this->input->post('password'),
         'hak_akses' => $this->input->post('hak_akses'),
