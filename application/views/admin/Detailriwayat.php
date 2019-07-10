@@ -40,6 +40,7 @@
                                                 <th>QTY PO</th>
                                                 <th>TANGGAL DATANG</th>
                                                 <th>QTY DATANG</th>
+                                                <th>ACTION</th>
                                                
                                               
                                             </tr>
@@ -57,6 +58,13 @@
                                                 <td><?php echo $key->qty;?></td>
                                                 <td><?php echo $key->tgl_dtg;?></td>
                                                 <td><?php echo $key->qty_dtg;?></td>
+
+                                                <?php if($key->status_datang == 1||$key->status_datang ==2){?>
+                                                <td>
+                                                 <button type="button" class="btn btn-danger" style="width:80px; height:50px;"><a href="<?php echo site_url()?>/Riwayatdatang/deleteriwayat/<?php echo $key->id?>/<?php echo $key->id_bayangan?> " onclick="return confirm('Apakah Yakin Untuk Menghapus?')"><font color="white"><i class="fa fa-trash-o"></i> Hapus</font></a></button></td>
+                                                 <?php } else{?>
+
+                                                  <td></td><?php } ?>
                                                 
                                                  
                                              

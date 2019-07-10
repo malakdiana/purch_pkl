@@ -74,16 +74,19 @@
                                                  <td>
                                                   <div class="btn-group mb-xl-3" role="group" aria-label="Basic example">
 
-                                   
+                                   <?php if($key->status_datang == 0|| $key->status_datang == 2){?>
                                     <button type="button" class="btn btn-info" style="width:80px; height:60px;"><a href="<?php echo site_url()?>/Riwayatdatang/detaildatang/<?php echo $key->id_bayangan ?>"><font color="white"><i class="fa fa-th-list"></i> Detail</font></a></button>
 
 
-                                     <button type="button" class="btn btn-secondary" style="width:140px; height:60px;"><a href="javascript:void(0);" onclick="modalDetail('<?php echo $key->id_bayangan ?>','<?php echo $key->item ?>')"  data-toggle="modal" data-target="#myModalEdit"><font color="white"><center><i class="ti-calendar"></i> Insert<br> Data Kedatangan</center></font></a></button>
+                                     <button type="button" class="btn btn-success" style="width:140px; height:60px;"><a href="javascript:void(0);" onclick="modalDetail('<?php echo $key->id_bayangan ?>','<?php echo $key->item ?>')"  data-toggle="modal" data-target="#myModalEdit"><font color="white"><center><i class="ti-calendar"></i> Insert<br> Data Kedatangan</center></font></a></button>
+
+                                     <?php } else{?>
+                                      <button type="button" class="btn btn-info" style="width:80px; height:60px;"><a href="<?php echo site_url()?>/Riwayatdatang/detaildatang/<?php echo $key->id_bayangan ?>"><font color="white"><i class="fa fa-th-list"></i> Detail</font></a></button>
 
   
                                 </div>
                                                 
-                                                </td>
+                                                </td><?php } ?>
                                              
                                             </tr>
                                             <?php }?>
@@ -123,12 +126,12 @@
 
                    <div class="form-group">
                         <label class="control-label " for="tgl_dtg">TANGGAL DATANG :</label>
-                             <input type="date" class="form-control" name="tgl_dtg" id="tgl_dtg" value="" >
+                             <input type="date" class="form-control" name="tgl_dtg" id="tgl_dtg" value="" required="" >
                                               
                     </div>
                     <div class="form-group">
                         <label for="">QTY DATANG</label>
-                        <input type="text" class="form-control" name="qty_dtg" id="qty_dtg" value="" >
+                        <input type="text" class="form-control" name="qty_dtg" id="qty_dtg" value="" required="">
                     </div>
 
 

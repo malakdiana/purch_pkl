@@ -61,5 +61,11 @@ public function inserttanggal(){
         $this->load->view('Admin/Detailriwayat',$data);
  }
 
+  public function deleteriwayat($id, $id_bayangan){
+        $this->RiwayatdatangModel->deleteriwayat($id, $id_bayangan);
+                $this->session->set_flashdata('deleteRiwayat','<div class="alert alert-success" role="alert">SUKSES DELETE DATA <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+            redirect('Riwayatdatang/detaildatang/'.$id_bayangan, 'refresh');
+    }
+
    
 }

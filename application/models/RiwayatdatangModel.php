@@ -41,9 +41,9 @@ class RiwayatdatangModel extends CI_Model {
         $qtypo = $key->qty;
       }
 
-       $query= $this->db->select('qty_dtg')->from('riwayatdatang')->where('id_bayangan', $id_bayangan)->get();
+       $query= $this->db->select('sum(qty_dtg) as jumlah')->from('riwayatdatang')->where('id_bayangan', $id_bayangan)->get();
       foreach ($query->result() as $key ) {
-        $qtyriwayat = $key->qty_dtg;
+        $qtyriwayat = $key->jumlah;
       }
       $qty= $qtypo-$qtyriwayat;
 
@@ -83,7 +83,7 @@ class RiwayatdatangModel extends CI_Model {
      public function getDetail($id)
     {
 
-            $this->db->select('po.id_po,po.tgl_po, po.no_po, po.eta, bayangan.id_bayangan, bayangan.no_pr, bayangan.item, bayangan.qty, riwayatdatang.tgl_dtg, riwayatdatang.qty_dtg');
+            $this->db->select('po.id_po,po.tgl_po, po.no_po, po.eta, bayangan.id_bayangan, bayangan.no_pr, bayangan.item, bayangan.qty, riwayatdatang.tgl_dtg, riwayatdatang.qty_dtg, riwayatdatang.id, bayangan.status_datang');
             $this->db->from('po');
             $this->db->join('bayangan', 'po.id_po = bayangan.id_po', 'left');
             $this->db->join('riwayatdatang', 'bayangan.id_bayangan = riwayatdatang.id_bayangan','left');
@@ -97,8 +97,31 @@ class RiwayatdatangModel extends CI_Model {
             }
     }
 
+  public function deleteriwayat($id, $id_bayangan){
+         $this->db->where('id', $id);
+        $this->db->delete('riwayatdatang');
+        $qtyriwayat=0;
+        
 
+       $query= $this->db->select('qty_dtg')->from('riwayatdatang')->where('id_bayangan', $id_bayangan)->get();
+      foreach ($query->result() as $key ) {
+        $qtyriwayat = $key->qty_dtg;
+      }
+     
+      if ($qtyriwayat == 0 ) {
+       $data2 = array(
+        'status_datang' => 0,
+       );$this->db->where('id_bayangan', $id_bayangan);
+         $this->db->update('bayangan', $data2);
 
+    }else{
+      $data2 = array(
+        'status_datang' => 2,
+       );$this->db->where('id_bayangan', $id_bayangan);
+         $this->db->update('bayangan', $data2);
+    }
+
+}
 
         
 
