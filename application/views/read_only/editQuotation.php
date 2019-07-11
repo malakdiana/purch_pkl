@@ -107,7 +107,7 @@
                                               <label class="control-label" for="status">Status: </label>
                                          </div>
                                          <div class="col-sm-4">
-                                            <input type="file" class="form-control" name="fupload" value=""  readonly="">
+                                            
                                             <?php if(empty($list[0]->gambar)){ ?>
                                                 <p><i class="fa fa-paperclip"> </i> Tidak ada file </p><?php }
                                                 else{?> 

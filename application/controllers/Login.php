@@ -90,14 +90,19 @@ public function ManajemenUser()
 	}
 
 	public function updateLogin(){
-	
-
-		
+		if(empty($this->input->post('password'))){
+			echo "<script>alert('Anda belum mengisi password baru')</script>";
+           redirect('Login/ManajemenUser', 'refresh');
+		}else if($this->input->post('password')==$this->input->post('konfirpassword')){
         $this->LoginModel->updateLogin();
                 $this->session->set_flashdata('editLogin','<div class="alert alert-success" role="alert">SUKSES UPDATE DATA <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
 
 
             redirect('Login/ManajemenUser', 'refresh');
+        }else{
+			echo "<script>alert('Konfirmasi password anda tidak sesuai')</script>";
+           redirect('Login/ManajemenUser', 'refresh');
+		}    
         
     }
     public function deleteLogin($id){
