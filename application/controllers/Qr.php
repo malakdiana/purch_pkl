@@ -150,7 +150,7 @@ $this->upload->initialize($config);
         $this->load->view('Admin/footer');
          }else{
          $this->load->view('Read_only/header');
-        $this->load->view('Read_only/detailQuotation', $data);
+        $this->load->view('Read_only/editQuotation', $data);
         $this->load->view('Admin/footer');
     }
 
