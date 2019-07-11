@@ -54,6 +54,24 @@ class LoginModel extends CI_Model {
          $this->db->where('id_user', $id_user);
         $this->db->update('Login', $data);
     }
+
+     public function updateHak_akses(){
+
+         $id_user = $this->input->post('id_user');
+        
+
+        $data = array(
+        
+        
+        'hak_akses' => $this->input->post('hak_akses'),
+      
+        );
+
+        
+         $this->db->where('id_user', $id_user);
+        $this->db->update('Login', $data);
+    }
+
     public function deleteLogin($id){
          $this->db->where('id_user', $id);
         $this->db->delete('Login');

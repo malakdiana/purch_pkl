@@ -27,6 +27,11 @@ public function index()
         $this->load->view('User/header');
         $this->load->view('User/Purch_req',$data);
 
+        }else if($this->session->userdata('logged_in')['hak_akses']==4){
+        
+        $this->load->view('Personal/header');
+        $this->load->view('Personal/Purch_req',$data);
+
     }else{
         $this->load->view('Read_only/header');
         $this->load->view('Read_only/Purch_req',$data);
@@ -119,9 +124,12 @@ public function index()
         }else if($this->session->userdata('logged_in')['hak_akses']==2){
             $this->load->view('User/header');
             $this->load->view('User/GetItem_barang',$data);
+          }else if($this->session->userdata('logged_in')['hak_akses']==4){
+            $this->load->view('Personal/header');
+            $this->load->view('Personal/GetItem_barang',$data);
          
             }else{
-                      $this->load->view('Read_only/header');
+            $this->load->view('Read_only/header');
             $this->load->view('Read_only/GetItem_barang',$data);
             }   
 

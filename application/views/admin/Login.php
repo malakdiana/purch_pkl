@@ -3,7 +3,7 @@
                 <div class="row align-items-center">
                     <div class="col-sm-6">
                         <div class="breadcrumbs-area clearfix" style="padding-top: 15px;padding-bottom: 15px">
-                            <h4 class="page-title pull-left">Master Data</h4>
+                            <h4 class="page-title pull-left">Others</h4>
                             <ul class="breadcrumbs pull-left">
                                 <li><a href="#">Management User</a></li>
                                 <li><span>Data User</span></li>
@@ -22,7 +22,7 @@
                     <div class="col-12 mt-5">
                         <div class="card">
                             <div  style="padding-top: 15px;padding-left: 15px">
-                                <a class="btn btn-flat btn-primary mb-3" href="<?php echo site_url()?>/Login/tambahLogin" role="button">Tambah Data</a>
+                                <a class="btn btn-flat btn-primary mb-3" href="<?php echo site_url()?>/Login/tambahLogin" role="button"><i class="fa fa-plus"></i> Tambah Data</a>
                                 
                             <div class="card-body">
                         <?=$this->session->flashdata('editLogin')?>
@@ -58,7 +58,10 @@
                                                      <?php }
                                                  else if($key->hak_akses == 2){?>
                                                      SECTION
-                                                     <?php }    
+                                                     <?php }
+                                                 else if($key->hak_akses == 4){?>
+                                                     USER PERSONAL
+                                                     <?php }         
                                                      else { ?>  
                                                         INVOICE
                                                         <?php }?>

@@ -53,6 +53,8 @@ public function ManajemenUser()
 				redirect('User','refresh');
 			}else if($session_data['hak_akses']=='3'){
 				redirect('Invoice','refresh');
+			}else if($session_data['hak_akses']=='4'){
+				redirect('Personal','refresh');
 			}
 			
 		}
@@ -91,9 +93,11 @@ public function ManajemenUser()
 
 	public function updateLogin(){
 		if(empty($this->input->post('password'))){
-			echo "<script>alert('Anda belum mengisi password baru')</script>";
+			 $this->LoginModel->updateHak_akses();
            redirect('Login/ManajemenUser', 'refresh');
-		}else if($this->input->post('password')==$this->input->post('konfirpassword')){
+		}else{
+		 if($this->input->post('password')==$this->input->post('konfirpassword')){
+		
         $this->LoginModel->updateLogin();
                 $this->session->set_flashdata('editLogin','<div class="alert alert-success" role="alert">SUKSES UPDATE DATA <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
 
@@ -102,7 +106,8 @@ public function ManajemenUser()
         }else{
 			echo "<script>alert('Konfirmasi password anda tidak sesuai')</script>";
            redirect('Login/ManajemenUser', 'refresh');
-		}    
+		} 
+		}   
         
     }
     public function deleteLogin($id){
@@ -120,9 +125,15 @@ public function ManajemenUser()
             $this->load->view('Admin/tambahLogin',$data);
             $this->load->view('Admin/footer');
         }else{
+        	if($this->input->post('password')==$this->input->post('konfirpassword')){
             $this->LoginModel->tambahLogin();
                 $this->session->set_flashdata('tambahLogin','<div class="alert alert-success" role="alert">SUKSES TAMBAH DATA <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
             redirect('Login/ManajemenUser', 'refresh');
+        }else{
+        	echo "<script>alert('Konfirmasi password anda tidak sesuai')</script>";
+           redirect('Login/ManajemenUser', 'refresh');
+        }
+
         }
 
     }

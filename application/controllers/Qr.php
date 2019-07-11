@@ -26,7 +26,9 @@ public function index()
     }else if($this->session->userdata('logged_in')['hak_akses']==2){
              $this->load->view('User/header');
         $this->load->view('User/Qr',$data);
-
+    }else if($this->session->userdata('logged_in')['hak_akses']==4){
+             $this->load->view('Personal/header');
+        $this->load->view('Personal/Qr',$data);
 		
     }else{
         $this->load->view('Read_only/header');
@@ -302,7 +304,10 @@ $this->upload->initialize($config);
         if($this->session->userdata('logged_in')['hak_akses']==2){
         $this->load->view('User/header');
         $this->load->view('User/Tracking_Qr',$data);
-        }
+        }else if($this->session->userdata('logged_in')['hak_akses']==4){
+        $this->load->view('Personal/header');
+        $this->load->view('Personal/Tracking_Qr',$data);
+      }
     }
 
 
