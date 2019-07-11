@@ -111,6 +111,13 @@
 
                         <input type="text" class="form-control" name="password" id="password" value="" >
                     </div>
+
+                    <div class="form-group">
+                        <label for="">KONFRIMASI PASSWORD</label>
+
+                        <input type="text" class="form-control" name="konfirpassword" id="konfirpassword" value="" >
+                    </div>
+
                     <div class="form-group">
                         <label for="">HAK AKSES</label>
                         <select class="form-control" name="hak_akses" id="hak_akses">
