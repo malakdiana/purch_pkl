@@ -51,7 +51,7 @@ public function index()
 
     public function addQr(){
             $config['upload_path'] = './assets/file_qr/';
-            $config['allowed_types'] = 'pdf|jpg|png|jpeg|docx|xlsx';
+            $config['allowed_types'] = 'pdf|jpg|png|jpeg|doc|docx|xlsx';
             $this->load->library('upload', $config);
             $this->upload->initialize($config);
 
@@ -95,7 +95,7 @@ public function index()
           $files=$_FILES['fupload'];
         $config['upload_path'] = './assets/file_qr/';
                    $config['upload_path'] = './assets/file_qr/';
-            $config['allowed_types'] = 'pdf|jpg|png|jpeg|doc|docx';
+            $config['allowed_types'] = 'pdf|jpg|png|jpeg|doc|docx|xlsx';
             $config['max_size']= 1000000000;
             $config['max_width']= 10240;
             $config['max_height']=7680;
@@ -158,7 +158,7 @@ $this->upload->initialize($config);
 
     public function editQuotation($id){
       $config['upload_path'] = './assets/file_qr/';
-            $config['allowed_types'] = 'pdf|jpg|png|jpeg|docx|xlsx';
+            $config['allowed_types'] = 'pdf|jpg|png|jpeg|doc|docx|xlsx';
             $this->load->library('upload', $config);
             $this->upload->initialize($config);
                 $this->load->library('upload', $config);
@@ -182,7 +182,7 @@ $this->upload->initialize($config);
 
     public function editQuotationUser($id){
      $config['upload_path'] = './assets/file_qr/';
-            $config['allowed_types'] = 'pdf|jpg|png|jpeg|docx|xlsx';
+            $config['allowed_types'] = 'pdf|jpg|png|jpeg|doc|docx|xlsx';
             $this->load->library('upload', $config);
             $this->upload->initialize($config);
                 $this->load->library('upload', $config);
@@ -216,7 +216,7 @@ $this->upload->initialize($config);
 
         $files=$_FILES['userfiles'];
         $config['upload_path'] = './assets/file_qr/';
-            $config['allowed_types'] = 'pdf|jpg|png|jpeg|doc|docx';
+            $config['allowed_types'] = 'pdf|jpg|png|jpeg|doc|docx|xlsx';
             $config['max_size']= 1000000000;
             $config['max_width']= 10240;
             $config['max_height']=7680;

@@ -73,7 +73,7 @@
                                                      <label class="control-label " for="gambar">ATTACHMENT:</label>
                                                      <i class="fa fa-paperclip"></i>
                                                 <input type="file" name="fupload" class="form-control">
-                                                <p>format file : PNG/JPG/JPEG/PDF/DOCX/XLSX</p>
+                                                <p>format upload file : PNG/JPG/JPEG/PDF/DOC/DOCX/XLSX</p>
                                             </div>
 
                                         

@@ -56,7 +56,7 @@
                                                       <label class="control-label " for="file">Attechment :</label>
                                            
                                                 <input type="file" class="form-control" name="userfiles[]" style="margin-bottom: 25px">
-                                                <p>format file : jpeg/jpg/png/pdf/docx/xlsx</p>
+                                                <p>format upload file : jpeg/jpg/png/pdf/doc/docx/xlsx</p>
                                             </div>
                                             <div id="insert-form"></div>          
               <div align="right"> <button type="submit" class="btn btn-primary" style="align-self: right">Simpan</button></div>

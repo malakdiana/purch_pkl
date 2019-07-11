@@ -109,7 +109,7 @@
                                           
                                             <?php if(empty($list[0]->gambar)){ ?>
                                                 <p><i class="fa fa-paperclip"></i> Tidak ada file </p><?php }else{?> 
-                                            <p><i class="fa fa-paperclip"></i> <?php echo $list[0]->gambar;?></p>
+                                            <p><i class="fa fa-paperclip"></i><a href="<?php echo base_url()?>assets/file_qr/<?php echo $list[0]->gambar;?>" target="_blank"><?php echo $list[0]->gambar;?></a></p>
                                             <?php } ?>
                                         </div>
                                             <div class="col-md-2">

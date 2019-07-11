@@ -111,8 +111,8 @@
                                             <?php if(empty($list[0]->gambar)){ ?>
                                                 <p><i class="fa fa-paperclip"> </i> Tidak ada file </p><?php }
                                                 else{?> 
-                                            <p><i class="fa fa-paperclip"> </i> <?php echo $list[0]->gambar;?></p>
-                                            <?php } ?>
+                                            <p><i class="fa fa-paperclip"> </i><a href="<?php echo base_url()?>assets/file_qr/<?php echo $list[0]->gambar;?>" target="_blank"><?php echo $list[0]->gambar;?></a></p>
+                                            <?php } ?><p>format upload file : PNG/JPG/JPEG/PDF/DOC/DOCX/XLSX</p>
                                             <br>
                                             <select name="status" class="form-control" id="status">
                                               <option class="form-control" value="0">OPEN</option>
