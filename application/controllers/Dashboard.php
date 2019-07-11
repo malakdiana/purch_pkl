@@ -43,10 +43,13 @@ public function index()
 	}
 
 	public function edit_profile(){
+		if(empty($this->input->post('password'))){
+			echo "<script>alert('Anda belum mengisi password baru')</script>";
+           redirect('Dashboard/Myprofil', 'refresh');
+		}else if($this->input->post('password')==$this->input->post('konfirpassword')){
 		$this->LoginModel->edit_profile();
 		 $sess_array = array(
-		 		'id_user'=> $this->session->userdata('logged_in')['id_user'],
-		 		'id_section'=> $this->session->userdata('logged_in')['id_section'],
+		 		'id_user'=> $this->session->userdata('logged_in')['id_user'],		 		
 		 		'username'=> $this->session->userdata('logged_in')['username'],
 		 		'password'=> $this->input->post('password'),
 		 		'hak_akses' => $this->session->userdata('logged_in')['hak_akses']
@@ -56,7 +59,12 @@ public function index()
 		
 		$this->session->set_userdata('logged_in',$sess_array);
 				$this->session->set_flashdata('edit_profile','<div class="alert alert-success" role="alert">SUKSES UPDATE DATA <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-			redirect('Dashboard', 'refresh');
+			redirect('Dashboard/Myprofil', 'refresh');
+		}else{
+			echo "<script>alert('Konfirmasi password anda tidak sesuai')</script>";
+           redirect('Dashboard/Myprofil', 'refresh');
+		}
 	}
+
 
 }

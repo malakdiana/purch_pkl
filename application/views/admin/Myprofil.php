@@ -19,7 +19,9 @@
                     <div class="col-12 mt-5">
                         <div class="card">
                                 <div class="card-body">
+                                <?=$this->session->flashdata('edit_profile')?>
                                      <?php echo form_open('Dashboard/edit_profile') ?>
+                                     
                                      
 
                                             <div class="form-group">
@@ -39,9 +41,9 @@
 
                                             
                                                 <div class="form-group">
-                                                     <label class="control-label " for="password">PASSWORD:</label>
+                                                     <label class="control-label " for="konfirpassword">PASSWORD:</label>
 
-                                                    <input type="text" class="form-control" style="margin-bottom: 25px" name="password" value="">
+                                                    <input type="text" class="form-control" style="margin-bottom: 25px" name="konfirpassword" value="">
     
                                             </div>
 
