@@ -62,7 +62,7 @@
                             <nav>
                                 <ul id="nav_menu">
                                     <li>
-                                       <a href="<?php echo site_url()?>/Dashboard"><h6><i class="ti-dashboard"></i><span>Dashboard</h6></span></a>
+                                       <a href="<?php echo site_url()?>/Dashboard"><h6><i class="ti-home"></i><span>Home</h6></span></a>
                                         
                                     </li>
                                     <li>
