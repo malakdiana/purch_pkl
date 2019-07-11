@@ -62,13 +62,19 @@ class PoModel extends CI_Model {
 
         $eta = $this->input->post('eta');
          $franco = $this->input->post('franco');
-         $supplier = $this->input->post('supplier');
+         $id_supplier = $this->input->post('supplier');
+
+        $query = $this->db->select('nama_supplier')->where('id_supplier',$id_supplier)->get("supplier");
+        foreach ($query->result() as $key ) {
+            $supplier = $key->nama_supplier;
+        }
         
 
         $data = array(
       
         'eta' => $eta,
         'franco' => $franco,
+        'id_supplier' =>$id_supplier,
         'supplier' => $supplier
        
       
@@ -88,13 +94,14 @@ class PoModel extends CI_Model {
       
 
         $tgl_po = $this->input->post('tgl_po');
-        $supplier = $this->input->post('supplier');
+        $id_supplier = $this->input->post('supplier');
 
-        $query = $this->db->select('nama_supplier')->where('id_supplier',$supplier)->get("supplier");
+        $query = $this->db->select('nama_supplier')->where('id_supplier',$id_supplier)->get("supplier");
         foreach ($query->result() as $key ) {
             $supplier = $key->nama_supplier;
         }
          $eta = $this->input->post('eta');
+          $franco = $this->input->post('franco');
          $eta = date('Y-m-d', strtotime($eta));
         $no_po = "PO"."-".$this->input->post('no_po')."/"."PUR"."-"."SAI"."/".$this->input->post('bulan')."/".$this->input->post('tahun');
         $this->db->select('*');
@@ -112,9 +119,11 @@ class PoModel extends CI_Model {
         $data = array(
         'tgl_po' => $tgl_po,
         'no_po' => $no_po,
+        'id_supplier' => $id_supplier,
         'supplier' => $supplier,
         'status' => "OPEN",
-        'eta' => $eta
+        'eta' => $eta,
+        'franco' => $franco
       
         );
          $this->db->insert('Po', $data);

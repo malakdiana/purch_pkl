@@ -82,6 +82,7 @@ class Purch_reqModel extends CI_Model {
 
     }
     public function tambahPR(){
+
         $pr_no = $this->input->post('pr_no')."/".$this->input->post('section_kode')."/".$this->input->post('bulan')."/".$this->input->post('tahun');
 
         $data = array(
@@ -95,8 +96,22 @@ class Purch_reqModel extends CI_Model {
       
         );
          $this->db->insert('purch_req', $data);
+if (!empty($this->input->post('item'))) {
+  
 
-    }
+         $this->db->select('*');
+        $this->db->from('purch_req');
+        $this->db->where('pr_no',$pr_no);
+        $query = $this->db->get();
+      
+       foreach ($query->result() as $key) {
+         $id = $key->id;
+       }
+        $this->tambahItem_barang($id);
+       }
+     }
+
+    
 
         public function getItem_barang($id)
      {
@@ -169,14 +184,16 @@ class Purch_reqModel extends CI_Model {
          $this->db->update('item', $data);
     }
 
-     public function tambahItem_barang(){
-        $id=array();$item_barang=array();$qty=array();$unit=array();
-        $id= $this->input->post('id');
+     public function tambahItem_barang($id){
+        //$id=array();
+        $item_barang=array();$qty=array();$unit=array();
+  
         $item_barang= $this->input->post('item');
         $qty= $this->input->post('qty');
         $unit= $this->input->post('unit');
+              $jumlah= $this->input->post('jumlah');
 
-        for ($i=0; $i < count($id) ; $i++) { 
+        for ($i=0; $i < $jumlah ; $i++) { 
               $this->db->select('*');
         $this ->db->from('barang');
         $this->db->where('no_barang',$item_barang[$i] );
@@ -185,7 +202,7 @@ class Purch_reqModel extends CI_Model {
              $nama_barang =$key->nama_barang;
          }
         $data = array(
-        'id_purch' => $id[$i],
+        'id_purch' => $id,
         'item_barang' => $nama_barang,
         'qty' => $qty[$i],
         'unit_name' => $unit[$i]

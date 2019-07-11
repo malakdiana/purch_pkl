@@ -23,7 +23,7 @@
                     <div class="col-12 mt-5">
                         <div class="card">
                                 <div class="card-body">
-                                     <?php echo form_open('Qr/editQuotation/'.$list[0]->id_penawaran) ?>
+                                     <?php echo form_open_multipart('Qr/editQuotation/'.$list[0]->id_penawaran) ?>
                                      <h3 align="center">Form Edit Quotation</h3><br>
                                        <div class="col-md-12">
                                             <div class="row">

@@ -53,7 +53,7 @@
                                                 <?php foreach ($supplier as $key) {
                                                   
                                                 ?>
-                                                <option value="<?php echo $key->nama_supplier?>" class="form-control"> <?php echo $key->nama_supplier?></option>
+                                                <option value="<?php echo $key->id_supplier?>" class="form-control"> <?php echo $key->nama_supplier?></option>
                                             
                                                <?php } ?>
                                                  </select>
@@ -203,7 +203,7 @@
  <script>
     $(document).ready(function(){ 
 
-      var val2 = <?php echo json_encode($list[0]->supplier);?> ;
+      var val2 = <?php echo json_encode($list[0]->id_supplier);?> ;
       var val3 = <?php echo json_encode($list[0]->franco);?> ;
       $("div.siap select").val(val2);
       $("div.fran select").val(val3);
