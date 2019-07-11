@@ -55,6 +55,10 @@ public function index()
         $this->load->model('SectionModel');
         $this->load->helper('url', 'form');
         $this->load->library('form_validation');
+               
+        $this->load->model('Unit_barangModel');
+
+            $data['unit']= $this->Unit_barangModel->getUnit_barang();
         $this->form_validation->set_rules('tgl', 'tgl', 'trim|required');
         if ($this->form_validation->run()==FALSE) {
              $data['section']=$this->SectionModel->getSection();

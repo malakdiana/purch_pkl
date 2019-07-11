@@ -26,41 +26,63 @@
                                      <h3 align="center">Insert Purchase Request</h3><br>
                                        
                                                
-                                                <div class="form-group">
-                                                     <label class="control-label" for="tgl">Tanggal:</label>
-                                           
-                                               <input type="text" value="<?php date_default_timezone_set('Asia/Jakarta');echo date('Y-m-d')?>" readonly="" class="form-control" id="tgl" name="tgl" style="margin-bottom: 25px">
+                                                <div class="col-md-12">
+                                        <div class="row">
+
+                                            <div class="col-md-2">
+                                                <label class="control-label" for="tgl">Tanggal:</label>
+                                            </div>
+                                            <div class="col-sm-3">
+                                              <input type="text" value="<?php date_default_timezone_set('Asia/Jakarta');echo date('Y-m-d')?>" readonly="" class="form-control" id="tgl" name="tgl" style="margin-bottom: 25px">
+                                             
                                             </div>
 
-                                            <div class="form-group">
-                                                     <label class="control-label " for="jam">Jam :</label>
-                                           
-                                               <input type="text" value="<?php echo date('H:i:s')?>" readonly="" class="form-control" id="jam" name="jam" style="margin-bottom: 25px">
+                                            <div class="col-md-1">
+                                                <label class="control-label " for="jam">Jam :</label>
+                                         </div>
+                                         <div class="col-sm-4">
+                                             <input type="text" value="<?php echo date('H:i:s')?>" readonly="" class="form-control" id="jam" name="jam" style="margin-bottom: 25px">
+                                        </div>
+
+                                        </div>
+                                    </div> 
+
+  <div class="col-md-12">
+                                        <div class="row">
+
+                                            <div class="col-md-2">
+                                                 <label class="control-label " for="nik">NIK :</label>
+                                            </div>
+                                            <div class="col-sm-3">
+                                                 <input type="text" class="form-control" name="nik" style="margin-bottom: 25px;}" autocomplete="off">
+                                             
                                             </div>
 
-                                            <div class="form-group">
-                                                     <label class="control-label " for="nik">NIK :</label>
-                                           
-                                                <input type="text" class="form-control" name="nik" style="margin-bottom: 25px;}">
+                                            <div class="col-md-1">
+                                             <label class="control-label " for="pic_request">PIC REQUEST :</label>
+                                         </div>
+                                         <div class="col-sm-4">
+                                            <input type="text" class="form-control" name="pic_request" style="margin-bottom: 25px" autocomplete="off">
+                                        </div>
+
+                                        </div>
+                                    </div> 
+                                      <div class="col-md-12">
+                                        <div class="row">
+
+                                            <div class="col-md-2">
+                                                 <label class="control-label " for="section">SECTION</label>
+                                            </div>
+                                            <div class="col-sm-3">
+                                                   <input type="text" class="form-control" readonly="" name="section" value="<?php echo $this->session->userdata('logged_in')['username'] ?> ">
+                                             
                                             </div>
 
-                                            <div class="form-group">
-                                                     <label class="control-label " for="pic_request">PIC REQUEST :</label>
-                                           
-                                                <input type="text" class="form-control" name="pic_request" style="margin-bottom: 25px">
-                                            </div>
-
-                                             <div class="form-group">
-                                                     <label class="control-label " for="section">SECTION</label>
-
-                                                     <input type="text" class="form-control" readonly="" name="section" value="<?php echo $this->session->userdata('logged_in')['username'] ?> ">
-                                           
-                                              
-                                            </div>
-
-                                            <div class="form-group">
-                                                     <label class="control-label " for="pr_no">NOMER PR:</label>
-                                           <div class="row"style="margin-left: 4px">    
+                                            <div class="col-md-1">
+                                             <label class="control-label " for="pr_no">NOMER PR:</label>
+                                         </div>
+                                         <div class="col-sm-4">
+                                            <div class="row"style="margin-left: 4px">    
                                                 <input type="text" class="form-control" minlength="3" maxlength="3" name="pr_no" style="margin-bottom: 25px;width: 100px" placeholder="000">
                                                   <input type="text" class="form-control"  name="section_kode" id="section_kode" style="margin-bottom: 25px;width: 100px" value="<?php echo $this->session->userdata('logged_in')['username'] ?> " readonly="">
                                                 <select name="bulan" class="form-control" style="margin-bottom: 25px;width: 100px; height: 50px">
@@ -87,23 +109,52 @@
                                           
                                            </select>
                                               </div>
+                                        </div>
 
-
-                                            </div>
+                                        </div>
+                                    </div>  
    
-   
-                                     
-        
-          
-              <div align="right"> <button type="submit" class="btn btn-primary" style="align-self: right">Simpan</button></div>
-              <?php echo form_close() ?>
-           
+<br><br>
 
-    </div>
+
+        <table class="table" style="width: 800px">
+          <thead >
+          <th style="width: 400px"> Item </th>
+          <th style="width: 200px"> Satuan </th>
+          <th style="width: 100px"> Qty </th>
+           <th> action</th>
+        </thead>
+        <tbody id="insert-form">
+        <tr> 
+                                               
+          <td>  <select class="itemName form-control" name="item[]"></select></td>
+          <td>  <select name="unit[]" class="form-control" required="">
+                <?php foreach ($unit as $key) {?>
+                  <option value="<?php echo $key->unit_barang?>"><?php echo $key->unit_barang?></option>
+                  <?php } ?></select></td>
+          <td> <input type="text" class="form-control" name="qty[]" style="margin-bottom: 25px"></td>
+          <td> <button class="btn btn-delete btn-danger"> <i class="fa fa-trash"> </i></button></td>
+        </tr>
+   
+
+      </tbody>
+        </table>
+        <div align="left">
+        <button class="btn btn-warning" type="submit">Simpan</button>
+        <button type="button" class="btn btn-success" id="btn-tambah-form">Tambah Data Form</button>
+        <button type="button" id="btn-reset-form" class="btn btn-primary">Reset Form</button>
+        <input type="hidden" id="jumlah-form" name="jumlah" value="1">
+
+       </div>
+
+<?php echo form_close() ?>   
+
 </div>
 </div>
 </div>
 </div>
+</div>
+
   <?php $this->load->view('admin/footer'); ?>
 <script type="text/javascript">
     $("#section").change(function () { var val = $(this).val();
@@ -111,3 +162,49 @@
         document.getElementById("section_kode").value= val;
         });
 </script>
+<link href="<?php echo base_url()?>assets/css/select2.min.css" rel="stylesheet" />
+  <script src="<?php echo base_url()?>assets/js/select2.min.js"></script>
+ <script>
+    $(document).ready(function(){ // Ketika halaman sudah diload dan siap
+        $("#btn-tambah-form").click(function(){ // Ketika tombol Tambah Data Form di klik
+            var jumlah = parseInt($("#jumlah-form").val()); // Ambil jumlah data form pada textbox jumlah-form
+            var x = jumlah + 1; // Tambah 1 untuk jumlah form nya       
+            // Kita akan menambahkan form dengan menggunakan append
+            // pada sebuah tag div yg kita beri id insert-form
+           
+
+              $("#insert-form").append(" <tr id='"+x+"'><td> <select class='itemName"+x+" form-control' name='item[]'></select></td><td><select name='unit[]' class='form-control' required=''><?php foreach ($unit as $key) {?><option value='<?php echo $key->unit_barang?>'><?php echo $key->unit_barang?></option><?php } ?></select></td><td> <input type='text' class='form-control' name='qty[]' style='margin-bottom: 25px'></td><td> <button class='btn btn-delete btn-danger'> <i class='fa fa-trash'> </i></button></td></tr>");
+
+
+            $("#scriptt").append(" <script type='text/javascript'>$('.itemName"+x+"').select2({placeholder: '--- Select Item ---', ajax: { url: '<?php echo site_url()?>/Purch_req/getBarang', dataType: 'json',delay: 250, processResults: function (data) {return {results: data };}, cache: true}});");
+            
+            
+            $("#jumlah-form").val(x); // Ubah value textbox jumlah-form dengan variabel nextform
+        });   
+        // Buat fungsi untuk mereset form ke semula
+        $("#btn-reset-form").click(function(){
+             $("#insert-form").html("");
+            $("#jumlah-form").val("1"); // Ubah kembali value jumlah form menjadi 1
+        });
+    });
+    </script>
+    <div id="scriptt"></script></div>
+    <script type="text/javascript">
+      $('.itemName').select2({
+        placeholder: '--- Select Item ---',
+        ajax: {
+          url: '<?php echo site_url()?>/Purch_req/getBarang',
+          dataType: 'json',
+          delay: 250,
+          processResults: function (data) {
+            return {
+              results: data
+            };
+          },
+          cache: true
+        }
+      });
+ $("body").on("click", ".btn-delete", function(){
+        $(this).parents("tr").remove();
+    });
+    </script>
