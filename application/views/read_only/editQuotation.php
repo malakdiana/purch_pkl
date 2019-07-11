@@ -103,7 +103,7 @@
                                      <div class="col-md-12">
                                         <div class="row">
                                             <div class="col-md-2">
-                                             <label class="control-label" for="ppn">Attachment :</label><br><br><br><br>
+                                             <label class="control-label" for="ppn">Attachment :</label><br><br>
                                               <label class="control-label" for="status">Status: </label>
                                          </div>
                                          <div class="col-sm-4">
