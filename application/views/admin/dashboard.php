@@ -47,7 +47,7 @@
                                                  </a><br></td>
 
                                                 <td>
-                                                 <a href="<?php echo site_url()?>/eta/"><button class="btn btn-flat btn-secondary mb-4" role="button" style="width:160px""><img style="width: 100px;height: 100px" src="<?php echo base_url()?>assets/images/icon/eta.png"><br>ETA</button></a><br>
+                                                 <a href="<?php echo site_url()?>/eta/"><button class="btn btn-flat btn-info mb-4" role="button" style="width:160px""><img style="width: 100px;height: 100px" src="<?php echo base_url()?>assets/images/icon/eta.png"><br>ETA</button></a><br>
                                                  </td>
 
                                                  <td>

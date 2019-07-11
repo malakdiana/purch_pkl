@@ -90,9 +90,15 @@ public function ManajemenUser()
 	}
 
 	public function updateLogin(){
+	
+
+		
         $this->LoginModel->updateLogin();
                 $this->session->set_flashdata('editLogin','<div class="alert alert-success" role="alert">SUKSES UPDATE DATA <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+
+
             redirect('Login/ManajemenUser', 'refresh');
+        
     }
     public function deleteLogin($id){
         $this->LoginModel->deleteLogin($id);

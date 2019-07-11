@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Admin Local Purch</title>
+    <title>Purchasing read only</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/png" href="<?php echo base_url()?>assets/images/icon/favicon.ico">
     <link rel="stylesheet" href="<?php echo base_url()?>assets/css/bootstrap.min.css">
@@ -53,7 +53,7 @@
                             <nav>
                                 <ul id="nav_menu">
                                     <li>
-                                        <a href="<?php echo site_url()?>/Dashboard"><h6><i class="ti-dashboard"></i><span>dashboard</h6></span></a>
+                                        <a href="<?php echo site_url()?>/Dashboard"><h6><i class="ti-home"></i><span>Home</h6></span></a>
                                         
                                     </li>
                                     <li>
