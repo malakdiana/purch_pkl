@@ -59,6 +59,7 @@
                         <div class="form-gp">
                             <label for="exampleInputPassword1">Password</label>
                             <input type="password" id="exampleInputPassword1" name="password">
+                            
                             <i class="ti-lock"></i>
                         </div>
                         
@@ -92,3 +93,4 @@
 </body>
 
 </html>
+

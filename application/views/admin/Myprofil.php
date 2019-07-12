@@ -40,10 +40,11 @@
                                             </div>
 
                                             
-                                                <div class="form-group">
+                                                <div class="password">
                                                      <label class="control-label " for="konfirpassword">PASSWORD:</label>
-
-                                                    <input type="text" class="form-control" style="margin-bottom: 25px" name="konfirpassword" value="">
+                                                    <i class="fa fa-eye"></i>
+                                                    <input type="password" id="passwordfield" class="form-control" style="margin-bottom: 25px" name="konfirpassword" value="">
+                                                    
     
                                             </div>
 
@@ -69,3 +70,21 @@
 </div>
 </div>
 </div>
+
+<script type="text/javascript">
+
+$("#passwordfield").on("keyup",function(){
+    if($(this).val())
+        $(".fa-eye").show();
+    else
+        $(".fa-eye").hide();
+    });
+$(".fa-eye").mousedown(function(){
+                $("#passwordfield").attr('type','text');
+            }).mouseup(function(){
+                $("#passwordfield").attr('type','password');
+            }).mouseout(function(){
+                $("#passwordfield").attr('type','password');
+            });
+
+</script>
