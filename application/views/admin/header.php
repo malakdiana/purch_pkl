@@ -107,8 +107,9 @@
                                     <li >
                                         <a href="javascript:void(0)" aria-expanded="true"><h6><i class="ti-folder"></i><span>ETA</span></h6></span></a>
                                 <ul class="submenu">
+                                   
                                     <li><a href="<?php echo site_url()?>/Eta">ETA</a></li>
-                                       <li><a href="<?php echo site_url()?>/Eta/delay">Delay</a></li>
+                                    <li><a href="<?php echo site_url()?>/Eta/delay">Delay</a></li>
                                 </ul>
                                     </li>
                                     
