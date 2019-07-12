@@ -115,6 +115,7 @@ if (!empty($this->input->post('item'))) {
 
         public function getItem_barang($id)
      {
+
             $this->db->select('item.id_po ,item.id_item, item.id_purch, item.item_barang,item.qty, po.id_po,po.no_po,bayangan.id_po, bayangan.id_bayangan, bayangan.qty as qtybay, bayangan.harga');
             $this->db->from('item');
             $this->db->join('bayangan', 'item.id_item= bayangan.id_item', 'left');
@@ -253,6 +254,18 @@ private $_batchImport;
         $this->db->where('id',$id);
          $this->db->update('purch_req', $data);
     }
+
+     public function Verifyitem($id){
+         $data = array(
+        'status_fa' => 1,
+      
+        );
+        $this->db->where('id', $id);
+         $this->db->update('purch_req', $data);
+    }
+
+
+
 
     public function getQtySisa($id){
              $quantity=0;

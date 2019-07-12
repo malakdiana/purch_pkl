@@ -26,6 +26,17 @@
                     <div class="col-12 mt-5">
                         <div class="card">
 
+                        <?php
+                         if($status_fa == 0){?>
+                         <div  style="padding-top: 15px;padding-left: 15px">
+                         <button type="button" class="btn btn-success"><a href="<?php echo site_url()?>/Purch_req/Verifyitem/<?php echo $id?>"><font color="white"><i class="fa fa-check"></i> Verify</font></button></a>
+
+                          <?php }
+                            
+                            
+
+                          ?>
+
                             <div class="card-body">
                                  <?=$this->session->flashdata('editItem')?>
                                    <?=$this->session->flashdata('hapusItem')?>

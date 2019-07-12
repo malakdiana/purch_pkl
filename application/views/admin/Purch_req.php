@@ -86,13 +86,15 @@
 
 
 
-                          <?php if($key->status == "OPEN"){?>
+                       
                                     <td>
                                     <div class="btn-group mb-xl-3" role="group" aria-label="Basic example">
+                                    <?php if($key->status_fa == 0){?>
+                                      <button type="button" class="btn btn-success" style="width:80px; height:50px;"> <a href="<?php echo site_url()?>/Purch_req/verify/<?php echo $key->id?>"><font color="white"><i class="fa fa-check"></i> Verify</font></a></button>
+                                    <?php } 
+                                     if($key->status == "OPEN"){?>
 
-                                    <button type="button" class="btn btn-success" style="width:80px; height:50px;"> <a href="<?php echo site_url()?>/Purch_req/verify/<?php echo $key->id?>"><font color="white"><i class="fa fa-check"></i> Verify</font></a></button>
-
-                                    <button type="button" class="btn btn-info" style="width:80px; height:50px;"><a href="<?php echo site_url()?>/Purch_req/GetItem_barang/<?php echo $key->id?>"><font color="white"><i class="fa fa-th-list"></i> Detail</font></a></button>
+                                    <button type="button" class="btn btn-info" style="width:80px; height:50px;"><a href="<?php echo site_url()?>/Purch_req/GetItem_barang/<?php echo $key->id?>/<?php echo $key->status_fa?>"><font color="white"><i class="fa fa-th-list"></i> Detail</font></a></button>
 
                                     <button type="button" class="btn btn-primary" style="width:80px; height:50px;"> <a href="<?php echo site_url()?>/Purch_req/tambahItem/<?php echo $key->id?>"><font color="white"><i class="fa fa-pencil"></i> Insert</font></a></button>
 
@@ -100,8 +102,7 @@
                                 </div>
                                                 
                                 </td><?php } else{?>
-                                <td>
-                                <div class="btn-group mb-xl-3" role="group" aria-label="Basic example">
+                                
 
                                 <button type="button" class="btn btn-info" style="width:80px; height:50px;"><a href="<?php echo site_url()?>/Purch_req/GetItem_barang/<?php echo $key->id?>"><font color="white"><i class="fa fa-th-list"></i> Detail</font></a></button>
 
@@ -109,6 +110,9 @@
                                 </div>
                                                 
                                 </td><?php } ?>
+
+
+
                                              
                                             </tr>
                                             <?php }?>

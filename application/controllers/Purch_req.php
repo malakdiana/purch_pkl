@@ -111,7 +111,8 @@ public function index()
     }
 
 
-    public function GetItem_barang($id){
+    public function GetItem_barang($id,$status){
+        $data['status_fa']=$status;
 
             $data['Purch_req']= $this->Purch_reqModel->GetItem_barang($id);
             $data['detail']= $this->Purch_reqModel->jumlahQty($id);
@@ -157,7 +158,17 @@ public function index()
     }
 
       public function Verify($id){
+
         $this->Purch_reqModel->Verify($id);
+        
+            
+            redirect("Purch_req/", 'refresh');
+    }
+
+       public function Verifyitem($id){
+
+        $this->Purch_reqModel->Verifyitem($id);
+        
             
             redirect("Purch_req/", 'refresh');
     }
