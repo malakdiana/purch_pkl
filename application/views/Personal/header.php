@@ -70,7 +70,7 @@
                                     </span></a>
                                 <ul class="submenu">
                                       <li><a href="<?php echo site_url()?>/Purch_req/">Data PR</a></li>
-                                    <li><a href="<?php echo site_url()?>/Qr/tracking">Tracking My Quotation</a></li>
+                                    <li><a href="<?php echo site_url()?>/Qr/tracking_personal">Tracking My Quotation</a></li>
                                     <li><a href="<?php echo site_url()?>/Qr/">List All Quotation</a></li>
                                     <li><a href="<?php echo site_url()?>/Barang/">Cek Data Barang</a></li>
                                    

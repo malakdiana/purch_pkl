@@ -60,7 +60,7 @@
                                                      <option class="form-control" value="1">ADMINISTRATOR</option>
                                                      <option class="form-control" value="2">SECTION</option>
                                                      <option class="form-control" value="3">INVOICE</option>
-                                                     <option class="form-control" value="4">INVOICExxx</option>
+                                                     <option class="form-control" value="4">USER PERSONAL</option>
 
                                                 </select>
                                             </div>
@@ -85,6 +85,7 @@
 </div>
 </div>
 </div>
+ <?php $this->load->view('admin/footer'); ?>
 
 <script>
     $(document).ready(function(){ // Ketika halaman sudah diload dan siap
@@ -93,15 +94,14 @@
              var val = $(this).val();
              if (val == "4") {
 
-              $("#insert-form").append("<select name='section' class='form-control' id='section'><option> PILIH : </option><?php foreach ($section as $key) {?> <option class='form-control' value='<?php echo $key->id_section?>'><?php echo $key->nama_section?> </option> <?php }?></select>");
+              $("#insert-form").append(" <div class='form-group' ><label class='control-label ' for='hak_akses'>Section :</label><select name='section' class='form-control' id='section' style='margin-bottom: 25px; width:400px;'><option> PILIH : </option><?php foreach ($section as $key) {?> <option class='form-control' value='<?php echo $key->id_section?>'><?php echo $key->nama_section?> </option> <?php }?></select></div>");
+          }else{
+             $("#insert-form").html("");
           }
 
              // Ubah value textbox jumlah-form dengan variabel nextform
         });   
         // Buat fungsi untuk mereset form ke semula
-        $("#btn-reset-form").click(function(){
-             $("#insert-form").html("");
-            $("#jumlah-form").val("1"); // Ubah kembali value jumlah form menjadi 1
-        });
+       
     });
     </script>

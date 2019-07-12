@@ -48,6 +48,23 @@ class QrModel extends CI_Model {
         }
     }
 
+    public function getQr_tracking_personal()
+    {
+           
+            $username = $this->session->userdata('logged_in')['username'];
+            $section = $this->session->userdata('logged_in')['section'];
+
+            $this->db->select('*');
+            $this->db->from('Penawaran');
+            $this->db->where('pic', $username);
+            $this->db->where('section', $section);
+         
+            $query = $this->db->get();
+            if($query->num_rows() > 0){
+            return $query->result();
+        }
+    }
+
     public function getListVendor($id){
         $this->db->select('*');
             $this->db->from('detail_penawaran');

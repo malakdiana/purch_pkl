@@ -54,6 +54,7 @@ public function ManajemenUser()
 			}else if($session_data['hak_akses']=='3'){
 				redirect('Invoice','refresh');
 			}else if($session_data['hak_akses']=='4'){
+			//	die();
 				redirect('Personal','refresh');
 			}
 			
@@ -71,12 +72,20 @@ public function ManajemenUser()
 
 		if($result){
 			$sess_array = array();
+			foreach ($result as $key) {
+				$section = $key->section;
+			}
+			$query= $this->db->where('id_section',$section)->get('section');
+			foreach ($query->result() as $key) {
+
+			$section= $key->nama_section;
+			}
 			foreach ($result as $row){
 				$sess_array = array(
 				'id_user'=>$row->id_user,
-				
 				'username'=>$row->username,
 				'password'=>$row->password,
+				'section'=>$section,
 				'hak_akses' =>$row->hak_akses
 				);
 				$this->session->set_userdata('logged_in',$sess_array);
@@ -118,9 +127,10 @@ public function ManajemenUser()
     public function tambahLogin(){
         $this->load->helper('url', 'form');
         $this->load->library('form_validation');
+        	$data['section']=$this->SectionModel->getSection();
         $this->form_validation->set_rules('username', 'username', 'trim|required');
         if ($this->form_validation->run()==FALSE) {
-        	$data['listSec']=$this->SectionModel->getSection();
+        
             $this->load->view('Admin/header');
             $this->load->view('Admin/tambahLogin',$data);
             $this->load->view('Admin/footer');
