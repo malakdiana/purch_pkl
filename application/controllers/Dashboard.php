@@ -20,7 +20,13 @@ public function index()
         $this->load->view('Admin/dashboard');
         }else if($this->session->userdata('logged_in')['hak_akses']==2){
 		$this->load->view('User/header');
-        $this->load->view('User/dashboard');  
+        $this->load->view('User/dashboard');
+    }else if($this->session->userdata('logged_in')['hak_akses']==3){
+		$this->load->view('Invoice/header');
+        $this->load->view('Invoice/dashboard');
+        }else if($this->session->userdata('logged_in')['hak_akses']==4){
+		$this->load->view('Personal/header');
+        $this->load->view('Personal/dashboard');  
     }else{
     	$this->load->view('read_only/header');
         $this->load->view('read_only/dashboard');

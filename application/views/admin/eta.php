@@ -40,23 +40,34 @@
                                    
 
                         <div class="card">
+                        <div  style="padding-top: 15px;padding-left: 15px">
+
+                                  <a class="btn btn-flat btn-info mb-3" href="<?php echo site_url()?>/Eta/delay" role="button" style="width:180px"><font color="white"><i class="ti-file"></i> Data Delay</font></a>
+
+
+                                  <a class="btn btn-flat btn-success mb-3" data-toggle="modal" data-target="#myModalDownload"><font color="white"><i class="ti-download"></i> Download Data By Date</font></a>
+
+                                  <a class="btn btn-flat btn-primary mb-3" href="<?php echo site_url()?>/Eta/export" role="button"><font color="white"><i class="ti-download"></i> Download All Data</font></a>
+
+                            </div>
+
                            
                             <div class="card-body">
                                       
                                 <div class="col-md-12">
                                     <div class="row">
                                  
-                                        <div class="col-md-9">
+                                        <div class="col-md-7">
 
                                            <?php echo form_open('eta'); ?>   
                                         </div>
-                                      
+                                      <h5>Filter Tanggal</h5>
                                         <div class="col-md-2">
                                           
                                            <input type="date" name="search"  style="width: 200px" class="form-control" value="<?php echo $tgl ?>">
                                        </div>
                                        <div class="col-md-1">
-                                <button class="btn btn-default"><i class="fa fa-search"></i></button>
+                                <button class="btn btn-default"><i class="fa fa-search"></i> Cari Data</button>
 
                                     </div>
                                    <?php echo form_close(); ?>
@@ -107,7 +118,7 @@
                                                 <td><?php echo $key->qty;?></td>
 
                                                  <td><?php 
-                                                if($key->konfirmasi == 1){?>
+                                                if($key->konfirmasi == "OK"){?>
                                                      <img style="width: 40px;height: 50px" src="<?php echo base_url()?>assets/images/icon/checkblue.png">
                                                      <?php }
                                                      else { ?>  
@@ -116,7 +127,7 @@
                                                 </td>
 
                                                 <td><?php 
-                                                if($key->invoice == 1){?>
+                                                if($key->invoice == "OK"){?>
                                                      <img style="width: 40px;height: 50px" src="<?php echo base_url()?>assets/images/icon/checkblue.png">
                                                      <?php }
                                                      else { ?>  
@@ -170,6 +181,35 @@
 
                     </div>
                       <p align="right"><button class="btn btn-info" type="submit">save</button></p>
+<?php echo form_close(); ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+         <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModalDownload" class="modal fade-in" >
+        <div class="modal-dialog">
+            <div class="modal-content" style="width: 600px; margin-left: -80px;padding: 20px" >
+                <div class="modal-header">
+
+                    <h4 class="modal-title">Download By Date</h4>
+                 <button align="right" type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <?php echo form_open('eta/exportbydate'); ?>
+                  <div class="modal-body">
+
+                     <div class="form-group">
+                      <label>START DATE</label>                   
+                      <input type="date" name="search"  style="width: 400px" class="form-control" value="">
+                      </div>
+
+                     <div class="form-group">
+                      <label>END DATE</label>                   
+                     <input type="date" name="search2"  style="width: 400px" class="form-control" value="">
+                     </div>
+                     
+
+                      <p align="right"><button class="btn btn-info" type="submit">Download</button></p>
 <?php echo form_close(); ?>
                     </div>
                 </div>

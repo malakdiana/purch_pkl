@@ -22,7 +22,10 @@
                     <div class="col-12 mt-5">
                         <div class="card">
                                 <div class="card-body">
+
                                      <?php echo form_open_multipart('Qr/addQr') ?>
+
+                                     
                                      <h3 align="center">Insert Quotation Request</h3><br>
                                        
                                                
@@ -47,14 +50,14 @@
 
                                              <div class="form-group">
                                                      <label class="control-label " for="section">SECTION</label>
-                                           <input type="text" class="form-control" readonly="" name="section" value="<?php echo $this->session->userdata('logged_in')['username'] ?>"> 
+                                           <input type="text" class="form-control" readonly="" name="section" value="<?php echo $this->session->userdata('logged_in')['section'] ?>"> 
                                               
                                             </div>
 
                                             <div class="form-group">
                                                      <label class="control-label " for="pic">PIC:</label>
                                            
-                                                <input type="text" class="form-control" name="pic" style="margin-bottom: 25px" required="" autocomplete="off">
+                                                <input type="text" class="form-control" name="pic" style="margin-bottom: 25px" readonly="" value="<?php echo $this->session->userdata('logged_in')['username'] ?>">
                                             </div>
                                             
                                              <div class="form-group">
@@ -81,7 +84,7 @@
                                      
         
           
-              <div align="right"> <button type="submit" class="btn btn-success" style="align-self: right"><i class="ti-save"></i>  Simpan</button></div>
+              <div align="right"> <button type="submit" class="btn btn-primary" style="align-self: right">Simpan</button></div>
               <?php echo form_close() ?>
            
 

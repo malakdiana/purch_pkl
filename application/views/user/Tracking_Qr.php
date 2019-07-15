@@ -85,19 +85,19 @@
 
 
                                                     <div class="btn-group mb-xl-3" role="group" aria-label="Basic example">
-                                                   <button type="button" class="btn btn-info" style="width:80px; height:45px;"> <a href="<?php echo site_url()?>/Qr/detailQuotationUser/<?php echo $key->id_penawaran?>" 
-                                                    ><font color="white"><i class="fa fa-th-list"></i> Detail</font></a></button>
+                                                    <a href="<?php echo site_url()?>/Qr/detailQuotationUser/<?php echo $key->id_penawaran?>" 
+                                                    ><button type="button" class="btn btn-info" style="width:80px; height:45px;"><font color="white"><i class="fa fa-th-list"></i> Detail</font></button></a>
 
-                                                    <button type="button" class="btn btn-primary" style="width:85px; height:45px;"> <a href="<?php echo site_url()?>/Qr/listvendor/<?php echo $key->id_penawaran?>"><font color="white"><i class="fa fa-book"></i> Vendor </font></a></button>
+                                                     <a href="<?php echo site_url()?>/Qr/listvendor/<?php echo $key->id_penawaran?>"><button type="button" class="btn btn-primary" style="width:85px; height:45px;"><font color="white"><i class="fa fa-book"></i> Vendor </font></button></a>
                                     
-                                                   <button type="button" class="btn btn-success" style="width:90px; height:45px;"> <a href="<?php echo site_url()?>/Qr/editQrUser/<?php echo $key->id_penawaran?>"><font color="white"><i class="fa fa-pencil"></i> Edit QR </font></a></button>
+                                                    <a href="<?php echo site_url()?>/Qr/editQrUser/<?php echo $key->id_penawaran?>"><button type="button" class="btn btn-success" style="width:90px; height:45px;"><font color="white"><i class="fa fa-pencil"></i> Edit QR </font></button></a>
                                    
                                                  <?php } else{?>
 
                                                   <div class="btn-group mb-xl-3" role="group" aria-label="Basic example">
-                                                   <button type="button" class="btn btn-info" style="width:80px; height:45px;"> <a href="<?php echo site_url()?>/Qr/detailQuotationUser/<?php echo $key->id_penawaran?>"><font color="white"><i class="fa fa-th-list"></i> Detail</font></a></button>
+                                                   <a href="<?php echo site_url()?>/Qr/detailQuotationUser/<?php echo $key->id_penawaran?>"> <button type="button" class="btn btn-info" style="width:80px; height:45px;"><font color="white"><i class="fa fa-th-list"></i> Detail</font></button></a>
 
-                                                    <button type="button" class="btn btn-primary" style="width:85px; height:45px;"> <a href="<?php echo site_url()?>/Qr/listvendor/<?php echo $key->id_penawaran?>"><font color="white"><i class="fa fa-book"></i> Vendor </font></a></button><?php } ?>
+                                                     <a href="<?php echo site_url()?>/Qr/listvendor/<?php echo $key->id_penawaran?>"><button type="button" class="btn btn-primary" style="width:85px; height:45px;"><font color="white"><i class="fa fa-book"></i> Vendor </font></button></a><?php } ?>
                                   
                                 </div>
                                                </td>
@@ -184,7 +184,7 @@
             </div>
                
                
-            <a href=""><button class="btn-warning" data-dismiss="modal">Batal</button></a>
+            <a href=""><button class="btn btn-warning" data-dismiss="modal">Batal</button></a>
         </div>
     </div>
 </div>

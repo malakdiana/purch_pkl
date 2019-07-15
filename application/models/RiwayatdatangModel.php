@@ -97,6 +97,24 @@ class RiwayatdatangModel extends CI_Model {
             }
     }
 
+    public function getExport()
+    {
+
+           $this->db->select('po.id_po,po.tgl_po, po.no_po, po.eta, bayangan.id_bayangan, bayangan.no_pr, bayangan.item, bayangan.qty, riwayatdatang.tgl_dtg, riwayatdatang.qty_dtg');
+            $this->db->from('bayangan');
+            $this->db->join('po', 'po.id_po = bayangan.id_po', 'left');
+            $this->db->join('riwayatdatang', 'bayangan.id_bayangan = riwayatdatang.id_bayangan','left');
+            
+
+            $query = $this->db->get();
+           $results=array();
+            if($query->num_rows() > 0){
+            return $query->result();
+            }else{
+            return $results;
+            }
+    }
+
   public function deleteriwayat($id, $id_bayangan){
          $this->db->where('id', $id);
         $this->db->delete('riwayatdatang');
@@ -123,6 +141,7 @@ class RiwayatdatangModel extends CI_Model {
 
 }
 
+ 
         
 
 }

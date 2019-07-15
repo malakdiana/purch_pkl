@@ -92,9 +92,9 @@
                                                  <?php if($status==0){?>
                                                   <td>
                                                   <div class="btn-group mb-xl-3" role="group" >
-                                                       <button type="button" class="btn btn-primary" style="width:80px; height:50px;"><a href="javascript:void(0);" onclick="modalDetail('<?php echo $key->id_item?>', '<?php echo $key->item_barang?>', '<?php echo $key->qty?>')"  data-toggle="modal" data-target="#myModalEdit"><font color="white"><i class="fa fa-pencil"></i> Edit</font></a></button>
+                                                       <a href="javascript:void(0);" onclick="modalDetail('<?php echo $key->id_item?>', '<?php echo $key->item_barang?>', '<?php echo $key->qty?>')"  data-toggle="modal" data-target="#myModalEdit"><button type="button" class="btn btn-primary" style="width:80px; height:50px;"><font color="white"><i class="fa fa-pencil"></i> Edit</font></button></a>
                                                 
-                                                <button type="button" class="btn btn-danger" style="width:80px; height:50px;"><a href="<?php echo site_url()?>/Purch_req/hapusItem/<?php echo $id?>/<?php echo $key->id_item?> " onclick="return confirm('Apakah Yakin Untuk Menghapus?')"><font color="white"><i class="fa fa-trash-o"></i> Hapus</font></a></button>
+                                                <a href="<?php echo site_url()?>/Purch_req/hapusItem/<?php echo $id?>/<?php echo $key->id_item?> " onclick="return confirm('Apakah Yakin Untuk Menghapus?')"><button type="button" class="btn btn-danger" style="width:80px; height:50px;"><font color="white"><i class="fa fa-trash-o"></i> Hapus</font></button></a>
 
                                                  <?php } 
 
@@ -143,8 +143,8 @@
                
                
             <div align="right" style="margin-bottom: 20px; margin-right: 30px">
-          <button class="btn-info" type="submit">Update</button>
-            <a href=""><button class="btn-warning" data-dismiss="modal">Batal</button></a>
+          <button class="btn btn-info" type="submit">Update</button>
+            <a href=""><button class="btn btn-warning" data-dismiss="modal">Batal</button></a>
         </div>
     
         <?php echo form_close(); ?>

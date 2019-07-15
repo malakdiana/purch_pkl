@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Purch administrator</title>
+    <title>Purch section</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/png" href="<?php echo base_url()?>assets/images/icon/favicon.ico">
     <link rel="stylesheet" href="<?php echo base_url()?>assets/css/bootstrap.min.css">
@@ -24,15 +24,16 @@
     <script src="<?php echo base_url()?>assets/js/vendor/modernizr-2.8.3.min.js"></script>
       <link rel="stylesheet" type="text/css" href="<?php echo base_url()?>assets/dataTables/css/jquery.dataTables.css">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url()?>assets/dataTables/css/dataTables.bootstrap.css">
-   
-</head>
-<style>
+    <style>
       /* script menghilangkan Horizontal Scroll */
       html, body {
       max-width: 100%;
       overflow-x: hidden;
       }
       </style>
+
+<body class="body-bg">
+</head>
 
 <body class="body-bg">
     <!--[if lt IE 8]>
@@ -57,72 +58,35 @@
                     <div class="col-md-7">
                     <div class="row align-items-left">
                     <div class="col-lg-12  d-none d-lg-block">
-                        <div class="horizontal-menu" >
+                        <div class="horizontal-menu">
                             <nav>
                                 <ul id="nav_menu">
                                     <li>
-                                        <a href="<?php echo site_url()?>/Dashboard"><h6><i class="ti-home"></i><span>Home</h6></span></a>
-                                        
-                                    </li>
-
-                                    
-                                    <li>
-                                        <a href="<?php echo site_url()?>/Grafik"><h6><i class="ti-bar-chart"></i><span>Grafik</h6></span></a>
+                                       <a href="<?php echo site_url()?>/Dashboard"><h6><i class="ti-home"></i><span>Home</h6></span></a>
                                         
                                     </li>
                                     <li>
                                          <a href="javascript:void(0)" aria-expanded="true"><h6><i class="ti-book"></i><span>Data</h6>
                                     </span></a>
                                 <ul class="submenu">
-                                    <li><a href="<?php echo site_url()?>/Po">Data Purchase Order</a></li>
-                                    <li><a href="<?php echo site_url()?>/Purch_req">Data Purchase Request</a></li>
+                                      <li><a href="<?php echo site_url()?>/Purch_req/">Data PR</a></li>
+                                    <li><a href="<?php echo site_url()?>/Qr/tracking_personal">Tracking My Quotation</a></li>
                                     <li><a href="<?php echo site_url()?>/Qr/">List All Quotation</a></li>
+                                    <li><a href="<?php echo site_url()?>/Barang/">Cek Data Barang</a></li>
                                    
-                                    <li><a href="<?php echo site_url()?>/Eta">ETA</a></li>
-                                    <li><a href="<?php echo site_url()?>/Riwayatdatang">Riwayat Kedatangan</a></li>
+                                  
                                 </ul>
                                     </li>
-
+                                   
                                     <li >
                                        <a href="javascript:void(0)" aria-expanded="true"><h6><i class="ti-pencil"></i><span>Input Data</h6></span></a>
                                 <ul class="submenu">
-                                     <li><a href="<?php echo site_url()?>/Po/tambahPO">Purchase Order</a></li>
-                                    <li><a href="<?php echo site_url()?>/Purch_req/tambahPR">Purchase Request</a></li>
-                                   
+                                    
+                                    <li><a href="<?php echo site_url()?>/Qr/tambahQR">Quotation Request</a></li>
                                  
                                 </ul>
-
-                                    <li>
-                                       <a href="javascript:void(0)" aria-expanded="true"><h6><i class="ti-pie-chart"></i><span>Master Data</h6></span></a>
-                                <ul class="submenu">
-                                    <li><a href="<?php echo site_url()?>/Supplier">Supplier</a></li>
+                                    </li>
                                    
-                                    <li><a href="<?php echo site_url()?>/Barang">Barang</a></li>
-                                    <li><a href="<?php echo site_url()?>/Unit_barang">Unit Barang</a></li>
-                                    <!--  <li><a href="<?php echo site_url()?>/Departemen">Departement</a></li> -->
-                                    <li><a href="<?php echo site_url()?>/Section">Section</a></li> 
-                                    <li><a href="<?php echo site_url()?>/Approval">Approval</a></li>
-
-                                </ul>
-                                    </li>
-                                    
-                                    </li>
-                                    <li >
-                                        <a href="javascript:void(0)" aria-expanded="true"><h6><i class="ti-folder"></i><span>Other</span></h6></span></a>
-                                <ul class="submenu">
-                                    <li><a href="<?php echo site_url()?>/Login/ManajemenUser">Management User</a></li>
-                                </ul>
-                                    </li>
-                                    <!-- <li >
-                                        <a href="javascript:void(0)" aria-expanded="true"><h6><i class="ti-folder"></i><span>ETA</span></h6></span></a>
-                                <ul class="submenu">
-                                   
-                                    <li><a href="<?php echo site_url()?>/Eta">ETA</a></li>
-                                    <li><a href="<?php echo site_url()?>/Eta/delay">Delay</a></li>
-                                </ul>
-                                    </li> -->
-                                    
-                                </ul>
                             </nav>
                         </div>
                         </div>
@@ -130,8 +94,8 @@
                         
                     </div>
                     <!-- profile info & task notification -->
-                    <div class="col-md-3 clearfix text-right" >
-                        <div class="clearfix d-md-inline-block d-block" style="margin-right: -14px" >
+                    <div class="col-md-3 clearfix text-right">
+                        <div class="clearfix d-md-inline-block d-block" style="margin-right: -14px">
                             <div class="user-profile m-0" style="background:#17a2b8">
                                  <img class="avatar user-thumb" src="<?php echo base_url()?>assets/images/author/avatar.png" alt="avatar">
                             <h4 class="user-name dropdown-toggle" data-toggle="dropdown"><?php echo $this->session->userdata('logged_in')['username'] ?> <i class="fa fa-angle-down"></i></h4>

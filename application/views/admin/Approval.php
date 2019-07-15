@@ -60,8 +60,8 @@
 
                                                   <div class="btn-group mb-xl-3" role="group" aria-label="Basic example">
                                     
-                                    <button type="button" class="btn btn-primary" style="width:80px; height:50px;"> <a href="javascript:void(0);" onclick="modalDetail('<?php echo $key->no?>','<?php echo $key->nama?>','<?php echo $key->kode_nama ?>','<?php echo $key->min ?>','<?php echo $key->max ?>')"  data-toggle="modal" data-target="#myModalEdit"><font color="white"><i class="fa fa-pencil"></i> Edit</font></a></button>
-                                    <button type="button" class="btn btn-danger" style="width:80px; height:50px;"><a href="<?php echo site_url()?>/Approval/deleteApproval/<?php echo $key->no?> " onclick="return confirm('Apakah Yakin Untuk Menghapus?')"><font color="white"><i class="fa fa-trash-o"></i> Hapus</font></a></button>
+                                     <a href="javascript:void(0);" onclick="modalDetail('<?php echo $key->no?>','<?php echo $key->nama?>','<?php echo $key->kode_nama ?>','<?php echo $key->min ?>','<?php echo $key->max ?>')"  data-toggle="modal" data-target="#myModalEdit"><button type="button" class="btn btn-primary" style="width:80px; height:50px;"><font color="white"><i class="fa fa-pencil"></i> Edit</font></button></a>
+                                    <a href="<?php echo site_url()?>/Approval/deleteApproval/<?php echo $key->no?> " onclick="return confirm('Apakah Yakin Untuk Menghapus?')"><button type="button" class="btn btn-danger" style="width:80px; height:50px;"><font color="white"><i class="fa fa-trash-o"></i> Hapus</font></button></a>
                                   
                                 </div></td>
                                              
@@ -85,13 +85,13 @@
         <div class="modal-dialog">
             <div class="modal-content" style="width: 800px; margin-left: -100px;padding: 20px" >
                 <div class="modal-header">
-                    <h4 class="modal-title">Info Approval</h4>
+                    <h4 class="modal-title">Edit Approval</h4>
                 </div>
           <?php echo form_open_multipart('Approval/updateApproval'); ?>
                 <?php echo validation_errors(); ?>
                      <div class="form-group">
-                        <label for="">NO</label>
-                        <input type="text" class="form-control" name="no" id="no" value="" readonly="" >
+                        <!-- <label for="">NO</label> -->
+                        <input type="text" class="form-control" name="no" id="no" value="" readonly="" hidden="">
                     </div>
                     <div class="form-group">
                         <label for="">NAMA</label>
@@ -115,8 +115,8 @@
                
                
             <div align="right" style="margin-bottom: 20px; margin-right: 30px">
-          <button class="btn-info" type="submit">Update</button>
-            <a href=""><button class="btn-warning" data-dismiss="modal">Batal</button></a>
+          <button class="btn btn-info" type="submit">Update</button>
+            <a href=""><button class="btn btn-warning" data-dismiss="modal">Batal</button></a>
         </div>
     
         <?php echo form_close(); ?>

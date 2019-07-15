@@ -36,7 +36,7 @@
                                                 
                                                 <th>ID SECTION</th>
                                                 <th>NAMA SECTION</th>
-                                                <th>KODE DEPT</th>
+                                                <th>DEPT</th>
                                            
                                                
                                                 <th >ACTION</th>
@@ -55,8 +55,8 @@
 
                                               <div class="btn-group mb-xl-3" role="group" aria-label="Basic example">
                                     
-                                    <button type="button" class="btn btn-primary" style="width:80px; height:50px;">  <a href="javascript:void(0);" onclick="modalDetail('<?php echo $key->id_section?>','<?php echo $key->nama_section ?>','<?php echo $key->dept ?>')"  data-toggle="modal" data-target="#myModalEdit"><font color="white"><i class="fa fa-pencil"></i> Edit</font></a></button>
-                                    <button type="button" class="btn btn-danger" style="width:80px; height:50px;">  <a href="<?php echo site_url()?>/Section/deleteSection/<?php echo $key->id_section?> " onclick="return confirm('Apakah Yakin Untuk Menghapus?')"><font color="white"><i class="fa fa-trash-o"></i> Hapus</font></a></button>
+                                     <a href="javascript:void(0);" onclick="modalDetail('<?php echo $key->id_section?>','<?php echo $key->nama_section ?>','<?php echo $key->dept ?>')"  data-toggle="modal" data-target="#myModalEdit"><button type="button" class="btn btn-primary" style="width:80px; height:50px;"> <font color="white"><i class="fa fa-pencil"></i> Edit</font></button></a>
+                                     <a href="<?php echo site_url()?>/Section/deleteSection/<?php echo $key->id_section?> " onclick="return confirm('Apakah Yakin Untuk Menghapus?')"><button type="button" class="btn btn-danger" style="width:80px; height:50px;"> <font color="white"><i class="fa fa-trash-o"></i> Hapus</font></button></a>
                                   
                                 </div></td>
                                              
@@ -80,31 +80,30 @@
         <div class="modal-dialog">
             <div class="modal-content" style="width: 800px; margin-left: -100px;padding: 20px" >
                 <div class="modal-header">
-                    <h4 class="modal-title">Info Section</h4>
+                    <h4 class="modal-title">Edit Section</h4>
                 </div>
           <?php echo form_open_multipart('Section/updateSection'); ?>
                 <?php echo validation_errors(); ?>
                      <div class="form-group">
-                        <label for="">ID SECTION</label>
-                        <input type="text" class="form-control" name="id_section" id="id_section" value="" readonly="" >
+                        <!-- <label for="">ID SECTION</label> -->
+                        <input type="text" class="form-control" name="id_section" id="id_section" value="" readonly="" hidden="" >
                     </div>
                     <div class="form-group">
                         <label for="">NAMA SECTION</label>
                         <input type="text" class="form-control" name="nama_section" id="nama_section" value="" readonly="">
                     </div>
 
-                   <div class="form-group">
-                        <label class="control-label " for="dept">Tanggal Kedatangan :</label>
-                            <input type="date" class="form-control" name="nama_section" id="nama_section" value="" >
-                                              
+                <div class="form-group">
+                        <label for="">DEPARTEMEN</label>
+                        <input type="text" class="form-control" name="nama_section" id="nama_section" value="">
                     </div>
 
                 
                
                
             <div align="right" style="margin-bottom: 20px; margin-right: 30px">
-          <button class="btn-info" type="submit">Update</button>
-            <a href=""><button class="btn-warning" data-dismiss="modal">Batal</button></a>
+          <button class="btn btn-info" type="submit">Update</button>
+            <a href=""><button class="btn btn-warning" data-dismiss="modal">Batal</button></a>
         </div>
     
         <?php echo form_close(); ?>

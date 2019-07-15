@@ -1,9 +1,28 @@
+<style type="text/css">
+    .password{
+    position: relative;
+}
+
+.password input[type="password"]{
+    padding-right: 30px;
+}
+
+.password .fa,#password2 .fa {
+    display:none;
+    right: 15px;
+    position: absolute;
+    top: 12px;
+    cursor:pointer;
+}
+
+
+</style>
 
  <div class="page-title-area">
                 <div class="row align-items-center">
                     <div class="col-sm-6">
                         <div class="breadcrumbs-area clearfix" style="padding-top: 15px;padding-bottom: 15px">
-                            <h4 class="page-title pull-left">Master Data</h4>
+                            <h4 class="page-title pull-left">Others</h4>
                             <ul class="breadcrumbs pull-left">
                                 <li><a href="#">Management User</a></li>
                                 <li><span>Data User</span></li>
@@ -22,7 +41,7 @@
                     <div class="col-12 mt-5">
                         <div class="card">
                             <div  style="padding-top: 15px;padding-left: 15px">
-                                <a class="btn btn-flat btn-primary mb-3" href="<?php echo site_url()?>/Login/tambahLogin" role="button">Tambah Data</a>
+                                <a class="btn btn-flat btn-primary mb-3" href="<?php echo site_url()?>/Login/tambahLogin" role="button"><i class="fa fa-plus"></i> Tambah Data</a>
                                 
                             <div class="card-body">
                         <?=$this->session->flashdata('editLogin')?>
@@ -58,7 +77,10 @@
                                                      <?php }
                                                  else if($key->hak_akses == 2){?>
                                                      SECTION
-                                                     <?php }    
+                                                     <?php }
+                                                 else if($key->hak_akses == 4){?>
+                                                     USER PERSONAL
+                                                     <?php }         
                                                      else { ?>  
                                                         INVOICE
                                                         <?php }?>
@@ -68,8 +90,8 @@
                                                 <td>
                                                      <div class="btn-group mb-xl-3" role="group" aria-label="Basic example">
                                   
-                                    <button type="button" class="btn btn-primary"><a href="javascript:void(0);" onclick="modalDetail('<?php echo $key->id_user?>','<?php echo $key->username ?>','<?php echo $key->password ?>','<?php echo $key->hak_akses ?>')"  data-toggle="modal" data-target="#myModalEdit"><font color="white"><i class="fa fa-edit"></i> Edit</font></a></button>
-                                    <button type="button" class="btn btn-danger">    <a href="<?php echo site_url()?>/Login/deleteLogin/<?php echo $key->id_user?> " onclick="return confirm('Apakah Yakin Untuk Menghapus?')"><font color="white"><i class="fa fa-trash-o"></i> Hapus</font></a></button>
+                                    <a href="javascript:void(0);" onclick="modalDetail('<?php echo $key->id_user?>','<?php echo $key->username ?>','<?php echo $key->password ?>','<?php echo $key->hak_akses ?>')"  data-toggle="modal" data-target="#myModalEdit"><button type="button" class="btn btn-primary"><font color="white"><i class="fa fa-edit"></i> Edit</font></button></a>
+                                    <a href="<?php echo site_url()?>/Login/deleteLogin/<?php echo $key->id_user?> " onclick="return confirm('Apakah Yakin Untuk Menghapus?')"><button type="button" class="btn btn-danger"><font color="white"><i class="fa fa-trash-o"></i> Hapus</font></button></a>
                                   
                                 </div>
  
@@ -108,14 +130,21 @@
                     </div>
                     <div class="form-group">
                         <label for="">PASSWORD</label>
+                         <div class="password">
+                        
+                        <input type="password" class="form-control" name="password" id="myInput" value="" >
+                        </div>
 
-                        <input type="text" class="form-control" name="password" id="password" value="" >
+                        <input type="checkbox" onclick="myFunction()"> Show Password 
                     </div>
 
                     <div class="form-group">
                         <label for="">KONFRIMASI PASSWORD</label>
-
-                        <input type="text" class="form-control" name="konfirpassword" id="konfirpassword" value="" >
+                        <div class="password">
+                        <i class="fa fa-eye"></i>
+                        <input type="password" class="form-control" name="konfirpassword" id="myInput2" value="" >
+                        </div>
+                        <input type="checkbox" onclick="myFunction2()"> Show Konfirmasi Password 
                     </div>
 
                     <div class="form-group">
@@ -163,12 +192,7 @@
  
 
      <script type="text/javascript">
-    /* Formating function for row details */
-    
-
-      /*
-       * Initialse DataTables, with no sorting on the 'details' column
-       */
+  
       var oTable = $('#dataTablesss').dataTable({
         "aoColumnDefs": [{
           "bSortable": true,
@@ -179,10 +203,24 @@
         ]
       });
 
-      /* Add event listener for opening and closing details
-       * Note that the indicator for showing which row is open is not controlled by DataTables,
-       * rather it is done here
-       */
+  function myFunction() {
+  var x = document.getElementById("myInput");
+  if (x.type === "password") {
+    x.type = "text";
+  } else {
+    x.type = "password";
+  }
+} 
+
+ function myFunction2() {
+  var x = document.getElementById("myInput2");
+  if (x.type === "password") {
+    x.type = "text";
+  } else {
+    x.type = "password";
+  }
+} 
+
     
   </script>
 </body>

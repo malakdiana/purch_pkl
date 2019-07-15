@@ -5,8 +5,8 @@
                         <div class="breadcrumbs-area clearfix" style="padding-top: 15px;padding-bottom: 15px">
                             <h4 class="page-title pull-left">Data</h4>
                             <ul class="breadcrumbs pull-left">
-                                <li><a href="#">Quotation Request</a></li>
-                                <li><span>List Quotation Request</span></li>
+                                <li><a href="#">Qr</a></li>
+                                <li><span>Data Quotation Request</span></li>
                             </ul>
 
                     </div>
@@ -26,9 +26,6 @@
                        
                          <?=$this->session->flashdata('deleteQr')?>
                          <?=$this->session->flashdata('tambahItem')?>
-                          <?=$this->session->flashdata('editQr')?>
-                             <?=$this->session->flashdata('gagalQr')?>
-                         <?=$this->session->flashdata('berhasilQr')?>
                              
                                <div class="single-table">
                                     <div class="table-responsive">
@@ -61,8 +58,8 @@
                                                 <td><?php echo $key->tanggal_butuh;?></td>
                                                 <td><?php echo $key->section;?></td>
                                                 <td><?php echo $key->pic;?></td>
-                                               
-                                               <td><?php 
+                                                
+                                                <td><?php 
                                                 if($key->status == 0){?>
                                                     <div class="form-control" align="center" value="OPEN" name="status" style="margin-bottom: 25px;width: 100px; background-color: #FFA500; color:#FFF" > OPEN </div>
                                                      <?php }
@@ -78,33 +75,21 @@
 
                                                         ?>
 
-
                                                 </td>
 
+                                                <td>
+
                                                 
-   <td>
 
-<?php if($key->status ==  0){?>
-                                             
                                                 <div class="btn-group mb-xl-3" role="group" aria-label="Basic example">
-                                     
-                                      <a href="<?php echo site_url()?>/Qr/detailQuotation/<?php echo $key->id_penawaran?>" 
-                                        > <button type="button" class="btn btn-info" style="width:80px; height:45px;"><font color="white"><i class="fa fa-th-list"></i> Detail</font></button></a>
 
-                                     <a href="<?php echo site_url()?>/Qr/tambahVendor/<?php echo $key->id_penawaran?>"><button type="button" class="btn btn-primary" style="width:85px; height:45px;"><font color="white"><i class="fa fa-book"></i> Vendor </font></button></a>
+                                                        <a href="<?php echo site_url()?>/Qr/detailQuotationUser/<?php echo $key->id_penawaran?>" 
+                                                    ><button type="button" class="btn btn-info" style="width:80px; height:45px;"><font color="white"><i class="fa fa-th-list"></i> Detail</font></button></a>
+                                                    
+                                                    <a href="<?php echo site_url()?>/Qr/listvendor/<?php echo $key->id_penawaran?>"><button type="button" class="btn btn-primary" style="width:85px; height:45px;"> <font color="white"><i class="fa fa-book"></i> Vendor </font></button></a>
                                     
-                                    <a href="<?php echo site_url()?>/Qr/editQr/<?php echo $key->id_penawaran?>"> <button type="button" class="btn btn-success" style="width:90px; height:45px;">
-                                      <font color="white"><i class="fa fa-pencil"></i> Edit QR </font></button></a>
                                   
-                                </div>
-                                <?php } else{?>
-                                  <div class="btn-group mb-xl-3" role="group" aria-label="Basic example">
-                                      
-                                      <a href="<?php echo site_url()?>/Qr/detailQuotation/<?php echo $key->id_penawaran?>" 
-                                        ><button type="button" class="btn btn-info" style="width:80px; height:45px;"><font color="white"><i class="fa fa-th-list"></i> Detail</font></button></a>
-
-                                    <a href="<?php echo site_url()?>/Qr/tambahVendor/<?php echo $key->id_penawaran?>"> <button type="button" class="btn btn-primary" style="width:85px; height:45px;"><font color="white"><i class="fa fa-book"></i> Vendor </font></button></a><?php } ?>
-
+                                                </div>
                                                </td>
 
                                                
@@ -124,7 +109,7 @@
         <!-- footer area start-->
  
 
-
+id_penawaran,tanggal, item, kode_qr,tanggal_butuh,section,pic,bahan,detail,status,gamba
        <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModalDetail" class="modal fade-in" >
         <div class="modal-dialog">
             <div class="modal-content" style="width: 800px; margin-left: -100px;padding: 20px" >
@@ -169,8 +154,9 @@
                     </tr>
                     <tr>
                         <td>Detail</td>
-                        <td><input class="form-control" rows="4" id="detail" name="detail">
-                      
+                        <td><textarea readonly="" class="form-control" rows="4" id="detail" name="detail">
+                            
+                        </textarea>
                          </td>
                     </tr>
                     <tr>
@@ -178,8 +164,8 @@
                         <td> <input type="text" class="form-control" name="status" id="status" value="" readonly=""></td>
                     </tr>
                     <tr>
-                        <td>Attechment</td>
-                        <td>  <a href="" ><p class="gambar"> </p></a></td>
+                        <td>Gambar</td>
+                        <td>  <input type="text" class="form-control" name="gambar" id="gambar" value="" readonly=""></td>
                     </tr>
                    
                      
@@ -201,20 +187,51 @@
      <script type="text/javascript" src="<?php echo base_url()?>assets/advanced-datatable/js/jquery.js"></script>
     <script type="text/javascript" src="<?php echo base_url()?>assets/dataTables/js/jquery.dataTables.js"></script>
  
+    <!-- others plugins -->
+<script type="text/javascript">
+   
+    function modalDetail(id_penawaran,tanggal, item, kode_qr,tanggal_butuh,section,pic,bahan,detail,status,gambar ){
+        document.getElementById('id_penawaran').value = id_penawaran;
+        document.getElementById('tanggal').value = tanggal;
+          document.getElementById('item').value = item;
+          document.getElementById('kode_qr').value = kode_qr;
+          document.getElementById('tanggal_butuh').value = tanggal_butuh;
+          document.getElementById('section').value = section;
+          document.getElementById('pic').value = pic;
+          document.getElementById('bahan').value = bahan;
+          document.getElementById('detail').value = detail;
+        document.getElementById('status').value = status;
+          document.getElementById('gambar').value = gambar;
+       
+       
+      
+    }
+  </script>
+ 
 
      <script type="text/javascript">
- 
+    /* Formating function for row details */
+    
+
+      /*
+       * Initialse DataTables, with no sorting on the 'details' column
+       */
        var oTable = $('#dataTablesss').dataTable({
         "aoColumnDefs": [{
           "bSortable": true,
           "aTargets": [0]
         }],
         "aaSorting": [
-          [7,'desc'],
+           [7,'desc'],
           [0, 'desc']
+       
         ]
       });
 
+      /* Add event listener for opening and closing details
+       * Note that the indicator for showing which row is open is not controlled by DataTables,
+       * rather it is done here
+       */
     
   </script>
 </body>

@@ -7,8 +7,7 @@
                         <div class="breadcrumbs-area clearfix" style="padding-top: 15px;padding-bottom: 15px">
                             <h4 class="page-title pull-left">Data</h4>
                             <ul class="breadcrumbs pull-left">
-                                <li><a href="#">Purchase Request</a></li>
-                                <li><span>List purchase request /</span></li>
+                                <li><a href="#">List Purchase Request</a></li>
                                 <li><span>Detail Item Barang</span></li>
                             </ul>
 
@@ -18,25 +17,13 @@
             </div>
         </div>
 
-
             <!-- page title area end -->
             <div class="main-content-inner">
                 <div class="row">
                     <!-- data table start -->
                     <div class="col-12 mt-5">
                         <div class="card">
-
-                        <?php
-                         if($status_fa == 0){?>
-                         <div  style="padding-top: 15px;padding-left: 15px">
-                         <button type="button" class="btn btn-success"><a href="<?php echo site_url()?>/Purch_req/Verifyitem/<?php echo $id?>"><font color="white"><i class="fa fa-check"></i> Verify</font></button></a>
-
-                          <?php }
-                            
-                            
-
-                          ?>
-
+                 
                             <div class="card-body">
                                  <?=$this->session->flashdata('editItem')?>
                                    <?=$this->session->flashdata('hapusItem')?>
@@ -51,16 +38,13 @@
                                                 <th>QTY</th>
                                                 <th>NO PO</th>
                                                 <th>QTY TO PO</th>
-                                                <th>HARGA</th>
-                                                <th >ACTION</th>
-                                                
+                                        
+                                               
                                             </tr>
                                         </thead>
                                         <tbody>
-                                        <?php $status=0;  
-                                        $no =1; foreach ($Purch_req as $key) {
-                                         
-                                            ?>
+                                        <?php   
+                                        $no =1; foreach ($Purch_req as $key) {?>
                                             <tr>
                                             
                                                 <td><?php echo $no;?></td>
@@ -69,57 +53,11 @@
                                            
                                                 <td><?php echo $key->no_po;?></td>
                                                 <td><?php echo $key->qtybay;?></td>
-                                                <td><?php echo $key->harga;?></td>
-                                           
-                                               
                                     
-                                                
-
-                                                   <?php 
-                                                   if(empty($detail)){ 
-                                                    $status = 0;
-                                                   } else{
-
-                                                    foreach($detail as $data){
-                                            if($key->id_item == $data->id_item){
-                                              if($key->qty != $data->jumlah){
-                                                if($status== 0){
-                                                    $status= 0;
-                                                  }else{
-                                                     $status= 1;
-                                                  }
-                                                }else{
-                                                  $status=1;
-
-                                                 }
-                                               }else{
-                                                if($status== 0){
-                                                    $status= 0;
-                                                  }else{
-                                                     $status= 1;
-                                                  }
-                                               }}$no++;}
-                                                 ?>
-
-                                                 <?php if($status==0){?>
-                                                  <td>
-                                                  <div class="btn-group mb-xl-3" role="group" >
-                                                       <button type="button" class="btn btn-primary" style="width:80px; height:50px;"><a href="javascript:void(0);" onclick="modalDetail('<?php echo $key->id_item?>', '<?php echo $key->item_barang?>', '<?php echo $key->qty?>')"  data-toggle="modal" data-target="#myModalEdit"><font color="white"><i class="fa fa-pencil"></i> Edit</font></a></button>
-                                                
-                                                <button type="button" class="btn btn-danger" style="width:80px; height:50px;"><a href="<?php echo site_url()?>/Purch_req/hapusItem/<?php echo $id?>/<?php echo $key->id_item?> " onclick="return confirm('Apakah Yakin Untuk Menghapus?')"><font color="white"><i class="fa fa-trash-o"></i> Hapus</font></a></button>
-
-                                                  <button type="button" class="btn btn-success" style="width:115px; height:50px;"><a href="<?php echo site_url()?>/Purch_req/InsertPo/<?php echo $key->id_item ?>"><font color="white"><i class="fa fa-arrow-right"></i> Insert to Po</font></a></button></div></td></tr><?php } 
-                                                  else{?>
-                                                     <td><button type="button" class="btn btn-success"><a href=""><font color="white"><i class="fa fa-check"></i> Done</font></a></button></td></tr><?php }} ?>
-
-
-
-
-
-
-
+                                               
                                              
-                                         
+                                            </tr>
+                                            <?php $no++;}?>
                                        </tbody>
                                     </table>
                                 </div>
@@ -143,8 +81,8 @@
           <?php echo form_open_multipart('Purch_req/updateItem'); ?>
                 <?php echo validation_errors(); ?>
                      <div class="form-group">
-                        <input type="text" name="id_item"  id="id_item" hidden="">
-                        <input type="text" name="id" id="id" value="<?php echo $id?>" hidden="">
+                        <input type="text" name="id_item"  id="id_item">
+                        <input type="text" name="id" id="id" value="<?php echo $id?>">
                         <label for="">Item Barang</label>
                         <select name="item_barang" id="item_barang" class="form-control choosen">
                             <?php foreach ($barang as $key) {?>
@@ -200,7 +138,7 @@
           "aTargets": [0]
         }],
         "aaSorting": [
-          [0, 'asc']
+          [0, 'desc']
         ]
       });
 

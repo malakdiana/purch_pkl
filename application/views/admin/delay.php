@@ -40,28 +40,38 @@
                                    
 
                         <div class="card">
+
+                        <div  style="padding-top: 15px;padding-left: 15px">
+
+
+                                  <a class="btn btn-flat btn-info mb-3" href="<?php echo site_url()?>/Eta" role="button" style="width:200px"><font color="white"><i class="ti-file"></i> Data ETA</font></a>
+
+                            </div>
                            
                             <div class="card-body">
                                       
                                 <div class="col-md-12">
                                     <div class="row">
                                  
-                                        <div class="col-md-7">
+                                        <div class="col-md-6">
 
                                            <?php echo form_open('eta/delay'); ?>   
                                         </div>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                        <div class="col-md-2">
-                                          
+                                          <h6>Filter Tanggal Mulai</h6>
                                            <input type="date" name="search"  style="width: 200px" class="form-control" value="<?php echo $tgl1 ?>">
                                        </div>
+                                        
                                         <div class="col-md-2">
-                                          
+                                         <h6>Filter Tanggal Selesai</h6>
                                            <input type="date" name="search2"  style="width: 200px" class="form-control" value="<?php echo $tgl2 ?>">
                                        </div>
-                                       <div class="col-md-1">
-                                <button class="btn btn-default"><i class="fa fa-search"></i></button>
+                                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <button class="btn btn-default"><i class="fa fa-search"></i> Cari Data</button>
 
-                                    </div>
+                                    
                                    <?php echo form_close(); ?>
                                </div>
                             

@@ -25,6 +25,10 @@ class Barang extends CI_Controller {
         $data['brg']= $this->BarangModel->getBarang();
         $this->load->view('User/header');
         $this->load->view('User/Barang',$data);
+         }else if($this->session->userdata('logged_in')['hak_akses']==4){
+        $data['brg']= $this->BarangModel->getBarang();
+        $this->load->view('Personal/header');
+        $this->load->view('Personal/Barang',$data);
          }
 	}
 	public function updateBarang(){

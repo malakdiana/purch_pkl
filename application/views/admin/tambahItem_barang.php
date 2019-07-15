@@ -63,7 +63,7 @@
               <input type="hidden" id="jumlah-form" value="1" name="jumlah">                        
         
           
-              <div align="right"> <button type="submit" class="btn btn-primary" style="align-self: right">Simpan</button></div>
+              <div align="right"> <button type="submit" class="btn btn-success" style="align-self: right"><i class="ti-save"></i>  Simpan</button></div>
               <?php echo form_close() ?>
                
            

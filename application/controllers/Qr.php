@@ -26,7 +26,9 @@ public function index()
     }else if($this->session->userdata('logged_in')['hak_akses']==2){
              $this->load->view('User/header');
         $this->load->view('User/Qr',$data);
-
+    }else if($this->session->userdata('logged_in')['hak_akses']==4){
+             $this->load->view('Personal/header');
+        $this->load->view('Personal/Qr',$data);
 		
     }else{
         $this->load->view('Read_only/header');
@@ -40,9 +42,17 @@ public function index()
         $this->load->helper('url', 'form');
     
             $data['section']=$this->SectionModel->getSection();
+
+            if($this->session->userdata('logged_in')['hak_akses']==2){
             $this->load->view('User/header');
             $this->load->view('User/tambahQR', $data);
             $this->load->view('Admin/footer');
+            }else if($this->session->userdata('logged_in')['hak_akses']==4){
+            $this->load->view('Personal/header');
+            $this->load->view('Personal/tambahQR', $data);
+            $this->load->view('Admin/footer');
+    
+    }
        
                 
         
@@ -51,7 +61,7 @@ public function index()
 
     public function addQr(){
             $config['upload_path'] = './assets/file_qr/';
-            $config['allowed_types'] = 'pdf|jpg|png|jpeg|docx|xlsx';
+            $config['allowed_types'] = 'pdf|jpg|png|jpeg|doc|docx|xlsx';
             $this->load->library('upload', $config);
             $this->upload->initialize($config);
 
@@ -84,6 +94,9 @@ public function index()
           else if($this->session->userdata('logged_in')['hak_akses']==2){
         $this->load->view('User/header');
             $this->load->view('User/list_Vendor',$data);
+          }else if($this->session->userdata('logged_in')['hak_akses']==4){
+        $this->load->view('Personal/header');
+            $this->load->view('Personal/list_Vendor',$data);
           } else{
         $this->load->view('Read_only/header');
             $this->load->view('User/list_Vendor',$data);
@@ -95,7 +108,7 @@ public function index()
           $files=$_FILES['fupload'];
         $config['upload_path'] = './assets/file_qr/';
                    $config['upload_path'] = './assets/file_qr/';
-            $config['allowed_types'] = 'pdf|jpg|png|jpeg|doc|docx';
+            $config['allowed_types'] = 'pdf|jpg|png|jpeg|doc|docx|xlsx';
             $config['max_size']= 1000000000;
             $config['max_width']= 10240;
             $config['max_height']=7680;
@@ -128,9 +141,15 @@ $this->upload->initialize($config);
 
         public function editQrUser($id){
         $data['list'] = $this->QrModel->getQrById($id);
+        if($this->session->userdata('logged_in')['hak_akses']==2){
         $this->load->view('User/header');
         $this->load->view('User/editQR', $data);
         $this->load->view('Admin/footer');
+        }else if($this->session->userdata('logged_in')['hak_akses']==4){
+        $this->load->view('Personal/header');
+        $this->load->view('Personal/editQR', $data);
+        $this->load->view('Admin/footer');
+      }
     }
 
 
@@ -148,6 +167,10 @@ $this->upload->initialize($config);
         $this->load->view('User/header');
         $this->load->view('User/detailQuotation', $data);
         $this->load->view('Admin/footer');
+      }else if($this->session->userdata('logged_in')['hak_akses']==4){
+        $this->load->view('Personal/header');
+        $this->load->view('Personal/detailQuotation', $data);
+        $this->load->view('Admin/footer');
          }else{
          $this->load->view('Read_only/header');
         $this->load->view('Read_only/editQuotation', $data);
@@ -158,7 +181,7 @@ $this->upload->initialize($config);
 
     public function editQuotation($id){
       $config['upload_path'] = './assets/file_qr/';
-            $config['allowed_types'] = 'pdf|jpg|png|jpeg|docx|xlsx';
+            $config['allowed_types'] = 'pdf|jpg|png|jpeg|doc|docx|xlsx';
             $this->load->library('upload', $config);
             $this->upload->initialize($config);
                 $this->load->library('upload', $config);
@@ -182,7 +205,7 @@ $this->upload->initialize($config);
 
     public function editQuotationUser($id){
      $config['upload_path'] = './assets/file_qr/';
-            $config['allowed_types'] = 'pdf|jpg|png|jpeg|docx|xlsx';
+            $config['allowed_types'] = 'pdf|jpg|png|jpeg|doc|docx|xlsx';
             $this->load->library('upload', $config);
             $this->upload->initialize($config);
                 $this->load->library('upload', $config);
@@ -191,6 +214,8 @@ $this->upload->initialize($config);
 
   $this->QrModel->editQuotationGambar();
    $this->session->set_flashdata('editQr','<div class="alert alert-success" role="alert">SUKSES EDIT QUOTATION <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+
+
                redirect('Qr/tracking', 'refresh');
                  
 
@@ -199,6 +224,31 @@ $this->upload->initialize($config);
                $this->QrModel->editQuotation();
                   $this->session->set_flashdata('editQr','<div class="alert alert-success" role="alert">SUKSES EDIT QUOTATION <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
                redirect('Qr/tracking', 'refresh');
+            } 
+    }
+
+
+    public function editQuotationPersonal($id){
+     $config['upload_path'] = './assets/file_qr/';
+            $config['allowed_types'] = 'pdf|jpg|png|jpeg|doc|docx|xlsx';
+            $this->load->library('upload', $config);
+            $this->upload->initialize($config);
+                $this->load->library('upload', $config);
+$this->upload->initialize($config);
+          if($this->upload->do_upload('fupload')){
+
+  $this->QrModel->editQuotationGambar();
+   $this->session->set_flashdata('editQr','<div class="alert alert-success" role="alert">SUKSES EDIT QUOTATION <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+
+              
+               redirect('Qr/tracking_personal', 'refresh');
+                 
+
+            }else{
+             
+               $this->QrModel->editQuotation();
+                  $this->session->set_flashdata('editQr','<div class="alert alert-success" role="alert">SUKSES EDIT QUOTATION <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+               redirect('Qr/tracking_personal', 'refresh');
             } 
     }
 
@@ -216,7 +266,7 @@ $this->upload->initialize($config);
 
         $files=$_FILES['userfiles'];
         $config['upload_path'] = './assets/file_qr/';
-            $config['allowed_types'] = 'pdf|jpg|png|jpeg|doc|docx';
+            $config['allowed_types'] = 'pdf|jpg|png|jpeg|doc|docx|xlsx';
             $config['max_size']= 1000000000;
             $config['max_width']= 10240;
             $config['max_height']=7680;
@@ -298,11 +348,17 @@ $this->upload->initialize($config);
 
     public function tracking()
     {  $data['Qr']=$this->QrModel->getQr_tracking();
-
-        if($this->session->userdata('logged_in')['hak_akses']==2){
         $this->load->view('User/header');
         $this->load->view('User/Tracking_Qr',$data);
-        }
+        
+    }
+
+    public function tracking_personal()
+    {  $data['Qr']=$this->QrModel->getQr_tracking_personal();
+
+        $this->load->view('Personal/header');
+        $this->load->view('Personal/Tracking_Qr',$data);
+      
     }
 
 

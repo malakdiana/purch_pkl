@@ -21,11 +21,7 @@
                     <!-- data table start -->
                     <div class="col-12 mt-5">
                         <div class="card">
-                            <div  style="padding-top: 15px;padding-left: 15px">
-                                <a class="btn btn-flat btn-primary mb-3" href="<?php echo site_url()?>/Barang/tambahBarang" role="button"><i class="fa fa-plus"></i> Tambah Data</a>
-                                <a class="btn btn-flat btn-success mb-3" href="<?php echo site_url()?>/Barang/importBarang" role="button"><i class="ti-import"></i> Import Data</a>
-                                <a class="btn btn-flat btn-warning mb-3" href="<?php echo site_url()?>/Barang/export" role="button"><i class="ti-download"></i> Download Data</a></div>
-                            <div class="card-body">
+                           
                         <?=$this->session->flashdata('editBarang')?>
                          <?=$this->session->flashdata('deleteBarang')?>
                          <?=$this->session->flashdata('tambahBarang')?>
@@ -38,9 +34,7 @@
                                                 <th>NO BARANG</th>
                                             
                                                 <th>NAMA BARANG</th>
-                                           
-                                               
-                                                <th >ACTION</th>
+           
                                           
                                             </tr>
                                         </thead>
@@ -54,14 +48,7 @@
                                                 <td><?php echo $key->nama_barang;?></td>
                                             
                                     
-                                                <td>
-                                                      <div class="btn-group mb-xl-3" role="group" aria-label="Basic example">
-                                    
-                                    <a href="javascript:void(0);" onclick="modalDetail('<?php echo $key->no_barang?>','<?php echo $key->nama_barang ?>')"  data-toggle="modal" data-target="#myModalEdit"><button type="button" class="btn btn-primary" style="width:80px; height:50px;"><font color="white"><i class="fa fa-pencil"></i> Edit</font></button></a>
-                                    <a href="<?php echo site_url()?>/Barang/deleteBarang/<?php echo $key->no_barang?> " onclick="return confirm('Apakah Yakin Untuk Menghapus?')"> <button type="button" class="btn btn-danger" style="width:80px; height:50px;"><font color="white"><i class="fa fa-trash-o"></i> Hapus</font></button></a>
-                                  
-                                </div>
-                                           </td>
+                                               
                                              
                                             </tr>
                                             <?php }?>
@@ -83,14 +70,14 @@
         <div class="modal-dialog">
             <div class="modal-content" style="width: 800px; margin-left: -100px;padding: 20px" >
                 <div class="modal-header">
-                    <h4 class="modal-title">Edit Barang</h4>
+                    <h4 class="modal-title">Info Barang</h4>
                 </div>
           <?php echo form_open_multipart('Barang/updateBarang'); ?>
                 <?php echo validation_errors(); ?>
                  
                     <div class="form-group">
-                        <!-- <label for="">NO BARANG</label> -->
-                        <input type="text" class="form-control" name="no_barang" id="no_barang" value="" readonly="" hidden="" >
+                        <label for="">NO BARANG</label>
+                        <input type="text" class="form-control" name="no_barang" id="no_barang" value="" readonly="" >
                     </div>
                   
                     <div class="form-group">
@@ -105,8 +92,8 @@
                
                
             <div align="right" style="margin-bottom: 20px; margin-right: 30px">
-          <button class="btn btn-info" type="submit">Update</button>
-            <a href=""><button class="btn btn-warning" data-dismiss="modal">Batal</button></a>
+          <button class="btn-info" type="submit">Update</button>
+            <a href=""><button class="btn-warning" data-dismiss="modal">Batal</button></a>
         </div>
     
         <?php echo form_close(); ?>
@@ -160,3 +147,4 @@
 </body>
 
 </html>
+

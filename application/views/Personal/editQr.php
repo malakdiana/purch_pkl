@@ -23,7 +23,7 @@
                     <div class="col-12 mt-5">
                         <div class="card">
                                 <div class="card-body">
-                                     <?php echo form_open_multipart('Qr/editQuotationUser/'.$list[0]->id_penawaran) ?>
+                                     <?php echo form_open_multipart('Qr/editQuotationPersonal/'.$list[0]->id_penawaran) ?>
                                      <h3 align="center">Form Edit Quotation</h3><br>
                                        <div class="col-md-12">
                                             <div class="row">
@@ -78,7 +78,7 @@
                                              <label class="control-label" for="attention">Section :</label>
                                          </div>
                                          <div class="col-sm-4">
-                                            <input type="text" class="form-control" id="section" name="section" value="<?php echo $list[0]->section?>">
+                                            <input type="text" class="form-control" id="section" name="section" readonly="" value="<?php echo $list[0]->section?>">
                                         </div>
 
                                         </div>
@@ -89,7 +89,7 @@
                                                 <label class="control-label" for="no_hp">PIC :</label>
                                             </div>
                                             <div class="col-sm-4">
-                                                <input type="text" class="form-control" id="pic" name="pic" style="margin-bottom: 25px" value="<?php echo $list[0]->pic?>">
+                                                <input type="text" class="form-control" id="pic" name="pic" style="margin-bottom: 25px" readonly="" value="<?php echo $list[0]->pic?>">
                                             </div>
                                             <div class="col-md-2">
                                              <label class="control-label" for="tgl_input">Bahan :</label>
@@ -141,7 +141,7 @@
                                  
                                      
           
-              <div align="right"> <button type="submit" class="btn btn-success" style="align-self: right"><i class="ti-save"></i>  Simpan</button></div>
+              <div align="right"> <button type="submit" class="btn btn-primary" style="align-self: right">Simpan</button></div>
               <?php echo form_close() ?>
            
 
