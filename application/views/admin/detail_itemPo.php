@@ -42,7 +42,6 @@
                                         </thead>
                                         <tbody>
                                         <?php $no=1; $hasil_rupiah="Rp 0" ;$jumlah=0; foreach ($brg as $key) {
-
                                           ?>
                                             <tr>
                                         

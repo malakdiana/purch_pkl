@@ -39,6 +39,28 @@ public function index()
             $this->db->like('item_barang', $this->input->get("q"));
             $query = $this->db->select('id_item as id,item_barang as text')->where('id_purch',$id)->get("item");
             $json = $query->result();
+        }else{
+            $query = $this->db->select('id_item as id,item_barang as text')->where('id_purch',$id)->get("item");
+            $json = $query->result(); 
+        }
+
+        
+        echo json_encode($json);
+    }
+    public function getPObySup($id){
+        $json = [];
+
+
+        $this->load->database();
+
+        
+        if(!empty($this->input->get("q"))){
+            $this->db->like('no_po', $this->input->get("q"));
+            $query = $this->db->select('id_po as id,no_po as text')->where('id_supplier',$id)->get("po");
+            $json = $query->result();
+        }else{
+           $query = $this->db->select('id_po as id,no_po as text')->where('id_supplier',$id)->get("po");
+            $json = $query->result();  
         }
 
         
@@ -82,6 +104,25 @@ public function index()
         echo json_encode($data);
     }
 }
+
+public function getTotalPO(){
+    $id = $this->input->post("ids");
+    $jumlah=0;
+     $hasil=$this->db->query("SELECT item, sum(harga) as jumlah FROM bayangan WHERE id_po=".$id);
+            foreach ($hasil->result() as $data) {
+                $jumlah=$data->jumlah;
+            }
+            $x= $hasil->result();
+             $data=array(
+                   'id_po' => $id,
+                   'barang' => $x[0]->item,
+                   'jumlah' => $jumlah
+                    );
+                     
+        echo json_encode($data);
+    }
+
+
    
 	public function getPr(){
 
@@ -92,6 +133,9 @@ public function index()
         if(!empty($this->input->get("q"))){
             $this->db->like('pr_no', $this->input->get("q"));
             $query = $this->db->select('id,pr_no as text')->where('status','OPEN')->where('status_fa','1')->get("purch_req");
+            $json = $query->result();
+        }else{
+             $query = $this->db->select('id,pr_no as text')->where('status','OPEN')->where('status_fa','1')->get("purch_req");
             $json = $query->result();
         }
 
@@ -108,6 +152,9 @@ public function index()
         if(!empty($this->input->get("q"))){
             $this->db->like('nama_supplier', $this->input->get("q"));
             $query = $this->db->select('id_supplier as id,nama_supplier as text')->get("supplier");
+            $json = $query->result();
+        }else{
+              $query = $this->db->select('id_supplier as id,nama_supplier as text')->get("supplier");
             $json = $query->result();
         }
 

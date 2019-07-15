@@ -112,7 +112,6 @@ class PoModel extends CI_Model {
               echo "<script>alert('Gagal di tambahkan, Nomor PO tidak boleh sama')</script>";
              $this->load->view('Admin/header');
             $this->load->view('Admin/tambahPO');
-            die();
         }else{
 
 

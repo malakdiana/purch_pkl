@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="<?php echo base_url()?>assets/css/owl.carousel.min.css">
     <link rel="stylesheet" href="<?php echo base_url()?>assets/css/slicknav.min.css">
     <!-- amchart css -->
-    <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
+ 
     <!-- others css -->
     <link rel="stylesheet" href="<?php echo base_url()?>assets/css/typography.css">
     <link rel="stylesheet" href="<?php echo base_url()?>assets/css/default-css.css">
@@ -25,6 +25,13 @@
       <link rel="stylesheet" type="text/css" href="<?php echo base_url()?>assets/dataTables/css/jquery.dataTables.css">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url()?>assets/dataTables/css/dataTables.bootstrap.css">
 </head>
+<style>
+      /* script menghilangkan Horizontal Scroll */
+      html, body {
+      max-width: 100%;
+      overflow-x: hidden;
+      }
+      </style>
 
 <body class="body-bg">
     <!--[if lt IE 8]>
@@ -60,9 +67,11 @@
                                          <a href="javascript:void(0)" aria-expanded="true"><h6><i class="ti-layout-sidebar-left"></i><span>Data</h6>
                                     </span></a>
                                 <ul class="submenu">
-                                      <li><a href="<?php echo site_url()?>/#/">Input Doc Rec</a></li>
-                                    <li><a href="<?php echo site_url()?>/#">Data Doc Rec</a></li>
+                                      <li><a href="<?php echo site_url()?>/Invoice/docrec">Input Doc Rec</a></li>
+                                    <li><a href="<?php echo site_url()?>/Invoice">Data Doc Rec</a></li>
+                                     <li><a href="<?php echo site_url()?>/Invoice/poPrint">List PO</a></li>
                                    
+
                                    
                                   
                                 </ul>
