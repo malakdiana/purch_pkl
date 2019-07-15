@@ -1,3 +1,22 @@
+<style type="text/css">
+    .password{
+    position: relative;
+}
+
+.password input[type="password"]{
+    padding-right: 30px;
+}
+
+.password .fa,#password2 .fa {
+    display:none;
+    right: 15px;
+    position: absolute;
+    top: 12px;
+    cursor:pointer;
+}
+
+
+</style>
 
  <div class="page-title-area">
                 <div class="row align-items-center">
@@ -111,14 +130,21 @@
                     </div>
                     <div class="form-group">
                         <label for="">PASSWORD</label>
+                         <div class="password">
+                        
+                        <input type="password" class="form-control" name="password" id="myInput" value="" >
+                        </div>
 
-                        <input type="text" class="form-control" name="password" id="password" value="" >
+                        <input type="checkbox" onclick="myFunction()"> Show Password 
                     </div>
 
                     <div class="form-group">
                         <label for="">KONFRIMASI PASSWORD</label>
-
-                        <input type="text" class="form-control" name="konfirpassword" id="konfirpassword" value="" >
+                        <div class="password">
+                        <i class="fa fa-eye"></i>
+                        <input type="password" class="form-control" name="konfirpassword" id="myInput2" value="" >
+                        </div>
+                        <input type="checkbox" onclick="myFunction2()"> Show Konfirmasi Password 
                     </div>
 
                     <div class="form-group">
@@ -166,12 +192,7 @@
  
 
      <script type="text/javascript">
-    /* Formating function for row details */
-    
-
-      /*
-       * Initialse DataTables, with no sorting on the 'details' column
-       */
+  
       var oTable = $('#dataTablesss').dataTable({
         "aoColumnDefs": [{
           "bSortable": true,
@@ -182,10 +203,24 @@
         ]
       });
 
-      /* Add event listener for opening and closing details
-       * Note that the indicator for showing which row is open is not controlled by DataTables,
-       * rather it is done here
-       */
+  function myFunction() {
+  var x = document.getElementById("myInput");
+  if (x.type === "password") {
+    x.type = "text";
+  } else {
+    x.type = "password";
+  }
+} 
+
+ function myFunction2() {
+  var x = document.getElementById("myInput2");
+  if (x.type === "password") {
+    x.type = "text";
+  } else {
+    x.type = "password";
+  }
+} 
+
     
   </script>
 </body>

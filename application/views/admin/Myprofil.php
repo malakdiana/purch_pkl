@@ -62,7 +62,7 @@
                                                 <div class="password">
                                                     
                                                     <i class="fa fa-eye"></i>
-                                                    <input type="password" id="passwordfield" class="form-control" style="margin-bottom: 25px" name="password" value="" autocomplete="">
+                                                    <input type="password" id="passwordfield" class="form-control" style="margin-bottom: 25px" name="password"  autocomplete="">
                                                     </div>
                                                     
     
@@ -74,7 +74,7 @@
                                                      <div class="password">
 
                                                      <i class="fa fa-eye"></i>
-                                                    <input type="password" id="konfirpasswordfield" class="form-control" style="margin-bottom: 25px" name="konfirpassword" value="" autocomplete="">
+                                                    <input type="password" id="konfirpasswordfield" class="form-control" style="margin-bottom: 25px" name="konfirpassword"  autocomplete="">
     
                                             </div>
                                             </div>

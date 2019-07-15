@@ -1,4 +1,23 @@
+<style type="text/css">
+    .password{
+    position: relative;
+}
 
+.password input[type="password"]{
+    padding-right: 30px;
+}
+
+.password .fa,#password2 .fa {
+    display:none;
+    left: 350px;
+    position: absolute;
+    top: 12px;
+    cursor:pointer;
+}
+
+
+</style>
+ 
  <div class="page-title-area">
                 <div class="row align-items-center">
                     <div class="col-sm-6">
@@ -31,24 +50,32 @@
                                      <div class="form-group" >
                                                      <label class="control-label " for="username">Username:</label>
                                            
-                                                <input type="text" class="form-control" name="username" style="margin-bottom: 25px; width:400px; " required="">
+                                                <input type="text" class="form-control" name="username" style="margin-bottom: 25px; width:400px; " autocomplete="off" required="">
                                             </div>  
-                                                
-
-                                       
-
-                                           
 
                                             <div class="form-group" >
                                                      <label class="control-label " for="password">Password :</label>
+
+                                                     <div class="password">
+                                                    
+                                                    <i class="fa fa-eye"></i>
+                                                    <input type="password" id="passwordfield" class="form-control" style="margin-bottom: 25px; width:400px;" name="password" autocomplete="off" required="">
+                                                    </div>
                                            
-                                                <input type="text"  class="form-control" name="password" style="margin-bottom: 25px; width:400px;" required="">
+                                               
                                             </div>
 
                                             <div class="form-group" >
                                                      <label class="control-label " for="konfirpassword"> Konfirmasi Password :</label>
+
+                                                      <div class="password">
+
+                                                     <i class="fa fa-eye"></i>
+                                                    <input type="password" id="konfirpasswordfield" class="form-control"  style="margin-bottom: 25px; width:400px;" name="konfirpassword" autocomplete="off" required="">
+    
+                                            </div>
                                            
-                                                <input type="text"  class="form-control" name="konfirpassword" style="margin-bottom: 25px; width:400px;" required="">
+                                                
                                             </div>
 
                                             <div class="form-group" >
@@ -104,4 +131,35 @@
         // Buat fungsi untuk mereset form ke semula
        
     });
+
+
+$("#passwordfield").on("keyup",function(){
+    if($(this).val())
+        $(".fa-eye").show();
+    else
+        $(".fa-eye").hide();
+    });
+$(".fa-eye").mousedown(function(){
+                $("#passwordfield").attr('type','text');
+            }).mouseup(function(){
+                $("#passwordfield").attr('type','password');
+            }).mouseout(function(){
+                $("#passwordfield").attr('type','password');
+            });
+
+
+
+$("#konfirpasswordfield").on("keyup",function(){
+    if($(this).val())
+        $(".fa-eye").show();
+    else
+        $(".fa-eye").hide();
+    });
+$(".fa-eye").mousedown(function(){
+                $("#konfirpasswordfield").attr('type','text');
+            }).mouseup(function(){
+                $("#konfirpasswordfield").attr('type','password');
+            }).mouseout(function(){
+                $("#konfirpasswordfield").attr('type','password');
+            });
     </script>
