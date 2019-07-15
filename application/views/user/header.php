@@ -66,7 +66,7 @@
                                         
                                     </li>
                                     <li>
-                                         <a href="javascript:void(0)" aria-expanded="true"><h6><i class="ti-layout-sidebar-left"></i><span>Data</h6>
+                                         <a href="javascript:void(0)" aria-expanded="true"><h6><i class="ti-book"></i><span>Data</h6>
                                     </span></a>
                                 <ul class="submenu">
                                       <li><a href="<?php echo site_url()?>/Purch_req/">Tracking My Order</a></li>
@@ -79,7 +79,7 @@
                                     </li>
                                    
                                     <li >
-                                       <a href="javascript:void(0)" aria-expanded="true"><h6><i class="ti-slice"></i><span>Input Data</h6></span></a>
+                                       <a href="javascript:void(0)" aria-expanded="true"><h6><i class="ti-pencil"></i><span>Input Data</h6></span></a>
                                 <ul class="submenu">
                                      <li><a href="<?php echo site_url()?>/Purch_req/tambahPR">Purchase Request</a></li>
                                     <li><a href="<?php echo site_url()?>/Qr/tambahQR">Quotation Request</a></li>

@@ -57,7 +57,7 @@
                                         
                                     </li>
                                     <li>
-                                         <a href="javascript:void(0)" aria-expanded="true"><h6><i class="ti-layout-sidebar-left"></i><span>Data</h6>
+                                         <a href="javascript:void(0)" aria-expanded="true"><h6><i class="ti-book"></i><span>Data</h6>
                                     </span></a>
                                 <ul class="submenu">
                                       <li><a href="<?php echo site_url()?>/Po">Data PO</a></li>
