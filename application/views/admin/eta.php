@@ -46,6 +46,8 @@
 
                                   <a class="btn btn-flat btn-success mb-3" href="<?php echo site_url()?>/Eta/export" role="button"><font color="white"><i class="ti-download"></i> Download All Data</font></a>
 
+                                  <a class="btn btn-flat btn-secondary mb-3" href="<?php echo site_url()?>/Eta/delay" role="button"><font color="white"><i class="ti-file"></i> Data Delay</font></a>
+
                             </div>
                            
                             <div class="card-body">

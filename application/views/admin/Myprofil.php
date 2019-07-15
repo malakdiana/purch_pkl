@@ -1,4 +1,22 @@
+<style type="text/css">
+    .password{
+    position: relative;
+}
 
+.password input[type="password"]{
+    padding-right: 30px;
+}
+
+.password .fa,#password2 .fa {
+    display:none;
+    right: 15px;
+    position: absolute;
+    top: 12px;
+    cursor:pointer;
+}
+
+
+</style>
  <div class="page-title-area">
                 <div class="row align-items-center">
                     <div class="col-sm-6">
@@ -21,13 +39,12 @@
                                 <div class="card-body">
                                 <?=$this->session->flashdata('edit_profile')?>
                                      <?php echo form_open('Dashboard/edit_profile') ?>
-                                     
-                                     
+                                      <div class="col-4 mt-6">
 
                                             <div class="form-group">
                                                      
 
-                                                    <input type="text" class="form-control" style="margin-bottom: 25px" name="id_user" readonly="" value="<?php echo $this->session->userdata('logged_in')['id_user']?>" hidden="">
+                                                    <input type="text" class="form-control" style="margin-bottom: 25px; width:200px; name="id_user" readonly="" value="<?php echo $this->session->userdata('logged_in')['id_user']?>" hidden="">
                                             </div>
                                        
                                                
@@ -39,20 +56,27 @@
     
                                             </div>
 
-                                            
+
+                                            <div class="form-group">
+                                             <label class="control-label " for="password">PASSWORD:</label>
                                                 <div class="password">
-                                                     <label class="control-label " for="konfirpassword">PASSWORD:</label>
+                                                    
                                                     <i class="fa fa-eye"></i>
-                                                    <input type="password" id="passwordfield" class="form-control" style="margin-bottom: 25px" name="konfirpassword" value="">
+                                                    <input type="password" id="passwordfield" class="form-control" style="margin-bottom: 25px" name="password" value="" autocomplete="">
+                                                    </div>
                                                     
     
                                             </div>
 
                                             <div class="form-group">
-                                                     <label class="control-label " for="password">KONFIRMASI PASSWORD:</label>
+                                            <label class="control-label " for="konfirpassword">KONFIRMASI PASSWORD:</label>
 
-                                                    <input type="text" class="form-control" style="margin-bottom: 25px" name="password" value="">
+                                                     <div class="password">
+
+                                                     <i class="fa fa-eye"></i>
+                                                    <input type="password" id="konfirpasswordfield" class="form-control" style="margin-bottom: 25px" name="konfirpassword" value="" autocomplete="">
     
+                                            </div>
                                             </div>
                                             
 
@@ -85,6 +109,22 @@ $(".fa-eye").mousedown(function(){
                 $("#passwordfield").attr('type','password');
             }).mouseout(function(){
                 $("#passwordfield").attr('type','password');
+            });
+
+
+
+$("#konfirpasswordfield").on("keyup",function(){
+    if($(this).val())
+        $(".fa-eye").show();
+    else
+        $(".fa-eye").hide();
+    });
+$(".fa-eye").mousedown(function(){
+                $("#konfirpasswordfield").attr('type','text');
+            }).mouseup(function(){
+                $("#konfirpasswordfield").attr('type','password');
+            }).mouseout(function(){
+                $("#konfirpasswordfield").attr('type','password');
             });
 
 </script>

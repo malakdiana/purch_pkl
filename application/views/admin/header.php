@@ -64,6 +64,12 @@
                                         <a href="<?php echo site_url()?>/Dashboard"><h6><i class="ti-home"></i><span>Home</h6></span></a>
                                         
                                     </li>
+
+                                    
+                                    <li>
+                                        <a href="<?php echo site_url()?>/belum"><h6><i class="ti-bar-chart"></i><span>Grafik</h6></span></a>
+                                        
+                                    </li>
                                     <li>
                                          <a href="javascript:void(0)" aria-expanded="true"><h6><i class="ti-layout-sidebar-left"></i><span>Data</h6>
                                     </span></a>
@@ -76,6 +82,7 @@
                                     <li><a href="<?php echo site_url()?>/Riwayatdatang">Riwayat Kedatangan</a></li>
                                 </ul>
                                     </li>
+
                                     <li>
                                        <a href="javascript:void(0)" aria-expanded="true"><h6><i class="ti-pie-chart"></i><span>Master Data</h6></span></a>
                                 <ul class="submenu">
@@ -104,14 +111,14 @@
                                     <li><a href="<?php echo site_url()?>/Login/ManajemenUser">Management User</a></li>
                                 </ul>
                                     </li>
-                                    <li >
+                                    <!-- <li >
                                         <a href="javascript:void(0)" aria-expanded="true"><h6><i class="ti-folder"></i><span>ETA</span></h6></span></a>
                                 <ul class="submenu">
                                    
                                     <li><a href="<?php echo site_url()?>/Eta">ETA</a></li>
                                     <li><a href="<?php echo site_url()?>/Eta/delay">Delay</a></li>
                                 </ul>
-                                    </li>
+                                    </li> -->
                                     
                                 </ul>
                             </nav>
