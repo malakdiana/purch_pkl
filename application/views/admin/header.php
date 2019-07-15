@@ -67,7 +67,7 @@
 
                                     
                                     <li>
-                                        <a href="<?php echo site_url()?>/belum"><h6><i class="ti-bar-chart"></i><span>Grafik</h6></span></a>
+                                        <a href="<?php echo site_url()?>/Grafik"><h6><i class="ti-bar-chart"></i><span>Grafik</h6></span></a>
                                         
                                     </li>
                                     <li>
