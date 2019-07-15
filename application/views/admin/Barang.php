@@ -57,8 +57,8 @@
                                                 <td>
                                                       <div class="btn-group mb-xl-3" role="group" aria-label="Basic example">
                                     
-                                    <button type="button" class="btn btn-primary" style="width:80px; height:50px;"><a href="javascript:void(0);" onclick="modalDetail('<?php echo $key->no_barang?>','<?php echo $key->nama_barang ?>')"  data-toggle="modal" data-target="#myModalEdit"><font color="white"><i class="fa fa-pencil"></i> Edit</font></a></button>
-                                    <button type="button" class="btn btn-danger" style="width:80px; height:50px;"> <a href="<?php echo site_url()?>/Barang/deleteBarang/<?php echo $key->no_barang?> " onclick="return confirm('Apakah Yakin Untuk Menghapus?')"><font color="white"><i class="fa fa-trash-o"></i> Hapus</font></a></button>
+                                    <a href="javascript:void(0);" onclick="modalDetail('<?php echo $key->no_barang?>','<?php echo $key->nama_barang ?>')"  data-toggle="modal" data-target="#myModalEdit"><button type="button" class="btn btn-primary" style="width:80px; height:50px;"><font color="white"><i class="fa fa-pencil"></i> Edit</font></button></a>
+                                    <a href="<?php echo site_url()?>/Barang/deleteBarang/<?php echo $key->no_barang?> " onclick="return confirm('Apakah Yakin Untuk Menghapus?')"> <button type="button" class="btn btn-danger" style="width:80px; height:50px;"><font color="white"><i class="fa fa-trash-o"></i> Hapus</font></button></a>
                                   
                                 </div>
                                            </td>
@@ -89,8 +89,8 @@
                 <?php echo validation_errors(); ?>
                  
                     <div class="form-group">
-                        <label for="">NO BARANG</label>
-                        <input type="text" class="form-control" name="no_barang" id="no_barang" value="" readonly="" >
+                        <!-- <label for="">NO BARANG</label> -->
+                        <input type="text" class="form-control" name="no_barang" id="no_barang" value="" readonly="" hidden="" >
                     </div>
                   
                     <div class="form-group">

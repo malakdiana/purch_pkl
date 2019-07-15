@@ -54,12 +54,12 @@
                                                   <div class="btn-group mb-xl-3" role="group" aria-label="Basic example">
 
                                    
-                                    <button type="button" class="btn btn-info" style="width:80px; height:50px;"><a href="<?php echo site_url()?>/Po/detail_itemPo/<?php echo $key->id_po?>"><font color="white"><i class="fa fa-th-list"></i> Detail</font></a></button>
+                                   <a href="<?php echo site_url()?>/Po/detail_itemPo/<?php echo $key->id_po?>"> <button type="button" class="btn btn-info" style="width:80px; height:50px;"><font color="white"><i class="fa fa-th-list"></i> Detail</font></button></a>
 
-                                     <button type="button" class="btn btn-success" style="width:105px; height:50px;"> <a href="<?php echo site_url()?>/Po/tambahItem/<?php echo $key->id_po?>"><font color="white"><i class="fa fa-pencil-square-o"></i> Kelola PR</font></a></button>
+                                     <a href="<?php echo site_url()?>/Po/tambahItem/<?php echo $key->id_po?>"> <button type="button" class="btn btn-success" style="width:105px; height:50px;"><font color="white"><i class="fa fa-pencil-square-o"></i> Kelola PR</font></button></a>
 
                                    
-                                    <button type="button" class="btn btn-danger" style="width:80px; height:50px;"><a href="<?php echo site_url()?>/Po/deletePo/<?php echo $key->id_po?> " onclick="return confirm('Apakah Yakin Untuk Menghapus?')"><font color="white"><i class="fa fa-trash-o"></i> Hapus</font></a></button>
+                                   <a href="<?php echo site_url()?>/Po/deletePo/<?php echo $key->id_po?> " onclick="return confirm('Apakah Yakin Untuk Menghapus?')"> <button type="button" class="btn btn-danger" style="width:80px; height:50px;"><font color="white"><i class="fa fa-trash-o"></i> Hapus</font></button></a>
                                 </div>
                                                 
                                                 </td>
