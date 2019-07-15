@@ -136,6 +136,30 @@ public function index()
 
     }
 
+     public function GetItem_barang_user($id){
+
+            $data['Purch_req']= $this->Purch_reqModel->GetItem_barang($id);
+            $data['detail']= $this->Purch_reqModel->jumlahQty($id);
+            $this->load->model('BarangModel');
+            $data['barang']= $this->BarangModel->getBarang(); $data['id']=$id;
+                if($this->session->userdata('logged_in')['hak_akses']==1){
+            $this->load->view('Admin/header');
+            $this->load->view('Admin/GetItem_barang',$data);
+
+        }else if($this->session->userdata('logged_in')['hak_akses']==2){
+            $this->load->view('User/header');
+            $this->load->view('User/GetItem_barang',$data);
+          }else if($this->session->userdata('logged_in')['hak_akses']==4){
+            $this->load->view('Personal/header');
+            $this->load->view('Personal/GetItem_barang',$data);
+         
+            }else{
+            $this->load->view('Read_only/header');
+            $this->load->view('Read_only/GetItem_barang',$data);
+            }   
+
+    }
+
     public function updateItem(){
         $this->Purch_reqModel->updateItem();
                 $this->session->set_flashdata('editItem','<div class="alert alert-success" role="alert">SUKSES UPDATE DATA <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');

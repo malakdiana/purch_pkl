@@ -88,7 +88,7 @@
 
                                                 <td>
                                                   <div class="btn-group mb-xl-3" role="group" aria-label="Basic example">
-                                    <button type="button" class="btn btn-info" style="width:80px; height:50px;"><a href="<?php echo site_url()?>/Purch_req/GetItem_barang/<?php echo $key->id?>"><font color="white"><i class="fa fa-th-list"></i> Detail</font></a></button>
+                                   <a href="<?php echo site_url()?>/Purch_req/GetItem_barang_user/<?php echo $key->id?>"> <button type="button" class="btn btn-info" style="width:80px; height:50px;"><font color="white"><i class="fa fa-th-list"></i> Detail</font></button></a>
 
                                    
 

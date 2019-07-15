@@ -83,10 +83,10 @@
 
                                                 <div class="btn-group mb-xl-3" role="group" aria-label="Basic example">
 
-                                                       <button type="button" class="btn btn-info" style="width:80px; height:45px;"> <a href="<?php echo site_url()?>/Qr/detailQuotationUser/<?php echo $key->id_penawaran?>" 
-                                                    ><font color="white"><i class="fa fa-th-list"></i> Detail</font></a></button>
+                                                        <a href="<?php echo site_url()?>/Qr/detailQuotationUser/<?php echo $key->id_penawaran?>" 
+                                                    ><button type="button" class="btn btn-info" style="width:80px; height:45px;"><font color="white"><i class="fa fa-th-list"></i> Detail</font></button></a>
                                                     
-                                                    <button type="button" class="btn btn-primary" style="width:85px; height:45px;"> <a href="<?php echo site_url()?>/Qr/listvendor/<?php echo $key->id_penawaran?>"><font color="white"><i class="fa fa-book"></i> Vendor </font></a></button>
+                                                     <a href="<?php echo site_url()?>/Qr/listvendor/<?php echo $key->id_penawaran?>"><button type="button" class="btn btn-primary" style="width:85px; height:45px;"><font color="white"><i class="fa fa-book"></i> Vendor </font></button></a>
                                     
                                   
                                                 </div>
