@@ -44,7 +44,7 @@
                                             <div class="form-group">
                                                      
 
-                                                    <input type="text" class="form-control" style="margin-bottom: 25px; width:200px; name="id_user" readonly="" value="<?php echo $this->session->userdata('logged_in')['id_user']?>" hidden="">
+                                                    <input type="text" class="form-control" style="margin-bottom: 25px; width:200px;" name="id_user" readonly="" value="<?php echo $this->session->userdata('logged_in')['id_user']?>" hidden="">
                                             </div>
                                        
                                                
@@ -55,6 +55,19 @@
                                                     <input type="text" class="form-control" style="margin-bottom: 25px" name="username" value="<?php echo $this->session->userdata('logged_in')['username']?>" readonly="">
     
                                             </div>
+
+
+                                             <div class="form-group">
+                                             
+                                                <div class="password">
+                                                    
+                                                    
+                                                    <input type="password"  class="form-control" style="margin-bottom: 25px" name="password"  hidden="">
+                                                    </div>
+                                                    
+    
+                                            </div>
+
 
 
                                             <div class="form-group">

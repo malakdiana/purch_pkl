@@ -56,7 +56,7 @@
                                    
                                    <a href="<?php echo site_url()?>/Po/detail_itemPo/<?php echo $key->id_po?>"> <button type="button" class="btn btn-info" style="width:80px; height:50px;"><font color="white"><i class="fa fa-th-list"></i> Detail</font></button></a>
 
-                                     <a href="<?php echo site_url()?>/Po/tambahItem/<?php echo $key->id_po?>"> <button type="button" class="btn btn-success" style="width:105px; height:50px;"><font color="white"><i class="fa fa-pencil-square-o"></i> Kelola PR</font></button></a>
+                                     <a href="<?php echo site_url()?>/Po/tambahItem/<?php echo $key->id_po?>"> <button type="button" class="btn btn-success" style="width:105px; height:50px;"><font color="white"><i class="fa fa-pencil-square-o"></i> Kelola PO</font></button></a>
 
                                    
                                    <a href="<?php echo site_url()?>/Po/deletePo/<?php echo $key->id_po?> " onclick="return confirm('Apakah Yakin Untuk Menghapus?')"> <button type="button" class="btn btn-danger" style="width:80px; height:50px;"><font color="white"><i class="fa fa-trash-o"></i> Hapus</font></button></a>

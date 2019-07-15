@@ -159,9 +159,9 @@
       </tbody>
         </table>
         <div align="right">
-        <button class="btn btn-success" type="submit">Simpan</button>
-        <button type="button" class="btn btn-info" id="btn-tambah-form">Tambah Data Form</button>
-        <button type="button" id="btn-reset-form" class="btn btn-warning">Reset Form</button>
+        <button class="btn btn-success" type="submit"><i class="ti-save"></i>  Simpan</button>
+        <button type="button" class="btn btn-info" id="btn-tambah-form"><i class="ti-plus"></i>  Tambah Data Form</button>
+        <button type="button" id="btn-reset-form" class="btn btn-warning"><i class="ti-reload"></i>  Reset Form</button>
         <input type="hidden" id="jumlah-form" name="jumlah" value="1">
 
        </div>

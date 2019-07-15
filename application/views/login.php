@@ -53,12 +53,12 @@
                     <div class="login-form-body">
                         <div class="form-gp">
                             <label for="exampleInputEmail1">Username</label>
-                            <input type="text" id="exampleInputEmail1" name="username">
+                            <input type="text" id="exampleInputEmail1" name="username" autocomplete="off">
                             <i class="fa fa-user"></i>
                         </div>
                         <div class="form-gp">
                             <label for="exampleInputPassword1">Password</label>
-                            <input type="password" id="exampleInputPassword1" name="password">
+                            <input type="password" id="exampleInputPassword1" name="password" autocomplete="off">
                             
                             <i class="ti-lock"></i>
                         </div>
