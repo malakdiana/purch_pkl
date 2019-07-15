@@ -44,7 +44,7 @@
                         <div  style="padding-top: 15px;padding-left: 15px">
 
 
-                                  <a class="btn btn-flat btn-secondary mb-3" href="<?php echo site_url()?>/Eta" role="button"><font color="white"><i class="ti-file"></i> Data ETA</font></a>
+                                  <a class="btn btn-flat btn-info mb-3" href="<?php echo site_url()?>/Eta" role="button" style="width:200px"><font color="white"><i class="ti-file"></i> Data ETA</font></a>
 
                             </div>
                            

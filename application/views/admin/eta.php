@@ -41,14 +41,16 @@
 
                         <div class="card">
                         <div  style="padding-top: 15px;padding-left: 15px">
-                                
-                                  <a class="btn btn-flat btn-warning mb-3" data-toggle="modal" data-target="#myModalDownload"><i class="ti-download"></i> Download Data By Date</a>
 
-                                  <a class="btn btn-flat btn-success mb-3" href="<?php echo site_url()?>/Eta/export" role="button"><font color="white"><i class="ti-download"></i> Download All Data</font></a>
+                                  <a class="btn btn-flat btn-info mb-3" href="<?php echo site_url()?>/Eta/delay" role="button" style="width:180px"><font color="white"><i class="ti-file"></i> Data Delay</font></a>
 
-                                  <a class="btn btn-flat btn-secondary mb-3" href="<?php echo site_url()?>/Eta/delay" role="button"><font color="white"><i class="ti-file"></i> Data Delay</font></a>
+
+                                  <a class="btn btn-flat btn-success mb-3" data-toggle="modal" data-target="#myModalDownload"><font color="white"><i class="ti-download"></i> Download Data By Date</font></a>
+
+                                  <a class="btn btn-flat btn-primary mb-3" href="<?php echo site_url()?>/Eta/export" role="button"><font color="white"><i class="ti-download"></i> Download All Data</font></a>
 
                             </div>
+
                            
                             <div class="card-body">
                                       
