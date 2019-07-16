@@ -139,28 +139,76 @@ margin-left: 25px;
 			<td rowspan="3" style="width: 370px; border-top:0px; text-align: left;vertical-align: top;padding-top: 2px;padding-left: 2px;"> Payment for : <br> <p align="center"><b><?php foreach ($inv as $key ) {
 				 echo $key->no_invoice.",";
 			} ?>
-				
-				<br><br>
-				<?php 	echo $barang; ?>
 			</b></p>
-				
+				<table style="border: 0px" class="empat">
+					<tr>
+						<td style="text-align: left;">MATERIAL = <?php echo $qtymat; ?> x <?php echo number_format($material,2,',','.');?> </td>
+						<td > = </td>
+						<td style="text-align: right;"> <?php echo number_format($totalmat,2,',','.');?></td>
+					</tr>
+					<tr>
+						<td style="text-align: left;">JASA = <?php echo $qtyjas; ?> x <?php echo number_format($jasa,2,',','.'); ?></td>
+						<td > = </td>
+						<td style="text-align: right;"> <?php echo number_format($totaljas,2,',','.'); ?></td>
+					</tr>
+					<tr >
+						<td ></td>
+						<td ></td>
+						<td style="padding-top: -10px;border-top:1px solid black;"><td style="padding-top: -8px;">+</td></td>
+					</tr>
+					<tr style="margin-top: -8px">
+						<td ></td>
+						<td ></td>
+						<td style="text-align: right;"><?php echo number_format($subtotal,2,',','.');; ?></td>
+					</tr>
+					<tr >
+						<td style="text-align: left;">PPN</td>
+						<td > = </td>
+						<td style="text-align: right;"> <?php echo number_format($totalppn,2,',','.'); ?></td>
+					</tr>
+					<tr>
+						<td ></td>
+						<td ></td>
+						<td style="padding-top: -10px;border-top:1px solid black;"><td style="padding-top: -8px;">+</td></td>
+					</tr>
+					<tr>
+						<td ></td>
+						<td > </td>
+						<td style="text-align: right;"> <?php $x= $totalppn+$subtotal; echo number_format($x,2,',','.');; ?></td>
+					</tr>
+					<tr>
+						<td style="text-align: left;">PPH = Total Jasa x <?php 	echo $pph; ?>%</td>
+						<td > = </td>
+						<td style="text-align: right;"><?php echo number_format($totalpph,2,',','.'); ?></td>
+					</tr>
+					<tr>
+						<td ></td>
+						<td ></td>
+						<td style="padding-top: -10px;border-top:1px solid black;"><td style="padding-top: -8px;">-</td></td>
+					</tr>
+					<tr>
+						<td ></td>
+						<td > </td>
+						<td style="text-align: right;"> <?php echo number_format($total,2,',','.'); ?></td>
+					</tr>		
+				</table>
 			</td>
-			<td colspan="4" style="border-top:0px;width: 310px;padding-bottom: 2px;height: 30px" width="" height="20px">General Ledger</td>
+			<td height="20px" colspan="4" style="border-top:0px;width: 310px;">General Ledger</td>
 		</tr>
-		<tr>
-			<td style="padding-bottom: 2px;padding-top: 2px" height="20px">Profil Center</td>
+		<tr >
+			<td style="padding-bottom: 2px;padding-top: 2px" >Profil Center</td>
 			<td style="padding-bottom: 2px;padding-top: 2px">Account Code</td>
 			<td style="padding-bottom: 2px;padding-top: 2px">Activity Centre</td>
 			<td style="padding-bottom: 2px;padding-top: 2px">Amount</td>
 		</tr>
 		<tr >
-			<td height="110px"></td>
+			<td></td>
 			<td></td>
 			<td></td>
 			<td></td>
 		</tr>
 		<tr>
-			<td colspan="5" style="text-align: left;padding-bottom: 2px;padding-top: 2px;padding-left: 2px;" height="20px">Paid Thru :</td>
+			<td colspan="5" style="text-align: left;padding-bottom: 2px;padding-top: 2px;padding-left: 2px;" height="30px">Paid Thru :</td>
 		</tr>
 
 	</table>

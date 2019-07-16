@@ -56,9 +56,11 @@ public function index()
 public function detailPrint(){
 	$id_po = $this->input->post('id_po');
 	 $data['inv']= $this->InvoiceModel->getInvoice($id_po);
+	 $data['barang']= $this->input->post('barang');
 	$material = $this->input->post('material');
 	$qtymat = $this->input->post('qtymat');
 	$jasa = $this->input->post('jasa');
+
 	$qtyjas = $this->input->post('qtyjas');
 	$pph = $this->input->post('pph');
 	$ppn = $this->input->post('ppn');
@@ -78,22 +80,29 @@ public function detailPrint(){
 	    $data['qtyjas'] = $qtyjas;
 	$totalpph = $totaljas * $pph / 100;
 	  $data['totalpph'] = $totalpph;
+
 	  $data['subtotal'] = $totaljas+$totalmat;
-	$totalppn = ($totaljas+$totalmat) * $ppn / 100;
+	  if(empty($material)&&empty($jasa)){
+	  	  $data['subtotal'] = $this->input->post('jumlah');
+	  }
+	$totalppn = $data['subtotal'] * $ppn / 100;
 	  $data['totalppn'] = $totalppn;
-	$total = $totaljas+$totalmat+$totalppn-$totalpph;
+	$total = $data['subtotal']+$totalppn-$totalpph;
 	  $data['total'] = $total;
 	  $data['pph'] = $pph;
+$data['say'] = $this->terbilang($total)." Rupiah";
+		$paper_size='A5';
 
-		$paper_size='A5'; //paper size
-		//$html="";
+		$orientation = 'landscape'; 
 
+	if(empty($material) && empty($jasa)){
 
+			$html=$this->load->view('Invoice/print',$data,true);
+	}else{
+			$html=$this->load->view('Invoice/printdetaill',$data,true);
+	}
 
-		$orientation = 'landscape'; //tipe format kertas
 	
-	$html=$this->load->view('Invoice/print',$data,true);
-	//	$html = $this->output->get_output();
 
 $this->load->library('dompdf_gen');		
 $dompdf = new DOMPDF();
@@ -105,6 +114,43 @@ $dompdf = new DOMPDF();
 	
 
 }
+
+function penyebut($nilai) {
+		$nilai = abs($nilai);
+		$huruf = array("", "Satu", "Dua", "Tiga", "Empat", "Lima", "Enam", "Tujuh", "Delapan", "Sembilan", "Sepuluh", "Sebelas");
+		$temp = "";
+		if ($nilai < 12) {
+			$temp = " ". $huruf[$nilai];
+		} else if ($nilai <20) {
+			$temp = $this->penyebut($nilai - 10). " Belas";
+		} else if ($nilai < 100) {
+			$temp = $this->penyebut($nilai/10)." Puluh". $this->penyebut($nilai % 10);
+		} else if ($nilai < 200) {
+			$temp = " Seratus" . $this->penyebut($nilai - 100);
+		} else if ($nilai < 1000) {
+			$temp = $this->penyebut($nilai/100) . " Ratus" . $this->penyebut($nilai % 100);
+		} else if ($nilai < 2000) {
+			$temp = " Seribu" . $this->penyebut($nilai - 1000);
+		} else if ($nilai < 1000000) {
+			$temp = $this->penyebut($nilai/1000) . " Ribu" . $this->penyebut($nilai % 1000);
+		} else if ($nilai < 1000000000) {
+			$temp = $this->penyebut($nilai/1000000) . " Juta" . $this->penyebut($nilai % 1000000);
+		} else if ($nilai < 1000000000000) {
+			$temp = $this->penyebut($nilai/1000000000) . " Milyar" . $this->penyebut(fmod($nilai,1000000000));
+		} else if ($nilai < 1000000000000000) {
+			$temp = $this->penyebut($nilai/1000000000000) . " Trilyun" . $this->penyebut(fmod($nilai,1000000000000));
+		}     
+		return $temp;
+	}
+ 
+	function terbilang($nilai) {
+		if($nilai<0) {
+			$hasil = "minus ". trim($this->penyebut($nilai));
+		} else {
+			$hasil = trim($this->penyebut($nilai));
+		}     		
+		return $hasil;
+	}
 
 	
 	

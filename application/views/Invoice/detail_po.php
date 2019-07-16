@@ -145,10 +145,12 @@
            <div class="row">
             <div class="col-md-1"><br>PPN
             </div>
-            <div class="col-sm-4"> <br><select class="form-control" style="width: 110px;height: 50px; margin-left: -16px">
+            <div class="col-sm-4"> <br><select name="ppn" class="form-control" style="width: 110px;height: 50px; margin-left: -16px">
             <option value="0">tanpa ppn</option><option value="10">10 %</option> </select>
             </div>
           </div>
+          <input type="text" name="barang" hidden="" value="<?php echo  $doc[0]->item ?>">
+             <input type="text" name="jumlah" hidden="" value="<?php echo  $jumlah ?>">
           <div class="col-md-5">
            <p align="right"> <button  class="btn btn-info">Print</button></p>
           </div>

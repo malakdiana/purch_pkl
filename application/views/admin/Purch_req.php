@@ -104,7 +104,7 @@
                                 </td><?php } else{?>
                                 
 
-                                <a href="<?php echo site_url()?>/Purch_req/GetItem_barang/<?php echo $key->id?>"><button type="button" class="btn btn-info" style="width:80px; height:50px;"><font color="white"><i class="fa fa-th-list"></i> Detail</font></button></a>
+                                <a href="<?php echo site_url()?>/Purch_req/GetItem_barang/<?php echo $key->id?>/<?php echo $key->status_fa?>"><button type="button" class="btn btn-info" style="width:80px; height:50px;"><font color="white"><i class="fa fa-th-list"></i> Detail</font></button></a>
 
                                   
                                 </div>
