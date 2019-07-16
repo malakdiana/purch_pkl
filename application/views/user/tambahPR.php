@@ -67,6 +67,7 @@
 
                                         </div>
                                     </div> 
+                                    <?php if($this->session->userdata('logged_in')['username']=="NYS" || $this->session->userdata('logged_in')['username']=="FAE" || $this->session->userdata('logged_in')['username']=="PAE"){ ?>
                                       <div class="col-md-12">
                                         <div class="row">
 
@@ -74,11 +75,25 @@
                                                  <label class="control-label " for="section">SECTION</label>
                                             </div>
                                             <div class="col-sm-3">
-                                                   <input type="text" class="form-control" readonly="" name="section" value="<?php echo $this->session->userdata('logged_in')['username'] ?> ">
+                                                   <input type="text" class="form-control" readonly="" name="section" id="section" value="<?php echo $this->session->userdata('logged_in')['username'] ?> ">
                                              
                                             </div>
 
                                             <div class="col-md-1">
+                                             <label class="control-label " for="pr_no">BUDGET:</label>
+                                         </div>
+                                         <div class="col-sm-4">
+                                          <select class="form-control" name="budget" id="budget">
+                                            <option value=""> NYS</option>
+                                            <option value="PP"> PP</option>
+                                          </select>
+                                           </div>
+
+                                        </div><br><br>
+                                    </div>  
+                                       <div class="col-md-12">
+                                        <div class="row">
+                                          <div class="col-md-2">
                                              <label class="control-label " for="pr_no">NOMER PR:</label>
                                          </div>
                                          <div class="col-sm-4">
@@ -112,8 +127,55 @@
                                         </div>
 
                                         </div>
+                                    </div>  <?php }else{ ?>
+
+                                      <div class="col-md-12">
+                                        <div class="row">
+
+                                            <div class="col-md-2">
+                                                 <label class="control-label " for="section">SECTION</label>
+                                            </div>
+                                            <div class="col-sm-3">
+                                                   <input type="text" class="form-control" readonly="" name="section" id="section" value="<?php echo $this->session->userdata('logged_in')['username'] ?> ">
+                                             
+                                            </div>
+ <div class="col-md-1">
+                                             <label class="control-label " for="pr_no">NOMER PR:</label>
+                                         </div>
+                                         <div class="col-sm-4">
+                                            <div class="row"style="margin-left: 4px">    
+                                                <input type="text" class="form-control" minlength="3" maxlength="3" name="pr_no" style="margin-bottom: 25px;width: 100px" placeholder="000">
+                                                  <input type="text" class="form-control"  name="section_kode" id="section_kode" style="margin-bottom: 25px;width: 100px" value="<?php echo $this->session->userdata('logged_in')['username'] ?> " readonly="">
+                                                <select name="bulan" class="form-control" style="margin-bottom: 25px;width: 100px; height: 50px">
+                                           
+                                           <option class="form-control" value="I">Januari</option>
+                                           <option class="form-control" value="II">Februari</option>
+                                           <option class="form-control" value="III">Maret</option>
+                                           <option class="form-control" value="IV">April</option>
+                                           <option class="form-control" value="V">Mei</option>
+                                           <option class="form-control" value="VI">Juni</option>
+                                           <option class="form-control" value="VII">Juli</option>
+                                           <option class="form-control" value="VIII">Agustus</option>
+                                           <option class="form-control" value="IX">September</option>
+                                           <option class="form-control" value="X">Oktober</option>
+                                           <option class="form-control" value="XI">November</option>
+                                           <option class="form-control" value="XII">Desember</option>
+                                           </select>
+                                                <select name="tahun" class="form-control" style="margin-bottom: 25px;width: 100px; height: 50px">
+                                           <?php $tahun = date('D - M / Y');
+                                           $tahun1 = substr($tahun,-2);
+                                           $tahun2 = $tahun1+1;?>
+                                           <option class="form-control" value="<?php echo $tahun1?>"><?php echo $tahun1;?></option>
+                                           <option class="form-control" value="<?php echo $tahun2?>"><?php echo $tahun2;?></option>
+                                          
+                                           </select>
+                                              </div>
+                                        </div>
+                                         
+                                    </div> 
                                     </div>  
    
+   <?php } ?>
 <br><br>
 
 
@@ -208,3 +270,17 @@
         $(this).parents("tr").remove();
     });
     </script>
+    <script type="text/javascript">
+    $("#budget").change(function () { var val = $(this).val();
+        var section = $('#section').val();
+       if(val== "PP"){
+      
+        var neww = "PP"+section
+        document.getElementById("section_kode").value= neww;
+      }
+      else{
+          document.getElementById("section_kode").value= section;
+      }
+        });
+      
+</script>

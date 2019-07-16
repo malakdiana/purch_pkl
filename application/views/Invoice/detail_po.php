@@ -24,24 +24,6 @@
                         <div class="card">
 
                                 <div class="card-body">                                           
-                         <div class="col-md-12">
-                                            <div class="row">
-                                                 
-                                                <div class="col-md-2">
-                                                     <label class="control-label " for="group_name">VP Date :</label>
-                                                 </div>
-                                            <div class="col-sm-4">
-                                           
-                                                <input type="date" class="form-control" name="vp_date" style="margin-bottom: 25px" value="" >
-                                            </div>
-                                                <div class="col-md-2">
-                                                     <label class="control-label " for="no_barang">TF Date :</label>
-                                                 </div>
-                                            <div class="col-sm-4">
-                                                <input type="date" class="form-control" id="tf_date" name="tf_date" value="" >
-                                            </div>
-                                        </div>
-                                </div>
 
                                                                      
                          <div class="col-md-12">
@@ -51,7 +33,7 @@
                                                    
                                                  </div>
                                             <div class="col-sm-4">
-                                                 <input type="text" name="supplier" readonly="" class="form-control">
+                                                 <input type="text" name="supplier" readonly="" class="form-control" value="<?php  echo $doc[0]->supplier ?>">
                                                 
                                             
                                             </div>
@@ -119,6 +101,22 @@
          <div class="card-body">
           <h3>Detail</h3><br>
           <?php echo form_open('Invoice/detailPrint'); ?>
+            <div class="row">
+            <div class="col-md-1">VP Date :
+            </div>
+            <div class="col-sm-4" style="margin-left: -12px">    <input type="date" class="form-control" name="vp_date" style="margin-bottom: 25px" value="" >
+            </div>
+          </div>
+            <div class="row">
+            <div class="col-md-1">TF Date :
+            </div>
+            <div class="col-sm-4" style="margin-left: -12px">     <input type="date" class="form-control" id="tf_date" style="margin-bottom: 25px" name="tf_date" value="" >
+            </div>
+          </div>
+
+                                                   
+                                             
+                                      
           <input type="text" name="id_po" value="<?php echo $this->uri->segment('3'); ?>" hidden="">
           <div class="row">
             <div class="col-md-1">Material

@@ -43,9 +43,10 @@ class PoModel extends CI_Model {
 
 
     public function getItemPo($id){
-        $this->db->select('*');
+        $this->db->select('bayangan.*, po.supplier as supplier');
         $this->db->from('bayangan');
-        $this->db->where('id_po', $id);
+        $this->db->join('po','po.id_po = bayangan.id_po');
+        $this->db->where('bayangan.id_po', $id);
          $query = $this->db->get();
            $results=array();
             if($query->num_rows() > 0){

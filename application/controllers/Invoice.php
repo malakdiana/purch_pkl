@@ -57,6 +57,9 @@ public function detailPrint(){
 	$id_po = $this->input->post('id_po');
 	 $data['inv']= $this->InvoiceModel->getInvoice($id_po);
 	 $data['barang']= $this->input->post('barang');
+	 $data['vp_date']= $this->input->post('vp_date');
+	 $data['tf_date']= $this->input->post('tf_date');
+	 $data['barang']= $this->input->post('barang');
 	$material = $this->input->post('material');
 	$qtymat = $this->input->post('qtymat');
 	$jasa = $this->input->post('jasa');
@@ -91,6 +94,31 @@ public function detailPrint(){
 	  $data['total'] = $total;
 	  $data['pph'] = $pph;
 $data['say'] = $this->terbilang($total)." Rupiah";
+
+
+$object=array(
+	'tf_date' => $data['tf_date'],
+	'vp_date' => $data['vp_date'],
+	'material' => $data['material'],
+	'jasa' => $data['jasa'],
+	'total_material' => $data['totalmat'],
+
+	'total_jasa'=> $data['totaljas'],
+	'pph' => $data['pph'],
+	'total_pph' => $data['totalpph'],
+	'total_ppn' => $data['totalppn'],
+	'total'=> $data['total'],
+	'id_po'=> $id_po
+);
+
+ $this->db->insert('detail_vp', $object);
+
+ $query= $this->db->select('kode_nama')->from('approval')->where('min <=', $total)->where('max >=', $total)->get();
+ foreach ($query->result() as $key ) {
+ 	$data['kode_nama']= $key->kode_nama;
+ }
+ $data['tf_date']= $this->tgl_indo($data['tf_date']);
+ $data['vp_date']= $this->tgl_indo($data['vp_date']);
 		$paper_size='A5';
 
 		$orientation = 'landscape'; 
@@ -110,7 +138,7 @@ $dompdf = new DOMPDF();
 		
 		$dompdf->load_html($html);
 		$dompdf->render();
-		$dompdf->stream("laporanKESMAS.pdf");
+		$dompdf->stream("VoucherPaying.pdf");
 	
 
 }
@@ -151,6 +179,30 @@ function penyebut($nilai) {
 		}     		
 		return $hasil;
 	}
+
+	function tgl_indo($tanggal){
+	$bulan = array (
+		1 =>   'Januari',
+		'Februari',
+		'Maret',
+		'April',
+		'Mei',
+		'Juni',
+		'Juli',
+		'Agustus',
+		'September',
+		'Oktober',
+		'November',
+		'Desember'
+	);
+	$pecahkan = explode('-', $tanggal);
+	
+	// variabel pecahkan 0 = tanggal
+	// variabel pecahkan 1 = bulan
+	// variabel pecahkan 2 = tahun
+ 
+	return $pecahkan[2] . ' ' . $bulan[ (int)$pecahkan[1] ] . ' ' . $pecahkan[0];
+}
 
 	
 	

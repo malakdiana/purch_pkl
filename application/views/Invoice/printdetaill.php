@@ -92,7 +92,7 @@ margin-left: 25px;
 					<tr>
 						<td>Date</td>
 						<td>:</td>
-						<td>....................................</td>
+						<td><?php 	echo $vp_date; ?></td>
 					</tr>
 					<tr>
 						<td>Dept</td>
@@ -119,7 +119,7 @@ margin-left: 25px;
 
 		</tr>
 		<tr>
-			<td style="padding-top: 2px;padding-left: 2px;">Date :<br><p align="center" style="margin-top: 0px;font-size: 12px"><b>19-JUN-19</b></p> </td>
+			<td style="padding-top: 2px;padding-left: 2px;">Date :<br><p align="center" style="margin-top: 0px;font-size: 12px"><b><?php 	echo $tf_date; ?></b></p> </td>
 			<td  style="border-top: 0px">
 			<table><tr>
 					<td style="border: 0px;padding-left: 10px;">
@@ -223,8 +223,8 @@ margin-left: 25px;
 		<tr>
 		<td height="50px"></td>
 		<td></td>
-		<td></td>
-		<td></td>
+			<td style="vertical-align: bottom;"> <?php echo $kode_nama; ?> </td>
+		<td style="vertical-align: bottom;"> DDW </td>
 		<td></td>
 
 		</tr>

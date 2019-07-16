@@ -31,7 +31,7 @@
                                        
                                                 <th>NO</th>
                                                 <th>VP DATE</th>
-                                                <th>TF DATE</th>
+                                 
                                                 <th>NO RECEIPT</th>
                                                 <th>SUPPLIER</th>
                                                 <th>NO PO</th>
@@ -48,7 +48,7 @@
                                             <tr>
                                        <td><?php echo $no?></td>
                                                 <td><?php echo $key->vp_date;?></td>
-                                                <td><?php echo $key->tf_date;?></td>
+                                      
                                                 <td><?php echo $key->no_receipt;?></td>
                                               
                                                 <td><?php echo $key->nama_supplier;?></td>
