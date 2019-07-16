@@ -77,7 +77,7 @@ margin-left: 25px;
 	<table class="satu">
 	<tr>
 		<td width="670px" colspan="2"></td>
-		<td  style="margin-left: 50px;font-size: 16px"><p align="center"><div class="border"><b>CONFIDENTAL</b></div></p></td>
+		<td  style="margin-left: 50px;font-size: 16px"><p align="center"><div class="border"><b>CONFIDENTIAL</b></div></p></td>
 	<tr>
 		<td><font size="34px" style="vertical-align: top;margin-top: -15px" ><b>SAI</b></font></td>
 		<td style="width: 460px;"> 

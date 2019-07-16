@@ -138,9 +138,9 @@ $dompdf = new DOMPDF();
 		
 		$dompdf->load_html($html);
 		$dompdf->render();
-		$dompdf->stream("VoucherPaying.pdf");
-	
+		$dompdf->stream("VoucherPaying.pdf", array("Attachment" => false));
 
+exit(0);
 }
 
 function penyebut($nilai) {
