@@ -89,7 +89,7 @@
                        
                                     <td>
                                     <div class="btn-group mb-xl-3" role="group" aria-label="Basic example">
-                                    <?php if($key->status_fa == 0){?>
+                                    <?php if($key->status_fa == 0 ){?>
                                       <a href="<?php echo site_url()?>/Purch_req/verify/<?php echo $key->id?>"> <button type="button" class="btn btn-success" style="width:80px; height:50px;"><font color="white"><i class="fa fa-check"></i> Verify</font></button></a>
                                     <?php } 
                                      if($key->status == "OPEN"){?>
