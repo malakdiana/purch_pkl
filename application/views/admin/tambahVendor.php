@@ -84,7 +84,7 @@
                                                 <td><?php echo $no;?></td>
                                                 <td><?php echo $key->tanggal;?></td>
                                                 <td><?php echo $key->nama_vendor;?></td>
-                                                <td><?php echo $key->harga;?></td>
+                                                <td><?php echo "Rp " . number_format($key->harga,2,',','.');?></td>
                                                 <td><a href="<?php echo base_url()?>assets/file_qr/<?php echo $key->detail;?>" target="_blank"><?php echo $key->detail;?></a></td>
                                                 <td><a class="btn btn-primary" href="javascript:void(0);" onclick="modalEdit('<?php echo $key->id_detail?>','<?php echo $key->tanggal?>','<?php echo $key->nama_vendor ?>','<?php echo $key->harga ?>', '<?php echo $key->detail ?>')" data-toggle="modal" data-target="#myModalEdit"><font color="white"><i class="fa fa-pencil"></i> Edit</font></a></td></tr>
                                                 <?php $no++;} ?>
@@ -115,6 +115,7 @@
                 <?php echo validation_errors(); ?>
                      <div class="form-group">
                         <label for="">Tanggal</label>
+                        <input type="text" class="form-control" name="id" id="id" value="<?php echo $id ?>" hidden="" readonly="" >
                           <input type="text" class="form-control" name="id_detail" id="id_detail" value="" hidden="" readonly="" >
                         <input type="text" class="form-control" name="tanggal" id="tanggal" value="<?php echo date('Y-m-d');?>" readonly="" >
                     </div>
@@ -124,7 +125,7 @@
                     </div>
                     <div class="form-group">
                         <label for="">Harga</label>
-                        <input required="" type="text" class="form-control" name="harga" id="harga" value="" autocomplete="off">
+                        <input required="" id="rupiah2" type="text" class="form-control" name="harga" value="" autocomplete="off">
                     </div>
                     <div class="form-group">
                         <label for="">Attachment</label>
@@ -185,9 +186,9 @@ function openCity(cityName) {
 </script>
  <script type="text/javascript">
     function modalEdit(id_detail,tanggal,nama_vendor,harga,detail){
-       
+        document.getElementById('id_detail').value = id_detail;
         document.getElementById('nama_vendor').value = nama_vendor;
-        document.getElementById('harga').value = harga;
+        document.getElementById('rupiah2').value = harga;
           document.getElementById('id_detail').value = id_detail;
           $("#tampildata").html('<p><a href="<?php echo base_url()?>assets/file_qr/'+detail+'" target="_blank">'+detail+'</a></p>');
                       
@@ -200,6 +201,10 @@ function openCity(cityName) {
   var rupiah = document.getElementById("rupiah");
 rupiah.addEventListener("keyup", function(e) {
   rupiah.value = formatRupiah(this.value, "Rp. ");
+});
+ var rupiah2 = document.getElementById("rupiah2");
+rupiah2.addEventListener("keyup", function(e) {
+  rupiah2.value = formatRupiah(this.value, "Rp. ");
 });
 
 /* Fungsi formatRupiah */

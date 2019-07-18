@@ -70,6 +70,7 @@ public function detailPrint(){
 	 $data['tf_date']= $this->input->post('tf_date');
 	 $data['barang']= $this->input->post('barang');
 	 $data['prepared'] = $this->input->post('prepared');
+	 	 $data['paid'] = $this->input->post('paid');
 	$material = $this->input->post('material');
 	$qtymat = $this->input->post('qtymat');
 	$jasa = $this->input->post('jasa');

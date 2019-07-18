@@ -48,10 +48,10 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                        <?php   foreach ($Qr as $key) {?>
+                                        <?php $no=1;  foreach ($Qr as $key) {?>
                                             <tr>
                                     
-                                                <td><?php echo $key->id_penawaran;?></td>
+                                                <td><?php echo $no;?></td>
                                                 <td><?php echo $key->tanggal;?></td>
                                                 <td><?php echo $key->item;?></td>
                                                 <td><?php echo $key->kode_qr;?></td>
@@ -94,7 +94,7 @@
 
                                                
                                             </tr>
-                                            <?php }?>
+                                            <?php $no++;}?>
                                        </tbody>
                                     </table> 
                                 </div>
@@ -221,11 +221,7 @@ id_penawaran,tanggal, item, kode_qr,tanggal_butuh,section,pic,bahan,detail,statu
           "bSortable": true,
           "aTargets": [0]
         }],
-        "aaSorting": [
-           [7,'desc'],
-          [0, 'desc']
-       
-        ]
+      
       });
 
       /* Add event listener for opening and closing details

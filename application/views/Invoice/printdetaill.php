@@ -117,10 +117,8 @@ margin-left: 105px;
 			<td style="width: 270px; height: 60px ; ">
 				<table border="0">	
 						<tr>
-							<td style="padding-top: 4px">Paid to :</td>	
-						</tr>
-						<tr>
-							<td style="text-align: center;width: 266px"><font size="14px"><center><b> PT MAJU KAWAN TECHNINDO </b></center></font></td>
+							<td style="padding-top: 4px; vertical-align: top">Paid to :</td>	
+							<td style="text-align: center;width: 206px; padding-top: 4px"><font size="14px"><center><b> PT MAJU KAWAN TECHNINDO </b></center></font></td>
 						</tr>
 				</table>
 			<td style="border-bottom: 0px; width: 428px">
@@ -129,7 +127,7 @@ margin-left: 105px;
 					<td style="border: 0px;padding-left: 10px;padding-top: 15px">
 						Amount Rp.  
 					</td>
-					<td style="border: 0px;padding-left: 30px;padding-top: -13px"> <br><div class="parallelogram" ><p style="transform: skew(20deg);vertical-align: top; margin-left: 10px;font-size: 16px" align="left"><b><?php 	echo number_format($total,2,',','.'); ?></b><br>.................</p></div></td>
+					<td style="border: 0px;padding-left: 30px;padding-top: -13px"> <br><div class="parallelogram" ><p style="transform: skew(20deg);vertical-align: top; margin-left: 10px;font-size: 16px" align="left"><b><?php 	echo number_format($total,2,',','.'); ?></b></p></div></td>
 				</tr>
 				</table>
 			</td>
@@ -139,10 +137,9 @@ margin-left: 105px;
 			<td style="padding-top: 2px;padding-left: 2px;height: 60px ; ">
 				<table border="0">	
 						<tr>
-							<td style="padding-top: 4px">Date :</td>	
-						</tr>
-						<tr>
-							<td style="padding-left: 35px"><font size="14px"><b> <?php 	echo $tf_date; ?></b></font></td>
+							<td style="padding-top: 4px; width: 50px">Date :</td>
+								<td style="text-align: left ;width: 206px; padding-top: 4px"><font size="14px"><b>  <?php 	echo $tf_date; ?></b></font></td>	
+						
 						</tr>
 				</table>
 
@@ -175,7 +172,7 @@ margin-left: 105px;
 				</td>
 				</tr>
 			</table >
-				<table style="border: 0px; " border="0px" class="empat" >
+				<table style="border: 0px; " background="<?php echo base_url()?>assets/images/titik.png" border="0px" class="empat" style="background-repeat: repeat">
 					<tr>
 						<td style="text-align: left;">MATERIAL = <?php echo $qtymat; ?> x <?php echo number_format($material,2,',','.');?> </td>
 						<td > = </td>
@@ -257,7 +254,7 @@ margin-left: 105px;
 </tr></table>
 	<table class="tiga" style="margin-top: -2px;width: 687px;padding-top: -2px;padding-bottom: -39px" width="706px" >
 		<tr>
-			<td colspan="5" style="text-align: left;padding-left: 2px; border-top: 0px" height="30px">Paid Thru :</td>
+			<td colspan="5" style="text-align: left;padding-left: 2px; border-top: 0px" height="30px">Paid Thru :  <?php echo "$paid"; ?></td>
 		</tr>
 		<tr>
 			<td style="border-top:0px" height="20px" width="136px">Cashier / Treasurer</td>

@@ -99,7 +99,7 @@
 <br><br>
 <div class="card">
          <div class="card-body">
-          <h3>Detail</h3><br>
+          <h3>Detail Print</h3><br>
           <?php echo form_open('Invoice/detailPrint'); ?>
             <div class="row">
             <div class="col-md-1">VP Date :
@@ -142,6 +142,13 @@
             </div>
             <div class="col-sm-4"> <br><select name="ppn" class="form-control" style="width: 110px;height: 50px; margin-left: -16px">
             <option value="0">tanpa ppn</option><option value="10">10 %</option> </select>
+            </div>
+          </div>
+              <div class="row">
+            <div class="col-md-1"><br>Paid Thru
+            </div>
+            <div class="col-sm-4"> <br><select name="paid" class="form-control" style="width: 110px;height: 50px; margin-left: -16px">
+            <option value="Transfer">Transfer</option><option value="Cash">Cash</option> </select>
             </div>
           </div>
            <div class="row">

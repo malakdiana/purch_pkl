@@ -213,7 +213,7 @@ margin-left: 105px;
 </tr></table>
 	<table class="tiga" style="margin-top: -2px;width: 687px;padding-top: -2px;padding-bottom: -39px" width="706px" >
 		<tr>
-			<td colspan="5" style="text-align: left;padding-left: 2px; border-top: 0px" height="30px">Paid Thru :</td>
+			<td colspan="5" style="text-align: left;padding-left: 2px; border-top: 0px" height="30px">Paid Thru :  <?php echo "$paid"; ?></td>
 		</tr>
 		<tr>
 			<td style="border-top:0px" height="20px" width="160px">Cashier / Treasurer</td>

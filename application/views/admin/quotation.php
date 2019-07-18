@@ -51,10 +51,10 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                        <?php   foreach ($Qr as $key) {?>
+                                        <?php $no=1;  foreach ($Qr as $key) {?>
                                             <tr>
                                     
-                                                <td><?php echo $key->id_penawaran;?></td>
+                                                <td><?php echo $no;?></td>
                                                 <td><?php echo $key->tanggal;?></td>
                                                 <td><?php echo $key->item;?></td>
                                                 <td><?php echo $key->kode_qr;?></td>
@@ -109,7 +109,7 @@
 
                                                
                                             </tr>
-                                            <?php }?>
+                                            <?php $no++;}?>
                                        </tbody>
                                     </table> 
                                 </div>
@@ -205,14 +205,11 @@
      <script type="text/javascript">
  
        var oTable = $('#dataTablesss').dataTable({
-        "aoColumnDefs": [{
-          "bSortable": true,
-          "aTargets": [0]
-        }],
-        "aaSorting": [
-          [7,'desc'],
-          [0, 'desc']
-        ]
+   
+        // "aaSorting": [
+        //   [7,'desc'],
+        //   [0, 'desc']
+        // ]
       });
 
     

@@ -105,6 +105,7 @@ public function index()
     }
 
     public function editVendor(){
+          $id = $this->input->post('id');
           $files=$_FILES['fupload'];
         $config['upload_path'] = './assets/file_qr/';
                    $config['upload_path'] = './assets/file_qr/';
@@ -124,11 +125,12 @@ $this->upload->initialize($config);
 
           if($this->upload->do_upload('userfile')){
   $this->QrModel->editVendorDetail();
-               redirect('Qr/', 'refresh');
+           redirect('Qr/tambahVendor/'.$id, 'refresh');
                  
 
             }else{
                $this->QrModel->editVendor();
+                redirect('Qr/tambahVendor/'.$id, 'refresh');
             }
     }
 

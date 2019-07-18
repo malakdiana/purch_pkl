@@ -16,7 +16,10 @@ class QrModel extends CI_Model {
     {
 
             $this->db->select('*');
-            $this->db->from('Penawaran');
+            $this->db->from('Penawaran');     
+               $this->db->order_by('status','ASC'); 
+            $this->db->order_by('id_penawaran','DESC');
+
 
             $query = $this->db->get();
             if($query->num_rows() > 0){
@@ -41,6 +44,9 @@ class QrModel extends CI_Model {
             $this->db->select('*');
             $this->db->from('Penawaran');
             $this->db->where('section', $section);
+               $this->db->order_by('status','ASC'); 
+            $this->db->order_by('id_penawaran','DESC');
+
          
             $query = $this->db->get();
             if($query->num_rows() > 0){
@@ -58,6 +64,9 @@ class QrModel extends CI_Model {
             $this->db->from('Penawaran');
             $this->db->where('pic', $username);
             $this->db->where('section', $section);
+         $this->db->order_by('status','ASC'); 
+            $this->db->order_by('id_penawaran','DESC');
+
          
             $query = $this->db->get();
             if($query->num_rows() > 0){
@@ -83,21 +92,32 @@ class QrModel extends CI_Model {
     }
     public function editVendor(){
           $id = $this->input->post('id_detail');
+        
+            $d = $this->input->post('harga');
+
+             $d = str_replace('Rp', '', $d);
+              $d = str_replace('.', '', $d);
+               $d = str_replace(' ', '', $d);
       $data = array(
                     'tanggal' => $this->input->post('tanggal'),
                     'nama_vendor' => $this->input->post('nama_vendor'),
-                    'harga' => $this->input->post('harga'),
+                    'harga' => $d,
             );
 
         $this->db->where('id_detail', $id);
-        $this->db->update('detail_penawaran', $data);
+    $this->db->update('detail_penawaran', $data);
+
     }
     public function editVendorDetail(){
         $id = $this->input->post('id_detail');
+         $d = $this->input->post('harga');
+             $d = str_replace('Rp', '', $d);
+              $d = str_replace('.', '', $d);
+               $d = str_replace(' ', '', $d);
       $data = array(
                     'tanggal' => $this->input->post('tanggal'),
                     'nama_vendor' => $this->input->post('nama_vendor'),
-                    'harga' => $this->input->post('harga'),
+                    'harga' => $d,
                      'detail'=>$this->upload->data('file_name'),
             );
 
