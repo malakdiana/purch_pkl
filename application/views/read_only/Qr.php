@@ -67,6 +67,9 @@
                                                      else if ($key->status == 1){ ?>  
                                                         <div class="form-control" align="center" value="OPEN" name="status" style="margin-bottom: 25px;width: 100px; background-color: #CD853F; color:#FFF" > CLOSED </div>
                                                         <?php }
+                                                        else if ($key->status == 3){ ?>  
+                                                        <div class="form-control" align="center" value="WAITING" name="status" style="margin-bottom: 25px;width: 100px; background-color: #FF4500; color:#FFF" > WAITING </div>
+                                                        <?php }
                                                      else { ?>  
                                                            <div class="form-control" align="center" value="OPEN" name="status" style="margin-bottom: 25px;width: 100px; background-color: #BC8F8F; color:#FFF" > CANCEL </div>
                                                         <?php }
