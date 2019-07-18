@@ -46,20 +46,30 @@ public function index()
 
 	public function detailPo($id){
 	 $data['doc']= $this->PoModel->getItemPo($id);
+	  $data['pre']=$this->InvoiceModel->getPre();
 	  $data['inv']= $this->InvoiceModel->getInvoice($id);
+	  $data['docrec'] = $this->InvoiceModel->getDocrecByPo($id);
 	 $this->load->view('Invoice/header');
         $this->load->view('Invoice/detail_po',$data);
 		//$this->load->view('Invoice/print');
 
 }
+public function editPrepared(){
+	$data=$this->InvoiceModel->updatePre();
+        echo json_encode($data);
+}
+
+
 
 public function detailPrint(){
 	$id_po = $this->input->post('id_po');
 	 $data['inv']= $this->InvoiceModel->getInvoice($id_po);
+
 	 $data['barang']= $this->input->post('barang');
 	 $data['vp_date']= $this->input->post('vp_date');
 	 $data['tf_date']= $this->input->post('tf_date');
 	 $data['barang']= $this->input->post('barang');
+	 $data['prepared'] = $this->input->post('prepared');
 	$material = $this->input->post('material');
 	$qtymat = $this->input->post('qtymat');
 	$jasa = $this->input->post('jasa');
@@ -96,22 +106,22 @@ public function detailPrint(){
 $data['say'] = $this->terbilang($total)." Rupiah";
 
 
-$object=array(
-	'tf_date' => $data['tf_date'],
-	'vp_date' => $data['vp_date'],
-	'material' => $data['material'],
-	'jasa' => $data['jasa'],
-	'total_material' => $data['totalmat'],
+// $object=array(
+// 	'tf_date' => $data['tf_date'],
+// 	'vp_date' => $data['vp_date'],
+// 	'material' => $data['material'],
+// 	'jasa' => $data['jasa'],
+// 	'total_material' => $data['totalmat'],
 
-	'total_jasa'=> $data['totaljas'],
-	'pph' => $data['pph'],
-	'total_pph' => $data['totalpph'],
-	'total_ppn' => $data['totalppn'],
-	'total'=> $data['total'],
-	'id_po'=> $id_po
-);
+// 	'total_jasa'=> $data['totaljas'],
+// 	'pph' => $data['pph'],
+// 	'total_pph' => $data['totalpph'],
+// 	'total_ppn' => $data['totalppn'],
+// 	'total'=> $data['total'],
+// 	'id_po'=> $id_po
+// );
 
- $this->db->insert('detail_vp', $object);
+//  $this->db->insert('detail_vp', $object);
 
  $query= $this->db->select('kode_nama')->from('approval')->where('min <=', $total)->where('max >=', $total)->get();
  foreach ($query->result() as $key ) {
@@ -119,9 +129,9 @@ $object=array(
  }
  $data['tf_date']= $this->tgl_indo($data['tf_date']);
  $data['vp_date']= $this->tgl_indo($data['vp_date']);
-		$paper_size='A5';
+		$paper_size='A4';
 
-		$orientation = 'landscape'; 
+		$orientation = 'potrait'; 
 
 	if(empty($material) && empty($jasa)){
 

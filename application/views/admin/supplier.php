@@ -46,10 +46,10 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                        <?php   foreach ($supp as $key) {?>
+                                        <?php  $no=1; foreach ($supp as $key) {?>
                                             <tr>
                                             
-                                                <td><?php echo $key->id_supplier;?></td>
+                                                <td><?php echo $no;?></td>
                                                 <td><?php echo $key->nama_supplier;?></td>
                                                 <td><?php echo $key->alamat;?></td>
                                                 <td><?php echo $key->kota;?></td>
@@ -67,7 +67,7 @@
                                         </td>
                                              
                                             </tr>
-                                            <?php }?>
+                                            <?php $no++; }?>
                                        </tbody>
                                     </table>
                                 </div>
@@ -340,9 +340,7 @@
           "bSortable": true,
           "aTargets": [0]
         }],
-        "aaSorting": [
-          [0, 'desc']
-        ]
+    
       });
 
       /* Add event listener for opening and closing details

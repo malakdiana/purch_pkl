@@ -44,10 +44,10 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                        <?php   foreach ($unit as $key) {?>
+                                        <?php  $no=1; foreach ($unit as $key) {?>
                                             <tr>
                                            
-                                                <td><?php echo $key->no;?></td>
+                                                <td><?php echo $no;?></td>
                                                 <td><?php echo $key->unit_barang;?></td>
                                                 <td><?php echo $key->remarks;?></td>
                                     
@@ -60,7 +60,7 @@
                                 </div></td>
                                              
                                             </tr>
-                                            <?php }?>
+                                            <?php $no++; }?>
                                        </tbody>
                                     </table>
                                 </div>
@@ -139,9 +139,7 @@
           "bSortable": true,
           "aTargets": [0]
         }],
-        "aaSorting": [
-          [0, 'desc']
-        ]
+      
       });
 
       /* Add event listener for opening and closing details

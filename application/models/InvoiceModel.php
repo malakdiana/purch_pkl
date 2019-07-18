@@ -11,6 +11,35 @@ class InvoiceModel extends CI_Model {
        
            
     }
+    public function getDocrecByPo($id){
+       $query=  $this->db->select('*')->from('doc_receipt')->join('detail_docrec','detail_docrec.id_receipt = doc_receipt.id_receipt ')->where('detail_docrec.id_po',$id)->order_by('detail_docrec.id_receipt','ASC')->limit(1)->get();
+        $results=array();
+            if($query->num_rows() > 0){
+            return $query->result();
+            }else{
+            return $results;
+            }
+    }
+
+    public function getPre(){
+    $query=$this->db->select('*')->from('prepared')->get();
+ $results=array();
+            if($query->num_rows() > 0){
+            return $query->result();
+            }else{
+            return $results;
+            }
+}
+
+public function updatePre(){
+    $data=array(
+        'kode_nama' => $this->input->post('kode_nama')
+
+    );
+    $this->db->where('id_prepared',1);
+    $result=$this->db->update('prepared',$data);
+     return $result;
+}
 
     public function addDocRec(){
 

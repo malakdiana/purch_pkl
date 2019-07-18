@@ -89,7 +89,7 @@
                                                  </div>
                                             <div class="col-sm-4">
                                                
-                                            <input type="text" class="form-control" name="qty_po" style="margin-bottom: 25px" >
+                                            <input type="number" class="form-control" name="qty_po" style="margin-bottom: 25px" >
                                             </div>
                                   
                                 </div>

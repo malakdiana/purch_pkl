@@ -104,18 +104,15 @@
             <div class="row">
             <div class="col-md-1">VP Date :
             </div>
-            <div class="col-sm-4" style="margin-left: -12px">    <input type="date" class="form-control" name="vp_date" style="margin-bottom: 25px" value="" >
+            <div class="col-sm-4" style="margin-left: -12px">    <input type="date" class="form-control" name="vp_date" style="margin-bottom: 25px" value="<?php echo $docrec[0]->vp_date ?>">
             </div>
           </div>
             <div class="row">
             <div class="col-md-1">TF Date :
             </div>
-            <div class="col-sm-4" style="margin-left: -12px">     <input type="date" class="form-control" id="tf_date" style="margin-bottom: 25px" name="tf_date" value="" >
+            <div class="col-sm-4" style="margin-left: -12px">     <input type="date" class="form-control" id="tf_date" style="margin-bottom: 25px" name="tf_date" value="" required="">
             </div>
-          </div>
-
-                                                   
-                                             
+          </div>                               
                                       
           <input type="text" name="id_po" value="<?php echo $this->uri->segment('3'); ?>" hidden="">
           <div class="row">
@@ -147,6 +144,12 @@
             <option value="0">tanpa ppn</option><option value="10">10 %</option> </select>
             </div>
           </div>
+           <div class="row">
+            <div class="col-md-1"><br>Prepared
+            </div>
+            <div class="col-sm-4"> <br><input type="text" name="prepared" id="prepared" class="form-control" style="width: 250px;margin-left: -16px" value="<?php echo $pre[0]->kode_nama ?>" readonly=""><a href="#" data-toggle="modal" data-target="#myModalEdit">ubah kode prepared</a>
+            </div>
+          </div>
           <input type="text" name="barang" hidden="" value="<?php echo  $doc[0]->item ?>">
              <input type="text" name="jumlah" hidden="" value="<?php echo  $jumlah ?>">
           <div class="col-md-5">
@@ -161,112 +164,28 @@
 </div>
 </div>
 </div>
+ <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModalEdit" class="modal fade-in" >
+        <div class="modal-dialog">
+            <div class="modal-content" style="width: 800px; margin-left: -100px;padding: 20px" >
+                <div class="modal-header">
+                    <h4 class="modal-title">Edit Prepared</h4>
+                    <button align="right" type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                  <label>Kode Prepared</label>
+                  <input type="text" name="kode" id="kode" class="form-control" style="width: 350px"><br>
+                  <button class="btn btn-success" onclick="edit()">Save</button>
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 <?php $this->load->view('admin/footer'); ?>
  <link href="<?php echo base_url()?>assets/css/select2.min.css" rel="stylesheet" />
   <script src="<?php echo base_url()?>assets/js/select2.min.js"></script>
- <script>
-    $(document).ready(function(){ // Ketika halaman sudah diload dan siap
-        $("#btn-tambah-form").click(function(){ // Ketika tombol Tambah Data Form di klik
-            var jumlah = parseInt($("#jumlah-form").val()); // Ambil jumlah data form pada textbox jumlah-form
-            var x = jumlah + 1; // Tambah 1 untuk jumlah form nya       
-            // Kita akan menambahkan form dengan menggunakan append
-            // pada sebuah tag div yg kita beri id insert-form
-           
 
-              $("#insert-form").append(" <tr id='"+x+"'><td><select class='noPo"+x+" form-control' name='no_po[]'></select></td><td><input type='text' class='form-control' name='barang[]' id='barang"+x+"' style='margin-bottom: 25px' readonly=''></td><td><input type='text' class='form-control' name='no_invoice[]' style='margin-bottom: 25px' required=''></td><td><input type='text' class='form-control' name='invoice_date[]' style='margin-bottom: 25px' required=''></td> <td><input type='checkbox' name='ppn"+x+"' id='ppn"+x+"'></td><td><input type='text' class='form-control' name='total[]' id='total"+x+"' style='margin-bottom: 25px' readonly=''></td><td><button class='btn btn-delete btn-danger'> <i class='fa fa-trash'> </i></button></td></tr>");
-
-
-            $("#scriptt").append("<script type='text/javascript'>var total"+x+" = $('#total"+x+"').val();var totalasli"+x+" = 0;  $('.noPo"+x+"').select2({ placeholder: '--- Select Item ---', ajax: {url: '<?php echo site_url()?>/Po/getPObySup/'+sup, dataType: 'json', delay: 250,processResults: function (data) { return {results: data };},     cache: true }}); $('.noPo"+x+"').change(function () { var val = $(this).val(); var ckbox = $('#ppn"+x+"');   $.ajax({ type : 'POST', url: '<?php echo site_url('Po/getTotalPO')?>', data : {ids: val},dataType: 'json',    }).done(function(data){ totalasli"+x+" = data.jumlah*1; if (ckbox.is(':checked')) { var ppn = totalasli"+x+" * 0.1; total = totalasli"+x+"+ppn; document.getElementById('barang').value = data.barang;                   document.getElementById('total').value = total;}else{ document.getElementById('barang"+x+"').value = data.barang;  document.getElementById('total"+x+"').value = totalasli"+x+";}})}); $('#ppn"+x+"').change(function () { if ($(this).is(':checked')) {var bil = totalasli"+x+"*1; var ppn =  totalasli"+x+" * 0.1;total= bil+ppn;    document.getElementById('total"+x+"').value = total;}else{document.getElementById('total"+x+"').value = totalasli"+x+";}});");
-            
-            
-            $("#jumlah-form").val(x); // Ubah value textbox jumlah-form dengan variabel nextform
-        });   
-        // Buat fungsi untuk mereset form ke semula
-        $("#btn-reset-form").click(function(){
-             $("#insert-form").html("");
-            $("#jumlah-form").val("1"); // Ubah kembali value jumlah form menjadi 1
-        });
-    });
-    </script>
-    <div id="scriptt"></script></div>
-    <script type="text/javascript">
-   var total = $("#total").val();
-   var totalasli = 0; 
-   var sup = 0;
-    $('.supplier').select2({
-        placeholder: '--- Select Item ---',
-        ajax: {
-          url: '<?php echo site_url()?>/Po/getSup',
-          dataType: 'json',
-          delay: 250,
-          processResults: function (data) {
-            return {
-              results: data
-            };
-          },
-          cache: true
-        }
-      });
-    
-
-       $(".supplier").change(function () {
-       
-        var val = $(this).val(); //get the value
-        sup=$(this).val();;
-        
-         $('.noPo').select2({
-        placeholder: '--- Select Item ---',
-        ajax: {
-          url: '<?php echo site_url()?>/Po/getPObySup/'+val,
-          dataType: 'json',
-          delay: 250,
-          processResults: function (data) {
-            return {
-              results: data
-            };
-          },
-          cache: true
-        }
-      });
-         });
- $(".noPo").change(function () {
-        var val = $(this).val(); 
-         var ckbox = $('#ppn'); 
-      $.ajax({
-          type : "POST",
-          url: '<?php echo site_url('Po/getTotalPO')?>',
-          data : {ids: val},
-          dataType: 'json',  
-      }).done(function(data){
-        totalasli = data.jumlah*1;
-             if (ckbox.is(':checked')) {          
-                var ppn = totalasli * 0.1;
-                 total = totalasli+ppn;
-                    document.getElementById('barang').value = data.barang;
-                    document.getElementById('total').value = total;
-                }else{
-                    document.getElementById('barang').value = data.barang;
-                    document.getElementById('total').value = totalasli;
-                }              
-      })
-      });
-
- $("#ppn").change(function () {
-
- if ($(this).is(':checked')) {
-    var bil = totalasli*1;
-            var ppn =  totalasli * 0.1;
-                total= bil+ppn;
-                document.getElementById('total').value = total;
-                }else{
-                    document.getElementById('total').value = totalasli;  
-                }
- });  
-
-  $("body").on("click", ".btn-delete", function(){
-        $(this).parents("tr").remove();
-    });            
-</script>
 <script type="text/javascript">
   var rupiahmat = document.getElementById("rupiahmat");
   var rupiahjas = document.getElementById("rupiahjas");
@@ -294,4 +213,19 @@ function formatRupiah(angka, prefix) {
   rupiah = split[1] != undefined ? rupiah + "," + split[1] : rupiah;
   return prefix == undefined ? rupiah : rupiah ? "Rp. " + rupiah : "";
 }
+</script>
+<script type="text/javascript">
+  function edit(){
+     var kode_nama = $('#kode').val();
+      $.ajax({
+                type : "POST",
+                url  : "<?php echo site_url('Invoice/editPrepared')?>",
+                dataType : "JSON",
+                data : {kode_nama:kode_nama},
+                success: function(data){
+                 $('#myModalEdit').modal('hide');
+                 document.getElementById('prepared').value = kode_nama;  
+                }
+            });
+  }
 </script>

@@ -46,9 +46,10 @@ public function index()
         
         if(!empty($this->input->get("q"))){
             $this->db->like('nama_barang', $this->input->get("q"));
-            $query = $this->db->select('no as id,nama_barang as text')
-                        ->limit(10)
-                        ->get("barang");
+            $query = $this->db->select('no as id,nama_barang as text')->limit(10)->get("barang");
+            $json = $query->result();
+        }else{
+ $query = $this->db->select('no as id,nama_barang as text')->limit(10)->get("barang");
             $json = $query->result();
         }
 
@@ -93,6 +94,9 @@ public function index()
 
             $data['unit']= $this->Unit_barangModel->getUnit_barang();
             $data['id']=$id;
+            $data['list']=$this->Purch_reqModel->getPrById($id);
+            $data['detail']=$this->Purch_reqModel->getItem_barang($id);
+
                if($this->session->userdata('logged_in')['hak_akses']==1){
             $this->load->view('Admin/header');
             $this->load->view('Admin/tambahItem_barang',$data);
@@ -105,8 +109,9 @@ public function index()
     }
 
     public function tambah($id){
-         $this->Purch_reqModel->tambahItem_barang();
+         $this->Purch_reqModel->tambahItem_barang($id);
                 $this->session->set_flashdata('tambahUnit_barang','<div class="alert alert-success" role="alert">SUKSES TAMBAH DATA <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+          
             redirect('Purch_req', 'refresh');
     }
 
@@ -173,6 +178,12 @@ public function index()
             redirect("Purch_req/GetItem_barang/$id", 'refresh');
     }
 
+      function deleteItem(){
+        $id = $this->input->post('id_item');
+        $data=$this->Purch_reqModel->hapusItem($id);
+        echo json_encode($data);
+    }
+
    
 
     public function deletePurch_req($id){
@@ -215,7 +226,7 @@ public function index()
         $this->load->view('Admin/InsertPo', $data);
     }else{
           echo "<script>alert('Belum di verifikasi')</script>";
-           redirect('Purch_req/GetItem_barang/'.$idp, 'refresh');
+           redirect('Purch_req/GetItem_barang/'.$idp.'/'.$status, 'refresh');
 
     }
 
@@ -226,6 +237,9 @@ public function index()
         
         if(!empty($this->input->get("q"))){
             $this->db->like('no_po', $this->input->get("q"));
+            $query = $this->db->select('id_po as id,no_po as text')->where('status',0)->get("po");
+            $json = $query->result();
+        }else{
             $query = $this->db->select('id_po as id,no_po as text')->where('status',0)->get("po");
             $json = $query->result();
         }
@@ -240,6 +254,9 @@ public function index()
         if(!empty($this->input->get("q"))){
             $this->db->like('nama_barang', $this->input->get("q"));
             $query = $this->db->select('no_barang as id,nama_barang as text')->get("barang");
+            $json = $query->result();
+        }else{
+             $query = $this->db->select('no_barang as id,nama_barang as text')->get("barang");
             $json = $query->result();
         }
 

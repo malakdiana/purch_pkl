@@ -46,10 +46,10 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                        <?php   foreach ($price as $key) {?>
+                                        <?php  $no=1; foreach ($price as $key) {?>
                                             <tr>
                                                 
-                                                <td><?php echo $key->no_pricelist;?></td>
+                                                <td><?php echo $no;?></td>
                                                 <td><?php echo $key->group_name;?></td>
                                                 <td><?php echo $key->nama_barang;?></td>
                                                 <td><?php echo $key->nama_supplier;?></td>
@@ -68,7 +68,7 @@
                                                   </td>
                                              
                                             </tr>
-                                            <?php }?>
+                                            <?php $no++; }?>
                                        </tbody>
                                     </table>
                                 </div>
@@ -281,9 +281,7 @@
           "bSortable": true,
           "aTargets": [0]
         }],
-        "aaSorting": [
-          [0, 'desc']
-        ]
+   
       });
 
       /* Add event listener for opening and closing details

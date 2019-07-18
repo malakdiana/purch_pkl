@@ -19,6 +19,7 @@ class PoModel extends CI_Model {
 
             $this->db->select('*');
             $this->db->from('po');
+             $this->db->order_by('id_po','DESC');
             $query = $this->db->get();
            $results=array();
             if($query->num_rows() > 0){

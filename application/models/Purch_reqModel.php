@@ -18,8 +18,10 @@ class Purch_reqModel extends CI_Model {
             $this->db->select('*');
             $this->db->from('purch_req');
            
-           // $this->db->order_by('status','DESC');
-             $this->db->order_by('purch_req.id','DESC');
+     $this->db->order_by('status','desc');    
+           $this->db->order_by('id','DESC');  
+               
+
             $this->db->limit(200);
             $query = $this->db->get();
            $results=array();
@@ -50,6 +52,8 @@ class Purch_reqModel extends CI_Model {
             $this->db->select('*');
             $this->db->from('purch_req');
             $this->db->where('section', $section);
+             $this->db->order_by('status','DESC');
+             $this->db->order_by('id','ASC');
 
             $query = $this->db->get();
            $results=array();
@@ -116,7 +120,7 @@ if (!empty($this->input->post('item'))) {
         public function getItem_barang($id)
      {
 
-            $this->db->select('item.id_po ,item.id_item, item.id_purch, item.item_barang,item.qty, po.id_po,po.no_po,bayangan.id_po, bayangan.id_bayangan, bayangan.qty as qtybay, bayangan.harga');
+            $this->db->select('item.id_po ,item.id_item, item.id_purch, item.item_barang,item.qty, po.id_po,po.no_po,bayangan.id_po, bayangan.id_bayangan, bayangan.qty as qtybay, bayangan.harga, item.unit_name');
             $this->db->from('item');
             $this->db->join('bayangan', 'item.id_item= bayangan.id_item', 'left');
              $this->db->join('po', 'po.id_po= bayangan.id_po','left');
@@ -195,12 +199,13 @@ if (!empty($this->input->post('item'))) {
               $jumlah= $this->input->post('jumlah');
 
         for ($i=0; $i < $jumlah ; $i++) { 
+            $nama_barang="";
               $this->db->select('*');
         $this ->db->from('barang');
         $this->db->where('no_barang',$item_barang[$i] );
          $query = $this->db->get();
          foreach ($query->result() as $key) {
-             $nama_barang =$key->nama_barang;
+             $nama_barang = $key->nama_barang;
          }
         $data = array(
         'id_purch' => $id,
@@ -217,7 +222,8 @@ if (!empty($this->input->post('item'))) {
 
     public function hapusItem($id_item){
          $this->db->where('id_item', $id_item);
-         $this->db->delete('item');
+         $result=$this->db->delete('item');
+         return $result;
     }
 
  
@@ -323,6 +329,16 @@ $idpr=$this->input->post('id_pr');
           $this->db->where('id', $idpr);
           $this->db->update('purch_req',$dat);
          }
+       }
+
+       public function getPrById($id){
+        $query = $this->db->select('*')->from('purch_req')->where('id',$id)->get();
+         $results=array();
+            if($query->num_rows() > 0){
+            return $query->result();
+            }else{
+            return $results;
+            }
        }
 
     

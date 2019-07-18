@@ -47,10 +47,10 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                        <?php   foreach ($Purch_req as $key) {?>
+                                        <?php $no=1;  foreach ($Purch_req as $key) {?>
                                             <tr>
                                        
-                                                <td><?php echo $key->id;?></td>
+                                                <td><?php echo $no;?></td>
                                                 <td><?php echo $key->tgl;?></td>
                                                 <td><?php echo $key->jam;?></td>
                                               
@@ -97,7 +97,7 @@
                                                 </td>
                                              
                                             </tr>
-                                            <?php }?>
+                                            <?php $no++;}?>
                                        </tbody>
                                     </table>
                                   </div>
@@ -175,9 +175,9 @@
           "bSortable": true,
           "aTargets": [0]
         }],
-        "aaSorting": [
-          [7, 'desc'],[0, 'desc']
-        ]
+        // "aaSorting": [
+        //   [7, 'desc'],[0, 'desc']
+        // ]
       });
 
       /* Add event listener for opening and closing details
