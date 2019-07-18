@@ -134,7 +134,7 @@
                             
                     </div>
                      <div align="right" style="margin-bottom: 20px; margin-right: 30px">
-          <button class="btn-info" type="submit">Update</button>
+          <button class="btn btn-info" type="submit">Update</button>
             
         </div>
         <?php echo form_close();?>
