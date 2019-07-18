@@ -45,7 +45,7 @@
                                                 <td><?php echo $key->tgl_po;?></td>
                                                 <td><?php echo $key->no_po;?></td>
                                                 <td><?php echo $key->nama_supplier;?></td>
-                                                <td><a href="<?php echo site_url()?>/Invoice/detailPo/<?php echo $key->id_po?>" class="btn btn-info">DETAIL</a><a href="" class="btn btn-primary">Print</a></td>
+                                                <td><a href="<?php echo site_url()?>/Invoice/detailPo/<?php echo $key->id_po?>" class="btn btn-info">DETAIL DAN PRINT</a></td>
 
                                             
                                             </tr>
