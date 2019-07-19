@@ -17,6 +17,8 @@ class SectionModel extends CI_Model {
 
             $this->db->select('*');
             $this->db->from('Section');
+
+           $this->db->order_by('id_section','DESC');  
             $query = $this->db->get();
             if($query->num_rows() > 0){
             return $query->result();

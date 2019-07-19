@@ -19,8 +19,8 @@ class RiwayatdatangModel extends CI_Model {
 
             $this->db->select('po.id_po,po.tgl_po, po.no_po, po.eta, bayangan.id_bayangan, bayangan.no_pr, bayangan.item, bayangan.qty,bayangan.status_datang');
             $this->db->from('bayangan');
-            $this->db->join('po', 'po.id_po = bayangan.id_po', 'left');
-            
+            $this->db->join('po', 'po.id_po = bayangan.id_po', 'left');    
+           $this->db->order_by('po.id_po','DESC');  
 
             $query = $this->db->get();
            $results=array();

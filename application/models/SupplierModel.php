@@ -17,6 +17,8 @@ class SupplierModel extends CI_Model {
 
               $this->db->select('*');
             $this->db->from('supplier');
+
+           $this->db->order_by('id_supplier','DESC');  
             $query = $this->db->get();
             if($query->num_rows() > 0){
             return $query->result();

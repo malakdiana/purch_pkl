@@ -17,6 +17,8 @@ class Read_onlyModel extends CI_Model {
 
             $this->db->select('*');
             $this->db->from('purch_req');
+               $this->db->order_by('status','desc');    
+           $this->db->order_by('id','DESC');  
            
             $query = $this->db->get();
            $results=array();

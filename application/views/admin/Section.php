@@ -44,7 +44,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                        <?php  $no; foreach ($dpt as $key) {?>
+                                        <?php  $no=1; foreach ($dpt as $key) {?>
                                             <tr>
                                                 
                                                 <td><?php echo $no;?></td>

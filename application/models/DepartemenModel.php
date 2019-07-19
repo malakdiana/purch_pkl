@@ -17,6 +17,7 @@ class DepartemenModel extends CI_Model {
 
             $this->db->select('*');
             $this->db->from('departemen');
+                 $this->db->order_by('no', 'desc');
             $query = $this->db->get();
             if($query->num_rows() > 0){
             return $query->result();

@@ -17,7 +17,7 @@ class BarangModel extends CI_Model {
 
             $this->db->select('*');
             $this->db->from('barang');
-            $this->db->order_by('nama_barang', 'desc');
+            $this->db->order_by('no_barang', 'desc');
             $query = $this->db->get();
             if($query->num_rows() > 0){
             return $query->result();
@@ -46,9 +46,7 @@ class BarangModel extends CI_Model {
 
     }
     public function tambahBarang(){
-        $data = array(
-            'no_barang' => $this->input->post('no_barang'),
-      
+        $data = array(      
         'nama_barang' => $this->input->post('nama_barang'),
      
       
