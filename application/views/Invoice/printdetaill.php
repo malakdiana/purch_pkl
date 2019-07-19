@@ -93,20 +93,20 @@ margin-left: 105px;
 						<td><br><font size="12px">No.</font></td>
 						<td><br>&nbsp;&nbsp;&nbsp;&nbsp;</td>
 						<td><br><font size="12px">:</font></td>
-						<td><br><font size="12px">.........................................................</font></td>
+						<td><br><font size="12px"></font><br><hr style="border-top: 1px dotted black; border-bottom: 0px; margin-top: -1px; width: 200px; border-left: 0px; border-right: 0px"  ></td>
 					</tr>
 					<tr>
 						
 						<td><font size="12px">Date</font></td>
 						<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
 						<td><font size="12px">:</font></td>
-						<td><font size="12px"><?php 	echo $vp_date; ?></font></td>
+						<td><font size="12px"><?php 	echo $vp_date; ?></font><br><hr style="border-top: 1px dotted black; border-bottom: 0px; margin-top: -1px; width: 200px; border-left: 0px; border-right: 0px"  ></td>
 					</tr>
 					<tr>
 						<td><font size="12px">Dept</font></td>
 						<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
 						<td><font size="12px">:</font></td>
-						<td><font size="12px">PURCH</font></td>
+						<td><font size="12px">PURCH</font><br><hr style="border-top: 1px dotted black; border-bottom: 0px; margin-top: -1px; width: 200px; border-left: 0px; border-right: 0px"  ></td>
 					</tr>
 				</table>
 			</td>
@@ -121,13 +121,13 @@ margin-left: 105px;
 							<td style="text-align: center;width: 206px; padding-top: 4px"><font size="14px"><center><b> PT MAJU KAWAN TECHNINDO </b></center></font></td>
 						</tr>
 				</table>
-			<td style="border-bottom: 0px; width: 428px">
+			<td style="border-bottom: 0px; width: 430px">
 				<table>
 					<tr>
 					<td style="border: 0px;padding-left: 10px;padding-top: 15px">
 						Amount Rp.  
 					</td>
-					<td style="border: 0px;padding-left: 30px;padding-top: -13px"> <br><div class="parallelogram" ><p style="transform: skew(20deg);vertical-align: top; margin-left: 10px;font-size: 16px" align="left"><b><?php 	echo number_format($total,2,',','.'); ?></b></p></div></td>
+					<td style="border: 0px;padding-left: 30px;padding-top: -13px"> <br><div class="parallelogram" ><p style="transform: skew(20deg);vertical-align: top; margin-left: 10px;font-size: 16px; border-bottom: 1px dotted black;width: 146px" align="left"><b><?php 	echo number_format($total,2,',','.'); ?></b></p></div></td>
 				</tr>
 				</table>
 			</td>
@@ -146,11 +146,11 @@ margin-left: 105px;
 				</td>
 			<td  style="border-top: 0px">
 			<table><tr>
-					<td style="border: 0px;padding-left: 10px;padding-top: 15px">
+					<td style="border: 0px;padding-left: 10px;padding-top: 15px; vertical-align: top">
 						Say
 					</td>
-					<td style="border: 0px;padding-left: 30px;padding-top: 15px">
-						<p align="center" style="font-size: 10px"><b># <?php 	echo $say; ?> #</b></p>
+					<td style="border: 0px;padding-left: 30px;padding-top: 6px; vertical-align: top">
+						<p align="left" style="font-size: 12px"># <?php 	echo $say; ?> #</p>
 					</td>
 				</tr>
 				</table>
@@ -167,12 +167,16 @@ margin-left: 105px;
 			 <table border="0" width="350px">
 				<tr>
 					<td style="width: 80px;vertical-align: top">Payment for :</td>
-					<td style="width: 260px; height: 63px;text-align: left;vertical-align: top" ><b><?php foreach ($inv as $key ) {
-				 echo $key->no_invoice;} ?></b>
+					<td style="width: 260px; height: 43px;text-align: left;vertical-align: top" ><b><?php $no = 1; foreach ($inv as $key ) {
+						if($no>1){
+				 echo ", ".$key->no_invoice;
+				}else{
+					 echo $key->no_invoice;
+				}} ?></b>
 				</td>
 				</tr>
 			</table >
-				<table style="border: 0px; " background="<?php echo base_url()?>assets/images/titik.png" border="0px" class="empat" style="background-repeat: repeat">
+				<table style="border: 0px; height: 114px " background="<?php echo base_url()?>assets/images/author/avatar.png" border="0px" class="empat" style="background-repeat: repeat">
 					<tr>
 						<td style="text-align: left;">MATERIAL = <?php echo $qtymat; ?> x <?php echo number_format($material,2,',','.');?> </td>
 						<td > = </td>
@@ -184,9 +188,9 @@ margin-left: 105px;
 						<td style="text-align: right;"> <?php echo number_format($totaljas,2,',','.'); ?></td>
 					</tr>
 					<tr >
+						<td style=""></td>
 						<td ></td>
-						<td ></td>
-						<td style="padding-top: -10px;border-top:1px solid black;"><td style="padding-top: -8px;">+</td></td>
+						<td style="padding-top: -10px;border-top:1px solid black; border-bottom: 0px; border-left: 0px;border-right: 0px"><td style="padding-top: -9px;">+</td></td>
 					</tr>
 					<tr style="margin-top: -8px">
 						<td ></td>
@@ -201,7 +205,7 @@ margin-left: 105px;
 					<tr>
 						<td ></td>
 						<td ></td>
-						<td style="padding-top: -10px;border-top:1px solid black;"><td style="padding-top: -8px;">+</td></td>
+						<td style="padding-top: -10px;border-top:1px solid black;border-bottom: 0px; border-left: 0px;border-right: 0px"><td style="padding-top: -9px;">+</td></td>
 					</tr>
 					<tr>
 						<td ></td>
@@ -216,7 +220,7 @@ margin-left: 105px;
 					<tr>
 						<td ></td>
 						<td ></td>
-						<td style="padding-top: -10px;border-top:1px solid black;"><td style="padding-top: -8px;">-</td></td>
+						<td style="padding-top: -10px;border-top:1px solid blackborder-bottom: 0px; border-left: 0px;border-right: 0px;"><td style="padding-top: -9px;">-</td></td>
 					</tr>
 					<tr>
 						<td ></td>
