@@ -79,17 +79,21 @@ class LoginModel extends CI_Model {
 
     }
     public function tambahLogin(){
+        if(empty($this->input->post('section'))){
+            $section = 0;
+        }else{
+        $section = $this->input->post('section');
+      }
         $data = array(
         'id_user' => $this->input->post('id_user'),
-        
         'username' => $this->input->post('username'),
         'password' => $this->input->post('password'),
         'hak_akses' => $this->input->post('hak_akses'),
-        'section' => $this->input->post('section'),
-      
+        'section' => $section,
+        
         );
          $this->db->insert('Login', $data);
-
+        
     }
 
  
