@@ -76,6 +76,23 @@ public function index()
             }
     }
 
+     public function addQrPersonal(){
+            $config['upload_path'] = './assets/file_qr/';
+            $config['allowed_types'] = 'pdf|jpg|png|jpeg|doc|docx|xlsx';
+            $this->load->library('upload', $config);
+            $this->upload->initialize($config);
+
+            if(!$this->upload->do_upload('fupload')){
+               $this->QrModel->tambahQRnoGambar();
+               $this->session->set_flashdata('tambahQR','<div class="alert alert-success" role="alert">SUKSES TAMBAH DATA <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+            redirect('Qr/tracking_personal', 'refresh');
+            }else{
+                $this->QrModel->tambahQR();
+               $this->session->set_flashdata('tambahQR','<div class="alert alert-success" role="alert">SUKSES TAMBAH DATA <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+            redirect('Qr/tracking_personal', 'refresh');
+            }
+    }
+
     public function tambahVendor($id){
         $data['id']=$id;
         $data['vendor']=$this->QrModel->getListVendor($id);

@@ -17,6 +17,7 @@ class BarangModel extends CI_Model {
 
             $this->db->select('*');
             $this->db->from('barang');
+            $this->db->order_by('nama_barang', 'desc');
             $query = $this->db->get();
             if($query->num_rows() > 0){
             return $query->result();

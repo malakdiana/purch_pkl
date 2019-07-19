@@ -23,7 +23,7 @@
                         <div class="card">
                                 <div class="card-body">
 
-                                     <?php echo form_open_multipart('Qr/addQr') ?>
+                                     <?php echo form_open_multipart('Qr/addQrPersonal') ?>
 
                                      
                                      <h3 align="center">Insert Quotation Request</h3><br>
@@ -84,7 +84,7 @@
                                      
         
           
-              <div align="right"> <button type="submit" class="btn btn-primary" style="align-self: right">Simpan</button></div>
+              <div align="right"> <button type="submit" class="btn btn-success" style="align-self: right"><i class="ti-save"></i> Simpan</button></div>
               <?php echo form_close() ?>
            
 
