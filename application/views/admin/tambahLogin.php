@@ -103,7 +103,7 @@
                                      
         
           
-              <div align="left"> <button type="submit" class="btn btn-primary" style="align-self: left">Simpan</button></div>
+              <div align="left"> <button type="submit" class="btn btn-success" style="align-self: left"><i class="ti-save"></i> Simpan</button></div>
               <?php echo form_close() ?>
            
 
@@ -122,6 +122,7 @@
              if (val == "4") {
 
               $("#insert-form").append(" <div class='form-group' ><label class='control-label ' for='hak_akses'>Section :</label><select name='section' class='form-control' id='section' required style='margin-bottom: 25px; width:400px;'><option value=''> PILIH : </option><?php foreach ($section as $key) {?> <option class='form-control' value='<?php echo $key->id_section?>'><?php echo $key->nama_section?> </option> <?php }?></select></div>");
+
           }else{
              $("#insert-form").html("");
           }

@@ -31,13 +31,13 @@
                                                      <label class="control-label " for="namaSupplier">Nama Supplier :</label>
                                                  </div>
                                             <div class="col-sm-4">
-                                                <input type="text" class="form-control" name="nama_supplier" style="margin-bottom: 25px">
+                                                <input type="text" class="form-control" name="nama_supplier" style="margin-bottom: 25px" required="">
                                             </div>
                                                 <div class="col-md-2">
                                                      <label class="control-label " for="nama">Alamat :</label>
                                                  </div>
                                             <div class="col-sm-4">
-                                                <input type="text" class="form-control" name="alamat" style="margin-bottom: 25px">
+                                                <input type="text" class="form-control" name="alamat" style="margin-bottom: 25px" required="">
                                             </div>
                                         </div>
                                     
@@ -48,13 +48,13 @@
                                                 <label class="control-label" for="alamat">Kota :</label>
                                             </div>
                                             <div class="col-sm-4">
-                                                <input type="text" class="form-control" id="kota" name="kota" style="margin-bottom: 25px">
+                                                <input type="text" class="form-control" id="kota" name="kota" style="margin-bottom: 25px" required="">
                                             </div>
                                             <div class="col-md-2">
                                              <label class="control-label" for="alamat">No Telepon :</label>
                                          </div>
                                          <div class="col-sm-4">
-                                            <input type="text" class="form-control" id="no_telp" name="no_telp">
+                                            <input type="number" max="20" class="form-control" id="no_telp" name="no_telp">
                                         </div>
 
                                         </div>
@@ -65,7 +65,7 @@
                                                 <label class="control-label" for="alamat">No Fax :</label>
                                             </div>
                                             <div class="col-sm-4">
-                                                <input type="text" class="form-control" id="no_fax" name="no_fax" style="margin-bottom: 25px">
+                                                <input type="number" max="50" class="form-control" id="no_fax" name="no_fax" style="margin-bottom: 25px">
                                             </div>
                                             <div class="col-md-2">
                                              <label class="control-label" for="attention">Attention :</label>
@@ -82,7 +82,7 @@
                                                 <label class="control-label" for="no_hp">No HP :</label>
                                             </div>
                                             <div class="col-sm-4">
-                                                <input type="text" class="form-control" id="no_hp" name="no_hp" style="margin-bottom: 25px">
+                                                <input type="number" max="50" class="form-control" id="no_hp" name="no_hp" style="margin-bottom: 25px">
                                             </div>
                                             <div class="col-md-2">
                                              <label class="control-label" for="tgl_input">Tanggal Input :</label>
@@ -100,7 +100,7 @@
                                                 <label class="control-label" for="nomer_rek">No Rek:</label>
                                             </div>
                                             <div class="col-sm-4">
-                                                <input type="text" class="form-control" id="nomer_rek" name="nomer_rek" style="margin-bottom: 25px">
+                                                <input type="number" max="30" class="form-control" id="nomer_rek" name="nomer_rek" style="margin-bottom: 25px">
                                             </div>
                                             <div class="col-md-2">
                                              <label class="control-label" for="bank">Bank:</label>
@@ -115,6 +115,16 @@
                                          <div class="col-sm-4">
                                            <input type="text" class="form-control" id="atas_nama" name="atas_nama" style="margin-bottom: 25px">
                                         </div>
+                                        <div class="col-md-2">
+                                             <label class="control-label" for="ppn">PPN:</label>
+                                         </div>
+                                         <div class="col-sm-4">
+                                            <select class="form-control" name="ppn" required="" style="height:45px;">
+                                                <option value="">PILIH:</option>
+                                                <option value="10">10%</option>
+                                                <option value="0">NO PPN</option>
+                                            </select>
+                                        </div>
 
                                         </div>
 
@@ -128,10 +138,13 @@
                                                 <input type="text" class="form-control" id="terms" name="terms" style="margin-bottom: 25px">
                                             </div>
                                             <div class="col-md-2">
-                                             <label class="control-label" for="ppn">PPN:</label>
+                                             <label class="control-label" for="start">Status :</label>
                                          </div>
                                          <div class="col-sm-4">
-                                            <input type="text" class="form-control" id="ppn" name="ppn">
+                                            <select class="form-control" name="status" style="height:45px;">
+                                                <option value="AKTIF">AKTIF</option>
+                                                <option value="NON AKTIF">NON AKTIF</option>
+                                            </select>
                                         </div>
 
                                         </div>
@@ -145,13 +158,10 @@
                                                 <input type="text" class="form-control" id="supply" name="supply" style="margin-bottom: 25px">
                                             </div>
                                             <div class="col-md-2">
-                                             <label class="control-label" for="start">Status :</label>
+                                             <label class="control-label" for="remarks">Remarks :</label>
                                          </div>
                                          <div class="col-sm-4">
-                                            <select class="form-control" name="status">
-                                                <option value="AKTIF">AKTIF</option>
-                                                <option value="NON AKTIF">NON AKTIF</option>
-                                            </select>
+                                            <input type="text" class="form-control" id="remarks" name="remarks">
                                         </div>
 
                                         </div>
@@ -164,18 +174,13 @@
                                             <div class="col-sm-4">
                                                 <input type="text" class="form-control" id="perjanjian" name="perjanjian" style="margin-bottom: 25px">
                                             </div>
-                                            <div class="col-md-2">
-                                             <label class="control-label" for="remarks">Remarks :</label>
-                                         </div>
-                                         <div class="col-sm-4">
-                                            <input type="text" class="form-control" id="remarks" name="remarks">
-                                        </div>
+                                            
 
                                         </div>
                                     </div>  
         
           
-              <div align="right"> <button type="submit" class="btn btn-primary" style="align-self: right">Simpan</button></div>
+              <div align="right"> <button type="submit" class="btn btn-success" style="align-self: right"><i class="ti-save"></i> Simpan</button></div>
               <?php echo form_close() ?>
            
 
