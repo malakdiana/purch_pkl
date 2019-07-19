@@ -6,7 +6,7 @@ class Grafik extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->model('Purch_reqModel');
+		$this->load->model('GrafikModel');
 		 $this->load->helper('url','form','download');
 		  $this->load->library('excel','upload');
 
@@ -16,9 +16,9 @@ class Grafik extends CI_Controller {
 
 public function index()
 	{
-		$data['Purch_req']= $this->Purch_reqModel->getPurch_req();
+		$data['grafik']= $this->GrafikModel->getSupplier();
 		$this->load->view('Admin/header');
-        $this->load->view('Admin/grafik');
+        $this->load->view('Admin/grafik',$data);
    
 	}
 
