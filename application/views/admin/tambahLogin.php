@@ -103,7 +103,7 @@
                                      
         
           
-              <div align="left"> <button type="submit" class="btn btn-primary" style="align-self: left">Simpan</button></div>
+              <div align="left"> <button type="submit" class="btn btn-success" style="align-self: left"><i class="ti-save"></i> Simpan</button></div>
               <?php echo form_close() ?>
            
 

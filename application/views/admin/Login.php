@@ -180,10 +180,11 @@
     <!-- others plugins -->
 <script type="text/javascript">
     function modalDetail(id_user,username,password,hak_akses){
-        
+      
          document.getElementById('id_user').value = id_user;
         document.getElementById('username').value = username;
-      
+      document.getElementById('myInput').value="";
+      document.getElementById('myInput2').value="";
         document.getElementById('hak_akses').value = hak_akses;
        
       
