@@ -137,7 +137,7 @@
                     </tr>
                     <tr>
                         <td>TANGGAL INPUT</td>
-                        <td><input type="text" class="form-control" name="tgl_input2" id="tgl_input2" value="" readonly=""></td>
+                        <td><input type="date" class="form-control" name="tgl_input2" id="tgl_input2" value="" readonly=""></td>
                     </tr>
                     <tr>
                         <td>TERMS</td>
@@ -228,7 +228,7 @@
                     </div>
                     <div class="form-group">
                         <label for="">TANGGAL INPUT</label>
-                        <input type="text" class="form-control" name="tgl_input" id="tgl_input" value="" >
+                        <input type="date" class="form-control" name="tgl_input" id="tgl_input" value="" >
                     </div>
                     <div class="form-group">
                         <label for="">TERMS</label>
