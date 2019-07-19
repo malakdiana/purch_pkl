@@ -97,7 +97,7 @@
           "aTargets": [0]
         }],
         "aaSorting": [
-          [0, 'desc']
+          [0, 'asc']
         ]
       });
 

@@ -21,6 +21,26 @@ class InvoiceModel extends CI_Model {
             }
     }
 
+    public function getDocRecById($id){
+        $query= $this->db->select('*')->from('doc_receipt')->join('supplier', 'doc_receipt.id_supplier = supplier.id_supplier')->where('id_receipt', $id)->get();
+          $results=array();
+            if($query->num_rows() > 0){
+            return $query->result();
+            }else{
+            return $results;
+            }
+
+    }
+    public function editDetail(){
+        $data= array(
+            'no_invoice'=> $this->input->post('no_invoice'),
+            'tgl_invoice'=> $this->input->post('tgl_invoice')
+        );
+        $this->db->where('id_detail', $this->input->post('id_detail'));
+        $this->db->update('detail_docrec', $data);
+
+    }
+
     public function getPre(){
     $query=$this->db->select('*')->from('prepared')->get();
  $results=array();
@@ -51,7 +71,7 @@ public function updatePre(){
     	   $no_docrec = "REC"."-".$this->input->post('no_rec')."/"."PUR"."-"."SAI"."/".$this->input->post('bulan')."/".$this->input->post('tahun').$tambahan;
     	   $ceknomor= $this->db->select('*')->from('doc_receipt')->where('no_receipt',$no_docrec)->get();
         if($ceknomor->num_rows() > 0){
-              echo "<script type='text/javascript'>alert('Gatot');</script>";
+              echo "<script type='text/javascript'>alert('nomor sama');</script>";
 
         }else{
     	   $data = array(
@@ -72,6 +92,21 @@ public function updatePre(){
     }
 
 
+}
+
+public function hapusDetail($id){
+    $this->db->where('id_detail',$id);
+    $result= $this->db->delete('detail_docrec');
+    return $result;
+}
+
+public function updateDocRec(){
+    $data=array(
+        "vp_date" => $this->input->post('vp_date')
+    );
+    $this->db->where('id_receipt', $this->input->post('id_receipt'));
+    $result = $this->db->update('doc_receipt', $data);
+    return $result;
 }
 
 public function insertDetail($id_receipt){
@@ -122,6 +157,16 @@ public function poToPrint(){
             return $results;
             }
 
+}
+
+public function getPoByDoc($id){
+    $query= $this->db->select('*')->from('detail_docrec')->join('po','detail_docrec.id_po = po.id_po')->where('id_receipt', $id)->get();
+          $results=array();
+            if($query->num_rows() > 0){
+            return $query->result();
+            }else{
+            return $results;
+            }
 }
 
 public function getInvoice($id_po){

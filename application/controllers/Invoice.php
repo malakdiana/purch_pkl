@@ -12,6 +12,8 @@ class Invoice extends CI_Controller {
 		  $this->load->model('InvoiceModel');
 		  		  $this->load->model('PoModel');
 		$this->load->helper('file');
+		        $this->load->database();
+
 
 	
 	}
@@ -23,6 +25,17 @@ public function index()
         $this->load->view('Invoice/data_docrec',$data);
    
 	}
+
+	  function deleteDetail(){
+        $id = $this->input->post('id_detail');
+        $data=$this->InvoiceModel->hapusDetail($id);
+        echo json_encode($data);
+    }
+
+    function tambahDocRec($id){
+    	$this->InvoiceModel->insertDetail($id);
+    	redirect('Invoice/editDocRec/'.$id);
+    }
 
 	public function docrec(){
 			$this->load->view('Invoice/header');
@@ -38,6 +51,12 @@ public function index()
 	
 	}
 
+	public function editDetail(){
+		$id = $this->input->post('id');
+		$this->InvoiceModel->editDetail();
+		redirect('Invoice/editDocRec/'.$id);
+	}
+
 	public function poPrint(){
 		$data['doc'] =  $this->InvoiceModel->poToPrint();
 			$this->load->view('Invoice/header');
@@ -51,12 +70,20 @@ public function index()
 	  $data['docrec'] = $this->InvoiceModel->getDocrecByPo($id);
 	 $this->load->view('Invoice/header');
         $this->load->view('Invoice/detail_po',$data);
-		//$this->load->view('Invoice/print');
-
+	
 }
 public function editPrepared(){
 	$data=$this->InvoiceModel->updatePre();
         echo json_encode($data);
+}
+
+public function editDocRec($id){
+	$data['docrec'] = $this->InvoiceModel->getDocRecById($id);
+	$data['list']= $this->InvoiceModel->getPoByDoc($id);
+	 $this->load->view('Invoice/header');
+        $this->load->view('Invoice/editDocRec',$data);
+	
+
 }
 
 
@@ -214,6 +241,21 @@ function penyebut($nilai) {
  
 	return $pecahkan[2] . ' ' . $bulan[ (int)$pecahkan[1] ] . ' ' . $pecahkan[0];
 }
+
+  public function updateDocRec(){
+        $data=$this->InvoiceModel->updateDocRec();
+        echo json_encode($data);
+    }
+
+    public function hapusDocRec(){
+    	$this->db->where('id_receipt',$this->input->post('id_receipt_delete'));
+    	$this->db->delete('detail_docrec');
+    $this->db->where('id_receipt',$this->input->post('id_receipt_delete'));
+    	$this->db->delete('doc_receipt');
+
+    	redirect('Invoice');
+    		
+    }
 
 	
 	
