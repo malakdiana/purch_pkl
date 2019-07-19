@@ -137,6 +137,7 @@ public function getDocRec(){
             $this->db->join('doc_receipt','detail_docrec.id_receipt = doc_receipt.id_receipt');
             $this->db->join('po','po.id_po = detail_docrec.id_po');
             $this->db->join('supplier', 'doc_receipt.id_supplier = supplier.id_supplier');
+                 $this->db->order_by('doc_receipt.id_receipt', 'desc');
             $query = $this->db->get();
            $results=array();
             if($query->num_rows() > 0){

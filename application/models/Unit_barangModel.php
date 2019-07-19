@@ -16,7 +16,8 @@ class Unit_barangModel extends CI_Model {
     {
 
             $this->db->select('*');
-            $this->db->from('Unit_barang');
+            $this->db->from('unit_barang'); 
+           $this->db->order_by('no','DESC');  
             $query = $this->db->get();
             if($query->num_rows() > 0){
             return $query->result();

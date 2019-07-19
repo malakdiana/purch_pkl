@@ -32,6 +32,7 @@ class LoginModel extends CI_Model {
 
             $this->db->select('*');
             $this->db->from('Login');
+                 $this->db->order_by('id_user', 'desc');
             $query = $this->db->get();
             if($query->num_rows() > 0){
             return $query->result();
