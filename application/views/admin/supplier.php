@@ -236,7 +236,8 @@
                     </div>
                     <div class="form-group">
                         <label for="">PPN</label>
-                        <input type="text" class="form-control" name="ppn" id="ppn" value="" >
+                         <select class="form-control" name="ppn" id="ppn" style="height:40px;">
+                                            </select>
                     </div>
                     <div class="form-group">
                         <label for="">SUPPLY</label>
@@ -302,6 +303,12 @@
         }else{
               $("#status").html('<option value="AKTIF">AKTIF</option><option value="NON AKTIF" selected="">NON AKTIF</option>');
         }
+
+        if(ppn==10){
+            $("#ppn").html('<option value="10" selected="">10%</option><option value="0" >NO PPN</option>');
+        }else{
+              $("#ppn").html('<option value="10">10%</option><option value="0" selected="">NO PPN</option>');
+        }
     }
   </script>
   <script type="text/javascript">
@@ -349,6 +356,30 @@
        */
     
   </script>
+
+  <script type="text/javascript">
+  var rupiah = document.getElementById("nomer_rek");
+rupiah.addEventListener("keyup", function(e) {
+  rupiah.value = formatRupiah(this.value,);
+});
+
+  var no_hp = document.getElementById("no_hp");
+no_hp.addEventListener("keyup", function(e) {
+  no_hp.value = formatRupiah(this.value,);
+});
+  var no_fax = document.getElementById("no_fax");
+no_fax.addEventListener("keyup", function(e) {
+  no_fax.value = formatRupiah(this.value,);
+});
+  var no_telp = document.getElementById("no_telp");
+no_telp.addEventListener("keyup", function(e) {
+  no_telp.value = formatRupiah(this.value,);
+});
+function formatRupiah(angka) {
+  var number_string = angka.replace(/[^,\d]/g, "").toString();
+  return number_string;
+  }
+</script>
 </body>
 
 </html>
