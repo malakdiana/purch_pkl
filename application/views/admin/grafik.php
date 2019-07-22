@@ -71,7 +71,7 @@
                     <div class="col-6 mt-5">
                         <div class="card">   
                             <div class="card-body">
-                                <input type="month" name="" class="form-control" style="width: 160px">
+                                <input type="month" name="bulan_sup" id="bulan_sup" class="form-control" style="width: 160px">
                                  <div id="chartdiv"></div>
                              </div>
                          </div>
@@ -101,6 +101,21 @@
         }
                                     ?>
    <script type="text/javascript">
+    $("#bulan_sup").change(function () {
+     var val = $(this).val(); 
+        $.ajax({
+                type  : 'ajax',
+                url   : '<?php echo base_url()?>Grafik/getSupplierr',
+                async : false,
+                data : {tgl: val},
+                dataType : 'json',
+                success : function(data){
+                    
+                }
+ 
+            });
+    }
+
     am4core.useTheme(am4themes_animated);
        
 

@@ -32,5 +32,12 @@ public function index()
 		$this->load->view('admin/header');
 		$this->load->view('admin/setting',$data);
 	}
+
+	  function getSupplier(){
+        $tgl=$this->input->get('tgl');
+        $tgl= explode('-', $tgl);
+        $data=$this->GrafikModel->getSupplierr($tgl[1]);
+        echo json_encode($data);
+    }
 	
 }
