@@ -10,7 +10,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<style>
 	body{
 		font-size: 13px;
-font-family: 'Arial Black', Gadget, sans-serif;
+font-family: "Arial Black", "Arial Bold", Gadget, sans-serif;
 padding-left: -3px;
 padding-top: -19px;
 	}
@@ -172,7 +172,8 @@ margin-left: 105px;
 				 echo ", ".$key->no_invoice;
 				}else{
 					 echo $key->no_invoice;
-				}} ?></b>
+				}
+				$no++;} ?></b>
 				</td>
 				</tr>
 			</table >
