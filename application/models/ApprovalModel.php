@@ -25,7 +25,7 @@ class ApprovalModel extends CI_Model {
             }else{
             return $results;
             }
-        }
+        
     }
 
      public function getApprovalExport()
