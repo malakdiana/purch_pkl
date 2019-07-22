@@ -38,7 +38,7 @@ class Approval extends CI_Controller {
         if ($this->form_validation->run()==FALSE) {
             $this->load->view('Admin/header');
             $this->load->view('Admin/tambahApproval');
-            $this->load->view('Admin/footer');
+          
         }else{
             $this->ApprovalModel->tambahApproval();
                 $this->session->set_flashdata('tambahApproval','<div class="alert alert-success" role="alert">SUKSES TAMBAH DATA <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');

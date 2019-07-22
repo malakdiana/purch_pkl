@@ -42,13 +42,13 @@
                                             <div class="form-group">
                                                      <label class="control-label " for="min">Min :</label>
                                            
-                                                <input type="text" class="form-control" name="min" style="margin-bottom: 25px">
+                                                <input type="text" class="form-control" name="min" id="rupiah"style="margin-bottom: 25px">
                                             </div>
 
                                             <div class="form-group">
                                                      <label class="control-label " for="max">Max :</label>
                                            
-                                                <input type="text" class="form-control" name="max" style="margin-bottom: 25px">
+                                                <input type="text" class="form-control" name="max" id="rupiah2" style="margin-bottom: 25px">
                                             </div>
    
    
@@ -64,3 +64,32 @@
 </div>
 </div>
 </div>
+<?php   $this->load->view('Admin/footer'); ?>
+<script type="text/javascript">
+    var rupiah = document.getElementById("rupiah");
+rupiah.addEventListener("keyup", function(e) {
+  rupiah.value = formatRupiah(this.value, "Rp. ");
+});
+    var rupiah2 = document.getElementById("rupiah2");
+rupiah2.addEventListener("keyup", function(e) {
+  rupiah2.value = formatRupiah(this.value, "Rp. ");
+});
+
+/* Fungsi formatRupiah */
+function formatRupiah(angka, prefix) {
+  var number_string = angka.replace(/[^,\d]/g, "").toString(),
+    split = number_string.split(","),
+    sisa = split[0].length % 3,
+    rupiah = split[0].substr(0, sisa),
+    ribuan = split[0].substr(sisa).match(/\d{3}/gi);
+
+  // tambahkan titik jika yang di input sudah menjadi angka ribuan
+  if (ribuan) {
+    separator = sisa ? "." : "";
+    rupiah += separator + ribuan.join(".");
+  }
+
+  rupiah = split[1] != undefined ? rupiah + "," + split[1] : rupiah;
+  return prefix == undefined ? rupiah : rupiah ? "Rp. " + rupiah : "";
+}
+</script>

@@ -41,13 +41,19 @@ class ApprovalModel extends CI_Model {
 
     	$no = $this->input->post('no');
     	
-
+ $d = $this->input->post('min');
+             $d = str_replace('Rp', '', $d);
+              $d = str_replace('.', '', $d);
+               $d = str_replace(' ', '', $d);
+        $e = $this->input->post('max');
+             $e = str_replace('Rp', '', $e);
+              $e = str_replace('.', '', $e);
+               $e = str_replace(' ', '', $e);
         $data = array(
         'nama' => $this->input->post('nama'),
         'kode_nama' => $this->input->post('kode_nama'),
-        'min' => $this->input->post('min'),
-        'max' => $this->input->post('max'),
-       
+        'min' => $d,
+        'max' => $e,
       
         );
 
@@ -61,11 +67,19 @@ class ApprovalModel extends CI_Model {
 
     }
     public function tambahApproval(){
+        $d = $this->input->post('min');
+             $d = str_replace('Rp', '', $d);
+              $d = str_replace('.', '', $d);
+               $d = str_replace(' ', '', $d);
+               $e = $this->input->post('max');
+             $e = str_replace('Rp', '', $e);
+              $e = str_replace('.', '', $e);
+               $e = str_replace(' ', '', $e);
         $data = array(
         'nama' => $this->input->post('nama'),
         'kode_nama' => $this->input->post('kode_nama'),
-        'min' => $this->input->post('min'),
-        'max' => $this->input->post('max'),
+        'min' => $d,
+        'max' => $e,
       
         );
          $this->db->insert('Approval', $data);
