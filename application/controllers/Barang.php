@@ -199,7 +199,7 @@ class Barang extends CI_Controller {
     );
    
     // Buat header tabel nya pada baris ke 3
-    $excel->setActiveSheetIndex(0)->setCellValue('A1', "NO_BARANG"); // Set kolom A3 dengan tulisan "NO"
+    $excel->setActiveSheetIndex(0)->setCellValue('A1', "NO"); // Set kolom A3 dengan tulisan "NO"
     $excel->setActiveSheetIndex(0)->setCellValue('B1', "NAMA_BARANG"); // Set kolom B3 dengan tulisan "NIS"
    
     $excel->getActiveSheet()->getStyle('A1')->applyFromArray($style_col);
