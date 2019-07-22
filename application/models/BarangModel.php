@@ -23,19 +23,6 @@ class BarangModel extends CI_Model {
             return $query->result();
         }
     }
-
-     public function getBarangExport()
-    {
-
-            $this->db->select('*');
-            $this->db->from('barang');
-            $this->db->order_by('no_barang', 'ASC');
-            $query = $this->db->get();
-            if($query->num_rows() > 0){
-            return $query->result();
-        }
-    }
-
     public function updateBarang(){
 
     	$no = $this->input->post('no_barang');

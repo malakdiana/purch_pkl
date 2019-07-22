@@ -9,7 +9,7 @@ class Approval extends CI_Controller {
         $this->load->model('ApprovalModel');
          $this->load->helper('url','form','download');
         // $this->load->library(array('PHPExcel','PHPExcel/IOFactory'));
-          $this->load->library('excel','upload');
+          $this->load->library('Excel','upload');
 
     
     }
@@ -18,8 +18,8 @@ class Approval extends CI_Controller {
     
     {
         $data['app']= $this->ApprovalModel->getApproval();
-        $this->load->view('Admin/header');
-        $this->load->view('Admin/Approval',$data);
+        $this->load->view('admin/header');
+        $this->load->view('admin/Approval',$data);
     }
     public function updateApproval(){
         $this->ApprovalModel->updateApproval();
@@ -36,9 +36,9 @@ class Approval extends CI_Controller {
         $this->load->library('form_validation');
         $this->form_validation->set_rules('nama', 'nama', 'trim|required');
         if ($this->form_validation->run()==FALSE) {
-            $this->load->view('Admin/header');
-            $this->load->view('Admin/tambahApproval');
-          
+            $this->load->view('admin/header');
+            $this->load->view('admin/tambahApproval');
+            $this->load->view('admin/footer');
         }else{
             $this->ApprovalModel->tambahApproval();
                 $this->session->set_flashdata('tambahApproval','<div class="alert alert-success" role="alert">SUKSES TAMBAH DATA <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
@@ -48,9 +48,9 @@ class Approval extends CI_Controller {
     }
 
     public function importApproval(){
-        $this->load->view('Admin/header');
-            $this->load->view('Admin/importApproval');
-            $this->load->view('Admin/footer');
+        $this->load->view('admin/header');
+            $this->load->view('admin/importApproval');
+            $this->load->view('admin/footer');
     }
 
     public function prosesImportSup(){
@@ -201,7 +201,7 @@ class Approval extends CI_Controller {
     $excel->getActiveSheet()->getStyle('E1')->applyFromArray($style_col);
    
     // Panggil function view yang ada di SiswaModel untuk menampilkan semua data siswanya
-    $siswa = $this->ApprovalModel->getApprovalExport();
+    $siswa = $this->ApprovalModel->getApproval();
     $no = 1; // Untuk penomoran tabel, di awal set dengan 1
     $numrow = 2; // Set baris pertama untuk isi tabel adalah baris ke 4
     foreach($siswa as $data){ // Lakukan looping pada variabel siswa

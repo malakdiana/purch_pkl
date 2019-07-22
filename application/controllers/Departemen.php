@@ -9,7 +9,7 @@ class Departemen extends CI_Controller {
         $this->load->model('DepartemenModel');
          $this->load->helper('url','form','download');
         // $this->load->library(array('PHPExcel','PHPExcel/IOFactory'));
-          $this->load->library('excel','upload');
+          $this->load->library('Excel','upload');
 
     
     }
@@ -18,8 +18,8 @@ class Departemen extends CI_Controller {
     
     {
         $data['dpt']= $this->DepartemenModel->getDepartemen();
-        $this->load->view('Admin/header');
-        $this->load->view('Admin/Departemen',$data);
+        $this->load->view('admin/header');
+        $this->load->view('admin/Departemen',$data);
     }
     public function updateDepartemen(){
         $this->DepartemenModel->updateDepartemen();
@@ -36,9 +36,9 @@ class Departemen extends CI_Controller {
         $this->load->library('form_validation');
         $this->form_validation->set_rules('group_name', 'group_name', 'trim|required');
         if ($this->form_validation->run()==FALSE) {
-            $this->load->view('Admin/header');
-            $this->load->view('Admin/tambahDepartemen');
-            $this->load->view('Admin/footer');
+            $this->load->view('admin/header');
+            $this->load->view('admin/tambahDepartemen');
+            $this->load->view('admin/footer');
         }else{
             $this->DepartemenModel->tambahDepartemen();
                 $this->session->set_flashdata('tambahDepartemen','<div class="alert alert-success" role="alert">SUKSES TAMBAH DATA <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
@@ -48,9 +48,9 @@ class Departemen extends CI_Controller {
     }
 
     public function importDepartemen(){
-        $this->load->view('Admin/header');
-            $this->load->view('Admin/importDepartemen');
-            $this->load->view('Admin/footer');
+        $this->load->view('admin/header');
+            $this->load->view('admin/importDepartemen');
+            $this->load->view('admin/footer');
     }
 
     public function prosesImportSup(){

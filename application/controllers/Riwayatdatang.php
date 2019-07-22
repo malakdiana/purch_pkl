@@ -11,7 +11,7 @@ class Riwayatdatang extends CI_Controller {
          $this->load->model('Purch_reqModel');
          $this->load->helper('url','form');
           $this->load->helper('url','form','download');
-          $this->load->library('excel','upload');
+          $this->load->library('Excel','upload');
         // $this->load->library(array('PHPExcel','PHPExcel/IOFactory'));
          // $this->load->library('excel','upload');
 
@@ -22,8 +22,8 @@ public function index()
 	{
 		$data['Po']= $this->RiwayatdatangModel->getPo();
         
-		$this->load->view('Admin/header');
-        $this->load->view('Admin/Riwayatdatang',$data);
+		$this->load->view('admin/header');
+        $this->load->view('admin/Riwayatdatang',$data);
  }
 
 public function inserttanggal(){
@@ -33,9 +33,9 @@ public function inserttanggal(){
          
         $this->form_validation->set_rules('tgl_dtg', 'tgl_dtg', 'trim|required');
         if ($this->form_validation->run()==FALSE) {
-            $this->load->view('Admin/header');
-            $this->load->view('Admin/Riwayatdatang');
-            $this->load->view('Admin/footer');
+            $this->load->view('admin/header');
+            $this->load->view('admin/Riwayatdatang');
+            $this->load->view('admin/footer');
 
             $this->session->set_flashdata('tambah Data Kedatangan','<div class="alert alert-success" role="alert">GAGAL TAMBAH DATA <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
         }else{
@@ -59,8 +59,8 @@ public function inserttanggal(){
     {
         $data['Detail']= $this->RiwayatdatangModel->getDetail($id);
         
-        $this->load->view('Admin/header');
-        $this->load->view('Admin/Detailriwayat',$data);
+        $this->load->view('admin/header');
+        $this->load->view('admin/Detailriwayat',$data);
  }
 
   public function deleteriwayat($id, $id_bayangan){

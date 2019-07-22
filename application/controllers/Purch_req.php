@@ -19,13 +19,13 @@ public function index()
 	{
 		$data['Purch_req']= $this->Purch_reqModel->getPurch_req();
         if($this->session->userdata('logged_in')['hak_akses']==1){
-		$this->load->view('Admin/header');
-        $this->load->view('Admin/Purch_req',$data);
+		$this->load->view('admin/header');
+        $this->load->view('admin/Purch_req',$data);
 
         }else if($this->session->userdata('logged_in')['hak_akses']==2){
         $data['Purch_req']= $this->Purch_reqModel->getPurch_req_section();
-        $this->load->view('User/header');
-        $this->load->view('User/Purch_req',$data);
+        $this->load->view('user/header');
+        $this->load->view('user/Purch_req',$data);
 
         }else if($this->session->userdata('logged_in')['hak_akses']==4){
         
@@ -33,8 +33,8 @@ public function index()
         $this->load->view('Personal/Purch_req',$data);
 
     }else{
-        $this->load->view('Read_only/header');
-        $this->load->view('Read_only/Purch_req',$data);
+        $this->load->view('read_only/header');
+        $this->load->view('read_only/Purch_req',$data);
     }
    
 	}
@@ -69,11 +69,11 @@ public function index()
         if ($this->form_validation->run()==FALSE) {
              $data['section']=$this->SectionModel->getSection();
               if($this->session->userdata('logged_in')['hak_akses']==1){
-            $this->load->view('Admin/header');
-            $this->load->view('Admin/tambahPR', $data);
+            $this->load->view('admin/header');
+            $this->load->view('admin/tambahPR', $data);
         }else{
-              $this->load->view('User/header');
-            $this->load->view('User/tambahPR', $data);
+              $this->load->view('user/header');
+            $this->load->view('user/tambahPR', $data);
         }
           
         }else{
@@ -98,11 +98,11 @@ public function index()
             $data['detail']=$this->Purch_reqModel->getItem_barang($id);
 
                if($this->session->userdata('logged_in')['hak_akses']==1){
-            $this->load->view('Admin/header');
-            $this->load->view('Admin/tambahItem_barang',$data);
+            $this->load->view('admin/header');
+            $this->load->view('admin/tambahItem_barang',$data);
         }else{
-              $this->load->view('User/header');
-            $this->load->view('Admin/tambahItem_barang',$data);
+              $this->load->view('user/header');
+            $this->load->view('admin/tambahItem_barang',$data);
         }
            
 
@@ -124,19 +124,19 @@ public function index()
             $this->load->model('BarangModel');
             $data['barang']= $this->BarangModel->getBarang(); $data['id']=$id;
                 if($this->session->userdata('logged_in')['hak_akses']==1){
-            $this->load->view('Admin/header');
-            $this->load->view('Admin/GetItem_barang',$data);
+            $this->load->view('admin/header');
+            $this->load->view('admin/GetItem_barang',$data);
 
         }else if($this->session->userdata('logged_in')['hak_akses']==2){
-            $this->load->view('User/header');
-            $this->load->view('User/GetItem_barang',$data);
+            $this->load->view('user/header');
+            $this->load->view('user/GetItem_barang',$data);
           }else if($this->session->userdata('logged_in')['hak_akses']==4){
             $this->load->view('Personal/header');
             $this->load->view('Personal/GetItem_barang',$data);
          
             }else{
-            $this->load->view('Read_only/header');
-            $this->load->view('Read_only/GetItem_barang',$data);
+            $this->load->view('read_only/header');
+            $this->load->view('read_only/GetItem_barang',$data);
             }   
 
     }
@@ -148,19 +148,19 @@ public function index()
             $this->load->model('BarangModel');
             $data['barang']= $this->BarangModel->getBarang(); $data['id']=$id;
                 if($this->session->userdata('logged_in')['hak_akses']==1){
-            $this->load->view('Admin/header');
-            $this->load->view('Admin/GetItem_barang',$data);
+            $this->load->view('admin/header');
+            $this->load->view('admin/GetItem_barang',$data);
 
         }else if($this->session->userdata('logged_in')['hak_akses']==2){
-            $this->load->view('User/header');
-            $this->load->view('User/GetItem_barang',$data);
+            $this->load->view('user/header');
+            $this->load->view('user/GetItem_barang',$data);
           }else if($this->session->userdata('logged_in')['hak_akses']==4){
             $this->load->view('Personal/header');
             $this->load->view('Personal/GetItem_barang',$data);
          
             }else{
-            $this->load->view('Read_only/header');
-            $this->load->view('Read_only/GetItem_barang',$data);
+            $this->load->view('read_only/header');
+            $this->load->view('read_only/GetItem_barang',$data);
             }   
 
     }

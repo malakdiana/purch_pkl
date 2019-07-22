@@ -31,7 +31,7 @@ class LoginModel extends CI_Model {
     {
 
             $this->db->select('*');
-            $this->db->from('Login');
+            $this->db->from('login');
                  $this->db->order_by('id_user', 'desc');
             $query = $this->db->get();
             if($query->num_rows() > 0){
@@ -53,7 +53,7 @@ class LoginModel extends CI_Model {
 
         
          $this->db->where('id_user', $id_user);
-        $this->db->update('Login', $data);
+        $this->db->update('login', $data);
     }
 
      public function updateHak_akses(){
@@ -70,12 +70,12 @@ class LoginModel extends CI_Model {
 
         
          $this->db->where('id_user', $id_user);
-        $this->db->update('Login', $data);
+        $this->db->update('login', $data);
     }
 
     public function deleteLogin($id){
          $this->db->where('id_user', $id);
-        $this->db->delete('Login');
+        $this->db->delete('login');
 
     }
     public function tambahLogin(){
@@ -92,7 +92,7 @@ class LoginModel extends CI_Model {
         'section' => $section,
         
         );
-         $this->db->insert('Login', $data);
+         $this->db->insert('login', $data);
         
     }
 
@@ -106,7 +106,7 @@ private $_batchImport;
     // save data
     public function importData() {
         $data = $this->_batchImport;
-        $this->db->insert_batch('Login', $data);
+        $this->db->insert_batch('login', $data);
     }
 
 

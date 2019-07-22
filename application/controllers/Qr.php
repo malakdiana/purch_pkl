@@ -20,18 +20,18 @@ public function index()
 	{
 		$data['Qr']=$this->QrModel->getQr();
         if($this->session->userdata('logged_in')['hak_akses']==1){
-             $this->load->view('Admin/header');
+             $this->load->view('admin/header');
         $this->load->view('admin/quotation',$data);
         
     }else if($this->session->userdata('logged_in')['hak_akses']==2){
-             $this->load->view('User/header');
-        $this->load->view('User/Qr',$data);
+             $this->load->view('user/header');
+        $this->load->view('user/Qr',$data);
     }else if($this->session->userdata('logged_in')['hak_akses']==4){
              $this->load->view('Personal/header');
         $this->load->view('Personal/Qr',$data);
 		
     }else{
-        $this->load->view('Read_only/header');
+        $this->load->view('read_only/header');
         $this->load->view('read_only/Qr',$data);
     }
    
@@ -44,13 +44,13 @@ public function index()
             $data['section']=$this->SectionModel->getSection();
 
             if($this->session->userdata('logged_in')['hak_akses']==2){
-            $this->load->view('User/header');
-            $this->load->view('User/tambahQR', $data);
-            $this->load->view('Admin/footer');
+            $this->load->view('user/header');
+            $this->load->view('user/tambahQR', $data);
+            $this->load->view('admin/footer');
             }else if($this->session->userdata('logged_in')['hak_akses']==4){
             $this->load->view('Personal/header');
             $this->load->view('Personal/tambahQR', $data);
-            $this->load->view('Admin/footer');
+            $this->load->view('admin/footer');
     
     }
        
@@ -96,8 +96,8 @@ public function index()
     public function tambahVendor($id){
         $data['id']=$id;
         $data['vendor']=$this->QrModel->getListVendor($id);
-        $this->load->view('Admin/header');
-            $this->load->view('Admin/tambahVendor',$data);
+        $this->load->view('admin/header');
+            $this->load->view('admin/tambahVendor',$data);
 
     }
 
@@ -105,18 +105,18 @@ public function index()
         $data['id']=$id;
         $data['vendor']=$this->QrModel->getListVendor($id);
          if($this->session->userdata('logged_in')['hak_akses']==1){
-        $this->load->view('Admin/header');
-            $this->load->view('User/list_Vendor',$data);
+        $this->load->view('admin/header');
+            $this->load->view('user/list_Vendor',$data);
           }
           else if($this->session->userdata('logged_in')['hak_akses']==2){
-        $this->load->view('User/header');
-            $this->load->view('User/list_Vendor',$data);
+        $this->load->view('user/header');
+            $this->load->view('user/list_Vendor',$data);
           }else if($this->session->userdata('logged_in')['hak_akses']==4){
         $this->load->view('Personal/header');
             $this->load->view('Personal/list_Vendor',$data);
           } else{
-        $this->load->view('Read_only/header');
-            $this->load->view('User/list_Vendor',$data);
+        $this->load->view('read_only/header');
+            $this->load->view('user/list_Vendor',$data);
           }
 
     }
@@ -153,21 +153,21 @@ $this->upload->initialize($config);
 
     public function editQr($id){
         $data['list'] = $this->QrModel->getQrById($id);
-        $this->load->view('Admin/header');
-        $this->load->view('Admin/editQuotation', $data);
-        $this->load->view('Admin/footer');
+        $this->load->view('admin/header');
+        $this->load->view('admin/editQuotation', $data);
+        $this->load->view('admin/footer');
     }
 
         public function editQrUser($id){
         $data['list'] = $this->QrModel->getQrById($id);
         if($this->session->userdata('logged_in')['hak_akses']==2){
-        $this->load->view('User/header');
-        $this->load->view('User/editQR', $data);
-        $this->load->view('Admin/footer');
+        $this->load->view('user/header');
+        $this->load->view('user/editQR', $data);
+        $this->load->view('admin/footer');
         }else if($this->session->userdata('logged_in')['hak_akses']==4){
         $this->load->view('Personal/header');
         $this->load->view('Personal/editQR', $data);
-        $this->load->view('Admin/footer');
+        $this->load->view('admin/footer');
       }
     }
 
@@ -175,25 +175,25 @@ $this->upload->initialize($config);
 
     public function detailQuotation($id){
        $data['list'] = $this->QrModel->getQrById($id);
-        $this->load->view('Admin/header');
-        $this->load->view('Admin/detailQuotation', $data);
-        $this->load->view('Admin/footer');
+        $this->load->view('admin/header');
+        $this->load->view('admin/detailQuotation', $data);
+        $this->load->view('admin/footer');
     }
 
     public function detailQuotationUser($id){
        $data['list'] = $this->QrModel->getQrById($id);
        if($this->session->userdata('logged_in')['hak_akses']==2){
-        $this->load->view('User/header');
-        $this->load->view('User/detailQuotation', $data);
-        $this->load->view('Admin/footer');
+        $this->load->view('user/header');
+        $this->load->view('user/detailQuotation', $data);
+        $this->load->view('admin/footer');
       }else if($this->session->userdata('logged_in')['hak_akses']==4){
         $this->load->view('Personal/header');
         $this->load->view('Personal/detailQuotation', $data);
-        $this->load->view('Admin/footer');
+        $this->load->view('admin/footer');
          }else{
-         $this->load->view('Read_only/header');
-        $this->load->view('Read_only/editQuotation', $data);
-        $this->load->view('Admin/footer');
+         $this->load->view('read_only/header');
+        $this->load->view('read_only/editQuotation', $data);
+        $this->load->view('admin/footer');
     }
 
     }
@@ -367,8 +367,8 @@ $this->upload->initialize($config);
 
     public function tracking()
     {  $data['Qr']=$this->QrModel->getQr_tracking();
-        $this->load->view('User/header');
-        $this->load->view('User/Tracking_Qr',$data);
+        $this->load->view('user/header');
+        $this->load->view('user/Tracking_Qr',$data);
         
     }
 

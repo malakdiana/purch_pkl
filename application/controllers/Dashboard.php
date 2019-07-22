@@ -8,7 +8,7 @@ class Dashboard extends CI_Controller {
 		parent::__construct();
 		 $this->load->model('LoginModel');
 		 $this->load->helper('url','form','download');
-		  $this->load->library('excel','upload');
+		  $this->load->library('Excel','upload');
 
 
 	
@@ -16,11 +16,11 @@ class Dashboard extends CI_Controller {
 
 public function index()
 	{  if($this->session->userdata('logged_in')['hak_akses']==1){
-		$this->load->view('Admin/header');
-        $this->load->view('Admin/dashboard');
+		$this->load->view('admin/header');
+        $this->load->view('admin/dashboard');
         }else if($this->session->userdata('logged_in')['hak_akses']==2){
-		$this->load->view('User/header');
-        $this->load->view('User/dashboard');
+		$this->load->view('user/header');
+        $this->load->view('user/dashboard');
     }else if($this->session->userdata('logged_in')['hak_akses']==3){
 		$this->load->view('Invoice/header');
         $this->load->view('Invoice/dashboard');
@@ -42,8 +42,8 @@ public function index()
 		$this->load->view('admin/header');
 		$this->load->view('admin/Myprofil');
 		 }else{
-		 $this->load->view('User/header');
-        $this->load->view('User/Myprofil');
+		 $this->load->view('user/header');
+        $this->load->view('user/Myprofil');
 		}
 
 	}

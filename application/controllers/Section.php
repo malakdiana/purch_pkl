@@ -10,7 +10,7 @@ class Section extends CI_Controller {
          $this->load->model('DepartemenModel');
          $this->load->helper('url','form','download');
         // $this->load->library(array('PHPExcel','PHPExcel/IOFactory'));
-          $this->load->library('excel','upload');
+          $this->load->library('Excel','upload');
 
     
     }
@@ -20,8 +20,8 @@ class Section extends CI_Controller {
     {
         $data['dpt']= $this->SectionModel->getSection();
         $data['listDep']=$this->DepartemenModel->getDepartemen();
-        $this->load->view('Admin/header');
-        $this->load->view('Admin/Section',$data);
+        $this->load->view('admin/header');
+        $this->load->view('admin/Section',$data);
     }
 
 
@@ -42,9 +42,9 @@ class Section extends CI_Controller {
         $this->form_validation->set_rules('nama_section', 'nama_section', 'trim|required');
         if ($this->form_validation->run()==FALSE) {
             $data['listDep']=$this->DepartemenModel->getDepartemen();
-            $this->load->view('Admin/header');
-            $this->load->view('Admin/tambahSection', $data);
-            $this->load->view('Admin/footer');
+            $this->load->view('admin/header');
+            $this->load->view('admin/tambahSection', $data);
+            $this->load->view('admin/footer');
         }else{
             $this->SectionModel->tambahSection();
                 $this->session->set_flashdata('tambahSection','<div class="alert alert-success" role="alert">SUKSES TAMBAH DATA <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
@@ -54,9 +54,9 @@ class Section extends CI_Controller {
     }
 
     public function importSection(){
-        $this->load->view('Admin/header');
-            $this->load->view('Admin/importSection');
-            $this->load->view('Admin/footer');
+        $this->load->view('admin/header');
+            $this->load->view('admin/importSection');
+            $this->load->view('admin/footer');
     }
 
     public function prosesImportSup(){
@@ -200,7 +200,7 @@ class Section extends CI_Controller {
    
 
     // Panggil function view yang ada di SiswaModel untuk menampilkan semua data siswanya
-    $siswa = $this->SectionModel->getSectionExport();
+    $siswa = $this->SectionModel->getSection();
     $no = 1; // Untuk penomoran tabel, di awal set dengan 1
     $numrow = 2; // Set baris pertama untuk isi tabel adalah baris ke 4
     foreach($siswa as $data){ // Lakukan looping pada variabel siswa

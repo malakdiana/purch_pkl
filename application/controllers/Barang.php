@@ -9,7 +9,7 @@ class Barang extends CI_Controller {
 		$this->load->model('BarangModel');
 		 $this->load->helper('url','form','download');
 		// $this->load->library(array('PHPExcel','PHPExcel/IOFactory'));
-		  $this->load->library('excel','upload');
+		  $this->load->library('Excel','upload');
 
 	
 	}
@@ -19,12 +19,12 @@ class Barang extends CI_Controller {
 	{
 		$data['brg']= $this->BarangModel->getBarang();
         if($this->session->userdata('logged_in')['hak_akses']==1){
-		$this->load->view('Admin/header');
-		$this->load->view('Admin/Barang',$data);
+		$this->load->view('admin/header');
+		$this->load->view('admin/Barang',$data);
          }else if($this->session->userdata('logged_in')['hak_akses']==2){
         $data['brg']= $this->BarangModel->getBarang();
-        $this->load->view('User/header');
-        $this->load->view('User/Barang',$data);
+        $this->load->view('user/header');
+        $this->load->view('user/Barang',$data);
          }else if($this->session->userdata('logged_in')['hak_akses']==4){
         $data['brg']= $this->BarangModel->getBarang();
         $this->load->view('Personal/header');
@@ -48,9 +48,9 @@ class Barang extends CI_Controller {
 		$this->form_validation->set_rules('nama_barang', 'nama_barang', 'trim|required');
 		if ($this->form_validation->run()==FALSE) {
             $data['listUnit']=$this->Unit_barangModel->getUnit_barang();
-			$this->load->view('Admin/header');
-			$this->load->view('Admin/tambahBarang',$data);
-			$this->load->view('Admin/footer');
+			$this->load->view('admin/header');
+			$this->load->view('admin/tambahBarang',$data);
+			$this->load->view('admin/footer');
 		}else{
 			$this->BarangModel->tambahBarang();
 				$this->session->set_flashdata('tambahBarang','<div class="alert alert-success" role="alert">SUKSES TAMBAH DATA <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
@@ -60,9 +60,9 @@ class Barang extends CI_Controller {
 	}
 
 	public function importBarang(){
-		$this->load->view('Admin/header');
-			$this->load->view('Admin/importBarang');
-			$this->load->view('Admin/footer');
+		$this->load->view('admin/header');
+			$this->load->view('admin/importBarang');
+			$this->load->view('admin/footer');
 	}
 
 	public function prosesImportSup(){
@@ -199,7 +199,7 @@ class Barang extends CI_Controller {
     );
    
     // Buat header tabel nya pada baris ke 3
-    $excel->setActiveSheetIndex(0)->setCellValue('A1', "NO"); // Set kolom A3 dengan tulisan "NO"
+    $excel->setActiveSheetIndex(0)->setCellValue('A1', "NO_BARANG"); // Set kolom A3 dengan tulisan "NO"
     $excel->setActiveSheetIndex(0)->setCellValue('B1', "NAMA_BARANG"); // Set kolom B3 dengan tulisan "NIS"
    
     $excel->getActiveSheet()->getStyle('A1')->applyFromArray($style_col);
@@ -207,7 +207,7 @@ class Barang extends CI_Controller {
   
 
     // Panggil function view yang ada di SiswaModel untuk menampilkan semua data siswanya
-    $siswa = $this->BarangModel->getBarangExport();
+    $siswa = $this->BarangModel->getBarang();
     $no = 1; // Untuk penomoran tabel, di awal set dengan 1
     $numrow = 2; // Set baris pertama untuk isi tabel adalah baris ke 4
     foreach($siswa as $data){ // Lakukan looping pada variabel siswa

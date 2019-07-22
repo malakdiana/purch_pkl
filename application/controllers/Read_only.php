@@ -8,7 +8,7 @@ class Read_only extends CI_Controller {
 		parent::__construct();
 		$this->load->model('Read_onlyModel');
 		 $this->load->helper('url','form','download');
-		  $this->load->library('excel','upload');
+		  $this->load->library('Excel','upload');
 
 
 	
@@ -29,7 +29,7 @@ public function index()
             $data['id']=$id;
             $this->load->view('Read_only/header');
             $this->load->view('Read_only/GetItem_barang',$data);
-            $this->load->view('Admin/footer');       
+            $this->load->view('admin/footer');       
 
     }
 

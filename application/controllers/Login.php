@@ -27,8 +27,8 @@ class Login extends CI_Controller {
 public function ManajemenUser()
 	{
 		$data['login']= $this->LoginModel->getLogin();
-		$this->load->view('Admin/header');
-        $this->load->view('Admin/Login',$data);
+		$this->load->view('admin/header');
+        $this->load->view('admin/Login',$data);
    
 	}
 
@@ -48,7 +48,7 @@ public function ManajemenUser()
 			
 			if($session_data['hak_akses']=='1'){
 				
-					redirect('Admin','refresh');
+					redirect('admin','refresh');
 			}else if($session_data['hak_akses']=='2'){
 				redirect('User','refresh');
 			}else if($session_data['hak_akses']=='3'){
@@ -132,9 +132,9 @@ public function ManajemenUser()
         $this->form_validation->set_rules('username', 'username', 'trim|required');
         if ($this->form_validation->run()==FALSE) {
         
-            $this->load->view('Admin/header');
-            $this->load->view('Admin/tambahLogin',$data);
-            $this->load->view('Admin/footer');
+            $this->load->view('admin/header');
+            $this->load->view('admin/tambahLogin',$data);
+            $this->load->view('admin/footer');
         }else{
         	if($this->input->post('password')==$this->input->post('konfirpassword')){
             $this->LoginModel->tambahLogin();

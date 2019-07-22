@@ -8,7 +8,7 @@ class Eta extends CI_Controller {
 		parent::__construct();
 		$this->load->model('EtaModel');
 		$this->load->helper('url','form','download');
-          $this->load->library('excel','upload');
+          $this->load->library('Excel','upload');
 	
 	}
 
@@ -24,16 +24,16 @@ public function index()
 	}
 		$data['tgl']=$tgl;
 		$data['eta']= $this->EtaModel->getPo($tgl);
-		$this->load->view('Admin/header');
-        $this->load->view('Admin/eta',$data);
+		$this->load->view('admin/header');
+        $this->load->view('admin/eta',$data);
    
 	}
 
 	public function get($tgl){
 		$data['tgl']=$tgl;
 		$data['eta']= $this->EtaModel->getPo($tgl);
-		$this->load->view('Admin/header');
-        $this->load->view('Admin/eta',$data);
+		$this->load->view('admin/header');
+        $this->load->view('admin/eta',$data);
 	}
 
 	public function delay()
@@ -58,8 +58,8 @@ public function index()
 		$data['tgl1']=$tgl;
 		$data['tgl2']=$tgl2;
 		$data['delay']= $this->EtaModel->getDelay($tgl,$tgl2);
-		$this->load->view('Admin/header');
-        $this->load->view('Admin/delay',$data);
+		$this->load->view('admin/header');
+        $this->load->view('admin/delay',$data);
    
 	}
 
@@ -67,8 +67,8 @@ public function index()
 		$data['tgl1']=$tgl1;
 		$data['tgl2']=$tgl2;
 		$data['delay']= $this->EtaModel->getDelay($tgl1,$tgl2);
-		$this->load->view('Admin/header');
-        $this->load->view('Admin/delay',$data);
+		$this->load->view('admin/header');
+        $this->load->view('admin/delay',$data);
 
 	}
 
