@@ -110,6 +110,7 @@
                 data : {tgl: tgl},        
                 dataType: 'json',  
                 success : function(data){
+                    document.write(data[0].supplier);
                     am4core.useTheme(am4themes_animated);
        
 
