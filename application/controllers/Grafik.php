@@ -17,6 +17,10 @@ class Grafik extends CI_Controller {
 public function index()
 	{
 		$data['grafik']= $this->GrafikModel->getSupplier();
+		$data['pr'] = $this->GrafikModel->getPrOpen();
+		$data['qr'] = $this->GrafikModel->getQrOpen();
+		$data['eta'] = $this->GrafikModel->eta();
+		$data['delay'] = $this->GrafikModel->delay();
 		$this->load->view('Admin/header');
         $this->load->view('Admin/grafik',$data);
    

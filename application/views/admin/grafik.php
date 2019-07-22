@@ -17,14 +17,75 @@
 
             <!-- page title area end -->
             <div class="main-content-inner">
+                    <div class="container">
                 <div class="row">
+                       <div class="col-lg-12">
+                        <div class="row">
+                            <div class="col-md-3 mt-5 mb-3">
+                                <div class="card">
+                                    <div class="seo-fact sbg1">
+                                        <div class="p-4 d-flex justify-content-between align-items-center">
+                                            <div class="seofct-icon"><i class="ti-thumb-up"></i> PR OPEN</div>
+                                            <h2><?php   echo $pr[0]->jumlah; ?></h2>
+                                        </div>
+                                        <canvas id="seolinechart1" height="50"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 mt-md-5 mb-3">
+                                <div class="card">
+                                    <div class="seo-fact sbg2">
+                                        <div class="p-4 d-flex justify-content-between align-items-center">
+                                            <div class="seofct-icon"><i class="ti-share"></i> QR OPEN</div>
+                                            <h2><?php   echo $qr[0]->jumlah; ?></h2>
+                                        </div>
+                                        <canvas id="seolinechart3" height="50"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                          <div class="col-md-3 mt-5 mb-3">
+                                <div class="card">
+                                    <div class="seo-fact sbg1">
+                                        <div class="p-4 d-flex justify-content-between align-items-center">
+                                            <div class="seofct-icon"><i class="ti-thumb-up"></i> ETA BESOK</div>
+                                            <h2><?php echo $eta[0]->jumlah; ?></h2>
+                                        </div>
+                                        <canvas id="seolinechart2" height="50" ></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                             <div class="col-md-3 mt-md-5 mb-3">
+                                <div class="card">
+                                    <div class="seo-fact sbg2">
+                                        <div class="p-4 d-flex justify-content-between align-items-center">
+                                            <div class="seofct-icon"><i class="ti-share"></i> DELAY</div>
+                                            <h2><?php echo $delay[0]->jumlah; ?></h2>
+                                        </div>
+                                        <canvas id="seolinechart4" height="50"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <!-- data table start -->
-                    <div class="col-12 mt-5">
-                        <div class="card">
-                          
-                                
+                    <div class="col-6 mt-5">
+                        <div class="card">   
                             <div class="card-body">
                                  <div id="chartdiv"></div>
+                             </div>
+                         </div>
+                     </div>
+                       <div class="col-6 mt-5">
+                        <div class="card">   
+                            <div class="card-body">
+                                 <div id="chartdiv"></div>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+         </div>
+
     <script src="<?php echo base_url()?>assets/js/core.js"></script>
     <script src="<?php echo base_url()?>assets/js/charts.js"></script>
     <script src="<?php echo base_url()?>assets/js/animated.js"></script>
@@ -83,9 +144,5 @@ series1.stacked = true;
 chart.scrollbarX = new am4core.Scrollbar();
    </script>
 
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                
            <?php $this->load->view('admin/footer'); ?>

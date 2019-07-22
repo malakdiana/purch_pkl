@@ -21,4 +21,49 @@ class GrafikModel extends CI_Model {
             return $results;
             }
     }
+
+    public function getPrOpen(){
+        $query = $this->db->select('count(*) as jumlah')->from('purch_req')->where('status','OPEN')->get();
+         $results=array();
+            if($query->num_rows() > 0){
+            return $query->result();
+            }else{
+            return $results;
+            }
+    }
+     public function getQrOpen(){
+        $query = $this->db->select('count(*) as jumlah')->from('penawaran')->where('status',0)->get();
+         $results=array();
+            if($query->num_rows() > 0){
+            return $query->result();
+            }else{
+            return $results;
+            }
+    }
+
+    public function eta(){
+        $tgl = mktime(0, 0, 0, date("m"), date("d")+1, date("Y"));
+        $tgl =  date("Y-m-d", $tgl);
+
+        $query = $this->db->select('count(*) as jumlah')->from('po')->where('eta',$tgl)->get();
+            $results=array();
+            if($query->num_rows() > 0){
+            return $query->result();
+            }else{
+            return $results;
+            }
+    }
+
+    public function delay(){
+         $tgl = mktime(0, 0, 0, date("m"), date("d")+1, date("Y"));
+        $tgl =  date("Y-m-d", $tgl);
+
+        $query = $this->db->select('count(*) as jumlah')->from('eta')->where('tanggal >=',$tgl)->get();
+            $results=array();
+            if($query->num_rows() > 0){
+            return $query->result();
+            }else{
+            return $results;
+            }
+    }
 }
