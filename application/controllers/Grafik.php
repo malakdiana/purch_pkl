@@ -9,6 +9,7 @@ class Grafik extends CI_Controller {
 		$this->load->model('GrafikModel');
 		 $this->load->helper('url','form','download');
 		  $this->load->library('excel','upload');
+		       $this->load->database();
 
 
 	
@@ -34,11 +35,24 @@ public function index()
 	}
 
 	  function getSupplier(){
-        $tgl=$this->input->get('tgl');
-        $tgl= explode('-', $tgl);
-       //echo "$tgl[1]";die();
-        $data=$this->GrafikModel->getSupplierr($tgl[1]);
-        echo json_encode($data);
+        $tgl= $this->input->post('tgl');
+        $tgl= substr($tgl,-2);
+      // echo $tgl[0];die();
+        $data=$this->db->select('supplier, sum(qty*harga) as jumlah')->from('bayangan')->join('po','po.id_po = bayangan.id_po')->where('month(tgl_po)',$tgl)->group_by('po.supplier')->order_by('jumlah','DESC')->limit(5)->get();
+          foreach ($data->result() as $data) {
+               
+                $dataa=array(
+                   'supplier' => $data->supplier,
+                   'jumlah' => $data->jumlah,
+                    );
+
+
+            }
+        
+
+         
+       // echo json_encode($data);
+        echo json_encode($dataa);
     }
 	
 }
