@@ -46,10 +46,10 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                        <?php   foreach ($app as $key) {?>
+                                        <?php $no=1;  foreach ($app as $key) {?>
                                             <tr>
                                            
-                                                <td><?php echo $key->no;?></td>
+                                                <td><?php echo $no;?></td>
                                                 <td><?php echo $key->nama;?></td>
                                                 <td><?php echo $key->kode_nama;?></td>
                                                 <td><?php echo "Rp " . number_format($key->min,2,',','.');?></td>
@@ -66,7 +66,7 @@
                                 </div></td>
                                              
                                             </tr>
-                                            <?php }?>
+                                            <?php $no++; }?>
                                        </tbody>
                                     </table>
                                 </div>

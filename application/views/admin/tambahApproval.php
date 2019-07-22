@@ -30,32 +30,32 @@
                                             <div class="form-group">
                                                      <label class="control-label " for="nama">Nama :</label>
                                            
-                                                <input type="text" class="form-control" name="nama" style="margin-bottom: 25px">
+                                                <input type="text" class="form-control" name="nama" style="margin-bottom: 25px" required="">
                                             </div>
 
                                             <div class="form-group">
                                                      <label class="control-label " for="kode_nama">Kode Nama :</label>
                                            
-                                                <input type="text" class="form-control" name="kode_nama" style="margin-bottom: 25px">
+                                                <input type="text" class="form-control" name="kode_nama" style="margin-bottom: 25px" required="">
                                             </div>
 
                                             <div class="form-group">
                                                      <label class="control-label " for="min">Min :</label>
                                            
-                                                <input type="text" class="form-control" name="min" id="rupiah"style="margin-bottom: 25px">
+                                                <input type="text" class="form-control" name="min" id="rupiah" style="margin-bottom: 25px" required="">
                                             </div>
 
                                             <div class="form-group">
                                                      <label class="control-label " for="max">Max :</label>
                                            
-                                                <input type="text" class="form-control" name="max" id="rupiah2" style="margin-bottom: 25px">
+                                                <input type="text" class="form-control" name="max" id="rupiah2" style="margin-bottom: 25px" required="">
                                             </div>
    
    
                                      
         
           
-              <div align="right"> <button type="submit" class="btn btn-primary" style="align-self: right">Simpan</button></div>
+              <div align="right"> <button type="submit" class="btn btn-success" style="align-self: right"><i class="ti-save"></i> Simpan</button></div>
               <?php echo form_close() ?>
            
 
