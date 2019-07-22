@@ -228,7 +228,7 @@
                     </div>
                     <div class="form-group">
                         <label for="">TANGGAL INPUT</label>
-                        <input type="date" class="form-control" name="tgl_input" id="tgl_input" value="" >
+                        <input type="date" class="form-control" name="tgl_input" id="tgl_input" value="" readonly="" >
                     </div>
                     <div class="form-group">
                         <label for="">TERMS</label>

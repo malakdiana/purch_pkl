@@ -201,7 +201,7 @@ class Approval extends CI_Controller {
     $excel->getActiveSheet()->getStyle('E1')->applyFromArray($style_col);
    
     // Panggil function view yang ada di SiswaModel untuk menampilkan semua data siswanya
-    $siswa = $this->ApprovalModel->getApproval();
+    $siswa = $this->ApprovalModel->getApprovalExport();
     $no = 1; // Untuk penomoran tabel, di awal set dengan 1
     $numrow = 2; // Set baris pertama untuk isi tabel adalah baris ke 4
     foreach($siswa as $data){ // Lakukan looping pada variabel siswa
