@@ -29,7 +29,7 @@
                                             <div class="form-group">
                                                      <label class="control-label " for="unit_barang">Unit barang:</label>
                                            
-                                                <input type="text" class="form-control" name="unit_barang" style="margin-bottom: 25px">
+                                                <input type="text" class="form-control" name="unit_barang" style="margin-bottom: 25px" required="">
                                             </div>
 
                                             <div class="form-group">
