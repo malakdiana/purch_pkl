@@ -61,7 +61,7 @@ class SectionModel extends CI_Model {
     public function tambahSection(){
         $data = array(
         'nama_section' => $this->input->post('nama_section'),
-        'dept' => $this->input->post('dept'),
+        // 'dept' => $this->input->post('dept'),
       
         );
          $this->db->insert('Section', $data);

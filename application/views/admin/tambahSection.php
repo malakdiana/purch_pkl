@@ -29,23 +29,23 @@
                                             <div class="form-group">
                                                      <label class="control-label " for="nama_section">Nama Section :</label>
                                            
-                                                <input type="text" class="form-control" name="nama_section" style="margin-bottom: 25px">
+                                                <input type="text" class="form-control" name="nama_section" style="margin-bottom: 25px" required="">
                                             </div>
 
-                                            <div class="form-group">
+                                           <!--  <div class="form-group">
                                                      <label class="control-label " for="dept">Kode Dept :</label>
                                            <select name="dept" class="form-control">
                                             <?php foreach ($listDep as $key) {?>
                                            <option class="form-control" value="<?php echo $key->no?>"><?php echo $key->group_name?> </option> <?php }?>
                                            </select>
                                               
-                                            </div>
+                                            </div> -->
    
    
                                      
         
           
-              <div align="right"> <button type="submit" class="btn btn-primary" style="align-self: right">Simpan</button></div>
+              <div align="right"> <button type="submit" class="btn btn-success" style="align-self: right"><i class="ti-save"></i> Simpan</button></div>
               <?php echo form_close() ?>
            
 

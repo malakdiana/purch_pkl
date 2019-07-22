@@ -34,9 +34,9 @@
                                         <thead class="bg-light text-capitalize">
                                             <tr>
                                                 
-                                                <th>ID SECTION</th>
+                                                <th>NO</th>
                                                 <th>NAMA SECTION</th>
-                                                <th>DEPT</th>
+                                               
                                            
                                                
                                                 <th >ACTION</th>
@@ -49,13 +49,13 @@
                                                 
                                                 <td><?php echo $no;?></td>
                                                 <td><?php echo $key->nama_section;?></td>
-                                                <td><?php echo $key->dept;?></td>
+                                                
                                     
                                                 <td>
 
                                               <div class="btn-group mb-xl-3" role="group" aria-label="Basic example">
                                     
-                                     <a href="javascript:void(0);" onclick="modalDetail('<?php echo $key->id_section?>','<?php echo $key->nama_section ?>','<?php echo $key->dept ?>')"  data-toggle="modal" data-target="#myModalEdit"><button type="button" class="btn btn-primary" style="width:80px; height:50px;"> <font color="white"><i class="fa fa-pencil"></i> Edit</font></button></a>
+                                     <a href="javascript:void(0);" onclick="modalDetail('<?php echo $key->id_section?>','<?php echo $key->nama_section ?>')"  data-toggle="modal" data-target="#myModalEdit"><button type="button" class="btn btn-primary" style="width:80px; height:50px;"> <font color="white"><i class="fa fa-pencil"></i> Edit</font></button></a>
                                      <a href="<?php echo site_url()?>/Section/deleteSection/<?php echo $key->id_section?> " onclick="return confirm('Apakah Yakin Untuk Menghapus?')"><button type="button" class="btn btn-danger" style="width:80px; height:50px;"> <font color="white"><i class="fa fa-trash-o"></i> Hapus</font></button></a>
                                   
                                 </div></td>
@@ -93,10 +93,10 @@
                         <input type="text" class="form-control" name="nama_section" id="nama_section" value="" readonly="">
                     </div>
 
-                <div class="form-group">
+               <!--  <div class="form-group">
                         <label for="">DEPARTEMEN</label>
                         <input type="text" class="form-control" name="nama_section" id="nama_section" value="">
-                    </div>
+                    </div> -->
 
                 
                
@@ -120,10 +120,10 @@
  
     <!-- others plugins -->
 <script type="text/javascript">
-    function modalDetail(id_section,nama_section,dept){
+    function modalDetail(id_section,nama_section){
         document.getElementById('id_section').value = id_section;
         document.getElementById('nama_section').value = nama_section;
-         document.getElementById("dept").value = dept;
+         // document.getElementById("dept").value = dept;
     }
   </script>
 
