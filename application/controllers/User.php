@@ -8,17 +8,14 @@ class User extends CI_Controller {
 		parent::__construct();
 		$this->load->model('Purch_reqModel');
 		 $this->load->helper('url','form','download');
-		  $this->load->library('excel','upload');
-
-
-	
+		  $this->load->library('Excel','upload');
 	}
 
 public function index()
 	{
 		$data['Purch_req']= $this->Purch_reqModel->getPurch_req();
-		$this->load->view('User/header');
-        $this->load->view('User/Dashboard',$data);
+		$this->load->view('user/header');
+        $this->load->view('user/dashboard',$data);
    
 	}
 

@@ -9,7 +9,7 @@ class Pricelist extends CI_Controller {
 		$this->load->model('PricelistModel');
 		 $this->load->helper('url','form','download');
 		// $this->load->library(array('PHPExcel','PHPExcel/IOFactory'));
-		  $this->load->library('excel','upload');
+		  $this->load->library('Excel','upload');
 
 	
 	}

@@ -71,6 +71,7 @@
                     <div class="col-6 mt-5">
                         <div class="card">   
                             <div class="card-body">
+                                <input type="month" name="" class="form-control" style="width: 160px">
                                  <div id="chartdiv"></div>
                              </div>
                          </div>
@@ -78,6 +79,7 @@
                       <div class="col-6 mt-5">
                         <div class="card">   
                             <div class="card-body">
+                                <input type="date" name="" class="form-control">
                                  <div id="chartdivv"></div>
                              </div>
                          </div>

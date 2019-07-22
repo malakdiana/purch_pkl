@@ -9,7 +9,7 @@ class Unit_barang extends CI_Controller {
         $this->load->model('Unit_barangModel');
          $this->load->helper('url','form','download');
         // $this->load->library(array('PHPExcel','PHPExcel/IOFactory'));
-          $this->load->library('excel','upload');
+          $this->load->library('Excel','upload');
 
     
     }
@@ -36,9 +36,9 @@ class Unit_barang extends CI_Controller {
         $this->load->library('form_validation');
         $this->form_validation->set_rules('unit_barang', 'unit_barang', 'trim|required');
         if ($this->form_validation->run()==FALSE) {
-            $this->load->view('Admin/header');
-            $this->load->view('Admin/tambahUnit_barang');
-            $this->load->view('Admin/footer');
+            $this->load->view('admin/header');
+            $this->load->view('admin/tambahUnit_barang');
+            $this->load->view('admin/footer');
         }else{
             $this->Unit_barangModel->tambahUnit_barang();
                 $this->session->set_flashdata('tambahUnit_barang','<div class="alert alert-success" role="alert">SUKSES TAMBAH DATA <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
@@ -48,9 +48,9 @@ class Unit_barang extends CI_Controller {
     }
 
     public function importUnit_barang(){
-        $this->load->view('Admin/header');
-            $this->load->view('Admin/importUnit_barang');
-            $this->load->view('Admin/footer');
+        $this->load->view('admin/header');
+            $this->load->view('admin/importUnit_barang');
+            $this->load->view('admin/footer');
     }
 
     public function prosesImportSup(){
@@ -195,7 +195,7 @@ class Unit_barang extends CI_Controller {
     $excel->getActiveSheet()->getStyle('C1')->applyFromArray($style_col);
   
     // Panggil function view yang ada di SiswaModel untuk menampilkan semua data siswanya
-    $siswa = $this->Unit_barangModel->getUnit_barangExport();
+    $siswa = $this->Unit_barangModel->getUnit_barang();
     $no = 1; // Untuk penomoran tabel, di awal set dengan 1
     $numrow = 2; // Set baris pertama untuk isi tabel adalah baris ke 4
     foreach($siswa as $data){ // Lakukan looping pada variabel siswa

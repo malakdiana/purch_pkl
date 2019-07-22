@@ -16,7 +16,7 @@ class SectionModel extends CI_Model {
     {
 
             $this->db->select('*');
-            $this->db->from('Section');
+            $this->db->from('section');
 
            $this->db->order_by('id_section','DESC');  
             $query = $this->db->get();
@@ -24,20 +24,6 @@ class SectionModel extends CI_Model {
             return $query->result();
         }
     }
-
-         public function getSectionExport()
-    {
-
-            $this->db->select('*');
-            $this->db->from('Section');
-
-           $this->db->order_by('id_section','ASC');  
-            $query = $this->db->get();
-            if($query->num_rows() > 0){
-            return $query->result();
-        }
-    }
-
     public function updateSection(){
 
     	$id_section = $this->input->post('id_section');
@@ -51,11 +37,11 @@ class SectionModel extends CI_Model {
 
         
         $this->db->where('id_section', $id_section);
-        $this->db->update('Section', $data);
+        $this->db->update('section', $data);
     }
     public function deleteSection($id){
          $this->db->where('id_section', $id);
-        $this->db->delete('Section');
+        $this->db->delete('section');
 
     }
     public function tambahSection(){
@@ -64,7 +50,7 @@ class SectionModel extends CI_Model {
         'dept' => $this->input->post('dept'),
       
         );
-         $this->db->insert('Section', $data);
+         $this->db->insert('section', $data);
 
     }
 
@@ -78,6 +64,6 @@ private $_batchImport;
     // save data
     public function importData() {
         $data = $this->_batchImport;
-        $this->db->insert_batch('Section', $data);
+        $this->db->insert_batch('section', $data);
     }
 }

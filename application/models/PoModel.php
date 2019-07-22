@@ -89,7 +89,7 @@ class PoModel extends CI_Model {
     }
     public function deletePo($id_po){
          $this->db->where('id_po', $id_po);
-        $this->db->delete('Po');
+        $this->db->delete('po');
 
     }
     public function tambahPO(){
@@ -127,7 +127,7 @@ class PoModel extends CI_Model {
         'franco' => $franco
       
         );
-         $this->db->insert('Po', $data);
+         $this->db->insert('po', $data);
 
          $this->db->select('*');
         $this->db->from('po');

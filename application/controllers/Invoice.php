@@ -8,7 +8,7 @@ class Invoice extends CI_Controller {
 		parent::__construct();
 		// $this->load->model('Purch_reqModel');
 		 $this->load->helper('url','form','download');
-		  $this->load->library('excel','upload');
+		  $this->load->library('Excel','upload');
 		  $this->load->model('InvoiceModel');
 		  		  $this->load->model('PoModel');
 		$this->load->helper('file');

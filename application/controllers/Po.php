@@ -20,11 +20,11 @@ public function index()
 	{
 		$data['Po']= $this->PoModel->getPo();
         if($this->session->userdata('logged_in')['hak_akses']==1){
-		$this->load->view('Admin/header');
-        $this->load->view('Admin/Po',$data);
+		$this->load->view('admin/header');
+        $this->load->view('admin/Po',$data);
         }else{
-        $this->load->view('Read_only/header');
-        $this->load->view('Read_only/Po',$data);
+        $this->load->view('read_only/header');
+        $this->load->view('read_only/Po',$data);
     }
 }
     public function getBarang($id)
@@ -166,11 +166,11 @@ public function getTotalPO(){
         $data['brg']= $this->PoModel->getItemPo($id);
         $data['id']= $id;
         if($this->session->userdata('logged_in')['hak_akses']==1){
-        $this->load->view('Admin/header');
-        $this->load->view('Admin/detail_itemPo',$data);
+        $this->load->view('admin/header');
+        $this->load->view('admin/detail_itemPo',$data);
         }else{
-        $this->load->view('Read_only/header');
-        $this->load->view('Read_only/detail_itemPo',$data);
+        $this->load->view('read_only/header');
+        $this->load->view('read_only/detail_itemPo',$data);
     }
 
     }
@@ -186,8 +186,8 @@ public function getTotalPO(){
         $this->form_validation->set_rules('tgl_po', 'tgl_po', 'trim|required');
         if ($this->form_validation->run()==FALSE) {
              // $data['section']=$this->SectionModel->getSection();
-            $this->load->view('Admin/header');
-            $this->load->view('Admin/tambahPO');
+            $this->load->view('admin/header');
+            $this->load->view('admin/tambahPO');
           
         }else{
            
@@ -210,8 +210,8 @@ public function getTotalPO(){
             $data['list'] = $this->PoModel->getPoById($id);
             $data['id']=$id;
   
-            $this->load->view('Admin/header');
-            $this->load->view('Admin/insert_itemPo',$data);
+            $this->load->view('admin/header');
+            $this->load->view('admin/insert_itemPo',$data);
 
     }
 
@@ -229,16 +229,16 @@ public function getTotalPO(){
             $data['barang']= $this->BarangModel->getBarang();
             $data['id']=$id;
                 if($this->session->userdata('logged_in')['hak_akses']==1){
-            $this->load->view('Admin/header');
-            $this->load->view('Admin/GetItem_barang',$data);
+            $this->load->view('admin/header');
+            $this->load->view('admin/GetItem_barang',$data);
 
         }else if($this->session->userdata('logged_in')['hak_akses']==2){
-            $this->load->view('User/header');
-            $this->load->view('Admin/GetItem_barang',$data);
+            $this->load->view('user/header');
+            $this->load->view('admin/GetItem_barang',$data);
          
             }else{
-                      $this->load->view('Read_only/header');
-            $this->load->view('Read_only/GetItem_barang',$data);
+                      $this->load->view('read_only/header');
+            $this->load->view('read_only/GetItem_barang',$data);
             }   
 
     }
@@ -266,9 +266,9 @@ public function getTotalPO(){
 
      public function EditPo($id){
         $data['list'] = $this->PoModel->getPoById($id);
-        $this->load->view('Admin/header');
-        $this->load->view('Admin/editPo', $data);
-        $this->load->view('Admin/footer');
+        $this->load->view('admin/header');
+        $this->load->view('admin/editPo', $data);
+        $this->load->view('admin/footer');
     }
 
  

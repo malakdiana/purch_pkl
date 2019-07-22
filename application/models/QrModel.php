@@ -16,7 +16,7 @@ class QrModel extends CI_Model {
     {
 
             $this->db->select('*');
-            $this->db->from('Penawaran');     
+            $this->db->from('penawaran');     
                $this->db->order_by('status','ASC'); 
             $this->db->order_by('id_penawaran','DESC');
 
@@ -28,7 +28,7 @@ class QrModel extends CI_Model {
     }
     public function getQrById($id){
         $this->db->select('*');
-            $this->db->from('Penawaran');
+            $this->db->from('penawaran');
             $this->db->where('id_penawaran', $id);
 
             $query = $this->db->get();
@@ -42,7 +42,7 @@ class QrModel extends CI_Model {
            
             $section = $this->session->userdata('logged_in')['username'];
             $this->db->select('*');
-            $this->db->from('Penawaran');
+            $this->db->from('penawaran');
             $this->db->where('section', $section);
                $this->db->order_by('status','ASC'); 
             $this->db->order_by('id_penawaran','DESC');
@@ -61,7 +61,7 @@ class QrModel extends CI_Model {
             $section = $this->session->userdata('logged_in')['section'];
 
             $this->db->select('*');
-            $this->db->from('Penawaran');
+            $this->db->from('penawaran');
             $this->db->where('pic', $username);
             $this->db->where('section', $section);
          $this->db->order_by('status','ASC'); 
