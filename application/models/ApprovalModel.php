@@ -19,8 +19,12 @@ class ApprovalModel extends CI_Model {
             $this->db->from('Approval');
             $this->db->order_by('no','desc');
             $query = $this->db->get();
+              $results=array();
             if($query->num_rows() > 0){
             return $query->result();
+            }else{
+            return $results;
+            }
         }
     }
 

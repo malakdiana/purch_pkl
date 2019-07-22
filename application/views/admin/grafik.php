@@ -87,7 +87,8 @@
                  </div>
              </div>
          </div>
-
+                
+           <?php $this->load->view('admin/footer'); ?>
     <script src="<?php echo base_url()?>assets/js/core.js"></script>
     <script src="<?php echo base_url()?>assets/js/charts.js"></script>
     <script src="<?php echo base_url()?>assets/js/animated.js"></script>
@@ -102,19 +103,62 @@
                                     ?>
    <script type="text/javascript">
     $("#bulan_sup").change(function () {
-     var val = $(this).val(); 
+     var tgl = $(this).val(); 
         $.ajax({
                 type  : 'ajax',
-                url   : '<?php echo base_url()?>Grafik/getSupplierr',
+                url   : '<?php echo site_url()?>/Grafik/getSupplier',
                 async : false,
-                data : {tgl: val},
+                data : {tgl: tgl},
                 dataType : 'json',
                 success : function(data){
+                    am4core.useTheme(am4themes_animated);
+       
+
+var chart = am4core.create("chartdiv", am4charts.XYChart3D);
+chart.data = [{
+    "category": data[0].supplier,
+    "value1": data[0].jumlah,
+ 
+},
+{
+    "category": data[1].supplier,
+    "value1": data[1].jumlah,
+ 
+}]
+chart.padding(30, 30, 10, 30);
+chart.legend = new am4charts.Legend();
+
+chart.colors.step = 1;
+
+var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
+categoryAxis.dataFields.category = "category";
+categoryAxis.renderer.minGridDistance = 60;
+categoryAxis.renderer.grid.template.location = 0;
+categoryAxis.interactionsEnabled = false;
+
+var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
+valueAxis.tooltip.disabled = true;
+valueAxis.renderer.grid.template.strokeOpacity = 0.05;
+valueAxis.renderer.minGridDistance = 20;
+valueAxis.interactionsEnabled = false;
+valueAxis.min = 0;
+valueAxis.renderer.minWidth = 35;
+
+var series1 = chart.series.push(new am4charts.ColumnSeries3D());
+series1.columns.template.width = am4core.percent(80);
+series1.columns.template.tooltipText = "{name}: {valueY.value}";
+series1.name = "Supplier";
+series1.dataFields.categoryX = "category";
+series1.dataFields.valueY = "value1";
+series1.stacked = true;
+
+
+chart.scrollbarX = new am4core.Scrollbar();
                     
                 }
  
             });
-    }
+    });
 
     am4core.useTheme(am4themes_animated);
        
@@ -215,5 +259,3 @@ chartt.scrollbarX = new am4core.Scrollbar();
    
    </script>
 
-                
-           <?php $this->load->view('admin/footer'); ?>

@@ -36,6 +36,7 @@ public function index()
 	  function getSupplier(){
         $tgl=$this->input->get('tgl');
         $tgl= explode('-', $tgl);
+       //echo "$tgl[1]";die();
         $data=$this->GrafikModel->getSupplierr($tgl[1]);
         echo json_encode($data);
     }

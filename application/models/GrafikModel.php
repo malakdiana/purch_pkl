@@ -23,9 +23,18 @@ class GrafikModel extends CI_Model {
     }
       public function getSupplierr($tgl){
         $query= $this->db->select('supplier, sum(qty*harga) as jumlah')->from('bayangan')->join('po','po.id_po = bayangan.id_po')->where('month(tgl_po)',$tgl)->group_by('po.supplier')->order_by('jumlah','DESC')->limit(5)->get();
+
           $results=array();
             if($query->num_rows() > 0){
-            return $query->result();
+             foreach ($query->result() as $data) {
+                $hasil=array(
+                    'supplier' => $data->supplier,
+                    'jumlah' => $data->jumlah,
+                    //'barang_harga' => $data->barang_harga,
+                    );
+            }
+            return $hasil;
+
             }else{
             return $results;
             }
