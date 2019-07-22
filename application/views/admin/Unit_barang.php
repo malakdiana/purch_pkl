@@ -80,6 +80,7 @@
             <div class="modal-content" style="width: 800px; margin-left: -100px;padding: 20px" >
                 <div class="modal-header">
                     <h4 class="modal-title">Edit Unit barang</h4>
+                     <button align="right" type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
           <?php echo form_open_multipart('Unit_barang/updateUnit_barang'); ?>
                 <?php echo validation_errors(); ?>
@@ -89,11 +90,11 @@
                     </div>
                     <div class="form-group">
                         <label for="">NAMA UNIT</label>
-                        <input type="text" class="form-control" name="unit_barang" id="unit_barang" value="" >
+                        <input type="text" class="form-control" name="unit_barang" id="unit_barang" value="" autocomplete="off" >
                     </div>
                     <div class="form-group">
                         <label for="">REMARKS</label>
-                        <input type="text" class="form-control" name="remarks" id="remarks" value="" >
+                        <input type="text" class="form-control" name="remarks" id="remarks" value="" autocomplete="off" >
                     </div>
 
                 
