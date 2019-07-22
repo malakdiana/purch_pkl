@@ -24,6 +24,20 @@ class SectionModel extends CI_Model {
             return $query->result();
         }
     }
+
+         public function getSectionExport()
+    {
+
+            $this->db->select('*');
+            $this->db->from('Section');
+
+           $this->db->order_by('id_section','ASC');  
+            $query = $this->db->get();
+            if($query->num_rows() > 0){
+            return $query->result();
+        }
+    }
+
     public function updateSection(){
 
     	$id_section = $this->input->post('id_section');

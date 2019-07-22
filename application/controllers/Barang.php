@@ -199,7 +199,7 @@ class Barang extends CI_Controller {
     );
    
     // Buat header tabel nya pada baris ke 3
-    $excel->setActiveSheetIndex(0)->setCellValue('A1', "NO_BARANG"); // Set kolom A3 dengan tulisan "NO"
+    $excel->setActiveSheetIndex(0)->setCellValue('A1', "NO"); // Set kolom A3 dengan tulisan "NO"
     $excel->setActiveSheetIndex(0)->setCellValue('B1', "NAMA_BARANG"); // Set kolom B3 dengan tulisan "NIS"
    
     $excel->getActiveSheet()->getStyle('A1')->applyFromArray($style_col);
@@ -207,7 +207,7 @@ class Barang extends CI_Controller {
   
 
     // Panggil function view yang ada di SiswaModel untuk menampilkan semua data siswanya
-    $siswa = $this->BarangModel->getBarang();
+    $siswa = $this->BarangModel->getBarangExport();
     $no = 1; // Untuk penomoran tabel, di awal set dengan 1
     $numrow = 2; // Set baris pertama untuk isi tabel adalah baris ke 4
     foreach($siswa as $data){ // Lakukan looping pada variabel siswa

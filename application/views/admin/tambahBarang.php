@@ -32,7 +32,7 @@
                                             <div class="form-group">
                                                      <label class="control-label " for="nama_barang">Nama Barang :</label>
                                            
-                                                <input type="text" class="form-control" name="nama_barang" style="margin-bottom: 25px">
+                                                <input type="text" class="form-control" name="nama_barang" style="margin-bottom: 25px" autocomplete="off">
                                             </div>
 
                                            
@@ -41,7 +41,7 @@
                                      
         
           
-              <div align="right"> <button type="submit" class="btn btn-primary" style="align-self: right">Simpan</button></div>
+              <div align="right"> <button type="submit" class="btn btn-success" style="align-self: right"><i class="ti-save"></i> Simpan</button></div>
               <?php echo form_close() ?>
            
 

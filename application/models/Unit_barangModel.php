@@ -23,6 +23,19 @@ class Unit_barangModel extends CI_Model {
             return $query->result();
         }
     }
+
+    public function getUnit_barangExport()
+    {
+
+            $this->db->select('*');
+            $this->db->from('unit_barang'); 
+           $this->db->order_by('no','ASC');  
+            $query = $this->db->get();
+            if($query->num_rows() > 0){
+            return $query->result();
+        }
+    }
+
     public function updateUnit_barang(){
 
     	$no = $this->input->post('no');

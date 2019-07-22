@@ -35,7 +35,7 @@
                                             <tr>
                                               
                                               
-                                                <th>NO BARANG</th>
+                                                <th>NO</th>
                                             
                                                 <th>NAMA BARANG</th>
                                            
@@ -84,6 +84,7 @@
             <div class="modal-content" style="width: 800px; margin-left: -100px;padding: 20px" >
                 <div class="modal-header">
                     <h4 class="modal-title">Edit Barang</h4>
+                    <button align="right" type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
           <?php echo form_open_multipart('Barang/updateBarang'); ?>
                 <?php echo validation_errors(); ?>
@@ -95,7 +96,7 @@
                   
                     <div class="form-group">
                         <label for="">NAMA BARANG</label>
-                        <input type="text" class="form-control" name="nama_barang" id="nama_barang" value="" >
+                        <input type="text" class="form-control" name="nama_barang" id="nama_barang" value="" autocomplete="" >
                     </div>
 
 
