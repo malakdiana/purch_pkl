@@ -126,7 +126,7 @@ class Approval extends CI_Controller {
                     $min = filter_var(trim($allDataInSheet[$i][$min]), FILTER_SANITIZE_STRING);
                     $max = filter_var(trim($allDataInSheet[$i][$max]), FILTER_SANITIZE_STRING);
                    
-                    $fetchData[] = array('no' => $no,'nama' => $nama, 'kode_nama' => $kode_nama, 'min' => $min, 'max' => $max,);
+                    $fetchData[] = array('nama' => $nama, 'kode_nama' => $kode_nama, 'min' => $min, 'max' => $max,);
                 }              
                 $data['employeeInfo'] = $fetchData;
                 $this->ApprovalModel->setBatchImport($fetchData);

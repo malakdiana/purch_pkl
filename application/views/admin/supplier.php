@@ -201,10 +201,12 @@
                     <div class="form-group">
                         <label for="">NO TELEPON</label>
                         <input type="text" class="form-control" name="no_telp" id="no_telp" value="" >
+                        <label>Inputkan format angka</label>
                     </div>
                     <div class="form-group">
                         <label for="">NO FAX</label>
                         <input type="text" class="form-control" name="no_fax" id="no_fax" value="" >
+                        <label>Inputkan format angka</label>
                     </div>
                     <div class="form-group">
                         <label for="">ATTENTION</label>
@@ -213,10 +215,12 @@
                     <div class="form-group">
                         <label for="">NO HP</label>
                         <input type="text" class="form-control" name="no_hp" id="no_hp" value="" >
+                        <label>Inputkan format angka</label>
                     </div>
                     <div class="form-group">
                         <label for="">NOMER REK</label>
                         <input type="text" class="form-control" name="nomer_rek" id="nomer_rek" value="" >
+                        <label>Inputkan format angka</label>
                     </div>
                     <div class="form-group">
                         <label for="">BANK</label>
