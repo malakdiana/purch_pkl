@@ -30,7 +30,7 @@
                                                 <label class="control-label" for="alamat">Tanggal :</label>
                                             </div>
                                             <div class="col-sm-3">
-                                                <input type="text" value="<?php date_default_timezone_set('Asia/Jakarta');echo date('d-m-Y H:i:s')?>" readonly="" class="form-control" id="tgl_po" name="tgl_po" style="margin-bottom: 25px">
+                                                <input type="text" value="<?php date_default_timezone_set('Asia/Jakarta');echo date('d/m/Y H:i:s')?>" readonly="" class="form-control" id="tgl_po" name="tgl_po" style="margin-bottom: 25px">
                                             </div>
 
                                             <div class="col-md-1">

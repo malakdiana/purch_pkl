@@ -38,7 +38,7 @@ public function index()
         $tgl= $this->input->post('tgl');
         $tgl= substr($tgl,-2);
       // echo $tgl[0];die();
-        $data=$this->db->select('supplier, sum(qty*harga) as jumlah')->from('bayangan')->join('po','po.id_po = bayangan.id_po')->where('month(tgl_po)',$tgl)->group_by('po.supplier')->order_by('jumlah','DESC')->limit(5)->get();
+        $data=$this->db->select('supplier, sum(qty*harga) as jumlah')->from('bayangan')->join('po','po.id_po = bayangan.id_po')->where('SUBSTRING_INDEX(SUBSTRING_INDEX(tgl_po,"/",2),"/",-1) AS part2',$tgl)->group_by('po.supplier')->order_by('jumlah','DESC')->limit(5)->get();
           foreach ($data->result() as $data) {
                
                 $dataa=array(

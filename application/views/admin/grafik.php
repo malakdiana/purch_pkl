@@ -71,6 +71,7 @@
                     <div class="col-6 mt-5">
                         <div class="card">   
                             <div class="card-body">
+                                <input type="text" name="sup" id="sup">
                                 <input type="month" name="bulan_sup" id="bulan_sup" class="form-control" style="width: 160px">
                                  <div id="chartdiv"></div>
                              </div>
@@ -110,7 +111,7 @@
                 data : {tgl: tgl},        
                 dataType: 'json',  
                 success : function(data){
-                    document.write(data[0].supplier);
+document.getElementById('sup').value = data[0].supplier;  
                     am4core.useTheme(am4themes_animated);
        
 
