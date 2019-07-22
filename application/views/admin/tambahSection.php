@@ -29,7 +29,7 @@
                                             <div class="form-group">
                                                      <label class="control-label " for="nama_section">Nama Section :</label>
                                            
-                                                <input type="text" class="form-control" name="nama_section" style="margin-bottom: 25px" required="">
+                                                <input type="text" class="form-control" name="nama_section" style="margin-bottom: 25px" required="" autocomplete="off">
                                             </div>
 
                                            <!--  <div class="form-group">

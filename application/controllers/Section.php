@@ -93,8 +93,8 @@ class Section extends CI_Controller {
             $arrayCount = count($allDataInSheet);
 
             $flag = 0;
-            $createArray = array('id_section','nama_section','dept');
-            $makeArray = array('id_section' => 'id_section', 'nama_section' => 'nama_section','dept' => 'dept');
+            $createArray = array('nama_section');
+            $makeArray = array('nama_section' => 'nama_section');
             $SheetDataKey = array();
             foreach ($allDataInSheet as $dataInSheet) {
                 foreach ($dataInSheet as $key => $value) {
@@ -118,18 +118,17 @@ class Section extends CI_Controller {
                 for ($i = 2; $i <= $arrayCount; $i++) {
                     $addresses = array();
                     
-                    $id_section=$SheetDataKey['id_section'];
+                    
                     $nama_section = $SheetDataKey['nama_section'];
-                    $dept = $SheetDataKey['dept'];
+                    
                    
                   
                     
-                    $id_section = filter_var(trim($allDataInSheet[$i][$id_section]), FILTER_SANITIZE_STRING);
+                    
                     $nama_section = filter_var(trim($allDataInSheet[$i][$nama_section]), FILTER_SANITIZE_STRING);
-                    $dept = filter_var(trim($allDataInSheet[$i][$dept]), FILTER_SANITIZE_STRING);
+                    
                    
-                    $fetchData[] = array('nama_section' => $nama_section,
-                          'dept' => $dept,);
+                    $fetchData[] = array('nama_section' => $nama_section);
                 }              
                 $data['employeeInfo'] = $fetchData;
                 $this->SectionModel->setBatchImport($fetchData);
@@ -191,7 +190,7 @@ class Section extends CI_Controller {
     );
    
     // Buat header tabel nya pada baris ke 3
-    $excel->setActiveSheetIndex(0)->setCellValue('A1', "Id_Section"); // Set kolom A3 dengan tulisan "NO"
+    $excel->setActiveSheetIndex(0)->setCellValue('A1', "No"); // Set kolom A3 dengan tulisan "NO"
     $excel->setActiveSheetIndex(0)->setCellValue('B1', "Nama_Section"); // Set kolom B3 dengan tulisan "NIS"
     $excel->setActiveSheetIndex(0)->setCellValue('C1', "Departemen"); // Set kolom C3 dengan tulisan "NAMA"
     

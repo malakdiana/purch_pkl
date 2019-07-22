@@ -55,7 +55,7 @@
 
                                               <div class="btn-group mb-xl-3" role="group" aria-label="Basic example">
                                     
-                                     <a href="javascript:void(0);" onclick="modalDetail('<?php echo $key->id_section?>','<?php echo $key->nama_section ?>')"  data-toggle="modal" data-target="#myModalEdit"><button type="button" class="btn btn-primary" style="width:80px; height:50px;"> <font color="white"><i class="fa fa-pencil"></i> Edit</font></button></a>
+                                     
                                      <a href="<?php echo site_url()?>/Section/deleteSection/<?php echo $key->id_section?> " onclick="return confirm('Apakah Yakin Untuk Menghapus?')"><button type="button" class="btn btn-danger" style="width:80px; height:50px;"> <font color="white"><i class="fa fa-trash-o"></i> Hapus</font></button></a>
                                   
                                 </div></td>
