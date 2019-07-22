@@ -75,10 +75,10 @@
                              </div>
                          </div>
                      </div>
-                       <div class="col-6 mt-5">
+                      <div class="col-6 mt-5">
                         <div class="card">   
                             <div class="card-body">
-                                 <div id="chartdiv"></div>
+                                 <div id="chartdivv"></div>
                              </div>
                          </div>
                      </div>
@@ -91,14 +91,18 @@
     <script src="<?php echo base_url()?>assets/js/animated.js"></script>
     <?php foreach ($grafik as $key) {
                                     $kategori[] = $key->supplier;
-                                    $nilai[]=$key->jumlah;} ?>
+                                    $nilai[]=$key->jumlah;} 
+
+        foreach ($section as $row) {
+              $kategori2[] = $row->nama_section;
+            $nilai2[]=$row->jumlah;
+        }
+                                    ?>
    <script type="text/javascript">
+    am4core.useTheme(am4themes_animated);
        
-       am4core.useTheme(am4themes_animated);
 
 var chart = am4core.create("chartdiv", am4charts.XYChart3D);
-
-
 chart.data = [{
     "category": <?php echo json_encode($kategori[0])?>,
     "value1": <?php echo json_encode($nilai[0])?>,
@@ -116,7 +120,7 @@ chart.data = [{
 chart.padding(30, 30, 10, 30);
 chart.legend = new am4charts.Legend();
 
-chart.colors.step = 2;
+chart.colors.step = 1;
 
 var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
 categoryAxis.dataFields.category = "category";
@@ -135,13 +139,63 @@ valueAxis.renderer.minWidth = 35;
 var series1 = chart.series.push(new am4charts.ColumnSeries3D());
 series1.columns.template.width = am4core.percent(80);
 series1.columns.template.tooltipText = "{name}: {valueY.value}";
-series1.name = "Series 1";
+series1.name = "Supplier";
 series1.dataFields.categoryX = "category";
 series1.dataFields.valueY = "value1";
 series1.stacked = true;
 
 
 chart.scrollbarX = new am4core.Scrollbar();
+var chartt = am4core.create("chartdivv", am4charts.XYChart3D);
+
+
+chartt.data = [{
+    "category": <?php echo json_encode($kategori2[0])?>,
+    "value1": <?php echo json_encode($nilai2[0])?>,
+ 
+},
+{
+    "category": <?php echo json_encode($kategori2[1])?>,
+    "value1": <?php echo json_encode($nilai2[1])?>,
+ 
+},{
+    "category": <?php echo json_encode($kategori2[2])?>,
+    "value1": <?php echo json_encode($nilai2[2])?>,
+ 
+},]
+chartt.padding(30, 30, 10, 30);
+chartt.legend = new am4charts.Legend();
+
+chartt.colors.step = 2;
+
+var categoryAxiss = chartt.xAxes.push(new am4charts.CategoryAxis());
+categoryAxiss.dataFields.category = "category";
+categoryAxiss.renderer.minGridDistance = 60;
+categoryAxiss.renderer.grid.template.location = 0;
+categoryAxiss.interactionsEnabled = false;
+
+var valueAxiss = chartt.yAxes.push(new am4charts.ValueAxis());
+valueAxiss.tooltip.disabled = true;
+valueAxiss.renderer.grid.template.strokeOpacity = 0.05;
+valueAxiss.renderer.minGridDistance = 20;
+valueAxiss.interactionsEnabled = false;
+valueAxiss.min = 0;
+valueAxiss.renderer.minWidth = 35;
+
+var seriess = chartt.series.push(new am4charts.ColumnSeries3D());
+seriess.columns.template.width = am4core.percent(80);
+seriess.columns.template.tooltipText = "{name}: {valueY.value}";
+seriess.name = "Section";
+seriess.dataFields.categoryX = "category";
+seriess.dataFields.valueY = "value1";
+seriess.stacked = true;
+
+
+chartt.scrollbarX = new am4core.Scrollbar();
+
+   
+
+   
    </script>
 
                 
