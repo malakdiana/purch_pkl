@@ -22,6 +22,16 @@ class GrafikModel extends CI_Model {
             }
     }
 
+    public function getSection(){
+        $query =  $this->db->select('nama_section, sum(qty*harga) as jumlah')->from('bayangan')->join('purch_req','purch_req.id= bayangan.id_pr')->join('section','purch_req.section = section.nama_section', 'RIGHT')->group_by('section')->order_by('jumlah','desc')->get();
+          $results=array();
+            if($query->num_rows() > 0){
+            return $query->result();
+            }else{
+            return $results;
+            }
+    }
+
     public function getPrOpen(){
         $query = $this->db->select('count(*) as jumlah')->from('purch_req')->where('status','OPEN')->get();
          $results=array();
