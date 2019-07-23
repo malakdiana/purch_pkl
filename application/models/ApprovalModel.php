@@ -84,9 +84,13 @@ class ApprovalModel extends CI_Model {
         'kode_nama' => $this->input->post('kode_nama'),
         'min' => $d,
         'max' => $e,
-      
         );
+        if ($d>$e){
+          echo "<script>alert('Jumlah Nominal minimal anda lebih besar dari nominal maximal')</script>";
+          redirect('Approval/tambahApproval', 'refresh');
+        }else{
          $this->db->insert('Approval', $data);
+        }
 
     }
 
