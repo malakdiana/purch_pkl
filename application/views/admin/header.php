@@ -32,6 +32,36 @@
       max-width: 100%;
       overflow-x: hidden;
       }
+
+      .dropdown-submenu{
+        position: relative;
+      }
+      .dropdown-submenu>a:after{
+        display: block;
+        content: " ";
+        float: right;
+        width: 0;
+        height: 0;
+        border-color: transparent;
+
+        border-style: solid;
+        border-width: 5px 0 5px 5px;
+        border-left-color: #ccc;
+        margin-top: 5px;
+        margin-right: -10px;
+
+      }
+      .dropdown-submenu:hover>.dropdown-menu {
+        display: block;
+      }
+      .dropdown-submenu .dropdown-menu{
+         border-top: 3px solid blue;
+        left: 100%;
+        top: 0;
+      }
+      .dropdown-submenu .pull-left {
+        float: none;
+      }
       </style>
 
 <body class="body-bg">
@@ -78,7 +108,14 @@
                                     <li><a href="<?php echo site_url()?>/Po">Data Purchase Order</a></li>
                                     <li><a href="<?php echo site_url()?>/Purch_req">Data Purchase Request</a></li>
                                     <li><a href="<?php echo site_url()?>/Qr/">List All Quotation</a></li>
-                                    <li><a href="<?php echo site_url()?>/Eta">ETA</a></li>
+                                    <li class="dropdown-submenu">
+                                        <a href="">ETA</a>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-1" href="<?php echo site_url()?>/Eta">ETA</a></li>
+                                            <li><a class="dropdown-1" href="<?php echo site_url()?>/Eta/delay">Delay</a></li>
+                                        </ul>
+                                    </li>
+
                                     <li><a href="<?php echo site_url()?>/Riwayatdatang">Riwayat Kedatangan</a></li>
                                         
                                         </ul>
