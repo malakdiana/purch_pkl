@@ -42,13 +42,15 @@
                                             <div class="form-group">
                                                      <label class="control-label " for="min">Min :</label>
                                            
-                                                <input type="text" class="form-control" name="min" id="rupiah" style="margin-bottom: 25px" required="">
+                                                <input type="text" class="form-control" name="min" id="rupiah"  required="">
+                                                <label>Inputkan format angka</label>
                                             </div>
 
                                             <div class="form-group">
                                                      <label class="control-label " for="max">Max :</label>
                                            
-                                                <input type="text" class="form-control" name="max" id="rupiah2" style="margin-bottom: 25px" required="">
+                                                <input type="text" class="form-control" name="max" id="rupiah2"  required="">
+                                                <label>Inputkan format angka</label>
                                             </div>
    
    

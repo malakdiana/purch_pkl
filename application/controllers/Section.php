@@ -10,7 +10,7 @@ class Section extends CI_Controller {
          $this->load->model('DepartemenModel');
          $this->load->helper('url','form','download');
         // $this->load->library(array('PHPExcel','PHPExcel/IOFactory'));
-          $this->load->library('excel','upload');
+          $this->load->library('Excel','upload');
 
     
     }
@@ -20,8 +20,8 @@ class Section extends CI_Controller {
     {
         $data['dpt']= $this->SectionModel->getSection();
         $data['listDep']=$this->DepartemenModel->getDepartemen();
-        $this->load->view('Admin/header');
-        $this->load->view('Admin/Section',$data);
+        $this->load->view('admin/header');
+        $this->load->view('admin/Section',$data);
     }
 
 
@@ -38,13 +38,13 @@ class Section extends CI_Controller {
     public function tambahSection(){
         $this->load->helper('url', 'form');
         $this->load->library('form_validation');
-         $this->load->model('DepartemenModel');
+         //$this->load->model('DepartemenModel');
         $this->form_validation->set_rules('nama_section', 'nama_section', 'trim|required');
         if ($this->form_validation->run()==FALSE) {
-            $data['listDep']=$this->DepartemenModel->getDepartemen();
-            $this->load->view('Admin/header');
-            $this->load->view('Admin/tambahSection', $data);
-            $this->load->view('Admin/footer');
+            //$data['listDep']=$this->DepartemenModel->getDepartemen();
+            $this->load->view('admin/header');
+            $this->load->view('admin/tambahSection');
+            $this->load->view('admin/footer');
         }else{
             $this->SectionModel->tambahSection();
                 $this->session->set_flashdata('tambahSection','<div class="alert alert-success" role="alert">SUKSES TAMBAH DATA <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
@@ -55,8 +55,8 @@ class Section extends CI_Controller {
 
     public function importSection(){
         $this->load->view('Admin/header');
-            $this->load->view('Admin/importSection');
-            $this->load->view('Admin/footer');
+            $this->load->view('admin/importSection');
+            $this->load->view('admin/footer');
     }
 
     public function prosesImportSup(){
@@ -93,8 +93,8 @@ class Section extends CI_Controller {
             $arrayCount = count($allDataInSheet);
 
             $flag = 0;
-            $createArray = array('id_section','nama_section','dept');
-            $makeArray = array('id_section' => 'id_section', 'nama_section' => 'nama_section','dept' => 'dept');
+            $createArray = array('nama_section');
+            $makeArray = array('nama_section' => 'nama_section');
             $SheetDataKey = array();
             foreach ($allDataInSheet as $dataInSheet) {
                 foreach ($dataInSheet as $key => $value) {
@@ -118,18 +118,18 @@ class Section extends CI_Controller {
                 for ($i = 2; $i <= $arrayCount; $i++) {
                     $addresses = array();
                     
-                    $id_section=$SheetDataKey['id_section'];
+                    
                     $nama_section = $SheetDataKey['nama_section'];
-                    $dept = $SheetDataKey['dept'];
+                    
                    
                   
                     
-                    $id_section = filter_var(trim($allDataInSheet[$i][$id_section]), FILTER_SANITIZE_STRING);
+                    //$id_section = filter_var(trim($allDataInSheet[$i][$id_section]), FILTER_SANITIZE_STRING);
                     $nama_section = filter_var(trim($allDataInSheet[$i][$nama_section]), FILTER_SANITIZE_STRING);
-                    $dept = filter_var(trim($allDataInSheet[$i][$dept]), FILTER_SANITIZE_STRING);
+                    //$dept = filter_var(trim($allDataInSheet[$i][$dept]), FILTER_SANITIZE_STRING);
                    
                     $fetchData[] = array('nama_section' => $nama_section,
-                          'dept' => $dept,);
+                          );
                 }              
                 $data['employeeInfo'] = $fetchData;
                 $this->SectionModel->setBatchImport($fetchData);
@@ -191,13 +191,13 @@ class Section extends CI_Controller {
     );
    
     // Buat header tabel nya pada baris ke 3
-    $excel->setActiveSheetIndex(0)->setCellValue('A1', "Id_Section"); // Set kolom A3 dengan tulisan "NO"
-    $excel->setActiveSheetIndex(0)->setCellValue('B1', "Nama_Section"); // Set kolom B3 dengan tulisan "NIS"
-    $excel->setActiveSheetIndex(0)->setCellValue('C1', "Departemen"); // Set kolom C3 dengan tulisan "NAMA"
+    //$excel->setActiveSheetIndex(0)->setCellValue('A1', "Id_Section"); // Set kolom A3 dengan tulisan "NO"
+    $excel->setActiveSheetIndex(0)->setCellValue('A1', "Nama_Section"); // Set kolom B3 dengan tulisan "NIS"
+    //$excel->setActiveSheetIndex(0)->setCellValue('C1', "Departemen"); // Set kolom C3 dengan tulisan "NAMA"
     
     $excel->getActiveSheet()->getStyle('A1')->applyFromArray($style_col);
-    $excel->getActiveSheet()->getStyle('B1')->applyFromArray($style_col);
-    $excel->getActiveSheet()->getStyle('C1')->applyFromArray($style_col);
+    //$excel->getActiveSheet()->getStyle('B1')->applyFromArray($style_col);
+    //$excel->getActiveSheet()->getStyle('C1')->applyFromArray($style_col);
    
 
     // Panggil function view yang ada di SiswaModel untuk menampilkan semua data siswanya
@@ -205,9 +205,9 @@ class Section extends CI_Controller {
     $no = 1; // Untuk penomoran tabel, di awal set dengan 1
     $numrow = 2; // Set baris pertama untuk isi tabel adalah baris ke 4
     foreach($siswa as $data){ // Lakukan looping pada variabel siswa
-      $excel->setActiveSheetIndex(0)->setCellValue('A'.$numrow, $data->id_section);
-      $excel->setActiveSheetIndex(0)->setCellValue('B'.$numrow, $data->nama_section);
-      $excel->setActiveSheetIndex(0)->setCellValue('C'.$numrow, $data->dept);
+      //$excel->setActiveSheetIndex(0)->setCellValue('A'.$numrow, $data->id_section);
+      $excel->setActiveSheetIndex(0)->setCellValue('A'.$numrow, $data->nama_section);
+      //$excel->setActiveSheetIndex(0)->setCellValue('C'.$numrow, $data->dept);
       
      
       
@@ -216,8 +216,8 @@ class Section extends CI_Controller {
     }
     // Set width kolom
     //$excel->getActiveSheet()->getColumnDimension('A')->setWidth(5); // Set width kolom A
-    $excel->getActiveSheet()->getColumnDimension('B')->setWidth(30); // Set width kolom B
-    $excel->getActiveSheet()->getColumnDimension('C')->setWidth(30); // Set width kolom C
+    $excel->getActiveSheet()->getColumnDimension('A')->setWidth(20); // Set width kolom B
+   // $excel->getActiveSheet()->getColumnDimension('C')->setWidth(30); // Set width kolom C
    
    
     $excel->getActiveSheet()->getDefaultRowDimension()->setRowHeight(-1);

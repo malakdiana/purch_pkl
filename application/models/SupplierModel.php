@@ -24,6 +24,20 @@ class SupplierModel extends CI_Model {
             return $query->result();
         }
     }
+
+    public function getSupplierExport()
+    {
+
+              $this->db->select('*');
+            $this->db->from('supplier');
+
+           $this->db->order_by('id_supplier','ASC');  
+            $query = $this->db->get();
+            if($query->num_rows() > 0){
+            return $query->result();
+        }
+    }
+
     public function updateSupplier(){
 
     	$id_supplier = $this->input->post('id_supplier');

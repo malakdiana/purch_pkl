@@ -104,10 +104,14 @@
                     <div class="form-group">
                         <label for="">MIN</label>
                         <input type="text" class="form-control" name="min" id="min" value="" >
+                        <label>Inputkan format angka</label>
+
                     </div>
                     <div class="form-group">
                         <label for="">MAX</label>
                         <input type="text" class="form-control" name="max" id="max" value="" >
+                        <label>Inputkan format angka</label>
+                        
                     </div>
                    
 
@@ -191,6 +195,21 @@ function formatRupiah(angka, prefix) {
        */
     
   </script>
+  <script type="text/javascript">
+  var min = document.getElementById("min");
+min.addEventListener("keyup", function(e) {
+  min.value = formatRupiah(this.value,);
+});
+
+  var max = document.getElementById("max");
+max.addEventListener("keyup", function(e) {
+  max.value = formatRupiah(this.value,);
+});
+function formatRupiah(angka) {
+  var number_string = angka.replace(/[^,\d]/g, "").toString();
+  return number_string;
+  }
+</script>
 </body>
 
 </html>

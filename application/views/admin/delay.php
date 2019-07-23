@@ -3,10 +3,10 @@
  <style>
       /* script menghilangkan Horizontal Scroll */
       td {
-        font-size: 14px;
+        font-size: 12px;
       }
          a {
-        font-size: 10px;
+        font-size: 12px;
       }
 
     
@@ -78,7 +78,7 @@
                 
                                 <br>
                             
-                                <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-responsive" id="mydata">
+                                 <table cellpadding="0" cellspacing="0" border="0" class="table table-condensed" id="dataTablesss">
                                         <thead class="bg-light text-capitalize">
                                             <tr>
                                             
@@ -222,5 +222,28 @@ function openCity(cityName) {
            }); 
 }
 </script>
+ <script type="text/javascript">
+    /* Formating function for row details */
+    
+
+      /*
+       * Initialse DataTables, with no sorting on the 'details' column
+       */
+       var oTable = $('#dataTablesss').dataTable({
+        "aoColumnDefs": [{
+          "bSortable": true,
+          "aTargets": [0]
+        }],
+  
+      });
+
+      /* Add event listener for opening and closing details
+       * Note that the indicator for showing which row is open is not controlled by DataTables,
+       * rather it is done here
+       */
+
+  </script>
+  </html>
+  </body>
  
     <!-- others plugins -->

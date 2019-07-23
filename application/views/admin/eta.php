@@ -3,11 +3,17 @@
  <style>
       /* script menghilangkan Horizontal Scroll */
       td {
-        font-size: 14px;
+        font-size: 12px;
       }
          a {
-        font-size: 10px;
+        font-size: 12px;
       }
+        /*margin-right{
+          right: 5px;
+        }*/
+         margin-left{
+          left: -50px;
+        }
 
     
 </style>
@@ -40,7 +46,7 @@
                                    
 
                         <div class="card">
-                        <div  style="padding-top: 15px;padding-left: 15px">
+                        <div  style="padding-top: 15px;padding-left: 5px">
 
                                   <a class="btn btn-flat btn-info mb-3" href="<?php echo site_url()?>/Eta/delay" role="button" style="width:180px"><font color="white"><i class="ti-file"></i> Data Delay</font></a>
 
@@ -76,7 +82,7 @@
                 
                                 <br>
                             
-                                <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-responsive" id="mydata">
+                                <table cellpadding="0" cellspacing="0" border="0" class="table table-condensed" id="dataTablesss">
                                         <thead class="bg-light text-capitalize">
                                             <tr>
                                             
@@ -223,6 +229,7 @@
     <!-- jquery latest version -->
     <?php $this->load->view('admin/footer'); ?>
 
+
     <!-- Start datatable js -->
      <script type="text/javascript" src="<?php echo base_url()?>assets/advanced-datatable/js/jquery.js"></script>
     <script type="text/javascript" src="<?php echo base_url()?>assets/dataTables/js/jquery.dataTables.js"></script>
@@ -247,5 +254,29 @@ function openCity(cityName) {
            }); 
 }
 </script>
+ <script type="text/javascript">
+    /* Formating function for row details */
+    
+
+      /*
+       * Initialse DataTables, with no sorting on the 'details' column
+       */
+       var oTable = $('#dataTablesss').dataTable({
+        "aoColumnDefs": [{
+          "bSortable": true,
+          "aTargets": [0]
+        }],
+  
+      });
+
+      /* Add event listener for opening and closing details
+       * Note that the indicator for showing which row is open is not controlled by DataTables,
+       * rather it is done here
+       */
+
+  </script>
+  </body>
+  </html>
+
  
     <!-- others plugins -->

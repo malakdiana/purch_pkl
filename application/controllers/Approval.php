@@ -87,8 +87,8 @@ class Approval extends CI_Controller {
             $arrayCount = count($allDataInSheet);
 
             $flag = 0;
-            $createArray = array('no','nama','kode_nama','min','max');
-            $makeArray = array('no' => 'no', 'nama' => 'nama','kode_nama' => 'kode_nama','min' => 'min','max' => 'max');
+            $createArray = array('nama','kode_nama','min','max');
+            $makeArray = array('nama' => 'nama','kode_nama' => 'kode_nama','min' => 'min','max' => 'max');
             $SheetDataKey = array();
             foreach ($allDataInSheet as $dataInSheet) {
                 foreach ($dataInSheet as $key => $value) {
@@ -112,7 +112,7 @@ class Approval extends CI_Controller {
                 for ($i = 2; $i <= $arrayCount; $i++) {
                     $addresses = array();
                     
-                    $no=$SheetDataKey['no'];
+                    //$no=$SheetDataKey['no'];
                     $nama = $SheetDataKey['nama'];
                     $kode_nama = $SheetDataKey['kode_nama'];
                     $min = $SheetDataKey['min'];
@@ -120,13 +120,13 @@ class Approval extends CI_Controller {
                    
                   
                     
-                    $no = filter_var(trim($allDataInSheet[$i][$no]), FILTER_SANITIZE_STRING);
+                   // $no = filter_var(trim($allDataInSheet[$i][$no]), FILTER_SANITIZE_STRING);
                     $nama = filter_var(trim($allDataInSheet[$i][$nama]), FILTER_SANITIZE_STRING);
                     $kode_nama = filter_var(trim($allDataInSheet[$i][$kode_nama]), FILTER_SANITIZE_STRING);
                     $min = filter_var(trim($allDataInSheet[$i][$min]), FILTER_SANITIZE_STRING);
                     $max = filter_var(trim($allDataInSheet[$i][$max]), FILTER_SANITIZE_STRING);
                    
-                    $fetchData[] = array('no' => $no,'nama' => $nama, 'kode_nama' => $kode_nama, 'min' => $min, 'max' => $max,);
+                    $fetchData[] = array('nama' => $nama, 'kode_nama' => $kode_nama, 'min' => $min, 'max' => $max,);
                 }              
                 $data['employeeInfo'] = $fetchData;
                 $this->ApprovalModel->setBatchImport($fetchData);
@@ -188,28 +188,28 @@ class Approval extends CI_Controller {
     );
    
     // Buat header tabel nya pada baris ke 3
-    $excel->setActiveSheetIndex(0)->setCellValue('A1', "no"); // Set kolom A3 dengan tulisan "NO"
-    $excel->setActiveSheetIndex(0)->setCellValue('B1', "nama"); // Set kolom B3 dengan tulisan "NIS"
-    $excel->setActiveSheetIndex(0)->setCellValue('C1', "kode_nama"); // Set kolom C3 dengan tulisan "NAMA"
-    $excel->setActiveSheetIndex(0)->setCellValue('D1', "min"); // Set kolom D3 dengan tulisan "JENIS KELAMIN"
-    $excel->setActiveSheetIndex(0)->setCellValue('E1', "max"); // Set kolom E3 dengan tulisan "ALAMAT"
+    //$excel->setActiveSheetIndex(0)->setCellValue('A1', "no"); // Set kolom A3 dengan tulisan "NO"
+    $excel->setActiveSheetIndex(0)->setCellValue('A1', "nama"); // Set kolom B3 dengan tulisan "NIS"
+    $excel->setActiveSheetIndex(0)->setCellValue('B1', "kode_nama"); // Set kolom C3 dengan tulisan "NAMA"
+    $excel->setActiveSheetIndex(0)->setCellValue('C1', "min"); // Set kolom D3 dengan tulisan "JENIS KELAMIN"
+    $excel->setActiveSheetIndex(0)->setCellValue('D1', "max"); // Set kolom E3 dengan tulisan "ALAMAT"
    
+    //$excel->getActiveSheet()->getStyle('A1')->applyFromArray($style_col);
     $excel->getActiveSheet()->getStyle('A1')->applyFromArray($style_col);
     $excel->getActiveSheet()->getStyle('B1')->applyFromArray($style_col);
     $excel->getActiveSheet()->getStyle('C1')->applyFromArray($style_col);
     $excel->getActiveSheet()->getStyle('D1')->applyFromArray($style_col);
-    $excel->getActiveSheet()->getStyle('E1')->applyFromArray($style_col);
    
     // Panggil function view yang ada di SiswaModel untuk menampilkan semua data siswanya
     $siswa = $this->ApprovalModel->getApprovalExport();
     $no = 1; // Untuk penomoran tabel, di awal set dengan 1
     $numrow = 2; // Set baris pertama untuk isi tabel adalah baris ke 4
     foreach($siswa as $data){ // Lakukan looping pada variabel siswa
-      $excel->setActiveSheetIndex(0)->setCellValue('A'.$numrow, $data->no);
-      $excel->setActiveSheetIndex(0)->setCellValue('B'.$numrow, $data->nama);
-      $excel->setActiveSheetIndex(0)->setCellValue('C'.$numrow, $data->kode_nama);
-      $excel->setActiveSheetIndex(0)->setCellValue('D'.$numrow, $data->min);
-      $excel->setActiveSheetIndex(0)->setCellValue('E'.$numrow, $data->max);
+      //$excel->setActiveSheetIndex(0)->setCellValue('A'.$numrow, $data->no);
+      $excel->setActiveSheetIndex(0)->setCellValue('A'.$numrow, $data->nama);
+      $excel->setActiveSheetIndex(0)->setCellValue('B'.$numrow, $data->kode_nama);
+      $excel->setActiveSheetIndex(0)->setCellValue('C'.$numrow, $data->min);
+      $excel->setActiveSheetIndex(0)->setCellValue('D'.$numrow, $data->max);
     
      
       
@@ -217,11 +217,11 @@ class Approval extends CI_Controller {
       $numrow++; // Tambah 1 setiap kali looping
     }
     // Set width kolom
-    //$excel->getActiveSheet()->getColumnDimension('A')->setWidth(5); // Set width kolom A
+    $excel->getActiveSheet()->getColumnDimension('A')->setWidth(30); // Set width kolom A
     $excel->getActiveSheet()->getColumnDimension('B')->setWidth(30); // Set width kolom B
     $excel->getActiveSheet()->getColumnDimension('C')->setWidth(30); // Set width kolom C
     $excel->getActiveSheet()->getColumnDimension('D')->setWidth(25);
-    $excel->getActiveSheet()->getColumnDimension('E')->setWidth(25);
+    //$excel->getActiveSheet()->getColumnDimension('E')->setWidth(25);
    
     $excel->getActiveSheet()->getDefaultRowDimension()->setRowHeight(-1);
     // Set orientasi kertas jadi LANDSCAPE

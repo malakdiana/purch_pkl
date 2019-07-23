@@ -195,7 +195,7 @@ class Unit_barang extends CI_Controller {
     $excel->getActiveSheet()->getStyle('C1')->applyFromArray($style_col);
   
     // Panggil function view yang ada di SiswaModel untuk menampilkan semua data siswanya
-    $siswa = $this->Unit_barangModel->getUnit_barang();
+    $siswa = $this->Unit_barangModel->getUnit_barangExport();
     $no = 1; // Untuk penomoran tabel, di awal set dengan 1
     $numrow = 2; // Set baris pertama untuk isi tabel adalah baris ke 4
     foreach($siswa as $data){ // Lakukan looping pada variabel siswa

@@ -70,6 +70,7 @@
                                         <a href="<?php echo site_url()?>/Grafik"><h6><i class="ti-bar-chart"></i><span>Grafik</h6></span></a>
                                         
                                     </li>
+
                                     <li>
                                          <a href="javascript:void(0)" aria-expanded="true"><h6><i class="ti-book"></i><span>Data</h6>
                                     </span></a>
@@ -77,10 +78,10 @@
                                     <li><a href="<?php echo site_url()?>/Po">Data Purchase Order</a></li>
                                     <li><a href="<?php echo site_url()?>/Purch_req">Data Purchase Request</a></li>
                                     <li><a href="<?php echo site_url()?>/Qr/">List All Quotation</a></li>
-                                   
                                     <li><a href="<?php echo site_url()?>/Eta">ETA</a></li>
                                     <li><a href="<?php echo site_url()?>/Riwayatdatang">Riwayat Kedatangan</a></li>
-                                </ul>
+                                        
+                                        </ul>
                                     </li>
 
                                     <li >

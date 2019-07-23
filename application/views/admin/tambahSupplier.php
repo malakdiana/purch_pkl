@@ -55,6 +55,7 @@
                                          </div>
                                          <div class="col-sm-4">
                                             <input type="text" max="20" class="form-control" id="no_telp" name="no_telp">
+                                            <label>Inputkan format angka</label>
                                         </div>
 
                                         </div>
@@ -65,7 +66,8 @@
                                                 <label class="control-label" for="alamat">No Fax :</label>
                                             </div>
                                             <div class="col-sm-4">
-                                                <input type="text" max="50" class="form-control" id="no_fax" name="no_fax" style="margin-bottom: 25px">
+                                                <input type="text" max="50" class="form-control" id="no_fax" name="no_fax" >
+                                                <label>Inputkan format angka</label>
                                             </div>
                                             <div class="col-md-2">
                                              <label class="control-label" for="attention">Attention :</label>
@@ -82,7 +84,8 @@
                                                 <label class="control-label" for="no_hp">No HP :</label>
                                             </div>
                                             <div class="col-sm-4">
-                                                <input type="text" max="50" class="form-control" id="no_hp" name="no_hp" style="margin-bottom: 25px">
+                                                <input type="text" max="50" class="form-control" id="no_hp" name="no_hp" >
+                                                <label>Inputkan format angka</label>
                                             </div>
                                             <div class="col-md-2">
                                              <label class="control-label" for="tgl_input">Tanggal Input :</label>
@@ -100,7 +103,8 @@
                                                 <label class="control-label" for="nomer_rek">No Rek:</label>
                                             </div>
                                             <div class="col-sm-4">
-                                                <input type="text" class="form-control" id="nomer_rek" name="nomer_rek" style="margin-bottom: 25px">
+                                                <input type="text" class="form-control" id="nomer_rek" name="nomer_rek" >
+                                                <label>Inputkan format angka</label>
                                             </div>
                                             <div class="col-md-2">
                                              <label class="control-label" for="bank">Bank:</label>

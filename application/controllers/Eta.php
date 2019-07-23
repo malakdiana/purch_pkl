@@ -211,7 +211,7 @@ public function index()
       $numrow++; // Tambah 1 setiap kali looping
     }
     // Set width kolom
-    //$excel->getActiveSheet()->getColumnDimension('A')->setWidth(5); // Set width kolom A
+    $excel->getActiveSheet()->getColumnDimension('A')->setWidth(40); // Set width kolom A
     $excel->getActiveSheet()->getColumnDimension('B')->setWidth(30); // Set width kolom B
     $excel->getActiveSheet()->getColumnDimension('C')->setWidth(30); // Set width kolom C
    
@@ -222,9 +222,9 @@ public function index()
     $excel->getActiveSheet()->getColumnDimension('H')->setWidth(25);
     $excel->getActiveSheet()->getColumnDimension('I')->setWidth(25);
     $excel->getActiveSheet()->getColumnDimension('J')->setWidth(25);
-    $excel->getActiveSheet()->getColumnDimension('K')->setWidth(25);
-    $excel->getActiveSheet()->getColumnDimension('L')->setWidth(25);
-    $excel->getActiveSheet()->getColumnDimension('M')->setWidth(25);
+    $excel->getActiveSheet()->getColumnDimension('K')->setWidth(15);
+    $excel->getActiveSheet()->getColumnDimension('L')->setWidth(15);
+    $excel->getActiveSheet()->getColumnDimension('M')->setWidth(45);
     
     $excel->getActiveSheet()->getDefaultRowDimension()->setRowHeight(-1);
     // Set orientasi kertas jadi LANDSCAPE
