@@ -31,6 +31,10 @@ class EtaModel extends CI_Model {
             return $results;
             }
      }
+     public function deleteDelay($id){
+        $this->db->where('id',$id)->delete('eta');
+      
+     }
 
         public function getDelay($tgl,$tgl2){
      

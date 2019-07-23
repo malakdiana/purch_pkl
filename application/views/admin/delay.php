@@ -144,6 +144,7 @@
                                                 <a href="<?php echo site_url()?>/Eta/konfirmasiDelay/<?php echo $key->id?>/<?php echo $tgl1?>/<?php echo $tgl2 ?>" class="btn btn-success" style="width:80px; height:40px;padding-left: 2px"><i class="fa fa-check fa-xs"></i> Konfirm</a><br>
                                                 <a href="<?php echo site_url()?>/Eta/invoiceDelay/<?php echo $key->id ?>/<?php echo $tgl1?>/<?php echo $tgl2 ?>" class="btn btn-info" style="width:80px; height:40px;padding-left: 2px"><i class="fa fa-check fa-xs"></i> Invoice</a><br>
                                                 <a class="btn btn-warning" onclick="modalRemarks('<?php echo $key->id?>','<?php echo $key->id_bayangan ?>')" style="width:80px; height:50px;padding-left: 2px" data-toggle="modal" data-target="#myModalEdit"><i class="fa fa-plus fa-xs"></i> Add <br>Remarks</a>
+                                                 <a href="<?php echo site_url()?>/Eta/deleteDelay/<?php echo $key->id ?>/<?php echo $tgl1?>/<?php echo $tgl2 ?>" class="btn btn-danger"style="width:80px; height:50px;padding-left: 2px" ><i class="fa fa-trash fa-xs"></i> Hapus</a>
                                                 </td>
   
                                             </tr>

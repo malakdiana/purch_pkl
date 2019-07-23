@@ -121,6 +121,7 @@ public function ManajemenUser()
         
     }
     public function deleteLogin($id){
+
         $this->LoginModel->deleteLogin($id);
                 $this->session->set_flashdata('deleteLogin','<div class="alert alert-success" role="alert">SUKSES DELETE DATA <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
             redirect('Login/ManajemenUser', 'refresh');

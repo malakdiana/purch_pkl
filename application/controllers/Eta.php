@@ -29,6 +29,12 @@ public function index()
    
 	}
 
+  public function deleteDelay($id,$tgl1,$tgl2){
+      $this->EtaModel->deleteDelay($id);
+              echo "<script>alert('Sukses hapus')</script>";
+         redirect("Eta/getDelay/".$tgl1."/".$tgl2, 'refresh');
+  }
+
 	public function get($tgl){
 		$data['tgl']=$tgl;
 		$data['eta']= $this->EtaModel->getPo($tgl);

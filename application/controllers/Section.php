@@ -32,7 +32,7 @@ class Section extends CI_Controller {
     }
     public function deleteSection($id){
         $this->SectionModel->deleteSection($id);
-                $this->session->set_flashdata('deleteSection','<div class="alert alert-success" role="alert">SUKSES DELETE DATA <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+             
             redirect('Section', 'refresh');
     }
     public function tambahSection(){
