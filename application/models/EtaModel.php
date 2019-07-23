@@ -61,7 +61,8 @@ class EtaModel extends CI_Model {
         $this->db->join('purch_req','id_pr = purch_req.id','left');
         $this->db->join('po','bayangan.id_po = po.id_po','left');
         $this->db->join('item','bayangan.id_item = item.id_item','left');
-        
+
+        $this->db->order_by('po.eta','desc');
         $query = $this->db->get();
            $results=array();
             if($query->num_rows() > 0){
