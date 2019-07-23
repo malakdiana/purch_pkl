@@ -36,23 +36,17 @@ public function index()
 
 	  function getSupplier(){
         $tgl= $this->input->post('tgl');
-        $tgl= substr($tgl,-2);
-      // echo $tgl[0];die();
-        $data=$this->db->select('supplier, sum(qty*harga) as jumlah')->from('bayangan')->join('po','po.id_po = bayangan.id_po')->where('SUBSTRING_INDEX(SUBSTRING_INDEX(tgl_po,"/",2),"/",-1) AS part2',$tgl)->group_by('po.supplier')->order_by('jumlah','DESC')->limit(5)->get();
-          foreach ($data->result() as $data) {
-               
-                $dataa=array(
-                   'supplier' => $data->supplier,
-                   'jumlah' => $data->jumlah,
-                    );
-
-
-            }
-        
-
-         
-       // echo json_encode($data);
-        echo json_encode($dataa);
+        $c= explode('-', $tgl);
+       $d= $c[1].'/'.$c[0];
+        $dataa=$this->db->select('supplier, sum(qty*harga) as jumlah')->from('bayangan')->join('po','po.id_po = bayangan.id_po')->where("SUBSTRING_INDEX(SUBSTRING_INDEX(tgl_po,' ',1),'/',-2) =",$d)->group_by('po.supplier')->order_by('jumlah','DESC')->get();
+        echo json_encode($dataa->result());
+    }
+      function getSection(){
+        $tgl= $this->input->post('tgl');
+        $c= explode('-', $tgl);
+       $d= $c[1].'/'.$c[0];
+        $dataa=$this->db->select('nama_section, sum(qty*harga) as jumlah')->from('bayangan')->join('po','po.id_po = bayangan.id_po')->join('purch_req','purch_req.id= bayangan.id_pr')->join('section','purch_req.section = section.nama_section', 'RIGHT')->where("SUBSTRING_INDEX(SUBSTRING_INDEX(tgl_po,' ',1),'/',-2) =",$d)->group_by('section')->order_by('jumlah','desc')->get();
+        echo json_encode($dataa->result());
     }
 	
 }

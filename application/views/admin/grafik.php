@@ -68,19 +68,19 @@
                         </div>
                     </div>
                     <!-- data table start -->
-                    <div class="col-6 mt-5">
+                    <div class="col-12 mt-5">
                         <div class="card">   
                             <div class="card-body">
-                                <input type="text" name="sup" id="sup">
+                        
                                 <input type="month" name="bulan_sup" id="bulan_sup" class="form-control" style="width: 160px">
                                  <div id="chartdiv"></div>
                              </div>
                          </div>
                      </div>
-                      <div class="col-6 mt-5">
+                      <div class="col-12 mt-5">
                         <div class="card">   
                             <div class="card-body">
-                                <input type="date" name="" class="form-control">
+                               <input type="month" name="bulan_section" id="bulan_section" class="form-control" style="width: 160px">
                                  <div id="chartdivv"></div>
                              </div>
                          </div>
@@ -103,29 +103,139 @@
         }
                                     ?>
    <script type="text/javascript">
+
+     $(document).ready(function(){ 
+ am4core.useTheme(am4themes_animated);
+       
+
+var chart = am4core.create("chartdiv", am4charts.XYChart3D);
+var datax = [];
+var datacategory = [];
+var datavalue = [];
+var visits = '';
+ <?php $i=0 ?>
+
+datacategory = <?php echo json_encode($kategori);?>;
+datavalue = <?php echo json_encode($nilai);?>;
+
+for( var i = 0; i < datacategory.length; i++){
+    datax.push({"category": datacategory[i], "value1" : datavalue[i]});
+}
+
+
+chart.data= datax;
+
+chart.padding(30, 30, 10, 30);
+chart.legend = new am4charts.Legend();
+
+chart.colors.step = 1;
+
+var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
+categoryAxis.dataFields.category = "category";
+
+categoryAxis.renderer.minGridDistance = 60;
+categoryAxis.renderer.grid.template.location = 0;
+categoryAxis.interactionsEnabled = false;
+
+
+var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
+valueAxis.tooltip.disabled = true;
+valueAxis.renderer.grid.template.strokeOpacity = 0.05;
+valueAxis.renderer.minGridDistance = 20;
+valueAxis.interactionsEnabled = false;
+valueAxis.min = 0;
+valueAxis.renderer.minWidth = 35;
+
+var series1 = chart.series.push(new am4charts.ColumnSeries3D());
+series1.columns.template.width = am4core.percent(80);
+series1.columns.template.tooltipText = "{name}: {valueY.value}";
+series1.name = "Supplier";
+series1.dataFields.categoryX = "category";
+series1.dataFields.valueY = "value1";
+series1.stacked = true;
+
+
+chart.scrollbarX = new am4core.Scrollbar();
+
+var chartt = am4core.create("chartdivv", am4charts.XYChart3D);
+var dataxx = [];
+var datacategoryy = [];
+var datavaluee = [];
+
+datacategoryy = <?php echo json_encode($kategori2);?>;
+datavaluee = <?php echo json_encode($nilai2);?>;
+
+for( var i = 0; i < datacategoryy.length; i++){
+    dataxx.push({"category": datacategoryy[i], "value1" : datavaluee[i]});
+}
+
+
+chartt.data= dataxx;
+
+chartt.padding(30, 30, 10, 30);
+chartt.legend = new am4charts.Legend();
+
+chartt.colors.step = 1;
+
+var categoryAxiss = chartt.xAxes.push(new am4charts.CategoryAxis());
+categoryAxiss.dataFields.category = "category";
+
+categoryAxiss.renderer.minGridDistance = 60;
+categoryAxiss.renderer.grid.template.location = 0;
+categoryAxiss.interactionsEnabled = false;
+
+
+var valueAxiss = chartt.yAxes.push(new am4charts.ValueAxis());
+valueAxiss.tooltip.disabled = true;
+valueAxiss.renderer.grid.template.strokeOpacity = 0.05;
+valueAxiss.renderer.minGridDistance = 20;
+valueAxiss.interactionsEnabled = false;
+valueAxiss.min = 0;
+valueAxiss.renderer.minWidth = 35;
+
+var series2 = chartt.series.push(new am4charts.ColumnSeries3D());
+series2.columns.template.width = am4core.percent(80);
+series2.columns.template.tooltipText = "{name}: {valueY.value}";
+series2.name = "Section";
+series2.dataFields.categoryX = "category";
+series2.dataFields.valueY = "value1";
+series2.stacked = true;
+
+
+chartt.scrollbarX = new am4core.Scrollbar();
+   
+
+
+     });
+
+
+
+
+
     $("#bulan_sup").change(function () {
      var tgl = $(this).val(); 
         $.ajax({
                 type  : 'post',
                 url   : '<?php echo site_url()?>/Grafik/getSupplier',
                 data : {tgl: tgl},        
-                dataType: 'json',  
-                success : function(data){
-document.getElementById('sup').value = data[0].supplier;  
+                dataType: 'json',   
+            }).done(function(data){
+
                     am4core.useTheme(am4themes_animated);
        
 
 var chart = am4core.create("chartdiv", am4charts.XYChart3D);
-chart.data = [{
-    "category": data[0].supplier,
-    "value1": data[0].jumlah,
- 
-},
-{
-    "category": data[1].supplier,
-    "value1": data[1].jumlah,
- 
-}]
+var datax = [];
+
+
+for( var i = 0; i < data.length; i++){
+    datax.push({"category": data[i].supplier, "value1" : data[i].jumlah});
+}
+
+
+chart.data= datax;
+
+
 chart.padding(30, 30, 10, 30);
 chart.legend = new am4charts.Legend();
 
@@ -148,7 +258,7 @@ valueAxis.renderer.minWidth = 35;
 var series1 = chart.series.push(new am4charts.ColumnSeries3D());
 series1.columns.template.width = am4core.percent(80);
 series1.columns.template.tooltipText = "{name}: {valueY.value}";
-series1.name = "Supplier";
+series1.name = "category";
 series1.dataFields.categoryX = "category";
 series1.dataFields.valueY = "value1";
 series1.stacked = true;
@@ -156,60 +266,68 @@ series1.stacked = true;
 
 chart.scrollbarX = new am4core.Scrollbar();
                     
-                }
- 
-            });
-    });
-
+         })
+      });
     
-var chartt = am4core.create("chartdivv", am4charts.XYChart3D);
+
+     $("#bulan_section").change(function () {
+     var tgl = $(this).val(); 
+        $.ajax({
+                type  : 'post',
+                url   : '<?php echo site_url()?>/Grafik/getSection',
+                data : {tgl: tgl},        
+                dataType: 'json',   
+            }).done(function(data){
+
+                    am4core.useTheme(am4themes_animated);
+       
+
+var chart = am4core.create("chartdivv", am4charts.XYChart3D);
+var datax = [];
 
 
-chartt.data = [{
-    "category": <?php echo json_encode($kategori2[0])?>,
-    "value1": <?php echo json_encode($nilai2[0])?>,
- 
-},
-{
-    "category": <?php echo json_encode($kategori2[1])?>,
-    "value1": <?php echo json_encode($nilai2[1])?>,
- 
-},{
-    "category": <?php echo json_encode($kategori2[2])?>,
-    "value1": <?php echo json_encode($nilai2[2])?>,
- 
-},]
-chartt.padding(30, 30, 10, 30);
-chartt.legend = new am4charts.Legend();
-
-chartt.colors.step = 2;
-
-var categoryAxiss = chartt.xAxes.push(new am4charts.CategoryAxis());
-categoryAxiss.dataFields.category = "category";
-categoryAxiss.renderer.minGridDistance = 60;
-categoryAxiss.renderer.grid.template.location = 0;
-categoryAxiss.interactionsEnabled = false;
-
-var valueAxiss = chartt.yAxes.push(new am4charts.ValueAxis());
-valueAxiss.tooltip.disabled = true;
-valueAxiss.renderer.grid.template.strokeOpacity = 0.05;
-valueAxiss.renderer.minGridDistance = 20;
-valueAxiss.interactionsEnabled = false;
-valueAxiss.min = 0;
-valueAxiss.renderer.minWidth = 35;
-
-var seriess = chartt.series.push(new am4charts.ColumnSeries3D());
-seriess.columns.template.width = am4core.percent(80);
-seriess.columns.template.tooltipText = "{name}: {valueY.value}";
-seriess.name = "Section";
-seriess.dataFields.categoryX = "category";
-seriess.dataFields.valueY = "value1";
-seriess.stacked = true;
+for( var i = 0; i < data.length; i++){
+    datax.push({"category": data[i].nama_section, "value1" : data[i].jumlah});
+}
 
 
-chartt.scrollbarX = new am4core.Scrollbar();
+chart.data= datax;
 
-   
+
+chart.padding(30, 30, 10, 30);
+chart.legend = new am4charts.Legend();
+
+chart.colors.step = 1;
+
+var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
+categoryAxis.dataFields.category = "category";
+categoryAxis.renderer.minGridDistance = 60;
+categoryAxis.renderer.grid.template.location = 0;
+categoryAxis.interactionsEnabled = false;
+
+var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
+valueAxis.tooltip.disabled = true;
+valueAxis.renderer.grid.template.strokeOpacity = 0.05;
+valueAxis.renderer.minGridDistance = 20;
+valueAxis.interactionsEnabled = false;
+valueAxis.min = 0;
+valueAxis.renderer.minWidth = 35;
+
+var series1 = chart.series.push(new am4charts.ColumnSeries3D());
+series1.columns.template.width = am4core.percent(80);
+series1.columns.template.tooltipText = "{name}: {valueY.value}";
+series1.name = "category";
+series1.dataFields.categoryX = "category";
+
+series1.dataFields.valueY = "value1";
+series1.stacked = true;
+
+
+chart.scrollbarX = new am4core.Scrollbar();
+                    
+         })
+      });
+    
 
    
    </script>

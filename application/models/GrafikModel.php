@@ -13,7 +13,8 @@ class GrafikModel extends CI_Model {
     }
 
     public function getSupplier(){
-    	$query= $this->db->select('supplier, sum(qty*harga) as jumlah')->from('bayangan')->join('po','po.id_po = bayangan.id_po')->group_by('po.supplier')->order_by('jumlah','DESC')->limit(5)->get();
+        $tgl=date('m/Y');
+    	$query= $this->db->select('supplier, sum(qty*harga) as jumlah')->from('bayangan')->join('po','po.id_po = bayangan.id_po')->where("SUBSTRING_INDEX(SUBSTRING_INDEX(tgl_po,' ',1),'/',-2) =",$tgl)->group_by('po.supplier')->order_by('jumlah','DESC')->get();
     	  $results=array();
             if($query->num_rows() > 0){
             return $query->result();
