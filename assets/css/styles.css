@@ -312,13 +312,31 @@
     border-top: 4px solid #007BFF;
     border-radius: 3px;
     box-shadow: 0 2px 15px rgba(0, 0, 0, 0.03);
+    
 }
 
 .horizontal-menu .submenu li {
     display: block;
+    
 }
 
+.horizontal-menu .submenu li li {
+    
+    float: right;
+    position: relative;
+    display: inline-block;
+}
+
+
 .horizontal-menu ul li:hover>.submenu {
+    opacity: 1;
+    visibility: visible;
+    
+   
+}
+
+.horizontal-menu ul li ul:hover>.submenu {
+    
     opacity: 1;
     visibility: visible;
 }
