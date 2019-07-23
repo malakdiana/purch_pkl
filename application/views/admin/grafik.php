@@ -90,6 +90,7 @@
          </div>
                 
            <?php $this->load->view('admin/footer'); ?>
+
     <script src="<?php echo base_url()?>assets/js/core.js"></script>
     <script src="<?php echo base_url()?>assets/js/charts.js"></script>
     <script src="<?php echo base_url()?>assets/js/animated.js"></script>
@@ -106,7 +107,7 @@
 
      $(document).ready(function(){ 
  am4core.useTheme(am4themes_animated);
-       
+
 
 var chart = am4core.create("chartdiv", am4charts.XYChart3D);
 var datax = [];
@@ -146,9 +147,10 @@ valueAxis.interactionsEnabled = false;
 valueAxis.min = 0;
 valueAxis.renderer.minWidth = 35;
 
+
 var series1 = chart.series.push(new am4charts.ColumnSeries3D());
 series1.columns.template.width = am4core.percent(80);
-series1.columns.template.tooltipText = "{name}: {valueY.value}";
+series1.columns.template.tooltipText = "{name}: {valueY.value}, {name}: {categoryX.value}";
 series1.name = "Supplier";
 series1.dataFields.categoryX = "category";
 series1.dataFields.valueY = "value1";
@@ -157,7 +159,7 @@ series1.stacked = true;
 
 chart.scrollbarX = new am4core.Scrollbar();
 
-var chartt = am4core.create("chartdivv", am4charts.XYChart3D);
+var chartt = am4core.create("chartdivv", am4charts.XYChart);
 var dataxx = [];
 var datacategoryy = [];
 var datavaluee = [];
@@ -172,42 +174,35 @@ for( var i = 0; i < datacategoryy.length; i++){
 
 chartt.data= dataxx;
 
-chartt.padding(30, 30, 10, 30);
-chartt.legend = new am4charts.Legend();
+var categoryAxis = chartt.yAxes.push(new am4charts.CategoryAxis());
+categoryAxis.renderer.grid.template.location = 0;
+categoryAxis.dataFields.category = "category";
+categoryAxis.renderer.minGridDistance = 20;
 
-chartt.colors.step = 1;
+var valueAxis = chartt.xAxes.push(new am4charts.ValueAxis());
+valueAxis.renderer.maxLabelPosition = 0.98;
 
-var categoryAxiss = chartt.xAxes.push(new am4charts.CategoryAxis());
-categoryAxiss.dataFields.category = "category";
+var series = chartt.series.push(new am4charts.ColumnSeries());
+series.dataFields.categoryY = "category";
+series.dataFields.valueX = "value1";
+series.tooltipText = "{valueX.value}";
+series.sequencedInterpolation = true;
+series.defaultState.transitionDuration = 1000;
+series.sequencedInterpolationDelay = 100;
+series.columns.template.strokeOpacity = 0;
 
-categoryAxiss.renderer.minGridDistance = 60;
-categoryAxiss.renderer.grid.template.location = 0;
-categoryAxiss.interactionsEnabled = false;
-
-
-var valueAxiss = chartt.yAxes.push(new am4charts.ValueAxis());
-valueAxiss.tooltip.disabled = true;
-valueAxiss.renderer.grid.template.strokeOpacity = 0.05;
-valueAxiss.renderer.minGridDistance = 20;
-valueAxiss.interactionsEnabled = false;
-valueAxiss.min = 0;
-valueAxiss.renderer.minWidth = 35;
-
-var series2 = chartt.series.push(new am4charts.ColumnSeries3D());
-series2.columns.template.width = am4core.percent(80);
-series2.columns.template.tooltipText = "{name}: {valueY.value}";
-series2.name = "Section";
-series2.dataFields.categoryX = "category";
-series2.dataFields.valueY = "value1";
-series2.stacked = true;
+chartt.cursor = new am4charts.XYCursor();
+chartt.cursor.behavior = "panY";
 
 
-chartt.scrollbarX = new am4core.Scrollbar();
+// as by default columns of the same series are of the same color, we add adapter which takes colors from chart.colors color set
+series.columns.template.adapter.add("fill", function (fill, target) {
+    return chartt.colors.getIndex(target.dataItem.index);
    
 
 
      });
-
+});
 
 
 
@@ -257,7 +252,7 @@ valueAxis.renderer.minWidth = 35;
 
 var series1 = chart.series.push(new am4charts.ColumnSeries3D());
 series1.columns.template.width = am4core.percent(80);
-series1.columns.template.tooltipText = "{name}: {valueY.value}";
+series1.columns.template.tooltipText = "{name}: {valueY.value}, {name}: {categoryX.value}";
 series1.name = "category";
 series1.dataFields.categoryX = "category";
 series1.dataFields.valueY = "value1";
@@ -305,6 +300,7 @@ categoryAxis.renderer.minGridDistance = 60;
 categoryAxis.renderer.grid.template.location = 0;
 categoryAxis.interactionsEnabled = false;
 
+
 var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
 valueAxis.tooltip.disabled = true;
 valueAxis.renderer.grid.template.strokeOpacity = 0.05;
@@ -313,9 +309,10 @@ valueAxis.interactionsEnabled = false;
 valueAxis.min = 0;
 valueAxis.renderer.minWidth = 35;
 
+
 var series1 = chart.series.push(new am4charts.ColumnSeries3D());
 series1.columns.template.width = am4core.percent(80);
-series1.columns.template.tooltipText = "{name}: {valueY.value}";
+series1.columns.template.tooltipText = "{name}: {valueY.value}, {name}: {categoryX.value}";
 series1.name = "category";
 series1.dataFields.categoryX = "category";
 
