@@ -78,7 +78,7 @@ public function index()
           
         }else{
             $this->Purch_reqModel->tambahPR();
-                $this->session->set_flashdata('tambahPR','<div class="alert alert-success" role="alert">SUKSES TAMBAH DATA <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+            
             redirect('Purch_req/', 'refresh');
         }
 
@@ -172,10 +172,10 @@ public function index()
             redirect("Purch_req/GetItem_barang/$id", 'refresh');
     }
 
-    public function hapusItem($id,$id_item){
+    public function hapusItem($id,$id_item,$status){
          $this->Purch_reqModel->hapusItem($id_item);
                 $this->session->set_flashdata('editItem','<div class="alert alert-success" role="alert">SUKSES HAPUS ITEM <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-            redirect("Purch_req/GetItem_barang/$id", 'refresh');
+            redirect("Purch_req/GetItem_barang/$id/$status", 'refresh');
     }
 
       function deleteItem(){

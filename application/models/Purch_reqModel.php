@@ -88,6 +88,8 @@ class Purch_reqModel extends CI_Model {
     public function tambahPR(){
 
         $pr_no = $this->input->post('pr_no')."/".$this->input->post('section_kode')."/".$this->input->post('bulan')."/".$this->input->post('tahun');
+        $query3 = $this->db->select('*')->from('purch_req')->where('pr_no', $pr_no)->get();
+        if($query3->num_rows()==0){
 
         $data = array(
         'tgl' => $this->input->post('tgl'),
@@ -113,7 +115,12 @@ if (!empty($this->input->post('item'))) {
        }
         $this->tambahItem_barang($id);
        }
+           $this->session->set_flashdata('tambahPR','<div class="alert alert-success" role="alert">SUKSES TAMBAH DATA <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
      }
+     else{
+ echo "<script>alert('Nomor PR tidak boleh sama')</script>";
+     }
+ }
 
     
 

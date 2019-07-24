@@ -36,16 +36,13 @@ public function index()
 
 	  function getSupplier(){
         $tgl= $this->input->post('tgl');
-        $c= explode('-', $tgl);
-       $d= $c[1].'/'.$c[0];
-        $dataa=$this->db->select('supplier, sum(qty*harga) as jumlah')->from('bayangan')->join('po','po.id_po = bayangan.id_po')->where("SUBSTRING_INDEX(SUBSTRING_INDEX(tgl_po,' ',1),'/',-2) =",$d)->group_by('po.supplier')->order_by('jumlah','DESC')->get();
+      
+        $dataa=$this->db->select('supplier, sum(qty*harga) as jumlah')->from('bayangan')->join('po','po.id_po = bayangan.id_po')->where("SUBSTRING_INDEX(SUBSTRING_INDEX(tgl_po,' ',1),'/',-2) =",$tgl)->group_by('po.supplier')->order_by('jumlah','DESC')->get();
         echo json_encode($dataa->result());
     }
       function getSection(){
-        $tgl= $this->input->post('tgl');
-        $c= explode('-', $tgl);
-       $d= $c[1].'/'.$c[0];
-        $dataa=$this->db->select('nama_section, sum(qty*harga) as jumlah')->from('bayangan')->join('po','po.id_po = bayangan.id_po')->join('purch_req','purch_req.id= bayangan.id_pr')->join('section','purch_req.section = section.nama_section', 'RIGHT')->where("SUBSTRING_INDEX(SUBSTRING_INDEX(tgl_po,' ',1),'/',-2) =",$d)->group_by('section')->order_by('jumlah','desc')->get();
+       $tgl= $this->input->post('tgl');
+        $dataa=$this->db->select('nama_section, sum(qty*harga) as jumlah')->from('bayangan')->join('po','po.id_po = bayangan.id_po')->join('purch_req','purch_req.id= bayangan.id_pr')->join('section','purch_req.section = section.nama_section', 'RIGHT')->where("SUBSTRING_INDEX(SUBSTRING_INDEX(tgl_po,' ',1),'/',-2) =",$tgl)->group_by('section')->order_by('jumlah','asc')->get();
         echo json_encode($dataa->result());
     }
 	
