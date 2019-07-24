@@ -102,10 +102,7 @@ public function ManajemenUser()
 	}
 
 	public function updateLogin(){
-		if(empty($this->input->post('password'))){
-			 $this->LoginModel->updateHak_akses();
-           redirect('Login/ManajemenUser', 'refresh');
-		}else{
+		
 		 if($this->input->post('password')==$this->input->post('konfirpassword')){
 		
         $this->LoginModel->updateLogin();
@@ -117,7 +114,7 @@ public function ManajemenUser()
 			echo "<script>alert('Konfirmasi password anda tidak sesuai')</script>";
            redirect('Login/ManajemenUser', 'refresh');
 		} 
-		}   
+		 
         
     }
     public function deleteLogin($id){

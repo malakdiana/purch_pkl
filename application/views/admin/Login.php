@@ -147,14 +147,7 @@
                         <input type="checkbox" onclick="myFunction2()"> Show Konfirmasi Password 
                     </div>
 
-                    <div class="form-group">
-                        <label for="">HAK AKSES</label>
-                        <select class="form-control" name="hak_akses" id="hak_akses">
-                        <option value="1">ADMINISTRATOR</option>
-                        <option value="2">SECTION</option>
-                        <option value="3">INVOICE</option>
-                        </select>
-                    </div>
+                
                     
 
                 
