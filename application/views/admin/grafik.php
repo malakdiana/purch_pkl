@@ -68,19 +68,23 @@
                         </div>
                     </div>
                     <!-- data table start -->
-                    <div class="col-6 mt-5">
+                    <div class="col-7 mt-5">
                         <div class="card">   
                             <div class="card-body">
                         
-                                <input type="month" name="bulan_sup" id="bulan_sup" class="form-control" style="width: 160px">
+                               <h4>Grafik Ammount Supplier Per Bulan</h4><br>
+                                <label>Filter : &nbsp;&nbsp;</label><span class="fa fa-filter"><input name="startDate" id="startDate" class="date-picker" autocomplete="off" /></span>
+                              
                                  <div id="chartdiv"></div>
                              </div>
                          </div>
                      </div>
-                      <div class="col-6 mt-5">
+                      <div class="col-5 mt-5">
                         <div class="card">   
                             <div class="card-body">
-                               <input type="month" name="bulan_section" id="bulan_section" class="form-control" style="width: 160px">
+                                 <h4>Grafik Ammount Section Per Bulan</h4><br>
+                                <label>Filter : &nbsp;&nbsp;</label><input name="startDate2" id="startDate2" class="date-picker2" autocomplete="off" />
+                              
                                  <div id="chartdivv"></div>
                              </div>
                          </div>
@@ -94,6 +98,7 @@
     <script src="<?php echo base_url()?>assets/js/core.js"></script>
     <script src="<?php echo base_url()?>assets/js/charts.js"></script>
     <script src="<?php echo base_url()?>assets/js/animated.js"></script>
+   
     <?php foreach ($grafik as $key) {
                                     $kategori[] = $key->supplier;
                                     $nilai[]=$key->jumlah;} 
@@ -109,7 +114,8 @@
  am4core.useTheme(am4themes_animated);
 
 
-var chart = am4core.create("chartdiv", am4charts.XYChart3D);
+var chart = am4core.create("chartdiv", am4charts.PieChart3D);
+chart.legend = new am4charts.Legend();
 var datax = [];
 var datacategory = [];
 var datavalue = [];
@@ -127,37 +133,12 @@ for( var i = 0; i < datacategory.length; i++){
 chart.data= datax;
 
 chart.padding(30, 30, 10, 30);
-chart.legend = new am4charts.Legend();
 
-chart.colors.step = 1;
+chart.innerRadius = am4core.percent(40);
 
-var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
-categoryAxis.dataFields.category = "category";
-
-categoryAxis.renderer.minGridDistance = 60;
-categoryAxis.renderer.grid.template.location = 0;
-categoryAxis.interactionsEnabled = false;
-
-
-var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
-valueAxis.tooltip.disabled = true;
-valueAxis.renderer.grid.template.strokeOpacity = 0.05;
-valueAxis.renderer.minGridDistance = 20;
-valueAxis.interactionsEnabled = false;
-valueAxis.min = 0;
-valueAxis.renderer.minWidth = 35;
-
-
-var series1 = chart.series.push(new am4charts.ColumnSeries3D());
-series1.columns.template.width = am4core.percent(80);
-series1.columns.template.tooltipText = "{name}: {valueY.value}, {name}: {categoryX.value}";
-series1.name = "Supplier";
-series1.dataFields.categoryX = "category";
-series1.dataFields.valueY = "value1";
-series1.stacked = true;
-
-
-chart.scrollbarX = new am4core.Scrollbar();
+var series = chart.series.push(new am4charts.PieSeries3D());
+series.dataFields.value = "value1";
+series.dataFields.category = "category";
 
 var chartt = am4core.create("chartdivv", am4charts.XYChart);
 var dataxx = [];
@@ -207,19 +188,36 @@ series.columns.template.adapter.add("fill", function (fill, target) {
 
 
 
-    $("#bulan_sup").change(function () {
-     var tgl = $(this).val(); 
-        $.ajax({
+  
+   
+   </script>
+      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.min.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/base/jquery-ui.css">
+    
+   <script type="text/javascript">
+        $(function() {
+            $('.date-picker').datepicker( {
+            changeMonth: true,
+            changeYear: true,
+            showButtonPanel: true,
+            dateFormat: 'mm/yy',
+            onClose: function(dateText, inst) { 
+                $(this).datepicker('setDate', new Date(inst.selectedYear, inst.selectedMonth, 1));
+                var tgl = $(this).val();
+                console.log(tgl);
+               $.ajax({
                 type  : 'post',
                 url   : '<?php echo site_url()?>/Grafik/getSupplier',
                 data : {tgl: tgl},        
-                dataType: 'json',   
-            }).done(function(data){
+                dataType: 'json', 
+                success: function(data) { 
+          am4core.useTheme(am4themes_animated);
 
-                    am4core.useTheme(am4themes_animated);
-       
 
-var chart = am4core.create("chartdiv", am4charts.XYChart3D);
+var chart = am4core.create("chartdiv", am4charts.PieChart3D);
+chart.legend = new am4charts.Legend();
+
 var datax = [];
 
 
@@ -227,105 +225,92 @@ for( var i = 0; i < data.length; i++){
     datax.push({"category": data[i].supplier, "value1" : data[i].jumlah});
 }
 
-
 chart.data= datax;
 
-
 chart.padding(30, 30, 10, 30);
-chart.legend = new am4charts.Legend();
 
-chart.colors.step = 1;
+chart.innerRadius = am4core.percent(40);
 
-var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
-categoryAxis.dataFields.category = "category";
-categoryAxis.renderer.minGridDistance = 60;
-categoryAxis.renderer.grid.template.location = 0;
-categoryAxis.interactionsEnabled = false;
-
-var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
-valueAxis.tooltip.disabled = true;
-valueAxis.renderer.grid.template.strokeOpacity = 0.05;
-valueAxis.renderer.minGridDistance = 20;
-valueAxis.interactionsEnabled = false;
-valueAxis.min = 0;
-valueAxis.renderer.minWidth = 35;
-
-var series1 = chart.series.push(new am4charts.ColumnSeries3D());
-series1.columns.template.width = am4core.percent(80);
-series1.columns.template.tooltipText = "{name}: {valueY.value}, {name}: {categoryX.value}";
-series1.name = "category";
-series1.dataFields.categoryX = "category";
-series1.dataFields.valueY = "value1";
-series1.stacked = true;
+var series = chart.series.push(new am4charts.PieSeries3D());
+series.dataFields.value = "value1";
+series.dataFields.category = "category";
 
 
-chart.scrollbarX = new am4core.Scrollbar();
-                    
-         })
-      });
-    
+           }  
+            });
+              
+            }
+            });
+        });
+    </script>
 
-     $("#bulan_section").change(function () {
-     var tgl = $(this).val(); 
-        $.ajax({
+   <script type="text/javascript">
+        $(function() {
+            $('.date-picker2').datepicker( {
+            changeMonth: true,
+            changeYear: true,
+            showButtonPanel: true,
+            dateFormat: 'mm/yy',
+            onClose: function(dateText, inst) { 
+                $(this).datepicker('setDate', new Date(inst.selectedYear, inst.selectedMonth, 1));
+                var tgl = $(this).val();
+                console.log(tgl);
+               $.ajax({
                 type  : 'post',
                 url   : '<?php echo site_url()?>/Grafik/getSection',
                 data : {tgl: tgl},        
-                dataType: 'json',   
-            }).done(function(data){
-
-                    am4core.useTheme(am4themes_animated);
-       
-
-var chart = am4core.create("chartdivv", am4charts.XYChart3D);
-var datax = [];
-
+                dataType: 'json', 
+                success: function(data) { 
+var chartt = am4core.create("chartdivv", am4charts.XYChart);
+var dataxx = [];
 
 for( var i = 0; i < data.length; i++){
-    datax.push({"category": data[i].nama_section, "value1" : data[i].jumlah});
+        dataxx.push({"category": data[i].nama_section, "value1" : data[i].jumlah});
 }
 
 
-chart.data= datax;
+chartt.data= dataxx;
 
-
-chart.padding(30, 30, 10, 30);
-chart.legend = new am4charts.Legend();
-
-chart.colors.step = 1;
-
-var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
-categoryAxis.dataFields.category = "category";
-categoryAxis.renderer.minGridDistance = 60;
+var categoryAxis = chartt.yAxes.push(new am4charts.CategoryAxis());
 categoryAxis.renderer.grid.template.location = 0;
-categoryAxis.interactionsEnabled = false;
+categoryAxis.dataFields.category = "category";
+categoryAxis.renderer.minGridDistance = 20;
+
+var valueAxis = chartt.xAxes.push(new am4charts.ValueAxis());
+valueAxis.renderer.maxLabelPosition = 0.98;
+
+var series = chartt.series.push(new am4charts.ColumnSeries());
+series.dataFields.categoryY = "category";
+series.dataFields.valueX = "value1";
+series.tooltipText = "{valueX.value}";
+series.sequencedInterpolation = true;
+series.defaultState.transitionDuration = 1000;
+series.sequencedInterpolationDelay = 100;
+series.columns.template.strokeOpacity = 0;
+
+chartt.cursor = new am4charts.XYCursor();
+chartt.cursor.behavior = "panY";
 
 
-var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
-valueAxis.tooltip.disabled = true;
-valueAxis.renderer.grid.template.strokeOpacity = 0.05;
-valueAxis.renderer.minGridDistance = 20;
-valueAxis.interactionsEnabled = false;
-valueAxis.min = 0;
-valueAxis.renderer.minWidth = 35;
+// as by default columns of the same series are of the same color, we add adapter which takes colors from chart.colors color set
+series.columns.template.adapter.add("fill", function (fill, target) {
+    return chartt.colors.getIndex(target.dataItem.index);
+   });
 
 
-var series1 = chart.series.push(new am4charts.ColumnSeries3D());
-series1.columns.template.width = am4core.percent(80);
-series1.columns.template.tooltipText = "{name}: {valueY.value}, {name}: {categoryX.value}";
-series1.name = "category";
-series1.dataFields.categoryX = "category";
-
-series1.dataFields.valueY = "value1";
-series1.stacked = true;
 
 
-chart.scrollbarX = new am4core.Scrollbar();
-                    
-         })
-      });
-    
-
-   
-   </script>
+          
+              
+            }
+            });
+             }
+        });
+             });
+    </script>
+    <style>
+    .ui-datepicker-calendar {
+        display: none;
+    }
+  </style>
 
