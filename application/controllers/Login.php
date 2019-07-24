@@ -130,7 +130,7 @@ public function ManajemenUser()
         $this->load->helper('url', 'form');
         $this->load->library('form_validation');
         	$data['section']=$this->SectionModel->getSection();
-        $this->form_validation->set_rules('username', 'username', 'trim|required');
+        $this->form_validation->set_rules('hak_akses', 'hak_akses', 'trim|required');
         if ($this->form_validation->run()==FALSE) {
         
             $this->load->view('admin/header');
@@ -141,7 +141,7 @@ public function ManajemenUser()
             $this->LoginModel->tambahLogin();
                 $this->session->set_flashdata('tambahLogin','<div class="alert alert-success" role="alert">SUKSES TAMBAH DATA <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
             redirect('Login/ManajemenUser', 'refresh');
-        }else{
+        	}else{
         	echo "<script>alert('Konfirmasi password anda tidak sesuai')</script>";
            redirect('Login/ManajemenUser', 'refresh');
         }

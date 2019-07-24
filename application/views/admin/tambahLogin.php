@@ -126,7 +126,7 @@
 $("#insert-form").html("");
 $("#scriptt").html("");
               $("#insert-form").append(" <div class='form-group' ><label class='control-label ' for='hak_akses'>Section :</label><select name='section' class='form-control' id='section' required style='margin-bottom: 25px; width:400px;'><option value=''> PILIH : </option><?php foreach ($section as $key) {?> <option class='form-control' value='<?php echo $key->id_section?>'><?php echo $key->nama_section?> </option> <?php }?></select></div>");
-              document.getElementById('username').disabled= false;
+              document.getElementById('username').readOnly= false;
              
 
           }else if( val== "2"){
@@ -134,13 +134,13 @@ $("#scriptt").html("");
             $("#scriptt").html("");
             document.getElementById('username').value= "";
               $("#insert-form").append(" <div class='form-group' ><label class='control-label ' for='hak_akses'>Section :</label><select name='section' class='form-control' id='section' required style='margin-bottom: 25px; width:400px;'><option value=''> PILIH : </option><?php foreach ($section as $key) {?> <option class='form-control' value='<?php echo $key->nama_section?>'><?php echo $key->nama_section?> </option> <?php }?></select></div>");
-              $("#scriptt").append("<script>$('#section').click(function(){var vall = $(this).val();var hak_akses = $('#hak_akses').val();    if(hak_akses == '2'){ document.getElementById('username').value = vall;document.getElementById('username').disabled= true;}    });");
+              $("#scriptt").append("<script>$('#section').click(function(){var vall = $(this).val();var hak_akses = $('#hak_akses').val();    if(hak_akses == '2'){ document.getElementById('username').value = vall;document.getElementById('username').readOnly=true;}    });");
           }
 
           else{
              $("#insert-form").html("");
               $("#scriptt").html("");
-             document.getElementById('username').disabled= false;
+             document.getElementById('username').readOnly= false;
           }
 
           

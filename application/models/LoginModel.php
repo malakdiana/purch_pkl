@@ -84,6 +84,9 @@ class LoginModel extends CI_Model {
         }else{
         $section = $this->input->post('section');
       }
+
+      $query= $this->db->select('*')->from('login')->where('username',$this->input->post('username'))->get();
+      if($query->num_rows()==0){
         $data = array(
         'id_user' => $this->input->post('id_user'),
         'username' => $this->input->post('username'),
@@ -93,6 +96,10 @@ class LoginModel extends CI_Model {
         
         );
          $this->db->insert('login', $data);
+     }else{
+        echo "<script>alert('Username sudah terdaftar')</script>";
+           redirect('Login/ManajemenUser', 'refresh');
+     }
         
     }
 

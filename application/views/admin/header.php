@@ -43,7 +43,6 @@
         width: 0;
         height: 0;
         border-color: transparent;
-
         border-style: solid;
         border-width: 5px 0 5px 5px;
         border-left-color: #ccc;
@@ -58,9 +57,19 @@
          border-top: 3px solid blue;
         left: 100%;
         top: 0;
+        float: right;
       }
       .dropdown-submenu .pull-left {
         float: none;
+      }
+      .dropdown-1{
+
+        float:left; 
+    width:150px; 
+    display:block; 
+    text-align:left; 
+    color:#FFF; 
+    text-decoration:none; 
       }
       </style>
 
@@ -111,7 +120,7 @@
                                     <li class="dropdown-submenu">
                                         <a href="">ETA</a>
                                         <ul class="dropdown-menu">
-                                            <li><a class="dropdown-1" href="<?php echo site_url()?>/Eta">ETA</a></li>
+                                            <li><a class="dropdown-1" href="<?php echo site_url()?>/Eta">ETA<br></a></li>
                                             <li><a class="dropdown-1" href="<?php echo site_url()?>/Eta/delay">Delay</a></li>
                                         </ul>
                                     </li>

@@ -68,7 +68,7 @@
                         </div>
                     </div>
                     <!-- data table start -->
-                    <div class="col-12 mt-5">
+                    <div class="col-6 mt-5">
                         <div class="card">   
                             <div class="card-body">
                         
@@ -77,7 +77,7 @@
                              </div>
                          </div>
                      </div>
-                      <div class="col-12 mt-5">
+                      <div class="col-6 mt-5">
                         <div class="card">   
                             <div class="card-body">
                                <input type="month" name="bulan_section" id="bulan_section" class="form-control" style="width: 160px">
