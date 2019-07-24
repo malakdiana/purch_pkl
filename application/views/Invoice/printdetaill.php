@@ -10,7 +10,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<style>
 	body{
 		font-size: 13px;
-font-family: "Arial Black", "Arial Bold", Gadget, sans-serif;
+font-family: "arial black", "Arial Bold", Gadget, sans-serif;
 padding-left: -3px;
 padding-top: -19px;
 	}
