@@ -90,7 +90,7 @@
                                                 <td>
                                                      <div class="btn-group mb-xl-3" role="group" aria-label="Basic example">
                                   
-                                    <a href="javascript:void(0);" onclick="modalDetail('<?php echo $key->id_user?>','<?php echo $key->username ?>','<?php echo $key->password ?>')"  data-toggle="modal" data-target="#myModalEdit"><button type="button" class="btn btn-primary"><font color="white"><i class="fa fa-edit"></i> Edit</font></button></a>
+                                    <a href="javascript:void(0);" onclick="modalDetail('<?php echo $key->id_user?>','<?php echo $key->username ?>','<?php echo $key->password ?>','<?php echo $key->hak_akses ?>')"  data-toggle="modal" data-target="#myModalEdit"><button type="button" class="btn btn-primary"><font color="white"><i class="fa fa-edit"></i> Edit</font></button></a>
                                     <a href="<?php echo site_url()?>/Login/deleteLogin/<?php echo $key->id_user?> " onclick="return confirm('Apakah Yakin Untuk Menghapus?')"><button type="button" class="btn btn-danger"><font color="white"><i class="fa fa-trash-o"></i> Hapus</font></button></a>
                                   
                                 </div>
@@ -147,15 +147,14 @@
                         <input type="checkbox" onclick="myFunction2()"> Show Konfirmasi Password 
                     </div>
 
-                   <!--  <div class="form-group">
+                    <div class="form-group">
                         <label for="">HAK AKSES</label>
                         <select class="form-control" name="hak_akses" id="hak_akses">
                         <option value="1">ADMINISTRATOR</option>
                         <option value="2">SECTION</option>
                         <option value="3">INVOICE</option>
-                        <option value="3">USER PERSONAL</option>
                         </select>
-                    </div> -->
+                    </div>
                     
 
                 
@@ -180,13 +179,13 @@
  
     <!-- others plugins -->
 <script type="text/javascript">
-    function modalDetail(id_user,username,password){
+    function modalDetail(id_user,username,password,hak_akses){
       
          document.getElementById('id_user').value = id_user;
         document.getElementById('username').value = username;
       document.getElementById('myInput').value="";
       document.getElementById('myInput2').value="";
-       // document.getElementById('hak_akses').value = hak_akses;
+        document.getElementById('hak_akses').value = hak_akses;
        
       
     }

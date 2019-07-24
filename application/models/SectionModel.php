@@ -79,7 +79,7 @@ class SectionModel extends CI_Model {
         $this->db->delete('section');
            $this->session->set_flashdata('deleteSection','<div class="alert alert-success" role="alert">SUKSES DELETE DATA <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
     }else{
-          echo "<script>alert('Tidak dapat terhapus karena data sedang dipakai')</script>";
+          echo "<script>alert('Data sedang dipakai')</script>";
     }
 
     }
