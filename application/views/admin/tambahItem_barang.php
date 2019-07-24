@@ -91,7 +91,7 @@
 
            <tr>
               <input type="hidden" class="form-control" name="id[]" value="<?php echo $id; ?>" >
-          <td>  <select class="namaBarang form-control" style="width:300px" name="item[]"><option></option></select></td>
+          <td>  <select class="namaBarang form-control" style="width:300px" name="item[]" required=""><option></option></select></td>
           <td><input type="number" class="form-control" style="width:100px" name="qty[]" id="qty1" required=""></td>
           <td><select name="unit[]" class="form-control" required="">
                                             <?php foreach ($unit as $key) {?>
@@ -103,7 +103,7 @@
       <?php } $no++;} ?>
         <tr>
             <input type="hidden" class="form-control" name="id[]" value="<?php echo $id; ?>" >
-          <td>  <select class="namaBarang form-control" style="width:300px" name="item[]" id="item"><option></option></select></td>
+          <td>  <select class="namaBarang form-control" style="width:300px" name="item[]" id="item" required=""><option></option></select></td>
           <td><input type="number" class="form-control" style="width:100px" name="qty[]" id="qty1" required=""></td>
           <td><select name="unit[]" class="form-control" required="">
                                             <?php foreach ($unit as $key) {?>
