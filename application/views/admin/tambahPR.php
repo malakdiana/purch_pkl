@@ -3,7 +3,7 @@
                 <div class="row align-items-center">
                     <div class="col-sm-6">
                         <div class="breadcrumbs-area clearfix" style="padding-top: 15px;padding-bottom: 15px">
-                            <h4 class="page-title pull-left">IInput Data</h4>
+                            <h4 class="page-title pull-left">Input Data</h4>
                             <ul class="breadcrumbs pull-left">
                                 <li><a href="<?php echo site_url()?>/Purch_req">Purchase Request</a></li>
                                 <li><span>Insert Purchase Request</span></li>
@@ -51,7 +51,7 @@
                                                  <label class="control-label " for="nik">NIK :</label>
                                             </div>
                                             <div class="col-sm-3">
-                                                 <input type="text" class="form-control" name="nik" style="margin-bottom: 25px;}" autocomplete="off">
+                                                 <input type="text" class="form-control" name="nik" style="margin-bottom: 25px;}" autocomplete="off" required="">
                                              
                                             </div>
 
@@ -59,7 +59,7 @@
                                              <label class="control-label " for="pic_request">PIC REQUEST :</label>
                                          </div>
                                          <div class="col-sm-4">
-                                            <input type="text" class="form-control" name="pic_request" style="margin-bottom: 25px" autocomplete="off">
+                                            <input type="text" class="form-control" name="pic_request" style="margin-bottom: 25px" autocomplete="off" required="">
                                         </div>
 
                                         </div>
@@ -72,8 +72,8 @@
                                                  <label class="control-label " for="section">SECTION</label>
                                             </div>
                                             <div class="col-sm-3">
-                                                <select name="section" class="form-control" id="section">
-                                            <option>PILIH :</option>
+                                                <select class="form-control" name="section" id="section" required="">
+                                            <option value="">PILIH :</option>
                                             <?php foreach ($section as $key) {?>
 
                                            <option class="form-control" value="<?php echo $key->nama_section?>"><?php echo $key->nama_section?> </option> <?php }?>
@@ -86,9 +86,9 @@
                                          </div>
                                          <div class="col-sm-4">
                                            <div class="row"style="margin-left: 4px">    
-                                                <input type="text" class="form-control" minlength="3" maxlength="3" name="pr_no" style="margin-bottom: 25px;width: 100px" placeholder="000" autocomplete="off">
+                                                <input type="text" class="form-control" minlength="3" maxlength="3" name="pr_no" style="margin-bottom: 25px;width: 100px" placeholder="000" autocomplete="off" required="">
                                                   <input type="text" class="form-control"  name="section_kode" id="section_kode" style="margin-bottom: 25px;width: 100px" readonly="">
-                                                <select name="bulan" class="form-control" style="margin-bottom: 25px;width: 100px; height: 50px">
+                                                <select name="bulan" class="form-control" style="margin-bottom: 25px;width: 100px; height: 50px" required="">
                                            
                                            <option class="form-control" value="I">Januari</option>
                                            <option class="form-control" value="II">Februari</option>
@@ -103,7 +103,7 @@
                                            <option class="form-control" value="XI">November</option>
                                            <option class="form-control" value="XII">Desember</option>
                                            </select>
-                                                <select name="tahun" class="form-control" style="margin-bottom: 25px;width: 100px; height: 50px">
+                                                <select name="tahun" class="form-control" style="margin-bottom: 25px;width: 100px; height: 50px" required="">
                                            <?php $tahun = date('D - M / Y');
                                            $tahun1 = substr($tahun,-2);
                                            $tahun2 = $tahun1+1;?>
