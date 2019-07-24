@@ -90,7 +90,7 @@
                                                 <td>
                                                      <div class="btn-group mb-xl-3" role="group" aria-label="Basic example">
                                   
-                                    <a href="javascript:void(0);" onclick="modalDetail('<?php echo $key->id_user?>','<?php echo $key->username ?>','<?php echo $key->password ?>','<?php echo $key->hak_akses ?>')"  data-toggle="modal" data-target="#myModalEdit"><button type="button" class="btn btn-primary"><font color="white"><i class="fa fa-edit"></i> Edit</font></button></a>
+                                    <a href="javascript:void(0);" onclick="modalDetail('<?php echo $key->id_user?>','<?php echo $key->username ?>','<?php echo $key->password ?>')"  data-toggle="modal" data-target="#myModalEdit"><button type="button" class="btn btn-primary"><font color="white"><i class="fa fa-edit"></i> Edit</font></button></a>
                                     <a href="<?php echo site_url()?>/Login/deleteLogin/<?php echo $key->id_user?> " onclick="return confirm('Apakah Yakin Untuk Menghapus?')"><button type="button" class="btn btn-danger"><font color="white"><i class="fa fa-trash-o"></i> Hapus</font></button></a>
                                   
                                 </div>
@@ -147,14 +147,14 @@
                         <input type="checkbox" onclick="myFunction2()"> Show Konfirmasi Password 
                     </div>
 
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                         <label for="">HAK AKSES</label>
                         <select class="form-control" name="hak_akses" id="hak_akses">
                         <option value="1">ADMINISTRATOR</option>
                         <option value="2">SECTION</option>
                         <option value="3">INVOICE</option>
                         </select>
-                    </div>
+                    </div> -->
                     
 
                 
