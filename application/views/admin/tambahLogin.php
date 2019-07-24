@@ -49,7 +49,7 @@
                                      <div class="form-group" >
                                                      <label class="control-label " for="hak_akses">Hak Akses :</label>
                                            
-                                                <select class="form-control" name="hak_akses" style="margin-bottom: 25px; width:400px;" required="" id="hak_akses">
+                                                <select class="form-control" name="hak_akses" style="margin-bottom: 25px; width:400px; height:45px;" required="" id="hak_akses">
 
                                                     <option class="form-control" value="">Pilih: </option>
                                                      <option class="form-control" value="1">ADMINISTRATOR</option>
@@ -125,7 +125,7 @@
              if (val == "4" ) {
 $("#insert-form").html("");
 $("#scriptt").html("");
-              $("#insert-form").append(" <div class='form-group' ><label class='control-label ' for='hak_akses'>Section :</label><select name='section' class='form-control' id='section' required style='margin-bottom: 25px; width:400px;'><option value=''> PILIH : </option><?php foreach ($section as $key) {?> <option class='form-control' value='<?php echo $key->id_section?>'><?php echo $key->nama_section?> </option> <?php }?></select></div>");
+              $("#insert-form").append(" <div class='form-group' ><label class='control-label ' for='hak_akses'>Section :</label><select name='section' class='form-control' id='section' required style='margin-bottom: 25px; width:400px; height:45px;'><option value=''> PILIH : </option><?php foreach ($section as $key) {?> <option class='form-control' value='<?php echo $key->id_section?>'><?php echo $key->nama_section?> </option> <?php }?></select></div>");
               document.getElementById('username').disabled= false;
              
 
@@ -133,7 +133,7 @@ $("#scriptt").html("");
             $("#insert-form").html("");
             $("#scriptt").html("");
             document.getElementById('username').value= "";
-              $("#insert-form").append(" <div class='form-group' ><label class='control-label ' for='hak_akses'>Section :</label><select name='section' class='form-control' id='section' required style='margin-bottom: 25px; width:400px;'><option value=''> PILIH : </option><?php foreach ($section as $key) {?> <option class='form-control' value='<?php echo $key->nama_section?>'><?php echo $key->nama_section?> </option> <?php }?></select></div>");
+              $("#insert-form").append(" <div class='form-group' ><label class='control-label ' for='hak_akses'>Section :</label><select name='section' class='form-control' id='section' required style='margin-bottom: 25px; width:400px; height:45px;'><option value=''> PILIH : </option><?php foreach ($section as $key) {?> <option class='form-control' value='<?php echo $key->nama_section?>'><?php echo $key->nama_section?> </option> <?php }?></select></div>");
               $("#scriptt").append("<script>$('#section').click(function(){var vall = $(this).val();var hak_akses = $('#hak_akses').val();    if(hak_akses == '2'){ document.getElementById('username').value = vall;document.getElementById('username').disabled= true;}    });");
           }
 

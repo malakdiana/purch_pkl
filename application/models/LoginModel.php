@@ -47,7 +47,7 @@ class LoginModel extends CI_Model {
         
         'username' => $this->input->post('username'),
         'password' => $this->input->post('password'),
-        'hak_akses' => $this->input->post('hak_akses'),
+        //'hak_akses' => $this->input->post('hak_akses'),
       
         );
 
