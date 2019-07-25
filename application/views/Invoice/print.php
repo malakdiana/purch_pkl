@@ -172,8 +172,13 @@ margin-left: 105px;
 			 <table border="0" width="350px">
 				<tr>
 					<td style="width: 80px;vertical-align: top">Payment for :</td>
-					<td style="width: 260px; height: 33px" ><b><?php foreach ($inv as $key ) {
-				 echo $key->no_invoice.",";} ?> </b>
+					<td style="width: 260px; height: 33px" ><b><?php $no = 1; foreach ($inv as $key ) {
+						if($no>1){
+				 echo ", ".$key->no_invoice;
+				}else{
+					 echo $key->no_invoice;
+				}
+				$no++;} ?></b>
 				</td>
 				</tr>
 			</table >

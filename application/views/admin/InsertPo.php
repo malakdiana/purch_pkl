@@ -43,13 +43,23 @@
                                             <div class="col-sm-4">
                                                   <input readonly="" type="text" class="form-control" name="item_barang" style="margin-bottom: 25px" value="<?php echo $list[0]->item_barang?>">
                                             </div>
-                                             <div class="col-md-1">
+                                             
+                                        </div>
+                                        <div class="row">
+                                          <div class="col-md-1">
+                                                   <label class="control-label " for="no_po">Unit :</label>
+                                                 </div>
+                                            <div class="col-sm-2">
+                                               
+                                            <input type="text" class="form-control" name="unit" style="margin-bottom: 25px" value="<?php echo $list[0]->unit_name?>" readonly="">
+                                            </div>
+                                        <div class="col-md-1">
                                                    <label class="control-label " for="no_po">Qty :</label>
                                                  </div>
                                             <div class="col-sm-2">
                                                
                                             <input type="text" class="form-control" name="qty" style="margin-bottom: 25px" value="<?php echo $qtysisa?>" readonly="">
-                                            </div>
+                                            </div> 
                                         </div>
                                 </div>
                                 <br>
