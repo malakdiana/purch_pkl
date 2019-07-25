@@ -192,10 +192,7 @@ public function getTotalPO(){
         }else{
            
             $this->PoModel->tambahPO();
-
-           // $this->PoModel->insertPr()
-                $this->session->set_flashdata('tambahPO','<div class="alert alert-success" role="alert">SUKSES TAMBAH DATA <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-            redirect('Po/', 'refresh');
+              
         }
 
     }
