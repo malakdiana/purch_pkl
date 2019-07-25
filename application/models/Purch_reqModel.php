@@ -17,12 +17,12 @@ class Purch_reqModel extends CI_Model {
 
             $this->db->select('*');
             $this->db->from('purch_req');
-           
+           $this->db->limit('100');
      $this->db->order_by('status','desc');    
            $this->db->order_by('id','DESC');  
                
 
-            $this->db->limit(200);
+          
             $query = $this->db->get();
            $results=array();
             if($query->num_rows() > 0){
@@ -142,7 +142,8 @@ if (!empty($this->input->post('item'))) {
     }
 
     public function jumlahQty($id){
-        $this->db->select('bayangan.id_item, bayangan.qty as qtybay, sum(bayangan.qty) as jumlah');
+        //$this->db->select('bayangan.id_item, bayangan.qty as qtybay, sum(bayangan.qty) as jumlah');
+        $this->db->select('bayangan.id_item, sum(bayangan.qty) as jumlah');
         $this->db->from('bayangan');
         $this->db->where('id_pr',$id);
         $this->db->group_by('id_item');
@@ -302,6 +303,17 @@ private $_batchImport;
         return $qty;
 
     }
+    public function getQtySisa2($id_pr){
+           $quantity=0;
+             $query=$this->db->query("SELECT id_item, sum(qty) as jumlah FROM bayangan WHERE id_pr=".$id_pr." group_by id_item");
+              $results=array();
+            if($query->num_rows() > 0){
+            return $query->result();
+            }else{
+            return $results;
+            }
+        
+    }
 
     public function insertPrtoPo(){
        $harga = $this->input->post('harga');
@@ -336,6 +348,24 @@ $idpr=$this->input->post('id_pr');
           $this->db->where('id', $idpr);
           $this->db->update('purch_req',$dat);
          }
+
+
+         // $query = $this->db->select('sum(qty) as jumlah')->from('bayangan')->where('id_item', $this->input->post('id_item'))->get();
+         // foreach ($query->result() as $key) {
+         //   $jmlBay = $key->jumlah;
+         // }
+         // $query = $this->db->select('sum(qty) as jumlah')->from('item')->where('id_item',$this->input->post('id_item'))->get();
+         //  foreach ($query->result() as $key) {
+         //   $jmlItem = $key->jumlah;
+         // }
+
+         // if($jmlBay == $jmlItem){
+         //  $d= array(
+         //    'status_po' => '1'
+         //  );
+         //   $this->db->where('id_item', $this->input->post('id_item'));
+         //  $this->db->update('item',$d);
+         // }
        }
 
        public function getPrById($id){

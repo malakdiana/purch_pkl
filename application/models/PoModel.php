@@ -88,6 +88,16 @@ class PoModel extends CI_Model {
           return $result;
     }
     public function deletePo($id_po){
+      $query = $this->db->select('*')->from('bayangan')->where('id_po',$id_po)->get();
+      $dat=array(
+            'status' => 'OPEN'
+          );
+      foreach ($query->result() as $key) {
+         $this->db->where('id',  $key->id_pr);
+          $this->db->update('purch_req',$dat);
+      }
+        $this->db->where('id_po',$id_po);
+         $this->db->delete('bayangan');
          $this->db->where('id_po', $id_po);
         $this->db->delete('po');
 
@@ -284,6 +294,9 @@ class PoModel extends CI_Model {
           $this->db->where('id',  $itemName[$i]);
           $this->db->update('purch_req',$dat);
          }
+
+       
+
        }
    }
    return $status;

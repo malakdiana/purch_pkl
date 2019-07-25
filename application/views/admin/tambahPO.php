@@ -39,7 +39,7 @@
                                          <div class="col-sm-6">
                                            <div class="row">
                                                <input type="text" class="form-control" value="PO" name="no_po" style="margin-bottom: 25px;width: 100px" readonly="" >
-                                                <input type="text" class="form-control" required="" minlength="3" maxlength="3" name="no_po" style="margin-bottom: 25px;width: 100px" placeholder="000">
+                                                <input type="text" class="form-control" required="" minlength="3" maxlength="3" name="no_po" style="margin-bottom: 25px;width: 100px" placeholder="000" autocomplete="off">
                                                   
                                                 <select name="bulan" class="form-control" style="margin-bottom: 25px;width: 100px; height: 50px">
                                            
@@ -172,7 +172,7 @@
         // Buat fungsi untuk mereset form ke semula
         $("#btn-reset-form").click(function(){
              $("#insert-form").html("");
-            $("#jumlah-form").val("1"); // Ubah kembali value jumlah form menjadi 1
+            $("#jumlah-form").val("0"); // Ubah kembali value jumlah form menjadi 1
         });
     });
     </script>

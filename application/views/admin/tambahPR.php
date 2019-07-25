@@ -187,7 +187,7 @@
         // Buat fungsi untuk mereset form ke semula
         $("#btn-reset-form").click(function(){
              $("#insert-form").html("");
-            $("#jumlah-form").val("1"); // Ubah kembali value jumlah form menjadi 1
+            $("#jumlah-form").val("0"); // Ubah kembali value jumlah form menjadi 1
         });
     });
     </script>

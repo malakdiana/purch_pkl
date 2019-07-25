@@ -25,7 +25,7 @@
                             <div class="card-body">
                        
                          <?=$this->session->flashdata('deletePo')?>
-                         <?=$this->session->flashdata('tambahItem')?>
+                         <?=$this->session->flashdata('tambahPo')?>
                              <div class="single-table">
                                     <div class="table-responsive">
                                         <table class="table text-center" id="dataTablesss">
