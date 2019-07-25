@@ -133,10 +133,10 @@ public function insertDetail($id_receipt){
 
 public function getDocRec(){
 	  $this->db->select('doc_receipt.id_receipt , vp_date,no_receipt, doc_receipt.id_supplier, nama_supplier,id_detail,detail_docrec.id_po,po.no_po, barang, no_invoice, tgl_invoice,');
-            $this->db->from('detail_docrec');
-            $this->db->join('doc_receipt','detail_docrec.id_receipt = doc_receipt.id_receipt');
-            $this->db->join('po','po.id_po = detail_docrec.id_po');
-            $this->db->join('supplier', 'doc_receipt.id_supplier = supplier.id_supplier');
+            $this->db->from('doc_receipt');
+            $this->db->join('detail_docrec','detail_docrec.id_receipt = doc_receipt.id_receipt','left');
+            $this->db->join('po','po.id_po = detail_docrec.id_po','left');
+            $this->db->join('supplier', 'doc_receipt.id_supplier = supplier.id_supplier','left');
                  $this->db->order_by('doc_receipt.id_receipt', 'desc');
             $query = $this->db->get();
            $results=array();

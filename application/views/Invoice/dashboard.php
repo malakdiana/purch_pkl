@@ -47,6 +47,9 @@
                                                 <td style="width:170px">
                                                  <a href="<?php echo site_url()?>/Invoice/dataDocRec"><button class="btn btn-flat btn-info mb-4" role="button" style="width:360px"><img style="width: 100px;height: 100px" src="<?php echo base_url()?>assets/images/icon/INVOICE.png"><br>DATA DOC REC</button></a><br></td>
 
+
+                                                <td style="width:170px">
+                                                 <a href="<?php echo site_url()?>/Invoice/poPrint"><button class="btn btn-flat btn-info mb-4" role="button" style="width:360px"><img style="width: 100px;height: 100px" src="<?php echo base_url()?>assets/images/icon/datapo.png"><br>LIST PO</button></a><br></td>
                          
                                             
 

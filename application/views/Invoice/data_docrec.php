@@ -56,7 +56,7 @@
                                                 <td><?php echo $key->barang;?></td>
                                                 <td><?php echo $key->no_invoice;?></td>
                                                 <td><?php echo $key->tgl_invoice;?></td>
-                                                <td><a href="<?php echo site_url()?>/Invoice/editDocRec/<?php echo $key->id_receipt?>" class="btn btn-warning">EDIT</a></td>
+                                                <td><a href="<?php echo site_url()?>/Invoice/editDocRec/<?php echo $key->id_receipt?>" class="btn btn-info"><i class="fa fa-pencil"> EDIT</a></td>
 
                                             
                                             </tr>
