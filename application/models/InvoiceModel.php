@@ -116,7 +116,7 @@ public function insertDetail($id_receipt){
   $no_invoice=$this->input->post('no_invoice');
   $tgl_invoice=$this->input->post('invoice_date');
     $jumlah=$this->input->post('jumlah');
-    for ($i=0; $i < $jumlah ; $i++) { 
+    for ($i=0; $i < count($id_po) ; $i++) { 
     	      $data = array(
         'id_receipt' => $id_receipt,
         'id_po' => $id_po[$i],
