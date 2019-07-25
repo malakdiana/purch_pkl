@@ -14,6 +14,9 @@ class Riwayatdatang extends CI_Controller {
           $this->load->library('Excel','upload');
         // $this->load->library(array('PHPExcel','PHPExcel/IOFactory'));
          // $this->load->library('excel','upload');
+          if (!$this->session->userdata('logged_in')) {
+        redirect('Login','refresh');
+      }
 
     
     }

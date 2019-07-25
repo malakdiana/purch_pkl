@@ -13,6 +13,9 @@ class Invoice extends CI_Controller {
 		  		  $this->load->model('PoModel');
 		$this->load->helper('file');
 		        $this->load->database();
+		        if (!$this->session->userdata('logged_in')) {
+	      redirect('Login','refresh');
+	    }
 
 
 	

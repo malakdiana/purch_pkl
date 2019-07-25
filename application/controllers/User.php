@@ -9,6 +9,9 @@ class User extends CI_Controller {
 		$this->load->model('Purch_reqModel');
 		 $this->load->helper('url','form','download');
 		  $this->load->library('Excel','upload');
+		  if (!$this->session->userdata('logged_in')) {
+	      redirect('Login','refresh');
+	    }
 	}
 
 public function index()

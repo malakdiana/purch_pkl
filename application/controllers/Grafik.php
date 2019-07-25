@@ -10,7 +10,9 @@ class Grafik extends CI_Controller {
 		 $this->load->helper('url','form','download');
 		  $this->load->library('excel','upload');
 		       $this->load->database();
-
+if (!$this->session->userdata('logged_in')) {
+	      redirect('Login','refresh');
+	    }
 
 	
 	}

@@ -9,6 +9,9 @@ class Barang extends CI_Controller {
 		$this->load->model('BarangModel');
 		 $this->load->helper('url','form','download');
 		// $this->load->library(array('PHPExcel','PHPExcel/IOFactory'));
+         if (!$this->session->userdata('logged_in')) {
+          redirect('Login','refresh');
+        }
 		  $this->load->library('Excel','upload');
 
 	

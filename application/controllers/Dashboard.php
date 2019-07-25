@@ -8,6 +8,9 @@ class Dashboard extends CI_Controller {
 		parent::__construct();
 		 $this->load->model('LoginModel');
 		 $this->load->helper('url','form','download');
+		 if (!$this->session->userdata('logged_in')) {
+	      redirect('Login','refresh');
+	    }
 		  $this->load->library('Excel','upload');
 
 

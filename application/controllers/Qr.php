@@ -12,6 +12,9 @@ class Qr extends CI_Controller {
          $this->load->helper('url','form');
         // $this->load->library(array('PHPExcel','PHPExcel/IOFactory'));
          $this->load->library('upload');
+         if (!$this->session->userdata('logged_in')) {
+        redirect('Login','refresh');
+      }
 
     
     }
