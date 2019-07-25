@@ -57,7 +57,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                        <?php 
+                                        <?php $cc=0;
                                         $no =1; foreach ($Purch_req as $key) {  ?>
                                             <tr>
                                                 <td><?php echo $no;?></td>
