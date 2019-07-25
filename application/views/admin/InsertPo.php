@@ -22,7 +22,7 @@
                     <div class="col-12 mt-5">
                         <div class="card">
                                 <div class="card-body">
-                                   <?php echo form_open('Purch_req/insertPrtoPo/') ?>
+                                   <?php echo form_open('Purch_req/insertPrtoPo/'.$this->uri->segment('3')) ?>
                 
                                        <input readonly="" type="text" class="form-control" name="id_item" style="margin-bottom: 25px" value="<?php echo $list[0]->id_item?>" hidden="">
 
@@ -103,7 +103,7 @@
                                      
         
           
-              <div align="right"> <button type="submit" class="btn btn-primary" style="align-self: right">Simpan</button></div>
+              <div align="right"> <button type="submit" class="btn btn-success" style="align-self: right"><i class="ti-save"></i> Simpan</button></div>
               <?php echo form_close() ?>
            
            
