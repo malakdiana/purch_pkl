@@ -84,7 +84,7 @@
                                              <label class="control-label" for="attention">ETA :</label>
                                          </div>
                                          <div class="col-sm-4">
-                                            <input type="date" class="form-control" id="eta" name="eta" value="">
+                                            <input type="date" class="form-control" id="eta" name="eta" value="" required="">
                                         </div>
 
                                         </div>
@@ -96,7 +96,7 @@
                                                 <label class="control-label" for="alamat">Franco :</label>
                                             </div>
                                             <div class="col-sm-3">
-                                              <select class="form-control" name="franco" required="">
+                                              <select class="form-control" name="franco" required="" style="height:45px;">
                                                 <option value="SAI-T">SAI-T</option>
                                                 <option value="SAI-B">SAI-B</option>
                                               </select>
@@ -123,8 +123,8 @@
         </thead>
         <tbody id="insert-form">
         <tr>
-          <td> <select class="itemName form-control" style="width:200px" name="itemName[]"></select></td>
-          <td>  <select class="namaBarang form-control" style="width:300px" name="namaBarang[]" id="namaBarang"><option></option></select></td>
+          <td> <select class="itemName form-control" style="width:200px" name="itemName[]" required=""></select></td>
+          <td>  <select class="namaBarang form-control" style="width:300px" name="namaBarang[]" id="namaBarang" required=""><option></option></select></td>
           <td> <input type="text" class="form-control" style="width:100px"name="qtysisa[]" id="qtysisa" readonly=""></td>
           <td><input type="text" class="form-control" style="width:100px" name="unit[]" id="unit" readonly=""></td>
           <td><input type="text" class="form-control" style="width:100px" name="qty[]" id="qty1" required=""></td>
