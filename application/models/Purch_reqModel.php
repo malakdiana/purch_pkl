@@ -206,7 +206,7 @@ if (!empty($this->input->post('item'))) {
         $unit= $this->input->post('unit');
               $jumlah= $this->input->post('jumlah');
 
-        for ($i=0; $i < $jumlah ; $i++) { 
+        for ($i=0; $i < count($item_barang) ; $i++) { 
             $nama_barang="";
               $this->db->select('*');
         $this ->db->from('barang');

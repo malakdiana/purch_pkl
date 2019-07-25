@@ -241,7 +241,7 @@ class PoModel extends CI_Model {
                       $harga=$this->input->post('harga');
         
 
-        for ($i=0; $i < $jumlah ; $i++) { 
+        for ($i=0; $i < count($itemName) ; $i++) { 
             $this->db->select('*');
             $this->db->from('item');
               $this->db->where('id_item', $namaBarang[$i]);
