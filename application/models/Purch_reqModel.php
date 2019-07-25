@@ -328,6 +328,7 @@ private $_batchImport;
         'no_pr' => $this->input->post('pr_no'),
         'item' => $this->input->post('item_barang'),
         'qty' => $this->input->post('qty_po'),
+        'unit' => $this->input->post('unit'),
         'harga' => $d,
         );
           $this->db->insert('bayangan', $data);

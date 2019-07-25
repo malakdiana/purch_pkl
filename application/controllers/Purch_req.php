@@ -267,14 +267,21 @@ public function index()
         echo json_encode($json);
     }
 
-    public function insertPrtoPo(){
+    public function insertPrtoPo($id){
+          $this->load->database();
+        $query = $this->db->select('*')->from('item')->join('purch_req','item.id_purch=purch_req.id')->where('id_item',$id)->get();
+        foreach ($query->result() as $key) {
+            $id_pr = $key->id_purch;
+            $status = $key->status_fa;
+        }
+
         if($this->input->post('qty_po') > $this->input->post('qty') ){
             echo "<script>alert('Gagal di tambahkan, quantity terlalu banyak')</script>";
-           redirect('Purch_req/', 'refresh');
+        redirect('Purch_req/GetItem_barang/'.$id_pr.'/'.$status, 'refresh');
         }else{
               $this->Purch_reqModel->insertPrtoPo();  
               echo "<script>alert('Berhasil di tambahkan')</script>";
-           redirect('Purch_req/', 'refresh');
+             redirect('Purch_req/GetItem_barang/'.$id_pr.'/'.$status, 'refresh');
         }
      
     }

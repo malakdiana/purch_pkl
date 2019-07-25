@@ -22,7 +22,7 @@
                     <div class="col-12 mt-5">
                         <div class="card">
                                 <div class="card-body">
-                                   <?php echo form_open('Purch_req/insertPrtoPo/') ?>
+                                   <?php echo form_open('Purch_req/insertPrtoPo/'.$this->uri->segment('3')) ?>
                 
                                        <input readonly="" type="text" class="form-control" name="id_item" style="margin-bottom: 25px" value="<?php echo $list[0]->id_item?>" hidden="">
 
@@ -43,13 +43,23 @@
                                             <div class="col-sm-4">
                                                   <input readonly="" type="text" class="form-control" name="item_barang" style="margin-bottom: 25px" value="<?php echo $list[0]->item_barang?>">
                                             </div>
-                                             <div class="col-md-1">
+                                             
+                                        </div>
+                                        <div class="row">
+                                          <div class="col-md-1">
+                                                   <label class="control-label " for="no_po">Unit :</label>
+                                                 </div>
+                                            <div class="col-sm-2">
+                                               
+                                            <input type="text" class="form-control" name="unit" style="margin-bottom: 25px" value="<?php echo $list[0]->unit_name?>" readonly="">
+                                            </div>
+                                        <div class="col-md-1">
                                                    <label class="control-label " for="no_po">Qty :</label>
                                                  </div>
                                             <div class="col-sm-2">
                                                
                                             <input type="text" class="form-control" name="qty" style="margin-bottom: 25px" value="<?php echo $qtysisa?>" readonly="">
-                                            </div>
+                                            </div> 
                                         </div>
                                 </div>
                                 <br>
@@ -103,7 +113,7 @@
                                      
         
           
-              <div align="right"> <button type="submit" class="btn btn-primary" style="align-self: right">Simpan</button></div>
+              <div align="right"> <button type="submit" class="btn btn-success" style="align-self: right"><i class="ti-save"></i> Simpan</button></div>
               <?php echo form_close() ?>
            
            
