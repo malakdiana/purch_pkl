@@ -137,7 +137,16 @@ class PoModel extends CI_Model {
        foreach ($query->result() as $key) {
          $id_po = $key->id_po;
        }
-        $this->insertPr($id_po);
+
+        $xx= $this->insertPr($id_po);
+        if($xx==0){
+            $this->session->set_flashdata('tambahPO','<div class="alert alert-success" role="alert">SUKSES TAMBAH DATA <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+            redirect('Po/', 'refresh');
+          }else{
+             echo "<script>alert('Data PR tidak tersimpan karena quantity berlebih')</script>";
+                redirect('Po/tambahItem/'.$id_po, 'refresh');
+
+          }
        }
 
     }

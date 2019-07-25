@@ -73,7 +73,7 @@
                             <div class="card-body">
                         
                                <h4>Grafik Ammount Supplier Per Bulan</h4><br>
-                                <label>Filter : &nbsp;&nbsp;</label><span class="fa fa-filter"><input name="startDate" id="startDate" class="date-picker" autocomplete="off" /></span>
+                                <label>Filter : &nbsp;&nbsp;</label><input name="startDate" id="startDate" class="date-picker" autocomplete="off" />
                               
                                  <div id="chartdiv"></div>
                              </div>
@@ -191,9 +191,12 @@ series.columns.template.adapter.add("fill", function (fill, target) {
   
    
    </script>
-      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.js"></script>
+   <!--    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.js"></script>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.min.js"></script>
-    <link rel="stylesheet" type="text/css" media="screen" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/base/jquery-ui.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/base/jquery-ui.css"> -->
+          <script src="<?php echo base_url()?>assets/js/jquery.js"></script>
+    <script type="text/javascript" src="<?php echo base_url()?>assets/js/jquery-ui.min.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="<?php echo base_url()?>assets/css/jquery-ui.css">
     
    <script type="text/javascript">
         $(function() {

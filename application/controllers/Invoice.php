@@ -20,6 +20,13 @@ class Invoice extends CI_Controller {
 
 public function index()
 	{
+		//$data['doc']= $this->InvoiceModel->getDocRec();
+		$this->load->view('Invoice/header');
+        $this->load->view('Invoice/dashboard');
+   
+	}
+	public function dataDocRec()
+	{
 		$data['doc']= $this->InvoiceModel->getDocRec();
 		$this->load->view('Invoice/header');
         $this->load->view('Invoice/data_docrec',$data);

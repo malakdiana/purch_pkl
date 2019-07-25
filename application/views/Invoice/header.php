@@ -68,7 +68,7 @@
                                     </span></a>
                                 <ul class="submenu">
                                       <li><a href="<?php echo site_url()?>/Invoice/docrec">Input Doc Rec</a></li>
-                                    <li><a href="<?php echo site_url()?>/Invoice">Data Doc Rec</a></li>
+                                    <li><a href="<?php echo site_url()?>/Invoice/dataDocRec">Data Doc Rec</a></li>
                                      <li><a href="<?php echo site_url()?>/Invoice/poPrint">List PO</a></li>
                                    
 
