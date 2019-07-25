@@ -57,7 +57,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                        <?php $cc=0;
+                                        <?php $cc=0; $status=0;
                                         $no =1; foreach ($Purch_req as $key) {  ?>
                                             <tr>
                                                 <td><?php echo $no;?></td>
@@ -70,47 +70,45 @@
 
       
 
-                                               <?php 
-                                                 if(empty($detail)){ ?>
-                                                   <td>
-                                                  <div class="btn-group mb-xl-3" role="group" >
-                                                       <button type="button" class="btn btn-primary" style="width:80px; height:50px;"><a href="javascript:void(0);" onclick="modalDetail('<?php echo $key->id_item?>', '<?php echo $key->item_barang?>', '<?php echo $key->qty?>')"  data-toggle="modal" data-target="#myModalEdit"><font color="white"><i class="fa fa-pencil"></i> Edit</font></a></button>
-                                                
-                                                <button type="button" class="btn btn-danger" style="width:80px; height:50px;"><a href="<?php echo site_url()?>/Purch_req/hapusItem/<?php echo $id?>/<?php echo $key->id_item?>/<?php echo $status_fa?> " onclick="return confirm('Apakah Yakin Untuk Menghapus?')"><font color="white"><i class="fa fa-trash-o"></i> Hapus</font></a></button>
+                                              <?php 
+                                                   if(empty($detail)){ 
+                                                    $status = 0;
+                                                   } else{
 
-                                                  <button type="button" class="btn btn-success" style="width:115px; height:50px;"><a href="<?php echo site_url()?>/Purch_req/InsertPo/<?php echo $key->id_item ?>"><font color="white"><i class="fa fa-arrow-right"></i> Insert to Po</font></a></button></div></td></tr>
-                                                   
-                                                  <?php } else{
                                                     foreach($detail as $data){
-                                                          if($key->id_item == $data->id_item){
-                                                             if($key->qty != $data->jumlah){?>
-                                                               <td>
+                                            if($key->id_item == $data->id_item){
+                                              if($key->qty != $data->jumlah){
+                                                if($status== 0){
+                                                    $status= 0;
+                                                  }else{
+                                                     $status= 1;
+                                                  }
+                                                }else{
+                                                    $status= 1;
+
+                                                 }
+                                               }else{
+                                                if($status== 0){
+                                                    $status= 0;
+                                                  }else{
+                                                     $status= 1;
+                                                  }
+                                               }}$no++;}
+                                                 ?>
+
+                                                 <?php if($status==0){?>
+                                                  <td>
                                                   <div class="btn-group mb-xl-3" role="group" >
                                                        <button type="button" class="btn btn-primary" style="width:80px; height:50px;"><a href="javascript:void(0);" onclick="modalDetail('<?php echo $key->id_item?>', '<?php echo $key->item_barang?>', '<?php echo $key->qty?>')"  data-toggle="modal" data-target="#myModalEdit"><font color="white"><i class="fa fa-pencil"></i> Edit</font></a></button>
                                                 
                                                 <button type="button" class="btn btn-danger" style="width:80px; height:50px;"><a href="<?php echo site_url()?>/Purch_req/hapusItem/<?php echo $id?>/<?php echo $key->id_item?>/<?php echo $status_fa?> " onclick="return confirm('Apakah Yakin Untuk Menghapus?')"><font color="white"><i class="fa fa-trash-o"></i> Hapus</font></a></button>
 
-                                                  <button type="button" class="btn btn-success" style="width:115px; height:50px;"><a href="<?php echo site_url()?>/Purch_req/InsertPo/<?php echo $key->id_item ?>"><font color="white"><i class="fa fa-arrow-right"></i> Insert to Po</font></a></button></div></td></tr>
-
-                                                   <?php break;}else{?>
-                                                     <td><button type="button" class="btn btn-success"><a href=""><font color="white"><i class="fa fa-check"></i> Done</font></a></button></td></tr><?php
-
-
-                                             break;}}else{
-                                              $cc=1;
+                                                  <button type="button" class="btn btn-success" style="width:115px; height:50px;"><a href="<?php echo site_url()?>/Purch_req/InsertPo/<?php echo $key->id_item ?>"><font color="white"><i class="fa fa-arrow-right"></i> Insert to Po</font></a></button></div></td></tr><?php } 
+                                                  else{?>
+                                                     <td><button type="button" class="btn btn-success"><a href=""><font color="white"><i class="fa fa-check"></i> Done</font></a></button></td></tr><?php }$status=0;} ?>
 
 
-                                        }    }}
 
-if($cc==1){?><td>
-                                                  <div class="btn-group mb-xl-3" role="group" >
-                                                       <button type="button" class="btn btn-primary" style="width:80px; height:50px;"><a href="javascript:void(0);" onclick="modalDetail('<?php echo $key->id_item?>', '<?php echo $key->item_barang?>', '<?php echo $key->qty?>')"  data-toggle="modal" data-target="#myModalEdit"><font color="white"><i class="fa fa-pencil"></i> Edit</font></a></button>
-                                                
-                                                <button type="button" class="btn btn-danger" style="width:80px; height:50px;"><a href="<?php echo site_url()?>/Purch_req/hapusItem/<?php echo $id?>/<?php echo $key->id_item?>/<?php echo $status_fa?> " onclick="return confirm('Apakah Yakin Untuk Menghapus?')"><font color="white"><i class="fa fa-trash-o"></i> Hapus</font></a></button>
-
-                                                  <button type="button" class="btn btn-success" style="width:115px; height:50px;"><a href="<?php echo site_url()?>/Purch_req/InsertPo/<?php echo $key->id_item ?>"><font color="white"><i class="fa fa-arrow-right"></i> Insert to Po</font></a></button></div></td></tr>
-                                       <?php } $no++;} 
-                                        ?>
 
 
 
