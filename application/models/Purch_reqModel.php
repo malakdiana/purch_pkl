@@ -81,8 +81,20 @@ class Purch_reqModel extends CI_Model {
         $this->db->update('purch_req', $data);
     }
     public function deletePurch_req($id){
-         $this->db->where('id', $id);
+        $query=$this->db->select('*')->from('bayangan')->where('id_pr',$id)->get();
+        if ($query->num_rows()==0) {
+            $this->db->where('id', $id);
         $this->db->delete('purch_req');
+         $this->db->where('id_purch', $id);
+        $this->db->delete('item');
+
+         $this->session->set_flashdata('deletePurch_req','<div class="alert alert-success" role="alert">SUKSES DELETE DATA <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+            redirect('Purch_req', 'refresh');
+        }else{
+ echo "<script>alert('Data PR Tidak Bisa Dihapus Karena Telah Memilik Nomor PO')</script>";
+  redirect('Purch_req', 'refresh');
+        }
+        
 
     }
     public function tambahPR(){
@@ -229,9 +241,14 @@ if (!empty($this->input->post('item'))) {
     }
 
     public function hapusItem($id_item){
+      
+        $query = $this->db->select('*')->from('bayangan')->where('id_item',$id_item)->get();
+        if ($query->num_rows()==0) {
          $this->db->where('id_item', $id_item);
          $result=$this->db->delete('item');
-         return $result;
+            return $result;
+        }
+      
     }
 
  

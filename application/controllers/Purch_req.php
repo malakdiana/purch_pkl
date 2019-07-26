@@ -176,8 +176,13 @@ public function index()
     }
 
     public function hapusItem($id,$id_item,$status){
-         $this->Purch_reqModel->hapusItem($id_item);
+
+        $x= $this->Purch_reqModel->hapusItem($id_item);
+        if($x == null){
+            echo "<script>alert('Item tidak bisa dihapus karena memiliki nomor PO')</script>";
+        }else{
                 $this->session->set_flashdata('editItem','<div class="alert alert-success" role="alert">SUKSES HAPUS ITEM <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+            }
             redirect("Purch_req/GetItem_barang/$id/$status", 'refresh');
     }
 
@@ -191,8 +196,7 @@ public function index()
 
     public function deletePurch_req($id){
         $this->Purch_reqModel->deletePurch_req($id);
-                $this->session->set_flashdata('deletePurch_req','<div class="alert alert-success" role="alert">SUKSES DELETE DATA <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-            redirect('Purch_req', 'refresh');
+               
     }
 
       public function Verify($id){

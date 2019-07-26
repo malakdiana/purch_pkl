@@ -120,7 +120,7 @@
         <div align="right">
         <button class="btn btn-success" type="submit"><i class="ti-save"></i>  Simpan</button>
         <button type="button" class="btn btn-info" id="btn-tambah-form"><i class="ti-plus"></i>  Tambah Data Form</button>
-        <button type="button" id="btn-reset-form" class="btn btn-warning"><i class="ti-reload"></i>  Reset Form</button>
+        
         <input type="hidden" id="jumlah-form" name="jumlah" value="1">
 
        </div>
@@ -222,17 +222,22 @@
          $('#btn_delete').on('click',function(){
             var id_item = $('#id_item_delete').val();
                var id = $('#id').val();
-          $('#'+id).parents("tr").remove();
+         
             $.ajax({
                 type : "POST",
                 url  : "<?php echo site_url('Purch_req/deleteItem')?>",
                 dataType : "JSON",
                 data : {id_item:id_item},
                 success: function(data){
+                  if(data== null){
+                     alert('Item tidak bisa dihapus karena memiliki nomor PO');
+                   $('[name="id_item_delete"]').val("");
+                    $('#Modal_Delete').modal('hide');}else{
+                  console.log(data);
+                   $('#'+id).parents("tr").remove();
                     $('[name="id_item_delete"]').val("");
                     $('#Modal_Delete').modal('hide');
-                    
-                   
+                  }
                 }
             });
             return false;
