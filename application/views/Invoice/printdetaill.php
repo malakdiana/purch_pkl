@@ -10,7 +10,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<style>
 	body{
 		font-size: 13px;
-font-family: arial-black;
+font-family: "arial black", "Arial Bold", Gadget, sans-serif;
 padding-left: -3px;
 padding-top: -19px;
 	}
@@ -82,7 +82,7 @@ margin-left: 105px;
 		<td colspan="2"></td>
 		<td  style="margin-left: 80px;font-size: 16px;"><p align="center"><div class="border"><b>CONFIDENTIAL</b></div></p></td>
 	<tr>
-		<td width="60px" style="vertical-align: top; padding-top: -4px"><font size="38px" style="vertical-align: top; font-family:arial-black;" ><b>SAI</b></font></td>
+		<td width="60px" style="vertical-align: top; padding-top: -4px"><font size="38px" style="vertical-align: top;" ><b>SAI</b></font></td>
 		<td width="380px"> 
 			<center><font size="16px"><b>PT. SURABAYA AUTOCOMP INDONESIA <br></font></b><font size="14px"> <b><i> Wiring Harness Manufacturer </i></b></font> <br><font size="22px"><b><u>VOUCHER PAYING</u></b></font></center></td>
 			<td>

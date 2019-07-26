@@ -149,7 +149,12 @@ datacategoryy = <?php echo json_encode($kategori2);?>;
 datavaluee = <?php echo json_encode($nilai2);?>;
 
 for( var i = 0; i < datacategoryy.length; i++){
-    dataxx.push({"category": datacategoryy[i], "value1" : datavaluee[i]});
+    if(datavaluee[i] == null){
+       dataxx.push({"category": datacategoryy[i], "value1" : 0});
+    }
+    else{
+       dataxx.push({"category": datacategoryy[i], "value1" : datavaluee[i]});
+    } 
 }
 
 
