@@ -28,7 +28,6 @@
                                             <div class="seofct-icon"><i class="ti-thumb-up"></i> PR OPEN</div>
                                             <h2><?php   echo $pr[0]->jumlah; ?></h2>
                                         </div>
-                                        <canvas id="seolinechart1" height="50"></canvas>
                                     </div>
                                 </div>
                             </div>
@@ -39,7 +38,6 @@
                                             <div class="seofct-icon"><i class="ti-share"></i> QR OPEN</div>
                                             <h2><?php   echo $qr[0]->jumlah; ?></h2>
                                         </div>
-                                        <canvas id="seolinechart3" height="50"></canvas>
                                     </div>
                                 </div>
                             </div>
@@ -50,7 +48,6 @@
                                             <div class="seofct-icon"><i class="ti-thumb-up"></i> ETA BESOK</div>
                                             <h2><?php echo $eta[0]->jumlah; ?></h2>
                                         </div>
-                                        <canvas id="seolinechart2" height="50" ></canvas>
                                     </div>
                                 </div>
                             </div>
@@ -61,7 +58,6 @@
                                             <div class="seofct-icon"><i class="ti-share"></i> DELAY</div>
                                             <h2><?php echo $delay[0]->jumlah; ?></h2>
                                         </div>
-                                        <canvas id="seolinechart4" height="50"></canvas>
                                     </div>
                                 </div>
                             </div>
@@ -273,7 +269,13 @@ var chartt = am4core.create("chartdivv", am4charts.XYChart);
 var dataxx = [];
 
 for( var i = 0; i < data.length; i++){
-        dataxx.push({"category": data[i].nama_section, "value1" : data[i].jumlah});
+       
+    if(data[i].jumlah == null){
+        dataxx.push({"category": data[i].nama_section, "value1" : 0});
+    }
+    else{
+      dataxx.push({"category": data[i].nama_section, "value1" : data[i].jumlah});
+    } 
 }
 
 
