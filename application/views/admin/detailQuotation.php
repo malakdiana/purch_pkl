@@ -22,6 +22,10 @@
                     <!-- data table start -->
                     <div class="col-12 mt-5">
                         <div class="card">
+                          <div  style="padding-top: 15px;padding-left: 15px">
+                                
+                                 <a class="btn btn-flat btn-primary mb-3" href="<?php echo site_url()?>/Qr" role="button"><i class="fa fa-arrow-left"></i> Back</a>
+                            </div>
                                 <div class="card-body">
                                     
                                      <h3 align="center">Detail Quotation</h3><br>
