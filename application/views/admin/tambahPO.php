@@ -38,8 +38,8 @@
                                          </div>
                                          <div class="col-sm-6">
                                            <div class="row">
-                                               <input type="text" class="form-control" value="PO" name="no_po" style="margin-bottom: 25px;width: 100px" readonly="" >
-                                                <input type="text" class="form-control" required="" minlength="3" maxlength="3" name="no_po" style="margin-bottom: 25px;width: 100px" placeholder="000" autocomplete="off">
+                                               <input type="text" class="form-control" value="PO" style="margin-bottom: 25px;width: 100px" readonly="" >
+                                                <input type="text" class="form-control" required="" minlength="3" maxlength="3" name="no_po" style="margin-bottom: 25px;width: 100px" placeholder="000" autocomplete="off" id="no_po">
                                                   
                                                 <select name="bulan" class="form-control" style="margin-bottom: 25px;width: 100px; height: 50px">
                                            
@@ -246,6 +246,16 @@
 rupiah.addEventListener("keyup", function(e) {
   rupiah.value = formatRupiah(this.value, "Rp. ");
 });
+
+  var po = document.getElementById("no_po");
+po.addEventListener("keyup", function(e) {
+  po.value = formatAngka(this.value);
+});
+function formatAngka(angka) {
+  var number_string = angka.replace(/[^,\d]/g, "").toString();
+  return number_string;
+}
+
 
 /* Fungsi formatRupiah */
 function formatRupiah(angka, prefix) {
