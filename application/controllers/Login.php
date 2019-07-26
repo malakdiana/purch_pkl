@@ -12,9 +12,7 @@ class Login extends CI_Controller {
          $this->load->helper('url','form');
         // $this->load->library(array('PHPExcel','PHPExcel/IOFactory'));
          // $this->load->library('excel','upload');
-         if (!$this->session->userdata('logged_in')) {
-	      redirect('Login','refresh');
-	  }
+       
 
     
     }
@@ -29,6 +27,9 @@ class Login extends CI_Controller {
 
 public function ManajemenUser()
 	{
+		  if (!$this->session->userdata('logged_in')) {
+	      redirect('Login','refresh');
+	  }
 		$data['login']= $this->LoginModel->getLogin();
 		$this->load->view('admin/header');
         $this->load->view('admin/Login',$data);
@@ -105,6 +106,9 @@ public function ManajemenUser()
 	}
 
 	public function updateLogin(){
+		  if (!$this->session->userdata('logged_in')) {
+	      redirect('Login','refresh');
+	  }
 		
 		 if($this->input->post('password')==$this->input->post('konfirpassword')){
 		
@@ -121,12 +125,18 @@ public function ManajemenUser()
         
     }
     public function deleteLogin($id){
+    	  if (!$this->session->userdata('logged_in')) {
+	      redirect('Login','refresh');
+	  }
 
         $this->LoginModel->deleteLogin($id);
                 $this->session->set_flashdata('deleteLogin','<div class="alert alert-success" role="alert">SUKSES DELETE DATA <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
             redirect('Login/ManajemenUser', 'refresh');
     }
     public function tambahLogin(){
+    	  if (!$this->session->userdata('logged_in')) {
+	      redirect('Login','refresh');
+	  }
         $this->load->helper('url', 'form');
         $this->load->library('form_validation');
         	$data['section']=$this->SectionModel->getSection();
