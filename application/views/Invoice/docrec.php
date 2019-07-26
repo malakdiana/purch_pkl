@@ -37,7 +37,7 @@
                                             <div class="col-sm-5">
                                                 <div class="row">
                                             <input type="text" class="form-control" value="REC" name="rec" style="margin-bottom: 25px;width: 100px" readonly="" >
-                                                <input type="text" class="form-control" required="" minlength="3" maxlength="3" name="no_rec" style="margin-bottom: 25px;width: 100px" placeholder="000">
+                                                <input type="text" class="form-control" required="" minlength="3" maxlength="3" name="no_rec" style="margin-bottom: 25px;width: 100px" placeholder="000" id="no_rec">
                                                   
                                                 <select name="bulan" class="form-control" style="margin-bottom: 25px;width: 100px; height: 50px">
                                            
@@ -216,5 +216,13 @@
 
   $("body").on("click", ".btn-delete", function(){
         $(this).parents("tr").remove();
-    });            
+    });  
+      var po = document.getElementById("no_rec");
+po.addEventListener("keyup", function(e) {
+  po.value = formatAngka(this.value);
+});
+function formatAngka(angka) {
+  var number_string = angka.replace(/[^,\d]/g, "").toString();
+  return number_string;
+}          
 </script>

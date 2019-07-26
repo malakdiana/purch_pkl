@@ -86,7 +86,7 @@
                                          </div>
                                          <div class="col-sm-4">
                                            <div class="row"style="margin-left: 4px">    
-                                                <input type="text" class="form-control" minlength="3" maxlength="3" name="pr_no" style="margin-bottom: 25px;width: 100px" placeholder="000" autocomplete="off" required="">
+                                                <input type="text" class="form-control" minlength="3" maxlength="3" name="pr_no" style="margin-bottom: 25px;width: 100px" placeholder="000" autocomplete="off" required="" id="pr_no">
                                                   <input type="text" class="form-control"  name="section_kode" id="section_kode" style="margin-bottom: 25px;width: 100px" readonly="">
                                                 <select name="bulan" class="form-control" style="margin-bottom: 25px;width: 100px; height: 50px" required="">
                                            
@@ -210,4 +210,14 @@
  $("body").on("click", ".btn-delete", function(){
         $(this).parents("tr").remove();
     });
+
+
+   var pr= document.getElementById("pr_no");
+pr.addEventListener("keyup", function(e) {
+  pr.value = formatAngka(this.value);
+});
+function formatAngka(angka) {
+  var number_string = angka.replace(/[^,\d]/g, "").toString();
+  return number_string;
+}
     </script>
