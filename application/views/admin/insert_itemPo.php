@@ -120,7 +120,7 @@
           <th> Qty Butuh </th>
           <th> Satuan</th>
           <th> Qty PO </th>
-          <th> Harga (Rp)</th>
+          <th> Harga Satuan (Rp)</th>
            <th> action</th>
         </thead>
         <tbody id="insert-form">

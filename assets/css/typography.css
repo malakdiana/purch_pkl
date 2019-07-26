@@ -17,6 +17,10 @@ body {
     font-size: 14px;
     font-family: 'Lato', sans-serif;
 }
+.Arial-black{
+  font-family: Arial;
+  font-weight: bold;
+}
 
 h1,
 h2,
