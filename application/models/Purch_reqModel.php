@@ -17,7 +17,7 @@ class Purch_reqModel extends CI_Model {
 
             $this->db->select('*');
             $this->db->from('purch_req');
-           //$this->db->limit('100');
+           $this->db->limit('500');
      $this->db->order_by('status','desc');    
            $this->db->order_by('id','DESC');  
                
