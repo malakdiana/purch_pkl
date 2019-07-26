@@ -25,11 +25,15 @@
                     <!-- data table start -->
                     <div class="col-12 mt-5">
                         <div class="card">
+                         <div  style="padding-top: 15px;padding-left: 15px">
+                                
+                                 <a class="btn btn-primary" href="<?php echo site_url()?>/Purch_req" role="button"><i class="fa fa-arrow-left"></i> Back</a>
+                            
 
                         <?php
                          if($status_fa == 0){?>
-                         <div  style="padding-top: 15px;padding-left: 15px">
-                        <a class="btn btn-success" href="<?php echo site_url()?>/Purch_req/Verifyitem/<?php echo $id?>"><font color="white"><i class="fa fa-check"></i> Verify</font></a>
+                         
+                        <a class="btn btn-success" href="<?php echo site_url()?>/Purch_req/Verifyitem/<?php echo $id?>"><font color="white"><i class="fa fa-check"></i> Verify</font></a></div>
 
                           <?php }
                             

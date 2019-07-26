@@ -21,7 +21,12 @@
                 <div class="row">
                     <!-- data table start -->
                     <div class="col-12 mt-5">
+                    <div  style="padding-left: 15px">
+                                
+                                 <a class="btn btn-flat btn-primary mb-3" href="<?php echo site_url()?>/Purch_req" role="button"><i class="fa fa-arrow-left"></i> Back</a>
+                            </div>
                         <div class="card">
+
       
                                 <div class="card-body">                                           
                          <div class="col-md-12">

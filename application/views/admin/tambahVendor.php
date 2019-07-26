@@ -23,13 +23,18 @@
                     <div class="col-12 mt-5">
                       
                                     <div class="container"> 
-        
+        <div  style="padding-top: 5px;padding-right: 15px">
+                                
+                                 <a class="btn btn-flat btn-primary mb-3" href="<?php echo site_url()?>/Qr" role="button"><i class="fa fa-arrow-left"></i> Back</a>
+                            </div>
 
                                     <div class="w3-bar w3-indigo">
   <button class="w3-bar-item w3-button actives" onclick="openCity('London')"><i class="fa fa-plus"></i> Tambah Vendor</button>
   <button class="w3-bar-item w3-button" onclick="openCity('Paris')"><i class="fa fa-book"></i> List Vendor</button>
 </div>
   <div class="card">
+
+
                                 <div class="card-body">
                                    <?=$this->session->flashdata('tambahVendor')?>
 <div id="London" class="w3-container w3-display-container city">
