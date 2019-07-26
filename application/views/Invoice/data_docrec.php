@@ -76,37 +76,6 @@
  
 
 
-      <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModalEdit" class="modal fade-in" >
-        <div class="modal-dialog">
-            <div class="modal-content" style="width: 800px; margin-left: -100px;padding: 20px" >
-                <div class="modal-header">
-                    <h4 class="modal-title">Info Purch_req</h4>
-                </div>
-          <?php echo form_open_multipart('Purch_req/tambahItem'); ?>
-                <?php echo validation_errors(); ?>
-                     <div class="form-group">
-                        <label for="">ITEM BARANG </label>
-                        <input type="text" class="form-control" name="id" id="id" value="" readonly="" >
-                    </div>
-                    <div class="form-group">
-                        <label for="">QTY</label>
-                        <input type="text" class="form-control" name="tgl" id="tgl" value="" >
-                    </div>
-                    
-
-                
-               
-               
-            <div align="right" style="margin-bottom: 20px; margin-right: 30px">
-          <button class="btn-info" type="submit">Simpan</button>
-            <a href=""><button class="btn-warning" data-dismiss="modal">Batal</button></a>
-        </div>
-    
-        <?php echo form_close(); ?>
-        </div>
-    </div>
-        
-    <!-- offset area end -->
     <!-- jquery latest version -->
     <?php $this->load->view('admin/footer'); ?>
 
@@ -138,10 +107,7 @@
           "bSortable": true,
           "aTargets": [0]
         }],
-        "aaSorting": [
-          [7, 'desc'],
-          [0, 'desc']
-        ]
+    
       });
 
       /* Add event listener for opening and closing details
