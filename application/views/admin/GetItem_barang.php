@@ -144,6 +144,7 @@
                      <div class="form-group">
                         <input type="text" name="id_item"  id="id_item" hidden="">
                         <input type="text" name="id" id="id" value="<?php echo $id?>" hidden="">
+                        <input type="text" name="status" value="<?php echo $status_fa?>" hidden="">
                         <label for="">Item Barang</label>
                         <select name="item_barang" id="item_barang" class="form-control choosen" style="height: 50px">
                             <?php foreach ($barang as $key) {?>

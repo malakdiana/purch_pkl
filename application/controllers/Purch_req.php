@@ -113,7 +113,7 @@ public function index()
 
     public function tambah($id){
          $this->Purch_reqModel->tambahItem_barang($id);
-                $this->session->set_flashdata('tambahUnit_barang','<div class="alert alert-success" role="alert">SUKSES TAMBAH DATA <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+                $this->session->set_flashdata('tambahItem','<div class="alert alert-success" role="alert">SUKSES TAMBAH DATA <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
           
             redirect('Purch_req', 'refresh');
     }
@@ -169,10 +169,11 @@ public function index()
     }
 
     public function updateItem(){
+        $status = $this->input->post('status');
         $this->Purch_reqModel->updateItem();
                 $this->session->set_flashdata('editItem','<div class="alert alert-success" role="alert">SUKSES UPDATE DATA <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
                 $id = $this->input->post('id');
-            redirect("Purch_req/GetItem_barang/$id", 'refresh');
+            redirect("Purch_req/GetItem_barang/$id/$status", 'refresh');
     }
 
     public function hapusItem($id,$id_item,$status){
