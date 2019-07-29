@@ -24,6 +24,10 @@
                     <!-- data table start -->
                     <div class="col-12 mt-5">
                         <div class="card">
+                        <div  style="padding-top: 15px;padding-left: 15px">
+                                
+                                 <a class="btn btn-primary" href="<?php echo site_url()?>/Purch_req" role="button"><i class="fa fa-arrow-left"></i> Back</a>
+                                 </div>
 
                             <div class="card-body">
                                  <?=$this->session->flashdata('editItem')?>
