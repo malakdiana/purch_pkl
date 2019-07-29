@@ -113,7 +113,7 @@
                                      
         
           
-              <div align="right"> <button type="submit" class="btn btn-success" style="align-self: right"><i class="ti-save"></i> Simpan</button></div>
+              <div align="left"> <button type="submit" class="btn btn-success" style="align-self: right"><i class="ti-save"></i> Simpan</button></div>
               <?php echo form_close() ?>
            
            
