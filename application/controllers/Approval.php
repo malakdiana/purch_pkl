@@ -106,9 +106,9 @@ class Approval extends CI_Controller {
             
 
 
-            $data = array_diff_key($makeArray, $SheetDataKey);
+            $datax = array_diff_key($makeArray, $SheetDataKey);
            
-            if (empty($data)) {
+            if (empty($datax)) {
                 $flag = 1;
             }
             if ($flag == 1) {
@@ -131,10 +131,11 @@ class Approval extends CI_Controller {
                    
                     $fetchData[] = array('nama' => $nama, 'kode_nama' => $kode_nama, 'min' => $min, 'max' => $max,);
                 }              
-                $data['employeeInfo'] = $fetchData;
+                $datax['employeeInfo'] = $fetchData;
                 $this->ApprovalModel->setBatchImport($fetchData);
                 $this->ApprovalModel->importData();
-               //unlink('./assets/'.$data['upload_data']['file_name']);
+               $url = FCPATH.'/assets/'.$data['upload_data']['file_name'];
+               unlink($url);
                
                redirect('Approval','refresh');
             } else {

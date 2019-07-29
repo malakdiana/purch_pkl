@@ -106,9 +106,9 @@ class Unit_barang extends CI_Controller {
             
 
 
-            $data = array_diff_key($makeArray, $SheetDataKey);
+            $datax = array_diff_key($makeArray, $SheetDataKey);
            
-            if (empty($data)) {
+            if (empty($datax)) {
                 $flag = 1;
             }
             if ($flag == 1) {
@@ -128,10 +128,11 @@ class Unit_barang extends CI_Controller {
                     $fetchData[] = array('unit_barang' => $unit_barang,
                           'remarks' => $remarks,);
                 }              
-                $data['employeeInfo'] = $fetchData;
+                $datax['employeeInfo'] = $fetchData;
                 $this->Unit_barangModel->setBatchImport($fetchData);
                 $this->Unit_barangModel->importData();
-               //unlink('./assets/'.$data['upload_data']['file_name']);
+                 $url = FCPATH.'/assets/'.$data['upload_data']['file_name'];
+               unlink($url);
                
                redirect('Unit_barang','refresh');
             } else {

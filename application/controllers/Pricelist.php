@@ -108,9 +108,9 @@ class Pricelist extends CI_Controller {
             
 
 
-            $data = array_diff_key($makeArray, $SheetDataKey);
+            $datax = array_diff_key($makeArray, $SheetDataKey);
            
-            if (empty($data)) {
+            if (empty($datax)) {
                 $flag = 1;
             }
             if ($flag == 1) {
@@ -160,10 +160,11 @@ class Pricelist extends CI_Controller {
         'lbdate' => $lbdate,
         'remarks' => $remarks,);
                 }              
-                $data['employeeInfo'] = $fetchData;
+                $datax['employeeInfo'] = $fetchData;
                 $this->PricelistModel->setBatchImport($fetchData);
                 $this->PricelistModel->importData();
-               unlink('./assets/'.$data['upload_data']['file_name']);
+                 $url = FCPATH.'/assets/'.$data['upload_data']['file_name'];
+               unlink($url);
                redirect('Pricelist','refresh');
             } else {
                $this->session->set_flashdata('gagalImport','<div class="alert alert-success" role="alert">SUKSES DELETE DATA <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');

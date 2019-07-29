@@ -111,9 +111,9 @@ class Supplier extends CI_Controller {
             
 
 
-            $data = array_diff_key($makeArray, $SheetDataKey);
+            $datax = array_diff_key($makeArray, $SheetDataKey);
            
-            if (empty($data)) {
+            if (empty($datax)) {
                 $flag = 1;
             }
             if ($flag == 1) {
@@ -172,10 +172,11 @@ class Supplier extends CI_Controller {
                           'perjanjian' => $perjanjian,
                           'remarks' => $remarks,);
                 }              
-                $data['employeeInfo'] = $fetchData;
+                $datax['employeeInfo'] = $fetchData;
                 $this->SupplierModel->setBatchImport($fetchData);
                 $this->SupplierModel->importData();
-               //unlink('./assets/'.$data['upload_data']['file_name']);
+                $url = FCPATH.'/assets/'.$data['upload_data']['file_name'];
+               unlink($url);
 
                redirect('Supplier','refresh');
             } else {

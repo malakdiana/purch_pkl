@@ -106,9 +106,9 @@ class Departemen extends CI_Controller {
             
 
 
-            $data = array_diff_key($makeArray, $SheetDataKey);
+            $datax = array_diff_key($makeArray, $SheetDataKey);
            
-            if (empty($data)) {
+            if (empty($datax)) {
                 $flag = 1;
             }
             if ($flag == 1) {
@@ -128,10 +128,11 @@ class Departemen extends CI_Controller {
                     $fetchData[] = array('group_name' => $group_name,
                           'remarks' => $remarks,);
                 }              
-                $data['employeeInfo'] = $fetchData;
+                $datax['employeeInfo'] = $fetchData;
                 $this->DepartemenModel->setBatchImport($fetchData);
                 $this->DepartemenModel->importData();
-               //unlink('./assets/'.$data['upload_data']['file_name']);
+                  $url = FCPATH.'/assets/'.$data['upload_data']['file_name'];
+               unlink($url);
                
                redirect('Departemen','refresh');
             } else {
