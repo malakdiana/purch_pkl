@@ -210,9 +210,9 @@ public function index()
        public function Verifyitem($id){
 
         $this->Purch_reqModel->Verifyitem($id);
-        
+        redirect("Purch_req/GetItem_barang/$id/1", 'refresh');
             
-            redirect("Purch_req/", 'refresh');
+          //  redirect("Purch_req/", 'refresh');
     }
 
       public function InsertPo($id){
@@ -229,8 +229,8 @@ public function index()
        if($status == 1){
         $data['list'] = $this->Purch_reqModel->getItemById($id);
         $data['qtysisa'] = $this->Purch_reqModel->getQtySisa($id);
-        $this->load->view('Admin/header');
-        $this->load->view('Admin/InsertPo', $data);
+        $this->load->view('admin/header');
+        $this->load->view('admin/InsertPo', $data);
     }else{
           echo "<script>alert('Belum di verifikasi')</script>";
            redirect('Purch_req/GetItem_barang/'.$idp.'/'.$status, 'refresh');

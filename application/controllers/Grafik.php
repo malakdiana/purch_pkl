@@ -25,8 +25,8 @@ public function index()
 		$data['eta'] = $this->GrafikModel->eta();
 		$data['delay'] = $this->GrafikModel->delay();
 		$data['section'] = $this->GrafikModel->getSection();
-		$this->load->view('Admin/header');
-        $this->load->view('Admin/grafik',$data);
+		$this->load->view('admin/header');
+        $this->load->view('admin/grafik',$data);
    
 	}
 

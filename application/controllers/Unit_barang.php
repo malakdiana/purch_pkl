@@ -21,8 +21,8 @@ class Unit_barang extends CI_Controller {
     
     {
         $data['unit']= $this->Unit_barangModel->getUnit_barang();
-        $this->load->view('Admin/header');
-        $this->load->view('Admin/Unit_barang',$data);
+        $this->load->view('admin/header');
+        $this->load->view('admin/Unit_barang',$data);
     }
     public function updateUnit_barang(){
         $this->Unit_barangModel->updateUnit_barang();
