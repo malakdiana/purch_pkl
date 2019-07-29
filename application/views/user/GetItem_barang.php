@@ -24,6 +24,10 @@
                     <!-- data table start -->
                     <div class="col-12 mt-5">
                         <div class="card">
+                        <div  style="padding-top: 15px;padding-left: 15px">
+                                
+                                 <a class="btn btn-primary" href="<?php echo site_url()?>/Purch_req" role="button"><i class="fa fa-arrow-left"></i> Back</a>
+                                 </div>
 
                             <div class="card-body">
                                  <?=$this->session->flashdata('editItem')?>
@@ -122,7 +126,7 @@
         <div class="modal-dialog">
             <div class="modal-content" style="width: 800px; margin-left: -100px;padding: 20px" >
                 <div class="modal-header">
-                    <h4 class="modal-title">Info Barang</h4>
+                    <h4 class="modal-title">Edit Barang</h4>
                 </div>
           <?php echo form_open_multipart('Purch_req/updateItem'); ?>
                 <?php echo validation_errors(); ?>
@@ -130,7 +134,7 @@
                         <input type="text" name="id_item"  id="id_item" hidden="">
                         <input type="text" name="id" id="id" value="<?php echo $id?>" hidden="">
                         <label for="">Item Barang</label>
-                        <select name="item_barang" id="item_barang" class="form-control choosen">
+                        <select name="item_barang" id="item_barang" class="form-control choosen" style="height:40px;">
                             <?php foreach ($barang as $key) {?>
                                 <option value="<?php echo $key->nama_barang?>"><?php echo $key->nama_barang?></option>
                             <?php }?>
