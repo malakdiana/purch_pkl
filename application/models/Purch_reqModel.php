@@ -52,8 +52,8 @@ class Purch_reqModel extends CI_Model {
             $this->db->select('*');
             $this->db->from('purch_req');
             $this->db->where('section', $section);
-             $this->db->order_by('status','DESC');
-             $this->db->order_by('id','ASC');
+              $this->db->order_by('status','desc');    
+           $this->db->order_by('id','DESC');  
 
             $query = $this->db->get();
            $results=array();
