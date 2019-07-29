@@ -48,26 +48,21 @@
                                                 
                                             </tr>
                                         </thead>
-                                        <tbody>
-                                        <?php $status=0;  
-                                        $no =1; foreach ($Purch_req as $key) {
-                                         
-                                            ?>
+                                       <tbody>
+                                        <?php $cc=0; $status=0;
+                                        $no =1; foreach ($Purch_req as $key) {  ?>
                                             <tr>
-                                            
                                                 <td><?php echo $no;?></td>
                                                 <td><?php echo $key->item_barang;?></td>
                                                 <td><?php echo $key->qty?></td>
-                                           
                                                 <td><?php echo $key->no_po;?></td>
                                                 <td><?php echo $key->qtybay;?></td>
-                                                <td><?php echo $key->harga;?></td>
-                                           
-                                               
-                                    
+                                                <td><?php echo "Rp " . number_format($key->harga,2,',','.');?> </td>                                            
                                                 
 
-                                                   <?php 
+      
+
+                                              <?php 
                                                    if(empty($detail)){ 
                                                     $status = 0;
                                                    } else{
@@ -81,7 +76,7 @@
                                                      $status= 1;
                                                   }
                                                 }else{
-                                                  $status=1;
+                                                    $status= 1;
 
                                                  }
                                                }else{
@@ -96,17 +91,21 @@
                                                  <?php if($status==0){?>
                                                   <td>
                                                   <div class="btn-group mb-xl-3" role="group" >
-                                                       <a href="javascript:void(0);" onclick="modalDetail('<?php echo $key->id_item?>', '<?php echo $key->item_barang?>', '<?php echo $key->qty?>')"  data-toggle="modal" data-target="#myModalEdit"><button type="button" class="btn btn-primary" style="width:80px; height:50px;"><font color="white"><i class="fa fa-pencil"></i> Edit</font></button></a>
+                                                     <a class="btn btn-primary" style="width:80px; height:50px;" href="javascript:void(0);" onclick="modalDetail('<?php echo $key->id_item?>', '<?php echo $key->item_barang?>', '<?php echo $key->qty?>','<?php echo $key->no_po?>')"><font color="white"><i class="fa fa-pencil"></i> Edit</font></a>
                                                 
-                                                <a href="<?php echo site_url()?>/Purch_req/hapusItem/<?php echo $id?>/<?php echo $key->id_item?> " onclick="return confirm('Apakah Yakin Untuk Menghapus?')"><button type="button" class="btn btn-danger" style="width:80px; height:50px;"><font color="white"><i class="fa fa-trash-o"></i> Hapus</font></button></a>
+                                               <a class="btn btn-danger" style="width:80px; height:50px;" href="<?php echo site_url()?>/Purch_req/hapusItem/<?php echo $id?>/<?php echo $key->id_item?>/<?php echo $status_fa?> " onclick="return confirm('Apakah Yakin Untuk Menghapus?')"><font color="white"><i class="fa fa-trash-o"></i> Hapus</font></a>
 
-                                                 <?php } 
-
+                                                 <a class="btn btn-success" style="width:115px; height:50px;" href="<?php echo site_url()?>/Purch_req/InsertPo/<?php echo $key->id_item ?>"><font color="white"><i class="fa fa-arrow-right"></i> Insert to Po</font></a></div></td></tr><?php } 
                                                   else{?>
-                                                     <td><button type="button" class="btn btn-success"><a href=""><font color="white"><i class="fa fa-check"></i> Done</font></a></button></td>
+                                                     <td><button type="button" class="btn btn-success"><a href=""><font color="white"><i class="fa fa-check"></i> Done</font></a></button></td></tr><?php }$status=0; $no++;} ?>
 
-                                                     </tr><?php }$no++;} ?>
-                
+
+
+
+
+
+
+                                             
                                          
                                        </tbody>
                                     </table>
@@ -120,7 +119,7 @@
           <!-- main content area end -->
         <!-- footer area start-->
  
-
+<a href="" data-toggle="modal" data-target="#myModalEdit" class="btn btn-success" hidden="" id="showmodal"></a>
 
       <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModalEdit" class="modal fade-in" >
         <div class="modal-dialog">
@@ -165,12 +164,19 @@
  
     <!-- others plugins -->
 <script type="text/javascript">
-    function modalDetail(id_item,item_barang,qty){
-        document.getElementById('id_item').value = id_item;
+    function modalDetail(id_item,item_barang,qty,no_po){
+      if(no_po===""){
+          document.getElementById('showmodal').click();
+               document.getElementById('id_item').value = id_item;
         document.getElementById('item_barang').value = item_barang;
         document.getElementById('qty').value = qty;
-
-      
+       
+      }else{
+  
+        // $('#myModalEdit').hide();
+          alert('data tidak bisa diedit karena memilik Po');
+         
+      }
     }
   </script>
  
