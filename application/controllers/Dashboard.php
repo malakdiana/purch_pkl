@@ -40,14 +40,23 @@ public function index()
 	
 
 	public function Myprofil(){
-		// $data['profil']=$this->LoginModel->edit_profile();
-		 if($this->session->userdata('logged_in')['hak_akses']==1){
+		
+		if($this->session->userdata('logged_in')['hak_akses']==1){
 		$this->load->view('admin/header');
-		$this->load->view('admin/Myprofil');
-		 }else{
-		 $this->load->view('user/header');
-        $this->load->view('user/Myprofil');
-		}
+       	$this->load->view('admin/Myprofil');
+        }else if($this->session->userdata('logged_in')['hak_akses']==2){
+		$this->load->view('user/header');
+       	$this->load->view('admin/Myprofil');
+    }else if($this->session->userdata('logged_in')['hak_akses']==3){
+		$this->load->view('Invoice/header');
+       	$this->load->view('admin/Myprofil');
+        }else if($this->session->userdata('logged_in')['hak_akses']==4){
+		$this->load->view('Personal/header');
+       	$this->load->view('admin/Myprofil'); 
+    }else{
+    	$this->load->view('read_only/header');
+       	$this->load->view('admin/Myprofil');
+    }
 
 	}
 

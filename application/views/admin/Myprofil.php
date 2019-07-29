@@ -74,7 +74,7 @@
                                              <label class="control-label " for="password">PASSWORD:</label>
                                                 <div class="password">
                                                     
-                                                    <i class="fa fa-eye"></i>
+                                                    <i class="fa fa-eye pass"></i>
                                                     <input type="password" id="passwordfield" class="form-control" style="margin-bottom: 25px" name="password"  autocomplete="">
                                                     </div>
                                                     
@@ -86,7 +86,7 @@
 
                                                      <div class="password">
 
-                                                     <i class="fa fa-eye"></i>
+                                                     <i class="fa fa-eye konf"></i>
                                                     <input type="password" id="konfirpasswordfield" class="form-control" style="margin-bottom: 25px" name="konfirpassword"  autocomplete="">
     
                                             </div>
@@ -112,11 +112,11 @@
 
 $("#passwordfield").on("keyup",function(){
     if($(this).val())
-        $(".fa-eye").show();
+        $(".pass").show();
     else
-        $(".fa-eye").hide();
+        $(".pass").hide();
     });
-$(".fa-eye").mousedown(function(){
+$(".pass").mousedown(function(){
                 $("#passwordfield").attr('type','text');
             }).mouseup(function(){
                 $("#passwordfield").attr('type','password');
@@ -128,11 +128,11 @@ $(".fa-eye").mousedown(function(){
 
 $("#konfirpasswordfield").on("keyup",function(){
     if($(this).val())
-        $(".fa-eye").show();
+        $(".konf").show();
     else
-        $(".fa-eye").hide();
+        $(".konf").hide();
     });
-$(".fa-eye").mousedown(function(){
+$(".konf").mousedown(function(){
                 $("#konfirpasswordfield").attr('type','text');
             }).mouseup(function(){
                 $("#konfirpasswordfield").attr('type','password');

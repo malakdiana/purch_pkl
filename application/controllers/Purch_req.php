@@ -169,11 +169,17 @@ public function index()
     }
 
     public function updateItem(){
-        $status = $this->input->post('status');
+
+       
         $this->Purch_reqModel->updateItem();
                 $this->session->set_flashdata('editItem','<div class="alert alert-success" role="alert">SUKSES UPDATE DATA <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
                 $id = $this->input->post('id');
+                if(empty($this->input->post('status'))){
+ redirect("Purch_req/GetItem_barang_user/$id", 'refresh');
+                }else{
+                     $status = $this->input->post('status');
             redirect("Purch_req/GetItem_barang/$id/$status", 'refresh');
+        }
     }
 
     public function hapusItem($id,$id_item,$status){
