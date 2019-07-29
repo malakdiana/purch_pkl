@@ -210,9 +210,9 @@ public function index()
        public function Verifyitem($id){
 
         $this->Purch_reqModel->Verifyitem($id);
-        
+        redirect("Purch_req/GetItem_barang/$id/1", 'refresh');
             
-            redirect("Purch_req/", 'refresh');
+          //  redirect("Purch_req/", 'refresh');
     }
 
       public function InsertPo($id){
