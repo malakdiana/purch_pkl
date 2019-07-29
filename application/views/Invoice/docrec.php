@@ -5,9 +5,9 @@
                         <div class="breadcrumbs-area clearfix" style="padding-top: 15px;padding-bottom: 15px">
                             <h4 class="page-title pull-left">Data</h4>
                             <ul class="breadcrumbs pull-left">
-                                <li><a href="#">Purchase Order</a></li>
-                                <li><span>list purchase order /</span></li>
-                                <li><span>Kelola PR</span></li>
+                                <li><a href="#">Invoice</a></li>
+                                <li><span>Input Document Receipt</span></li>
+                         
                             </ul>
 
                     </div>

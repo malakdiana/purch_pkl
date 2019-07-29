@@ -6,7 +6,7 @@
                             <h4 class="page-title pull-left">Data</h4>
                             <ul class="breadcrumbs pull-left">
                                 <li><a href="#">Invoice</a></li>
-                                <li><span>Document Receipt</span></li>
+                                <li><span>List PO</span></li>
                             </ul>
 
                     </div>

@@ -67,9 +67,20 @@
                                          <a href="javascript:void(0)" aria-expanded="true"><h6><i class="ti-book"></i><span>Data</h6>
                                     </span></a>
                                 <ul class="submenu">
-                                      <li><a href="<?php echo site_url()?>/Invoice/docrec">Input Doc Rec</a></li>
+                                   
                                     <li><a href="<?php echo site_url()?>/Invoice/dataDocRec">Data Doc Rec</a></li>
                                      <li><a href="<?php echo site_url()?>/Invoice/poPrint">List PO</a></li>
+                                   
+
+                                   
+                                  
+                                </ul>
+                                    </li>
+                                    <li>
+                                         <a href="javascript:void(0)" aria-expanded="true"><h6><i class="ti-pencil"></i><span>Input Data</h6>
+                                    </span></a>
+                                <ul class="submenu">
+                                      <li><a href="<?php echo site_url()?>/Invoice/docrec">Input Doc Rec</a></li>
                                    
 
                                    
