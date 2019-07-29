@@ -137,7 +137,7 @@
         <div class="modal-dialog">
             <div class="modal-content" style="width: 800px; margin-left: -100px;padding: 20px" >
                 <div class="modal-header">
-                    <h4 class="modal-title">Info Barang</h4>
+                    <h4 class="modal-title">Edit Barang</h4>
                 </div>
           <?php echo form_open_multipart('Purch_req/updateItem'); ?>
                 <?php echo validation_errors(); ?>
