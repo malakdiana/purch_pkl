@@ -68,7 +68,7 @@
                         </div>
                     </div>
                     <!-- data table start -->
-                    <div class="col-7 mt-5">
+                    <div class="col-12 mt-5">
                         <div class="card">   
                             <div class="card-body">
                         
@@ -79,7 +79,7 @@
                              </div>
                          </div>
                      </div>
-                      <div class="col-5 mt-5">
+                      <div class="col-12 mt-5">
                         <div class="card">   
                             <div class="card-body">
                                  <h4>Grafik Ammount Section Per Bulan</h4><br>
