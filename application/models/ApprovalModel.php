@@ -16,7 +16,7 @@ class ApprovalModel extends CI_Model {
     {
 
             $this->db->select('*');
-            $this->db->from('Approval');
+            $this->db->from('approval');
             $this->db->order_by('no','desc');
             $query = $this->db->get();
               $results=array();
@@ -32,7 +32,7 @@ class ApprovalModel extends CI_Model {
     {
 
             $this->db->select('*');
-            $this->db->from('Approval');
+            $this->db->from('approval');
             $this->db->order_by('no','asc');
             $query = $this->db->get();
             if($query->num_rows() > 0){
@@ -63,11 +63,11 @@ class ApprovalModel extends CI_Model {
 
         
         $this->db->where('no', $no);
-        $this->db->update('Approval', $data);
+        $this->db->update('approval', $data);
     }
     public function deleteApproval($id){
          $this->db->where('no', $id);
-        $this->db->delete('Approval');
+        $this->db->delete('approval');
 
     }
     public function tambahApproval(){
@@ -89,7 +89,7 @@ class ApprovalModel extends CI_Model {
           echo "<script>alert('Jumlah Nominal minimal anda lebih besar dari nominal maximal')</script>";
           redirect('Approval/tambahApproval', 'refresh');
         }else{
-         $this->db->insert('Approval', $data);
+         $this->db->insert('approval', $data);
         }
 
     }
@@ -104,6 +104,6 @@ private $_batchImport;
     // save data
     public function importData() {
         $data = $this->_batchImport;
-        $this->db->insert_batch('Approval', $data);
+        $this->db->insert_batch('approval', $data);
     }
 }
