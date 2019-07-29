@@ -66,10 +66,14 @@ align-content: center;
 	transform: skew(0deg);
     border: 2px solid;
     vertical-align: center;
-margin-left: 105px;
+margin-left: 90px;
 }
 .empat {
 	font-size: 8px;
+}
+u.dotted {
+  border-bottom: 1px dashed #999;
+  text-decoration: none;
 }
 
 	
@@ -80,10 +84,10 @@ margin-left: 105px;
 	<table class="satu">
 	<tr>
 		<td colspan="2"></td>
-		<td  style="margin-left: 80px;font-size: 16px;"><p align="center"><div class="border"><b>CONFIDENTIAL</b></div></p></td>
+		<td  style="font-size: 16px;"><p align="center"><div class="border"><b>CONFIDENTIAL</b></div></p></td>
 	<tr>
-		<td width="60px" style="vertical-align: top; padding-top: -4px"><font size="38px" style="vertical-align: top;" ><b>SAI</b></font></td>
-		<td width="380px"> 
+		<td width="60px" style="vertical-align: top"><img src="<?php echo base_url()?>assets/images/sai.png" width="84px" height="35px"></td>
+		<td width="355px"> 
 			<center><font size="16px"><b>PT. SURABAYA AUTOCOMP INDONESIA <br></font></b><font size="14px"> <b><i> Wiring Harness Manufacturer </i></b></font> <br><font size="22px"><b><u>VOUCHER PAYING</u></b></font></center></td>
 			<td>
 				<table class="lima" style="font-size: 13px">
@@ -146,10 +150,10 @@ margin-left: 105px;
 				</td>
 			<td  style="border-top: 0px">
 			<table><tr>
-					<td style="border: 0px;padding-left: 10px;padding-top: 15px; vertical-align: top">
+					<td style="border: 0px;padding-left: 10px;padding-top: 15px; vertical-align: top; ">
 						Say
 					</td>
-					<td style="border: 0px;padding-left: 30px;padding-top: 6px; vertical-align: top">
+					<td style="border: 0px;padding-left: 30px;padding-top: 6px; vertical-align: top; background-image: url('assets/images/titik.png');background-size: 2% 4%;">
 						<p align="left" style="font-size: 12px"># <?php 	echo $say; ?> #</p>
 					</td>
 				</tr>
@@ -177,7 +181,7 @@ margin-left: 105px;
 				</td>
 				</tr>
 			</table >
-				<table style="border: 0px; height: 114px " background="<?php echo base_url()?>assets/images/author/avatar.png" border="0px" class="empat" style="background-repeat: repeat">
+				<table style="border: 0px; height: 114px; " background="<?php echo base_url()?>assets/images/author/avatar.png" border="0px" class="empat" style="background-repeat: repeat;">
 					<tr>
 						<td style="text-align: left;">MATERIAL = <?php echo $qtymat; ?> x <?php echo number_format($material,2,',','.');?> </td>
 						<td > = </td>
