@@ -153,7 +153,7 @@ u.dotted {
 					<td style="border: 0px;padding-left: 10px;padding-top: 15px; vertical-align: top; ">
 						Say
 					</td>
-					<td style="border: 0px;padding-left: 30px;padding-top: 6px; vertical-align: top; background-image: url('assets/images/titik.png');background-size: 2% 4%;">
+					<td style="border: 0px;padding-left: 30px;padding-top: 6px; vertical-align: top; border-bottom: 1px dotted black;">
 						<p align="left" style="font-size: 12px"># <?php 	echo $say; ?> #</p>
 					</td>
 				</tr>
@@ -180,30 +180,38 @@ u.dotted {
 				$no++;} ?></b>
 				</td>
 				</tr>
-			</table >
-				<table style="border: 0px; height: 114px; " background="<?php echo base_url()?>assets/images/author/avatar.png" border="0px" class="empat" style="background-repeat: repeat;">
+			</table>
+
+			<table><tr><td style="border-top:1px dotted black; border-left:0px; border-right: 0px;  border-bottom: 0px dotted black;width: 340px;margin-top:-4px ">
+				<table style="border: 0px; " border="0px" class="empat">
 					<tr>
-						<td style="text-align: left;">MATERIAL = <?php echo $qtymat; ?> x <?php echo number_format($material,2,',','.');?> </td>
+						<td style="text-align: left;width: 130px">MATERIAL = <?php echo $qtymat; ?> x <?php echo number_format($material,2,',','.');?> </td>
 						<td > = </td>
 						<td style="text-align: right;"> <?php echo number_format($totalmat,2,',','.');?></td>
 					</tr>
 					<tr>
-						<td style="text-align: left;">JASA = <?php echo $qtyjas; ?> x <?php echo number_format($jasa,2,',','.'); ?></td>
+						<td style="text-align: left;width: 130px">JASA = <?php echo $qtyjas; ?> x <?php echo number_format($jasa,2,',','.'); ?></td>
 						<td > = </td>
 						<td style="text-align: right;"> <?php echo number_format($totaljas,2,',','.'); ?></td>
 					</tr>
 					<tr >
-						<td style=""></td>
+						<td style="text-align: left;width: 130px"></td>
 						<td ></td>
 						<td style="padding-top: -10px;border-top:1px solid black; border-bottom: 0px; border-left: 0px;border-right: 0px"><td style="padding-top: -9px;">+</td></td>
 					</tr>
+				</table>
+			</td>
+		</tr></table>
+
+			<table><tr><td style="border-bottom:0px; border-left:0px; border-right: 0px;  border-top: 1px dotted black;width: 340px">
+				<table style="border: 0px; " border="0px" class="empat">	
 					<tr style="margin-top: -8px">
-						<td ></td>
+						<td style="text-align: left;width: 130px"></td>
 						<td ></td>
 						<td style="text-align: right;"><?php echo number_format($subtotal,2,',','.');; ?></td>
 					</tr>
 					<tr >
-						<td style="text-align: left;">PPN</td>
+						<td style="text-align: left;width: 130px">PPN</td>
 						<td > = </td>
 						<td style="text-align: right;"> <?php echo number_format($totalppn,2,',','.'); ?></td>
 					</tr>
@@ -212,27 +220,40 @@ u.dotted {
 						<td ></td>
 						<td style="padding-top: -10px;border-top:1px solid black;border-bottom: 0px; border-left: 0px;border-right: 0px"><td style="padding-top: -9px;">+</td></td>
 					</tr>
+				</table></td></tr></table>
+							<table><tr><td style="border-bottom:0px; border-left:0px; border-right: 0px;  border-top: 1px dotted black;width: 340px">
+				<table style="border: 0px; " border="0px" class="empat">	
 					<tr>
-						<td ></td>
+						<td style="text-align: left;width: 130px"></td>
 						<td > </td>
 						<td style="text-align: right;"> <?php $x= $totalppn+$subtotal; echo number_format($x,2,',','.');; ?></td>
 					</tr>
 					<tr>
-						<td style="text-align: left;">PPH = Total Jasa x <?php 	echo $pph; ?>%</td>
+						<td style="text-align: left;width: 130px">PPH = Total Jasa x <?php 	echo $pph; ?>%</td>
 						<td > = </td>
 						<td style="text-align: right;"><?php echo number_format($totalpph,2,',','.'); ?></td>
 					</tr>
 					<tr>
-						<td ></td>
+						<td style="text-align: left;width: 130px"></td>
 						<td ></td>
 						<td style="padding-top: -10px;border-top:1px solid blackborder-bottom: 0px; border-left: 0px;border-right: 0px;"><td style="padding-top: -9px;">-</td></td>
 					</tr>
+						</table>
+			</td>
+		</tr>
+	</table>
+		<table><tr><td style="border-bottom:0px; border-left:0px; border-right: 0px;  border-top: 1px dotted black;width: 340px">
+				<table style="border: 0px; " border="0px" class="empat">	
 					<tr>
-						<td ></td>
-						<td > </td>
+						<td style="text-align: left;width: 130px">&nbsp;</td>
+						<td style="width: 10px">&nbsp;</td>
 						<td style="text-align: right;"> <?php echo number_format($total,2,',','.'); ?></td>
-					</tr>		
-				</table>
+					</tr>	
+					</table>	
+				</td>
+			</tr>
+		</table>
+			
 			</td>
 			
 		</tr>
@@ -251,7 +272,7 @@ u.dotted {
 			<td style="text-align:center;border: 1px solid black;border-left:0px;width: 85px">Amount</td>
 		</tr>
 		<tr >
-			<td height="124px" style="border: 1px solid black"></td>
+			<td height="135px" style="border: 1px solid black"></td>
 			<td style="border: 1px solid black"></td>
 			<td style="border: 1px solid black"></td>
 			<td style="border: 1px solid black"></td>
