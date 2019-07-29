@@ -112,9 +112,9 @@ class Section extends CI_Controller {
             
 
 
-            $data = array_diff_key($makeArray, $SheetDataKey);
+            $datax = array_diff_key($makeArray, $SheetDataKey);
            
-            if (empty($data)) {
+            if (empty($datax)) {
                 $flag = 1;
             }
             if ($flag == 1) {
@@ -134,11 +134,12 @@ class Section extends CI_Controller {
                     $fetchData[] = array('nama_section' => $nama_section,
                           );
                 }              
-                $data['employeeInfo'] = $fetchData;
+                $datax['employeeInfo'] = $fetchData;
                 $this->SectionModel->setBatchImport($fetchData);
                 $this->SectionModel->importData();
-               //unlink('./assets/'.$data['upload_data']['file_name']);
-               
+                $url = FCPATH.'/assets/'.$data['upload_data']['file_name'];
+               unlink($url);
+        
                redirect('Section','refresh');
             } else {
                $this->session->set_flashdata('gagalImport','<div class="alert alert-success" role="alert">SUKSES DELETE DATA <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');

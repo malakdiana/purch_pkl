@@ -97,7 +97,7 @@
                                                   }else{
                                                      $status= 1;
                                                   }
-                                               }}$no++;}
+                                               }}}
                                                  ?>
 
                                                  <?php if($status==0){?>
@@ -109,7 +109,7 @@
 
                                                  <a class="btn btn-success" style="width:115px; height:50px;" href="<?php echo site_url()?>/Purch_req/InsertPo/<?php echo $key->id_item ?>"><font color="white"><i class="fa fa-arrow-right"></i> Insert to Po</font></a></div></td></tr><?php } 
                                                   else{?>
-                                                     <td><button type="button" class="btn btn-success"><a href=""><font color="white"><i class="fa fa-check"></i> Done</font></a></button></td></tr><?php }$status=0;} ?>
+                                                     <td><button type="button" class="btn btn-success"><a href=""><font color="white"><i class="fa fa-check"></i> Done</font></a></button></td></tr><?php }$status=0; $no++;} ?>
 
 
 
