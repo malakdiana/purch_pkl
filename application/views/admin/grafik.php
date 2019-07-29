@@ -25,8 +25,9 @@
                                 <div class="card">
                                     <div class="seo-fact sbg1">
                                         <div class="p-4 d-flex justify-content-between align-items-center">
-                                            <div class="seofct-icon"><i class="ti-thumb-up"></i> PR OPEN</div>
-                                            <h2><?php   echo $pr[0]->jumlah; ?></h2>
+                                            <div class="seofct-icon"><i class="ti-folder"></i> PR OPEN</div>
+                                            
+                                            <h2><font color="black"><?php   echo $pr[0]->jumlah; ?></h2></font>
                                         </div>
                                     </div>
                                 </div>
@@ -35,8 +36,9 @@
                                 <div class="card">
                                     <div class="seo-fact sbg2">
                                         <div class="p-4 d-flex justify-content-between align-items-center">
-                                            <div class="seofct-icon"><i class="ti-share"></i> QR OPEN</div>
-                                            <h2><?php   echo $qr[0]->jumlah; ?></h2>
+                                            <div class="seofct-icon"><i class="ti-book"></i> QR OPEN</div>
+                                             
+                                            <h2><font color="black"><?php   echo $qr[0]->jumlah; ?></h2></font>
                                         </div>
                                     </div>
                                 </div>
@@ -45,8 +47,10 @@
                                 <div class="card">
                                     <div class="seo-fact sbg1">
                                         <div class="p-4 d-flex justify-content-between align-items-center">
-                                            <div class="seofct-icon"><i class="ti-thumb-up"></i> ETA BESOK</div>
-                                            <h2><?php echo $eta[0]->jumlah; ?></h2>
+                                            <div class="seofct-icon"><i class="ti-calendar"></i> Eta For <?php $tgl = mktime(0, 0, 0, date("m"), date("d")+1, date("Y")); $tgl =  date("Y-m-d", $tgl); echo $tgl ;?>
+                                            </div>
+                                             
+                                            <h2><font color="black"><?php echo $eta[0]->jumlah; ?></h2></font>
                                         </div>
                                     </div>
                                 </div>
@@ -55,8 +59,8 @@
                                 <div class="card">
                                     <div class="seo-fact sbg2">
                                         <div class="p-4 d-flex justify-content-between align-items-center">
-                                            <div class="seofct-icon"><i class="ti-share"></i> DELAY</div>
-                                            <h2><?php echo $delay[0]->jumlah; ?></h2>
+                                            <div class="seofct-icon"><i class="ti-time"></i> DELAY</div>
+                                            <h2><font color="black"><?php echo $delay[0]->jumlah; ?></h2></font>
                                         </div>
                                     </div>
                                 </div>
@@ -64,7 +68,7 @@
                         </div>
                     </div>
                     <!-- data table start -->
-                    <div class="col-7 mt-5">
+                    <div class="col-12 mt-5">
                         <div class="card">   
                             <div class="card-body">
                         
@@ -75,7 +79,7 @@
                              </div>
                          </div>
                      </div>
-                      <div class="col-5 mt-5">
+                      <div class="col-12 mt-5">
                         <div class="card">   
                             <div class="card-body">
                                  <h4>Grafik Ammount Section Per Bulan</h4><br>
