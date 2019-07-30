@@ -86,8 +86,8 @@ u.dotted {
 		<td colspan="2"></td>
 		<td  style="font-size: 16px;"><p align="center"><div class="border"><b>CONFIDENTIAL</b></div></p></td>
 	<tr>
-		<td width="110px" style="vertical-align: top"><img src="<?php echo base_url()?>assets/images/sai.png" width="84px" height="35px"></td>
-		<td width="365px"> 
+		<td width="60px" style="vertical-align: top"><img src="<?php echo base_url()?>assets/images/sai.png" width="84px" height="35px"></td>
+		<td width="335px"> 
 			<center><font size="16px"><b>PT. SURABAYA AUTOCOMP INDONESIA <br></font></b><font size="14px"> <b><i> Wiring Harness Manufacturer </i></b></font> <br><font size="22px"><b><u>VOUCHER PAYING</u></b></font></center></td>
 			<td>
 				<table class="lima" style="font-size: 13px">
@@ -125,7 +125,7 @@ u.dotted {
 							<td style="text-align: center;width: 206px; padding-top: 4px"><font size="14px"><center><b> PT MAJU KAWAN TECHNINDO </b></center></font></td>
 						</tr>
 				</table>
-			<td style="border-bottom: 0px; width: 490px">
+			<td style="border-bottom: 0px; width: 430px">
 				<table>
 					<tr>
 					<td style="border: 0px;padding-left: 10px;padding-top: 15px">
@@ -183,7 +183,7 @@ u.dotted {
 				</tr>
 			</table>
 
-			<table><tr><td style="border-top:1px dotted black; border-left:0px; border-right: 0px;  border-bottom: 0px dotted black;width: 380px;margin-top:-4px ">
+			<table><tr><td style="border-top:1px dotted black; border-left:0px; border-right: 0px;  border-bottom: 0px dotted black;width: 340px;margin-top:-4px ">
 				<table style="border: 0px; " border="0px" class="empat">
 					<tr>
 						<td style="text-align: left;width: 130px">MATERIAL = <?php echo $qtymat; ?> x <?php echo number_format($material,2,',','.');?> </td>
@@ -204,7 +204,7 @@ u.dotted {
 			</td>
 		</tr></table>
 
-			<table><tr><td style="border-bottom:0px; border-left:0px; border-right: 0px;  border-top: 1px dotted black;width: 380px">
+			<table><tr><td style="border-bottom:0px; border-left:0px; border-right: 0px;  border-top: 1px dotted black;width: 340px">
 				<table style="border: 0px; " border="0px" class="empat">	
 					<tr style="margin-top: -8px">
 						<td style="text-align: left;width: 130px"></td>
@@ -222,7 +222,7 @@ u.dotted {
 						<td style="padding-top: -10px;border-top:1px solid black;border-bottom: 0px; border-left: 0px;border-right: 0px"><td style="padding-top: -9px;">+</td></td>
 					</tr>
 				</table></td></tr></table>
-							<table><tr><td style="border-bottom:0px; border-left:0px; border-right: 0px;  border-top: 1px dotted black;width: 380px">
+							<table><tr><td style="border-bottom:0px; border-left:0px; border-right: 0px;  border-top: 1px dotted black;width: 340px">
 				<table style="border: 0px; " border="0px" class="empat">	
 					<tr>
 						<td style="text-align: left;width: 130px"></td>
@@ -243,7 +243,7 @@ u.dotted {
 			</td>
 		</tr>
 	</table>
-		<table><tr><td style="border-bottom:0px; border-left:0px; border-right: 0px;  border-top: 1px dotted black;width: 380px">
+		<table><tr><td style="border-bottom:0px; border-left:0px; border-right: 0px;  border-top: 1px dotted black;width: 340px">
 				<table style="border: 0px; " border="0px" class="empat">	
 					<tr>
 						<td style="text-align: left;width: 130px">&nbsp;</td>
@@ -262,7 +262,7 @@ u.dotted {
 	</table>
 </td>
 	<td style="padding: -2px;">
-	<table  width="376px" style="margin-left: -1px;	border-collapse: collapse;" >
+	<table  width="351px" style="margin-left: -1px;	border-collapse: collapse;" >
 		<tr>
 			<td height="20px" colspan="4" style="border-top:0px;border-left:0px;text-align: center;border-right: 1px solid black;">General Ledger</td>
 		</tr>
@@ -283,7 +283,7 @@ u.dotted {
 	</table>
 </td>
 </tr></table>
-	<table class="tiga" style="margin-top: -2px;width: 687px;padding-top: -2px;padding-bottom: -39px" width="766px" >
+	<table class="tiga" style="margin-top: -2px;width: 687px;padding-top: -2px;padding-bottom: -39px" width="706px" >
 		<tr>
 			<td colspan="5" style="text-align: left;padding-left: 2px; border-top: 0px" height="30px">Paid Thru :  <?php echo "$paid"; ?></td>
 		</tr>
