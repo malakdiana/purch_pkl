@@ -195,21 +195,7 @@ function formatRupiah(angka, prefix) {
        */
     
   </script>
-  <script type="text/javascript">
-  var min = document.getElementById("min");
-min.addEventListener("keyup", function(e) {
-  min.value = formatRupiah(this.value,);
-});
 
-  var max = document.getElementById("max");
-max.addEventListener("keyup", function(e) {
-  max.value = formatRupiah(this.value,);
-});
-function formatRupiah(angka) {
-  var number_string = angka.replace(/[^,\d]/g, "").toString();
-  return number_string;
-  }
-</script>
 </body>
 
 </html>
