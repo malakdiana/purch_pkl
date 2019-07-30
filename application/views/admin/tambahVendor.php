@@ -90,8 +90,8 @@
                                                 <td><?php echo $key->tanggal;?></td>
                                                 <td><?php echo $key->nama_vendor;?></td>
                                                 <td><?php echo "Rp " . number_format($key->harga,2,',','.');?></td>
-                                                <td><a href="<?php echo base_url()?>assets/file_qr/<?php echo $key->detail;?>" target="_blank"><?php echo $key->detail;?></a></td>
-                                                <td><a class="btn btn-primary" href="javascript:void(0);" onclick="modalEdit('<?php echo $key->id_detail?>','<?php echo $key->tanggal?>','<?php echo $key->nama_vendor ?>','<?php echo $key->harga ?>', '<?php echo $key->detail ?>')" data-toggle="modal" data-target="#myModalEdit"><font color="white"><i class="fa fa-pencil"></i> Edit</font></a></td></tr>
+                                                <td><font color="blue"><a href="<?php echo base_url()?>assets/file_qr/<?php echo $key->detail;?>" target="_blank"><?php echo $key->detail;?></a></font></td>
+                                                <td><a class="btn btn-primary" href="javascript:void(0);" onclick="modalEdit('<?php echo $key->id_detail?>','<?php echo $key->tanggal?>','<?php echo $key->nama_vendor ?>','<?php echo $key->harga ?>', '<?php echo $key->detail ?>')" data-toggle="modal" data-target="#myModalEdit"><font color="white"><i class="fa fa-pencil"></i> Edit</font></a>  <a class="btn btn-danger" href="<?php echo site_url()?>/Qr/hapusVendor/<?php echo $key->id_detail?>/<?php echo $this->uri->segment('3'); ?>" onclick="return confirm('Apakah Yakin Untuk Menghapus?')" ><font color="white"><i class="fa fa-trash"></i> Hapus</font></a></td></tr>
                                                 <?php $no++;} ?>
                                        
                                         </tbody>

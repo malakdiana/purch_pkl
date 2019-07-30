@@ -87,7 +87,7 @@ u.dotted {
 		<td  style="font-size: 16px;"><p align="center"><div class="border"><b>CONFIDENTIAL</b></div></p></td>
 	<tr>
 		<td width="60px" style="vertical-align: top"><img src="<?php echo base_url()?>assets/images/sai.png" width="84px" height="35px"></td>
-		<td width="355px"> 
+		<td width="335px"> 
 			<center><font size="16px"><b>PT. SURABAYA AUTOCOMP INDONESIA <br></font></b><font size="14px"> <b><i> Wiring Harness Manufacturer </i></b></font> <br><font size="22px"><b><u>VOUCHER PAYING</u></b></font></center></td>
 			<td>
 				<table class="lima" style="font-size: 13px">
@@ -101,13 +101,13 @@ u.dotted {
 					</tr>
 					<tr>
 						
-						<td><font size="12px">Date</font></td>
+						<td style="margin-top: -4px"><font size="12px">Date</font></td>
 						<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
 						<td><font size="12px">:</font></td>
 						<td><font size="12px"><?php 	echo $vp_date; ?></font><br><hr style="border-top: 1px dotted black; border-bottom: 0px; margin-top: -1px; width: 200px; border-left: 0px; border-right: 0px"  ></td>
 					</tr>
 					<tr>
-						<td><font size="12px">Dept</font></td>
+						<td height="5px"> <font size="12px">Dept</font></td>
 						<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
 						<td><font size="12px">:</font></td>
 						<td><font size="12px">PURCH</font><br><hr style="border-top: 1px dotted black; border-bottom: 0px; margin-top: -1px; width: 200px; border-left: 0px; border-right: 0px"  ></td>
@@ -115,7 +115,7 @@ u.dotted {
 				</table>
 			</td>
 	</tr>
-	</table> <br>
+	</table><br>
 	<table class="dua" style="margin-top: -1px" >
 		<tr>
 			<td style="width: 270px; height: 60px ; ">

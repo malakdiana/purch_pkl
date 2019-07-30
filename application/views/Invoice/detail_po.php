@@ -118,14 +118,14 @@
           <div class="row">
             <div class="col-md-1">Material
             </div>
-            <div class="col-sm-4"> <div class="row"><input type="text" name="material" id="rupiahmat" class="form-control" style="width: 250px"><p> &nbsp;&nbsp;x&nbsp;&nbsp; </p><input type="text" name="qtymat" class="form-control" style="width: 60px" placeholder="qty" value="1">
+            <div class="col-sm-4"> <div class="row"><input autocomplete="off" type="text" name="material" id="rupiahmat" class="form-control" style="width: 250px"><p> &nbsp;&nbsp;x&nbsp;&nbsp; </p><input autocomplete="off" type="number" name="qtymat" class="form-control" style="width: 60px" placeholder="qty" value="1">
               </div>
             </div>
           </div>
            <div class="row">
             <div class="col-md-1"><br>Jasa
             </div>
-            <div class="col-sm-4"> <br><div class="row"><br><br><input type="text" name="jasa" id="rupiahjas" class="rupiah form-control" style="width: 250px"><p> &nbsp;&nbsp;x&nbsp;&nbsp; </p><input type="text" name="qtyjas" class="form-control" style="width: 60px" placeholder="qty" value="1">
+            <div class="col-sm-4"> <br><div class="row"><br><br><input autocomplete="off" type="text" name="jasa" id="rupiahjas" class="rupiah form-control" style="width: 250px"><p> &nbsp;&nbsp;x&nbsp;&nbsp; </p><input autocomplete="off" type="number" name="qtyjas" class="form-control" style="width: 60px" placeholder="qty" value="1">
               </div>
               
             </div>
@@ -133,7 +133,7 @@
            <div class="row">
             <div class="col-md-1"><br>PPH
             </div>
-            <div class="col-sm-4"> <br><div class="row"><input type="number" name="pph" class="form-control" style="width: 60px;"> &nbsp;&nbsp;<font size="5px">%</font></div>
+            <div class="col-sm-4"> <br><div class="row"><input autocomplete="off" type="number" name="pph" class="form-control" style="width: 60px;"> &nbsp;&nbsp;<font size="5px">%</font></div>
               
             </div>
           </div>

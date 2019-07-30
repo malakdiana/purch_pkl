@@ -174,6 +174,35 @@ $this->upload->initialize($config);
       }
     }
 
+    public function hapusVendor($id,$qr){
+
+      $query=$this->db->select('*')->from('detail_penawaran')->where('id_detail',$id)->get();
+    
+      foreach ($query->result() as $key ) {
+          $detail = $key->detail;
+      }
+   $url = FCPATH.'/assets/file_qr/'.$detail;
+      unlink($url);
+
+
+      $this->db->where('id_detail', $id);
+      $this->db->delete('detail_penawaran');
+    
+
+      $query=$this->db->select('*')->from('detail_penawaran')->where('id_penawaran',$qr)->get();
+      if ($query->num_rows() == 1) {
+        $this->db->set('status', 3);
+        $this->db->where('id_penawaran', $qr);
+      $this->db->update('penawaran');
+      }else if($query->num_rows() == 0) {
+        $this->db->set('status', 0);
+        $this->db->where('id_penawaran', $qr);
+      $this->db->update('penawaran');
+    
+    }
+    redirect('Qr/tambahVendor/'.$qr);
+  }
+
 
 
     public function detailQuotation($id){
