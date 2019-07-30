@@ -95,7 +95,7 @@
                                                 
                                                <a class="btn btn-danger" style="width:80px; height:50px;" href="<?php echo site_url()?>/Purch_req/hapusItem/<?php echo $id?>/<?php echo $key->id_item?>/<?php echo $status_fa?> " onclick="return confirm('Apakah Yakin Untuk Menghapus?')"><font color="white"><i class="fa fa-trash-o"></i> Hapus</font></a>
 
-                                                 <a class="btn btn-success" style="width:115px; height:50px;" href="<?php echo site_url()?>/Purch_req/InsertPo/<?php echo $key->id_item ?>"><font color="white"><i class="fa fa-arrow-right"></i> Insert to Po</font></a></div></td></tr><?php } 
+                                               </div></td></tr><?php } 
                                                   else{?>
                                                      <td><button type="button" class="btn btn-success"><a href=""><font color="white"><i class="fa fa-check"></i> Done</font></a></button></td></tr><?php }$status=0; $no++;} ?>
 

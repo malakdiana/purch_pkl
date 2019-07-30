@@ -138,7 +138,7 @@ u.dotted {
 
 		</tr>
 		<tr>
-			<td style="padding-top: 2px;padding-left: 2px;height: 60px ; ">
+			<td style="padding-top: 2px;padding-left: 2px;height: 65px ; ">
 				<table border="0">	
 						<tr>
 							<td style="padding-top: 4px; width: 50px">Date :</td>
@@ -149,12 +149,14 @@ u.dotted {
 
 				</td>
 			<td  style="border-top: 0px">
-			<table><tr>
-					<td style="border: 0px;padding-left: 10px;padding-top: 15px; vertical-align: top; ">
+			<table style="margin-left: 5px"><tr>
+					<td style="border-top: 0px;border-left:0px;border-right:0px;border-bottom:1px dotted black;padding-left: 10px;padding-top: 15px; vertical-align: top; height: 40px; ">
 						Say
 					</td>
-					<td style="border: 0px;padding-left: 30px;padding-top: 6px; vertical-align: top; border-bottom: 1px dotted black;">
-						<p align="left" style="font-size: 12px"># <?php 	echo $say; ?> #</p>
+					<td style="border-top: 0px;border-left:0px;border-right:0px;border-bottom:1px dotted black;padding-left: 30px;padding-top: 6px; vertical-align: top; border-bottom: 1px dotted black;">
+
+						<p align="left" style="font-size: 12px"><u style="border-top:0px;border-bottom:3px black dotted;line-height: 200%;padding-bottom: 0px"># <?php echo $say; ?> #</u></p>
+
 					</td>
 				</tr>
 				</table>
