@@ -57,6 +57,8 @@ public function index()
 			      
 	$this->load->view('Invoice/header');
         $this->load->view('Invoice/docrec');
+
+        redirect('Invoice/poPrint', 'refresh');
 	
 	
 	}
