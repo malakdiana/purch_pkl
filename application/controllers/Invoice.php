@@ -167,7 +167,7 @@ $data['say'] = $this->terbilang($total)." Rupiah";
  }
  $data['tf_date']= $this->tgl_indo($data['tf_date']);
  $data['vp_date']= $this->tgl_indo($data['vp_date']);
-		$paper_size='A4';
+		$paper_size= array(0,0,465,640);
 
 		$orientation = 'landscape'; 
 
@@ -183,7 +183,7 @@ $data['say'] = $this->terbilang($total)." Rupiah";
 $this->load->library('dompdf_gen');		
 $dompdf = new DOMPDF();
 		$dompdf->set_paper($paper_size, $orientation); //convert to pdf
-		
+		//$dompdf->set_paper(array(0,0,304.7244‬,467.7165), "landscape");
 		$dompdf->load_html($html);
 		$dompdf->render();
 		$dompdf->stream("VoucherPaying.pdf", array("Attachment" => false));
