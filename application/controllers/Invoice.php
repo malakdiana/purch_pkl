@@ -169,7 +169,7 @@ $data['say'] = $this->terbilang($total)." Rupiah";
  $data['vp_date']= $this->tgl_indo($data['vp_date']);
 		$paper_size='A4';
 
-		$orientation = 'potrait'; 
+		$orientation = 'landscape'; 
 
 	if(empty($material) && empty($jasa)){
 
