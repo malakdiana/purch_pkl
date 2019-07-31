@@ -44,7 +44,8 @@ public function index()
 
     function tambahDocRec($id){
     	$this->InvoiceModel->insertDetail($id);
-    	redirect('Invoice/editDocRec/'.$id);
+    	$this->session->set_flashdata('editDocRec','<div class="alert alert-success" role="alert">SUKSES UPDATE DATA <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+    	redirect('Invoice/dataDocRec/'.$id);
     }
 
 	public function docrec(){

@@ -23,6 +23,7 @@
                         <div class="card">
                                 
                             <div class="card-body">
+                             <?=$this->session->flashdata('editDocRec')?>
                              <div class="single-table">
                                     <div class="table-responsive">
                                         <table class="table text-center" id="dataTablesss">
