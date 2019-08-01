@@ -83,13 +83,26 @@
 
                                                 
    <td>
+<?php 
+                                                  $status_chat=0;
+                                                  foreach ($icon as $data) {
+                                                    if($data->id_penawaran == $key->id_penawaran){
+                                                      $status_chat = 1;
+                                                    }
+                                                  }
 
+                                                  ?>
 <?php if($key->status ==  0){?>
                                              
                                                 <div class="btn-group mb-xl-3" role="group" aria-label="Basic example">
                                      
                                       <a href="<?php echo site_url()?>/Qr/detailQuotation/<?php echo $key->id_penawaran?>" 
-                                        > <button type="button" class="btn btn-info" style="width:80px; height:45px;"><font color="white"><i class="fa fa-th-list"></i> Detail</font></button></a>
+                                        > 
+                                         <?php if ($status_chat==0){ ?>
+                                                    <button type="button" class="btn btn-info" style="width:80px; height:45px;"><font color="white"><i class="fa fa-th-list"></i> Detail</font></button></a>
+                                                  <?php   }else{ ?>
+                                                      <button type="button" class="btn btn-info" style="width:80px; height:45px;"><font color="#f5f542"><i class="fa fa-commenting-o fa-lg"></i></font><font color="white"> Detail</font></button></a>
+                                                    <?php   } ?>
 
                                      <a href="<?php echo site_url()?>/Qr/tambahVendor/<?php echo $key->id_penawaran?>"><button type="button" class="btn btn-primary" style="width:85px; height:45px;"><font color="white"><i class="fa fa-book"></i> Vendor </font></button></a>
                                     
@@ -101,7 +114,12 @@
                                   <div class="btn-group mb-xl-3" role="group" aria-label="Basic example">
                                       
                                       <a href="<?php echo site_url()?>/Qr/detailQuotation/<?php echo $key->id_penawaran?>" 
-                                        ><button type="button" class="btn btn-info" style="width:80px; height:45px;"><font color="white"><i class="fa fa-th-list"></i> Detail</font></button></a>
+                                        >
+                                       <?php if ($status_chat==0){ ?>
+                                                    <button type="button" class="btn btn-info" style="width:80px; height:45px;"><font color="white"><i class="fa fa-th-list"></i> Detail</font></button></a>
+                                                  <?php   }else{ ?>
+                                                      <button type="button" class="btn btn-info" style="width:80px; height:45px;"><font color="#f5f542"><i class="fa fa-commenting-o fa-lg"></i></font><font color="white"> Detail</font></button></a>
+                                                    <?php   } ?>
 
                                     <a href="<?php echo site_url()?>/Qr/tambahVendor/<?php echo $key->id_penawaran?>"> <button type="button" class="btn btn-primary" style="width:85px; height:45px;"><font color="white"><i class="fa fa-book"></i> Vendor </font></button></a><?php } ?>
 

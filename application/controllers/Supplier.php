@@ -12,6 +12,7 @@ class Supplier extends CI_Controller {
        redirect('Login','refresh');
        }
 		$this->load->model('SupplierModel');
+    $this->load->model('QrModel');
 		 $this->load->helper('url','form','download');
 		  $this->load->library('Excel','upload');
       if (!$this->session->userdata('logged_in')) {
@@ -24,8 +25,9 @@ class Supplier extends CI_Controller {
 	public function index()
 	
 	{
+     $datax['notif']= $this->QrModel->getNotifikasi();
 		$data['supp']= $this->SupplierModel->getSupplier();
-		$this->load->view('admin/header');
+		$this->load->view('admin/header',$datax);
 		$this->load->view('admin/supplier',$data);
 	}
 	public function updateSupplier(){
@@ -39,11 +41,12 @@ class Supplier extends CI_Controller {
 			redirect('Supplier', 'refresh');
 	}
 	public function tambahSupplier(){
+     $datax['notif']= $this->QrModel->getNotifikasi();
 		$this->load->helper('url', 'form');
 		$this->load->library('form_validation');
 		$this->form_validation->set_rules('nama_supplier', 'nama_supplier', 'trim|required');
 		if ($this->form_validation->run()==FALSE) {
-			$this->load->view('admin/header');
+			$this->load->view('admin/header',$datax);
 			$this->load->view('admin/tambahSupplier');
 			$this->load->view('admin/footer');
 		}else{
@@ -55,7 +58,8 @@ class Supplier extends CI_Controller {
 	}
 
 	public function importSupplier(){
-		$this->load->view('admin/header');
+     $datax['notif']= $this->QrModel->getNotifikasi();
+		$this->load->view('admin/header',$datax);
 			$this->load->view('admin/importSupplier');
 			$this->load->view('admin/footer');
 	}

@@ -54,7 +54,7 @@
                                                   <div class="btn-group mb-xl-3" role="group" aria-label="Basic example">
 
                                    
-                                   <a href="<?php echo site_url()?>/Po/GetItem_barang/<?php echo $key->id_po?>"> <button type="button" class="btn btn-info" style="width:80px; height:50px;"><font color="white"><i class="fa fa-th-list"></i> Detail</font></button></a>
+                                   <a href="<?php echo site_url()?>/Read_only/detailItem_Po/<?php echo $key->id_po?>"> <button type="button" class="btn btn-info" style="width:80px; height:50px;"><font color="white"><i class="fa fa-th-list"></i> Detail</font></button></a>
 
                                     
                                 </div>

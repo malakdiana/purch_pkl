@@ -7,6 +7,7 @@ class Admin extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model('Purch_reqModel');
+			$this->load->model('QrModel');
 		 $this->load->helper('url','form','download');
 		  $this->load->library('Excel','upload');
 if (!$this->session->userdata('logged_in')) {
@@ -18,15 +19,17 @@ if (!$this->session->userdata('logged_in')) {
 
 public function index()
 	{
+		$datax['notif']= $this->QrModel->getNotifikasi();
 		$data['Purch_req']= $this->Purch_reqModel->getPurch_req();
-		$this->load->view('admin/header');
+		$this->load->view('admin/header',$datax);
         $this->load->view('admin/dashboard',$data);
    
 	}
 
 	public function setting(){
+		$datax['notif']= $this->QrModel->getNotifikasi();
 		$data['user']= $this->AddModel->getUser();
-		$this->load->view('admin/header');
+		$this->load->view('admin/header',$datax);
 		$this->load->view('admin/setting',$data);
 	}
 	

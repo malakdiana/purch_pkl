@@ -7,6 +7,8 @@ class Approval extends CI_Controller {
     {
         parent::__construct();
         $this->load->model('ApprovalModel');
+                $this->load->model('Purch_reqModel');
+            $this->load->model('QrModel');
          $this->load->helper('url','form','download');
         // $this->load->library(array('PHPExcel','PHPExcel/IOFactory'));
          if (!$this->session->userdata('logged_in')) {
@@ -20,8 +22,9 @@ class Approval extends CI_Controller {
     public function index()
     
     {
+        $datax['notif']= $this->QrModel->getNotifikasi();
         $data['app']= $this->ApprovalModel->getApproval();
-        $this->load->view('admin/header');
+        $this->load->view('admin/header',$datax);
         $this->load->view('admin/Approval',$data);
     }
     public function updateApproval(){
@@ -35,11 +38,12 @@ class Approval extends CI_Controller {
             redirect('Approval', 'refresh');
     }
     public function tambahApproval(){
+        $datax['notif']= $this->QrModel->getNotifikasi();
         $this->load->helper('url', 'form');
         $this->load->library('form_validation');
         $this->form_validation->set_rules('nama', 'nama', 'trim|required');
         if ($this->form_validation->run()==FALSE) {
-            $this->load->view('admin/header');
+            $this->load->view('admin/header',$datax);
             $this->load->view('admin/tambahApproval');
             $this->load->view('admin/footer');
         }else{
@@ -51,7 +55,8 @@ class Approval extends CI_Controller {
     }
 
     public function importApproval(){
-        $this->load->view('admin/header');
+        $datax['notif']= $this->QrModel->getNotifikasi();
+        $this->load->view('admin/header',$datax);
             $this->load->view('admin/importApproval');
             $this->load->view('admin/footer');
     }

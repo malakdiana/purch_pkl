@@ -26,58 +26,87 @@
                                      <h3 align="center">Insert Quotation Request</h3><br>
                                        
                                                
-                                                <div class="form-group">
+                                                                                     
+                                               <div class="col-md-12">
+                                            <div class="row">
+                                               
+                                                <div class="col-md-2">
                                                      <label class="control-label" for="tgl">TANGGAL DAN WAKTU:</label>
+                                                 </div>
+                                                 <div class="col-md-4">
                                            
                                                <input type="text" value="<?php  date_default_timezone_set('Asia/Jakarta'); echo date('d-m-Y H:i:s')?>" readonly="" class="form-control" id="tgl" name="tgl" style="margin-bottom: 25px">
                                             </div>
 
 
-                                            <div class="form-group">
+                                             <div class="col-md-2">
                                                      <label class="control-label " for="item">ITEM :</label>
+                                                 </div>
+                                                   <div class="col-md-4">
                                            
                                                 <input type="text" class="form-control" name="item" style="margin-bottom: 25px" required="" autocomplete="off">
                                             </div>
+                                        </div>
+                                    </div>
 
-                                            <div class="form-group">
+                                           <div class="col-md-12">
+                                        <div class="row">
+                                            <div class="col-md-2">
                                                      <label class="control-label " for="tanggal_butuh">DUEDATE PENAWARAN :</label>
+                                                 </div>
+                                                 <div class="col-md-4">
                                            
                                                 <input type="date" class="form-control" name="tanggal_butuh" style="margin-bottom: 25px" required="" autocomplete="off">
                                             </div>
 
-                                             <div class="form-group">
-                                                     <label class="control-label " for="section">SECTION</label>
+
+                                               <div class="col-md-2">
+                                                     <label class="control-label " for="section">SECTION</label></div>
+                                                         <div class="col-md-4">
                                            <input type="text" class="form-control" readonly="" name="section" value="<?php echo $this->session->userdata('logged_in')['username'] ?>"> 
                                               
                                             </div>
+                                        </div>
+                                    </div>
 
-                                            <div class="form-group">
-                                                     <label class="control-label " for="pic">PIC:</label>
+                                        <div class="col-md-12">
+                                        <div class="row">
+                                            <div class="col-md-2">
+                                                     <label class="control-label " for="pic">PIC:</label></div>
+                                                     <div class="col-md-4"> 
                                            
-                                                <input type="text" class="form-control" name="pic" style="margin-bottom: 25px" required="" autocomplete="off">
+                                                <input type="text" class="form-control" name="pic" style="margin-bottom: 25px" autocomplete="off">
                                             </div>
                                             
-                                             <div class="form-group">
-                                                     <label class="control-label " for="bahan">MATERIAL/BAHAN:</label>
-                                           
+                                             <div class="col-md-2">
+                                                     <label class="control-label " for="bahan">MATERIAL/BAHAN:</label></div>
+                                             <div class="col-md-4">
                                                 <input type="text" class="form-control" name="bahan" style="margin-bottom: 25px" autocomplete="off">
                                             </div>
+                                        </div>
+                                    </div>
 
-                                             <div class="form-group">
+                                          <div class="col-md-12">
+                                        <div class="row">
+                                            <div class="col-md-2">
                                                      <label class="control-label " for="detail">DESKRIPSI:</label>
-                                           
-                                                <input type="text" class="form-control" name="detail" style="margin-bottom: 25px" autocomplete="off">
+                                           </div>
+                                            <div class="col-md-4">
+                                                <textarea name="detail" class="form-control" placeholder="DESCRIPTION ITEM" rows="10">
+                                                    
+                                                </textarea>
                                             </div>
 
-                                            <div class="form-group">
-                                                     <label class="control-label " for="gambar">ATTACHMENT:</label>
-                                                     <i class="fa fa-paperclip"></i>
+                                           <div class="col-md-2">
+                                                     <label class="control-label " for="gambar">ATTACHMENT:</label></div>
+                                                      <div class="col-md-4">
+                                                    
                                                 <input type="file" name="fupload" class="form-control">
                                                 <p>format upload file : PNG/JPG/JPEG/PDF/DOC/DOCX/XLSX</p>
                                             </div>
+                                        </div>
+                                    </div>
 
-                                        
-   
                                      
         
           

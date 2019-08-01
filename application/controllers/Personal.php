@@ -7,6 +7,7 @@ class Personal extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model('Purch_reqModel');
+		$this->load->model('QrModel');
 		 $this->load->helper('url','form','download');
 		  $this->load->library('Excel','upload');
 		  if (!$this->session->userdata('logged_in')) {
@@ -19,8 +20,9 @@ class Personal extends CI_Controller {
 
 public function index()
 	{
+		$datax['notif']= $this->QrModel->getNotifikasi();
 		$data['Purch_req']= $this->Purch_reqModel->getPurch_req();
-		$this->load->view('Personal/header');
+		$this->load->view('Personal/header',$datax);
         $this->load->view('Personal/dashboard',$data);
    
 	}

@@ -8,6 +8,7 @@ class Purch_req extends CI_Controller {
     {
         parent::__construct();
         $this->load->model('Purch_reqModel');
+        $this->load->model('QrModel');
          $this->load->helper('url','form');
         // $this->load->library(array('PHPExcel','PHPExcel/IOFactory'));
          // $this->load->library('excel','upload');
@@ -20,24 +21,22 @@ class Purch_req extends CI_Controller {
 
 public function index()
 	{
+         $datax['notif']= $this->QrModel->getNotifikasi();
 		$data['Purch_req']= $this->Purch_reqModel->getPurch_req();
         if($this->session->userdata('logged_in')['hak_akses']==1){
-		$this->load->view('admin/header');
+		$this->load->view('admin/header',$datax);
         $this->load->view('admin/Purch_req',$data);
 
         }else if($this->session->userdata('logged_in')['hak_akses']==2){
         $data['Purch_req']= $this->Purch_reqModel->getPurch_req_section();
-        $this->load->view('user/header');
+        $this->load->view('user/header',$datax);
         $this->load->view('user/Purch_req',$data);
 
         }else if($this->session->userdata('logged_in')['hak_akses']==4){
         
-        $this->load->view('Personal/header');
+        $this->load->view('Personal/header',$datax);
         $this->load->view('Personal/Purch_req',$data);
 
-    }else{
-        $this->load->view('read_only/header');
-        $this->load->view('read_only/Purch_req',$data);
     }
    
 	}
@@ -61,6 +60,7 @@ public function index()
     }
 
        public function tambahPR(){
+         $datax['notif']= $this->QrModel->getNotifikasi();
         $this->load->model('SectionModel');
         $this->load->helper('url', 'form');
         $this->load->library('form_validation');
@@ -72,10 +72,10 @@ public function index()
         if ($this->form_validation->run()==FALSE) {
              $data['section']=$this->SectionModel->getSection();
               if($this->session->userdata('logged_in')['hak_akses']==1){
-            $this->load->view('admin/header');
+            $this->load->view('admin/header',$datax);
             $this->load->view('admin/tambahPR', $data);
         }else{
-              $this->load->view('user/header');
+              $this->load->view('user/header',$datax);
             $this->load->view('user/tambahPR', $data);
         }
           
@@ -90,6 +90,7 @@ public function index()
        
 
      public function tambahItem($id){
+         $datax['notif']= $this->QrModel->getNotifikasi();
         $this->load->helper('url', 'form');
         $this->load->library('form_validation');
        
@@ -101,10 +102,10 @@ public function index()
             $data['detail']=$this->Purch_reqModel->getItem_barang($id);
 
                if($this->session->userdata('logged_in')['hak_akses']==1){
-            $this->load->view('admin/header');
+            $this->load->view('admin/header',$datax);
             $this->load->view('admin/tambahItem_barang',$data);
         }else{
-              $this->load->view('user/header');
+              $this->load->view('user/header',$datax);
             $this->load->view('admin/tambahItem_barang',$data);
         }
            
@@ -120,6 +121,7 @@ public function index()
 
 
     public function GetItem_barang($id,$status){
+         $datax['notif']= $this->QrModel->getNotifikasi();
         $data['status_fa']=$status;
 
             $data['Purch_req']= $this->Purch_reqModel->GetItem_barang($id);
@@ -127,46 +129,42 @@ public function index()
             $this->load->model('BarangModel');
             $data['barang']= $this->BarangModel->getBarang(); $data['id']=$id;
                 if($this->session->userdata('logged_in')['hak_akses']==1){
-            $this->load->view('admin/header');
+            $this->load->view('admin/header',$datax);
             $this->load->view('admin/GetItem_barang',$data);
 
         }else if($this->session->userdata('logged_in')['hak_akses']==2){
-            $this->load->view('user/header');
+            $this->load->view('user/header',$datax);
             $this->load->view('user/GetItem_barang',$data);
           }else if($this->session->userdata('logged_in')['hak_akses']==4){
-            $this->load->view('Personal/header');
+            $this->load->view('Personal/header',$datax);
             $this->load->view('Personal/GetItem_barang',$data);
          
-            }else{
-            $this->load->view('read_only/header');
-            $this->load->view('read_only/GetItem_barang',$data);
-            }   
+            }  
 
     }
 
      public function GetItem_barang_user($id){
+         $datax['notif']= $this->QrModel->getNotifikasi();
 
             $data['Purch_req']= $this->Purch_reqModel->GetItem_barang($id);
             $data['detail']= $this->Purch_reqModel->jumlahQty($id);
             $this->load->model('BarangModel');
             $data['barang']= $this->BarangModel->getBarang(); $data['id']=$id;
                 if($this->session->userdata('logged_in')['hak_akses']==1){
-            $this->load->view('admin/header');
+            $this->load->view('admin/header',$datax);
             $this->load->view('admin/GetItem_barang',$data);
 
         }else if($this->session->userdata('logged_in')['hak_akses']==2){
-            $this->load->view('user/header');
+            $this->load->view('user/header',$datax);
             $this->load->view('user/GetItem_barang',$data);
           }else if($this->session->userdata('logged_in')['hak_akses']==4){
-            $this->load->view('Personal/header');
+            $this->load->view('Personal/header',$datax);
             $this->load->view('Personal/GetItem_barang',$data);
          
-            }else{
-            $this->load->view('read_only/header');
-            $this->load->view('read_only/GetItem_barang',$data);
-            }   
+           
 
     }
+  }
 
     public function updateItem(){
 
@@ -223,6 +221,7 @@ public function index()
     }
 
       public function InsertPo($id){
+         $datax['notif']= $this->QrModel->getNotifikasi();
        $query = $this->db->select('*')->from('item')->join('purch_req', 'item.id_purch = purch_req.id')->where('item.id_item',$id)->get();
        $status=0;
        $idp=0;
@@ -236,7 +235,7 @@ public function index()
        if($status == 1){
         $data['list'] = $this->Purch_reqModel->getItemById($id);
         $data['qtysisa'] = $this->Purch_reqModel->getQtySisa($id);
-        $this->load->view('admin/header');
+        $this->load->view('admin/header',$datax);
         $this->load->view('admin/InsertPo', $data);
     }else{
           echo "<script>alert('Belum di verifikasi')</script>";

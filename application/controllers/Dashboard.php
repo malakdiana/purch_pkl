@@ -7,6 +7,7 @@ class Dashboard extends CI_Controller {
 	{
 		parent::__construct();
 		 $this->load->model('LoginModel');
+		   $this->load->model('QrModel');
 		 $this->load->helper('url','form','download');
 		 if (!$this->session->userdata('logged_in')) {
 	      redirect('Login','refresh');
@@ -18,21 +19,20 @@ class Dashboard extends CI_Controller {
 	}
 
 public function index()
-	{  if($this->session->userdata('logged_in')['hak_akses']==1){
-		$this->load->view('admin/header');
+	{
+	$datax['notif']= $this->QrModel->getNotifikasi(); 
+	 if($this->session->userdata('logged_in')['hak_akses']==1){
+		$this->load->view('admin/header',$datax);
         $this->load->view('admin/dashboard');
         }else if($this->session->userdata('logged_in')['hak_akses']==2){
-		$this->load->view('user/header');
+		$this->load->view('user/header',$datax);
         $this->load->view('user/dashboard');
     }else if($this->session->userdata('logged_in')['hak_akses']==3){
 		$this->load->view('Invoice/header');
         $this->load->view('Invoice/dashboard');
         }else if($this->session->userdata('logged_in')['hak_akses']==4){
-		$this->load->view('Personal/header');
+		$this->load->view('Personal/header',$datax);
         $this->load->view('Personal/dashboard');  
-    }else{
-    	$this->load->view('read_only/header');
-        $this->load->view('read_only/dashboard');
     }
    
 	}
@@ -40,18 +40,19 @@ public function index()
 	
 
 	public function Myprofil(){
+		$datax['notif']= $this->QrModel->getNotifikasi();
 		
 		if($this->session->userdata('logged_in')['hak_akses']==1){
-		$this->load->view('admin/header');
+		$this->load->view('admin/header',$datax);
        	$this->load->view('admin/Myprofil');
         }else if($this->session->userdata('logged_in')['hak_akses']==2){
-		$this->load->view('user/header');
+		$this->load->view('user/header',$datax);
        	$this->load->view('admin/Myprofil');
     }else if($this->session->userdata('logged_in')['hak_akses']==3){
 		$this->load->view('Invoice/header');
        	$this->load->view('admin/Myprofil');
         }else if($this->session->userdata('logged_in')['hak_akses']==4){
-		$this->load->view('Personal/header');
+		$this->load->view('Personal/header',$datax);
        	$this->load->view('admin/Myprofil'); 
     }else{
     	$this->load->view('read_only/header');

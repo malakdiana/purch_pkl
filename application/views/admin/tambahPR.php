@@ -120,11 +120,12 @@
 <br><br>
 
 
-        <table class="table" style="width: 800px">
+        <table class="table" style="width: 1200px">
           <thead >
-          <th style="width: 400px"> Item </th>
+          <th style="width: 300px"> Item </th>
           <th style="width: 200px"> Satuan </th>
           <th style="width: 100px"> Qty </th>
+          <th style="width: 500px"> Detail</th>
            <th> action</th>
         </thead>
         <tbody id="insert-form">
@@ -136,6 +137,7 @@
                   <option value="<?php echo $key->unit_barang?>"><?php echo $key->unit_barang?></option>
                   <?php } ?></select></td>
           <td> <input type="text" class="form-control" name="qty[]" style="margin-bottom: 25px"></td>
+                <td> <input type="text" class="form-control" name="detail[]" style="margin-bottom: 25px"></td>
           <td> <button class="btn btn-delete btn-danger"> <i class="fa fa-trash"> </i></button></td>
         </tr>
    
@@ -176,7 +178,7 @@
             // pada sebuah tag div yg kita beri id insert-form
            
 
-              $("#insert-form").append(" <tr id='"+x+"'><td> <select class='itemName"+x+" form-control' name='item[]'></select></td><td><select name='unit[]' class='form-control' required=''><?php foreach ($unit as $key) {?><option value='<?php echo $key->unit_barang?>'><?php echo $key->unit_barang?></option><?php } ?></select></td><td> <input type='text' class='form-control' name='qty[]' style='margin-bottom: 25px'></td><td> <button class='btn btn-delete btn-danger'> <i class='fa fa-trash'> </i></button></td></tr>");
+              $("#insert-form").append(" <tr id='"+x+"'><td> <select class='itemName"+x+" form-control' name='item[]'></select></td><td><select name='unit[]' class='form-control' required=''><?php foreach ($unit as $key) {?><option value='<?php echo $key->unit_barang?>'><?php echo $key->unit_barang?></option><?php } ?></select></td><td> <input type='text' class='form-control' name='qty[]' style='margin-bottom: 25px'></td><td> <input type='text' class='form-control' name='detail[]'' style='margin-bottom: 25px'></td><td> <button class='btn btn-delete btn-danger'> <i class='fa fa-trash'> </i></button></td></tr>");
 
 
             $("#scriptt").append(" <script type='text/javascript'>$('.itemName"+x+"').select2({placeholder: '--- Select Item ---', ajax: { url: '<?php echo site_url()?>/Purch_req/getBarang', dataType: 'json',delay: 250, processResults: function (data) {return {results: data };}, cache: true}});");

@@ -60,13 +60,13 @@ padding-top: -19px;
 	.border {
 text-align: center;
 align-content: center;
-	width:150px;
-	height: 37px;
-	padding-top:15px;
+	width:190px;
+	height: 47px;
+	padding-top:19px;
 	transform: skew(0deg);
     border: 2px solid;
     vertical-align: center;
-margin-left: 130px;
+margin-left: 70px;
 }
 .empat {
 	font-size: 8px;
@@ -84,11 +84,11 @@ u.dotted {
 	<table class="satu">
 	<tr>
 		<td colspan="2"></td>
-		<td  style="font-size: 16px;"><p align="center"><div class="border"><b>CONFIDENTIAL</b></div></p></td>
+		<td  style="font-size: 20px;"><p align="center"><div class="border"><b>CONFIDENTIAL</b></div></p></td>
 	<tr>
 		<td width="110px" style="vertical-align: top"><img src="<?php echo base_url()?>assets/images/sai.png" width="84px" height="35px"></td>
-		<td width="365px"> 
-			<center><font size="16px"><b>PT. SURABAYA AUTOCOMP INDONESIA <br></font></b><font size="14px"> <b><i> Wiring Harness Manufacturer </i></b></font> <br><font size="22px"><b><u>VOUCHER PAYING</u></b></font></center></td>
+		<td width="410px" border="1"> 
+			<center><font size="18px"><b>PT. SURABAYA AUTOCOMP INDONESIA <br></font></b><font size="14px"> <b><i> Wiring Harness Manufacturer </i></b></font> <br><font size="22px"><b><u>VOUCHER PAYING</u></b></font></center></td>
 			<td>
 				<table class="lima" style="font-size: 13px">
 				
@@ -125,7 +125,7 @@ u.dotted {
 							<td style="text-align: center;width: 206px; padding-top: 4px"><font size="14px"><center><b> PT MAJU KAWAN TECHNINDO </b></center></font></td>
 						</tr>
 				</table>
-			<td style="border-bottom: 0px; width: 490px">
+			<td style="border-bottom: 0px; width: 510px">
 				<table>
 					<tr>
 					<td style="border: 0px;padding-left: 10px;padding-top: 15px">
@@ -149,8 +149,8 @@ u.dotted {
 
 				</td>
 			<td  style="border-top: 0px">
-			<table style="margin-left: 5px"><tr>
-					<td style="border-top: 1px;border-left:1px;border-right:1px;border-bottom:1px dotted black;padding-left: 10px;padding-top: 15px; vertical-align: top;height: 40px" >
+			<table style="margin-left: 5px" ><tr>
+					<td style="border-top: 1px;border-left:1px;border-right:1px;border-bottom:1px dotted black;padding-top: 15px; vertical-align: top;height: 40px" >
 						Say
 					</td>
 					<td style="border-top: 0px;border-left:0px;border-right:0px;border-bottom:1px dotted black;padding-left: 30px;padding-top: 6px; vertical-align: top; border-bottom: 1px dotted black; width: 350px"><hr style="border-top: 0px;border-left:0px;border-right:0px;border-bottom:1px dotted black;padding-top: 15px;max-height: 40px">
@@ -172,7 +172,7 @@ u.dotted {
 			 <table border="0" width="350px">
 				<tr>
 					<td style="width: 80px;vertical-align: top">Payment for :</td>
-					<td style="width: 260px; height: 43px;text-align: left;vertical-align: top" ><b><?php $no = 1; foreach ($inv as $key ) {
+					<td style="width: 270px; height: 43px;text-align: left;vertical-align: top" ><b><?php $no = 1; foreach ($inv as $key ) {
 						if($no>1){
 				 echo ", ".$key->no_invoice;
 				}else{
@@ -262,7 +262,7 @@ u.dotted {
 	</table>
 </td>
 	<td style="padding: -2px;">
-	<table  width="376px" style="margin-left: -1px;	border-collapse: collapse;" >
+	<table  width="396px" style="margin-left: -1px;	border-collapse: collapse;" >
 		<tr>
 			<td height="20px" colspan="4" style="border-top:0px;border-left:0px;text-align: center;border-right: 1px solid black;">General Ledger</td>
 		</tr>
@@ -283,16 +283,16 @@ u.dotted {
 	</table>
 </td>
 </tr></table>
-	<table class="tiga" style="margin-top: -2px;width: 687px;padding-top: -2px;padding-bottom: -39px" width="766px" >
+	<table class="tiga" style="margin-top: -2px;width: 687px;padding-top: -2px;padding-bottom: -39px" width="786px" >
 		<tr>
-			<td colspan="5" style="text-align: left;padding-left: 2px; border-top: 0px" height="30px">Paid Thru :  <?php echo "$paid"; ?></td>
+			<td colspan="5" style="text-align: left;padding-left: 2px; border-top: 0px" height="30px"><p style="margin-left: 2px">Paid Thru :  <?php echo "$paid"; ?></p></td>
 		</tr>
-		<tr>
-			<td style="border-top:0px" height="20px" width="136px">Cashier / Treasurer</td>
-			<td style="border-top:0px" width="136px">Verified</td>
-			<td style="border-top:0px" width="136px">Approved</td>
-			<td style="border-top:0px" width="136px">Prepared</td>
-			<td style="border-top:0px" width="136px">Received</td>
+		<tr >
+			<td style="border-top:0px; height: 27px" height="20px" width="136px">Cashier / Treasurer</td>
+			<td style="border-top:0px; height: 27px" width="136px">Verified</td>
+			<td style="border-top:0px;height: 27px" width="136px">Approved</td>
+			<td style="border-top:0px;height: 27px" width="136px">Prepared</td>
+			<td style="border-top:0px;height: 27px" width="136px">Received</td>
 		</tr >
 		<tr>
 		<td height="75px"></td>

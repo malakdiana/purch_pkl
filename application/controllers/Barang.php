@@ -8,6 +8,7 @@ class Barang extends CI_Controller {
 		parent::__construct();
 		$this->load->model('BarangModel');
 		 $this->load->helper('url','form','download');
+      $this->load->model('QrModel');
 		// $this->load->library(array('PHPExcel','PHPExcel/IOFactory'));
          if (!$this->session->userdata('logged_in')) {
           redirect('Login','refresh');
@@ -20,17 +21,18 @@ class Barang extends CI_Controller {
 	public function index()
 	
 	{
+    $datax['notif']= $this->QrModel->getNotifikasi();
 		$data['brg']= $this->BarangModel->getBarang();
         if($this->session->userdata('logged_in')['hak_akses']==1){
-		$this->load->view('admin/header');
+		$this->load->view('admin/header',$datax);
 		$this->load->view('admin/Barang',$data);
          }else if($this->session->userdata('logged_in')['hak_akses']==2){
         $data['brg']= $this->BarangModel->getBarang();
-        $this->load->view('user/header');
+        $this->load->view('user/header',$datax);
         $this->load->view('user/Barang',$data);
          }else if($this->session->userdata('logged_in')['hak_akses']==4){
         $data['brg']= $this->BarangModel->getBarang();
-        $this->load->view('Personal/header');
+        $this->load->view('Personal/header',$datax);
         $this->load->view('Personal/Barang',$data);
          }
 	}
@@ -45,13 +47,14 @@ class Barang extends CI_Controller {
 			redirect('Barang', 'refresh');
 	}
 	public function tambahBarang(){
+    $datax['notif']= $this->QrModel->getNotifikasi();
         $this->load->model('Unit_barangModel');
 		$this->load->helper('url', 'form');
 		$this->load->library('form_validation');
 		$this->form_validation->set_rules('nama_barang', 'nama_barang', 'trim|required');
 		if ($this->form_validation->run()==FALSE) {
             $data['listUnit']=$this->Unit_barangModel->getUnit_barang();
-			$this->load->view('admin/header');
+			$this->load->view('admin/header',$datax);
 			$this->load->view('admin/tambahBarang',$data);
 			$this->load->view('admin/footer');
 		}else{
@@ -63,7 +66,8 @@ class Barang extends CI_Controller {
 	}
 
 	public function importBarang(){
-		$this->load->view('admin/header');
+    $datax['notif']= $this->QrModel->getNotifikasi();
+		$this->load->view('admin/header',$datax);
 			$this->load->view('admin/importBarang');
 			$this->load->view('admin/footer');
 	}
