@@ -174,10 +174,12 @@
                               
                                 <li class="dropdown">
                                     <i class="ti-bell dropdown-toggle" data-toggle="dropdown">
-                                        <span> <?php  echo $notif[0]->jumlah ?></span>
+                                        <span> <?php  $ttl=0;
+                                            foreach ($notif as $key ){$ttl++;}
+                                         echo $ttl?> </span>
                                     </i>
                                     <div class="dropdown-menu bell-notify-box notify-box">
-                                        <span class="notify-title">You have <?php  echo $notif[0]->jumlah ?> new notifications </span>
+                                        <span class="notify-title">You have <?php   echo $ttl; ?> new notifications </span>
                                         <div class="nofity-list">
 
                                             <?php

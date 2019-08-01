@@ -123,13 +123,13 @@ class QrModel extends CI_Model {
 
     public function getNotifikasi(){
         if($this->session->userdata('logged_in')['hak_akses']==1){
-      $query = $this->db->select('*,count(*) as jumlah')->from('komen')->join('penawaran', 'komen.id_penawaran = penawaran.id_penawaran')->where('komen.status',1)->where('user !=',$this->session->userdata('logged_in')['username'] )->where('status_lihat',0)->get();
+      $query = $this->db->select('*,count(*) as jumlah')->from('komen')->join('penawaran', 'komen.id_penawaran = penawaran.id_penawaran')->where('komen.status',1)->where('user !=',$this->session->userdata('logged_in')['username'] )->where('status_lihat',0)->group_by('komen.id_penawaran')->get();
     }else{
         $query=$this->db->select('*')->from('section')->where('nama_section', $this->session->userdata('logged_in')['username'])->get();
         if($query->num_rows()==0){
-             $query = $this->db->query("select *,count(*) as jumlah from komen join penawaran on komen.id_penawaran = penawaran.id_penawaran where komen.status = 1 AND user != '".$this->session->userdata('logged_in')['username']."' AND status_lihat =0 AND pic ='".$this->session->userdata('logged_in')['username']."'");
+             $query = $this->db->query("select *,count(*) as jumlah from komen join penawaran on komen.id_penawaran = penawaran.id_penawaran where komen.status = 1 AND user != '".$this->session->userdata('logged_in')['username']."' AND status_lihat =0 AND pic ='".$this->session->userdata('logged_in')['username']."' group by komen.id_penawaran");
          }else{
-        $query = $this->db->query("select *,count(*) as jumlah from komen join penawaran on komen.id_penawaran = penawaran.id_penawaran where komen.status = 1 AND user != '".$this->session->userdata('logged_in')['username']."' AND status_lihat =0 AND section='".$this->session->userdata('logged_in')['username']."'");
+        $query = $this->db->query("select *,count(*) as jumlah from komen join penawaran on komen.id_penawaran = penawaran.id_penawaran where komen.status = 1 AND user != '".$this->session->userdata('logged_in')['username']."' AND status_lihat =0 AND section='".$this->session->userdata('logged_in')['username']."' group by komen.id_penawaran");
     }
     }
       $results=array();

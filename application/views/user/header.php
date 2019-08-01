@@ -95,20 +95,25 @@
                     </div>
                     <!-- profile info & task notification -->
                     <div class="col-md-3 clearfix text-right">
-                        <div class="d-md-inline-block d-block mr-md-4">
+                            <div class="d-md-inline-block d-block mr-md-4">
                             <ul class="notification-area">
                               
                                 <li class="dropdown">
                                     <i class="ti-bell dropdown-toggle" data-toggle="dropdown">
-                                        <span> <?php  echo $notif[0]->jumlah ?></span>
+                                        <span> <?php  $ttl=0;
+                                            foreach ($notif as $key ){$ttl++;}
+                                         echo $ttl?> </span>
                                     </i>
                                     <div class="dropdown-menu bell-notify-box notify-box">
-                                        <span class="notify-title">You have <?php  echo $notif[0]->jumlah ?> new notifications </span>
+                                        <span class="notify-title">You have <?php   echo $ttl; ?> new notifications </span>
                                         <div class="nofity-list">
 
                                             <?php
-                                                if($notif[0]->jumlah == 0){}else{
-                                               $no=1; foreach ($notif as $key ) {
+                                                if($notif[0]->jumlah == 0){
+
+                                                }else{
+                                               $no=1; 
+                                               foreach ($notif as $key ) {
                                             
                                              if($no % 2 == 0){ ?>
                                             <a href="<?php echo site_url()?>/Qr/baca/<?php echo $key->id_penawaran?>" class="notify-item">
@@ -126,7 +131,9 @@
                                                     <span><?php echo $key->kode_qr ?></span>
                                                 </div>
                                             </a>   
-                                        <?php   }}}?>
+                                        <?php   }
+                                     $no++;}
+                                       }?>
                                          </div>
                                      
                                     </div>
