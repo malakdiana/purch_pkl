@@ -181,8 +181,11 @@
                                         <div class="nofity-list">
 
                                             <?php
-                                                if($notif[0]->jumlah == 0){}else{
-                                               $no=1; foreach ($notif as $key ) {
+                                                if($notif[0]->jumlah == 0){
+
+                                                }else{
+                                               $no=1; 
+                                               foreach ($notif as $key ) {
                                             
                                              if($no % 2 == 0){ ?>
                                             <a href="<?php echo site_url()?>/Qr/baca/<?php echo $key->id_penawaran?>" class="notify-item">
@@ -200,8 +203,9 @@
                                                     <span><?php echo $key->kode_qr ?></span>
                                                 </div>
                                             </a>   
-                                        <?php   }}
-                                        $no++;}?>
+                                        <?php   }
+                                     $no++;}
+                                       }?>
                                          </div>
                                      
                                     </div>
