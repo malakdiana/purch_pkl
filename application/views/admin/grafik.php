@@ -75,7 +75,7 @@
                                <h4>Grafik Ammount Supplier Per Bulan</h4><br>
                                 <label>Filter : &nbsp;&nbsp;</label><input name="startDate" id="startDate" class="date-picker" autocomplete="off" />
                               
-                                 <div id="chartdiv"><p id="alert"><center>Tidak Ada Data</center></p></div>
+                                 <div id="chartdiv"></div>
                              </div>
                          </div>
                      </div>
@@ -122,13 +122,13 @@ var datavalue = [];
 var visits = '';
  <?php $i=0 ?>
 
-
 datacategory = <?php echo json_encode($kategori);?>;
 datavalue = <?php echo json_encode($nilai);?>;
 
 for( var i = 0; i < datacategory.length; i++){
     datax.push({"category": datacategory[i], "value1" : datavalue[i]});
 }
+
 
 chart.data= datax;
 
@@ -188,8 +188,13 @@ series.columns.template.adapter.add("fill", function (fill, target) {
 
 
      });
+});
 
-}); 
+
+
+
+  
+   
    </script>
    <!--    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.js"></script>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.min.js"></script>
@@ -215,7 +220,6 @@ series.columns.template.adapter.add("fill", function (fill, target) {
                 data : {tgl: tgl},        
                 dataType: 'json', 
                 success: function(data) { 
-                  
           am4core.useTheme(am4themes_animated);
 
 

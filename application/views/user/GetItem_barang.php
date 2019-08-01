@@ -41,9 +41,10 @@
                                                 <th>NO</th>
                                                 <th>ITEM BARANG</th>
                                                 <th>QTY</th>
+                                                <th>DETAIL</th>
                                                 <th>NO PO</th>
                                                 <th>QTY TO PO</th>
-                                                <th>HARGA</th>
+                                             
                                                 <th >ACTION</th>
                                                 
                                             </tr>
@@ -55,9 +56,10 @@
                                                 <td><?php echo $no;?></td>
                                                 <td><?php echo $key->item_barang;?></td>
                                                 <td><?php echo $key->qty?></td>
+                                                 <td><?php echo $key->detail?></td>
                                                 <td><?php echo $key->no_po;?></td>
                                                 <td><?php echo $key->qtybay;?></td>
-                                                <td><?php echo "Rp " . number_format($key->harga,2,',','.');?> </td>                                            
+                                                                                           
                                                 
 
       
