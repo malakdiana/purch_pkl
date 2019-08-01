@@ -200,7 +200,8 @@
                                                     <span><?php echo $key->kode_qr ?></span>
                                                 </div>
                                             </a>   
-                                        <?php   }}}?>
+                                        <?php   }}
+                                        $no++;}?>
                                          </div>
                                      
                                     </div>
