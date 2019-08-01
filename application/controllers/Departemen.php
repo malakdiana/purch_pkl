@@ -7,6 +7,7 @@ class Departemen extends CI_Controller {
     {
         parent::__construct();
         $this->load->model('DepartemenModel');
+               $this->load->model('QrModel');
          $this->load->helper('url','form','download');
         // $this->load->library(array('PHPExcel','PHPExcel/IOFactory'));
          if (!$this->session->userdata('logged_in')) {
@@ -20,8 +21,9 @@ class Departemen extends CI_Controller {
     public function index()
     
     {
+        $datax['notif']= $this->QrModel->getNotifikasi();
         $data['dpt']= $this->DepartemenModel->getDepartemen();
-        $this->load->view('admin/header');
+        $this->load->view('admin/header',$datax);
         $this->load->view('admin/Departemen',$data);
     }
     public function updateDepartemen(){
@@ -39,7 +41,7 @@ class Departemen extends CI_Controller {
         $this->load->library('form_validation');
         $this->form_validation->set_rules('group_name', 'group_name', 'trim|required');
         if ($this->form_validation->run()==FALSE) {
-            $this->load->view('admin/header');
+            $this->load->view('admin/header',$datax);
             $this->load->view('admin/tambahDepartemen');
             $this->load->view('admin/footer');
         }else{
@@ -51,7 +53,8 @@ class Departemen extends CI_Controller {
     }
 
     public function importDepartemen(){
-        $this->load->view('admin/header');
+        $datax['notif']= $this->QrModel->getNotifikasi();
+        $this->load->view('admin/header',$datax);
             $this->load->view('admin/importDepartemen');
             $this->load->view('admin/footer');
     }

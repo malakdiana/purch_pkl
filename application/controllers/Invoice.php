@@ -167,7 +167,7 @@ $data['say'] = $this->terbilang($total)." Rupiah";
  }
  $data['tf_date']= $this->tgl_indo($data['tf_date']);
  $data['vp_date']= $this->tgl_indo($data['vp_date']);
-		$paper_size= array(0,0,465,640);
+		$paper_size= array(0,0,488,640);
 
 		$orientation = 'landscape'; 
 

@@ -22,9 +22,14 @@ class QrModel extends CI_Model {
 
 
             $query = $this->db->get();
+                $results=array();
             if($query->num_rows() > 0){
             return $query->result();
-        }
+            }else{
+            return $results;
+            }
+
+
     }
     public function getQrById($id){
         $this->db->select('*');
@@ -32,9 +37,14 @@ class QrModel extends CI_Model {
             $this->db->where('id_penawaran', $id);
 
             $query = $this->db->get();
+                 $results=array();
             if($query->num_rows() > 0){
             return $query->result();
-        }
+            }else{
+            return $results;
+            }
+
+        
     }
 
      public function getQr_tracking()
@@ -49,10 +59,86 @@ class QrModel extends CI_Model {
 
          
             $query = $this->db->get();
+               $results=array();
             if($query->num_rows() > 0){
             return $query->result();
-        }
+            }else{
+            return $results;
+            }
+
+     
     }
+
+    public function addKomen($id){
+        $this->db->where('id_penawaran', $id);
+        $this->db->set('status', 2);
+        $this->db->update('komen');
+
+        date_default_timezone_set('Asia/Jakarta');
+       
+        // if($this->session->userdata('logged_in')['hak_akses']==1){
+        //     $user = 'administrator';
+        // }else{
+        //     $user = $this->session->userdata('logged_in')['username'];
+        // }
+
+
+        $data = array(
+            'tanggal' => date('Y-m-d H:i:s'),
+            'id_penawaran' => $id,
+            'user' => $this->session->userdata('logged_in')['username'],
+            'komentar' => $this->input->post('komentar'),
+            'status' => 1
+        );
+        $this->db->insert('komen', $data);
+
+
+    }
+
+    public function getKomen($id){
+
+        $query=$this->db->select('*')->from('komen')->where('id_penawaran',$id)->get();
+         $results=array();
+            if($query->num_rows() > 0){
+            return $query->result();
+            }else{
+            return $results;
+            }
+
+    }
+    public function getIcon(){
+          if($this->session->userdata('logged_in')['hak_akses']==1){
+      $query = $this->db->select('*,count(*) as jumlah')->from('komen')->join('penawaran', 'komen.id_penawaran = penawaran.id_penawaran')->where('komen.status',1)->where('user !=',$this->session->userdata('logged_in')['username'] )->get();
+    }else{
+        $query = $this->db->select('*,count(*) as jumlah')->from('komen')->join('penawaran', 'komen.id_penawaran = penawaran.id_penawaran')->where('komen.status',1)->where('user !=',$this->session->userdata('logged_in')['username'])->where('section',$this->session->userdata('logged_in')['username'])->or_where('pic',$this->session->userdata('logged_in')['username'])->get();
+    }
+     $results=array();
+            if($query->num_rows() > 0){
+            return $query->result();
+            }else{
+            return $results;
+            }
+
+    }
+
+    public function getNotifikasi(){
+        if($this->session->userdata('logged_in')['hak_akses']==1){
+      $query = $this->db->select('*,count(*) as jumlah')->from('komen')->join('penawaran', 'komen.id_penawaran = penawaran.id_penawaran')->where('komen.status',1)->where('user !=',$this->session->userdata('logged_in')['username'] )->where('status_lihat',0)->get();
+    }else{
+        $query=$this->db->select('*')->from('section')->where('nama_section', $this->session->userdata('logged_in')['username'])->get();
+        if($query->num_rows()==0){
+             $query = $this->db->query("select *,count(*) as jumlah from komen join penawaran on komen.id_penawaran = penawaran.id_penawaran where komen.status = 1 AND user != '".$this->session->userdata('logged_in')['username']."' AND status_lihat =0 AND pic ='".$this->session->userdata('logged_in')['username']."'");
+         }else{
+        $query = $this->db->query("select *,count(*) as jumlah from komen join penawaran on komen.id_penawaran = penawaran.id_penawaran where komen.status = 1 AND user != '".$this->session->userdata('logged_in')['username']."' AND status_lihat =0 AND section='".$this->session->userdata('logged_in')['username']."'");
+    }
+    }
+      $results=array();
+            if($query->num_rows() > 0){
+            return $query->result();
+            }else{
+            return $results;
+            }
+}
 
     public function getQr_tracking_personal()
     {
@@ -66,12 +152,17 @@ class QrModel extends CI_Model {
             $this->db->where('section', $section);
          $this->db->order_by('status','ASC'); 
             $this->db->order_by('id_penawaran','DESC');
+            $query= $this->db->get();
 
          
-            $query = $this->db->get();
+               $results=array();
             if($query->num_rows() > 0){
             return $query->result();
-        }
+            }else{
+            return $results;
+            }
+
+        
     }
 
     public function getListVendor($id){
@@ -272,9 +363,14 @@ $tgl= date('d-m-Y',strtotime($this->input->post('tanggal_butuh')));
              $this->db->join('po', 'po.id_po= bayangan.id_po','left');
             $this->db->where('item.id_purch',$id);
             $query = $this->db->get();
+                $results=array();
             if($query->num_rows() > 0){
             return $query->result();
-        }
+            }else{
+            return $results;
+            }
+
+        
     }
 
      public function tambahItem_barang(){

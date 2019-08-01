@@ -110,6 +110,7 @@ class Purch_reqModel extends CI_Model {
         'pic_request' => $this->input->post('pic_request'),
         'section' => $this->input->post('section'),
         'pr_no' => $pr_no,
+
         'status' => "OPEN"
       
         );
@@ -139,7 +140,7 @@ if (!empty($this->input->post('item'))) {
         public function getItem_barang($id)
      {
 
-            $this->db->select('item.id_po ,item.id_item, item.id_purch, item.item_barang,item.qty, po.id_po,po.no_po,bayangan.id_po, bayangan.id_bayangan, bayangan.qty as qtybay, bayangan.harga, item.unit_name');
+            $this->db->select('item.id_po ,item.detail,item.id_item, item.id_purch, item.item_barang,item.qty, po.id_po,po.no_po,bayangan.id_po, bayangan.id_bayangan, bayangan.qty as qtybay, bayangan.harga, item.unit_name');
             $this->db->from('item');
             $this->db->join('bayangan', 'item.id_item= bayangan.id_item', 'left');
              $this->db->join('po', 'po.id_po= bayangan.id_po','left');
@@ -211,12 +212,13 @@ if (!empty($this->input->post('item'))) {
 
      public function tambahItem_barang($id){
         //$id=array();
-        $item_barang=array();$qty=array();$unit=array();
+        $item_barang=array();$qty=array();$unit=array(); $detail=array();
   
         $item_barang= $this->input->post('item');
         $qty= $this->input->post('qty');
         $unit= $this->input->post('unit');
               $jumlah= $this->input->post('jumlah');
+              $detail = $this->input->post('detail');
 
         for ($i=0; $i < count($item_barang) ; $i++) { 
             $nama_barang="";
@@ -231,7 +233,8 @@ if (!empty($this->input->post('item'))) {
         'id_purch' => $id,
         'item_barang' => $nama_barang,
         'qty' => $qty[$i],
-        'unit_name' => $unit[$i]
+        'unit_name' => $unit[$i],
+        'detail' => $detail[$i]
         );
          $this->db->insert('item', $data);
         }

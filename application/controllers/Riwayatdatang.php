@@ -9,6 +9,7 @@ class Riwayatdatang extends CI_Controller {
         parent::__construct();
          $this->load->model('RiwayatdatangModel');
          $this->load->model('Purch_reqModel');
+         $this->load->model('QrModel');
          $this->load->helper('url','form');
           $this->load->helper('url','form','download');
           $this->load->library('Excel','upload');
@@ -23,20 +24,22 @@ class Riwayatdatang extends CI_Controller {
 
 public function index()
 	{
+     $datax['notif']= $this->QrModel->getNotifikasi();
 		$data['Po']= $this->RiwayatdatangModel->getPo();
         
-		$this->load->view('admin/header');
+		$this->load->view('admin/header',$datax);
         $this->load->view('admin/Riwayatdatang',$data);
  }
 
 public function inserttanggal(){
+   $datax['notif']= $this->QrModel->getNotifikasi();
         $this->load->helper('url', 'form');
         $this->load->library('form_validation');
         $this->load->model('RiwayatdatangModel');
          
         $this->form_validation->set_rules('tgl_dtg', 'tgl_dtg', 'trim|required');
         if ($this->form_validation->run()==FALSE) {
-            $this->load->view('admin/header');
+            $this->load->view('admin/header',$datax);
             $this->load->view('admin/Riwayatdatang');
             $this->load->view('admin/footer');
 
@@ -60,9 +63,10 @@ public function inserttanggal(){
 
     public function detaildatang($id)
     {
+       $datax['notif']= $this->QrModel->getNotifikasi();
         $data['Detail']= $this->RiwayatdatangModel->getDetail($id);
         
-        $this->load->view('admin/header');
+        $this->load->view('admin/header',$datax);
         $this->load->view('admin/Detailriwayat',$data);
  }
 

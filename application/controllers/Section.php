@@ -7,6 +7,7 @@ class Section extends CI_Controller {
     {
         parent::__construct();
         $this->load->model('SectionModel');
+        $this->load->model('QrModel');
          $this->load->model('DepartemenModel');
          $this->load->helper('url','form','download');
         // $this->load->library(array('PHPExcel','PHPExcel/IOFactory'));
@@ -21,9 +22,10 @@ class Section extends CI_Controller {
     public function index()
     
     {
+         $datax['notif']= $this->QrModel->getNotifikasi();
         $data['dpt']= $this->SectionModel->getSection();
         $data['listDep']=$this->DepartemenModel->getDepartemen();
-        $this->load->view('admin/header');
+        $this->load->view('admin/header',$datax);
         $this->load->view('admin/Section',$data);
     }
 
@@ -39,13 +41,14 @@ class Section extends CI_Controller {
             redirect('Section', 'refresh');
     }
     public function tambahSection(){
+         $datax['notif']= $this->QrModel->getNotifikasi();
         $this->load->helper('url', 'form');
         $this->load->library('form_validation');
          //$this->load->model('DepartemenModel');
         $this->form_validation->set_rules('nama_section', 'nama_section', 'trim|required');
         if ($this->form_validation->run()==FALSE) {
             //$data['listDep']=$this->DepartemenModel->getDepartemen();
-            $this->load->view('admin/header');
+            $this->load->view('admin/header',$datax);
             $this->load->view('admin/tambahSection');
             $this->load->view('admin/footer');
         }else{
@@ -57,7 +60,8 @@ class Section extends CI_Controller {
     }
 
     public function importSection(){
-        $this->load->view('Admin/header');
+         $datax['notif']= $this->QrModel->getNotifikasi();
+        $this->load->view('admin/header',$datax);
             $this->load->view('admin/importSection');
             $this->load->view('admin/footer');
     }

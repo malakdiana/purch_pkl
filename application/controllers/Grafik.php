@@ -7,6 +7,7 @@ class Grafik extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model('GrafikModel');
+		   $this->load->model('QrModel');
 		 $this->load->helper('url','form','download');
 		  $this->load->library('excel','upload');
 		       $this->load->database();
@@ -18,21 +19,22 @@ if (!$this->session->userdata('logged_in')) {
 	}
 
 public function index()
-	{
+	{ $datax['notif']= $this->QrModel->getNotifikasi();
 		$data['grafik']= $this->GrafikModel->getSupplier();
 		$data['pr'] = $this->GrafikModel->getPrOpen();
 		$data['qr'] = $this->GrafikModel->getQrOpen();
 		$data['eta'] = $this->GrafikModel->eta();
 		$data['delay'] = $this->GrafikModel->delay();
 		$data['section'] = $this->GrafikModel->getSection();
-		$this->load->view('admin/header');
+		$this->load->view('admin/header',$datax);
         $this->load->view('admin/grafik',$data);
    
 	}
 
 	public function setting(){
+		 $datax['notif']= $this->QrModel->getNotifikasi();
 		$data['user']= $this->AddModel->getUser();
-		$this->load->view('admin/header');
+		$this->load->view('admin/header',$datax);
 		$this->load->view('admin/setting',$data);
 	}
 

@@ -7,6 +7,7 @@ class Unit_barang extends CI_Controller {
     {
         parent::__construct();
         $this->load->model('Unit_barangModel');
+        $this->load->model('QrModel');
          $this->load->helper('url','form','download');
         // $this->load->library(array('PHPExcel','PHPExcel/IOFactory'));
           $this->load->library('Excel','upload');
@@ -20,8 +21,9 @@ class Unit_barang extends CI_Controller {
     public function index()
     
     {
+        $datax['notif']= $this->QrModel->getNotifikasi();
         $data['unit']= $this->Unit_barangModel->getUnit_barang();
-        $this->load->view('admin/header');
+        $this->load->view('admin/header',$datax);
         $this->load->view('admin/Unit_barang',$data);
     }
     public function updateUnit_barang(){
@@ -35,11 +37,12 @@ class Unit_barang extends CI_Controller {
             redirect('Unit_barang', 'refresh');
     }
     public function tambahUnit_barang(){
+        $this->load->view('admin/header');
         $this->load->helper('url', 'form');
         $this->load->library('form_validation');
         $this->form_validation->set_rules('unit_barang', 'unit_barang', 'trim|required');
         if ($this->form_validation->run()==FALSE) {
-            $this->load->view('admin/header');
+            $this->load->view('admin/header',$datax);
             $this->load->view('admin/tambahUnit_barang');
             $this->load->view('admin/footer');
         }else{
@@ -52,6 +55,7 @@ class Unit_barang extends CI_Controller {
 
     public function importUnit_barang(){
         $this->load->view('admin/header');
+        $this->load->view('admin/header',$datax);
             $this->load->view('admin/importUnit_barang');
             $this->load->view('admin/footer');
     }

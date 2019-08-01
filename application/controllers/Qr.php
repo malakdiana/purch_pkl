@@ -16,42 +16,51 @@ class Qr extends CI_Controller {
         redirect('Login','refresh');
       }
 
-    
+ 
+
     }
 
 public function index()
 	{
+      $data['icon']= $this->QrModel->getIcon();
+     $datax['notif']= $this->QrModel->getNotifikasi();
 		$data['Qr']=$this->QrModel->getQr();
         if($this->session->userdata('logged_in')['hak_akses']==1){
-             $this->load->view('admin/header');
+             $this->load->view('admin/header',$datax);
         $this->load->view('admin/quotation',$data);
         
     }else if($this->session->userdata('logged_in')['hak_akses']==2){
-             $this->load->view('user/header');
+             $this->load->view('user/header',$datax);
         $this->load->view('user/Qr',$data);
     }else if($this->session->userdata('logged_in')['hak_akses']==4){
-             $this->load->view('Personal/header');
+             $this->load->view('Personal/header',$datax);
         $this->load->view('Personal/Qr',$data);
 		
-    }else{
-        $this->load->view('read_only/header');
-        $this->load->view('read_only/Qr',$data);
     }
    
 	}
 
-       public function tambahQR(){
+  public function komen($id){
+    $this->QrModel->addKomen($id);
+    if($this->session->userdata('logged_in')['hak_akses']==1){
+    redirect('Qr/detailQuotation/'.$id);
+  }else{
+      redirect('Qr/detailQuotationUser/'.$id);
+  }
+  }
+
+       public function tambahQR (){ $datax['notif']= $this->QrModel->getNotifikasi();
         $this->load->model('SectionModel');
         $this->load->helper('url', 'form');
     
             $data['section']=$this->SectionModel->getSection();
 
             if($this->session->userdata('logged_in')['hak_akses']==2){
-            $this->load->view('user/header');
+            $this->load->view('user/header',$datax);
             $this->load->view('user/tambahQR', $data);
             $this->load->view('admin/footer');
             }else if($this->session->userdata('logged_in')['hak_akses']==4){
-            $this->load->view('Personal/header');
+            $this->load->view('Personal/header',$datax);
             $this->load->view('Personal/tambahQR', $data);
             $this->load->view('admin/footer');
     
@@ -97,25 +106,27 @@ public function index()
     }
 
     public function tambahVendor($id){
+       $datax['notif']= $this->QrModel->getNotifikasi();
         $data['id']=$id;
         $data['vendor']=$this->QrModel->getListVendor($id);
-        $this->load->view('admin/header');
+        $this->load->view('admin/header',$datax);
             $this->load->view('admin/tambahVendor',$data);
 
     }
 
      public function listvendor($id){
+       $datax['notif']= $this->QrModel->getNotifikasi();
         $data['id']=$id;
         $data['vendor']=$this->QrModel->getListVendor($id);
          if($this->session->userdata('logged_in')['hak_akses']==1){
-        $this->load->view('admin/header');
+        $this->load->view('admin/header',$datax);
             $this->load->view('user/list_Vendor',$data);
           }
           else if($this->session->userdata('logged_in')['hak_akses']==2){
-        $this->load->view('user/header');
+        $this->load->view('user/header',$datax);
             $this->load->view('user/list_Vendor',$data);
           }else if($this->session->userdata('logged_in')['hak_akses']==4){
-        $this->load->view('Personal/header');
+        $this->load->view('Personal/header',$datax);
             $this->load->view('Personal/list_Vendor',$data);
           } else{
         $this->load->view('read_only/header');
@@ -155,20 +166,22 @@ $this->upload->initialize($config);
     }
 
     public function editQr($id){
+       $datax['notif']= $this->QrModel->getNotifikasi();
         $data['list'] = $this->QrModel->getQrById($id);
-        $this->load->view('admin/header');
+        $this->load->view('admin/header',$datax);
         $this->load->view('admin/editQuotation', $data);
         $this->load->view('admin/footer');
     }
 
         public function editQrUser($id){
+           $datax['notif']= $this->QrModel->getNotifikasi();
         $data['list'] = $this->QrModel->getQrById($id);
         if($this->session->userdata('logged_in')['hak_akses']==2){
-        $this->load->view('user/header');
+        $this->load->view('user/header',$datax);
         $this->load->view('user/editQR', $data);
         $this->load->view('admin/footer');
         }else if($this->session->userdata('logged_in')['hak_akses']==4){
-        $this->load->view('Personal/header');
+        $this->load->view('Personal/header',$datax);
         $this->load->view('Personal/editQR', $data);
         $this->load->view('admin/footer');
       }
@@ -206,28 +219,59 @@ $this->upload->initialize($config);
 
 
     public function detailQuotation($id){
+       $datax['notif']= $this->QrModel->getNotifikasi();
+      $data['komen']= $this->QrModel->getKomen($id);
        $data['list'] = $this->QrModel->getQrById($id);
-        $this->load->view('admin/header');
+        $this->load->view('admin/header',$datax);
         $this->load->view('admin/detailQuotation', $data);
         $this->load->view('admin/footer');
     }
 
+    public function baca($id){
+      $this->db->set('status_lihat',1);
+      $this->db->where('id_penawaran',$id);
+      $this->db->where('user !=',$this->session->userdata('logged_in')['username'] );
+      $this->db->update('komen');
+      if($this->session->userdata('logged_in')['hak_akses']==1){
+      redirect('Qr/detailQuotation/'.$id);
+    }else{
+       redirect('Qr/detailQuotationUser/'.$id);
+    }
+    }
+
     public function detailQuotationUser($id){
+        $datax['notif']= $this->QrModel->getNotifikasi();
+         $data['komen']= $this->QrModel->getKomen($id);
        $data['list'] = $this->QrModel->getQrById($id);
        if($this->session->userdata('logged_in')['hak_akses']==2){
-        $this->load->view('user/header');
-        $this->load->view('user/detailQuotation', $data);
+        $this->load->view('user/header',$datax);
+        $this->load->view('admin/detailQuotation', $data);
         $this->load->view('admin/footer');
       }else if($this->session->userdata('logged_in')['hak_akses']==4){
-        $this->load->view('Personal/header');
+        $this->load->view('Personal/header',$datax);
         $this->load->view('Personal/detailQuotation', $data);
+        $this->load->view('admin/footer');
+         }
+
+    }
+
+    public function detailQuotationAll($id){
+      $datax['notif']= $this->QrModel->getNotifikasi();
+         $data['komen']= $this->QrModel->getKomen($id);
+       $data['list'] = $this->QrModel->getQrById($id);
+       if($this->session->userdata('logged_in')['hak_akses']==2){
+        $this->load->view('user/header',$datax);
+        $this->load->view('user/detailQuotationAll', $data);
+        $this->load->view('admin/footer');
+      }else if($this->session->userdata('logged_in')['hak_akses']==4){
+        $this->load->view('Personal/header',$datax);
+ $this->load->view('user/detailQuotationAll', $data);
         $this->load->view('admin/footer');
          }else{
          $this->load->view('read_only/header');
         $this->load->view('read_only/editQuotation', $data);
         $this->load->view('admin/footer');
     }
-
     }
 
     public function editQuotation($id){
@@ -398,16 +442,21 @@ $this->upload->initialize($config);
     }
 
     public function tracking()
-    {  $data['Qr']=$this->QrModel->getQr_tracking();
-        $this->load->view('user/header');
+    {   $datax['notif']= $this->QrModel->getNotifikasi();
+      $data['icon']= $this->QrModel->getIcon();
+     $data['Qr']=$this->QrModel->getQr_tracking();
+        $this->load->view('user/header',$datax);
         $this->load->view('user/Tracking_Qr',$data);
         
     }
 
     public function tracking_personal()
-    {  $data['Qr']=$this->QrModel->getQr_tracking_personal();
+    {  
+        $data['icon']= $this->QrModel->getIcon();
+        $datax['notif']= $this->QrModel->getNotifikasi();
+        $data['Qr']=$this->QrModel->getQr_tracking_personal();
 
-        $this->load->view('Personal/header');
+        $this->load->view('Personal/header',$datax);
         $this->load->view('Personal/Tracking_Qr',$data);
       
     }

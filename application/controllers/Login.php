@@ -8,6 +8,7 @@ class Login extends CI_Controller {
     {
         parent::__construct();
         $this->load->model('LoginModel');
+        $this->load->model('QrModel');
         $this->load->model('SectionModel');
          $this->load->helper('url','form');
         // $this->load->library(array('PHPExcel','PHPExcel/IOFactory'));
@@ -27,11 +28,12 @@ class Login extends CI_Controller {
 
 public function ManajemenUser()
 	{
+		 $datax['notif']= $this->QrModel->getNotifikasi();
 		  if (!$this->session->userdata('logged_in')) {
 	      redirect('Login','refresh');
 	  }
 		$data['login']= $this->LoginModel->getLogin();
-		$this->load->view('admin/header');
+		$this->load->view('admin/header',$datax);
         $this->load->view('admin/Login',$data);
    
 	}
@@ -134,6 +136,7 @@ public function ManajemenUser()
             redirect('Login/ManajemenUser', 'refresh');
     }
     public function tambahLogin(){
+    	 $datax['notif']= $this->QrModel->getNotifikasi();
     	  if (!$this->session->userdata('logged_in')) {
 	      redirect('Login','refresh');
 	  }
@@ -143,7 +146,7 @@ public function ManajemenUser()
         $this->form_validation->set_rules('hak_akses', 'hak_akses', 'trim|required');
         if ($this->form_validation->run()==FALSE) {
         
-            $this->load->view('admin/header');
+            $this->load->view('admin/header',$datax);
             $this->load->view('admin/tambahLogin',$data);
             $this->load->view('admin/footer');
         }else{

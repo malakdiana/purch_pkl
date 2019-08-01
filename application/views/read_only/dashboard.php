@@ -2,6 +2,10 @@
     .td {
         width: 160px;
     }
+      html, body {
+      max-width: 100%;
+      overflow-x: hidden;
+      }
 </style>
 <!--  <div class="page-title-area">
                 <div class="row align-items-center">
@@ -42,13 +46,13 @@
                                         <tr align="center">
                                                
                                                 <td style="width:170px">
-                                                <a href="<?php echo site_url()?>/Po/"><button class="btn btn-flat btn-info mb-4" role="button" style="width:360px"><img style="width: 100px;height: 100px" src="<?php echo base_url()?>assets/images/icon/datapo.png"><br>DATA PO</button></a><br></td>
+                                                <a href="<?php echo site_url()?>/Read_only/getPo"><button class="btn btn-flat btn-info mb-4" role="button" style="width:360px"><img style="width: 100px;height: 100px" src="<?php echo base_url()?>assets/images/icon/datapo.png"><br>DATA PO</button></a><br></td>
 
                                                 <td style="width:170px">
-                                                 <a href="<?php echo site_url()?>/Purch_req/"><button class="btn btn-flat btn-info mb-4" role="button" style="width:360px"><img style="width: 100px;height: 100px" src="<?php echo base_url()?>assets/images/icon/datapr.png"><br>DATA PR</button></a><br></td>
+                                                 <a href="<?php echo site_url()?>/Read_only/getPr"><button class="btn btn-flat btn-info mb-4" role="button" style="width:360px"><img style="width: 100px;height: 100px" src="<?php echo base_url()?>assets/images/icon/datapr.png"><br>DATA PR</button></a><br></td>
 
                                                 <td style="width:170px">
-                                                 <a href="<?php echo site_url()?>/Qr/"><button class="btn btn-flat btn-info mb-4" role="button" style="width:360px""><img style="width: 100px;height: 100px" src="<?php echo base_url()?>assets/images/icon/listallquo.png"><br>LIST ALL QUOTATION</button>
+                                                 <a href="<?php echo site_url()?>/Read_only/getQr"><button class="btn btn-flat btn-info mb-4" role="button" style="width:360px""><img style="width: 100px;height: 100px" src="<?php echo base_url()?>assets/images/icon/listallquo.png"><br>LIST ALL QUOTATION</button>
                                                  </a><br></td>
 
                                                

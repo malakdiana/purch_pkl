@@ -7,6 +7,7 @@ class Pricelist extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model('PricelistModel');
+        $this->load->model('QrModel');
 		 $this->load->helper('url','form','download');
 		// $this->load->library(array('PHPExcel','PHPExcel/IOFactory'));
 		  $this->load->library('Excel','upload');
@@ -20,8 +21,9 @@ class Pricelist extends CI_Controller {
 	public function index()
 	
 	{
+         $datax['notif']= $this->QrModel->getNotifikasi();
 		$data['price']= $this->PricelistModel->getPricelist();
-		$this->load->view('admin/header');
+		$this->load->view('admin/header',$datax);
 		$this->load->view('admin/pricelist',$data);
 	}
 	public function updatePricelist(){
@@ -35,13 +37,14 @@ class Pricelist extends CI_Controller {
 			redirect('Pricelist', 'refresh');
 	}
 	public function tambahPricelist(){
+         $datax['notif']= $this->QrModel->getNotifikasi();
         $this->load->model('Unit_barangModel');
 		$this->load->helper('url', 'form');
 		$this->load->library('form_validation');
 		$this->form_validation->set_rules('nama_supplier', 'nama_supplier', 'trim|required');
 		if ($this->form_validation->run()==FALSE) {
              $data['listUnit']=$this->Unit_barangModel->getUnit_barang();
-			$this->load->view('admin/header');
+			$this->load->view('admin/header',$datax);
 			$this->load->view('admin/tambahPricelist', $data);
 			$this->load->view('admin/footer');
 		}else{
@@ -53,7 +56,8 @@ class Pricelist extends CI_Controller {
 	}
 
 	public function importPricelist(){
-		$this->load->view('admin/header');
+         $datax['notif']= $this->QrModel->getNotifikasi();
+		$this->load->view('admin/header',$datax);
 			$this->load->view('admin/importPricelist');
 			$this->load->view('admin/footer');
 	}

@@ -95,6 +95,45 @@
                     </div>
                     <!-- profile info & task notification -->
                     <div class="col-md-3 clearfix text-right">
+                        <div class="d-md-inline-block d-block mr-md-4">
+                            <ul class="notification-area">
+                              
+                                <li class="dropdown">
+                                    <i class="ti-bell dropdown-toggle" data-toggle="dropdown">
+                                        <span> <?php  echo $notif[0]->jumlah ?></span>
+                                    </i>
+                                    <div class="dropdown-menu bell-notify-box notify-box">
+                                        <span class="notify-title">You have <?php  echo $notif[0]->jumlah ?> new notifications </span>
+                                        <div class="nofity-list">
+
+                                            <?php
+                                                if($notif[0]->jumlah == 0){}else{
+                                               $no=1; foreach ($notif as $key ) {
+                                            
+                                             if($no % 2 == 0){ ?>
+                                            <a href="<?php echo site_url()?>/Qr/baca/<?php echo $key->id_penawaran?>" class="notify-item">
+                                                <div class="notify-thumb"><i class="ti-key btn-danger"></i></div>
+                                                <div class="notify-text">
+                                                    <p>You have New Massage</p>
+                                                    <span><?php echo $key->kode_qr ?></span>
+                                                </div>
+                                            </a>
+                                        <?php   }else{ ?>
+                                            <a href="<?php echo site_url()?>/Qr/baca/<?php echo $key->id_penawaran?>" class="notify-item">
+                                                <div class="notify-thumb"><i class="ti-comments-smiley btn-info"></i></div>
+                                                <div class="notify-text">
+                                                      <p>You have New Massage</p>
+                                                    <span><?php echo $key->kode_qr ?></span>
+                                                </div>
+                                            </a>   
+                                        <?php   }}}?>
+                                         </div>
+                                     
+                                    </div>
+                                </li>
+                               
+                       </ul>
+                   </div>
                         <div class="clearfix d-md-inline-block d-block" style="margin-right: -14px">
                             <div class="user-profile m-0" style="background:#17a2b8">
                                  <img class="avatar user-thumb" src="<?php echo base_url()?>assets/images/author/avatar.png" alt="avatar">

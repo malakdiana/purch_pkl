@@ -53,16 +53,16 @@
                             <nav>
                                 <ul id="nav_menu">
                                     <li>
-                                        <a href="<?php echo site_url()?>/Dashboard"><h6><i class="ti-home"></i><span>Home</h6></span></a>
+                                        <a href="<?php echo site_url()?>/Read_only/dashboard"><h6><i class="ti-home"></i><span>Home</h6></span></a>
                                         
                                     </li>
                                     <li>
                                          <a href="javascript:void(0)" aria-expanded="true"><h6><i class="ti-book"></i><span>Data</h6>
                                     </span></a>
                                 <ul class="submenu">
-                                      <li><a href="<?php echo site_url()?>/Po">Data PO</a></li>
-                                    <li><a href="<?php echo site_url()?>/Purch_req">Data PR</a></li>
-                                    <li><a href="<?php echo site_url()?>/Qr/">List All Quotation</a></li>
+                                      <li><a href="<?php echo site_url()?>/Read_only/getPo">Data PO</a></li>
+                                    <li><a href="<?php echo site_url()?>/Read_only/getPr">Data PR</a></li>
+                                    <li><a href="<?php echo site_url()?>/Read_only/getQr">List All Quotation</a></li>
                                    
                                   
                                 </ul>
