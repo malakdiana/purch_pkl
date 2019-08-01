@@ -25,7 +25,7 @@
                                 <div class="card">
                                     <div class="seo-fact sbg1">
                                         <div class="p-4 d-flex justify-content-between align-items-center">
-                                            <div class="seofct-icon"><i class="ti-folder"></i> PR OPEN</div>
+                                            <div class="seofct-icon"><i class="ti-folder" style="width:20px;height:20px;"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JUMLAH<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; PR OPEN</div>
                                             
                                             <h2><font color="black"><?php   echo $pr[0]->jumlah; ?></h2></font>
                                         </div>
@@ -36,7 +36,7 @@
                                 <div class="card">
                                     <div class="seo-fact sbg2">
                                         <div class="p-4 d-flex justify-content-between align-items-center">
-                                            <div class="seofct-icon"><i class="ti-book"></i> QR OPEN</div>
+                                            <div class="seofct-icon"><i class="ti-book" style="width:20px;height:20px;"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JUMLAH<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; QR OPEN</div>
                                              
                                             <h2><font color="black"><?php   echo $qr[0]->jumlah; ?></h2></font>
                                         </div>
@@ -47,7 +47,7 @@
                                 <div class="card">
                                     <div class="seo-fact sbg1">
                                         <div class="p-4 d-flex justify-content-between align-items-center">
-                                            <div class="seofct-icon"><i class="ti-calendar"></i> Eta For <?php $tgl = mktime(0, 0, 0, date("m"), date("d")+1, date("Y")); $tgl =  date("Y-m-d", $tgl); echo $tgl ;?>
+                                            <div class="seofct-icon"><i class="ti-calendar" style="width:20px;height:20px;"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JUMLAH ETA<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  <?php $tgl = mktime(0, 0, 0, date("m"), date("d")+1, date("Y")); $tgl =  date("Y-m-d", $tgl); echo $tgl ;?>
                                             </div>
                                              
                                             <h2><font color="black"><?php echo $eta[0]->jumlah; ?></h2></font>
@@ -59,7 +59,7 @@
                                 <div class="card">
                                     <div class="seo-fact sbg2">
                                         <div class="p-4 d-flex justify-content-between align-items-center">
-                                            <div class="seofct-icon"><i class="ti-time"></i> DELAY</div>
+                                            <div class="seofct-icon"><i class="ti-time" style="width:20px;height:20px;" ></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JUMLAH <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DELAY</div>
                                             <h2><font color="black"><?php echo $delay[0]->jumlah; ?></h2></font>
                                         </div>
                                     </div>

@@ -71,7 +71,7 @@
                                            
                                                 <input type="date" class="form-control" name="vp_date" id="vp_date" style="margin-bottom: 25px" value="<?php echo $docrec[0]->vp_date ?>" disabled="true" >
                                             </div>
-                                              <div class="col-sm-4" >
+                                              <div class="col-sm-3" >
                                               </div>
                                             <div id="tombol"></div>
 
@@ -80,7 +80,7 @@
                                               <div id="edit">
                                    
                                              <button id="btn-edit" class="btn btn-info" onclick="edit()" style="align-items: right" > Edit</button>
-                                           <a href="javascript:void(0);" class="btn btn-danger btn-sm item_delete" onclick="modalDeleteDocRec('<?php echo $docrec[0]->id_receipt ?>')"  data-toggle="modal" data-target="#Modal_Delete_Docrec">Hapus</a>
+                                           <a href="javascript:void(0);" class="btn btn-danger btn-sm item_delete" onclick="modalDeleteDocRec('<?php echo $docrec[0]->id_receipt ?>')"  data-toggle="modal" data-target="#Modal_Delete_Docrec">Hapus Docrec</a>
                                            </div>
                                        
                                           </div>
@@ -121,9 +121,9 @@
 
       </tbody>
         </table>
-        <div align="left">
-        <button class="btn btn-warning" type="submit">Simpan</button>
-        <button type="button" class="btn btn-success" id="btn-tambah-form">Tambah Data Form</button>
+        <div align="right">
+        <button class="btn btn-success" type="submit"><i class="ti-save"></i> Simpan</button>
+        <button type="button" class="btn btn-info" id="btn-tambah-form"><i class="ti-plus"></i> Tambah Data Form</button>
 
         <input type="hidden" id="jumlah-form" name="jumlah" value="1">
 <?php echo form_close(); ?>
@@ -338,7 +338,7 @@
            
               document.getElementById('vp_date').disabled = false;
         $("#edit").html("");
-               $("#tombol").append("  <button id='btn-simpan'  onclick='simpan()' class='btn btn-success'> Simpan</button>  <a href='<?php echo site_url()?>/Invoice/editDOcRec/<?php echo $docrec[0]->id_receipt?>' id='btn-batal' class='btn btn-info'>Batal</a>");
+               $("#tombol").append("  <button id='btn-simpan'  onclick='simpan()' class='btn btn-success'> Simpan</button>  <a href='<?php echo site_url()?>/Invoice/editDOcRec/<?php echo $docrec[0]->id_receipt?>' id='btn-batal' class='btn btn-warning'>Batal</a>");
          }
 
 
