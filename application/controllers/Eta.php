@@ -19,7 +19,7 @@ class Eta extends CI_Controller {
 public function index()
 	{
 
-      $datax['notif']= $this->QrModel->getNotifikasi();
+      $datax['notif']= $this->QrModel->getNotifikasi(); $datax['edit']= $this->QrModel->getNotifEdit();
 		if(empty($this->input->post('search'))){
 		$tgl = mktime(0, 0, 0, date("m"), date("d")+1, date("Y"));
 		//$date->modify('+24 hours');
@@ -41,7 +41,7 @@ public function index()
   }
 
 	public function get($tgl){
-    $datax['notif']= $this->QrModel->getNotifikasi();
+    $datax['notif']= $this->QrModel->getNotifikasi(); $datax['edit']= $this->QrModel->getNotifEdit();
 		$data['tgl']=$tgl;
 		$data['eta']= $this->EtaModel->getPo($tgl);
 		$this->load->view('admin/header',$datax);
@@ -50,7 +50,7 @@ public function index()
 
 	public function delay()
 	{
-    $datax['notif']= $this->QrModel->getNotifikasi();
+    $datax['notif']= $this->QrModel->getNotifikasi(); $datax['edit']= $this->QrModel->getNotifEdit();
 		$tgl = $this->input->post('search');
 		$tgl2 = $this->input->post('search2');
 		
@@ -77,7 +77,7 @@ public function index()
 	}
 
 	public function getDelay($tgl1,$tgl2){
-    $datax['notif']= $this->QrModel->getNotifikasi();
+    $datax['notif']= $this->QrModel->getNotifikasi(); $datax['edit']= $this->QrModel->getNotifEdit();
 		$data['tgl1']=$tgl1;
 		$data['tgl2']=$tgl2;
 		$data['delay']= $this->EtaModel->getDelay($tgl1,$tgl2);

@@ -31,6 +31,11 @@ class QrModel extends CI_Model {
 
 
     }
+    public function tambahCatatan(){
+        $this->db->set('note', $this->input->post('note'));
+        $this->db->where('id_penawaran', $this->input->post('id'));
+        $this->db->update('penawaran');
+    }
     public function getQrById($id){
         $this->db->select('*');
             $this->db->from('penawaran');
@@ -109,9 +114,16 @@ class QrModel extends CI_Model {
     public function getIcon(){
           if($this->session->userdata('logged_in')['hak_akses']==1){
       $query = $this->db->select('*,count(*) as jumlah')->from('komen')->join('penawaran', 'komen.id_penawaran = penawaran.id_penawaran')->where('komen.status',1)->where('user !=',$this->session->userdata('logged_in')['username'] )->group_by('komen.id_penawaran')->get();
-    }else{
-        $query = $this->db->select('*,count(*) as jumlah')->from('komen')->join('penawaran', 'komen.id_penawaran = penawaran.id_penawaran')->where('komen.status',1)->where('user !=',$this->session->userdata('logged_in')['username'])->where('section',$this->session->userdata('logged_in')['username'])->or_where('pic',$this->session->userdata('logged_in')['username'])->group_by('komen.id_penawaran')->get();
     }
+    else{
+        $query=$this->db->select('*')->from('section')->where('nama_section', $this->session->userdata('logged_in')['username'])->get();
+        if($query->num_rows()==0){
+             $query = $this->db->query("select *,count(*) as jumlah from komen join penawaran on komen.id_penawaran = penawaran.id_penawaran where komen.status = 1 AND user != '".$this->session->userdata('logged_in')['username']."' AND pic ='".$this->session->userdata('logged_in')['username']."' group by komen.id_penawaran");
+         }else{
+        $query = $this->db->query("select *,count(*) as jumlah from komen join penawaran on komen.id_penawaran = penawaran.id_penawaran where komen.status = 1 AND user != '".$this->session->userdata('logged_in')['username']."' AND section='".$this->session->userdata('logged_in')['username']."' group by komen.id_penawaran");
+    }
+    }
+    
      $results=array();
             if($query->num_rows() > 0){
             return $query->result();
@@ -227,13 +239,26 @@ class QrModel extends CI_Model {
                       'pic'=>$this->input->post('pic'),
                        'bahan'=>$this->input->post('bahan'),
                         'detail'=>$this->input->post('detail'),
-                        'status'=>$this->input->post('status')
+                        'status'=>$this->input->post('status'),
+                        'status_edit' =>1
                         
 
             );
 
         $this->db->where('id_penawaran', $id);
         $this->db->update('penawaran', $data);
+    }
+
+    public function getNotifEdit(){
+       $query= $this->db->select('*')->from('penawaran')->where('status_edit',1)->get();
+
+                $results=array();
+            if($query->num_rows() > 0){
+            return $query->result();
+            }else{
+            return $results;
+            }
+
     }
     public function editQuotationGambar(){
          $id = $this->input->post('id_penawaran');

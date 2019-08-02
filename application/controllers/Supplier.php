@@ -22,10 +22,15 @@ class Supplier extends CI_Controller {
 	
 	}
 
+  public function kosongkan(){
+    $this->db->empty_table('supplier');
+    redirect('Supplier');
+  }
+
 	public function index()
 	
 	{
-     $datax['notif']= $this->QrModel->getNotifikasi();
+     $datax['notif']= $this->QrModel->getNotifikasi(); $datax['edit']= $this->QrModel->getNotifEdit();
 		$data['supp']= $this->SupplierModel->getSupplier();
 		$this->load->view('admin/header',$datax);
 		$this->load->view('admin/supplier',$data);
@@ -41,7 +46,7 @@ class Supplier extends CI_Controller {
 			redirect('Supplier', 'refresh');
 	}
 	public function tambahSupplier(){
-     $datax['notif']= $this->QrModel->getNotifikasi();
+     $datax['notif']= $this->QrModel->getNotifikasi(); $datax['edit']= $this->QrModel->getNotifEdit();
 		$this->load->helper('url', 'form');
 		$this->load->library('form_validation');
 		$this->form_validation->set_rules('nama_supplier', 'nama_supplier', 'trim|required');
@@ -58,7 +63,7 @@ class Supplier extends CI_Controller {
 	}
 
 	public function importSupplier(){
-     $datax['notif']= $this->QrModel->getNotifikasi();
+     $datax['notif']= $this->QrModel->getNotifikasi(); $datax['edit']= $this->QrModel->getNotifEdit();
 		$this->load->view('admin/header',$datax);
 			$this->load->view('admin/importSupplier');
 			$this->load->view('admin/footer');

@@ -63,9 +63,15 @@
                                                 <td><?php echo $key->pic;?></td>
                                                
                                                <td><?php 
-                                                if($key->status == 0){?>
+                                                if($key->status == 0){
+                                                    if(empty($key->note)){
+                                                  ?>
+
                                                     <div class="form-control" align="center" value="OPEN" name="status" style="margin-bottom: 25px;width: 100px; background-color: #FFA500; color:#FFF" > OPEN </div>
-                                                     <?php }
+                                                     <?php
+                                                      }else{?>
+                                                          <div class="form-control" align="center" value="OPEN" name="status" style="margin-bottom: 25px;width: 100px; background-color: #FFA500; color:#FFF" > OPEN<br> <font size="1"> on Progresss</font> </div>
+                                                         <?php }}
                                                      else if ($key->status == 1){ ?>  
                                                         <div class="form-control" align="center" value="CLOSED" name="status" style="margin-bottom: 25px;width: 100px; background-color: #CD853F; color:#FFF" > CLOSED </div>
                                                         <?php }
@@ -92,9 +98,10 @@
                                                   }
 
                                                   ?>
-<?php if($key->status ==  0){?>
+<?php if($key->status ==  0 || $key->status == 3){?>
                                              
                                                 <div class="btn-group mb-xl-3" role="group" aria-label="Basic example">
+                                                      <a href="" onclick="modalDetail('<?php echo $key->id_penawaran?>','<?php  echo $key->note;?>' )"  data-toggle="modal" data-target="#myModalDetail"><button type="button" class="btn btn-secondary" style="width:85px; height:45px;"><font color="white"><i class="fa fa-book"></i> Note </font></button></a>
                                      
                                       <a href="<?php echo site_url()?>/Qr/detailQuotation/<?php echo $key->id_penawaran?>" 
                                         > 
@@ -148,65 +155,17 @@
             <div class="modal-content" style="width: 800px; margin-left: -100px;padding: 20px" >
                 <div class="modal-header">
                    
-                    <h4 class="modal-title">Info Supplier</h4>
+                    <h4 class="modal-title">Tambah Catatan</h4>
                      <button align="right" type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
+                <?php  echo form_open('Qr/tambahCatatan'); ?>
                 <div class="modal-body">
-                <table width="600px">
-                    <tr>
-                        <td>ID Penawaran</td>
-                        <td><input type="text" class="form-control" name="id_penawaran" id="id_penawaran" readonly=""></td>
-                    </tr>
-                    <tr>
-                        <td>Tanggal</td>
-                      <td> <input type="text" class="form-control" name="tanggal" readonly="" id="tanggal" value="" ></td>
-                    </tr>
-                    <tr>
-                        <td>Item</td>
-                        <td><input type="text" class="form-control" name="item" id="item" readonly="" value="" ></td>
-                    </tr>
-                    <tr>
-                        <td>Kode Quotation</td>
-                        <td>  <input type="text" class="form-control" name="kode_qr" id="kode_qr" value="" readonly="" ></td>
-                    </tr>
-                    <tr>
-                        <td>Tanggal Butuh</td>
-                        <td> <input type="text" class="form-control" name="tanggal_butuh" id="tanggal_butuh" readonly="" value="" ></td>
-                    </tr>
-                    <tr>
-                        <td>Section</td>
-                        <td> <input type="text" class="form-control" name="section" id="section" value="" readonly=""></td>
-                    </tr>
-                    <tr>
-                        <td>PIC</td>
-                        <td><input type="text" class="form-control" name="pic" id="pic" value="" readonly="" ></td>
-                    </tr>
-                    <tr>
-                        <td>Bahan</td>
-                        <td>   <input type="text" class="form-control" name="bahan" id="bahan" value="" readonly=""></td>
-                    </tr>
-                    <tr>
-                        <td>Detail</td>
-                        <td><input class="form-control" rows="4" id="detail" name="detail">
-                      
-                         </td>
-                    </tr>
-                    <tr>
-                        <td>Status</td>
-                        <td> <input type="text" class="form-control" name="status" id="status" value="" readonly=""></td>
-                    </tr>
-                    <tr>
-                        <td>Attechment</td>
-                        <td>  <a href="" ><p class="gambar"> </p></a></td>
-                    </tr>
-                   
-                     
-
-                </table>
+                  <input type="" name="id" id="id" hidden="">
+                <textarea class="form-control" cols="40" rows="12" name="note" id="note">  
+                </textarea>
             </div>
-               
-               
-            <a href=""><button class="btn-warning" data-dismiss="modal">Batal</button></a>
+            <p align="right"> <button class="btn btn-warning" >Simpan</button></p>
+            <?php   echo form_close(); ?>
         </div>
     </div>
 </div>
@@ -229,6 +188,12 @@
         //   [0, 'desc']
         // ]
       });
+         function modalDetail(id,text){
+        document.getElementById('id').value = id;
+        document.getElementById('note').value = text;
+       
+      
+    }
 
     
   </script>

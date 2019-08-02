@@ -169,11 +169,58 @@
                     </div>
                     <!-- profile info & task notification -->
                     <div class="col-md-3 clearfix text-right" >
+                         <div class="d-md-inline-block d-block mr-md-4">
+                            <ul class="notification-area">
+                              
+                                <li class="dropdown">
+                                    <i style="color: blue" class="ti-bell dropdown-toggle" data-toggle="dropdown">
+                                        <span> <?php  $ttl=0;
+                                            foreach ($edit as $key ){$ttl++;}
+                                         echo $ttl?> </span>
+                                    </i>
+                                    <div class="dropdown-menu bell-notify-box notify-box">
+                                        <span class="notify-title">You have <?php   echo $ttl; ?> new notifications </span>
+                                        <div class="nofity-list">
+
+                                            <?php
+                                                if($ttl == 0){
+
+                                                }else{
+                                               $no=1; 
+                                               foreach ($edit as $key ) {
+                                            
+                                             if($no % 2 == 0){ ?>
+                                            <a href="<?php echo site_url()?>/Qr/bacaEdit/<?php echo $key->id_penawaran?>" class="notify-item">
+                                                <div class="notify-thumb"><i class="ti-pencil btn-danger"></i></div>
+                                                <div class="notify-text">
+                                                    <p><?php echo $key->section ?> Has Changed Their QR</p>
+                                                    <span><?php echo $key->kode_qr ?></span>
+                                                </div>
+                                            </a>
+                                        <?php   }else{ ?>
+                                            <a href="<?php echo site_url()?>/Qr/bacaEdit/<?php echo $key->id_penawaran?>" class="notify-item">
+                                                <div class="notify-thumb"><i class="ti-pencil btn-info"></i></div>
+                                                <div class="notify-text">
+                                                     
+                                                    <p><?php echo $key->section ?> Has Changed Their QR</p>
+                                                    <span><?php echo $key->kode_qr ?></span>
+                                                </div>
+                                            </a>   
+                                        <?php   }
+                                     $no++;}
+                                       }?>
+                                         </div>
+                                     
+                                    </div>
+                                </li>
+                               
+                       </ul>
+                   </div>
                         <div class="d-md-inline-block d-block mr-md-4">
                             <ul class="notification-area">
                               
                                 <li class="dropdown">
-                                    <i class="ti-bell dropdown-toggle" data-toggle="dropdown">
+                                    <i style="color: blue" class="ti-comment dropdown-toggle" data-toggle="dropdown">
                                         <span> <?php  $ttl=0;
                                             foreach ($notif as $key ){$ttl++;}
                                          echo $ttl?> </span>
@@ -191,7 +238,7 @@
                                             
                                              if($no % 2 == 0){ ?>
                                             <a href="<?php echo site_url()?>/Qr/baca/<?php echo $key->id_penawaran?>" class="notify-item">
-                                                <div class="notify-thumb"><i class="ti-key btn-danger"></i></div>
+                                                <div class="notify-thumb"><i class="ti-comments-smiley btn-danger"></i></div>
                                                 <div class="notify-text">
                                                     <p>You have New Massage</p>
                                                     <span><?php echo $key->kode_qr ?></span>

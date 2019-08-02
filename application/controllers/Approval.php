@@ -19,10 +19,15 @@ class Approval extends CI_Controller {
     
     }
 
+public function kosongkan(){
+    $this->db->empty_table('approval');
+    redirect('Approval');
+  }
+
     public function index()
     
     {
-        $datax['notif']= $this->QrModel->getNotifikasi();
+        $datax['notif']= $this->QrModel->getNotifikasi(); $datax['edit']= $this->QrModel->getNotifEdit();
         $data['app']= $this->ApprovalModel->getApproval();
         $this->load->view('admin/header',$datax);
         $this->load->view('admin/Approval',$data);
@@ -38,7 +43,7 @@ class Approval extends CI_Controller {
             redirect('Approval', 'refresh');
     }
     public function tambahApproval(){
-        $datax['notif']= $this->QrModel->getNotifikasi();
+        $datax['notif']= $this->QrModel->getNotifikasi(); $datax['edit']= $this->QrModel->getNotifEdit();
         $this->load->helper('url', 'form');
         $this->load->library('form_validation');
         $this->form_validation->set_rules('nama', 'nama', 'trim|required');
@@ -55,7 +60,7 @@ class Approval extends CI_Controller {
     }
 
     public function importApproval(){
-        $datax['notif']= $this->QrModel->getNotifikasi();
+        $datax['notif']= $this->QrModel->getNotifikasi(); $datax['edit']= $this->QrModel->getNotifEdit();
         $this->load->view('admin/header',$datax);
             $this->load->view('admin/importApproval');
             $this->load->view('admin/footer');

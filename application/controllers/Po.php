@@ -22,7 +22,7 @@ class Po extends CI_Controller {
 
 public function index()
 	{
-         $datax['notif']= $this->QrModel->getNotifikasi();
+         $datax['notif']= $this->QrModel->getNotifikasi(); $datax['edit']= $this->QrModel->getNotifEdit();
 		$data['Po']= $this->PoModel->getPo();
         if($this->session->userdata('logged_in')['hak_akses']==1){
 		$this->load->view('admin/header',$datax);
@@ -165,7 +165,7 @@ public function getTotalPO(){
 
     }
     public function detail_itemPo($id){
-         $datax['notif']= $this->QrModel->getNotifikasi();
+         $datax['notif']= $this->QrModel->getNotifikasi(); $datax['edit']= $this->QrModel->getNotifEdit();
         $data['brg']= $this->PoModel->getItemPo($id);
         $data['id']= $id;
         if($this->session->userdata('logged_in')['hak_akses']==1){
@@ -180,7 +180,7 @@ public function getTotalPO(){
     }
 
        public function tambahPO(){
-         $datax['notif']= $this->QrModel->getNotifikasi();
+         $datax['notif']= $this->QrModel->getNotifikasi(); $datax['edit']= $this->QrModel->getNotifEdit();
         // $this->load->model('SectionModel');
         $this->load->helper('url', 'form');
         $this->load->library('form_validation');
@@ -199,7 +199,7 @@ public function getTotalPO(){
     }
 
     public function tambahItem($id){
-         $datax['notif']= $this->QrModel->getNotifikasi();
+         $datax['notif']= $this->QrModel->getNotifikasi(); $datax['edit']= $this->QrModel->getNotifEdit();
         $this->load->helper('url', 'form');
         $this->load->library('form_validation');
             $this->load->model('SupplierModel');
@@ -222,7 +222,7 @@ public function getTotalPO(){
 
 
     public function GetItem_barang($id){
-         $datax['notif']= $this->QrModel->getNotifikasi();
+         $datax['notif']= $this->QrModel->getNotifikasi(); $datax['edit']= $this->QrModel->getNotifEdit();
 
             $data['Purch_req']= $this->Purch_reqModel->GetItem_barang($id);
             $this->load->model('BarangModel');
@@ -265,7 +265,7 @@ public function getTotalPO(){
     }
 
      public function EditPo($id){
-         $datax['notif']= $this->QrModel->getNotifikasi();
+         $datax['notif']= $this->QrModel->getNotifikasi(); $datax['edit']= $this->QrModel->getNotifEdit();
         $data['list'] = $this->PoModel->getPoById($id);
         $this->load->view('admin/header',$datax);
         $this->load->view('admin/editPo', $data);

@@ -17,11 +17,16 @@ class Unit_barang extends CI_Controller {
 
     
     }
+    public function kosongkan(){
+    $this->db->empty_table('unit_barang');
+    redirect('Unit_barang');
+  }
+
 
     public function index()
     
     {
-        $datax['notif']= $this->QrModel->getNotifikasi();
+        $datax['notif']= $this->QrModel->getNotifikasi(); $datax['edit']= $this->QrModel->getNotifEdit();
         $data['unit']= $this->Unit_barangModel->getUnit_barang();
         $this->load->view('admin/header',$datax);
         $this->load->view('admin/Unit_barang',$data);

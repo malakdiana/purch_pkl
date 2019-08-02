@@ -18,11 +18,16 @@ class Section extends CI_Controller {
 
     
     }
+    public function kosongkan(){
+    $this->db->empty_table('section');
+    redirect('Section');
+  }
+
 
     public function index()
     
     {
-         $datax['notif']= $this->QrModel->getNotifikasi();
+         $datax['notif']= $this->QrModel->getNotifikasi(); $datax['edit']= $this->QrModel->getNotifEdit();
         $data['dpt']= $this->SectionModel->getSection();
         $data['listDep']=$this->DepartemenModel->getDepartemen();
         $this->load->view('admin/header',$datax);
@@ -41,7 +46,7 @@ class Section extends CI_Controller {
             redirect('Section', 'refresh');
     }
     public function tambahSection(){
-         $datax['notif']= $this->QrModel->getNotifikasi();
+         $datax['notif']= $this->QrModel->getNotifikasi(); $datax['edit']= $this->QrModel->getNotifEdit();
         $this->load->helper('url', 'form');
         $this->load->library('form_validation');
          //$this->load->model('DepartemenModel');
@@ -60,7 +65,7 @@ class Section extends CI_Controller {
     }
 
     public function importSection(){
-         $datax['notif']= $this->QrModel->getNotifikasi();
+         $datax['notif']= $this->QrModel->getNotifikasi(); $datax['edit']= $this->QrModel->getNotifEdit();
         $this->load->view('admin/header',$datax);
             $this->load->view('admin/importSection');
             $this->load->view('admin/footer');

@@ -21,7 +21,7 @@ class Purch_req extends CI_Controller {
 
 public function index()
 	{
-         $datax['notif']= $this->QrModel->getNotifikasi();
+         $datax['notif']= $this->QrModel->getNotifikasi(); $datax['edit']= $this->QrModel->getNotifEdit();
 		$data['Purch_req']= $this->Purch_reqModel->getPurch_req();
         if($this->session->userdata('logged_in')['hak_akses']==1){
 		$this->load->view('admin/header',$datax);
@@ -60,7 +60,7 @@ public function index()
     }
 
        public function tambahPR(){
-         $datax['notif']= $this->QrModel->getNotifikasi();
+         $datax['notif']= $this->QrModel->getNotifikasi(); $datax['edit']= $this->QrModel->getNotifEdit();
         $this->load->model('SectionModel');
         $this->load->helper('url', 'form');
         $this->load->library('form_validation');
@@ -90,7 +90,7 @@ public function index()
        
 
      public function tambahItem($id){
-         $datax['notif']= $this->QrModel->getNotifikasi();
+         $datax['notif']= $this->QrModel->getNotifikasi(); $datax['edit']= $this->QrModel->getNotifEdit();
         $this->load->helper('url', 'form');
         $this->load->library('form_validation');
        
@@ -121,7 +121,7 @@ public function index()
 
 
     public function GetItem_barang($id,$status){
-         $datax['notif']= $this->QrModel->getNotifikasi();
+         $datax['notif']= $this->QrModel->getNotifikasi(); $datax['edit']= $this->QrModel->getNotifEdit();
         $data['status_fa']=$status;
 
             $data['Purch_req']= $this->Purch_reqModel->GetItem_barang($id);
@@ -144,7 +144,7 @@ public function index()
     }
 
      public function GetItem_barang_user($id){
-         $datax['notif']= $this->QrModel->getNotifikasi();
+         $datax['notif']= $this->QrModel->getNotifikasi(); $datax['edit']= $this->QrModel->getNotifEdit();
 
             $data['Purch_req']= $this->Purch_reqModel->GetItem_barang($id);
             $data['detail']= $this->Purch_reqModel->jumlahQty($id);
@@ -221,7 +221,7 @@ public function index()
     }
 
       public function InsertPo($id){
-         $datax['notif']= $this->QrModel->getNotifikasi();
+         $datax['notif']= $this->QrModel->getNotifikasi(); $datax['edit']= $this->QrModel->getNotifEdit();
        $query = $this->db->select('*')->from('item')->join('purch_req', 'item.id_purch = purch_req.id')->where('item.id_item',$id)->get();
        $status=0;
        $idp=0;

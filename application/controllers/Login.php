@@ -28,7 +28,7 @@ class Login extends CI_Controller {
 
 public function ManajemenUser()
 	{
-		 $datax['notif']= $this->QrModel->getNotifikasi();
+		 $datax['notif']= $this->QrModel->getNotifikasi(); $datax['edit']= $this->QrModel->getNotifEdit();
 		  if (!$this->session->userdata('logged_in')) {
 	      redirect('Login','refresh');
 	  }
@@ -136,7 +136,7 @@ public function ManajemenUser()
             redirect('Login/ManajemenUser', 'refresh');
     }
     public function tambahLogin(){
-    	 $datax['notif']= $this->QrModel->getNotifikasi();
+    	 $datax['notif']= $this->QrModel->getNotifikasi(); $datax['edit']= $this->QrModel->getNotifEdit();
     	  if (!$this->session->userdata('logged_in')) {
 	      redirect('Login','refresh');
 	  }
