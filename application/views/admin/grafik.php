@@ -351,8 +351,8 @@ series.columns.template.adapter.add("fill", function (fill, target) {
     </script>
 
      <script type="text/javascript">
-        $(function() {
-    $('#datepicker3').datepicker({
+   $(document).on('click', '.modal', function(){
+    $('date-picker3').datepicker({
        changeMonth: true,
           changeYear: true,
           showButtonPanel: true,
@@ -364,10 +364,11 @@ series.columns.template.adapter.add("fill", function (fill, target) {
               }
     });
     
-   $("#datepicker").focus(function () {
-        $(".ui-datepicker-month").hide();
-        $(".ui-datepicker-calendar").hide();
-    });
+
+    $("date-picker3").focus('click', '.modal',function () {
+         $(".ui-datepicker-month").hide();
+         $(".ui-datepicker-calendar").hide();
+     });
     
 });
     </script>
