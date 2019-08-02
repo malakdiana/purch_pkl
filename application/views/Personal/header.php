@@ -109,7 +109,7 @@
                                         <div class="nofity-list">
 
                                             <?php
-                                                if($notif[0]->jumlah == 0){
+                                                if($ttl == 0){
 
                                                 }else{
                                                $no=1; 

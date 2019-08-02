@@ -23,6 +23,7 @@
                         <div class="row">
                             <div class="col-md-3 mt-5 mb-3">
                                 <div class="card">
+                                 
                                     <div class="seo-fact sbg1">
                                         <div class="p-4 d-flex justify-content-between align-items-center">
                                             <div class="seofct-icon"><i class="ti-folder" style="width:20px;height:20px;"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JUMLAH<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; PR OPEN</div>
@@ -70,6 +71,8 @@
                     <!-- data table start -->
                     <div class="col-12 mt-5">
                         <div class="card">   
+                        <div  style="padding-top: 15px;padding-left: 15px">
+                                <a class="btn btn-flat btn-success mb-3" data-toggle="modal" data-target="#myModalDownload"><font color="white"><i class="ti-download"></i> Download Grafik</font></a>
                             <div class="card-body">
                         
                                <h4>Grafik Ammount Supplier Per Bulan</h4><br>
@@ -92,6 +95,30 @@
                  </div>
              </div>
          </div>
+
+          <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModalDownload" class="modal fade-in" >
+        <div class="modal-dialog">
+            <div class="modal-content" style="width: 600px; margin-left: -80px;padding: 20px" >
+                <div class="modal-header">
+
+                    <h4 class="modal-title">DOWNLOAD GRAFIK</h4>
+                 <button align="right" type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <?php echo form_open('Grafik/export'); ?>
+                  <div class="modal-body">
+
+                     <div class="form-group">
+                      <label>TANGGAL DONWLOAD</label>                   
+                     <input name="startDate3" id="startDate" class="date-picker3" autocomplete="off" />
+                      </div>
+                     
+
+                      <p align="right"><button class="btn btn-info" type="submit">Download</button></p>
+<?php echo form_close(); ?>
+                    </div>
+                </div>
+            </div>
+        </div>
                 
            <?php $this->load->view('admin/footer'); ?>
 
@@ -322,6 +349,29 @@ series.columns.template.adapter.add("fill", function (fill, target) {
         });
              });
     </script>
+
+     <script type="text/javascript">
+        $(function() {
+    $('#datepicker3').datepicker({
+       changeMonth: true,
+          changeYear: true,
+          showButtonPanel: true,
+          dateFormat: 'mm/yy',
+        onClose: function(dateText, inst) { 
+                $(this).datepicker('setDate', new Date(inst.selectedYear, inst.selectedMonth, 1));
+                var tgl = $(this).val();
+                console.log(tgl);
+              }
+    });
+    
+   $("#datepicker").focus(function () {
+        $(".ui-datepicker-month").hide();
+        $(".ui-datepicker-calendar").hide();
+    });
+    
+});
+    </script>
+
     <style>
     .ui-datepicker-calendar {
         display: none;

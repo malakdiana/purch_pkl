@@ -88,4 +88,15 @@ class GrafikModel extends CI_Model {
             return $results;
             }
     }
+
+         public function getExport($tgldownload){
+        $query= $this->db->select('supplier, sum(qty*harga) as jumlah')->from('bayangan')->join('po','po.id_po = bayangan.id_po')->where('month(tgl_po)',$tgldownload)->group_by('po.supplier')->order_by('jumlah','DESC')->limit(5)->get();
+            $results=array();
+            if($query->num_rows() > 0){
+            return $query->result();
+            }else{
+            return $results;
+            }
+    }
+
 }
