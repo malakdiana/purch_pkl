@@ -113,9 +113,9 @@ class QrModel extends CI_Model {
     }
     public function getIcon(){
           if($this->session->userdata('logged_in')['hak_akses']==1){
-      $query = $this->db->select('*,count(*) as jumlah')->from('komen')->join('penawaran', 'komen.id_penawaran = penawaran.id_penawaran')->where('komen.status',1)->where('user !=',$this->session->userdata('logged_in')['username'] )->get();
+      $query = $this->db->select('*,count(*) as jumlah')->from('komen')->join('penawaran', 'komen.id_penawaran = penawaran.id_penawaran')->where('komen.status',1)->where('user !=',$this->session->userdata('logged_in')['username'] )->group_by('komen.id_penawaran')->get();
     }else{
-        $query = $this->db->select('*,count(*) as jumlah')->from('komen')->join('penawaran', 'komen.id_penawaran = penawaran.id_penawaran')->where('komen.status',1)->where('user !=',$this->session->userdata('logged_in')['username'])->where('section',$this->session->userdata('logged_in')['username'])->or_where('pic',$this->session->userdata('logged_in')['username'])->get();
+        $query = $this->db->select('*,count(*) as jumlah')->from('komen')->join('penawaran', 'komen.id_penawaran = penawaran.id_penawaran')->where('komen.status',1)->where('user !=',$this->session->userdata('logged_in')['username'])->where('section',$this->session->userdata('logged_in')['username'])->or_where('pic',$this->session->userdata('logged_in')['username'])->group_by('komen.id_penawaran')->get();
     }
      $results=array();
             if($query->num_rows() > 0){
