@@ -21,7 +21,7 @@ class Departemen extends CI_Controller {
     public function index()
     
     {
-        $datax['notif']= $this->QrModel->getNotifikasi();
+        $datax['notif']= $this->QrModel->getNotifikasi(); $datax['edit']= $this->QrModel->getNotifEdit();
         $data['dpt']= $this->DepartemenModel->getDepartemen();
         $this->load->view('admin/header',$datax);
         $this->load->view('admin/Departemen',$data);
@@ -53,7 +53,7 @@ class Departemen extends CI_Controller {
     }
 
     public function importDepartemen(){
-        $datax['notif']= $this->QrModel->getNotifikasi();
+        $datax['notif']= $this->QrModel->getNotifikasi(); $datax['edit']= $this->QrModel->getNotifEdit();
         $this->load->view('admin/header',$datax);
             $this->load->view('admin/importDepartemen');
             $this->load->view('admin/footer');

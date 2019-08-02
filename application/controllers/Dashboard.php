@@ -20,7 +20,7 @@ class Dashboard extends CI_Controller {
 
 public function index()
 	{
-	$datax['notif']= $this->QrModel->getNotifikasi(); 
+	$datax['notif']= $this->QrModel->getNotifikasi(); $datax['edit']= $this->QrModel->getNotifEdit(); 
 	 if($this->session->userdata('logged_in')['hak_akses']==1){
 		$this->load->view('admin/header',$datax);
         $this->load->view('admin/dashboard');
@@ -40,7 +40,7 @@ public function index()
 	
 
 	public function Myprofil(){
-		$datax['notif']= $this->QrModel->getNotifikasi();
+		$datax['notif']= $this->QrModel->getNotifikasi(); $datax['edit']= $this->QrModel->getNotifEdit();
 		
 		if($this->session->userdata('logged_in')['hak_akses']==1){
 		$this->load->view('admin/header',$datax);

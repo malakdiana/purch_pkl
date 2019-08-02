@@ -26,7 +26,7 @@ class Barang extends CI_Controller {
 	public function index()
 	
 	{
-    $datax['notif']= $this->QrModel->getNotifikasi();
+    $datax['notif']= $this->QrModel->getNotifikasi(); $datax['edit']= $this->QrModel->getNotifEdit();
 		$data['brg']= $this->BarangModel->getBarang();
         if($this->session->userdata('logged_in')['hak_akses']==1){
 		$this->load->view('admin/header',$datax);
@@ -52,7 +52,7 @@ class Barang extends CI_Controller {
 			redirect('Barang', 'refresh');
 	}
 	public function tambahBarang(){
-    $datax['notif']= $this->QrModel->getNotifikasi();
+    $datax['notif']= $this->QrModel->getNotifikasi(); $datax['edit']= $this->QrModel->getNotifEdit();
         $this->load->model('Unit_barangModel');
 		$this->load->helper('url', 'form');
 		$this->load->library('form_validation');
@@ -71,7 +71,7 @@ class Barang extends CI_Controller {
 	}
 
 	public function importBarang(){
-    $datax['notif']= $this->QrModel->getNotifikasi();
+    $datax['notif']= $this->QrModel->getNotifikasi(); $datax['edit']= $this->QrModel->getNotifEdit();
 		$this->load->view('admin/header',$datax);
 			$this->load->view('admin/importBarang');
 			$this->load->view('admin/footer');

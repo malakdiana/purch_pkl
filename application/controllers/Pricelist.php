@@ -21,7 +21,7 @@ class Pricelist extends CI_Controller {
 	public function index()
 	
 	{
-         $datax['notif']= $this->QrModel->getNotifikasi();
+         $datax['notif']= $this->QrModel->getNotifikasi(); $datax['edit']= $this->QrModel->getNotifEdit();
 		$data['price']= $this->PricelistModel->getPricelist();
 		$this->load->view('admin/header',$datax);
 		$this->load->view('admin/pricelist',$data);
@@ -37,7 +37,7 @@ class Pricelist extends CI_Controller {
 			redirect('Pricelist', 'refresh');
 	}
 	public function tambahPricelist(){
-         $datax['notif']= $this->QrModel->getNotifikasi();
+         $datax['notif']= $this->QrModel->getNotifikasi(); $datax['edit']= $this->QrModel->getNotifEdit();
         $this->load->model('Unit_barangModel');
 		$this->load->helper('url', 'form');
 		$this->load->library('form_validation');
@@ -56,7 +56,7 @@ class Pricelist extends CI_Controller {
 	}
 
 	public function importPricelist(){
-         $datax['notif']= $this->QrModel->getNotifikasi();
+         $datax['notif']= $this->QrModel->getNotifikasi(); $datax['edit']= $this->QrModel->getNotifEdit();
 		$this->load->view('admin/header',$datax);
 			$this->load->view('admin/importPricelist');
 			$this->load->view('admin/footer');

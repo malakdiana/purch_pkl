@@ -24,7 +24,7 @@ class Riwayatdatang extends CI_Controller {
 
 public function index()
 	{
-     $datax['notif']= $this->QrModel->getNotifikasi();
+     $datax['notif']= $this->QrModel->getNotifikasi(); $datax['edit']= $this->QrModel->getNotifEdit();
 		$data['Po']= $this->RiwayatdatangModel->getPo();
         
 		$this->load->view('admin/header',$datax);
@@ -32,7 +32,7 @@ public function index()
  }
 
 public function inserttanggal(){
-   $datax['notif']= $this->QrModel->getNotifikasi();
+   $datax['notif']= $this->QrModel->getNotifikasi(); $datax['edit']= $this->QrModel->getNotifEdit();
         $this->load->helper('url', 'form');
         $this->load->library('form_validation');
         $this->load->model('RiwayatdatangModel');
@@ -63,7 +63,7 @@ public function inserttanggal(){
 
     public function detaildatang($id)
     {
-       $datax['notif']= $this->QrModel->getNotifikasi();
+       $datax['notif']= $this->QrModel->getNotifikasi(); $datax['edit']= $this->QrModel->getNotifEdit();
         $data['Detail']= $this->RiwayatdatangModel->getDetail($id);
         
         $this->load->view('admin/header',$datax);

@@ -223,7 +223,7 @@
             <div class="modal-content" style="width: 800px; margin-left: -100px;padding: 20px" >
                 <div class="modal-header">
                    
-                    <h4 class="modal-title">Tambah Catatan</h4>
+                    <h4 class="modal-title">Catatan</h4>
                      <button align="right" type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
              

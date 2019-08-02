@@ -26,7 +26,7 @@ public function index()
 	}
 
 	public function setting(){
-		$datax['notif']= $this->QrModel->getNotifikasi();
+		$datax['notif']= $this->QrModel->getNotifikasi(); $datax['edit']= $this->QrModel->getNotifEdit();
 		$data['user']= $this->AddModel->getUser();
 		$this->load->view('admin/header',$datax);
 		$this->load->view('admin/setting',$data);
