@@ -18,6 +18,11 @@ class Section extends CI_Controller {
 
     
     }
+    public function kosongkan(){
+    $this->db->empty_table('section');
+    redirect('Section');
+  }
+
 
     public function index()
     

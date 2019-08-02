@@ -31,6 +31,11 @@ class QrModel extends CI_Model {
 
 
     }
+    public function tambahCatatan(){
+        $this->db->set('note', $this->input->post('note'));
+        $this->db->where('id_penawaran', $this->input->post('id'));
+        $this->db->update('penawaran');
+    }
     public function getQrById($id){
         $this->db->select('*');
             $this->db->from('penawaran');

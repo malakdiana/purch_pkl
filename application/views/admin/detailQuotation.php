@@ -156,7 +156,7 @@
                             if($key->user != $this->session->userdata('logged_in')['username']){
                             ?>
                         <li class="left clearfix"><span class="chat-img pull-left">
-                            <img src="http://placehold.it/50/55C1E7/fff&text=A" alt="User Avatar" class="img-circle" />
+                            <img src="<?php echo base_url()?>assets/images/U.png" alt="User Avatar" class="img-circle" />
                         </span>
                             <div class="chat-body clearfix">
                                 <div class="header">
@@ -170,7 +170,7 @@
                         </li>
                     <?php }else{ ?>
                         <li class="right clearfix"><span class="chat-img pull-right">
-                            <img src="http://placehold.it/50/FA6F57/fff&text=ME" alt="User Avatar" class="img-circle" />
+                            <img src="<?php echo base_url()?>assets/images/ME.png" alt="User Avatar" class="img-circle" />
                         </span>
                             <div class="chat-body clearfix">
                                 <div class="header">
@@ -193,8 +193,12 @@
                         <span class="input-group-btn">
                             <button class="btn btn-warning btn-sm" id="btn-chat">
                                 Send</button>
-                        </span>
+                                
+                     
                         <?php echo form_close();?>
+                          <a href="<?php echo site_url()?>/Qr/endChat/<?php echo $this->uri->segment('3'); ?>" class="btn btn-danger btn-sm" id="btn-chatt">
+                                End Chat</a>
+                           </span>
                     </div>
                 </div>
             </div>

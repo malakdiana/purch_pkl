@@ -22,6 +22,11 @@ class Supplier extends CI_Controller {
 	
 	}
 
+  public function kosongkan(){
+    $this->db->empty_table('supplier');
+    redirect('Supplier');
+  }
+
 	public function index()
 	
 	{

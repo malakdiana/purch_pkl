@@ -60,9 +60,15 @@
                                                 <td><?php echo $key->pic;?></td>
                                                
                                                 <td><?php 
-                                                if($key->status == 0){?>
-                                                   <div class="form-control" align="center" value="OPEN" name="status" style="margin-bottom: 25px;width: 100px; background-color: #FFA500; color:#FFF" > OPEN </div>
-                                                     <?php }
+                                                if($key->status == 0){
+                                                    if(empty($key->note)){
+                                                  ?>
+
+                                                    <div class="form-control" align="center" value="OPEN" name="status" style="margin-bottom: 25px;width: 100px; background-color: #FFA500; color:#FFF" > OPEN </div>
+                                                     <?php
+                                                      }else{?>
+                                                          <div class="form-control" align="center" value="OPEN" name="status" style="margin-bottom: 25px;width: 100px; background-color: #FFA500; color:#FFF" > OPEN<br> <font size="1"> on Progresss</font> </div>
+                                                         <?php }}
                                                      else if ($key->status == 1){ ?>  
                                                         <div class="form-control" align="center" value="CLOSED" name="status" style="margin-bottom: 25px;width: 100px; background-color: #CD853F; color:#FFF" > CLOSED </div>
                                                         <?php }
@@ -91,9 +97,15 @@
                                                   ?>
 
                                                 <?php if($key->status ==  0){?>
-
-
                                                     <div class="btn-group mb-xl-3" role="group" aria-label="Basic example">
+
+                                                 <?php if(!empty($key->note)){
+                                                  ?>
+                                                   <a href="" onclick="modalNote('<?php echo $key->id_penawaran?>','<?php  echo $key->note;?>' )"  data-toggle="modal" data-target="#myModalNote"><button type="button" class="btn btn-secondary" style="width:85px; height:45px;"><font color="white"><i class="fa fa-book"></i> Note </font></button></a>
+                                                 <?php } ?>
+
+
+                                                  
                                                     <a href="<?php echo site_url()?>/Qr/detailQuotationUser/<?php echo $key->id_penawaran?>" 
                                                     >
                                                     <?php if ($status_chat==0){ ?>
@@ -206,6 +218,24 @@
         </div>
     </div>
 </div>
+     <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModalNote" class="modal fade-in" >
+        <div class="modal-dialog">
+            <div class="modal-content" style="width: 800px; margin-left: -100px;padding: 20px" >
+                <div class="modal-header">
+                   
+                    <h4 class="modal-title">Tambah Catatan</h4>
+                     <button align="right" type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+             
+                <div class="modal-body">
+                  <input type="" name="id" id="id" hidden="">
+                <textarea class="form-control" cols="40" rows="12" name="note" id="note">  
+                </textarea>
+            </div>
+     
+        </div>
+    </div>
+</div>
         
     <!-- offset area end -->
     <!-- jquery latest version -->
@@ -231,6 +261,12 @@
         document.getElementById('status').value = status;
           document.getElementById('gambar').value = gambar;
        
+       
+      
+    }
+      function modalNote(id,text){
+        document.getElementById('id').value = id;
+        document.getElementById('note').value = text;
        
       
     }

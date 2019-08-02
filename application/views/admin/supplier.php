@@ -25,6 +25,7 @@
                                 <a class="btn btn-flat btn-primary mb-3" href="<?php echo site_url()?>/Supplier/tambahSupplier" role="button"><i class="fa fa-plus"></i> Tambah Data</a>
                                 <a class="btn btn-flat btn-success mb-3" href="<?php echo site_url()?>/Supplier/importSupplier" role="button"><i class="ti-import"></i> Import Data</a>
                                  <a class="btn btn-flat btn-warning mb-3" href="<?php echo site_url()?>/Supplier/export" role="button"><i class="ti-download"></i> Download Data</a>
+                                   <a class="btn btn-flat btn-danger mb-3"  onclick="return confirm('Apakah Yakin Untuk Menghapus Semua Data?')" href="<?php echo site_url()?>/Supplier/kosongkan" role="button"><i class="ti-trash"></i> Hapus Semua Data</a>
                             </div>
                             <div class="card-body">
                         <?=$this->session->flashdata('editSupplier')?>

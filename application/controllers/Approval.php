@@ -19,6 +19,11 @@ class Approval extends CI_Controller {
     
     }
 
+public function kosongkan(){
+    $this->db->empty_table('approval');
+    redirect('Approval');
+  }
+
     public function index()
     
     {

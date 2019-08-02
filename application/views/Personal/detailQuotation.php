@@ -192,8 +192,11 @@
                         <span class="input-group-btn">
                             <button class="btn btn-warning btn-sm" id="btn-chat">
                                 Send</button>
-                        </span>
+                        
                         <?php echo form_close();?>
+                         <a href="<?php echo site_url()?>/Qr/endChat/<?php echo $this->uri->segment('3'); ?>" class="btn btn-danger btn-sm" id="btn-chatt">
+                                End Chat</a>
+                           </span>
                     </div>
                 </div>
             </div>

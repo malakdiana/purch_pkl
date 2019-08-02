@@ -84,7 +84,7 @@
                                          </div>
                                          <div class="col-sm-4">
                                           <select class="form-control" name="budget" id="budget">
-                                            <option value=""> NYS</option>
+                                            <option value=""> <?php echo $this->session->userdata('logged_in')['username'] ?></option>
                                             <option value="PP"> PP</option>
                                           </select>
                                            </div>

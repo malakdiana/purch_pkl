@@ -17,6 +17,11 @@ class Barang extends CI_Controller {
 
 	
 	}
+  public function kosongkan(){
+    $this->db->empty_table('barang');
+    redirect('Barang');
+  }
+
 
 	public function index()
 	

@@ -450,6 +450,11 @@ $this->upload->initialize($config);
         
     }
 
+    public function tambahCatatan(){
+      $this->QrModel->tambahCatatan();
+      redirect('Qr');
+    }
+
     public function tracking_personal()
     {  
         $data['icon']= $this->QrModel->getIcon();
@@ -459,6 +464,23 @@ $this->upload->initialize($config);
         $this->load->view('Personal/header',$datax);
         $this->load->view('Personal/Tracking_Qr',$data);
       
+    }
+
+    public function endChat($id){
+      $this->db->set('status', 2);
+      $this->db->where('id_penawaran',$id);
+      $this->db->update('komen');
+        if($this->session->userdata('logged_in')['hak_akses']==1){
+                 redirect('Qr/');
+        
+    }else if($this->session->userdata('logged_in')['hak_akses']==2){
+             redirect('Qr/tracking');
+    }else if($this->session->userdata('logged_in')['hak_akses']==4){
+           redirect('Qr/tracking_personal');
+    
+    }
+ 
+
     }
 
 

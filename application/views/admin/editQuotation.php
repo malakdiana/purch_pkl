@@ -121,7 +121,9 @@
                                             <br>
                                             <select name="status" class="form-control" id="status">
                                               <option class="form-control" value="0">OPEN</option>
+                                                        <option class="form-control" value="1">CLOSED</option>
                                               <option class="form-control" value="2">CANCEL</option>
+
                                            </select>
 
                                         </div>
