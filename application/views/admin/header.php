@@ -226,7 +226,7 @@
                                          echo $ttl?> </span>
                                     </i>
                                     <div class="dropdown-menu bell-notify-box notify-box">
-                                        <span class="notify-title">You have <?php   echo $ttl; ?> new notifications </span>
+                                        <span class="notify-title">You have <?php   echo $ttl; ?> new message </span>
                                         <div class="nofity-list">
 
                                             <?php
