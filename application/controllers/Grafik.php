@@ -27,7 +27,8 @@ public function index()
 		$data['delay'] = $this->GrafikModel->delay();
 		$data['section'] = $this->GrafikModel->getSection();
 		$this->load->view('admin/header',$datax);
-        $this->load->view('admin/grafik',$data);
+   // $this->load->view('admin/footer');
+       $this->load->view('admin/grafik2',$data);
    
 	}
 

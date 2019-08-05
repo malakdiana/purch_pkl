@@ -1,4 +1,17 @@
-    <link rel="stylesheet" href="<?php echo base_url()?>assets/css/grafik.css" />
+<style type="">
+  #chartdiv {
+  width: 100%;
+  max-height: 600px;
+  height: 100vh;
+  font-size: 12px;
+}
+#chartdivv {
+  width: 100%;
+  max-height: 600px;
+  height: 100vh;
+   font-size: 12px;
+}
+</style>
  <div class="page-title-area">
                 <div class="row align-items-center">
                     <div class="col-sm-6">
@@ -26,9 +39,9 @@
                                  
                                     <div class="seo-fact sbg1">
                                         <div class="p-4 d-flex justify-content-between align-items-center">
-                                            <div class="seofct-icon"><i class="ti-folder" style="width:20px;height:20px;"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JUMLAH<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; PR OPEN</div>
+                                            <div class="seofct-icon"><i class="ti-folder" style="width:20px;height:20px;"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JUMLAH<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; PR OPEN</div>
                                             
-                                            <h2><font color="black"><?php   echo $pr[0]->jumlah; ?></h2></font>
+                                            <h2><font color="black"><?php   echo $pr[0]->jumlah; ?></font></h2>
                                         </div>
                                     </div>
                                 </div>
@@ -39,7 +52,7 @@
                                         <div class="p-4 d-flex justify-content-between align-items-center">
                                             <div class="seofct-icon"><i class="ti-book" style="width:20px;height:20px;"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JUMLAH<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; QR OPEN</div>
                                              
-                                            <h2><font color="black"><?php   echo $qr[0]->jumlah; ?></h2></font>
+                                            <h2><font color="black"><?php   echo $qr[0]->jumlah; ?></font></h2>
                                         </div>
                                     </div>
                                 </div>
@@ -51,7 +64,7 @@
                                             <div class="seofct-icon"><i class="ti-calendar" style="width:20px;height:20px;"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JUMLAH ETA<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  <?php $tgl = mktime(0, 0, 0, date("m"), date("d")+1, date("Y")); $tgl =  date("Y-m-d", $tgl); echo $tgl ;?>
                                             </div>
                                              
-                                            <h2><font color="black"><?php echo $eta[0]->jumlah; ?></h2></font>
+                                            <h2><font color="black"><?php echo $eta[0]->jumlah; ?></font></h2>
                                         </div>
                                     </div>
                                 </div>
@@ -61,7 +74,7 @@
                                     <div class="seo-fact sbg2">
                                         <div class="p-4 d-flex justify-content-between align-items-center">
                                             <div class="seofct-icon"><i class="ti-time" style="width:20px;height:20px;" ></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JUMLAH <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DELAY</div>
-                                            <h2><font color="black"><?php echo $delay[0]->jumlah; ?></h2></font>
+                                            <h2><font color="black"><?php echo $delay[0]->jumlah; ?></font></h2>
                                         </div>
                                     </div>
                                 </div>
@@ -95,6 +108,8 @@
                  </div>
              </div>
          </div>
+       </div>
+
 
           <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModalDownload" class="modal fade-in" >
         <div class="modal-dialog">
@@ -119,16 +134,26 @@
                 </div>
             </div>
         </div>
+
+
                 
            <?php $this->load->view('admin/footer'); ?>
+
 
     <script src="<?php echo base_url()?>assets/js/core.js"></script>
     <script src="<?php echo base_url()?>assets/js/charts.js"></script>
     <script src="<?php echo base_url()?>assets/js/animated.js"></script>
    
-    <?php foreach ($grafik as $key) {
+    <?php 
+if(!empty($grafik)){
+    foreach ($grafik as $key) {
+
                                     $kategori[] = $key->supplier;
                                     $nilai[]=$key->jumlah;} 
+                                  }else{
+                                    $kategori="";
+                                    $nilai="";
+                                  }
 
         foreach ($section as $row) {
               $kategori2[] = $row->nama_section;
@@ -143,7 +168,8 @@
 
 var chart = am4core.create("chartdiv", am4charts.PieChart3D);
 chart.legend = new am4charts.Legend();
-var datax = [];
+if(<?php echo json_encode($kategori); ?>){
+  var datax = [];
 var datacategory = [];
 var datavalue = [];
 var visits = '';
@@ -155,9 +181,19 @@ datavalue = <?php echo json_encode($nilai);?>;
 for( var i = 0; i < datacategory.length; i++){
     datax.push({"category": datacategory[i], "value1" : datavalue[i]});
 }
-
-
 chart.data= datax;
+
+
+}else{
+
+chart.data = [{
+  "category": "Tidak Ada Data",
+  "value1": 1
+}
+]
+}
+
+  
 
 chart.padding(30, 30, 10, 30);
 
