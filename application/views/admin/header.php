@@ -240,7 +240,7 @@
                                             <a href="<?php echo site_url()?>/Qr/baca/<?php echo $key->id_penawaran?>" class="notify-item">
                                                 <div class="notify-thumb"><i class="ti-comments-smiley btn-danger"></i></div>
                                                 <div class="notify-text">
-                                                    <p>You have New Massage</p>
+                                                    <p>You have New Massage from <?php echo $key->section ?></p>
                                                     <span><?php echo $key->kode_qr ?></span>
                                                 </div>
                                             </a>
@@ -248,7 +248,7 @@
                                             <a href="<?php echo site_url()?>/Qr/baca/<?php echo $key->id_penawaran?>" class="notify-item">
                                                 <div class="notify-thumb"><i class="ti-comments-smiley btn-info"></i></div>
                                                 <div class="notify-text">
-                                                      <p>You have New Massage</p>
+                                                      <p>You have New Massage from <?php echo $key->section ?></p>
                                                     <span><?php echo $key->kode_qr ?></span>
                                                 </div>
                                             </a>   
