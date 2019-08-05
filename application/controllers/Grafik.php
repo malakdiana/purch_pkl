@@ -93,8 +93,8 @@ public function index()
    
     // Buat header tabel nya pada baris ke 3
     //$excel->setActiveSheetIndex(0)->setCellValue('A1', "no"); // Set kolom A3 dengan tulisan "NO"
-    $excel->setActiveSheetIndex(0)->setCellValue('A1', "supplier"); // Set kolom B3 dengan tulisan "NIS"
-    $excel->setActiveSheetIndex(0)->setCellValue('B1', "presentasi jumlah"); // Set kolom C3 dengan tulisan "NAMA"
+    $excel->setActiveSheetIndex(0)->setCellValue('A1', "Supplier"); // Set kolom B3 dengan tulisan "NIS"
+    $excel->setActiveSheetIndex(0)->setCellValue('B1', "Amount transaction "); // Set kolom C3 dengan tulisan "NAMA"
     // Set kolom E3 dengan tulisan "ALAMAT"
    
     //$excel->getActiveSheet()->getStyle('A1')->applyFromArray($style_col);
@@ -103,7 +103,11 @@ public function index()
    
    
     // Panggil function view yang ada di SiswaModel untuk menampilkan semua data siswanya
-    $tgldownload= $this->input->post('tgldownload');
+    $bulandownload= $this->input->post('bulandownload');
+    $tahundownload= $this->input->post('tahundownload');
+
+    $tgldownload=$bulandownload."/".$tahundownload;
+    echo $tgldownload;die();
     $siswa = $this->GrafikModel->getExport($tgldownload);
     $no = 1; // Untuk penomoran tabel, di awal set dengan 1
     $numrow = 2; // Set baris pertama untuk isi tabel adalah baris ke 4
