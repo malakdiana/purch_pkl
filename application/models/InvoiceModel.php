@@ -22,7 +22,31 @@ class InvoiceModel extends CI_Model {
     }
 
     public function getDocRecById($id){
-        $query= $this->db->select('*')->from('doc_receipt')->join('supplier', 'doc_receipt.id_supplier = supplier.id_supplier')->where('id_receipt', $id)->get();
+        $query= $this->db->select('*, doc_receipt.remarks as note')->from('doc_receipt')->join('supplier', 'doc_receipt.id_supplier = supplier.id_supplier')->where('id_receipt', $id)->get();
+          $results=array();
+            if($query->num_rows() > 0){
+            return $query->result();
+            }else{
+            return $results;
+            }
+
+    }
+    public function getExportbydate($tgl1,$tgl2){
+
+  
+        $query = $this->db->query("SELECT detail_vp.vp_date, tf_date, po.supplier, no_receipt, po.no_po, no_invoice, tgl_invoice, total, barang, material, jasa, total_material,total_jasa, pph, total_pph FROM detail_docrec join doc_receipt on detail_docrec.id_receipt = doc_receipt.id_receipt join detail_vp on detail_docrec.id_po = detail_vp.id_po join po on po.id_po = detail_vp.id_po where detail_vp.vp_date >= '".$tgl1."' and detail_vp.vp_date <='". $tgl2 ."'");
+        
+       
+           $results=array();
+            if($query->num_rows() > 0){
+            return $query->result();
+            }else{
+            return $results;
+            }
+     }
+
+    public function getDetail_vp($id){
+         $query= $this->db->select('*')->from('detail_vp')->where('id_po', $id)->get();
           $results=array();
             if($query->num_rows() > 0){
             return $query->result();
@@ -78,6 +102,7 @@ public function updatePre(){
         'vp_date' =>$this->input->post('vp_date'),
         'no_receipt' => $no_docrec,
         'id_supplier' =>$this->input->post('supplier'),
+        'remarks' => $this->input->post('remarks')
         );
     	     $this->db->insert('doc_receipt', $data);
 
@@ -102,7 +127,8 @@ public function hapusDetail($id){
 
 public function updateDocRec(){
     $data=array(
-        "vp_date" => $this->input->post('vp_date')
+        "vp_date" => $this->input->post('vp_date'),
+        "remarks" => $this->input->post('remarks')
     );
     $this->db->where('id_receipt', $this->input->post('id_receipt'));
     $result = $this->db->update('doc_receipt', $data);
@@ -132,7 +158,7 @@ public function insertDetail($id_receipt){
 }
 
 public function getDocRec(){
-	  $this->db->select('doc_receipt.id_receipt , vp_date,no_receipt, doc_receipt.id_supplier, nama_supplier,id_detail,detail_docrec.id_po,po.no_po, barang, no_invoice, tgl_invoice,');
+	  $this->db->select('doc_receipt.id_receipt ,doc_receipt.remarks, vp_date,no_receipt, doc_receipt.id_supplier, nama_supplier,id_detail,detail_docrec.id_po,po.no_po, barang, no_invoice, tgl_invoice,');
             $this->db->from('doc_receipt');
             $this->db->join('detail_docrec','detail_docrec.id_receipt = doc_receipt.id_receipt','left');
             $this->db->join('po','po.id_po = detail_docrec.id_po','left');

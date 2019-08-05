@@ -67,12 +67,23 @@
                                                 <div class="col-md-1">
                                                      <label class="control-label " for="group_name">Date :</label>
                                                  </div>
-                                            <div class="col-sm-5">
+                                            <div class="col-md-5">
                                            
-                                                <input type="date" class="form-control" name="vp_date" id="vp_date" style="margin-bottom: 25px" value="<?php echo $docrec[0]->vp_date ?>" disabled="true" >
+                                                <input type="date" class="form-control" name="vp_date" id="vp_date" style="margin-bottom: 25px" value="<?php echo $docrec[0]->vp_date ?>" readonly="" >
                                             </div>
-                                              <div class="col-sm-3" >
+                                              <div class="col-md-1" >
+                                                <label>Remarks</label>
                                               </div>
+                                              <div class="col-md-5">
+                                                <input type="text" name="remarks" id="remarks" class="form-control" value="<?php  echo $docrec[0]->note ?>" readonly="">
+                                              
+                                              </div>
+                                            </div>
+                                          </div>
+                                          <div class="col-md-12">
+                                          <div class="row">
+                                          <div class="col-md-9"> 
+                                          </div>  
                                             <div id="tombol"></div>
 
                                    
@@ -335,8 +346,9 @@
         });
 
           function edit(){
+           $('#vp_date').prop('readonly', false); 
            
-              document.getElementById('vp_date').disabled = false;
+              $('#remarks').prop('readonly', false); 
         $("#edit").html("");
                $("#tombol").append("  <button id='btn-simpan'  onclick='simpan()' class='btn btn-success'> Simpan</button>  <a href='<?php echo site_url()?>/Invoice/editDOcRec/<?php echo $docrec[0]->id_receipt?>' id='btn-batal' class='btn btn-warning'>Batal</a>");
          }
@@ -345,14 +357,16 @@
 
 
          function simpan(){
-               document.getElementById("vp_date").disabled = true;
+               $('#vp_date').prop('readonly', true); 
+                $('#remarks').prop('readonly', true); 
                   var vp_date = $('#vp_date').val();
+                  var remarks = $('#remarks').val();
                   var id_receipt = $('#id_receipt').val();
              $.ajax({
                 type : "POST",
                 url  : "<?php echo site_url('Invoice/updateDocRec')?>",
                 dataType : "JSON",
-                data : {id_receipt:id_receipt, vp_date:vp_date},
+                data : {id_receipt:id_receipt, vp_date:vp_date, remarks:remarks},
                 success: function(data){
                    $("#tombol").html("");
                $("#edit").append(" <button id='btn-edit' class='btn btn-info' onclick='edit()' style='align-items: right' > Edit</button>            <button id='delete' class='btn btn-danger'>Hapus</button>");

@@ -100,7 +100,10 @@
 <div class="card">
          <div class="card-body">
           <h3>Detail Print</h3><br>
-          <?php echo form_open('Invoice/detailPrint'); ?>
+          <?php echo form_open('Invoice/detailPrint/'.$this->uri->segment('3')); 
+          if(empty($vp)){
+
+          ?>
             <div class="row">
             <div class="col-md-1">VP Date :
             </div>
@@ -141,7 +144,7 @@
             <div class="col-md-1"><br>PPN
             </div>
             <div class="col-sm-4"> <br><select name="ppn" class="form-control" style="width: 110px;height: 50px; margin-left: -16px">
-            <option value="0">tanpa ppn</option><option value="10">10 %</option> </select>
+            <option value="0" >tanpa ppn</option><option value="10">10 %</option> </select>
             </div>
           </div>
               <div class="row">
@@ -162,7 +165,75 @@
           <div class="col-md-5">
            <p align="right"> <button  class="btn btn-info">Print</button></p>
           </div>
-          <?php echo form_close(); ?>
+        <?php }else{ ?>
+          <div class="row">
+            <div class="col-md-1">VP Date :
+            </div>
+            <div class="col-sm-4" style="margin-left: -12px">    <input type="date" class="form-control" name="vp_date" style="margin-bottom: 25px" value="<?php echo $vp[0]->vp_date ?>">
+            </div>
+          </div>
+            <div class="row">
+            <div class="col-md-1">TF Date :
+            </div>
+            <div class="col-sm-4" style="margin-left: -12px">     <input type="date" class="form-control" id="tf_date" style="margin-bottom: 25px" name="tf_date" value="<?php echo $vp[0]->tf_date ?>" required="">
+            </div>
+          </div>                               
+                                      
+          <input type="text" name="id_po" value="<?php echo $this->uri->segment('3'); ?>" hidden="">
+          <div class="row">
+            <div class="col-md-1">Material
+            </div>
+            <div class="col-sm-4"> <div class="row"><input autocomplete="on" type="text" value="<?php if($vp[0]->material==0){ echo "";}else{ echo $vp[0]->material; }?>" name="material" id="rupiahmat" class="form-control" style="width: 250px"><p> &nbsp;&nbsp;x&nbsp;&nbsp; </p><input autocomplete="on" type="number" name="qtymat" class="form-control" style="width: 60px" placeholder="qty" value="<?php if($vp[0]->total_material==0){echo "0";}else{$qty= $vp[0]->total_material / $vp[0]->material;echo $qty;}?>">
+              </div>
+            </div>
+          </div>
+           <div class="row">
+            <div class="col-md-1"><br>Jasa
+            </div>
+            <div class="col-sm-4"> <br><div class="row"><br><br><input autocomplete="on" type="text" name="jasa" id="rupiahjas" value="<?php if($vp[0]->jasa==0){echo "";}else{ echo $vp[0]->jasa;} ?>" class="rupiah form-control" style="width: 250px"><p> &nbsp;&nbsp;x&nbsp;&nbsp; </p><input autocomplete="on" type="number" name="qtyjas" class="form-control" style="width: 60px" placeholder="qty" value="<?php if($vp[0]->total_jasa==0){echo "0";}else{$qty= $vp[0]->total_jasa / $vp[0]->jasa;echo $qty;}?>">
+              </div>
+              
+            </div>
+          </div>
+           <div class="row">
+            <div class="col-md-1"><br>PPH
+            </div>
+            <div class="col-sm-4"> <br><div class="row"><input  value="<?php echo $vp[0]->pph ?>" autocomplete="on" type="number" name="pph" class="form-control" style="width: 60px;"> &nbsp;&nbsp;<font size="5px">%</font></div>
+              
+            </div>
+          </div>
+           <div class="row">
+            <div class="col-md-1"><br>PPN
+            </div>
+            <div class="col-sm-4"> <br><select name="ppn" class="form-control" style="width: 110px;height: 50px; margin-left: -16px">
+              <?php if ( $vp[0]->total_ppn != 0){ ?>
+            <option value="0">tanpa ppn</option><option value="10" selected="">10 %</option>
+          <?php }else{ ?>
+              <option value="0" selected="">tanpa ppn</option><option value="10">10 %</option>
+            <?php } ?>
+             </select>
+            </div>
+          </div>
+              <div class="row">
+            <div class="col-md-1"><br>Paid Thru
+            </div>
+            <div class="col-sm-4"> <br><select name="paid" class="form-control" style="width: 110px;height: 50px; margin-left: -16px">
+            <option value="Transfer">Transfer</option><option value="Cash">Cash</option> </select>
+            </div>
+          </div>
+           <div class="row">
+            <div class="col-md-1"><br>Prepared
+            </div>
+            <div class="col-sm-4"> <br><input type="text" name="prepared" id="prepared" class="form-control" style="width: 250px;margin-left: -16px" value="<?php echo $pre[0]->kode_nama ?>" readonly=""><a href="#" data-toggle="modal" data-target="#myModalEdit">ubah kode prepared</a>
+            </div>
+          </div>
+          <input type="text" name="barang" hidden="" value="<?php echo  $doc[0]->item ?>">
+             <input type="text" name="jumlah" hidden="" value="<?php echo  $jumlah ?>">
+          <div class="col-md-5">
+           <p align="right"> <button  class="btn btn-info">Print</button></p>
+          </div>
+          <?php }
+          echo form_close(); ?>
 
         
           

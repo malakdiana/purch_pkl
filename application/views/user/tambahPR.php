@@ -129,22 +129,35 @@
                                         </div>
                                     </div>  <?php }
                                     else if($this->session->userdata('logged_in')['username']=="SC"){ ?>
-                                      <div class="col-md-12">
+                                     <div class="col-md-12">
                                         <div class="row">
 
                                             <div class="col-md-2">
                                                  <label class="control-label " for="section">SECTION</label>
                                             </div>
                                             <div class="col-sm-3">
-                                                  <select class="form-control" name="sectionSc" id="sectionSc">
-                                                    <option value="PAE">PAE</option>
-                                                    <option value="PPPAE">PPPAE</option>
-                                                    <option value="FAE">FAE</option>
-                                                    <option value="PPFAE">PPFAE</option>
+                                                  <select class="form-control" name="section" id="sectionSc">
+                                                  <option value="PAE">PAE</option>
+                                                  <option value="FAE">FAE</option>  
                                                   </select>
                                              
                                             </div>
- <div class="col-md-1">
+
+                                            <div class="col-md-1">
+                                             <label class="control-label " for="pr_no">BUDGET:</label>
+                                         </div>
+                                         <div class="col-sm-4">
+                                          <select class="form-control" name="budget" id="budgetSc">
+                                            <option value="">-</option>
+                                            <option value="PP"> PP</option>
+                                          </select>
+                                           </div>
+
+                                        </div><br><br>
+                                    </div>  
+                                       <div class="col-md-12">
+                                        <div class="row">
+                                          <div class="col-md-2">
                                              <label class="control-label " for="pr_no">NOMER PR:</label>
                                          </div>
                                          <div class="col-sm-4">
@@ -176,12 +189,9 @@
                                            </select>
                                               </div>
                                         </div>
-                                         
+
+                                        </div>
                                     </div> 
-                                    </div>  
-   
-
-
                                   <?php  }else{ 
 
 
@@ -347,5 +357,17 @@
           document.getElementById("section_kode").value= val;
       
         });
+     $("#budgetSc").change(function () { var val = $(this).val();
+        var section = $('#sectionSc').val();
+       if(val== "PP"){
+      
+        var neww = "PP"+section
+        document.getElementById("section_kode").value= neww;
+      }
+      else{
+          document.getElementById("section_kode").value= section;
+      }
+        });
+
       
 </script>

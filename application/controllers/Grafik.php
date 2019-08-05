@@ -28,7 +28,7 @@ public function index()
 		$data['section'] = $this->GrafikModel->getSection();
 		$this->load->view('admin/header',$datax);
    // $this->load->view('admin/footer');
-       $this->load->view('admin/grafik2',$data);
+       $this->load->view('admin/grafik',$data);
    
 	}
 
@@ -57,6 +57,7 @@ public function index()
     
     // Panggil class PHPExcel nya
     $excel = new PHPExcel();
+     $excel->setActiveSheetIndex(0);
     // Settingan awal fil excel
     $excel->getProperties()->setCreator('My Notes Code')
                  ->setLastModifiedBy('My Notes Code')
@@ -107,7 +108,7 @@ public function index()
     $tahundownload= $this->input->post('tahundownload');
 
     $tgldownload=$bulandownload."/".$tahundownload;
-    echo $tgldownload;die();
+ //  echo $tgldownload;die();
     $siswa = $this->GrafikModel->getExport($tgldownload);
     $no = 1; // Untuk penomoran tabel, di awal set dengan 1
     $numrow = 2; // Set baris pertama untuk isi tabel adalah baris ke 4
@@ -127,17 +128,95 @@ public function index()
     $excel->getActiveSheet()->getColumnDimension('B')->setWidth(30); // Set width kolom B
    
     //$excel->getActiveSheet()->getColumnDimension('E')->setWidth(25);
+    $numrow=$numrow-1;
    
-    $excel->getActiveSheet()->getDefaultRowDimension()->setRowHeight(-1);
+ 
+   $objWorksheet = $excel->getActiveSheet();
+   $dataSeriesLabels1 = array(
+    new PHPExcel_Chart_DataSeriesValues(
+        'String',
+        'Worksheet!$B$1',
+        NULL,
+        1),
+);
+$xAxisTickValues1 = array(
+    new PHPExcel_Chart_DataSeriesValues(
+        'String',
+        'Worksheet!$A$2:$A$4',
+        NULL,
+        3)
+);
+
+$dataSeriesValues1 = array(
+    new PHPExcel_Chart_DataSeriesValues(
+        'Number',
+        'Worksheet!$B$2:$B$4',
+        NULL,
+        3),
+);
+$series1 = new PHPExcel_Chart_DataSeries(
+    PHPExcel_Chart_DataSeries::TYPE_PIECHART, // Tipe Chart
+    NULL, // Grouping (Pie charts tidak ada grouping)
+    range(0, count($dataSeriesValues1)-1), // Urutan Chart
+    $dataSeriesLabels1, // Data Label
+    $xAxisTickValues1,  // Data Sumbu X
+    $dataSeriesValues1  // Nilai Data
+);
+
+// Pengaturan tampilan objek (layout) untuk diagram Pie.
+$layout1 = new PHPExcel_Chart_Layout();
+$layout1->setShowVal(TRUE);
+$layout1->setShowPercent(TRUE);
+ 
+// Masukkan seri data dalam area plot.
+// Area plot akan mengambil data layout dan di gabung dengan data seri
+// yang sebelumnya sudah di tentukan.
+$plotArea1 = new PHPExcel_Chart_PlotArea(
+    $layout1,
+    array($series1)
+);
+ 
+// Tentukan legend chart
+$legend1 = new PHPExcel_Chart_Legend(
+    PHPExcel_Chart_Legend::POSITION_RIGHT,
+    NULL,
+    false
+);
+ 
+// Tentukan judul chart
+$title1 = new PHPExcel_Chart_Title('Ammount Supplier');
+ 
+// Pembuatan chart
+$chart1 = new PHPExcel_Chart(
+    'sample', // Nama chart
+    $title1,    // Judul chart
+    $legend1,   // Legend chart
+    $plotArea1, // Area plot
+    true, // plotVisibleOnly
+    0,    // displayBlanksAs
+    NULL, // Label sumbu X
+    NULL  // Label sumbu Y - Diagram pie tidak ada sumbu Y
+);
+ 
+// Set posisi titik kiri atas dan kanan bawah chart
+// Fungsinya untuk menentukan lokasi dibuatnya chart
+$chart1->setTopLeftPosition('F4');
+$chart1->setBottomRightPosition('M20');
+ 
+// Tambahkan chart ke dalam Worksheet
+$objWorksheet->addChart($chart1);
+
+   $excel->getActiveSheet()->getDefaultRowDimension()->setRowHeight(-1);
     // Set orientasi kertas jadi LANDSCAPE
     $excel->getActiveSheet()->getPageSetup()->setOrientation(PHPExcel_Worksheet_PageSetup::ORIENTATION_LANDSCAPE);
     // Set judul file excel nya
     $excel->getActiveSheet(0)->setTitle("Laporan Grafik amount supplier");
-    $excel->setActiveSheetIndex(0);
+   
    
     $write = PHPExcel_IOFactory::createWriter($excel, 'Excel2007');
+    $write->setIncludeCharts(TRUE);
     ob_end_clean();
-header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+
 header('Content-Disposition: attachment;filename="Grafik amount supplier.xlsx"');
     $write->save('php://output');
   }

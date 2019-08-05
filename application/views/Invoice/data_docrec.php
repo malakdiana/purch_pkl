@@ -21,6 +21,10 @@
                     <!-- data table start -->
                     <div class="col-12 mt-5">
                         <div class="card">
+                            <div  style="padding-top: 15px;padding-left: 15px">
+                    
+                                <a class="btn btn-flat btn-warning mb-3" data-toggle="modal" data-target="#myModalDownload" role="button"><i class="ti-download"></i> Download Data</a>
+                              </div>
                                 
                             <div class="card-body">
                              <?=$this->session->flashdata('editDocRec')?>
@@ -39,6 +43,7 @@
                                                 <th>BARANG</th>
                                                 <th>NO INVOICE</th>
                                                 <th>INVOICE DATE</th>
+                                                <th>REMARKS</th>
                                                 <th>action</th>
                                                
                                               
@@ -57,6 +62,7 @@
                                                 <td><?php echo $key->barang;?></td>
                                                 <td><?php echo $key->no_invoice;?></td>
                                                 <td><?php echo $key->tgl_invoice;?></td>
+                                                <td><?php echo $key->remarks; ?></td>
                                                 <td><a href="<?php echo site_url()?>/Invoice/editDocRec/<?php echo $key->id_receipt?>" class="btn btn-info"><i class="fa fa-pencil"> EDIT</a></td>
 
                                             
@@ -75,7 +81,34 @@
           <!-- main content area end -->
         <!-- footer area start-->
  
+  <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModalDownload" class="modal fade-in" >
+        <div class="modal-dialog">
+            <div class="modal-content" style="width: 600px; margin-left: -80px;padding: 20px" >
+                <div class="modal-header">
 
+                    <h4 class="modal-title">Download By Date</h4>
+                 <button align="right" type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <?php echo form_open('invoice/exportbydate'); ?>
+                  <div class="modal-body">
+
+                     <div class="form-group">
+                      <label>START DATE</label>                   
+                      <input type="date" name="search"  style="width: 400px" class="form-control" value="">
+                      </div>
+
+                     <div class="form-group">
+                      <label>END DATE</label>                   
+                     <input type="date" name="search2"  style="width: 400px" class="form-control" value="">
+                     </div>
+                     
+
+                      <p align="right"><button class="btn btn-info" type="submit">Download</button></p>
+<?php echo form_close(); ?>
+                    </div>
+                </div>
+            </div>
+        </div>
 
     <!-- jquery latest version -->
     <?php $this->load->view('admin/footer'); ?>
