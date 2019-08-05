@@ -108,9 +108,34 @@
                   <div class="modal-body">
 
                      <div class="form-group">
-                      <label>TANGGAL DONWLOAD</label>                   
-                     <input name="startDate3" id="startDate" class="date-picker3" autocomplete="off" />
-                      </div>
+                      <label>FILTER BULAN & TAHUN DOWNLOAD GRAFIK</label>                   
+                         <div class="row">  
+                                                <select name="bulandownload" class="form-control" style="margin-bottom: 25px;width: 100px; height: 50px" required="">
+                                           
+                                           <option class="form-control" value="01">Januari</option>
+                                           <option class="form-control" value="02">Februari</option>
+                                           <option class="form-control" value="03">Maret</option>
+                                           <option class="form-control" value="04">April</option>
+                                           <option class="form-control" value="05">Mei</option>
+                                           <option class="form-control" value="06">Juni</option>
+                                           <option class="form-control" value="07">Juli</option>
+                                           <option class="form-control" value="08">Agustus</option>
+                                           <option class="form-control" value="09">September</option>
+                                           <option class="form-control" value="10">Oktober</option>
+                                           <option class="form-control" value="11">November</option>
+                                           <option class="form-control" value="12">Desember</option>
+                                           </select>
+                                                <select name="tahundonwload" class="form-control" style="margin-bottom: 25px;width: 100px; height: 50px" required="">
+                                           <?php $tahun = date('Y');
+                                           $tahun1 =  $tahun+1;?>
+                                           <option class="form-control" value="<?php echo $tahun?>"><?php echo $tahun;?></option>
+                                           <option class="form-control" value="<?php echo $tahun1?>"><?php echo $tahun1;?></option>
+                                          
+                                           </select>
+                                                        </div>
+                                                    </div>
+                                              </div>
+                                        <!-- </div> -->
                      
 
                       <p align="right"><button class="btn btn-info" type="submit">Download</button></p>
