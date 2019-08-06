@@ -99,7 +99,7 @@
                             <ul class="notification-area">
                               
                                 <li class="dropdown">
-                                    <i style="color: blue" class="ti-bell dropdown-toggle" data-toggle="dropdown">
+                                    <i style="color: blue" class="ti-comment dropdown-toggle" data-toggle="dropdown">
                                         <span> <?php  $ttl=0;
                                             foreach ($notif as $key ){$ttl++;}
                                          echo $ttl?> </span>
