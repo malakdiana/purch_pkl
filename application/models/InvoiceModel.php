@@ -34,7 +34,7 @@ class InvoiceModel extends CI_Model {
     }
 
     public function getSupplier($id){
-        $query = $this->db->query('select * from po join supplier on po.id_po = supplier.id_supplier where po.id_po = '.$id);
+        $query = $this->db->query('select * from po join supplier on po.id_supplier = supplier.id_supplier where po.id_po = '.$id);
           $results=array();
             if($query->num_rows() > 0){
             return $query->result();
