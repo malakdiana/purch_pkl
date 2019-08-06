@@ -249,7 +249,7 @@
                                             </select>
                     </div>
                      <div class="form-group">
-                        <label for="">PPN</label>
+                        <label for="">PPH</label>
                          <select class="form-control" name="pph" id="pph" style="height:40px;">
                                             </select>
                     </div>
