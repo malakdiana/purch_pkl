@@ -88,6 +88,12 @@
                                            
                                                 <input type="date" class="form-control" name="vp_date" style="margin-bottom: 25px" value="" >
                                             </div>
+                                            <div class="col-md-1">
+                                            <label>Remarks</label> 
+                                            </div>
+                                            <div class="col-md-5">
+                                            <textarea class="form-control" name="remarks">  </textarea> 
+                                            </div>
                                         </div>
                                 </div>
                       <br>

@@ -16,6 +16,7 @@ class Po extends CI_Controller {
          if (!$this->session->userdata('logged_in')) {
           redirect('Login','refresh');
         }
+          $this->load->library('Excel','upload');
 
     
     }
@@ -29,6 +30,16 @@ public function index()
         $this->load->view('admin/Po',$data);
         }
 }
+ public function downloadPo(){
+        force_download('assets/format/FormatDataPo.xlsx',null);
+    }
+
+    public function importPo(){
+    $datax['notif']= $this->QrModel->getNotifikasi(); $datax['edit']= $this->QrModel->getNotifEdit();
+        $this->load->view('admin/header',$datax);
+            $this->load->view('admin/importPo');
+            $this->load->view('admin/footer');
+    }
     public function getBarang($id)
     {
         $json = [];
@@ -289,6 +300,94 @@ public function getTotalPO(){
         $data=$this->PoModel->updatePo();
         echo json_encode($data);
     }
+     public function prosesImport(){
+
+    $path= './assets/';
+             $config['upload_path'] = './assets/';
+            $config['allowed_types'] = 'xlsx|xls|jpg|png';
+            $config['remove_spaces'] = TRUE;
+           // $this->upload->initialize($config);
+            $this->load->library('upload', $config);
+   
+            if (!$this->upload->do_upload('file')) {
+                $error = array('error' => $this->upload->display_errors());
+            } else {
+                $data = array('upload_data' => $this->upload->data());
+            }
+            
+            if (!empty($data['upload_data']['file_name'])) {
+                $import_xls_file = $data['upload_data']['file_name'];
+            } else {
+                $import_xls_file = 0;
+            }
+            $inputFileName = $path . $import_xls_file;
+            try {
+                $inputFileType = PHPExcel_IOFactory::identify($inputFileName);
+                $objReader = PHPExcel_IOFactory::createReader($inputFileType);
+                $objPHPExcel = $objReader->load($inputFileName);
+            } catch (Exception $e) {
+                die('Error loading file "' . pathinfo($inputFileName, PATHINFO_BASENAME)
+                        . '": ' . $e->getMessage());
+            }
+            $allDataInSheet = $objPHPExcel->getActiveSheet()->toArray(null, true, true, true);
+            
+            $arrayCount = count($allDataInSheet);
+
+            $flag = 0;
+            $createArray = array('Tanggal_PO','Nomor_PO');
+            $makeArray = array('Tanggal_PO' => 'Tanggal_PO','Nomor_PO' => 'Nomor_PO');
+            $SheetDataKey = array();
+            foreach ($allDataInSheet as $dataInSheet) {
+                foreach ($dataInSheet as $key => $value) {
+                    if (in_array(trim($value), $createArray)) {
+                        $value = preg_replace('/\s+/', '', $value);
+                        $SheetDataKey[trim($value)] = $key;
+                    } else {
+                        
+                    }
+                }
+            }
+            
+
+
+            $datax = array_diff_key($makeArray, $SheetDataKey);
+           
+            if (empty($datax)) {
+                $flag = 1;
+            }
+            if ($flag == 1) {
+                for ($i = 2; $i <= $arrayCount; $i++) {
+                    $addresses = array();
+                    
+                    //$no=$SheetDataKey['no'];
+                    $tanggal = $SheetDataKey['Tanggal_PO'];
+                    $nomor = $SheetDataKey['Nomor_PO'];
+               
+                   
+                  
+                    
+                   // $no = filter_var(trim($allDataInSheet[$i][$no]), FILTER_SANITIZE_STRING);
+                    $tanggal = filter_var(trim($allDataInSheet[$i][$tanggal]), FILTER_SANITIZE_STRING);
+                    $nomor = filter_var(trim($allDataInSheet[$i][$nomor]), FILTER_SANITIZE_STRING);
+                   
+                   
+                    $fetchData[] = array('tgl_po' => $tanggal, 'no_po' => $nomor);
+                }              
+                $datax['employeeInfo'] = $fetchData;
+                $this->PoModel->setBatchImport($fetchData);
+                $this->PoModel->importData();
+               $url = FCPATH.'/assets/'.$data['upload_data']['file_name'];
+               unlink($url);
+               
+               redirect('Po','refresh');
+            } else {
+               $this->session->set_flashdata('gagalImport','<div class="alert alert-success" role="alert">SUKSES DELETE DATA <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+            redirect('Po/importPo', 'refresh');
+            }
+        
+      
+    }
+   
 
    
 }

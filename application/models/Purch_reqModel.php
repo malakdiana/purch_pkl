@@ -48,14 +48,29 @@ class Purch_reqModel extends CI_Model {
 
     public function getPurch_req_section()
     {
+
             $section = $this->session->userdata('logged_in')['section'];
             $this->db->select('*');
+
+            $section = $this->session->userdata('logged_in')['username'];
+            if($section == "SC"){
+                  $this->db->select('*');
+            $this->db->from('purch_req');
+            $this->db->where('section', 'PAE');
+            $this->db->or_where('section', 'FAE');
+              $this->db->order_by('status','desc');    
+           $this->db->order_by('id','DESC');  
+           $query = $this->db->get();
+            }else{
+                 $this->db->select('*');
             $this->db->from('purch_req');
             $this->db->where('section', $section);
               $this->db->order_by('status','desc');    
            $this->db->order_by('id','DESC');  
-
-            $query = $this->db->get();
+ $query = $this->db->get();
+            }
+          
+            
            $results=array();
             if($query->num_rows() > 0){
             return $query->result();
