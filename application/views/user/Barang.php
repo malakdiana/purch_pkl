@@ -31,7 +31,7 @@
                                             <tr>
                                               
                                               
-                                                <th>NO BARANG</th>
+                                                <th>NOMER</th>
                                             
                                                 <th>NAMA BARANG</th>
            

@@ -48,7 +48,7 @@ class Purch_reqModel extends CI_Model {
 
     public function getPurch_req_section()
     {
-            $section = $this->session->userdata('logged_in')['username'];
+            $section = $this->session->userdata('logged_in')['section'];
             $this->db->select('*');
             $this->db->from('purch_req');
             $this->db->where('section', $section);

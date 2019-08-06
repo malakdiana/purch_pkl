@@ -33,7 +33,7 @@ public function index()
         $this->load->view('user/Purch_req',$data);
 
         }else if($this->session->userdata('logged_in')['hak_akses']==4){
-        
+        $data['Purch_req']= $this->Purch_reqModel->getPurch_req_section();
         $this->load->view('Personal/header',$datax);
         $this->load->view('Personal/Purch_req',$data);
 
