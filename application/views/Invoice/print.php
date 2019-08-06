@@ -153,7 +153,7 @@ u.dotted {
 					<td style="border-top: 1px;border-left:1px;border-right:1px;border-bottom:1px dotted black;padding-top: 15px; vertical-align: top;height: 40px" >
 						Say
 					</td>
-					<td style="border-top: 0px;border-left:0px;border-right:0px;border-bottom:1px dotted black;padding-left: 30px;padding-top: 6px; vertical-align: top; border-bottom: 1px dotted black; width: 350px"><hr style="border-top: 0px;border-left:0px;border-right:0px;border-bottom:1px dotted black;padding-top: 15px;max-height: 40px">
+					<td style="border-top: 0px;border-left:0px;border-right:0px;border-bottom:1px dotted black;padding-left: 30px;padding-top: 6px; vertical-align: top; border-bottom: 1px dotted black; width: 430px"><hr style="border-top: 0px;border-left:0px;border-right:0px;border-bottom:1px dotted black;padding-top: 15px;max-height: 40px">
 						<p align="left" style="font-size: 13px;padding-top: -29px"># <?php echo $say; ?> #</p>
 
 					</td>

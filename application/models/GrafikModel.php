@@ -100,6 +100,17 @@ class GrafikModel extends CI_Model {
             }
 
     }
+      public function getExport2($tgldownload){
+          
+                    $query=$this->db->query("SELECT s.nama_section, p.jumlah from section as s left join ( SElect pr.section, sum(qty*harga) as jumlah from purch_req as pr inner join bayangan as b on b.id_pr=pr.id inner join po on po.id_po = b.id_po where SUBSTRING_INDEX(SUBSTRING_INDEX(po.tgl_po,' ',1),'/',-2) = '$tgldownload' GROUP BY pr.section ) as p on s.nama_section=p.section ORDER BY p.jumlah DESC");
+            $results=array();
+            if($query->num_rows() > 0){
+            return $query->result();
+            }else{
+            return $results;
+            }
+
+    }
 
 
 }

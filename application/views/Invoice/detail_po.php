@@ -136,7 +136,7 @@
            <div class="row">
             <div class="col-md-1"><br>PPH
             </div>
-            <div class="col-sm-4"> <br><select name="ppn" class="form-control" style="width: 110px;height: 50px; margin-left: -16px">
+            <div class="col-sm-4"> <br><select name="pph" class="form-control" style="width: 110px;height: 50px; margin-left: -16px">
               <?php if($supplier[0]->pph == 2 ){ ?>
             <option value="0" >tanpa pph</option><option value="2" selected="">2 %</option><option value="3">3 %</option><option value="5">5 %</option>
           <?php }else if($supplier[0]->pph == 3 ){ ?>
@@ -213,7 +213,17 @@
            <div class="row">
             <div class="col-md-1"><br>PPH
             </div>
-            <div class="col-sm-4"> <br><div class="row"><input  value="<?php echo $vp[0]->pph ?>" autocomplete="on" type="number" name="pph" class="form-control" style="width: 60px;"> &nbsp;&nbsp;<font size="5px">%</font></div>
+           <div class="col-sm-4"> <br><select name="pph" class="form-control" style="width: 110px;height: 50px; margin-left: -16px">
+              <?php if($vp[0]->pph == 2 ){ ?>
+            <option value="0" >tanpa pph</option><option value="2" selected="">2 %</option><option value="3">3 %</option><option value="5">5 %</option>
+          <?php }else if($vp[0]->pph == 3 ){ ?>
+            <option value="0" >tanpa pph</option><option value="2" >2 %</option><option value="3" selected="">3 %</option><option value="5">5 %</option>
+           <?php }else if($vp[0]->pph == 5 ){ ?>
+  <option value="0" >tanpa pph</option><option value="2" >2 %</option><option value="3">3 %</option><option value="5" selected="">5 %</option>
+            <?php }else{ ?>
+              <option value="0" selected="" >tanpa pph</option><option value="2" >2 %</option><option value="3">3 %</option><option value="5" >5 %</option>
+            <?php } ?>
+             </select>
               
             </div>
           </div>

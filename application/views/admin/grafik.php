@@ -83,7 +83,9 @@
                          </div>
                      </div>
                       <div class="col-12 mt-5">
-                        <div class="card">   
+                        <div class="card">  
+                            <div  style="padding-top: 15px;padding-left: 15px">
+                         <a class="btn btn-flat btn-success mb-3" data-toggle="modal" data-target="#myModalDownload2"><font color="white"><i class="ti-download" width="100px"></i> Download Grafik</font></a> 
                             <div class="card-body">
                                  <h4>Grafik Ammount Section Per Bulan</h4><br>
                                 <label>Filter : &nbsp;&nbsp;</label><input name="startDate2" id="startDate2" class="date-picker2" autocomplete="off" />
@@ -126,6 +128,54 @@
                                            <option class="form-control" value="12">Desember</option>
                                            </select>
                                                 <select name="tahundownload" class="form-control" style="margin-bottom: 25px;width: 100px; height: 50px" required="">
+                                           <?php $tahun = date('Y');
+                                           $tahun1 =  $tahun+1;?>
+                                           <option class="form-control" value="<?php echo $tahun?>"><?php echo $tahun;?></option>
+                                           <option class="form-control" value="<?php echo $tahun1?>"><?php echo $tahun1;?></option>
+                                          
+                                           </select>
+                                                        </div>
+                                                    </div>
+                                              </div>
+                                        <!-- </div> -->
+                     
+
+                      <p align="right"><button class="btn btn-info" type="submit">Download</button></p>
+<?php echo form_close(); ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+          <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModalDownload2" class="modal fade-in" >
+        <div class="modal-dialog">
+            <div class="modal-content" style="width: 600px; margin-left: -80px;padding: 20px" >
+                <div class="modal-header">
+
+                    <h4 class="modal-title">DOWNLOAD GRAFIK</h4>
+                 <button align="right" type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <?php echo form_open('Grafik/export2'); ?>
+                  <div class="modal-body">
+
+                     <div class="form-group">
+                      <label>FILTER BULAN & TAHUN DOWNLOAD GRAFIK</label>                   
+                         <div class="row">  
+                                                <select name="bulandownload2" class="form-control" style="margin-bottom: 25px;width: 100px; height: 50px" required="">
+                                           
+                                           <option class="form-control" value="01">Januari</option>
+                                           <option class="form-control" value="02">Februari</option>
+                                           <option class="form-control" value="03">Maret</option>
+                                           <option class="form-control" value="04">April</option>
+                                           <option class="form-control" value="05">Mei</option>
+                                           <option class="form-control" value="06">Juni</option>
+                                           <option class="form-control" value="07">Juli</option>
+                                           <option class="form-control" value="08">Agustus</option>
+                                           <option class="form-control" value="09">September</option>
+                                           <option class="form-control" value="10">Oktober</option>
+                                           <option class="form-control" value="11">November</option>
+                                           <option class="form-control" value="12">Desember</option>
+                                           </select>
+                                                <select name="tahundownload2" class="form-control" style="margin-bottom: 25px;width: 100px; height: 50px" required="">
                                            <?php $tahun = date('Y');
                                            $tahun1 =  $tahun+1;?>
                                            <option class="form-control" value="<?php echo $tahun?>"><?php echo $tahun;?></option>
