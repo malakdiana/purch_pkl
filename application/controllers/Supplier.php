@@ -104,8 +104,8 @@ class Supplier extends CI_Controller {
             $arrayCount = count($allDataInSheet);
 
             $flag = 0;
-            $createArray = array('No','Nama_Supplier', 'Alamat','Kota','No_Telp','No_Fax','Attention','No_Hp','nomer_rek','bank','atas_nama','Tgl_Input','Terms','PPN','Supply','Status','Perjanjian','Remarks');
-            $makeArray = array('No' => 'No','Nama_Supplier'=>'Nama_Supplier', 'Alamat' => 'Alamat','Kota'=> 'Kota','No_Telp' => 'No_Telp','No_Fax' => 'No_Fax','Attention' => 'Attention','No_Hp' => 'No_Hp','nomer_rek' => 'nomer_rek','bank' => 'bank','atas_nama' => 'atas_nama','Tgl_Input' => 'Tgl_Input','Terms' => 'Terms','PPN' => 'PPN','Supply' => 'Supply','Status'=>'Status','Perjanjian' => 'Perjanjian','Remarks' => 'Remarks');
+            $createArray = array('No','Nama_Supplier', 'Alamat','Kota','No_Telp','No_Fax','Attention','No_Hp','nomer_rek','bank','atas_nama','Tgl_Input','Terms','PPN', 'PPH','Supply','Status','Perjanjian','Remarks');
+            $makeArray = array('No' => 'No','Nama_Supplier'=>'Nama_Supplier', 'Alamat' => 'Alamat','Kota'=> 'Kota','No_Telp' => 'No_Telp','No_Fax' => 'No_Fax','Attention' => 'Attention','No_Hp' => 'No_Hp','nomer_rek' => 'nomer_rek','bank' => 'bank','atas_nama' => 'atas_nama','Tgl_Input' => 'Tgl_Input','Terms' => 'Terms','PPN' => 'PPN','PPH' => 'PPH','Supply' => 'Supply','Status'=>'Status','Perjanjian' => 'Perjanjian','Remarks' => 'Remarks');
             $SheetDataKey = array();
             foreach ($allDataInSheet as $dataInSheet) {
                 foreach ($dataInSheet as $key => $value) {
@@ -143,6 +143,7 @@ class Supplier extends CI_Controller {
                     $tgl_input = $SheetDataKey['Tgl_Input'];
                     $terms = $SheetDataKey['Terms'];
                     $ppn = $SheetDataKey['PPN'];
+                     $pph = $SheetDataKey['PPH'];
                     $supply = $SheetDataKey['Supply'];
                     $status = $SheetDataKey['Status'];
                     $perjanjian = $SheetDataKey['Perjanjian'];
@@ -162,6 +163,7 @@ class Supplier extends CI_Controller {
                     $tgl_input = filter_var(trim($allDataInSheet[$i][$tgl_input]), FILTER_SANITIZE_STRING);
                     $terms = filter_var(trim($allDataInSheet[$i][$terms]), FILTER_SANITIZE_STRING);
                     $ppn = filter_var(trim($allDataInSheet[$i][$ppn]), FILTER_SANITIZE_STRING);
+                     $pph = filter_var(trim($allDataInSheet[$i][$pph]), FILTER_SANITIZE_STRING);
                     $supply = filter_var(trim($allDataInSheet[$i][$supply]), FILTER_SANITIZE_STRING);
                     $status = filter_var(trim($allDataInSheet[$i][$status]), FILTER_SANITIZE_STRING);
                     $perjanjian = filter_var(trim($allDataInSheet[$i][$perjanjian]), FILTER_SANITIZE_STRING);
@@ -176,6 +178,7 @@ class Supplier extends CI_Controller {
                           'tgl_input' => $tgl_input,
                           'terms' => $terms,
                           'ppn' => $ppn,
+                          'pph' => $pph,
                           'supply' => $supply,
                           'status' => $status,
                           'perjanjian' => $perjanjian,
@@ -258,10 +261,11 @@ class Supplier extends CI_Controller {
     $excel->setActiveSheetIndex(0)->setCellValue('L1', "Tgl_Input"); // Set kolom E3 dengan tulisan "ALAMAT"// Set kolom E3 
     $excel->setActiveSheetIndex(0)->setCellValue('M1', "Terms"); // Set kolom E3 dengan tulisan "ALAMAT"
     $excel->setActiveSheetIndex(0)->setCellValue('N1', "PPN");
-    $excel->setActiveSheetIndex(0)->setCellValue('O1', "Supply");  // Set kolom E3 dengan tulisan "ALAMAT"
-    $excel->setActiveSheetIndex(0)->setCellValue('P1', "Status"); // Set kolom E3 dengan tulisan "ALAMAT"
-    $excel->setActiveSheetIndex(0)->setCellValue('Q1', "Perjanjian"); // Set kolom E3 dengan tulisan "ALAMAT"
-    $excel->setActiveSheetIndex(0)->setCellValue('R1', "Remarks"); // Set kolom E3 dengan tulisan "ALAMAT"
+     $excel->setActiveSheetIndex(0)->setCellValue('O1', "PPH");
+    $excel->setActiveSheetIndex(0)->setCellValue('P1', "Supply");  // Set kolom E3 dengan tulisan "ALAMAT"
+    $excel->setActiveSheetIndex(0)->setCellValue('Q1', "Status"); // Set kolom E3 dengan tulisan "ALAMAT"
+    $excel->setActiveSheetIndex(0)->setCellValue('R1', "Perjanjian"); // Set kolom E3 dengan tulisan "ALAMAT"
+    $excel->setActiveSheetIndex(0)->setCellValue('S1', "Remarks"); // Set kolom E3 dengan tulisan "ALAMAT"
     $excel->getActiveSheet()->getStyle('A1')->applyFromArray($style_col);
     $excel->getActiveSheet()->getStyle('B1')->applyFromArray($style_col);
     $excel->getActiveSheet()->getStyle('C1')->applyFromArray($style_col);
@@ -280,7 +284,7 @@ class Supplier extends CI_Controller {
     $excel->getActiveSheet()->getStyle('P1')->applyFromArray($style_col);
     $excel->getActiveSheet()->getStyle('Q1')->applyFromArray($style_col);
     $excel->getActiveSheet()->getStyle('R1')->applyFromArray($style_col);
-
+    $excel->getActiveSheet()->getStyle('S1')->applyFromArray($style_col);
     // Panggil function view yang ada di SiswaModel untuk menampilkan semua data siswanya
     $siswa = $this->SupplierModel->getSupplierExport();
     $no = 1; // Untuk penomoran tabel, di awal set dengan 1
@@ -301,10 +305,11 @@ class Supplier extends CI_Controller {
       $excel->setActiveSheetIndex(0)->setCellValue('L'.$numrow, $data->tgl_input);
       $excel->setActiveSheetIndex(0)->setCellValue('M'.$numrow, $data->terms);
       $excel->setActiveSheetIndex(0)->setCellValue('N'.$numrow, $data->ppn);
-      $excel->setActiveSheetIndex(0)->setCellValue('O'.$numrow, $data->supply);
-      $excel->setActiveSheetIndex(0)->setCellValue('P'.$numrow, $data->status);
-      $excel->setActiveSheetIndex(0)->setCellValue('Q'.$numrow, $data->perjanjian);
-      $excel->setActiveSheetIndex(0)->setCellValue('R'.$numrow, $data->remarks);
+        $excel->setActiveSheetIndex(0)->setCellValue('O'.$numrow, $data->pph);
+      $excel->setActiveSheetIndex(0)->setCellValue('P'.$numrow, $data->supply);
+      $excel->setActiveSheetIndex(0)->setCellValue('Q'.$numrow, $data->status);
+      $excel->setActiveSheetIndex(0)->setCellValue('R'.$numrow, $data->perjanjian);
+      $excel->setActiveSheetIndex(0)->setCellValue('S'.$numrow, $data->remarks);
       
       $no++; // Tambah 1 setiap kali looping
       $numrow++; // Tambah 1 setiap kali looping
@@ -329,6 +334,7 @@ class Supplier extends CI_Controller {
     $excel->getActiveSheet()->getColumnDimension('P')->setWidth(25);
     $excel->getActiveSheet()->getColumnDimension('Q')->setWidth(25);
     $excel->getActiveSheet()->getColumnDimension('R')->setWidth(25);
+      $excel->getActiveSheet()->getColumnDimension('S')->setWidth(25);
     $excel->getActiveSheet()->getDefaultRowDimension()->setRowHeight(-1);
     // Set orientasi kertas jadi LANDSCAPE
     $excel->getActiveSheet()->getPageSetup()->setOrientation(PHPExcel_Worksheet_PageSetup::ORIENTATION_LANDSCAPE);

@@ -178,6 +178,17 @@
                                             <div class="col-sm-4">
                                                 <input type="text" class="form-control" id="perjanjian" name="perjanjian" style="margin-bottom: 25px">
                                             </div>
+                                             <div class="col-md-2">
+                                             <label class="control-label" for="pph">PPH:</label>
+                                         </div>
+                                         <div class="col-sm-4">
+                                            <select class="form-control" name="ppn" required="" style="height:45px;">
+                                                <option value="0">NO PPH</option>
+                                                <option value="2">2%</option>
+                                                <option value="3">3%</option>
+                                                <option value="5">5%</option>
+                                            </select>
+                                        </div>
                                             
 
                                         </div>

@@ -60,8 +60,8 @@
                                                 <td>
 
                                                       <div class="btn-group mb-xl-3" role="group" aria-label="Basic example">
-                                     <a href="javascript:void(0);" onclick="modalDetail2('<?php echo $key->id_supplier?>','<?php echo $key->nama_supplier?>','<?php echo $key->alamat ?>','<?php echo $key->kota ?>', '<?php echo $key->no_telp ?>','<?php echo $key->no_fax ?>','<?php echo $key->attention ?>','<?php echo $key->no_hp ?>','<?php echo $key->nomer_rek ?>','<?php echo $key->bank ?>','<?php echo $key->atas_nama ?>','<?php echo $key->tgl_input ?>','<?php echo $key->terms ?>','<?php echo $key->ppn ?>','<?php echo $key->supply?>','<?php echo $key->status ?>','<?php echo $key->perjanjian?>','<?php echo $key->remarks ?>')" data-toggle="modal" data-target="#myModalDetil"><button type="button" class="btn btn-info"  style="width:80px; height:50px;"> <font color="white"><i class="fa fa-th-list"></i> Detail</font></button></a>
-                                       <a href="javascript:void(0);" onclick="modalDetail('<?php echo $key->id_supplier?>','<?php echo $key->nama_supplier?>','<?php echo $key->alamat ?>','<?php echo $key->kota ?>', '<?php echo $key->no_telp ?>','<?php echo $key->no_fax ?>','<?php echo $key->attention ?>','<?php echo $key->no_hp ?>','<?php echo $key->nomer_rek ?>','<?php echo $key->bank?>','<?php echo $key->atas_nama ?>','<?php echo $key->tgl_input ?>','<?php echo $key->terms ?>','<?php echo $key->ppn ?>','<?php echo $key->supply?>','<?php echo $key->status ?>','<?php echo $key->perjanjian?>','<?php echo $key->remarks ?>')"  data-toggle="modal" data-target="#myModalEdit"><button type="button" class="btn btn-primary"  style="width:80px; height:50px;"><font color="white"><i class="fa fa-pencil"></i> Edit</font></button></a>
+                                     <a href="javascript:void(0);" onclick="modalDetail2('<?php echo $key->id_supplier?>','<?php echo $key->nama_supplier?>','<?php echo $key->alamat ?>','<?php echo $key->kota ?>', '<?php echo $key->no_telp ?>','<?php echo $key->no_fax ?>','<?php echo $key->attention ?>','<?php echo $key->no_hp ?>','<?php echo $key->nomer_rek ?>','<?php echo $key->bank ?>','<?php echo $key->atas_nama ?>','<?php echo $key->tgl_input ?>','<?php echo $key->terms ?>','<?php echo $key->ppn ?>','<?php echo $key->pph ?>','<?php echo $key->supply?>','<?php echo $key->status ?>','<?php echo $key->perjanjian?>','<?php echo $key->remarks ?>')" data-toggle="modal" data-target="#myModalDetil"><button type="button" class="btn btn-info"  style="width:80px; height:50px;"> <font color="white"><i class="fa fa-th-list"></i> Detail</font></button></a>
+                                       <a href="javascript:void(0);" onclick="modalDetail('<?php echo $key->id_supplier?>','<?php echo $key->nama_supplier?>','<?php echo $key->alamat ?>','<?php echo $key->kota ?>', '<?php echo $key->no_telp ?>','<?php echo $key->no_fax ?>','<?php echo $key->attention ?>','<?php echo $key->no_hp ?>','<?php echo $key->nomer_rek ?>','<?php echo $key->bank?>','<?php echo $key->atas_nama ?>','<?php echo $key->tgl_input ?>','<?php echo $key->terms ?>','<?php echo $key->ppn ?>','<?php echo $key->pph ?>','<?php echo $key->supply?>','<?php echo $key->status ?>','<?php echo $key->perjanjian?>','<?php echo $key->remarks ?>')"  data-toggle="modal" data-target="#myModalEdit"><button type="button" class="btn btn-primary"  style="width:80px; height:50px;"><font color="white"><i class="fa fa-pencil"></i> Edit</font></button></a>
                                        <a href="<?php echo site_url()?>/Supplier/deleteSupplier/<?php echo $key->id_supplier?> " onclick="return confirm('Apakah Yakin Untuk Menghapus?')"><button type="button" class="btn btn-danger"  style="width:80px; height:50px;"><font color="white"><i class="fa fa-trash-o"></i> Hapus</font></button></a>
                                   
                                 </div>
@@ -147,6 +147,10 @@
                     <tr>
                         <td>PPN</td>
                         <td>  <input type="text" class="form-control" name="ppn2" id="ppn2" value="" readonly=""></td>
+                    </tr>
+                      <tr>
+                        <td>PPH</td>
+                        <td>  <input type="text" class="form-control" name="pph2" id="pph2" value="" readonly=""></td>
                     </tr>
                     <tr>
                         <td>SUPPLY</td>
@@ -244,6 +248,11 @@
                          <select class="form-control" name="ppn" id="ppn" style="height:40px;">
                                             </select>
                     </div>
+                     <div class="form-group">
+                        <label for="">PPN</label>
+                         <select class="form-control" name="pph" id="pph" style="height:40px;">
+                                            </select>
+                    </div>
                     <div class="form-group">
                         <label for="">SUPPLY</label>
                         <input type="text" class="form-control" name="supply" id="supply" value="" >
@@ -284,7 +293,7 @@
  
     <!-- others plugins -->
 <script type="text/javascript">
-    function modalDetail(id_supplier,nama_supplier,alamat,kota,no_telp,no_fax,attention,no_hp,nomer_rek,bank,atas_nama,tgl_input,terms,ppn,supply,status,perjanjian,remarks){
+    function modalDetail(id_supplier,nama_supplier,alamat,kota,no_telp,no_fax,attention,no_hp,nomer_rek,bank,atas_nama,tgl_input,terms,ppn,pph,supply,status,perjanjian,remarks){
         document.getElementById('id_supplier').value = id_supplier;
         document.getElementById('nama_supplier').value = nama_supplier;
         document.getElementById('alamat').value = alamat;
@@ -299,6 +308,7 @@
         document.getElementById('tgl_input').value = tgl_input;
         document.getElementById('terms').value = terms;
         document.getElementById('ppn').value = ppn;
+        document.getElementById('pph').value = pph;
         document.getElementById('supply').value = supply;
         document.getElementById('status').value = status;
          document.getElementById('perjanjian').value = perjanjian;
@@ -314,10 +324,20 @@
         }else{
               $("#ppn").html('<option value="10">10%</option><option value="0" selected="">NO PPN</option>');
         }
+
+        if(pph==2){
+           $("#pph").html('<option value="">NO PPH </option><option value="2" selected="">2%</option><option value="3" >3%</option><option value="5" >5%</option>');  
+        }else if(pph==3){
+             $("#pph").html('<option value="">NO PPH </option><option value="2" >2%</option><option value="3" selected="">3%</option><option value="5" >5%</option>');
+         }else if(pph==5){
+         $("#pph").html('<option value="">NO PPH </option><option value="2" >2%</option><option value="3" >3%</option><option value="5" selected="" >5%</option>');
+         }else{
+             $("#pph").html('<option value="" selected="">NO PPH </option><option value="2" >2%</option><option value="3" >3%</option><option value="5"  >5%</option>');
+         }
     }
   </script>
   <script type="text/javascript">
-    function modalDetail2(id_supplier,nama_supplier,alamat,kota,no_telp,no_fax,attention,no_hp,nomer_rek,bank,atas_nama,tgl_input,terms,ppn,supply,status,perjanjian,remarks){
+    function modalDetail2(id_supplier,nama_supplier,alamat,kota,no_telp,no_fax,attention,no_hp,nomer_rek,bank,atas_nama,tgl_input,terms,ppn,pph,supply,status,perjanjian,remarks){
         document.getElementById('id_supplier2').value = id_supplier;
         document.getElementById('nama_supplier2').value = nama_supplier;
         document.getElementById('alamat2').value = alamat;
@@ -332,6 +352,7 @@
         document.getElementById('tgl_input2').value = tgl_input;
         document.getElementById('terms2').value = terms;
         document.getElementById('ppn2').value = ppn;
+            document.getElementById('pph2').value = pph;
         document.getElementById('supply2').value = supply;
         document.getElementById('status2').value = status;
          document.getElementById('perjanjian2').value = perjanjian;
