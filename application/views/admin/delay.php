@@ -60,12 +60,12 @@
                                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                        <div class="col-md-2">
-                                          <h6>Filter Tanggal Mulai</h6>
+                                          <h6>Filter Tanggal Awal</h6>
                                            <input type="date" name="search"  style="width: 200px" class="form-control" value="<?php echo $tgl1 ?>">
                                        </div>
                                         
                                         <div class="col-md-2">
-                                         <h6>Filter Tanggal Selesai</h6>
+                                         <h6>Filter Tanggal Akhir</h6>
                                            <input type="date" name="search2"  style="width: 200px" class="form-control" value="<?php echo $tgl2 ?>">
                                        </div>
                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
