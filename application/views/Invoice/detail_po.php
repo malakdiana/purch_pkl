@@ -144,7 +144,12 @@
             <div class="col-md-1"><br>PPN
             </div>
             <div class="col-sm-4"> <br><select name="ppn" class="form-control" style="width: 110px;height: 50px; margin-left: -16px">
-            <option value="0" >tanpa ppn</option><option value="10">10 %</option> </select>
+              <?php if($supplier[0]->ppn != 0 ){ ?>
+            <option value="0" >tanpa ppn</option><option value="10" selected="">10 %</option>
+          <?php }else{ ?>
+             <option value="0" selected="">tanpa ppn</option><option value="10" >10 %</option>
+           <?php } ?>
+             </select>
             </div>
           </div>
               <div class="row">

@@ -82,10 +82,12 @@ public function index()
 	  $data['inv']= $this->InvoiceModel->getInvoice($id);
 	  $data['docrec'] = $this->InvoiceModel->getDocrecByPo($id);
 	  $data['vp'] = $this->InvoiceModel->getDetail_vp($id);
+	  $data['supplier'] = $this->InvoiceModel->getSupplier($id);
 	 $this->load->view('Invoice/header');
         $this->load->view('Invoice/detail_po',$data);
 	
 }
+
 public function editPrepared(){
 	$data=$this->InvoiceModel->updatePre();
         echo json_encode($data);

@@ -30,6 +30,17 @@ class InvoiceModel extends CI_Model {
             return $results;
             }
 
+
+    }
+
+    public function getSupplier($id){
+        $query = $this->db->query('select * from po join supplier on po.id_po = supplier.id_supplier where po.id_po = '.$id);
+          $results=array();
+            if($query->num_rows() > 0){
+            return $query->result();
+            }else{
+            return $results;
+            }
     }
     public function getExportbydate($tgl1,$tgl2){
 
