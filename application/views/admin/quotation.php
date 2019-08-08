@@ -98,7 +98,7 @@
                                                   }
 
                                                   ?>
-<?php if($key->status ==  0 || $key->status == 3){?>
+<?php if($key->status ==  0){?>
                                              
                                                 <div class="btn-group mb-xl-3" role="group" aria-label="Basic example">
                                                       <a href="" onclick="modalDetail('<?php echo $key->id_penawaran?>','<?php  echo $key->note;?>' )"  data-toggle="modal" data-target="#myModalDetail"><button type="button" class="btn btn-secondary" style="width:85px; height:45px;"><font color="white"><i class="fa fa-book"></i> Note </font></button></a>
