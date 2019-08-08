@@ -278,6 +278,17 @@ class PoModel extends CI_Model {
         );
 
          $this->db->insert('bayangan', $data);
+        $hsl2=$this->db->query("SELECT * FROM barang WHERE nama_barang='".$nama."'");
+        if($hsl2->num_rows()>0){
+          $id_barang=0;
+            foreach ($hsl2->result() as $data) {
+                $id_barang = $data->no_barang;
+
+            }
+            $this->db->set('harga',$d);
+            $this->db->where('no_barang',$id_barang);
+            $this->db->update('barang');
+          }
 
          $query= $this->db->select('id_purch, sum(qty) as jumlah')->where('id_purch', $itemName[$i])->get('item');
          foreach ($query->result() as $key) {

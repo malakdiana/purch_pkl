@@ -85,8 +85,12 @@ public function index()
         $this->load->database();
 
          if(!empty($this->input->post("ids"))){
-             $id=$this->input->post("ids"); $quantity=0;
-             $hasil=$this->db->query("SELECT sum(qty) as jumlah FROM bayangan WHERE id_item=".$id); if($hasil->num_rows()>0){
+            $nama="";
+             $id=$this->input->post("ids");
+           //  $nama = $this->input->post("item_barang");
+              $quantity=0;
+             $hasil=$this->db->query("SELECT sum(qty) as jumlah FROM bayangan WHERE id_item=".$id); 
+             if($hasil->num_rows()>0){
             foreach ($hasil->result() as $data) {
                 $quantity=$data->jumlah;
             }
@@ -97,9 +101,22 @@ public function index()
         if($hsl->num_rows()>0){
             foreach ($hsl->result() as $data) {
                 $quantity2 = $data->qty;
+                $nama = $data->item_barang;
             }
 
         }
+
+        $harga=0;
+          $hsl2=$this->db->query("SELECT * FROM barang WHERE nama_barang='".$nama."'");
+        if($hsl2->num_rows()>0){
+            foreach ($hsl2->result() as $data) {
+                $harga = $data->harga;
+
+            }
+
+        }
+
+
         $qty=$quantity2-$quantity;
         foreach ($hsl->result() as $data) {
                
@@ -107,6 +124,7 @@ public function index()
                    'id_item' => $data->id_item,
                    'unit' => $data->unit_name,
                     'qty' => $qty,
+                    'harga' => $harga
                     );
 
 

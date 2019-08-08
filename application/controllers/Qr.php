@@ -51,7 +51,8 @@ public function index()
   }
   }
 
-       public function tambahQR (){ $datax['notif']= $this->QrModel->getNotifikasi();
+       public function tambahQR (){ 
+        $datax['notif']= $this->QrModel->getNotifikasi();
         $this->load->model('SectionModel');
         $this->load->helper('url', 'form');
     
@@ -122,17 +123,17 @@ public function index()
         $data['vendor']=$this->QrModel->getListVendor($id);
          if($this->session->userdata('logged_in')['hak_akses']==1){
         $this->load->view('admin/header',$datax);
-            $this->load->view('user/list_Vendor',$data);
+            $this->load->view('user/list_vendor',$data);
           }
           else if($this->session->userdata('logged_in')['hak_akses']==2){
         $this->load->view('user/header',$datax);
-            $this->load->view('user/list_Vendor',$data);
+            $this->load->view('user/list_vendor',$data);
           }else if($this->session->userdata('logged_in')['hak_akses']==4){
         $this->load->view('Personal/header',$datax);
-            $this->load->view('Personal/list_Vendor',$data);
+            $this->load->view('Personal/list_vendor',$data);
           } else{
         $this->load->view('read_only/header');
-            $this->load->view('user/list_Vendor',$data);
+            $this->load->view('user/list_vendor',$data);
           }
 
     }

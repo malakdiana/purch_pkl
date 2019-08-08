@@ -38,10 +38,8 @@
                                               
                                               
                                                 <th>NO</th>
-                                            
                                                 <th>NAMA BARANG</th>
-                                           
-                                               
+                                                <th>HARGA</th>
                                                 <th >ACTION</th>
                                           
                                             </tr>
@@ -52,14 +50,12 @@
                                         
                                            
                                                 <td><?php echo $no;?></td>
-                                         
                                                 <td><?php echo $key->nama_barang;?></td>
-                                            
-                                    
+                                                <td><?php echo "Rp " . number_format($key->harga,2,',','.');?></td>                                    
                                                 <td>
                                                       <div class="btn-group mb-xl-3" role="group" aria-label="Basic example">
                                     
-                                    <a href="javascript:void(0);" onclick="modalDetail('<?php echo $key->no_barang?>','<?php echo $key->nama_barang ?>')"  data-toggle="modal" data-target="#myModalEdit"><button type="button" class="btn btn-primary" style="width:80px; height:50px;"><font color="white"><i class="fa fa-pencil"></i> Edit</font></button></a>
+                                    <a href="javascript:void(0);" onclick="modalDetail('<?php echo $key->no_barang?>','<?php echo $key->nama_barang ?>','<?php echo $key->harga; ?>')"  data-toggle="modal" data-target="#myModalEdit"><button type="button" class="btn btn-primary" style="width:80px; height:50px;"><font color="white"><i class="fa fa-pencil"></i> Edit</font></button></a>
                                     <a href="<?php echo site_url()?>/Barang/deleteBarang/<?php echo $key->no_barang?> " onclick="return confirm('Apakah Yakin Untuk Menghapus?')"> <button type="button" class="btn btn-danger" style="width:80px; height:50px;"><font color="white"><i class="fa fa-trash-o"></i> Hapus</font></button></a>
                                   
                                 </div>
@@ -98,7 +94,11 @@
                   
                     <div class="form-group">
                         <label for="">NAMA BARANG</label>
-                        <input type="text" class="form-control" name="nama_barang" id="nama_barang" value="" autocomplete="" >
+                        <input type="text" class="form-control" name="nama_barang" id="nama_barang" value="" autocomplete="off" >
+                    </div>
+                    <div class="form-group">
+                        <label for="">Harga</label>
+                        <input type="text" class="form-control" name="harga" id="harga" value="" autocomplete="off" >
                     </div>
 
 
@@ -126,11 +126,11 @@
  
     <!-- others plugins -->
 <script type="text/javascript">
-    function modalDetail(no_barang,nama_barang){
+    function modalDetail(no_barang,nama_barang,harga){
     
         document.getElementById('no_barang').value = no_barang;
-   
         document.getElementById('nama_barang').value = nama_barang;
+        document.getElementById('harga').value = harga;
   
       
     }
@@ -156,6 +156,28 @@
        * Note that the indicator for showing which row is open is not controlled by DataTables,
        * rather it is done here
        */
+        var rupiah2 = document.getElementById("harga");
+rupiah2.addEventListener("keyup", function(e) {
+  rupiah2.value = formatRupiah(this.value, "Rp. ");
+});
+
+/* Fungsi formatRupiah */
+function formatRupiah(angka, prefix) {
+  var number_string = angka.replace(/[^,\d]/g, "").toString(),
+    split = number_string.split(","),
+    sisa = split[0].length % 3,
+    rupiah = split[0].substr(0, sisa),
+    ribuan = split[0].substr(sisa).match(/\d{3}/gi);
+
+  // tambahkan titik jika yang di input sudah menjadi angka ribuan
+  if (ribuan) {
+    separator = sisa ? "." : "";
+    rupiah += separator + ribuan.join(".");
+  }
+
+  rupiah = split[1] != undefined ? rupiah + "," + split[1] : rupiah;
+  return prefix == undefined ? rupiah : rupiah ? "Rp. " + rupiah : "";
+}
     
   </script>
 </body>

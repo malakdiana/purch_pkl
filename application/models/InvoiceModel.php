@@ -186,7 +186,7 @@ public function getDocRec(){
 
 public function poToPrint(){
 	  
-	$query = $this->db->query("select * from po join supplier on po.id_supplier= supplier.id_supplier  where id_po in (select id_po from detail_docrec)");
+	$query = $this->db->query("select * from po join supplier on po.id_supplier= supplier.id_supplier  where id_po in (select id_po from detail_docrec) order by id_po desc");
 
  $results=array();
             if($query->num_rows() > 0){
