@@ -42,7 +42,8 @@ class Unit_barang extends CI_Controller {
             redirect('Unit_barang', 'refresh');
     }
     public function tambahUnit_barang(){
-        $this->load->view('admin/header');
+         $datax['notif']= $this->QrModel->getNotifikasi(); $datax['edit']= $this->QrModel->getNotifEdit();
+        
         $this->load->helper('url', 'form');
         $this->load->library('form_validation');
         $this->form_validation->set_rules('unit_barang', 'unit_barang', 'trim|required');
@@ -59,7 +60,8 @@ class Unit_barang extends CI_Controller {
     }
 
     public function importUnit_barang(){
-        $this->load->view('admin/header');
+         $datax['notif']= $this->QrModel->getNotifikasi(); $datax['edit']= $this->QrModel->getNotifEdit();
+      
         $this->load->view('admin/header',$datax);
             $this->load->view('admin/importUnit_barang');
             $this->load->view('admin/footer');

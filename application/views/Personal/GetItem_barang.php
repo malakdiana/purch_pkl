@@ -140,9 +140,7 @@
           "bSortable": true,
           "aTargets": [0]
         }],
-        "aaSorting": [
-          [0, 'desc']
-        ]
+  
       });
 
       /* Add event listener for opening and closing details

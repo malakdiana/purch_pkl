@@ -57,8 +57,7 @@
 
                                            <?php echo form_open('eta/delay'); ?>   
                                         </div>
-                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                     
                                        <div class="col-md-2">
                                           <h6>Filter Tanggal Awal</h6>
                                            <input type="date" name="search"  style="width: 200px" class="form-control" value="<?php echo $tgl1 ?>">
@@ -68,16 +67,14 @@
                                          <h6>Filter Tanggal Akhir</h6>
                                            <input type="date" name="search2"  style="width: 200px" class="form-control" value="<?php echo $tgl2 ?>">
                                        </div>
-                                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                       <div class="col-md-2">
+                                  <br>
                                 <button class="btn btn-default"><i class="fa fa-search"></i> Cari Data</button>
 
-                                    
+                                  
                                    <?php echo form_close(); ?>
-                               </div>
-                            
-                
-                                <br>
-                            
+                                 </div>
+         
                                  <table cellpadding="0" cellspacing="0" border="0" class="table table-condensed" id="dataTablesss">
                                         <thead class="bg-light text-capitalize">
                                             <tr>

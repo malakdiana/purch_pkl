@@ -39,12 +39,16 @@ class BarangModel extends CI_Model {
     public function updateBarang(){
 
     	$no = $this->input->post('no_barang');
-    	
+    	    $d = $this->input->post('harga');
+             $d = str_replace('Rp', '', $d);
+              $d = str_replace('.', '', $d);
+               $d = str_replace(' ', '', $d);
 
         $data = array(
        
        
         'nama_barang' => $this->input->post('nama_barang'),
+        'harga' => $d
        
       
         );
@@ -59,9 +63,17 @@ class BarangModel extends CI_Model {
 
     }
     public function tambahBarang(){
-        $data = array(      
+         $d = $this->input->post('harga');
+             $d = str_replace('Rp', '', $d);
+              $d = str_replace('.', '', $d);
+               $d = str_replace(' ', '', $d);
+
+        $data = array(
+       
+       
         'nama_barang' => $this->input->post('nama_barang'),
-     
+        'harga' => $d
+       
       
         );
          $this->db->insert('barang', $data);

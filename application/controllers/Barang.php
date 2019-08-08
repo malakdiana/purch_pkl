@@ -111,8 +111,8 @@ class Barang extends CI_Controller {
             $arrayCount = count($allDataInSheet);
 
             $flag = 0;
-            $createArray = array('NO_BARANG','NAMA_BARANG');
-            $makeArray = array('NO_BARANG'=>'NO_BARANG','NAMA_BARANG'=> 'NAMA_BARANG');
+            $createArray = array('NO_BARANG','NAMA_BARANG','HARGA');
+            $makeArray = array('NO_BARANG'=>'NO_BARANG','NAMA_BARANG'=> 'NAMA_BARANG','HARGA' => 'HARGA');
             $SheetDataKey = array();
             foreach ($allDataInSheet as $dataInSheet) {
                 foreach ($dataInSheet as $key => $value) {
@@ -140,6 +140,7 @@ class Barang extends CI_Controller {
                     $no_barang = $SheetDataKey['NO_BARANG'];
                  
                     $nama_barang = $SheetDataKey['NAMA_BARANG'];
+                    $harga = $SheetDataKey['HARGA'];
                  
                    
                   
@@ -148,9 +149,10 @@ class Barang extends CI_Controller {
                     $no_barang = filter_var(trim($allDataInSheet[$i][$no_barang]), FILTER_SANITIZE_STRING);
                  
                     $nama_barang = filter_var(trim($allDataInSheet[$i][$nama_barang]), FILTER_SANITIZE_STRING);
+                      $harga = filter_var(trim($allDataInSheet[$i][$harga]), FILTER_SANITIZE_STRING);
                  
                    
-                    $fetchData[] = array('nama_barang' => $nama_barang,);
+                    $fetchData[] = array('nama_barang' => $nama_barang,'harga' => $harga,);
                 }              
                 $datax['employeeInfo'] = $fetchData;
                 $this->BarangModel->setBatchImport($fetchData);
@@ -213,11 +215,12 @@ class Barang extends CI_Controller {
    
     // Buat header tabel nya pada baris ke 3
     $excel->setActiveSheetIndex(0)->setCellValue('A1', "NO"); // Set kolom A3 dengan tulisan "NO"
-    $excel->setActiveSheetIndex(0)->setCellValue('B1', "NAMA_BARANG"); // Set kolom B3 dengan tulisan "NIS"
+    $excel->setActiveSheetIndex(0)->setCellValue('B1', "NAMA_BARANG");
+    $excel->setActiveSheetIndex(0)->setCellValue('C1', "HARGA"); // Set kolom B3 dengan tulisan "NIS"
    
     $excel->getActiveSheet()->getStyle('A1')->applyFromArray($style_col);
     $excel->getActiveSheet()->getStyle('B1')->applyFromArray($style_col);
-  
+    $excel->getActiveSheet()->getStyle('C1')->applyFromArray($style_col);
 
     // Panggil function view yang ada di SiswaModel untuk menampilkan semua data siswanya
     $siswa = $this->BarangModel->getBarangExport();
@@ -226,6 +229,7 @@ class Barang extends CI_Controller {
     foreach($siswa as $data){ // Lakukan looping pada variabel siswa
       $excel->setActiveSheetIndex(0)->setCellValue('A'.$numrow, $data->no_barang);
       $excel->setActiveSheetIndex(0)->setCellValue('B'.$numrow, $data->nama_barang);
+      $excel->setActiveSheetIndex(0)->setCellValue('C'.$numrow, $data->harga);
     
       $no++; // Tambah 1 setiap kali looping
       $numrow++; // Tambah 1 setiap kali looping
