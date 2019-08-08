@@ -328,6 +328,17 @@ class PoModel extends CI_Model {
     }
 
 
+    public function getPoJoin(){
+      $query = $this->db->query('SELECT po.id_po,tgl_po,no_po,supplier,eta,franco,no_pr,item,qty,unit,harga FROM `po` join bayangan on po.id_po = bayangan.id_po');
+       $results=array();
+            if($query->num_rows() > 0){
+            return $query->result();
+            }else{
+            return $results;
+            }
+    }
+
+
 
 
     

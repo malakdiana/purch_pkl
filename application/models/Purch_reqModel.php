@@ -38,6 +38,16 @@ class Purch_reqModel extends CI_Model {
             }
    }
 
+   public function getPrJoin(){
+    $query = $this->db->query('SELECT * FROM purch_req join item on purch_req.id = item.id_purch');
+     $results=array();
+            if($query->num_rows() > 0){
+            return $query->result();
+            }else{
+            return $results;
+            }
+   }
+
     public function getPurch_req_section()
     {
 

@@ -31,6 +31,15 @@ class QrModel extends CI_Model {
 
 
     }
+    public function getQrJoin(){
+        $query = $this->db->query('select penawaran.tanggal, tanggal_butuh, item,kode_qr,section,pic,bahan,penawaran.detail,nama_vendor,harga from penawaran join detail_penawaran on penawaran.id_penawaran = detail_penawaran.id_penawaran');
+           $results=array();
+            if($query->num_rows() > 0){
+            return $query->result();
+            }else{
+            return $results;
+            }
+    }
     public function tambahCatatan(){
         $this->db->set('note', $this->input->post('note'));
         $this->db->where('id_penawaran', $this->input->post('id'));

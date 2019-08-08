@@ -15,6 +15,7 @@ class Qr extends CI_Controller {
          if (!$this->session->userdata('logged_in')) {
         redirect('Login','refresh');
       }
+  $this->load->library('Excel','upload');
 
  
 
@@ -493,6 +494,126 @@ $this->upload->initialize($config);
  
 
     }
+
+
+      public function export(){
+   
+    $excel = new PHPExcel();
+  
+    $excel->getProperties()->setCreator('My Notes Code')
+                 ->setLastModifiedBy('My Notes Code')
+                 ->setTitle("Data Quotation")
+                 ->setSubject("QR")
+                 ->setDescription("Laporan Semua Data Quotation Request")
+                 ->setKeywords("Data PO");
+ 
+    $style_col = array(
+      'font' => array('bold' => true), // Set font nya jadi bold
+      'alignment' => array(
+        'horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_CENTER, // Set text jadi ditengah secara horizontal (center)
+        'vertical' => PHPExcel_Style_Alignment::VERTICAL_CENTER // Set text jadi di tengah secara vertical (middle)
+      ),
+      'borders' => array(
+        'top' => array('style'  => PHPExcel_Style_Border::BORDER_THIN), // Set border top dengan garis tipis
+        'right' => array('style'  => PHPExcel_Style_Border::BORDER_THIN),  // Set border right dengan garis tipis
+        'bottom' => array('style'  => PHPExcel_Style_Border::BORDER_THIN), // Set border bottom dengan garis tipis
+        'left' => array('style'  => PHPExcel_Style_Border::BORDER_THIN) // Set border left dengan garis tipis
+      )
+    );
+    // Buat sebuah variabel untuk menampung pengaturan style dari isi tabel
+    $style_row = array(
+      'alignment' => array(
+        'vertical' => PHPExcel_Style_Alignment::VERTICAL_CENTER // Set text jadi di tengah secara vertical (middle)
+      ),
+      'borders' => array(
+        'top' => array('style'  => PHPExcel_Style_Border::BORDER_THIN), // Set border top dengan garis tipis
+        'right' => array('style'  => PHPExcel_Style_Border::BORDER_THIN),  // Set border right dengan garis tipis
+        'bottom' => array('style'  => PHPExcel_Style_Border::BORDER_THIN), // Set border bottom dengan garis tipis
+        'left' => array('style'  => PHPExcel_Style_Border::BORDER_THIN) // Set border left dengan garis tipis
+      )
+    );
+   
+    // Buat header tabel nya pada baris ke 3
+    $excel->setActiveSheetIndex(0)->setCellValue('A1', "No"); // Set kolom A3 dengan tulisan "NO"
+    $excel->setActiveSheetIndex(0)->setCellValue('B1', "TANGGAL"); // Set kolom B3 dengan tulisan "NIS"
+    $excel->setActiveSheetIndex(0)->setCellValue('C1', "TANGGAL_BUTUH"); // Set kolom C3 dengan tulisan "NAMA"
+    $excel->setActiveSheetIndex(0)->setCellValue('D1', "KODE_QR"); // Set kolom D3 dengan tulisan "JENIS KELAMIN"
+    $excel->setActiveSheetIndex(0)->setCellValue('E1', "SECTION"); // Set kolom E3 dengan tulisan "ALAMAT"
+    $excel->setActiveSheetIndex(0)->setCellValue('F1', "PIC"); // Set kolom E3 dengan tulisan "ALAMAT"
+    $excel->setActiveSheetIndex(0)->setCellValue('G1', "ITEM"); // Set kolom E3 dengan tulisan "ALAMAT"
+  
+    $excel->setActiveSheetIndex(0)->setCellValue('H1', "BAHAN"); // Set kolom E3 dengan tulisan "ALAMAT"// Set kolom E3 
+    $excel->setActiveSheetIndex(0)->setCellValue('I1', "DETAIL"); // Set kolom E3 dengan tulisan "ALAMAT"
+    $excel->setActiveSheetIndex(0)->setCellValue('J1', "NAMA_VENDOR"); 
+    $excel->setActiveSheetIndex(0)->setCellValue('K1', "HARGA");
+  $excel->getActiveSheet()->getStyle('A1')->applyFromArray($style_col);
+    $excel->getActiveSheet()->getStyle('B1')->applyFromArray($style_col);
+    $excel->getActiveSheet()->getStyle('C1')->applyFromArray($style_col);
+    $excel->getActiveSheet()->getStyle('D1')->applyFromArray($style_col);
+    $excel->getActiveSheet()->getStyle('E1')->applyFromArray($style_col);
+    $excel->getActiveSheet()->getStyle('F1')->applyFromArray($style_col);
+    $excel->getActiveSheet()->getStyle('G1')->applyFromArray($style_col);
+    $excel->getActiveSheet()->getStyle('H1')->applyFromArray($style_col);
+    $excel->getActiveSheet()->getStyle('I1')->applyFromArray($style_col);
+    $excel->getActiveSheet()->getStyle('J1')->applyFromArray($style_col);
+        $excel->getActiveSheet()->getStyle('K1')->applyFromArray($style_col);
+
+
+   
+    $siswa = $this->QrModel->getQrJoin();
+    $no = 1; // Untuk penomoran tabel, di awal set dengan 1
+    $numrow = 2; // Set baris pertama untuk isi tabel adalah baris ke 4
+    foreach($siswa as $data){ // Lakukan looping pada variabel siswa
+      $excel->setActiveSheetIndex(0)->setCellValue('A'.$numrow, $no);
+      $excel->setActiveSheetIndex(0)->setCellValue('B'.$numrow, $data->tanggal);
+      $excel->setActiveSheetIndex(0)->setCellValue('C'.$numrow, $data->tanggal_butuh);
+      $excel->setActiveSheetIndex(0)->setCellValue('D'.$numrow, $data->kode_qr);
+      $excel->setActiveSheetIndex(0)->setCellValue('E'.$numrow, $data->section);
+      $excel->setActiveSheetIndex(0)->setCellValue('F'.$numrow, $data->pic);
+      $excel->setActiveSheetIndex(0)->setCellValue('G'.$numrow, $data->item);
+      $excel->setActiveSheetIndex(0)->setCellValue('H'.$numrow, $data->bahan);
+      $excel->setActiveSheetIndex(0)->setCellValue('I'.$numrow, $data->detail);
+      $excel->setActiveSheetIndex(0)->setCellValue('J'.$numrow, $data->nama_vendor);
+      $excel->setActiveSheetIndex(0)->setCellValue('K'.$numrow, $data->harga);
+      
+      
+      $no++; // Tambah 1 setiap kali looping
+      $numrow++; // Tambah 1 setiap kali looping
+    }
+    // Set width kolom
+    //$excel->getActiveSheet()->getColumnDimension('A')->setWidth(5); // Set width kolom A
+    $excel->getActiveSheet()->getColumnDimension('B')->setWidth(30); // Set width kolom B
+    $excel->getActiveSheet()->getColumnDimension('C')->setWidth(30); // Set width kolom C
+   
+    $excel->getActiveSheet()->getColumnDimension('D')->setWidth(25);
+    $excel->getActiveSheet()->getColumnDimension('E')->setWidth(25);
+    $excel->getActiveSheet()->getColumnDimension('F')->setWidth(25);
+    $excel->getActiveSheet()->getColumnDimension('G')->setWidth(25);
+    $excel->getActiveSheet()->getColumnDimension('H')->setWidth(25);
+    $excel->getActiveSheet()->getColumnDimension('I')->setWidth(25);
+    $excel->getActiveSheet()->getColumnDimension('J')->setWidth(25);
+  
+      $excel->getActiveSheet()->getColumnDimension('K')->setWidth(25);
+  
+    $excel->getActiveSheet()->getDefaultRowDimension()->setRowHeight(-1);
+    // Set orientasi kertas jadi LANDSCAPE
+    $excel->getActiveSheet()->getPageSetup()->setOrientation(PHPExcel_Worksheet_PageSetup::ORIENTATION_LANDSCAPE);
+    // Set judul file excel nya
+    $excel->getActiveSheet(0)->setTitle("Laporan Data QR");
+    $excel->setActiveSheetIndex(0);
+   
+    $write = PHPExcel_IOFactory::createWriter($excel, 'Excel2007');
+    ob_end_clean();
+header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+header('Content-Disposition: attachment;filename="Data QR.xlsx"');
+    $write->save('php://output');
+  }
+  public function kosongkan(){
+    $this->db->empty_table('detail_penawaran');
+    $this->db->empty_table('penawaran');
+    
+    redirect('Qr');
+  }
 
 
      

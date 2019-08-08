@@ -206,19 +206,16 @@ class Supplier extends CI_Controller {
 
 
      public function export(){
-    // Load plugin PHPExcel nya
-    //include APPPATH.'third_party/PHPExcel/PHPExcel.php';
-    
-    // Panggil class PHPExcel nya
+   
     $excel = new PHPExcel();
-    // Settingan awal fil excel
+  
     $excel->getProperties()->setCreator('My Notes Code')
                  ->setLastModifiedBy('My Notes Code')
                  ->setTitle("Data Supplier")
                  ->setSubject("Supplier")
                  ->setDescription("Laporan Semua Data Supplier")
                  ->setKeywords("Data Supplier");
-    // Buat sebuah variabel untuk menampung pengaturan style dari header tabel
+ 
     $style_col = array(
       'font' => array('bold' => true), // Set font nya jadi bold
       'alignment' => array(
