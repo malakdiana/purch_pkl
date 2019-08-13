@@ -105,7 +105,7 @@
                                                  <?php if($status==0){?>
                                                   <td>
                                                   <div class="btn-group mb-xl-3" role="group" >
-                                                     <a class="btn btn-primary" style="width:80px; height:50px;" href="javascript:void(0);" onclick="modalDetail('<?php echo $key->id_item?>', '<?php echo $key->item_barang?>', '<?php echo $key->qty?>','<?php echo $key->no_po?>')"><font color="white"><i class="fa fa-pencil"></i> Edit</font></a>
+                                                     <a class="btn btn-primary" style="width:80px; height:50px;" href="javascript:void(0);" onclick="modalDetail('<?php echo $key->id_item?>', '<?php echo $key->item_barang?>', '<?php echo $key->qty?>','<?php echo $key->no_po?>','<?php echo $key->detail?>')"><font color="white"><i class="fa fa-pencil"></i> Edit</font></a>
                                                 
                                                <a class="btn btn-danger" style="width:80px; height:50px;" href="<?php echo site_url()?>/Purch_req/hapusItem/<?php echo $id?>/<?php echo $key->id_item?>/<?php echo $status_fa?> " onclick="return confirm('Apakah Yakin Untuk Menghapus?')"><font color="white"><i class="fa fa-trash-o"></i> Hapus</font></a>
 
@@ -158,6 +158,10 @@
                         <label for="">QTY</label>
                         <input type="text" class="form-control" name="qty" id="qty" value="" >
                     </div>
+                     <div class="form-group">
+                        <label for="">DETAIL</label>
+                        <input type="text" class="form-control" name="detail" id="detail" value="" >
+                    </div>
                
                
             <div align="right" style="margin-bottom: 20px; margin-right: 30px">
@@ -179,12 +183,16 @@
  
     <!-- others plugins -->
 <script type="text/javascript">
-    function modalDetail(id_item,item_barang,qty,no_po){
+    function modalDetail(id_item,item_barang,qty,no_po,detail){
       if(no_po===""){
           document.getElementById('showmodal').click();
                document.getElementById('id_item').value = id_item;
         document.getElementById('item_barang').value = item_barang;
         document.getElementById('qty').value = qty;
+        document.getElementById('detail').value = detail;
+        
+        
+
        
       }else{
   

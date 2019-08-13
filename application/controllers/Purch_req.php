@@ -174,7 +174,8 @@ public function index()
         $this->Purch_reqModel->updateItem();
                 $this->session->set_flashdata('editItem','<div class="alert alert-success" role="alert">SUKSES UPDATE DATA <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
                 $id = $this->input->post('id');
-                if(empty($this->input->post('status'))){
+               // echo $this->input->post('status');die();
+                if($this->input->post('status')==""){
  redirect("Purch_req/GetItem_barang_user/$id", 'refresh');
                 }else{
                      $status = $this->input->post('status');
@@ -192,10 +193,40 @@ public function index()
             }
             redirect("Purch_req/GetItem_barang/$id/$status", 'refresh');
     }
+    public function hapusItem_user($id,$id_item){
+
+        $x= $this->Purch_reqModel->hapusItem($id_item);
+        if($x == null){
+            echo "<script>alert('Item tidak bisa dihapus karena memiliki nomor PO')</script>";
+        }else{
+                $this->session->set_flashdata('editItem','<div class="alert alert-success" role="alert">SUKSES HAPUS ITEM <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+            }
+            redirect("Purch_req/GetItem_barang_user/$id", 'refresh');
+    }
 
       function deleteItem(){
         $id = $this->input->post('id_item');
         $data=$this->Purch_reqModel->hapusItem($id);
+        $query= $this->db->select('*')->from('item')->where('id_item',$id)->get();
+         foreach ($query->result() as $key) {
+           $id_purch = $key->id_purch;
+         }
+
+         $query= $this->db->select('id_purch, sum(qty) as jumlah')->where('id_purch', $id_purch)->get('item');
+         foreach ($query->result() as $key) {
+           $jumlahitem = $key->jumlah;
+         }
+          $query= $this->db->select('sum(qty) as jumlah')->where('id_pr', $id_purch)->get('bayangan');
+         foreach ($query->result() as $key) {
+           $jumlahbay = $key->jumlah;
+         }
+         if($jumlahitem==$jumlahbay){
+          $dat=array(
+            'status' => 'CLOSED'
+          );
+          $this->db->where('id',  $itemName[$i]);
+          $this->db->update('purch_req',$dat);
+         }
         echo json_encode($data);
     }
 

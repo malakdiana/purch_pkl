@@ -73,11 +73,12 @@
   <?php echo form_open('Purch_req/tambah/'.$id)?>
 <div class="card">
          <div class="card-body">
-           <table class="table" style="width: 950px">
+           <table class="table" style="width: 1200px">
           <thead >
           <th> Barang </th>
           <th> Qty</th>
           <th> Satuan</th>
+          <th>Detail</th>
            <th> action</th>
         </thead>
         <tbody id="insert-form">
@@ -89,6 +90,7 @@
            <td><?php echo $key->item_barang;?></td>
                 <td><?php echo $key->qty;?></td>
           <td><?php echo $key->unit_name; ?></td>
+          <td><?php echo $key->detail; ?></td>
           <td id="<?php echo $no ?>"> <a href="javascript:void(0);" class="btn btn-danger btn-sm item_delete" onclick="modalDelete('<?php echo $key->id_item?>','<?php echo $no?>')"  data-toggle="modal" data-target="#Modal_Delete"><i class="fa fa-trash"> </i></a></td>
         </tr>
 
@@ -103,6 +105,7 @@
                                                 
                                             <option value="<?php echo $key->unit_barang?>"><?php echo $key->unit_barang?></option>
                                         <?php } ?></select></td>
+          <td><input type="text" name="detail[]" class="form-control" style="width: 250px"  ></td>
           <td> <button class="btn btn-delete btn-danger"> <i class="fa fa-trash"> </i></button></td>
         </tr>
       <?php } $no++;} ?>
@@ -116,6 +119,7 @@
                                             <option value="<?php echo $key->unit_barang?>"><?php echo $key->unit_barang?></option>
                                         <?php } ?></select>
                                       </td>
+                                           <td><input type="text" name="detail[]" class="form-control" style="width: 250px"  ></td>
           <td> <button class="btn btn-delete btn-danger"> <i class="fa fa-trash"> </i></button></td>
         </tr>
    
@@ -176,7 +180,7 @@
             // pada sebuah tag div yg kita beri id insert-form
            
 
-              $("#insert-form").append("<tr><td><select class='namaBarang"+x+" form-control' style='width:300px' name='item[]'><option></option></select></td><td><input type='number' class='form-control' style='width:100px' name='qty[]' required=''></td><td><select name='unit[]' class='form-control' required=''><?php foreach ($unit as $key) {?> <option value='<?php echo $key->unit_barang?>'><?php echo $key->unit_barang?></option><?php } ?></select></td><td> <button class='btn btn-delete btn-danger'> <i class='fa fa-trash'> </i></button></td></tr>");
+              $("#insert-form").append("<tr><td><select class='namaBarang"+x+" form-control' style='width:300px' name='item[]'><option></option></select></td><td><input type='number' class='form-control' style='width:100px' name='qty[]' required=''></td><td><select name='unit[]' class='form-control' required=''><?php foreach ($unit as $key) {?> <option value='<?php echo $key->unit_barang?>'><?php echo $key->unit_barang?></option><?php } ?></select></td>     <td><input type='text' name='detail[]' class=form-control style='width: 250px'  ></td><td> <button class='btn btn-delete btn-danger'> <i class='fa fa-trash'> </i></button></td></tr>");
 
 
             $("#scriptt").append("<script type='text/javascript'>$('.namaBarang"+x+"').select2({ placeholder: '--- Select Item ---',        ajax: { url: '<?php echo site_url()?>/Purch_req/getBarang/',  dataType: 'json', delay: 250, processResults: function (data) {  return { results: data };},cache: true}});");

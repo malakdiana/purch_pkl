@@ -66,7 +66,7 @@
 </div>
 </div>
 </div>
-<?php   $this->load->view('Admin/footer'); ?>
+<?php   $this->load->view('admin/footer'); ?>
 <script type="text/javascript">
     var rupiah = document.getElementById("rupiah");
 rupiah.addEventListener("keyup", function(e) {

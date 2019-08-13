@@ -95,7 +95,7 @@
                                                   <div class="btn-group mb-xl-3" role="group" >
                                                      <a class="btn btn-primary" style="width:80px; height:50px;" href="javascript:void(0);" onclick="modalDetail('<?php echo $key->id_item?>', '<?php echo $key->item_barang?>', '<?php echo $key->qty?>','<?php echo $key->no_po?>')"><font color="white"><i class="fa fa-pencil"></i> Edit</font></a>
                                                 
-                                               <a class="btn btn-danger" style="width:80px; height:50px;" href="<?php echo site_url()?>/Purch_req/hapusItem/<?php echo $id?>/<?php echo $key->id_item?>/<?php echo $status_fa?> " onclick="return confirm('Apakah Yakin Untuk Menghapus?')"><font color="white"><i class="fa fa-trash-o"></i> Hapus</font></a>
+                                               <a class="btn btn-danger" style="width:80px; height:50px;" href="<?php echo site_url()?>/Purch_req/hapusItem/<?php echo $id?>/<?php echo $key->id_item?>?> " onclick="return confirm('Apakah Yakin Untuk Menghapus?')"><font color="white"><i class="fa fa-trash-o"></i> Hapus</font></a>
 
                                                </div></td></tr><?php } 
                                                   else{?>

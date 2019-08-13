@@ -236,6 +236,7 @@ if (!empty($this->input->post('item'))) {
          $data = array(
         'item_barang' => $this->input->post('item_barang'),
         'qty' => $this->input->post('qty'),
+        'detail' => $this->input->post('detail')
       
         );
             $this->db->where('id_item', $this->input->post('id_item'));

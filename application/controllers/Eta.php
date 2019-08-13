@@ -265,7 +265,7 @@ header('Content-Disposition: attachment;filename="Data Semua ETA.xlsx"');
                  ->setLastModifiedBy('My Notes Code')
                  ->setTitle("Data ETA")
                  ->setSubject("ETA")
-                 ->setDescription("Laporan Semua Data ETA")
+                 ->setDescription("Laporan Data ETA")
                  ->setKeywords("Data ETA");
     // Buat sebuah variabel untuk menampung pengaturan style dari header tabel
     $style_col = array(
@@ -370,13 +370,13 @@ header('Content-Disposition: attachment;filename="Data Semua ETA.xlsx"');
     // Set orientasi kertas jadi LANDSCAPE
     $excel->getActiveSheet()->getPageSetup()->setOrientation(PHPExcel_Worksheet_PageSetup::ORIENTATION_LANDSCAPE);
     // Set judul file excel nya
-    $excel->getActiveSheet(0)->setTitle("Laporan Semua Data ETA");
+    $excel->getActiveSheet(0)->setTitle("Laporan Data ETA");
     $excel->setActiveSheetIndex(0);
    
     $write = PHPExcel_IOFactory::createWriter($excel, 'Excel2007');
     ob_end_clean();
 header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-header('Content-Disposition: attachment;filename="Data Semua ETA.xlsx"');
+header('Content-Disposition: attachment;filename="Data ETA.xlsx"');
     $write->save('php://output');
   }
 	

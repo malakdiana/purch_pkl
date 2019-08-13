@@ -50,7 +50,6 @@ public function kosongkan(){
         if ($this->form_validation->run()==FALSE) {
             $this->load->view('admin/header',$datax);
             $this->load->view('admin/tambahApproval');
-            $this->load->view('admin/footer');
         }else{
             $this->ApprovalModel->tambahApproval();
                 $this->session->set_flashdata('tambahApproval','<div class="alert alert-success" role="alert">SUKSES TAMBAH DATA <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
