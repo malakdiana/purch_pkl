@@ -58,7 +58,7 @@
                                                 <input type="text" class="form-control" name="harga[]" style="margin-bottom: 25px" autocomplete="off" id="rupiah">
                                             </div>
                                             <div class="form-group">
-                                                      <label class="control-label " for="file">Attechment :</label>
+                                                      <label class="control-label " for="file">Attachment :</label>
                                            
                                                 <input type="file" class="form-control" name="userfiles[]" style="margin-bottom: 25px">
                                                 <p>format upload file : jpeg/jpg/png/pdf/doc/docx/xlsx</p>
@@ -163,7 +163,7 @@
             // pada sebuah tag div yg kita beri id insert-form
             $("#insert-form").append("<div style='margin-bottom: 10px'><hr>Data Vendor " + nextform + "</div>" +
                 " <input type='hidden' class='form-control' name='id[]' id='id' value='<?php echo $id; ?>' >" +
-                "  <div class='form-group'><label class='control-label' for='vendor'>Vendor :</label><input type='text' class='form-control' name='vendor[]' style='margin-bottom: 25px' autocomplete='off'></div><div class='form-group'><label class='control-label' for='vendor'>Harga :</label><input type='text' class='form-control' name='harga[]' id='rupiah"+nextform+"' style='margin-bottom: 25px' autocomplete='off'></div><div class='form-group'><label class='control-label' for='file'>Attechment :</label><input type='file' class='form-control' name='userfiles[]' style='margin-bottom: 25px'></div>");
+                "  <div class='form-group'><label class='control-label' for='vendor'>Vendor :</label><input type='text' class='form-control' name='vendor[]' style='margin-bottom: 25px' autocomplete='off'></div><div class='form-group'><label class='control-label' for='vendor'>Harga :</label><input type='text' class='form-control' name='harga[]' id='rupiah"+nextform+"' style='margin-bottom: 25px' autocomplete='off'></div><div class='form-group'><label class='control-label' for='file'>Attachment :</label><input type='file' class='form-control' name='userfiles[]' style='margin-bottom: 25px'></div>");
               $("#scriptt").append("<script type='text/javascript'> var rupiah"+nextform+" = document.getElementById('rupiah"+nextform+"');rupiah"+nextform+".addEventListener('keyup', function(e) { rupiah"+nextform+".value = formatRupiah(this.value, 'Rp. ');});");
             $("#jumlah-form").val(nextform); // Ubah value textbox jumlah-form dengan variabel nextform
         });
