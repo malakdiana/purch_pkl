@@ -15,7 +15,7 @@ class Purch_reqModel extends CI_Model {
      public function getPurch_req()
     {
 
-            $query=$this->db->select('*')->from('purch_req')->limit('500')->order_by('status','desc')->order_by('id','DESC')->get();
+            $query=$this->db->select('*')->from('purch_req')->order_by('status','desc')->order_by('id','DESC')->get();
            $results=array();
             if($query->num_rows() > 0){
             return $query->result();
