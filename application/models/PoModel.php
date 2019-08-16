@@ -122,8 +122,8 @@ class PoModel extends CI_Model {
         $query = $this->db->get();
         if($query->num_rows() > 0){
               echo "<script>alert('Gagal di tambahkan, Nomor PO tidak boleh sama')</script>";
-             $this->load->view('Admin/header');
-            $this->load->view('Admin/tambahPO');
+             $this->load->view('admin/header');
+            $this->load->view('admin/tambahPO');
         }else{
 
 

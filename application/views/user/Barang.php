@@ -34,6 +34,7 @@
                                                 <th>NOMER</th>
                                             
                                                 <th>NAMA BARANG</th>
+                                                <th>HARGA</th>
            
                                           
                                             </tr>
@@ -46,7 +47,7 @@
                                                 <td><?php echo $no;?></td>
                                          
                                                 <td><?php echo $key->nama_barang;?></td>
-                                            
+                                                 <td><?php echo "Rp " . number_format($key->harga,2,',','.');?></td>
                                     
                                                
                                              
