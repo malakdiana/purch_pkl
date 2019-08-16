@@ -41,20 +41,23 @@
 
                                         <tr align="center">
                                                
-                                                <td style="width:170px">
-                                                <a href="<?php echo site_url()?>/Purch_req/"><button class="btn btn-flat btn-info mb-4" role="button" style="width:260px"><img style="width: 100px;height: 100px" src="<?php echo base_url()?>assets/images/icon/trackpo.png"><br>TRACKING MY ORDER</button></a><br></td>
+                                                <td style="width:130px">
+                                                <a href="<?php echo site_url()?>/Purch_req/"><button class="btn btn-flat btn-info mb-4" role="button" style="width:230px"><img style="width: 100px;height: 100px" src="<?php echo base_url()?>assets/images/icon/trackpo.png"><br>TRACKING MY ORDER</button></a><br></td>
 
-                                                <td style="width:170px">
-                                                 <a href="<?php echo site_url()?>/Qr/tracking/"><button class="btn btn-flat btn-info mb-4" role="button" style="width:260px"><img style="width: 100px;height: 100px" src="<?php echo base_url()?>assets/images/icon/trackingQuo.png"><br>TRACKING MY QUOTATION</button></a><br></td>
+                                                <td style="width:130px">
+                                                 <a href="<?php echo site_url()?>/Qr/tracking/"><button class="btn btn-flat btn-info mb-4" role="button" style="width:230px"><img style="width: 100px;height: 100px" src="<?php echo base_url()?>assets/images/icon/trackingQuo.png"><br>TRACKING MY QUOTATION</button></a><br></td>
 
-                                                <td style="width:170px">
-                                                 <a href="<?php echo site_url()?>/Qr/"><button class="btn btn-flat btn-info mb-4" role="button" style="width:260px""><img style="width: 100px;height: 100px" src="<?php echo base_url()?>assets/images/icon/listallquo.png"><br>LIST ALL QUOTATION</button>
+                                                <td style="width:130px">
+                                                 <a href="<?php echo site_url()?>/Qr/"><button class="btn btn-flat btn-info mb-4" role="button" style="width:230px""><img style="width: 100px;height: 100px" src="<?php echo base_url()?>assets/images/icon/listallquo.png"><br>LIST ALL QUOTATION</button>
                                                  </a><br></td>
 
-                                                 <td style="width:170px">
-                                                &nbsp;&nbsp;&nbsp;
-                                                 <a href="<?php echo site_url()?>/Barang"><button class="btn btn-flat btn-info mb-4" role="button" style="width:260px;"><img style="width: 100px;height: 100px" src="<?php echo base_url()?>assets/images/icon/brg.png"><br>CEK DATA BARANG</button></a><br></td>
+                                                 <td style="width:130px">
+                                               
+                                                 <a href="<?php echo site_url()?>/Barang"><button class="btn btn-flat btn-info mb-4" role="button" style="width:230px;"><img style="width: 100px;height: 100px" src="<?php echo base_url()?>assets/images/icon/brg.png"><br>MASTER BARANG</button></a><br></td>
 
+                                                  <td style="width:130px">
+                                                
+                                                <a href="<?php echo site_url()?>/Eta/getUser/<?php echo $this->session->userdata('logged_in')['username'] ?>" ><button class="btn btn-flat btn-info mb-4" role="button" style="width:230px;"><img style="width: 100px;height: 100px" src="<?php echo base_url()?>assets/images/icon/eta.png"><br>CEK ETA</button></a><br></td>
                                                
 
                                                
