@@ -65,7 +65,7 @@ public function index()
             $this->load->view('admin/footer');
             }else if($this->session->userdata('logged_in')['hak_akses']==4){
             $this->load->view('Personal/header',$datax);
-            $this->load->view('Personal/tambahQR', $data);
+            $this->load->view('Personal/tambahQr', $data);
             $this->load->view('admin/footer');
     
     }

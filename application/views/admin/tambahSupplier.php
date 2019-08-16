@@ -182,7 +182,7 @@
                                              <label class="control-label" for="pph">PPH:</label>
                                          </div>
                                          <div class="col-sm-4">
-                                            <select class="form-control" name="ppn" required="" style="height:45px;">
+                                            <select class="form-control" name="pph" required="" style="height:45px;">
                                                 <option value="0">NO PPH</option>
                                                 <option value="2">2%</option>
                                                 <option value="3">3%</option>

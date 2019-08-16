@@ -61,7 +61,7 @@ class Barang extends CI_Controller {
             $data['listUnit']=$this->Unit_barangModel->getUnit_barang();
 			$this->load->view('admin/header',$datax);
 			$this->load->view('admin/tambahBarang',$data);
-			$this->load->view('admin/footer');
+
 		}else{
 			$this->BarangModel->tambahBarang();
 				$this->session->set_flashdata('tambahBarang','<div class="alert alert-success" role="alert">SUKSES TAMBAH DATA <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');

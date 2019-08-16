@@ -145,6 +145,10 @@
                         <label for="">QTY</label>
                         <input type="text" class="form-control" name="qty" id="qty" value="" >
                     </div>
+                     <div class="form-group">
+                        <label for="">DETAIL</label>
+                        <input type="text" class="form-control" name="detail" id="detail" value="" >
+                    </div>
                
                
             <div align="right" style="margin-bottom: 20px; margin-right: 30px">

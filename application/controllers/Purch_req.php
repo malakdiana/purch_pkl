@@ -207,26 +207,26 @@ public function index()
       function deleteItem(){
         $id = $this->input->post('id_item');
         $data=$this->Purch_reqModel->hapusItem($id);
-        $query= $this->db->select('*')->from('item')->where('id_item',$id)->get();
-         foreach ($query->result() as $key) {
-           $id_purch = $key->id_purch;
-         }
+        // $query= $this->db->select('*')->from('item')->where('id_item',$id)->get();
+        //  foreach ($query->result() as $key) {
+        //    $id_purch = $key->id_purch;
+        //  }
 
-         $query= $this->db->select('id_purch, sum(qty) as jumlah')->where('id_purch', $id_purch)->get('item');
-         foreach ($query->result() as $key) {
-           $jumlahitem = $key->jumlah;
-         }
-          $query= $this->db->select('sum(qty) as jumlah')->where('id_pr', $id_purch)->get('bayangan');
-         foreach ($query->result() as $key) {
-           $jumlahbay = $key->jumlah;
-         }
-         if($jumlahitem==$jumlahbay){
-          $dat=array(
-            'status' => 'CLOSED'
-          );
-          $this->db->where('id',  $itemName[$i]);
-          $this->db->update('purch_req',$dat);
-         }
+        //  $query= $this->db->select('id_purch, sum(qty) as jumlah')->where('id_purch', $id_purch)->get('item');
+        //  foreach ($query->result() as $key) {
+        //    $jumlahitem = $key->jumlah;
+        //  }
+        //   $query= $this->db->select('sum(qty) as jumlah')->where('id_pr', $id_purch)->get('bayangan');
+        //  foreach ($query->result() as $key) {
+        //    $jumlahbay = $key->jumlah;
+        //  }
+        //  if($jumlahitem==$jumlahbay){
+        //   $dat=array(
+        //     'status' => 'CLOSED'
+        //   );
+        //   $this->db->where('id',  $itemName[$i]);
+        //   $this->db->update('purch_req',$dat);
+        //  }
         echo json_encode($data);
     }
 

@@ -35,7 +35,7 @@
                                                 <th>NO PR</th>
                                              <th>ITEM BARANG</th>
                                                 <th>QTY TO PO</th>  
-                                                <th>HARGA</th>                                         
+                                                                            
                                                
                                              
                                           
@@ -50,17 +50,11 @@
                                                 <td><?php echo $key->no_pr;?></td>
                                                 <td><?php echo $key->item;?></td>
                                                 <td><?php echo $key->qty;?></td>
-                                                <td><?php echo "Rp " . number_format($key->harga,2,',','.');?> </td>
-                                                <?php $jumlah+= ($key->qty * $key->harga); 
-                                                  $hasil_rupiah = "Rp " . number_format($jumlah,2,',','.');?>
+                                            
                                               
                                              
                                             </tr>
                                             <?php $no++;}?>
-                                            <tr>
-                                              <td colspan="4" align="right">Jumlah Total</td>
-                                              <td colspan="2"><?php echo $hasil_rupiah; ?></td>
-                                            </tr>
                                        </tbody>
                                     </table>
                                 </div>

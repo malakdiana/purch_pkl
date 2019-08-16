@@ -29,7 +29,7 @@ class Section extends CI_Controller {
     {
          $datax['notif']= $this->QrModel->getNotifikasi(); $datax['edit']= $this->QrModel->getNotifEdit();
         $data['dpt']= $this->SectionModel->getSection();
-        $data['listDep']=$this->DepartemenModel->getDepartemen();
+      
         $this->load->view('admin/header',$datax);
         $this->load->view('admin/Section',$data);
     }
